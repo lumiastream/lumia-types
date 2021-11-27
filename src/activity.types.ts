@@ -133,7 +133,7 @@ export enum LumiaActivityOriginTypes {
 	TOUCHPORTAL = 'touchportal',
 }
 
-export enum ActivityApiValueType {
+export enum LumiaActivityApiValueType {
 	NO_VALUE,
 	CUSTOM_VALUE,
 	SET_VALUE,

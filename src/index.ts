@@ -3,7 +3,7 @@ export {
 	LumiaExternalActivityCommandTypes,
 	LumiaAlertValues,
 	LumiaActivityOriginTypes,
-	ActivityApiValueType,
+	LumiaActivityApiValueType,
 	LumiaActivityNoValueTypes,
 	LumiaActivityTestType,
 } from './activity.types';
