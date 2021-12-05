@@ -38,6 +38,7 @@ export enum LumiaActivityCommandTypes {
 	UPDATE_VARIABLE_VALUE = 'update-variable-value',
 	GET_VARIABLE_VALUE = 'get-variable-value',
 	SPOTIFY = 'send-spotify-command',
+	VLC = 'send-vlc-command',
 }
 
 // Anything that comes through in an external way
@@ -114,6 +115,9 @@ export enum LumiaAlertValues {
 	SPOTIFY_SWITCH_SONG = 'spotify-switchSong',
 	SPOTIFY_SONG_PLAYED = 'spotify-songPlayed',
 	SPOTIFY_SONG_PAUSED = 'spotify-songPaused',
+	VLC_SWITCH_SONG = 'vlc-switchSong',
+	VLC_SONG_PLAYED = 'vlc-songPlayed',
+	VLC_SONG_PAUSED = 'vlc-songPaused',
 	PULSE_HEARTRATE = 'pulse-heartrate',
 	PULSE_CALORIES = 'pulse-calories',
 }
