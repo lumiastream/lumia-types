@@ -61,12 +61,17 @@ export enum LumiaExternalActivityCommandTypes {
 }
 
 export enum LumiaAlertValues {
-    TWITCH_SUBSCRIBER = 'twitch-subscriber',
+    TWITCH_STREAM_LIVE = 'twitch-streamlive',
+    TWITCH_STREAM_OFFLINE = 'twitch-streamoffline',
     TWITCH_FOLLOWER = 'twitch-follower',
+    TWITCH_SUBSCRIBER = 'twitch-subscriber',
     TWITCH_HOST = 'twitch-host',
     TWITCH_RAID = 'twitch-raid',
     TWITCH_BITS = 'twitch-bits',
     TWITCH_REDEMPTION = 'twitch-redemption',
+    TWITCH_HYPETRAIN_STARTED = 'twitch-hypetrainstart',
+    TWITCH_HYPETRAIN_PROGRESSED = 'twitch-hypetrainprogress',
+    TWITCH_HYPETRAIN_ENDED = 'twitch-hypetrainend',
     YOUTUBE_MEMBER = 'youtube-member',
     YOUTUBE_SUBSCRIBER = 'youtube-subscriber',
     YOUTUBE_SUPERCHAT = 'youtube-superchat',
@@ -159,7 +164,7 @@ export const LumiaActivityNoValueTypes = [
 // We'll want to use test types when we're sending a direct activity that doesn't currently have a link
 export enum LumiaActivityTestType {
     REACTION,
-    HYPE,
+    BUILDUPS,
     ANIMATION,
     THEME,
     SCENE,
