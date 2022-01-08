@@ -129,6 +129,7 @@ export enum LumiaAlertValues {
 	VLC_SONG_PAUSED = 'vlc-songPaused',
 	PULSE_HEARTRATE = 'pulse-heartrate',
 	PULSE_CALORIES = 'pulse-calories',
+	WOOCOMMERCE_ORDER = 'woocommerce-order',
 }
 
 // Where did the Activity Originate from: Chat, alerts, shortcut, api, etc.
