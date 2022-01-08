@@ -120,6 +120,7 @@ export enum LumiaAlertValues {
 	SLOBS_SCENE_ITEM_VISIBILITY = 'slobs-sceneItemVisibility',
 	TWITTER_FOLLOWER = 'twitter-follower',
 	TWITTER_LIKE = 'twitter-like',
+	TWITTER_RETWEET = 'twitter-retweet',
 	SPOTIFY_SWITCH_SONG = 'spotify-switchSong',
 	SPOTIFY_SONG_PLAYED = 'spotify-songPlayed',
 	SPOTIFY_SONG_PAUSED = 'spotify-songPaused',
