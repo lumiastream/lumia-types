@@ -68,18 +68,17 @@ export enum LumiaExternalActivityCommandTypes {
 }
 
 export enum LumiaAlertValues {
-    TWITCH_STREAM_LIVE = 'twitch-streamlive',
-    TWITCH_STREAM_OFFLINE = 'twitch-streamoffline',
+    TWITCH_STREAM_LIVE = 'twitch-streamLive',
+    TWITCH_STREAM_OFFLINE = 'twitch-streamOffline',
     TWITCH_FOLLOWER = 'twitch-follower',
     TWITCH_SUBSCRIBER = 'twitch-subscriber',
     TWITCH_HOST = 'twitch-host',
     TWITCH_RAID = 'twitch-raid',
     TWITCH_BITS = 'twitch-bits',
     TWITCH_REDEMPTION = 'twitch-redemption',
-    TWITCH_HYPETRAIN_STARTED = 'twitch-hypetrainstart',
-    TWITCH_HYPETRAIN_PROGRESSED = 'twitch-hypetrainprogress',
-    TWITCH_HYPETRAIN_LEVEL_PROGRESSED = 'twitch-hypetrainlevelprogress',
-    TWITCH_HYPETRAIN_ENDED = 'twitch-hypetrainend',
+    TWITCH_HYPETRAIN_STARTED = 'twitch-hypetrainStarted',
+    TWITCH_HYPETRAIN_PROGRESSED = 'twitch-hypetrainProgressed',
+    TWITCH_HYPETRAIN_ENDED = 'twitch-hypetrainEnded',
     YOUTUBE_MEMBER = 'youtube-member',
     YOUTUBE_SUBSCRIBER = 'youtube-subscriber',
     YOUTUBE_SUPERCHAT = 'youtube-superchat',
