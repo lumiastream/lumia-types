@@ -151,6 +151,7 @@ export enum LumiaActivityOriginTypes {
     LUMIASTREAMLINK = 'lumiastreamlink',
     STREAMDECK = 'streamdeck',
     TOUCHPORTAL = 'touchportal',
+    GAMESGLOW = 'gamesglow',
 }
 
 export enum LumiaActivityApiValueType {
