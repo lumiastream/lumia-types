@@ -5,8 +5,8 @@ import { LumiaActivityCommandTypes } from './activity.types';
 // Packets that will be sent through socket and rest apis
 export interface ILumiaSendPack {
     type: LumiaActivityCommandTypes;
-    gamesGlowName?: string;
-    glowId?: string;
+    gamesGlowId?: string;
+    gamesGlowKey?: string;
     params: {
         value: string | { r: number; g: number; b: number };
         lights?: Array<ILumiaLight>;
