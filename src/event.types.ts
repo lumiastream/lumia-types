@@ -197,5 +197,8 @@ type EventOrigins =
     | 'discord'
     | 'obs'
     | 'slobs'
+    | 'pulse'
     | 'pulsoid'
+    | 'hyperate'
+    | 'ableton'
     | 'paypal';
