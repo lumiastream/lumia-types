@@ -153,7 +153,7 @@ export enum LumiaAlertValues {
     KOFI_DONATION = 'kofi-donation',
     KOFI_SUBSCRIPTION = 'kofi-subscription',
     KOFI_COMMISSION = 'kofi-commission',
-    KOFI_SHOPORDER = 'kofi-shoporder',
+    KOFI_SHOPORDER = 'kofi-shopOrder',
 }
 
 export const LumiaAlertFriendlyValues = {
