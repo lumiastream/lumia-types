@@ -74,12 +74,22 @@ export const VariationCurrencySymbol = {
   [LumiaVariationCurrency.TRY]: "TRY",
 };
 
+export interface LumiaDynamicCondition {
+  value: number | string;
+  isPrime?: boolean;
+  isGift?: boolean;
+  giftAmount?: number;
+  subMonths?: number;
+  currency?: string;
+}
+
 export const LumiaAlertConfigs: Record<
   LumiaAlertValues | string,
   {
     message: string;
     acceptedVariables: string[];
-    LumiavariationConditions: Array<{
+    quickActions?: Array<{ label: string; dynamic: LumiaDynamicCondition }>;
+    LumiaVariationConditions: Array<{
       type: LumiaVariationConditions;
       selections?: Array<{
         label: string;
@@ -93,17 +103,17 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITCH_STREAM_LIVE]: {
     message: "Twitch Stream is now live",
     acceptedVariables: ["eventTime"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.TWITCH_STREAM_OFFLINE]: {
     message: "Twitch Stream is offline",
     acceptedVariables: [],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.TWITCH_FOLLOWER]: {
     message: "{{username}} is now following!",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.TWITCH_SUBSCRIBER]: {
     message: "{{username}} just subscribed!",
@@ -113,11 +123,20 @@ export const LumiaAlertConfigs: Record<
       "giftAmount",
       "totalGifts",
       "subMonths",
+      "streakMonths",
       "message",
       "subPlan",
       "subPlanName",
     ],
-    LumiavariationConditions: [
+    quickActions: [
+      { label: "Tier 2 Sub", dynamic: { value: 2 } },
+      { label: "Gift 5 Subs", dynamic: { value: 100, isGift: true } },
+      {
+        label: "Resubscribed for 3 months",
+        dynamic: { value: 1, subMonths: 3 },
+      },
+    ],
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_SELECTION,
@@ -151,7 +170,12 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITCH_BITS]: {
     message: "{{username}} cheered {{amount}} bits",
     acceptedVariables: ["username", "amount"],
-    LumiavariationConditions: [
+    quickActions: [
+      { label: "100 bits", dynamic: { value: 100 } },
+      { label: "500 bits", dynamic: { value: 500 } },
+      { label: "1000 bits", dynamic: { value: 1000 } },
+    ],
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -164,7 +188,12 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITCH_HOST]: {
     message: "{{username}} hosted with {{viewers}} viewers",
     acceptedVariables: ["username", "viewers"],
-    LumiavariationConditions: [
+    quickActions: [
+      { label: "10 viewers", dynamic: { value: 10 } },
+      { label: "50 viewers", dynamic: { value: 50 } },
+      { label: "100 viewers", dynamic: { value: 100 } },
+    ],
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.GREATER_NUMBER,
@@ -174,7 +203,13 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITCH_RAID]: {
     message: "{{username}} raided with {{viewers}} viewers",
     acceptedVariables: ["username", "viewers"],
-    LumiavariationConditions: [
+    quickActions: [
+      { label: "10 viewers", dynamic: { value: 10 } },
+      { label: "50 viewers", dynamic: { value: 50 } },
+      { label: "100 viewers", dynamic: { value: 100 } },
+    ],
+
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.GREATER_NUMBER,
@@ -184,7 +219,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: {
     message: "Hype train started",
     acceptedVariables: ["total", "progress", "goal"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.GREATER_NUMBER,
@@ -194,7 +229,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITCH_HYPETRAIN_PROGRESSED]: {
     message: "Hype train progressed to {{progress}}",
     acceptedVariables: ["level", "total", "progress", "goal"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -207,7 +242,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITCH_HYPETRAIN_LEVEL_PROGRESSED]: {
     message: "Hype train progressed to level {{level}}",
     acceptedVariables: ["level", "total", "progress", "goal"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -220,7 +255,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITCH_HYPETRAIN_LEVEL_PROGRESSED]: {
     message: "Hype train progressed to level {{level}}",
     acceptedVariables: ["level", "total", "progress", "goal"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -234,7 +269,7 @@ export const LumiaAlertConfigs: Record<
     message:
       "Hype train ended on level {{level}} and reached a total of {{total}}",
     acceptedVariables: ["level", "total"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -253,7 +288,7 @@ export const LumiaAlertConfigs: Record<
       "poll_started_at",
       "poll_ends_at",
     ],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -273,7 +308,7 @@ export const LumiaAlertConfigs: Record<
       "poll_started_at",
       "poll_ends_at",
     ],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -293,7 +328,7 @@ export const LumiaAlertConfigs: Record<
       "poll_started_at",
       "poll_ends_at",
     ],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -316,7 +351,7 @@ export const LumiaAlertConfigs: Record<
       "prediction_started_at",
       "prediction_ends_at",
     ],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.TWITCH_PREDICTION_STARTED]: {
     message:
@@ -337,7 +372,7 @@ export const LumiaAlertConfigs: Record<
       "prediction_started_at",
       "prediction_ends_at",
     ],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_STRING },
     ],
@@ -361,7 +396,7 @@ export const LumiaAlertConfigs: Record<
       "prediction_started_at",
       "prediction_ends_at",
     ],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_STRING },
     ],
@@ -385,7 +420,7 @@ export const LumiaAlertConfigs: Record<
       "prediction_started_at",
       "prediction_ends_at",
     ],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_STRING },
     ],
@@ -401,7 +436,7 @@ export const LumiaAlertConfigs: Record<
       "goal_target_amount",
     ],
 
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.TWITCH_GOAL_PROGRESSED]: {
     message:
@@ -413,7 +448,7 @@ export const LumiaAlertConfigs: Record<
       "goal_aomunt",
       "goal_target_amount",
     ],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_NUMBER },
       { type: LumiaVariationConditions.GREATER_NUMBER },
@@ -432,7 +467,7 @@ export const LumiaAlertConfigs: Record<
       "target_achieved",
       "goal_status",
     ],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.TARGET_ACHIEVED },
       { type: LumiaVariationConditions.EQUAL_NUMBER },
@@ -442,7 +477,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITCH_CATEGORY]: {
     message: "Category changed to {{category_name}}",
     acceptedVariables: ["category_name", "category_id", "channel_title"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_STRING },
     ],
@@ -459,26 +494,26 @@ export const LumiaAlertConfigs: Record<
       "clip_user_is_sub",
       "clip_user_is_follower",
     ],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   // },
   // youtube: {
   [LumiaAlertValues.YOUTUBE_SUBSCRIBER]: {
     message: "{{username}} just subscribed!",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.YOUTUBE_MEMBER]: {
     message: "{{username}} became a member!",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.YOUTUBE_SUPERCHAT]: {
     message:
       "{{username}} just super chatted with {{amount}}. They said {{message}}",
     acceptedVariables: ["username", "currency", "amount", "message"],
 
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER },
       { type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER },
@@ -488,7 +523,7 @@ export const LumiaAlertConfigs: Record<
     message:
       "{{username}} just super chatted with {{amount}}. They said {{message}}",
     acceptedVariables: ["username", "currency", "amount", "message"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER },
       { type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER },
@@ -497,7 +532,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.YOUTUBE_SUPERSTICKER]: {
     message: "{{username}} just sent a supersticker with {{amount}}",
     acceptedVariables: ["username", "amount"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_NUMBER },
       { type: LumiaVariationConditions.GREATER_NUMBER },
@@ -508,12 +543,12 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.FACEBOOK_FOLLOWER]: {
     message: "{{username}} just followed",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.FACEBOOK_REACTION]: {
     message: "{{username}} reacted with a {{reaction}}",
     acceptedVariables: ["username", "reaction"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_STRING },
     ],
@@ -521,7 +556,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.FACEBOOK_STAR]: {
     message: "{{username}} sent {{amount}} stars",
     acceptedVariables: ["username", "amount"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_NUMBER },
       { type: LumiaVariationConditions.GREATER_NUMBER },
@@ -530,7 +565,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.FACEBOOK_SUPPORT]: {
     message: "{{username}} just supported",
     acceptedVariables: ["username", "amount"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       { type: LumiaVariationConditions.EQUAL_NUMBER },
       { type: LumiaVariationConditions.GREATER_NUMBER },
@@ -539,36 +574,36 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.FACEBOOK_SHARE]: {
     message: "{{username}} just shared your page",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.FACEBOOK_FAN]: {
     message: "{{username}} became a fan",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   // },
   // glimesh: {
   [LumiaAlertValues.GLIMESH_FOLLOWER]: {
     message: "{{username}} just followed",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.GLIMESH_SUBSCRIBER]: {
     message: "{{username}} just subscribed",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   // },
   // trovo: {
   [LumiaAlertValues.TROVO_FOLLOWER]: {
     message: "{{username}} just followed",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.TROVO_SUBSCRIBER]: {
     message: "{{username}} just subscribed",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.IS_GIFT,
@@ -580,17 +615,17 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TIKTOK_FOLLOWER]: {
     message: "{{username}} just followed",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.TIKTOK_LIKE]: {
     message: "{{username}} sent a like",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.TIKTOK_GIFT]: {
     message: "{{username}} sent a {{amount}} {{type}}'s",
     acceptedVariables: ["username", "type", "amount"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -603,14 +638,20 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TIKTOK_SHARE]: {
     message: "{{username}} shared your stream",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   // },
   // streamlabs: {
   [LumiaAlertValues.STREAMLABS_DONATION]: {
     message: "{{username}} just donated {{amount}}. They said {{message}}",
     acceptedVariables: ["username", "currency", "amount", "message"],
-    LumiavariationConditions: [
+    quickActions: [
+      {
+        label: "$100",
+        dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
+      },
+    ],
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -624,7 +665,7 @@ export const LumiaAlertConfigs: Record<
     message: "{{username}} just donated {{amount}}. They said {{message}}",
     acceptedVariables: ["username", "currency", "amount", "message"],
 
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -638,7 +679,7 @@ export const LumiaAlertConfigs: Record<
     message: "{{username}} just bought {{merch}}. They said {{message}}",
     acceptedVariables: ["username", "merch", "message"],
 
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -651,7 +692,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.STREAMLABS_REDEMPTION]: {
     message: "{{username}} just redeemed {{redemption}}. They said {{message}}",
     acceptedVariables: ["username", "redemption", "message"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -661,7 +702,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.STREAMLABS_PRIMEGIFT]: {
     message: "{{username}} sent a prime gift",
     acceptedVariables: ["username"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -673,7 +714,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.STREAMELEMENTS_DONATION]: {
     message: "{{username}} just donated {{amount}}. They said {{message}}",
     acceptedVariables: ["username", "currency", "amount", "message"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -687,7 +728,7 @@ export const LumiaAlertConfigs: Record<
     message: "{{username}} just bought {{merch}}. They said {{message}}",
     acceptedVariables: ["username", "merch", "message"],
 
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -700,7 +741,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.STREAMELEMENTS_REDEMPTION]: {
     message: "{{username}} just redeemed {{redemption}}. They said {{message}}",
     acceptedVariables: ["username", "redemption", "message"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -712,7 +753,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.EXTRALIFE_DONATION]: {
     message: "{{username}} just donated {{amount}}. They said {{message}}",
     acceptedVariables: ["username", "currency", "amount", "message"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -727,7 +768,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.DONORDRIVE_DONATION]: {
     message: "{{username}} just donated {{amount}}. They said {{message}}",
     acceptedVariables: ["username", "currency", "amount", "message"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -742,7 +783,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TILTIFY_DONATION]: {
     message: "{{username}} just donated {{amount}}. They said {{message}}",
     acceptedVariables: ["username", "currency", "amount", "message"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -757,7 +798,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.PATREON_PLEDGE]: {
     message: "{{username}} just pledged {{amount}}",
     acceptedVariables: ["username", "currency", "amount"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -773,7 +814,7 @@ export const LumiaAlertConfigs: Record<
     message: "Someone just ordered {{item}} in the amount of {{amount}}",
     acceptedVariables: ["item", "amount"],
 
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -788,7 +829,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.KOFI_DONATION]: {
     message: "{{username}} just donated {{amount}}. They said {{message}}",
     acceptedVariables: ["username", "currency", "amount"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -801,7 +842,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.KOFI_SUBSCRIPTION]: {
     message: "{{username}} just subscribed with tier {{tier}}",
     acceptedVariables: ["username", "currency", "amount", "tier"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -814,7 +855,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.KOFI_COMMISSION]: {
     message: "{{username}} just commisioned with amount {{amount}}",
     acceptedVariables: ["username", "currency", "amount"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -827,7 +868,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.KOFI_SHOPORDER]: {
     message: "{{username}} just created a shop order with amount {{amount}}",
     acceptedVariables: ["username", "currency", "amount"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -843,7 +884,7 @@ export const LumiaAlertConfigs: Record<
     message:
       "Received a new Twitter follower. Follower count is now {{followers}}",
     acceptedVariables: ["followers"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -856,7 +897,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITTER_LIKE]: {
     message: "Reached a total likes of {{likes}} on Twitter",
     acceptedVariables: ["likes"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -869,7 +910,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TWITTER_LIKE]: {
     message: "Reached {{retweets}}",
     acceptedVariables: ["retweets"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -884,7 +925,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.SPOTIFY_SWITCH_SONG]: {
     message: "Song switched to {{name}}",
     acceptedVariables: ["name", "uri", "image"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -894,7 +935,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.SPOTIFY_SONG_PLAYED]: {
     message: "Song {{name}} is now playing",
     acceptedVariables: ["name", "uri", "image"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -904,7 +945,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.SPOTIFY_SONG_PLAYED]: {
     message: "Song {{name}} paused",
     acceptedVariables: ["name", "uri", "image"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -916,7 +957,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.VLC_SWITCH_SONG]: {
     message: "Song switched to {{name}}",
     acceptedVariables: ["name", "uri", "image"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -926,7 +967,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.VLC_SONG_PLAYED]: {
     message: "Song {{name}} is now playing",
     acceptedVariables: ["name", "uri", "image"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -936,7 +977,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.VLC_SONG_PLAYED]: {
     message: "Song {{name}} paused",
     acceptedVariables: ["name", "uri", "image"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -948,7 +989,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.TREATSTREAM_TREAT]: {
     message: "{{username}} sent {{treat}}",
     acceptedVariables: ["username", "treat"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -961,7 +1002,7 @@ export const LumiaAlertConfigs: Record<
     message: "{{username}} just donated {{amount}}",
     acceptedVariables: ["username", "currency", "amount"],
 
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
@@ -976,7 +1017,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.OBS_SWITCH_SCENE]: {
     message: "OBS scene switched to {{scene}}",
     acceptedVariables: ["scene"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -986,7 +1027,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.OBS_SCENE_ITEM_VISIBILITY]: {
     message: "OBS scene item {{item}} visibility turned on",
     acceptedVariables: ["item"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -996,7 +1037,7 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.OBS_SWITCH_PROFILE]: {
     message: "OBS profile switched to {{profile}}",
     acceptedVariables: ["profile"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -1006,44 +1047,44 @@ export const LumiaAlertConfigs: Record<
   [LumiaAlertValues.OBS_SWITCH_TRANSITION]: {
     message: "OBS transition switched",
     acceptedVariables: [],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.OBS_TRANSITION_BEGIN]: {
     message: "OBS transition started",
     acceptedVariables: [],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.OBS_TRANSITION_END]: {
     message: "OBS transition ended",
     acceptedVariables: [],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.OBS_STREAM_STARTING]: {
     message: "OBS stream started",
     acceptedVariables: [],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.OBS_STREAM_STOPPING]: {
     message: "OBS stream stopped",
     acceptedVariables: [],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   // },
   // slobs: {
   [LumiaAlertValues.SLOBS_SWITCH_SCENE]: {
     message: "SLOBS scene switched to {{scene}}",
     acceptedVariables: [],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.SLOBS_SWITCH_SCENE_COLLECTION]: {
     message: "SLOBS scene collection switched",
     acceptedVariables: [],
-    LumiavariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
   },
   [LumiaAlertValues.SLOBS_SCENE_ITEM_VISIBILITY]: {
     message: "SLOBS scene item {{item}} visibility turned on",
     acceptedVariables: ["item"],
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.EQUAL_STRING,
@@ -1056,7 +1097,7 @@ export const LumiaAlertConfigs: Record<
     message: "Heart rate changed to {{heartrate}}",
     acceptedVariables: ["heartrate", "min_heartrate", "max_heartrate"],
 
-    LumiavariationConditions: [
+    LumiaVariationConditions: [
       { type: LumiaVariationConditions.RANDOM },
       {
         type: LumiaVariationConditions.GREATER_NUMBER,
