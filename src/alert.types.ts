@@ -133,6 +133,13 @@ export const LumiaAlertConfigs: Record<
     message: "{{username}} is now following!",
     acceptedVariables: ["username"],
     LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+    quickActions: [
+      {
+        label: "New Follow",
+        dynamic: { value: "lumiastream" },
+        extraSettings: { username: "lumiastream" },
+      },
+    ],
     inputFields: [
       {
         type: "text",
@@ -158,15 +165,56 @@ export const LumiaAlertConfigs: Record<
       "subPlanName",
     ],
     quickActions: [
-      { label: "Tier 1 Sub", dynamic: { value: 1000 } },
-      { label: "Gift 5 Subs", dynamic: { value: 100, isGift: true } },
+      {
+        label: "Tier 1 Sub",
+        dynamic: { value: 1000 },
+        extraSettings: {
+          username: "lumiastream",
+          message: "Great Stream",
+          tier: 1000,
+          subMonths: 1,
+          subPlan: 1000,
+          subPlanName: "Tier 1",
+        },
+      },
+      {
+        label: "Gift 5 Subs",
+        dynamic: { value: 1000, giftAmount: 5, isGift: true },
+        extraSettings: {
+          username: "lumiastream",
+          message: "Great Stream",
+          giftAmount: 5,
+          totalGifts: 5,
+          tier: 1000,
+          subMonths: 1,
+          subPlan: 1000,
+          subPlanName: "Tier 1",
+        },
+      },
       {
         label: "Prime Sub",
         dynamic: { value: 1, isPrime: true },
+        extraSettings: {
+          username: "lumiastream",
+          message: "Great Stream",
+          tier: "Prime",
+          subMonths: 1,
+          subPlan: "Prime",
+          subPlanName: "Prime",
+        },
       },
       {
         label: "Resubscribed 3 months",
-        dynamic: { value: 3 },
+        dynamic: { value: 3, subMonths: 3 },
+        extraSettings: {
+          username: "lumiastream",
+          message: "Great Stream",
+          tier: 1000,
+          subMonths: 3,
+          streakMonths: 3,
+          subPlan: 1000,
+          subPlanName: "Tier 1",
+        },
       },
     ],
     inputFields: [
@@ -267,9 +315,21 @@ export const LumiaAlertConfigs: Record<
     message: "{{username}} cheered {{amount}} bits",
     acceptedVariables: ["username", "amount"],
     quickActions: [
-      { label: "100 bits", dynamic: { value: 100 } },
-      { label: "500 bits", dynamic: { value: 500 } },
-      { label: "1000 bits", dynamic: { value: 1000 } },
+      {
+        label: "100 bits",
+        dynamic: { value: 100 },
+        extraSettings: { username: "lumiastream", amount: 10 },
+      },
+      {
+        label: "500 bits",
+        dynamic: { value: 500 },
+        extraSettings: { username: "lumiastream", amount: 10 },
+      },
+      {
+        label: "1000 bits",
+        dynamic: { value: 1000 },
+        extraSettings: { username: "lumiastream", amount: 10 },
+      },
     ],
     inputFields: [
       {
@@ -303,9 +363,21 @@ export const LumiaAlertConfigs: Record<
     message: "{{username}} hosted with {{viewers}} viewers",
     acceptedVariables: ["username", "viewers"],
     quickActions: [
-      { label: "10 viewers", dynamic: { value: 10 } },
-      { label: "50 viewers", dynamic: { value: 50 } },
-      { label: "100 viewers", dynamic: { value: 100 } },
+      {
+        label: "10 viewers",
+        dynamic: { value: 10 },
+        extraSettings: { username: "lumiastream", viewers: 10 },
+      },
+      {
+        label: "50 viewers",
+        dynamic: { value: 50 },
+        extraSettings: { username: "lumiastream", viewers: 50 },
+      },
+      {
+        label: "100 viewers",
+        dynamic: { value: 100 },
+        extraSettings: { username: "lumiastream", viewers: 100 },
+      },
     ],
     inputFields: [
       {
@@ -336,9 +408,21 @@ export const LumiaAlertConfigs: Record<
     message: "{{username}} raided with {{viewers}} viewers",
     acceptedVariables: ["username", "viewers"],
     quickActions: [
-      { label: "10 viewers", dynamic: { value: 10 } },
-      { label: "50 viewers", dynamic: { value: 50 } },
-      { label: "100 viewers", dynamic: { value: 100 } },
+      {
+        label: "10 viewers",
+        dynamic: { value: 10 },
+        extraSettings: { username: "lumiastream", viewers: 10 },
+      },
+      {
+        label: "50 viewers",
+        dynamic: { value: 50 },
+        extraSettings: { username: "lumiastream", viewers: 50 },
+      },
+      {
+        label: "100 viewers",
+        dynamic: { value: 100 },
+        extraSettings: { username: "lumiastream", viewers: 100 },
+      },
     ],
     inputFields: [
       {
@@ -380,9 +464,21 @@ export const LumiaAlertConfigs: Record<
     message: "Hype train progressed to {{progress}}",
     acceptedVariables: ["level", "total", "progress", "goal"],
     quickActions: [
-      { label: "Progress 100", dynamic: { value: 100 } },
-      { label: "Progress 200", dynamic: { value: 200 } },
-      { label: "Progress 300", dynamic: { value: 300 } },
+      {
+        label: "Progress 100",
+        dynamic: { value: 100 },
+        extraSettings: { level: 1, total: 100, progress: 100, goal: 4 },
+      },
+      {
+        label: "Progress 200",
+        dynamic: { value: 200 },
+        extraSettings: { level: 1, total: 200, progress: 200, goal: 4 },
+      },
+      {
+        label: "Progress 300",
+        dynamic: { value: 300 },
+        extraSettings: { level: 1, total: 300, progress: 300, goal: 4 },
+      },
     ],
     inputFields: [
       {
@@ -409,11 +505,31 @@ export const LumiaAlertConfigs: Record<
     message: "Hype train progressed to level {{level}}",
     acceptedVariables: ["level", "total", "progress", "goal"],
     quickActions: [
-      { label: "Level 1", dynamic: { value: 1 } },
-      { label: "Level 2", dynamic: { value: 2 } },
-      { label: "Level 3", dynamic: { value: 3 } },
-      { label: "Level 4", dynamic: { value: 4 } },
-      { label: "Level 5", dynamic: { value: 5 } },
+      {
+        label: "Level 1",
+        dynamic: { value: 1 },
+        extraSettings: { level: 1, total: 0, progress: 0, goal: 5 },
+      },
+      {
+        label: "Level 2",
+        dynamic: { value: 2 },
+        extraSettings: { level: 2, total: 100, progress: 100, goal: 5 },
+      },
+      {
+        label: "Level 3",
+        dynamic: { value: 3 },
+        extraSettings: { level: 3, total: 100, progress: 100, goal: 5 },
+      },
+      {
+        label: "Level 4",
+        dynamic: { value: 4 },
+        extraSettings: { level: 4, total: 100, progress: 100, goal: 5 },
+      },
+      {
+        label: "Level 5",
+        dynamic: { value: 5 },
+        extraSettings: { level: 5, total: 100, progress: 100, goal: 5 },
+      },
     ],
     inputFields: [
       {
@@ -441,11 +557,31 @@ export const LumiaAlertConfigs: Record<
       "Hype train ended on level {{level}} and reached a total of {{total}}",
     acceptedVariables: ["level", "total"],
     quickActions: [
-      { label: "Level 1", dynamic: { value: 1 } },
-      { label: "Level 2", dynamic: { value: 2 } },
-      { label: "Level 3", dynamic: { value: 3 } },
-      { label: "Level 4", dynamic: { value: 4 } },
-      { label: "Level 5", dynamic: { value: 5 } },
+      {
+        label: "Level 1",
+        dynamic: { value: 1 },
+        extraSettings: { level: 1, total: 0, progress: 0, goal: 5 },
+      },
+      {
+        label: "Level 2",
+        dynamic: { value: 2 },
+        extraSettings: { level: 2, total: 100, progress: 100, goal: 5 },
+      },
+      {
+        label: "Level 3",
+        dynamic: { value: 3 },
+        extraSettings: { level: 3, total: 100, progress: 100, goal: 5 },
+      },
+      {
+        label: "Level 4",
+        dynamic: { value: 4 },
+        extraSettings: { level: 4, total: 100, progress: 100, goal: 5 },
+      },
+      {
+        label: "Level 5",
+        dynamic: { value: 5 },
+        extraSettings: { level: 5, total: 100, progress: 100, goal: 5 },
+      },
     ],
     inputFields: [
       {
