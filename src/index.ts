@@ -24,5 +24,6 @@ export {
   ILumiaEventStateBody,
   ILumiaLight,
   LumiaPlatforms,
+  LumiaAlertBrands,
   LumiaEventTypes,
 } from "./event.types";

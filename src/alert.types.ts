@@ -1,4 +1,5 @@
 import { LumiaAlertValues } from "./activity.types";
+import { LumiaAlertBrands } from "./event.types";
 
 export enum LumiaVariationConditions {
   RANDOM = "RANDOM", // Frequency: Percent Chance
@@ -86,29 +87,7 @@ export interface LumiaDynamicCondition {
 export const LumiaAlertConfigs: Record<
   LumiaAlertValues | string,
   {
-    connection:
-      | "twitch"
-      | "youtube"
-      | "facebook"
-      | "glimesh"
-      | "trovo"
-      | "tiktok"
-      | "streamlabs"
-      | "streamelements"
-      | "extralife"
-      | "donordrive"
-      | "tiltify"
-      | "patreon"
-      | "woocommerce"
-      | "kofi"
-      | "twitter"
-      | "spotify"
-      | "vlc"
-      | "treatstream"
-      | "tipeeestream"
-      | "obs"
-      | "slobs"
-      | "pulse";
+    connection: LumiaAlertBrands;
     message: string;
     acceptedVariables: string[];
     quickActions?: Array<{
