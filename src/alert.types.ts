@@ -3624,7 +3624,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'Scene Change',
 				dynamic: { value: 'Lumia Scene' },
-				extraSettings: { scene: 'Lumia Scene' },
+				extraSettings: { item: 'Lumia Scene' },
 			},
 		],
 		inputFields: [
@@ -3703,86 +3703,20 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.OBS_SWITCH_TRANSITION]: {
 		connection: 'obs',
 		message: 'OBS transition switched',
-		acceptedVariables: ['transition'],
-		quickActions: [
-			{
-				label: 'Transition Change',
-				dynamic: { value: 'Lumia Transition' },
-				extraSettings: { transition: 'Lumia Transition' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Transition Name',
-				dynamicField: 'value',
-				variableField: 'transition',
-				required: true,
-				default: 'Lumia Transition',
-			},
-		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-			},
-		],
+		acceptedVariables: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_TRANSITION_BEGIN]: {
 		connection: 'obs',
 		message: 'OBS transition started',
-		acceptedVariables: ['transition'],
-		quickActions: [
-			{
-				label: 'Transition Begin',
-				dynamic: { value: 'Lumia Transition' },
-				extraSettings: { transition: 'Lumia Transition' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Transition Name',
-				dynamicField: 'value',
-				variableField: 'transition',
-				required: true,
-				default: 'Lumia Transition',
-			},
-		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-			},
-		],
+		acceptedVariables: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_TRANSITION_END]: {
 		connection: 'obs',
 		message: 'OBS transition ended',
-		acceptedVariables: ['transition'],
-		quickActions: [
-			{
-				label: 'Transition End',
-				dynamic: { value: 'Lumia Transition' },
-				extraSettings: { transition: 'Lumia Transition' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Transition Name',
-				dynamicField: 'value',
-				variableField: 'transition',
-				required: true,
-				default: 'Lumia Transition',
-			},
-		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-			},
-		],
+		acceptedVariables: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_STREAM_STARTING]: {
 		connection: 'obs',
@@ -3801,58 +3735,14 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.SLOBS_SWITCH_SCENE]: {
 		connection: 'slobs',
 		message: 'SLOBS scene switched to {{scene}}',
-		acceptedVariables: ['scene'],
-		quickActions: [
-			{
-				label: 'Scene Change',
-				dynamic: { value: 'Lumia Scene' },
-				extraSettings: { scene: 'Lumia Scene' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Scene',
-				dynamicField: 'value',
-				variableField: 'scene',
-				required: true,
-				default: 'Lumia Scene',
-			},
-		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-			},
-		],
+		acceptedVariables: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.SLOBS_SWITCH_SCENE_COLLECTION]: {
 		connection: 'slobs',
-		message: 'SLOBS scene collection switched to {{collection}}',
-		acceptedVariables: ['collection'],
-		quickActions: [
-			{
-				label: 'Scene Collection Change',
-				dynamic: { value: 'Lumia Scene Collection' },
-				extraSettings: { collection: 'Lumia Scene Collection' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Scene Collection',
-				dynamicField: 'value',
-				variableField: 'collection',
-				required: true,
-				default: 'Lumia Scene Collection',
-			},
-		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-			},
-		],
+		message: 'SLOBS scene collection switched',
+		acceptedVariables: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.SLOBS_SCENE_ITEM_VISIBILITY]: {
 		connection: 'slobs',
@@ -3873,6 +3763,34 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'item',
 				required: true,
 				default: 'Lumia Scene',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.STREAMERBOT_ACTION]: {
+		connection: 'streamerbot',
+		message: 'action triggered {{action}}',
+		acceptedVariables: ['action', 'actionId'],
+		quickActions: [
+			{
+				label: 'Lumia Action',
+				dynamic: { value: 'Lumia Action' },
+				extraSettings: { action: 'Lumia Action', actionId: 'lumia' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Action',
+				dynamicField: 'value',
+				variableField: 'action',
+				required: true,
+				default: 'Lumia Action',
 			},
 		],
 		LumiaVariationConditions: [

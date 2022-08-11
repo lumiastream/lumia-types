@@ -197,6 +197,7 @@ export type LumiaAlertBrands =
   | "woocommerce"
   | "kofi"
   | "tiktok"
+  | "streamerbot"
   | "pulse";
 
 export enum LumiaEventTypes {
@@ -235,4 +236,5 @@ type EventOrigins =
   | "pulsoid"
   | "hyperate"
   | "ableton"
+  | "streamerbot"
   | "paypal";

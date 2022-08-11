@@ -154,6 +154,7 @@ export enum LumiaAlertValues {
   KOFI_SUBSCRIPTION = "kofi-subscription",
   KOFI_COMMISSION = "kofi-commission",
   KOFI_SHOPORDER = "kofi-shopOrder",
+  STREAMERBOT_ACTION = "streamerbot-action",
 }
 
 export const LumiaAlertFriendlyValues = {
@@ -246,6 +247,7 @@ export const LumiaAlertFriendlyValues = {
   [LumiaAlertValues.KOFI_SUBSCRIPTION]: "Kofi Subscription",
   [LumiaAlertValues.KOFI_COMMISSION]: "Kofi Commission",
   [LumiaAlertValues.KOFI_SHOPORDER]: "Kofi Shoporder",
+  [LumiaAlertValues.STREAMERBOT_ACTION]: "Streamerbot Action",
 };
 
 // Where did the Activity Originate from: Chat, alerts, shortcut, api, etc.
