@@ -104,6 +104,8 @@ export const LumiaAlertConfigs: Record<
 			default: string | number | boolean;
 			required?: boolean;
 			selections?: Array<{ label: string; value: string | number }>;
+			hideWhen?: string;
+			showWhen?: string;
 		}>;
 		LumiaVariationConditions: Array<{
 			type: LumiaVariationConditions;
@@ -220,8 +222,18 @@ export const LumiaAlertConfigs: Record<
 				label: 'Months subscribed',
 				dynamicField: 'subMonths',
 				variableField: 'subMonths',
-				required: true,
+				required: false,
 				default: 1,
+				hideWhen: 'isGift',
+			},
+			{
+				type: 'number',
+				label: 'Gift amount',
+				dynamicField: 'giftAmount',
+				variableField: 'giftAmount',
+				required: false,
+				default: 1,
+				showWhen: 'isGift',
 			},
 			{
 				type: 'selection',
@@ -242,14 +254,6 @@ export const LumiaAlertConfigs: Record<
 				label: 'Is Gift',
 				dynamicField: 'isGift',
 				variableField: 'isGift',
-				default: false,
-				required: false,
-			},
-			{
-				type: 'check',
-				label: 'Is Resub',
-				dynamicField: 'isResub',
-				variableField: 'isResub',
 				default: false,
 				required: false,
 			},
