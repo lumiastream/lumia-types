@@ -148,7 +148,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Username',
 				variableField: 'username',
 				required: false,
-				default: '',
+				default: 'lumiastream',
 			},
 		],
 	},
@@ -185,7 +185,7 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				label: 'Prime Sub',
-				dynamic: { value: 1, isPrime: true },
+				dynamic: { value: 'Prime' },
 				extraSettings: {
 					username: 'lumiastream',
 					message: 'Great Stream',
@@ -197,7 +197,7 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				label: 'Resubscribed 3 months',
-				dynamic: { value: 3, subMonths: 3 },
+				dynamic: { value: 1000, subMonths: 3 },
 				extraSettings: {
 					username: 'lumiastream',
 					message: 'Great Stream',
@@ -215,7 +215,15 @@ export const LumiaAlertConfigs: Record<
 				label: 'Username',
 				variableField: 'username',
 				required: false,
-				default: '',
+				default: 'lumiastream',
+			},
+			{
+				type: 'check',
+				label: 'Is Gift',
+				dynamicField: 'isGift',
+				variableField: 'isGift',
+				default: false,
+				required: false,
 			},
 			{
 				type: 'number',
@@ -248,22 +256,6 @@ export const LumiaAlertConfigs: Record<
 					{ label: 'Tier 3', value: 3000 },
 					{ label: 'Prime', value: 'Prime' },
 				],
-			},
-			{
-				type: 'check',
-				label: 'Is Gift',
-				dynamicField: 'isGift',
-				variableField: 'isGift',
-				default: false,
-				required: false,
-			},
-			{
-				type: 'check',
-				label: 'Is Prime',
-				dynamicField: 'isPrime',
-				variableField: 'isPrime',
-				default: false,
-				required: false,
 			},
 			{
 				type: 'text',
@@ -331,7 +323,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Username',
 				variableField: 'username',
 				required: false,
-				default: '',
+				default: 'lumiastream',
 			},
 			{
 				type: 'number',
@@ -379,7 +371,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Username',
 				variableField: 'username',
 				required: false,
-				default: '',
+				default: 'lumiastream',
 			},
 			{
 				type: 'number',
@@ -424,7 +416,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Username',
 				variableField: 'username',
 				required: false,
-				default: '',
+				default: 'lumiastream',
 			},
 			{
 				type: 'number',
