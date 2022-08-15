@@ -1884,7 +1884,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TIKTOK_FOLLOWER]: {
 		connection: 'tiktok',
 		message: '{{username}} just followed',
-		acceptedVariables: ['username'],
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar'],
 		quickActions: [
 			{
 				label: 'New Follow',
@@ -1905,45 +1905,18 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TIKTOK_LIKE]: {
 		connection: 'tiktok',
-		message: '{{username}} sent a like',
-		acceptedVariables: ['username'],
+		message: '{{username}} sent a like to make a total like count of {{totalLikeCount}}',
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'userLikeCount', 'totalLikeCount'],
 		quickActions: [
 			{
-				label: 'New Like',
-				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Username',
-				variableField: 'username',
-				required: false,
-				default: 'lumiastream',
-			},
-		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
-	},
-	[LumiaAlertValues.TIKTOK_GIFT]: {
-		connection: 'tiktok',
-		message: "{{username}} sent {{amount}} {{type}}'s",
-		acceptedVariables: ['username', 'type', 'amount'],
-		quickActions: [
-			{
-				label: '100',
-				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', amount: 100 },
+				label: 'New Like (Total 10)',
+				dynamic: { value: 10 },
+				extraSettings: { username: 'lumiastream', userLikeCount: 1, totalLikeCount: 40 },
 			},
 			{
-				label: '200',
-				dynamic: { value: 200 },
-				extraSettings: { username: 'lumiastream', amount: 200 },
-			},
-			{
-				label: '300',
-				dynamic: { value: 300 },
-				extraSettings: { username: 'lumiastream', amount: 300 },
+				label: 'New Like (Total 50)',
+				dynamic: { value: 50 },
+				extraSettings: { username: 'lumiastream', userLikeCount: 1, totalLikeCount: 50 },
 			},
 		],
 		inputFields: [
@@ -1956,34 +1929,81 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: 'number',
-				label: 'Amount',
-				dynamicField: 'value',
-				variableField: 'amount',
+				label: 'User Like Count',
+				variableField: 'userLikeCount',
 				required: false,
-				default: 100,
+				default: 1,
+			},
+			{
+				type: 'number',
+				label: 'Total Like Count',
+				variableField: 'totalLikeCount',
+				required: false,
+				default: 40,
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
+	},
+	[LumiaAlertValues.TIKTOK_GIFT]: {
+		connection: 'tiktok',
+		message: '{{username}} sent a gift {{giftAmount}}',
+		acceptedVariables: [
+			'username',
+			'userId',
+			'profilePictureUrl',
+			'describe',
+			'diamondCount',
+			'giftId',
+			'giftName',
+			'giftPictureUrl',
+			'giftType',
+			'isNewGifter',
+			'receiverUserId',
+			'repeatCount',
+			'repeatEnd',
+		],
+		quickActions: [
+			{
+				label: 'Rose',
+				dynamic: { value: 'Rose' },
+				extraSettings: { username: 'lumiastream', giftName: 'Rose', giftType: 1, giftId: 5655, diamondCount: 1, giftPictureUrl: '' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
 			},
 			{
 				type: 'text',
-				label: 'Gift Type',
-				variableField: 'type',
+				label: 'Gift Name',
+				dynamicField: 'value',
+				variableField: 'giftName',
 				required: false,
-				default: 'stars',
+				default: 'Rose',
+			},
+			{
+				type: 'number',
+				label: 'Diamond Count',
+				variableField: 'diamondCount',
+				required: false,
+				default: 1,
 			},
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
-				type: LumiaVariationConditions.EQUAL_NUMBER,
-			},
-			{
-				type: LumiaVariationConditions.GREATER_NUMBER,
+				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 		],
 	},
 	[LumiaAlertValues.TIKTOK_SHARE]: {
 		connection: 'tiktok',
 		message: '{{username}} shared your stream',
-		acceptedVariables: ['username'],
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar'],
 		quickActions: [
 			{
 				label: 'New Share',
@@ -2000,6 +2020,12 @@ export const LumiaAlertConfigs: Record<
 				default: 'lumiastream',
 			},
 		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.TIKTOK_STREAM_END]: {
+		connection: 'tiktok',
+		message: 'Tiktok stream ended',
+		acceptedVariables: ['eventTime'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	// },
@@ -3770,7 +3796,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.STREAMERBOT_ACTION]: {
 		connection: 'streamerbot',
-		message: 'action triggered {{action}}',
+		message: '{{action}} action triggered',
 		acceptedVariables: ['action', 'actionId'],
 		quickActions: [
 			{
