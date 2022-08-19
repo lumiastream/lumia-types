@@ -42,12 +42,10 @@ export enum LumiaActivityCommandTypes {
 	TWITTER = 'send-twitter-command',
 
 	// Overlay Commands
-	OVERLAY_SET_OVERLAY_VISIBILITY = 'overlay-visibility',
-	OVERLAY_SET_LAYER_VISIBILITY = 'overlay-layer-visibility',
-	OVERLAY_SET_LAYER_POSITION = 'overlay-layer-position',
-	OVERLAY_SET_TEXT_CONTENT = 'overlay-text-content',
-	OVERLAY_SET_IMAGE_CONTENT = 'overlay-image-content',
-	OVERLAY_SET_VIDEO_CONTENT = 'overlay-video-content',
+	OVERLAY_SET_OVERLAY_VISIBILITY = 'overlay-set-visibility',
+	OVERLAY_SET_LAYER_VISIBILITY = 'overlay-set-layer-visibility',
+	OVERLAY_SET_LAYER_POSITION = 'overlay-set-layer-position',
+	OVERLAY_SET_CONTENT = 'overlay-set-content',
 
 	// Games Glow Command Types
 	GAMESGLOW_ALERT = 'gamesglow-alert',
