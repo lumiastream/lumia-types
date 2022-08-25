@@ -12,6 +12,7 @@ export enum LumiaActivityCommandTypes {
 	RGB_COLOR = 'rgb-color', // value: { color: [num, num, num], brightness?: number, transition?: number, duration?: number }
 	HEX_COLOR = 'hex-color',
 	CHAT_COMMAND = 'chat-command',
+	CHATBOT_COMMAND = 'chatbot-command',
 	CHAT_MATCH = 'chat-match',
 	TWITCH_POINTS = 'twitch-points',
 	TWITCH_POINTS_OUTPUT = 'twitch-points-output',
