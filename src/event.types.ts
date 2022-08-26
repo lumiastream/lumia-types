@@ -173,7 +173,8 @@ type LightBrands =
   | "corsair"
   | "steelseries"
   | "overlay"
-  | "elgato";
+  | "elgato"
+  | 'virtuallights';
 
 export type LumiaAlertBrands =
   | "twitch"
