@@ -8,7 +8,7 @@ export interface ILumiaSendPack {
 	gamesGlowId?: string;
 	gamesGlowKey?: string;
 	params?: {
-		value: string | { r: number; g: number; b: number };
+		value: string | boolean | { r: number; g: number; b: number };
 		lights?: Array<ILumiaLight>;
 		hold?: boolean; // Sets this command to default or not
 		skipQueue?: boolean; // Skips the queue and instantly turns to this color
