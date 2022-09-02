@@ -298,8 +298,8 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_BITS]: {
 		connection: 'twitch',
-		message: '{{username}} cheered {{amount}} bits',
-		acceptedVariables: ['username', 'amount'],
+		message: '{{username}} cheered {{amount}} bits. They said {{message}}',
+		acceptedVariables: ['username', 'amount', 'message', 'full_message'],
 		quickActions: [
 			{
 				label: '100 bits',
