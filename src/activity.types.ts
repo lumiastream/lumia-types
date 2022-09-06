@@ -262,6 +262,7 @@ export enum LumiaActivityOriginTypes {
 	ALEXA = 'alexa',
 	ALERT = 'alert',
 	CHAT = 'chat',
+	CHATBOT = 'chatbot',
 	TWITCH_POINTS = 'twitch-points',
 	TWITCH_EXTENSION = 'twitch-extension',
 	TROVO_SPELLS = 'trovo-spells',
