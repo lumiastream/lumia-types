@@ -155,7 +155,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_SUBSCRIBER]: {
 		connection: 'twitch',
 		message: '{{username}} just subscribed!',
-		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 		quickActions: [
 			{
 				label: 'Tier 1 Sub',
@@ -175,6 +175,7 @@ export const LumiaAlertConfigs: Record<
 				extraSettings: {
 					username: 'lumiastream',
 					message: 'Great Stream',
+					recipient: 'worldlights',
 					giftAmount: 5,
 					totalGifts: 5,
 					tier: 1000,
@@ -224,6 +225,14 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'isGift',
 				default: false,
 				required: false,
+			},
+			{
+				type: 'text',
+				label: 'Gift Recipient',
+				variableField: 'recipient',
+				required: false,
+				default: 'worldlights',
+				showWhen: 'isGift',
 			},
 			{
 				type: 'number',
