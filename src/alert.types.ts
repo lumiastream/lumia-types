@@ -3677,11 +3677,39 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.OBS_SCENE_ITEM_VISIBILITY]: {
 		connection: 'obs',
-		message: 'OBS scene item {{item}} visibility turned on',
+		message: 'OBS scene item {{item}} became visibile',
 		acceptedVariables: ['item'],
 		quickActions: [
 			{
 				label: 'Scene Visible',
+				dynamic: { value: 'Lumia Scene' },
+				extraSettings: { item: 'Lumia Scene' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Scene',
+				dynamicField: 'value',
+				variableField: 'item',
+				required: true,
+				default: 'Lumia Scene',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.OBS_SCENE_ITEM_HIDDEN]: {
+		connection: 'obs',
+		message: 'OBS scene item {{item}} became hidden',
+		acceptedVariables: ['item'],
+		quickActions: [
+			{
+				label: 'Scene Hidden',
 				dynamic: { value: 'Lumia Scene' },
 				extraSettings: { item: 'Lumia Scene' },
 			},
@@ -3777,11 +3805,39 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.SLOBS_SCENE_ITEM_VISIBILITY]: {
 		connection: 'slobs',
-		message: 'SLOBS scene item {{item}} visibility turned on',
+		message: 'SLOBS scene item {{item}} became visibile',
 		acceptedVariables: ['item'],
 		quickActions: [
 			{
 				label: 'Scene Visible',
+				dynamic: { value: 'Lumia Scene' },
+				extraSettings: { item: 'Lumia Scene' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Scene',
+				dynamicField: 'value',
+				variableField: 'item',
+				required: true,
+				default: 'Lumia Scene',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.SLOBS_SCENE_ITEM_HIDDEN]: {
+		connection: 'slobs',
+		message: 'SLOBS scene item {{item}} became hidden',
+		acceptedVariables: ['item'],
+		quickActions: [
+			{
+				label: 'Scene Hidden',
 				dynamic: { value: 'Lumia Scene' },
 				extraSettings: { item: 'Lumia Scene' },
 			},
