@@ -8,6 +8,7 @@ export enum LumiaActivityCommandTypes {
 	OSC = 'osc',
 	MQTT = 'mqtt',
 	ARTNET = 'artnet', // value: { presetName: string; device?: string; univers: string | number, values: IArtnetChannelValues[] }
+	LIGHTS_ON = 'lights-on',
 	LIGHTS_OFF = 'lights-off',
 	RGB_COLOR = 'rgb-color', // value: { color: [num, num, num], brightness?: number, transition?: number, duration?: number }
 	HEX_COLOR = 'hex-color',
