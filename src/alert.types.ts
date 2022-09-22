@@ -1747,6 +1747,46 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
+	[LumiaAlertValues.FACEBOOK_SUPPORT]: {
+		connection: 'facebook',
+		message: '{{username}} just supported',
+		acceptedVariables: ['username', 'amount'],
+		quickActions: [
+			{
+				label: '100',
+				dynamic: { value: 100 },
+				extraSettings: { username: 'lumiastream', amount: 100 },
+			},
+			{
+				label: '200',
+				dynamic: { value: 200 },
+				extraSettings: { username: 'lumiastream', amount: 200 },
+			},
+			{
+				label: '300',
+				dynamic: { value: 300 },
+				extraSettings: { username: 'lumiastream', amount: 300 },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
+	},
 	[LumiaAlertValues.FACEBOOK_SHARE]: {
 		connection: 'facebook',
 		message: '{{username}} just shared your page',

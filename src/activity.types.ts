@@ -109,6 +109,7 @@ export enum LumiaAlertValues {
 	FACEBOOK_REACTION = 'facebook-reaction',
 	FACEBOOK_STAR = 'facebook-star',
 	FACEBOOK_SUPPORT = 'facebook-support',
+	FACEBOOK_GIFT_SUBSCRIPTION = 'facebook-subscriptionGift',
 	FACEBOOK_SHARE = 'facebook-share',
 	FACEBOOK_FAN = 'facebook-fan',
 	GLIMESH_SUBSCRIBER = 'glimesh-subscriber',
