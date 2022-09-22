@@ -17,6 +17,7 @@ export enum LumiaActivityCommandTypes {
 	TWITCH_POINTS = 'twitch-points',
 	TWITCH_POINTS_OUTPUT = 'twitch-points-output',
 	TWITCH_EXTENSION = 'twitch-extension',
+	TWITCH_EXTENSION_HFX = 'twitch-extension-hfx',
 	TROVO_SPELLS = 'trovo-spells',
 	STUDIO_SCENE = 'studio-scene',
 	STUDIO_ANIMATION = 'studio-animation',
