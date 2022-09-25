@@ -203,6 +203,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.FACEBOOK_REACTION]: 'Facebook Reaction',
 	[LumiaAlertValues.FACEBOOK_STAR]: 'Facebook Star',
 	[LumiaAlertValues.FACEBOOK_SUPPORT]: 'Facebook Support',
+	[LumiaAlertValues.FACEBOOK_GIFT_SUBSCRIPTION]: 'Facebook Subscription Gift',
 	[LumiaAlertValues.FACEBOOK_SHARE]: 'Facebook Share',
 	[LumiaAlertValues.FACEBOOK_FAN]: 'Facebook Fan',
 	[LumiaAlertValues.GLIMESH_SUBSCRIBER]: 'Glimesh Subscriber',
