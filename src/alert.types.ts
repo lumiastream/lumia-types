@@ -1904,6 +1904,30 @@ export const LumiaAlertConfigs: Record<
 	},
 	// },
 	// trovo: {
+	[LumiaAlertValues.TROVO_CHANNEL_JOIN]: {
+		connection: 'trovo',
+		message: '{{username}} just joined the channel',
+		eventlistMessage: 'Join',
+		eventlistDetailedMessage: 'joined the channel',
+		acceptedVariables: ['username', 'displayname', 'sub_tier', 'sub_level', 'avatar', 'roles', 'medals'],
+		quickActions: [
+			{
+				label: 'New Follow',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	[LumiaAlertValues.TROVO_FOLLOWER]: {
 		connection: 'trovo',
 		message: '{{username}} just followed',
@@ -1954,6 +1978,95 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.IS_GIFT,
+			},
+		],
+	},
+	[LumiaAlertValues.TROVO_GIFT_SUBSCRIPTION]: {
+		connection: 'trovo',
+		message: '{{username}} sent {{amount}} gift subscriptions',
+		eventlistMessage: '{{amount}} Gift Subscriptions',
+		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
+		acceptedVariables: ['username', 'amount'],
+		quickActions: [
+			{
+				label: '100',
+				dynamic: { value: 100 },
+				extraSettings: { username: 'lumiastream', amount: 100 },
+			},
+			{
+				label: '200',
+				dynamic: { value: 200 },
+				extraSettings: { username: 'lumiastream', amount: 200 },
+			},
+			{
+				label: '300',
+				dynamic: { value: 300 },
+				extraSettings: { username: 'lumiastream', amount: 300 },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
+	},
+	[LumiaAlertValues.TROVO_RAID]: {
+		connection: 'trovo',
+		message: '{{username}} raided with {{viewers}} viewers',
+		eventlistMessage: 'Raided',
+		eventlistDetailedMessage: 'raided with {{viewers}} viewers',
+		acceptedVariables: ['username', 'viewers', 'displayname', 'viewers', 'sub_tier', 'sub_level', 'avatar', 'roles', 'medals'],
+		quickActions: [
+			{
+				label: '10 viewers',
+				dynamic: { value: 10 },
+				extraSettings: { username: 'lumiastream', viewers: 10 },
+			},
+			{
+				label: '50 viewers',
+				dynamic: { value: 50 },
+				extraSettings: { username: 'lumiastream', viewers: 50 },
+			},
+			{
+				label: '100 viewers',
+				dynamic: { value: 100 },
+				extraSettings: { username: 'lumiastream', viewers: 100 },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount of viewers',
+				dynamicField: 'value',
+				variableField: 'viewers',
+				required: true,
+				default: 100,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
 			},
 		],
 	},

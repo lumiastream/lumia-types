@@ -114,9 +114,12 @@ export enum LumiaAlertValues {
 	FACEBOOK_FAN = 'facebook-fan',
 	GLIMESH_SUBSCRIBER = 'glimesh-subscriber',
 	GLIMESH_FOLLOWER = 'glimesh-follower',
+	TROVO_CHANNEL_JOIN = 'trovo-channelJoin',
 	TROVO_SUBSCRIBER = 'trovo-subscriber', // potential for Trovo, needs testing in POC
 	TROVO_FOLLOWER = 'trovo-follower', // potential for Trovo, needs testing in POC
 	TROVO_SPELL = 'trovo-spell', // potential for Trovo, needs testing in POC
+	TROVO_GIFT_SUBSCRIPTION = 'trovo-giftSubscription',
+	TROVO_RAID = 'trovo-raid',
 	TIKTOK_FOLLOWER = 'tiktok-follower',
 	TIKTOK_LIKE = 'tiktok-like',
 	TIKTOK_GIFT = 'tiktok-gift',
