@@ -1957,7 +1957,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just subscribed',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
-		acceptedVariables: ['username'],
+		acceptedVariables: ['username', 'displayname', 'sub_tier', 'sub_level', 'avatar', 'roles', 'medals'],
 		quickActions: [
 			{
 				label: 'New Subscriber',
@@ -1986,22 +1986,22 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} sent {{amount}} gift subscriptions',
 		eventlistMessage: '{{amount}} Gift Subscriptions',
 		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
-		acceptedVariables: ['username', 'amount'],
+		acceptedVariables: ['username', 'displayname', 'recipient', 'value', 'subPlan', 'message', 'giftAmount', 'totalGifts', 'subMonths', 'sub_tier', 'sub_level', 'roles', 'medals'],
 		quickActions: [
 			{
-				label: '100',
-				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', amount: 100 },
+				label: '1 gift',
+				dynamic: { value: 1 },
+				extraSettings: { username: 'lumiastream', amount: 1 },
 			},
 			{
-				label: '200',
-				dynamic: { value: 200 },
-				extraSettings: { username: 'lumiastream', amount: 200 },
+				label: '5 gifts',
+				dynamic: { value: 5 },
+				extraSettings: { username: 'lumiastream', amount: 5 },
 			},
 			{
-				label: '300',
-				dynamic: { value: 300 },
-				extraSettings: { username: 'lumiastream', amount: 300 },
+				label: '20 gifts',
+				dynamic: { value: 20 },
+				extraSettings: { username: 'lumiastream', amount: 20 },
 			},
 		],
 		inputFields: [
