@@ -2331,6 +2331,35 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.TIKTOK_SUBSCRIBER]: {
+		connection: 'tiktok',
+		message: '{{username}} just subscribed',
+		eventlistMessage: 'Subscribed',
+		eventlistDetailedMessage: 'became a subscriber',
+		acceptedVariables: ['username', 'displayname', 'subMonths', 'avatar'],
+		quickActions: [
+			{
+				label: 'New Subscriber',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.IS_GIFT,
+			},
+		],
+	},
 	[LumiaAlertValues.TIKTOK_SHARE]: {
 		connection: 'tiktok',
 		message: '{{username}} shared your stream',
