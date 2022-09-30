@@ -1,3 +1,12 @@
+export enum LumiaStreamingSites {
+	TWITCH = 'twitch',
+	YOUTUBE = 'youtube',
+	FACEBOOK = 'facebook',
+	TROVO = 'trovo',
+	GLIMESH = 'glimesh',
+	TIKTOK = 'tiktok',
+}
+
 // Any type of activity that can come in through the app. Anything that changes colors or accessories should be here
 export enum LumiaActivityCommandTypes {
 	TEST = 'test', // value: { type, config }
