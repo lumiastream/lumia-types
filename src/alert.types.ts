@@ -77,6 +77,7 @@ export const VariationCurrencySymbol = {
 
 export interface LumiaDynamicCondition {
 	value: number | string;
+	name?: string;
 	isPrime?: boolean;
 	isGift?: boolean;
 	giftAmount?: number;
@@ -2279,17 +2280,17 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: '1 Diamond Count',
-				dynamic: { value: 1 },
+				dynamic: { value: 1, name: 'Rose' },
 				extraSettings: { username: 'lumiastream', giftName: 'Rose', giftType: 1, giftId: 5655, giftAmount: 1, diamondCount: 1, giftPictureUrl: '' },
 			},
 			{
 				label: '100 Diamond Count',
-				dynamic: { value: 100 },
+				dynamic: { value: 100, name: 'Rose' },
 				extraSettings: { username: 'lumiastream', giftName: 'Rose', giftType: 1, giftId: 5655, giftAmount: 1, diamondCount: 100, giftPictureUrl: '' },
 			},
 			{
 				label: '500 Diamond Count',
-				dynamic: { value: 500 },
+				dynamic: { value: 500, name: 'Rose' },
 				extraSettings: { username: 'lumiastream', giftName: 'Rose', giftType: 1, giftId: 5655, giftAmount: 5, diamondCount: 500, giftPictureUrl: '' },
 			},
 		],
@@ -2319,9 +2320,9 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			// {
-			// 	type: LumiaVariationConditions.EQUAL_STRING,
-			// },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
 			},
