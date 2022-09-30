@@ -2258,9 +2258,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TIKTOK_GIFT]: {
 		connection: 'tiktok',
-		message: '{{username}} sent a gift {{giftAmount}}',
-		eventlistMessage: '{{giftAmount}} Gift',
-		eventlistDetailedMessage: 'sent a gift {{giftName}} with amount {{giftAmount}}',
+		message: '{{username}} sent a gift {{giftName}} with count of {{diamondCount}}',
+		eventlistMessage: '{{giftAmount}} Gift {{diamondCount}}',
+		eventlistDetailedMessage: 'sent {{giftAmount}} gifts of {{giftName}} with count of {{diamondCount}}',
 		acceptedVariables: [
 			'username',
 			'userId',
@@ -2278,9 +2278,19 @@ export const LumiaAlertConfigs: Record<
 		],
 		quickActions: [
 			{
-				label: 'Rose',
-				dynamic: { value: 'Rose' },
-				extraSettings: { username: 'lumiastream', giftName: 'Rose', giftType: 1, giftId: 5655, diamondCount: 1, giftPictureUrl: '' },
+				label: '1 Diamond Count',
+				dynamic: { value: 1 },
+				extraSettings: { username: 'lumiastream', giftName: 'Rose', giftType: 1, giftId: 5655, giftAmount: 1, diamondCount: 1, giftPictureUrl: '' },
+			},
+			{
+				label: '100 Diamond Count',
+				dynamic: { value: 100 },
+				extraSettings: { username: 'lumiastream', giftName: 'Rose', giftType: 1, giftId: 5655, giftAmount: 1, diamondCount: 100, giftPictureUrl: '' },
+			},
+			{
+				label: '500 Diamond Count',
+				dynamic: { value: 500 },
+				extraSettings: { username: 'lumiastream', giftName: 'Rose', giftType: 1, giftId: 5655, giftAmount: 5, diamondCount: 500, giftPictureUrl: '' },
 			},
 		],
 		inputFields: [
@@ -2309,8 +2319,14 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
+			// {
+			// 	type: LumiaVariationConditions.EQUAL_STRING,
+			// },
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
 			},
 		],
 	},
@@ -2536,9 +2552,6 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
-			},
-			{
-				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
 			},
 		],
 	},
