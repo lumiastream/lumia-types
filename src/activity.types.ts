@@ -90,6 +90,7 @@ export enum LumiaAlertValues {
 	TWITCH_STREAM_OFFLINE = 'twitch-streamOffline',
 	TWITCH_FOLLOWER = 'twitch-follower',
 	TWITCH_SUBSCRIBER = 'twitch-subscriber',
+	TWITCH_GIFT_SUBSCRIPTION = 'twitch-giftSubscription',
 	TWITCH_HOST = 'twitch-host',
 	TWITCH_RAID = 'twitch-raid',
 	TWITCH_BITS = 'twitch-bits',
