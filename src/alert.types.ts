@@ -1524,8 +1524,8 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_CLIP]: {
 		connection: 'twitch',
 		message: 'Clip taken by {{username}} with title of {{clip_title}}',
-		eventlistMessage: 'Clipped {{clip_title}}',
-		eventlistDetailedMessage: 'Clipped {{clip_title}}',
+		eventlistMessage: 'Clipped',
+		eventlistDetailedMessage: 'Clipped',
 		acceptedVariables: ['clip_url', 'clip_id', 'clip_title', 'clip_duration', 'clip_user_is_mod', 'clip_user_is_vip', 'clip_user_is_sub', 'clip_user_is_follower'],
 		quickActions: [
 			{
