@@ -162,7 +162,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'twitch',
 		message: '{{username}} just subscribed!',
 		eventlistMessage: 'Subscribed',
-		eventlistDetailedMessage: 'became a {{tier}} subscriber',
+		eventlistDetailedMessage: 'became a subscriber',
 		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 		quickActions: [
 			{
@@ -316,8 +316,8 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: {
 		connection: 'twitch',
 		message: '{{username}} gifted {{giftAmount}} subs!',
-		eventlistMessage: 'Gifted {{giftAmount}} subs',
-		eventlistDetailedMessage: 'gifted {{giftAmount}} subs',
+		eventlistMessage: 'Gifted subscription',
+		eventlistDetailedMessage: 'gifted {{recipient}} a subscription',
 		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 		quickActions: [
 			{
@@ -433,7 +433,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_BITS]: {
 		connection: 'twitch',
 		message: '{{username}} cheered {{amount}} bits. They said {{message}}',
-		eventlistMessage: '{{amount}} Bits',
+		eventlistMessage: 'Bits',
 		eventlistDetailedMessage: 'cheered {{amount}} bits',
 		acceptedVariables: ['username', 'amount', 'message', 'full_message'],
 		quickActions: [
@@ -483,7 +483,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_HOST]: {
 		connection: 'twitch',
 		message: '{{username}} hosted with {{viewers}} viewers',
-		eventlistMessage: 'Hosted',
+		eventlistMessage: 'Hosts',
 		eventlistDetailedMessage: 'hosted with {{viewers}} viewers',
 		acceptedVariables: ['username', 'viewers'],
 		quickActions: [
@@ -1524,8 +1524,8 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_CLIP]: {
 		connection: 'twitch',
 		message: 'Clip taken by {{username}} with title of {{clip_title}}',
-		eventlistMessage: 'Clipped {{clip_title}}',
-		eventlistDetailedMessage: 'Clipped {{clip_title}}',
+		eventlistMessage: 'Clipped',
+		eventlistDetailedMessage: 'created a clip',
 		acceptedVariables: ['clip_url', 'clip_id', 'clip_title', 'clip_duration', 'clip_user_is_mod', 'clip_user_is_vip', 'clip_user_is_sub', 'clip_user_is_follower'],
 		quickActions: [
 			{
@@ -1570,7 +1570,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just subscribed!',
 		eventlistSpecialUsername: 'Youtube',
 		eventlistMessage: 'Subscribed',
-		eventlistDetailedMessage: 'new subscriber',
+		eventlistDetailedMessage: 'became a subscriber',
 		acceptedVariables: ['username'],
 		quickActions: [
 			{
@@ -1620,7 +1620,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'youtube',
 		message: '{{username}} just super chatted with {{amount}}. They said {{message}}',
 		eventlistMessage: 'Super Chat',
-		eventlistDetailedMessage: 'sent {{amount}} super chat',
+		eventlistDetailedMessage: 'sent {{amount}} for a super chat',
 		acceptedVariables: ['username', 'currency', 'amount', 'message'],
 		quickActions: [
 			{
@@ -1682,7 +1682,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'youtube',
 		message: '{{username}} just sent a supersticker with {{amount}}',
 		eventlistMessage: 'Super Sticker',
-		eventlistDetailedMessage: 'sent a super sticker with {{amount}}',
+		eventlistDetailedMessage: 'sent a super sticker for {{amount}}',
 		acceptedVariables: ['username', 'amount'],
 		quickActions: [
 			{
@@ -1801,7 +1801,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.FACEBOOK_STAR]: {
 		connection: 'facebook',
 		message: '{{username}} sent {{amount}} stars',
-		eventlistMessage: '{{amount}} Stars',
+		eventlistMessage: 'Stars',
 		eventlistDetailedMessage: 'sent {{amount}} stars',
 		acceptedVariables: ['username', 'amount'],
 		quickActions: [
@@ -1844,7 +1844,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'facebook',
 		message: '{{username}} just subscribed',
 		eventlistMessage: 'Subscribed',
-		eventlistDetailedMessage: 'became a {{amount}} subscriber',
+		eventlistDetailedMessage: 'became a subscriber',
 		acceptedVariables: ['username', 'amount'],
 		quickActions: [
 			{
@@ -1885,7 +1885,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.FACEBOOK_GIFT_SUBSCRIPTION]: {
 		connection: 'facebook',
 		message: '{{username}} sent {{amount}} gift subscriptions',
-		eventlistMessage: '{{amount}} Gift Subscriptions',
+		eventlistMessage: 'Gift Subscription',
 		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
 		acceptedVariables: ['username', 'amount'],
 		quickActions: [
@@ -2102,7 +2102,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TROVO_GIFT_SUBSCRIPTION]: {
 		connection: 'trovo',
 		message: '{{username}} sent {{amount}} gift subscriptions',
-		eventlistMessage: '{{amount}} Gift Subscriptions',
+		eventlistMessage: 'Gift Subscriptions',
 		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
 		acceptedVariables: ['username', 'displayname', 'recipient', 'value', 'subPlan', 'message', 'giftAmount', 'totalGifts', 'subMonths', 'sub_tier', 'sub_level', 'roles', 'medals'],
 		quickActions: [
@@ -2218,7 +2218,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'tiktok',
 		message: '{{username}} sent a like to make a total like count of {{totalLikeCount}}',
 		eventlistMessage: 'Liked',
-		eventlistDetailedMessage: 'sent a like to make a total like count of {{totalLikeCount}}',
+		eventlistDetailedMessage: 'sent a like',
 		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'userLikeCount', 'totalLikeCount'],
 		quickActions: [
 			{
@@ -2260,8 +2260,8 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TIKTOK_GIFT]: {
 		connection: 'tiktok',
 		message: '{{username}} sent a gift {{giftName}} with count of {{diamondCount}}',
-		eventlistMessage: '{{giftAmount}} Gift {{diamondCount}}',
-		eventlistDetailedMessage: 'sent {{giftAmount}} gifts of {{giftName}} with count of {{diamondCount}}',
+		eventlistMessage: 'Gift',
+		eventlistDetailedMessage: 'sent {{giftAmount}} gifts of {{giftName}}',
 		acceptedVariables: [
 			'username',
 			'userId',
@@ -2397,7 +2397,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.STREAMLABS_DONATION]: {
 		connection: 'streamlabs',
 		message: '{{username}} just donated {{amount}}. They said {{message}}',
-		eventlistMessage: 'Donation {{amount}} {{currency}}',
+		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount', 'message'],
 		quickActions: [
@@ -2474,7 +2474,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.STREAMLABS_CHARITY]: {
 		connection: 'streamlabs',
 		message: '{{username}} just donated {{amount}}. They said {{message}}',
-		eventlistMessage: 'Donation {{amount}} {{currency}}',
+		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount', 'message'],
 		quickActions: [
@@ -2551,7 +2551,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.STREAMLABS_MERCH]: {
 		connection: 'streamlabs',
 		message: '{{username}} just bought {{merch}}. They said {{message}}',
-		eventlistMessage: 'Merch {{merch}}',
+		eventlistMessage: 'Merch',
 		eventlistDetailedMessage: 'bought {{merch}}',
 		acceptedVariables: ['username', 'merch', 'message'],
 		quickActions: [
@@ -2588,7 +2588,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.STREAMLABS_REDEMPTION]: {
 		connection: 'streamlabs',
 		message: '{{username}} just redeemed {{redemption}}. They said {{message}}',
-		eventlistMessage: 'Redeemed {{redemption}}',
+		eventlistMessage: 'Redeemed',
 		eventlistDetailedMessage: 'redeemed {{redemption}}',
 		acceptedVariables: ['username', 'redemption', 'message'],
 		quickActions: [
@@ -2667,7 +2667,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.STREAMELEMENTS_DONATION]: {
 		connection: 'streamelements',
 		message: '{{username}} just donated {{amount}}. They said {{message}}',
-		eventlistMessage: 'Donation {{amount}} {{currency}}',
+		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount', 'message'],
 		quickActions: [
@@ -2744,7 +2744,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.STREAMELEMENTS_MERCH]: {
 		connection: 'streamelements',
 		message: '{{username}} just bought {{merch}}. They said {{message}}',
-		eventlistMessage: 'Merch {{merch}}',
+		eventlistMessage: 'Merch',
 		eventlistDetailedMessage: 'bought {{merch}}',
 		acceptedVariables: ['username', 'merch', 'message'],
 		quickActions: [
@@ -2814,7 +2814,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.STREAMELEMENTS_REDEMPTION]: {
 		connection: 'streamelements',
 		message: '{{username}} just redeemed {{redemption}}. They said {{message}}',
-		eventlistMessage: 'Redemption {{redemption}}',
+		eventlistMessage: 'Redemption',
 		eventlistDetailedMessage: 'redeemed {{redemption}}',
 		acceptedVariables: ['username', 'redemption', 'message'],
 		quickActions: [
@@ -2864,7 +2864,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.EXTRALIFE_DONATION]: {
 		connection: 'extralife',
 		message: '{{username}} just donated {{amount}}. They said {{message}}',
-		eventlistMessage: 'Donation {{amount}} {{currency}}',
+		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount', 'message'],
 		quickActions: [
@@ -2943,7 +2943,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.DONORDRIVE_DONATION]: {
 		connection: 'donordrive',
 		message: '{{username}} just donated {{amount}}. They said {{message}}',
-		eventlistMessage: 'Donation {{amount}} {{currency}}',
+		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount', 'message'],
 		quickActions: [
@@ -3022,7 +3022,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TILTIFY_DONATION]: {
 		connection: 'tiltify',
 		message: '{{username}} just donated {{amount}}. They said {{message}}',
-		eventlistMessage: 'Donation {{amount}} {{currency}}',
+		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount', 'message'],
 		quickActions: [
@@ -3101,7 +3101,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.PATREON_PLEDGE]: {
 		connection: 'patreon',
 		message: '{{username}} just pledged {{amount}}',
-		eventlistMessage: 'Donation {{amount}} {{currency}}',
+		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount'],
 		quickActions: [
@@ -3173,8 +3173,8 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.WOOCOMMERCE_ORDER]: {
 		connection: 'woocommerce',
 		message: 'Someone just ordered {{item}} in the amount of {{amount}}',
-		eventlistMessage: 'Order {{item}}',
-		eventlistDetailedMessage: 'ordered {{item}} in the amount of {{amount}}',
+		eventlistMessage: 'Order',
+		eventlistDetailedMessage: 'ordered {{item}}',
 		acceptedVariables: ['item', 'amount'],
 		quickActions: [
 			{
@@ -3252,7 +3252,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.KOFI_DONATION]: {
 		connection: 'kofi',
 		message: '{{username}} just donated {{amount}}. They said {{message}}',
-		eventlistMessage: 'Donation {{amount}} {{currency}}',
+		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount'],
 		quickActions: [
@@ -3402,7 +3402,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'kofi',
 		message: '{{username}} just commisioned with amount {{amount}}',
 		eventlistMessage: 'Commission',
-		eventlistDetailedMessage: 'commissioned with amount {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'commissioned with {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount'],
 		quickActions: [
 			{
@@ -3472,7 +3472,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'kofi',
 		message: '{{username}} just created a shop order with amount {{amount}}',
 		eventlistMessage: 'Shop Order',
-		eventlistDetailedMessage: 'created a shop order with amount {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'created a shop order with {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount'],
 		quickActions: [
 			{
@@ -3545,7 +3545,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Received a new Twitter follower. Follower count is now {{followers}}',
 		eventlistSpecialUsername: 'Twitter',
 		eventlistMessage: 'Follower',
-		eventlistDetailedMessage: 'new folower with total count of {{followers}}',
+		eventlistDetailedMessage: 'received a follow',
 		acceptedVariables: ['followers'],
 		quickActions: [
 			{
@@ -3585,7 +3585,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Reached a total likes of {{likes}} on Twitter',
 		eventlistSpecialUsername: 'Twitter',
 		eventlistMessage: 'Like',
-		eventlistDetailedMessage: 'new like with total count of {{likes}}',
+		eventlistDetailedMessage: 'received a like',
 		acceptedVariables: ['likes'],
 		quickActions: [
 			{
@@ -3625,7 +3625,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Reached {{retweets}}',
 		eventlistSpecialUsername: 'Twitter',
 		eventlistMessage: 'Retweet',
-		eventlistDetailedMessage: 'reached {{retweets}} retweets',
+		eventlistDetailedMessage: 'received a retweet',
 		acceptedVariables: ['retweets'],
 		quickActions: [
 			{
@@ -3667,8 +3667,8 @@ export const LumiaAlertConfigs: Record<
 		message: 'Song switched to {{name}}',
 		eventlistSpecialUsername: 'Spotify',
 		eventlistMessage: 'Switch Song',
-		eventlistDetailedMessage: 'song switched to {{name}}',
-		acceptedVariables: ['name', 'uri', 'image'],
+		eventlistDetailedMessage: 'song switched to {{name}} - {{artists}}',
+		acceptedVariables: ['name', 'uri', 'artists', 'image'],
 		quickActions: [
 			{
 				label: 'Song changed',
@@ -3716,8 +3716,8 @@ export const LumiaAlertConfigs: Record<
 		message: 'Song {{name}} is now playing',
 		eventlistSpecialUsername: 'Spotify',
 		eventlistMessage: 'Song Played',
-		eventlistDetailedMessage: 'song {{name}} playing',
-		acceptedVariables: ['name', 'uri', 'image'],
+		eventlistDetailedMessage: 'song {{name}} - {{artists}} playing',
+		acceptedVariables: ['name', 'uri', 'artists', 'image'],
 		quickActions: [
 			{
 				label: 'Song played',
@@ -3765,7 +3765,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Song {{name}} paused',
 		eventlistSpecialUsername: 'Spotify',
 		eventlistMessage: 'Song Paused',
-		eventlistDetailedMessage: 'song {{name}} paused',
+		eventlistDetailedMessage: 'paused',
 		acceptedVariables: ['name', 'uri', 'image'],
 		quickActions: [
 			{
@@ -3914,7 +3914,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Song {{name}} paused',
 		eventlistSpecialUsername: 'VLC',
 		eventlistMessage: 'Song Paused',
-		eventlistDetailedMessage: 'song {{name}} paused',
+		eventlistDetailedMessage: 'paused',
 		acceptedVariables: ['name', 'uri', 'image'],
 		quickActions: [
 			{
@@ -3996,7 +3996,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'tipeeestream',
 		message: '{{username}} just donated {{amount}}',
 		eventlistMessage: 'Donation',
-		eventlistDetailedMessage: 'donated {{amount}}',
+		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount'],
 		quickActions: [
 			{
