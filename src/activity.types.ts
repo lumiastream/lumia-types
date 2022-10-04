@@ -86,6 +86,7 @@ export enum LumiaExternalActivityCommandTypes {
 }
 
 export enum LumiaAlertValues {
+	LUMIA_REDEMPTIONS = 'lumia-redemptions',
 	TWITCH_STREAM_LIVE = 'twitch-streamLive',
 	TWITCH_STREAM_OFFLINE = 'twitch-streamOffline',
 	TWITCH_FOLLOWER = 'twitch-follower',

@@ -75,6 +75,20 @@ export const VariationCurrencySymbol = {
 	[LumiaVariationCurrency.TRY]: 'TRY',
 };
 
+export enum LumiaRedemptionCurrency {
+	NONE = '',
+	BITS = 'bits',
+	POINTS = 'points',
+	LUMIBUCKS = 'lumibucks',
+}
+
+export const LumiaRedemptionCurrencySymbol = {
+	[LumiaRedemptionCurrency.NONE]: '',
+	[LumiaRedemptionCurrency.BITS]: '♦',
+	[LumiaRedemptionCurrency.POINTS]: '★',
+	[LumiaRedemptionCurrency.LUMIBUCKS]: '⚡',
+};
+
 export interface LumiaDynamicCondition {
 	value: number | string;
 	name?: string;
@@ -121,6 +135,105 @@ export const LumiaAlertConfigs: Record<
 		}>;
 	}
 > = {
+	// lumia: {
+	[LumiaAlertValues.LUMIA_REDEMPTIONS]: {
+		connection: 'lumiastream',
+		message: '{{username}} redeemed {{command}} for {{amount}} {{currency}}',
+		eventlistMessage: 'Redeemed',
+		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} {{currency}}',
+		acceptedVariables: ['username', 'displayname', 'message', 'avatar', 'command', 'amount', 'currencySymbol', 'currency'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+		quickActions: [
+			{
+				label: 'Redeemed for 100 bits',
+				dynamic: { name: 'lumibeam', value: '100', currency: LumiaRedemptionCurrency.BITS },
+				extraSettings: {
+					command: 'lumibeam',
+					message: 'pew pew',
+					username: 'lumiastream',
+					displayname: 'LumiaStream',
+					amount: '100',
+					currency: LumiaRedemptionCurrency.BITS,
+					currencySymbol: LumiaRedemptionCurrencySymbol.bits,
+				},
+			},
+			{
+				label: 'Redeemed for 30 points',
+				dynamic: { name: 'lumiray', value: '30', currency: LumiaRedemptionCurrency.POINTS },
+				extraSettings: {
+					command: 'lumiray',
+					message: 'ray ray',
+					username: 'lumiastream',
+					displayname: 'LumiaStream',
+					amount: '100',
+					currency: LumiaRedemptionCurrency.POINTS,
+					currencySymbol: LumiaRedemptionCurrencySymbol.points,
+				},
+			},
+			{
+				label: 'Redeemed for 50 lumibucks',
+				dynamic: { name: 'lumiroar', value: '30', currency: LumiaRedemptionCurrency.LUMIBUCKS },
+				extraSettings: {
+					command: 'lumiroar',
+					message: 'roar roar',
+					username: 'lumiastream',
+					displayname: 'LumiaStream',
+					amount: '100',
+					currency: LumiaRedemptionCurrency.LUMIBUCKS,
+					currencySymbol: LumiaRedemptionCurrencySymbol.lumibucks,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Command',
+				dynamicField: 'value',
+				variableField: 'command',
+				required: true,
+				default: 'lumibeam',
+			},
+			{
+				type: 'text',
+				label: 'Amount',
+				dynamicField: 'amount',
+				variableField: 'amount',
+				required: true,
+				default: '100',
+			},
+			{
+				type: 'selection',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				default: 'bits',
+				required: true,
+				selections: [
+					{ label: 'Bits', value: 'bits' },
+					{ label: 'Points', value: 'points' },
+					{ label: 'Lumia Bucks', value: 'lumibucks' },
+				],
+			},
+		],
+	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_STREAM_LIVE]: {
 		connection: 'twitch',

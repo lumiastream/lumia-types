@@ -1,6 +1,7 @@
 import { LumiaAlertValues } from './activity.types';
 
 export enum LumiaEventListTypes {
+	REDEMPTION = 'redemption',
 	FOLLOWER = 'follower',
 	BITS = 'bits',
 	DONATION = 'donation',
@@ -21,6 +22,7 @@ export enum LumiaEventListTypes {
 }
 
 export const LumiaMapAlertTypeToEventListType = {
+	[LumiaAlertValues.LUMIA_REDEMPTIONS]: LumiaEventListTypes.REDEMPTION,
 	[LumiaAlertValues.TWITCH_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.FACEBOOK_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.GLIMESH_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
