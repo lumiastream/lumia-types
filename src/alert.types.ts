@@ -136,7 +136,7 @@ export const LumiaAlertConfigs: Record<
 	}
 > = {
 	// lumia: {
-	[LumiaAlertValues.LUMIA_REDEMPTIONS]: {
+	[LumiaAlertValues.LUMIA_REDEMPTION]: {
 		connection: 'lumiastream',
 		message: '{{username}} redeemed {{command}} for {{amount}} {{currency}}',
 		eventlistMessage: 'Redeemed',

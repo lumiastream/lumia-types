@@ -22,7 +22,7 @@ export enum LumiaEventListTypes {
 }
 
 export const LumiaMapAlertTypeToEventListType = {
-	[LumiaAlertValues.LUMIA_REDEMPTIONS]: LumiaEventListTypes.REDEMPTION,
+	[LumiaAlertValues.LUMIA_REDEMPTION]: LumiaEventListTypes.REDEMPTION,
 	[LumiaAlertValues.TWITCH_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.FACEBOOK_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.GLIMESH_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
