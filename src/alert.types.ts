@@ -4322,13 +4322,13 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.OBS_RECORDING_STARTING]: {
 		connection: 'obs',
 		message: 'OBS recording started',
-		acceptedVariables: [],
+		acceptedVariables: ['output_path'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_RECORDING_STOPPING]: {
 		connection: 'obs',
 		message: 'OBS recording stopped',
-		acceptedVariables: [],
+		acceptedVariables: ['output_path'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	// },
