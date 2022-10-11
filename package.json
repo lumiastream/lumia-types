@@ -1,6 +1,6 @@
 {
   "name": "@lumiastream/lumia-types",
-  "version": "0.2.42",
+  "version": "0.2.43",
   "description": "",
   "main": "./dist/index.js",
   "files": [

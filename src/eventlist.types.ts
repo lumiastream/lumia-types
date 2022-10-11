@@ -4,6 +4,7 @@ export enum LumiaEventListTypes {
 	REDEMPTION = 'redemption',
 	FOLLOWER = 'follower',
 	BITS = 'bits',
+	EXTENSION = 'extension',
 	DONATION = 'donation',
 	SUBSCRIBERS = 'subscribers',
 	GIFTS = 'gifts',

@@ -4319,6 +4319,18 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
+	[LumiaAlertValues.OBS_RECORDING_STARTING]: {
+		connection: 'obs',
+		message: 'OBS recording started',
+		acceptedVariables: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.OBS_RECORDING_STOPPING]: {
+		connection: 'obs',
+		message: 'OBS recording stopped',
+		acceptedVariables: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	// },
 	// slobs: {
 	[LumiaAlertValues.SLOBS_SWITCH_SCENE]: {
