@@ -276,7 +276,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just subscribed!',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
-		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 		quickActions: [
 			{
 				label: 'Tier 1 Sub',
@@ -294,8 +294,9 @@ export const LumiaAlertConfigs: Record<
 				label: 'Gift 5 Subs',
 				dynamic: { value: 1000, giftAmount: 5, isGift: true },
 				extraSettings: {
-					username: 'lumiastream',
+					gifter: 'lumiastream',
 					message: 'Great Stream',
+					username: 'worldlights',
 					recipient: 'worldlights',
 					giftAmount: 5,
 					totalGifts: 5,
@@ -428,16 +429,17 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: {
 		connection: 'twitch',
-		message: '{{username}} gifted {{giftAmount}} subs!',
+		message: '{{gifter}} gifted {{giftAmount}} subs!',
 		eventlistMessage: 'Gifted subscription',
 		eventlistDetailedMessage: 'gifted {{recipient}} a subscription',
-		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 		quickActions: [
 			{
 				label: 'Gift 1 Sub',
 				dynamic: { value: 1000, giftAmount: 1, isGift: true },
 				extraSettings: {
 					username: 'lumiastream',
+					gifter: 'lumiastream',
 					message: 'Great Stream',
 					recipient: 'worldlights',
 					giftAmount: 1,
@@ -453,6 +455,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 1000, giftAmount: 5, isGift: true },
 				extraSettings: {
 					username: 'lumiastream',
+					gifter: 'lumiastream',
 					message: 'Great Stream',
 					recipient: 'worldlights',
 					giftAmount: 5,
@@ -468,6 +471,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 1000, giftAmount: 10, isGift: true },
 				extraSettings: {
 					username: 'lumiastream',
+					gifter: 'lumiastream',
 					message: 'Great Stream',
 					recipient: 'worldlights',
 					giftAmount: 10,
@@ -480,6 +484,13 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		inputFields: [
+			{
+				type: 'text',
+				label: 'Gifter',
+				variableField: 'gifter',
+				required: false,
+				default: 'lumiastream',
+			},
 			{
 				type: 'text',
 				label: 'Username',
@@ -2214,15 +2225,15 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TROVO_GIFT_SUBSCRIPTION]: {
 		connection: 'trovo',
-		message: '{{username}} sent {{amount}} gift subscriptions',
+		message: '{{gifter}} sent {{amount}} gift subscriptions',
 		eventlistMessage: 'Gift Subscriptions',
 		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
-		acceptedVariables: ['username', 'displayname', 'recipient', 'value', 'subPlan', 'message', 'giftAmount', 'totalGifts', 'subMonths', 'sub_tier', 'sub_level', 'roles', 'medals'],
+		acceptedVariables: ['username', 'displayname', 'gifter', 'recipient', 'value', 'subPlan', 'message', 'giftAmount', 'totalGifts', 'subMonths', 'sub_tier', 'sub_level', 'roles', 'medals'],
 		quickActions: [
 			{
 				label: '1 gift',
 				dynamic: { value: 1 },
-				extraSettings: { username: 'lumiastream', amount: 1 },
+				extraSettings: { username: 'lumiastream', gifter: 'lumiastream', amount: 1 },
 			},
 			{
 				label: '5 gifts',
@@ -2240,6 +2251,13 @@ export const LumiaAlertConfigs: Record<
 				type: 'text',
 				label: 'Username',
 				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Gifter',
+				variableField: 'gifter',
 				required: false,
 				default: 'lumiastream',
 			},
