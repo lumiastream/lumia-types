@@ -1650,7 +1650,19 @@ export const LumiaAlertConfigs: Record<
 		message: 'Clip taken by {{username}} with title of {{clip_title}}',
 		eventlistMessage: 'Clipped',
 		eventlistDetailedMessage: 'created a clip',
-		acceptedVariables: ['clip_url', 'clip_id', 'clip_title', 'clip_duration', 'clip_user_is_mod', 'clip_user_is_vip', 'clip_user_is_sub', 'clip_user_is_follower'],
+		acceptedVariables: [
+			'username',
+			'displayname',
+			'userId',
+			'clip_url',
+			'clip_id',
+			'clip_title',
+			'clip_duration',
+			'clip_user_is_mod',
+			'clip_user_is_vip',
+			'clip_user_is_sub',
+			'clip_user_is_follower',
+		],
 		quickActions: [
 			{
 				label: 'Lumia Clipped',
