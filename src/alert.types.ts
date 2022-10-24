@@ -1704,7 +1704,6 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: {
 		connection: 'youtube',
 		message: '{{username}} just subscribed!',
-		eventlistSpecialUsername: 'Youtube',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
 		acceptedVariables: ['username'],
