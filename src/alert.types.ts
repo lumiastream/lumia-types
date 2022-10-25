@@ -1706,7 +1706,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just subscribed!',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
-		acceptedVariables: ['username'],
+		acceptedVariables: ['username', 'avatar', 'userId'],
 		quickActions: [
 			{
 				label: 'Lumia subscribed',
@@ -1731,7 +1731,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} became a member!',
 		eventlistMessage: 'Member',
 		eventlistDetailedMessage: 'became a member',
-		acceptedVariables: ['username'],
+		acceptedVariables: ['username', 'avatar', 'userId'],
 		quickActions: [
 			{
 				label: 'Lumia became a member',
