@@ -183,6 +183,7 @@ export type LumiaAlertBrands =
 	| 'obs'
 	| 'slobs'
 	| 'spotify'
+	| 'nowplaying'
 	| 'vlc'
 	| 'twitter'
 	| 'woocommerce'

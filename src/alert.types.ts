@@ -3975,6 +3975,154 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	// spotify: {
+	[LumiaAlertValues.NOWPLAYING_SWITCH_SONG]: {
+		connection: 'nowplaying',
+		message: 'Song switched to {{name}}',
+		eventlistSpecialUsername: 'Nowplaying',
+		eventlistMessage: 'Switch Song',
+		eventlistDetailedMessage: 'song switched to {{name}} - {{artists}}',
+		acceptedVariables: ['name', 'uri', 'artists', 'image'],
+		quickActions: [
+			{
+				label: 'Song changed',
+				dynamic: { value: 'Lumia Dream' },
+				extraSettings: {
+					name: 'Lumia Dream',
+					uri: 'https://open.nowplaying.com/track/3vBn6l5T2AWm4NlqNWE43f',
+					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'URI',
+				variableField: 'uri',
+				required: false,
+				default: 'https://open.nowplaying.com/track/3vBn6l5T2AWm4NlqNWE43f',
+			},
+			{
+				type: 'text',
+				label: 'Image URI',
+				variableField: 'image',
+				required: false,
+				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.NOWPLAYING_SONG_PLAYED]: {
+		connection: 'nowplaying',
+		message: 'Song {{name}} is now playing',
+		eventlistSpecialUsername: 'Nowplaying',
+		eventlistMessage: 'Song Played',
+		eventlistDetailedMessage: 'song {{name}} - {{artists}} playing',
+		acceptedVariables: ['name', 'uri', 'artists', 'image'],
+		quickActions: [
+			{
+				label: 'Song played',
+				dynamic: { value: 'Lumia Dream' },
+				extraSettings: {
+					name: 'Lumia Dream',
+					uri: 'https://open.nowplaying.com/track/3vBn6l5T2AWm4NlqNWE43f',
+					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'URI',
+				variableField: 'uri',
+				required: false,
+				default: 'https://open.nowplaying.com/track/3vBn6l5T2AWm4NlqNWE43f',
+			},
+			{
+				type: 'text',
+				label: 'Image URI',
+				variableField: 'image',
+				required: false,
+				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.NOWPLAYING_SONG_PAUSED]: {
+		connection: 'nowplaying',
+		message: 'Song {{name}} paused',
+		eventlistSpecialUsername: 'Nowplaying',
+		eventlistMessage: 'Song Paused',
+		eventlistDetailedMessage: 'paused',
+		acceptedVariables: ['name', 'uri', 'image'],
+		quickActions: [
+			{
+				label: 'Song paused',
+				dynamic: { value: 'Lumia Dream' },
+				extraSettings: {
+					name: 'Lumia Dream',
+					uri: 'https://open.nowplaying.com/track/3vBn6l5T2AWm4NlqNWE43f',
+					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'URI',
+				variableField: 'uri',
+				required: false,
+				default: 'https://open.nowplaying.com/track/3vBn6l5T2AWm4NlqNWE43f',
+			},
+			{
+				type: 'text',
+				label: 'Image URI',
+				variableField: 'image',
+				required: false,
+				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
 	// },
 	// vlc: {
 	[LumiaAlertValues.VLC_SWITCH_SONG]: {
