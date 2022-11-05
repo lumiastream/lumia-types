@@ -3982,7 +3982,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername: 'Now Playing',
 		eventlistMessage: 'Switch Song',
 		eventlistDetailedMessage: 'song switched to {{title}} - {{artist}}',
-		acceptedVariables: ['id', 'title', 'artwork', 'artist', 'album', 'label', 'bpm', 'rating', 'lenght', 'comment', 'key', 'url', 'spotify_url', 'beatport_url', 'beatport_id', 'file_path'],
+		acceptedVariables: ['id', 'title', 'artwork', 'artist', 'album', 'label', 'bpm', 'rating', 'length', 'comment', 'key', 'url', 'spotify_url', 'beatport_url', 'beatport_id', 'file_path'],
 		quickActions: [
 			{
 				label: 'Song changed',
