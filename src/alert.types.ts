@@ -3708,11 +3708,25 @@ export const LumiaAlertConfigs: Record<
 	// twitter: {
 	[LumiaAlertValues.TWITTER_FOLLOWER]: {
 		connection: 'twitter',
-		message: 'Received a new Twitter follower. Follower count is now {{followers}}',
-		eventlistSpecialUsername: 'Twitter',
+		message: '{{username}} followed',
 		eventlistMessage: 'Follower',
 		eventlistDetailedMessage: 'received a follow',
-		acceptedVariables: ['followers'],
+		acceptedVariables: [
+			'retweets',
+			'avatar',
+			'username',
+			'userId',
+			'displayname',
+			'banner',
+			'profile_background_color',
+			'profile_link_color',
+			'user_followers',
+			'user_likes',
+			'is_following',
+			'following_count',
+			'verified',
+			'private',
+		],
 		quickActions: [
 			{
 				label: 'New Follower',
@@ -3788,8 +3802,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITTER_RETWEET]: {
 		connection: 'twitter',
-		message: 'Reached {{retweets}}',
-		eventlistSpecialUsername: 'Twitter',
+		message: '{{username}} retweeted',
 		eventlistMessage: 'Retweet',
 		eventlistDetailedMessage: 'received a retweet',
 		acceptedVariables: [
