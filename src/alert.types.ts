@@ -3792,7 +3792,22 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername: 'Twitter',
 		eventlistMessage: 'Retweet',
 		eventlistDetailedMessage: 'received a retweet',
-		acceptedVariables: ['retweets'],
+		acceptedVariables: [
+			'retweets',
+			'avatar',
+			'username',
+			'userId',
+			'displayname',
+			'banner',
+			'profile_background_color',
+			'profile_link_color',
+			'user_followers',
+			'user_likes',
+			'is_following',
+			'following_count',
+			'verified',
+			'private',
+		],
 		quickActions: [
 			{
 				label: 'New Retweet',
