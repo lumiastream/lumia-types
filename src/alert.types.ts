@@ -3708,9 +3708,9 @@ export const LumiaAlertConfigs: Record<
 	// twitter: {
 	[LumiaAlertValues.TWITTER_FOLLOWER]: {
 		connection: 'twitter',
-		message: '{{username}} followed',
-		eventlistMessage: 'Follower',
-		eventlistDetailedMessage: 'received a follow',
+		message: '{{username}} just followed',
+		eventlistMessage: 'Followed',
+		eventlistDetailedMessage: 'became a follower',
 		acceptedVariables: [
 			'retweets',
 			'avatar',
@@ -3804,7 +3804,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'twitter',
 		message: '{{username}} retweeted',
 		eventlistMessage: 'Retweet',
-		eventlistDetailedMessage: 'received a retweet',
+		eventlistDetailedMessage: 'retweeted you',
 		acceptedVariables: [
 			'retweets',
 			'avatar',
