@@ -1699,6 +1699,120 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
+	[LumiaAlertValues.TWITCH_CHANNEL_JOIN]: {
+		connection: 'twitch',
+		message: '{{username}} just joined the channel',
+		eventlistMessage: 'Join',
+		eventlistDetailedMessage: 'joined the channel',
+		acceptedVariables: ['username'],
+		quickActions: [
+			{
+				label: 'New Join',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+	},
+	[LumiaAlertValues.TWITCH_CHANNEL_LEFT]: {
+		connection: 'twitch',
+		message: '{{username}} just left the channel',
+		eventlistMessage: 'Join',
+		eventlistDetailedMessage: 'left the channel',
+		acceptedVariables: ['username'],
+		quickActions: [
+			{
+				label: 'New Leave',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+	},
+	[LumiaAlertValues.TWITCH_CHANNEL_LEFT]: {
+		connection: 'twitch',
+		message: '{{username}} just left the channel',
+		eventlistMessage: 'Join',
+		eventlistDetailedMessage: 'left the channel',
+		acceptedVariables: ['username'],
+		quickActions: [
+			{
+				label: 'New Leave',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+	},
+	[LumiaAlertValues.TWITCH_TIMEOUT]: {
+		connection: 'twitch',
+		message: '{{username}} is timed out',
+		eventlistMessage: 'Join',
+		eventlistDetailedMessage: 'timed out',
+		acceptedVariables: ['username', 'userId', 'avatar', 'duration', 'reason'],
+		quickActions: [
+			{
+				label: 'Timed Out',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream', duration: 30, reason: 'For being too bright' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Reason',
+				variableField: 'reason',
+				required: false,
+				default: 'Too bright',
+			},
+			{
+				type: 'text',
+				label: 'Duration',
+				variableField: 'duration',
+				required: false,
+				default: '30',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+	},
 	// },
 	// youtube: {
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: {
