@@ -114,7 +114,7 @@ export enum LumiaAlertValues {
 	TWITCH_CATEGORY = 'twitch-categoryChanged',
 	TWITCH_CLIP = 'twitch-clip',
 	TWITCH_CHANNEL_JOIN = 'twitch-channelJoin',
-	TWITCH_CHANNEL_LEFT = 'twitch-channelLeft',
+	TWITCH_CHANNEL_LEAVE = 'twitch-channelLeave',
 	TWITCH_TIMEOUT = 'twitch-timeout',
 	YOUTUBE_MEMBER = 'youtube-member',
 	YOUTUBE_SUBSCRIBER = 'youtube-subscriber',
