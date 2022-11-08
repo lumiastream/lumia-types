@@ -1749,7 +1749,7 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
-	[LumiaAlertValues.TWITCH_CHANNEL_LEFT]: {
+	[LumiaAlertValues.TWITCH_CHANNEL_LEAVE]: {
 		connection: 'twitch',
 		message: '{{username}} just left the channel',
 		eventlistMessage: 'Join',
