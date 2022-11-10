@@ -1727,32 +1727,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_CHANNEL_LEAVE]: {
 		connection: 'twitch',
 		message: '{{username}} just left the channel',
-		eventlistMessage: 'Join',
-		eventlistDetailedMessage: 'left the channel',
-		acceptedVariables: ['username'],
-		quickActions: [
-			{
-				label: 'New Leave',
-				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Username',
-				dynamicField: 'value',
-				variableField: 'username',
-				required: true,
-				default: 'lumiastream',
-			},
-		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
-	},
-	[LumiaAlertValues.TWITCH_CHANNEL_LEAVE]: {
-		connection: 'twitch',
-		message: '{{username}} just left the channel',
-		eventlistMessage: 'Join',
+		eventlistMessage: 'Left',
 		eventlistDetailedMessage: 'left the channel',
 		acceptedVariables: ['username'],
 		quickActions: [
@@ -1777,12 +1752,51 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_TIMEOUT]: {
 		connection: 'twitch',
 		message: '{{username}} is timed out',
-		eventlistMessage: 'Join',
+		eventlistMessage: 'Timeout',
 		eventlistDetailedMessage: 'timed out',
-		acceptedVariables: ['username', 'userId', 'avatar', 'duration', 'reason'],
+		acceptedVariables: ['username', 'userId', 'avatar', 'duration', 'expirationMs', 'reason'],
 		quickActions: [
 			{
 				label: 'Timed Out',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream', duration: 30, reason: 'For being too bright' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Reason',
+				variableField: 'reason',
+				required: false,
+				default: 'Too bright',
+			},
+			{
+				type: 'text',
+				label: 'Duration',
+				variableField: 'duration',
+				required: false,
+				default: '30',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+	},
+	[LumiaAlertValues.TWITCH_TIMEOUT_OVER]: {
+		connection: 'twitch',
+		message: "{{username}}'s timeout of {{duration}} seconds is over",
+		eventlistMessage: 'Timeout Over',
+		eventlistDetailedMessage: 'time out over',
+		acceptedVariables: ['username', 'userId', 'avatar', 'duration', 'expirationMs', 'reason'],
+		quickActions: [
+			{
+				label: 'Time Out Over',
 				dynamic: { value: 'lumiastream' },
 				extraSettings: { username: 'lumiastream', duration: 30, reason: 'For being too bright' },
 			},
