@@ -1754,12 +1754,12 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is timed out',
 		eventlistMessage: 'Timeout',
 		eventlistDetailedMessage: 'timed out',
-		acceptedVariables: ['username', 'userId', 'avatar', 'duration', 'expirationMs', 'reason'],
+		acceptedVariables: ['username', 'userId', 'avatar', 'timeout_duration', 'expiration_ms', 'reason'],
 		quickActions: [
 			{
 				label: 'Timed Out',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream', duration: 30, reason: 'For being too bright' },
+				extraSettings: { username: 'lumiastream', timeout_duration: 30, reason: 'For being too bright' },
 			},
 		],
 		inputFields: [
@@ -1781,7 +1781,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Duration',
-				variableField: 'duration',
+				variableField: 'timeout_duration',
 				required: false,
 				default: '30',
 			},
@@ -1793,12 +1793,12 @@ export const LumiaAlertConfigs: Record<
 		message: "{{username}}'s timeout of {{duration}} seconds is over",
 		eventlistMessage: 'Timeout Over',
 		eventlistDetailedMessage: 'time out over',
-		acceptedVariables: ['username', 'userId', 'avatar', 'duration', 'expirationMs', 'reason'],
+		acceptedVariables: ['username', 'userId', 'avatar', 'timeout_duration', 'expiration_ms', 'reason'],
 		quickActions: [
 			{
 				label: 'Time Out Over',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream', duration: 30, reason: 'For being too bright' },
+				extraSettings: { username: 'lumiastream', timeout_duration: 30, reason: 'For being too bright' },
 			},
 		],
 		inputFields: [
@@ -1820,7 +1820,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Duration',
-				variableField: 'duration',
+				variableField: 'timeout_duration',
 				required: false,
 				default: '30',
 			},
