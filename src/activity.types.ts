@@ -37,6 +37,7 @@ export enum LumiaActivityCommandTypes {
 	START_FUZE = 'start-fuze',
 	STOP_FUZE = 'stop-fuze',
 	TOGGLE_FUZE = 'toggle-fuze',
+	FUZE_AUDIO_SENSITIVITY = 'fuze-audio-sensitivity',
 	TO_DEFAULT = 'to-default',
 	SET_LUMIA = 'set-lumia',
 	START_LUMIA = 'start-lumia',
