@@ -1749,6 +1749,38 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
+	[LumiaAlertValues.TWITCH_BANNED]: {
+		connection: 'twitch',
+		message: '{{username}} is banned',
+		eventlistMessage: 'Timeout',
+		eventlistDetailedMessage: 'banned',
+		acceptedVariables: ['username', 'userId', 'avatar', 'reason'],
+		quickActions: [
+			{
+				label: 'Banned',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream', reason: 'For being too bright' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Reason',
+				variableField: 'reason',
+				required: false,
+				default: 'Too bright',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+	},
 	[LumiaAlertValues.TWITCH_TIMEOUT]: {
 		connection: 'twitch',
 		message: '{{username}} is timed out',
