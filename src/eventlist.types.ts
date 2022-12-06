@@ -35,11 +35,7 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.TWITCH_BITS]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_HOST]: LumiaEventListTypes.RAIDS,
 	[LumiaAlertValues.TWITCH_RAID]: LumiaEventListTypes.RAIDS,
-	[LumiaAlertValues.TWITCH_REDEMPTION]: LumiaEventListTypes.RAIDS,
 	[LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: LumiaEventListTypes.HYPETRAIN,
-	[LumiaAlertValues.TWITCH_HYPETRAIN_PROGRESSED]: LumiaEventListTypes.HYPETRAIN,
-	[LumiaAlertValues.TWITCH_HYPETRAIN_LEVEL_PROGRESSED]: LumiaEventListTypes.HYPETRAIN,
-	[LumiaAlertValues.TWITCH_HYPETRAIN_ENDED]: LumiaEventListTypes.HYPETRAIN,
 	[LumiaAlertValues.TROVO_RAID]: LumiaEventListTypes.RAIDS,
 	[LumiaAlertValues.STREAMLABS_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.STREAMELEMENTS_DONATION]: LumiaEventListTypes.DONATION,
@@ -81,4 +77,5 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.FACEBOOK_FAN]: LumiaEventListTypes.FANS,
 	[LumiaAlertValues.FACEBOOK_SHARE]: LumiaEventListTypes.SHARES,
 	[LumiaAlertValues.TIKTOK_SHARE]: LumiaEventListTypes.SHARES,
+	[LumiaAlertValues.TWITCH_CLIP]: LumiaEventListTypes.OTHERS,
 };
