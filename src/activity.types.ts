@@ -45,6 +45,8 @@ export enum LumiaActivityCommandTypes {
 	TOGGLE_STREAMMODE = 'toggle-stream-mode',
 	START_STREAMMODE = 'start-stream-mode',
 	STOP_STREAMMODE = 'stop-stream-mode',
+	SET_COMMNAD_STATE = 'set-command-state',
+	SET_FOLDER_STATE = 'set-folder-state',
 	CLEAR_QUEUE = 'clear-queue',
 	CHATBOT_MESSAGE = 'chatbot-message',
 	TTS = 'tts',
