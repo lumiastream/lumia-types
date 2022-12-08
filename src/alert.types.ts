@@ -3964,7 +3964,7 @@ export const LumiaAlertConfigs: Record<
 		connection: 'twitter',
 		message: '{{username}} retweeted',
 		eventlistMessage: 'Retweet',
-		eventlistDetailedMessage: 'sent a retweet',
+		eventlistDetailedMessage: 'retweeted your tweet',
 		acceptedVariables: [
 			'retweets',
 			'avatar',
