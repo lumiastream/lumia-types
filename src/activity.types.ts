@@ -236,6 +236,8 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TWITCH_BANNED]: 'Twitch Banned',
 	[LumiaAlertValues.TWITCH_TIMEOUT]: 'Twitch Timeout',
 	[LumiaAlertValues.TWITCH_TIMEOUT_OVER]: 'Twitch Timeout Over',
+	[LumiaAlertValues.YOUTUBE_STREAM_LIVE]: 'Youtube Stream Live',
+	[LumiaAlertValues.YOUTUBE_STREAM_OFFLINE]: 'Youtube Stream Offline',
 	[LumiaAlertValues.YOUTUBE_MEMBER]: 'Youtube Member',
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: 'Youtube Subscriber',
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: 'Youtube Superchat',
