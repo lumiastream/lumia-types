@@ -1861,6 +1861,18 @@ export const LumiaAlertConfigs: Record<
 	},
 	// },
 	// youtube: {
+	[LumiaAlertValues.YOUTUBE_STREAM_LIVE]: {
+		connection: 'youtube',
+		message: 'YouTube Stream is now live',
+		acceptedVariables: ['eventTime'],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.YOUTUBE_STREAM_OFFLINE]: {
+		connection: 'youtube',
+		message: 'YouTube Stream is offline',
+		acceptedVariables: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: {
 		connection: 'youtube',
 		message: '{{username}} just subscribed!',

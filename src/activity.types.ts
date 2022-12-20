@@ -45,8 +45,10 @@ export enum LumiaActivityCommandTypes {
 	TOGGLE_STREAMMODE = 'toggle-stream-mode',
 	START_STREAMMODE = 'start-stream-mode',
 	STOP_STREAMMODE = 'stop-stream-mode',
+
 	SET_COMMNAD_STATE = 'set-command-state',
 	SET_FOLDER_STATE = 'set-folder-state',
+
 	CLEAR_QUEUE = 'clear-queue',
 	CHATBOT_MESSAGE = 'chatbot-message',
 	TTS = 'tts',
@@ -121,6 +123,8 @@ export enum LumiaAlertValues {
 	TWITCH_BANNED = 'twitch-banned',
 	TWITCH_TIMEOUT = 'twitch-timeout',
 	TWITCH_TIMEOUT_OVER = 'twitch-timeoutOver',
+	YOUTUBE_STREAM_LIVE = 'youtube-streamLive',
+	YOUTUBE_STREAM_OFFLINE = 'youtube-streamOffline',
 	YOUTUBE_MEMBER = 'youtube-member',
 	YOUTUBE_SUBSCRIBER = 'youtube-subscriber',
 	YOUTUBE_SUPERCHAT = 'youtube-superchat',
