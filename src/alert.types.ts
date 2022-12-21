@@ -559,7 +559,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} cheered {{amount}} bits. They said {{message}}',
 		eventlistMessage: 'Bits',
 		eventlistDetailedMessage: 'cheered {{amount}} bits',
-		acceptedVariables: ['username', 'amount', 'message', 'full_message'],
+		acceptedVariables: ['username', 'amount', 'message', 'rawMessage', 'full_message'],
 		quickActions: [
 			{
 				label: '100 bits',
