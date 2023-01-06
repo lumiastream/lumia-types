@@ -5,6 +5,7 @@ export enum LumiaEventListTypes {
 	FOLLOWER = 'follower',
 	BITS = 'bits',
 	EXTENSION = 'extension',
+	POINTS = 'points',
 	DONATION = 'donation',
 	SUBSCRIBERS = 'subscribers',
 	GIFTS = 'gifts',
@@ -25,6 +26,8 @@ export enum LumiaEventListTypes {
 
 export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.LUMIA_REDEMPTION]: LumiaEventListTypes.REDEMPTION,
+	[LumiaAlertValues.TWITCH_EXTENSION]: LumiaEventListTypes.EXTENSION,
+	[LumiaAlertValues.TWITCH_POINTS]: LumiaEventListTypes.POINTS,
 	[LumiaAlertValues.TWITCH_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.FACEBOOK_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.GLIMESH_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
