@@ -208,6 +208,8 @@ export enum LumiaAlertValues {
 }
 
 export const LumiaAlertFriendlyValues = {
+	[LumiaAlertValues.TWITCH_EXTENSION]: 'Twitch Extension',
+	[LumiaAlertValues.TWITCH_POINTS]: 'Twitch Points',
 	[LumiaAlertValues.TWITCH_STREAM_LIVE]: 'Twitch StreamLive',
 	[LumiaAlertValues.TWITCH_STREAM_OFFLINE]: 'Twitch StreamOffline',
 	[LumiaAlertValues.TWITCH_FOLLOWER]: 'Twitch Follower',
