@@ -125,6 +125,7 @@ export enum LumiaAlertValues {
 	TWITCH_BANNED = 'twitch-banned',
 	TWITCH_TIMEOUT = 'twitch-timeout',
 	TWITCH_TIMEOUT_OVER = 'twitch-timeoutOver',
+	TWITCH_SHOUTOUT_RECEIVE = 'twitch-shoutoutReceive',
 	YOUTUBE_STREAM_LIVE = 'youtube-streamLive',
 	YOUTUBE_STREAM_OFFLINE = 'youtube-streamOffline',
 	YOUTUBE_MEMBER = 'youtube-member',

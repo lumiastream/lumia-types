@@ -162,6 +162,7 @@ export const LumiaAlertConfigs: Record<
 					command: 'lumibeam',
 					message: 'pew pew',
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '100',
 					currency: LumiaRedemptionCurrency.BITS,
@@ -175,6 +176,7 @@ export const LumiaAlertConfigs: Record<
 					command: 'lumiray',
 					message: 'ray ray',
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '100',
 					currency: LumiaRedemptionCurrency.POINTS,
@@ -188,6 +190,7 @@ export const LumiaAlertConfigs: Record<
 					command: 'lumiroar',
 					message: 'roar roar',
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '100',
 					currency: LumiaRedemptionCurrency.LUMIBUCKS,
@@ -261,6 +264,7 @@ export const LumiaAlertConfigs: Record<
 					command: 'lumibeam',
 					message: 'pew pew',
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '100',
 					currency: LumiaRedemptionCurrency.BITS,
@@ -274,6 +278,7 @@ export const LumiaAlertConfigs: Record<
 					command: 'lumibeam',
 					message: 'pew pew',
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '2000',
 					currency: LumiaRedemptionCurrency.BITS,
@@ -287,6 +292,7 @@ export const LumiaAlertConfigs: Record<
 					command: 'lumibeam',
 					message: 'pew pew',
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '10000',
 					currency: LumiaRedemptionCurrency.BITS,
@@ -359,6 +365,7 @@ export const LumiaAlertConfigs: Record<
 					command: 'lumiray',
 					message: 'ray ray',
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '2000',
 					currency: LumiaRedemptionCurrency.POINTS,
@@ -372,6 +379,7 @@ export const LumiaAlertConfigs: Record<
 					command: 'lumiray',
 					message: 'ray ray',
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '10000',
 					currency: LumiaRedemptionCurrency.POINTS,
@@ -428,7 +436,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'New Follow',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png' },
 			},
 		],
 		inputFields: [
@@ -453,6 +461,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 1000 },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					message: 'Great Stream',
 					tier: 1000,
 					subMonths: 1,
@@ -481,6 +490,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 'Prime' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					message: 'Great Stream',
 					tier: 'Prime',
 					subMonths: 1,
@@ -493,6 +503,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 1000, subMonths: 3 },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					message: 'Great Stream',
 					tier: 1000,
 					subMonths: 3,
@@ -609,6 +620,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 1000, giftAmount: 1, isGift: true },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					gifter: 'lumiastream',
 					message: 'Great Stream',
 					recipient: 'worldlights',
@@ -625,6 +637,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 1000, giftAmount: 5, isGift: true },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					gifter: 'lumiastream',
 					message: 'Great Stream',
 					recipient: 'worldlights',
@@ -641,6 +654,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 1000, giftAmount: 10, isGift: true },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					gifter: 'lumiastream',
 					message: 'Great Stream',
 					recipient: 'worldlights',
@@ -734,17 +748,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '100 bits',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', amount: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 10 },
 			},
 			{
 				label: '500 bits',
 				dynamic: { value: 500 },
-				extraSettings: { username: 'lumiastream', amount: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 10 },
 			},
 			{
 				label: '1000 bits',
 				dynamic: { value: 1000 },
-				extraSettings: { username: 'lumiastream', amount: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 10 },
 			},
 		],
 		inputFields: [
@@ -784,17 +798,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '10 viewers',
 				dynamic: { value: 10 },
-				extraSettings: { username: 'lumiastream', viewers: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10 },
 			},
 			{
 				label: '50 viewers',
 				dynamic: { value: 50 },
-				extraSettings: { username: 'lumiastream', viewers: 50 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50 },
 			},
 			{
 				label: '100 viewers',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', viewers: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100 },
 			},
 		],
 		inputFields: [
@@ -831,17 +845,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '10 viewers',
 				dynamic: { value: 10 },
-				extraSettings: { username: 'lumiastream', viewers: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10 },
 			},
 			{
 				label: '50 viewers',
 				dynamic: { value: 50 },
-				extraSettings: { username: 'lumiastream', viewers: 50 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50 },
 			},
 			{
 				label: '100 viewers',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', viewers: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100 },
 			},
 		],
 		inputFields: [
@@ -1839,6 +1853,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 'lumiastream' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					clip_title: 'Lumia Stream',
 					clip_url: 'https://www.twitch.tv/lumiastream/clip/EnchantingSuccessfulMoonBlargNaut-ev_c6MJ_Qb0o7gEx',
 				},
@@ -1879,7 +1894,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'New Join',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png' },
 			},
 		],
 		inputFields: [
@@ -1904,7 +1919,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'New Leave',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png' },
 			},
 		],
 		inputFields: [
@@ -1922,14 +1937,18 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_BANNED]: {
 		connection: 'twitch',
 		message: '{{username}} is banned',
-		eventlistMessage: 'Timeout',
+		eventlistMessage: 'Banned',
 		eventlistDetailedMessage: 'banned',
 		acceptedVariables: ['username', 'userId', 'avatar', 'reason'],
 		quickActions: [
 			{
 				label: 'Banned',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream', reason: 'For being too bright' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					reason: 'For being too bright',
+				},
 			},
 		],
 		inputFields: [
@@ -1961,7 +1980,12 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'Timed Out',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream', timeout_duration: 30, reason: 'For being too bright' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					timeout_duration: 30,
+					reason: 'For being too bright',
+				},
 			},
 		],
 		inputFields: [
@@ -2000,7 +2024,12 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'Time Out Over',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream', timeout_duration: 30, reason: 'For being too bright' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					timeout_duration: 30,
+					reason: 'For being too bright',
+				},
 			},
 		],
 		inputFields: [
@@ -2025,6 +2054,38 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'timeout_duration',
 				required: false,
 				default: '30',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+	},
+	[LumiaAlertValues.TWITCH_SHOUTOUT_RECEIVE]: {
+		connection: 'twitch',
+		message: '{{username}} sent you a shoutout',
+		eventlistMessage: 'Shoutout',
+		eventlistDetailedMessage: 'shoutout',
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'viewer_count', 'started_at'],
+		quickActions: [
+			{
+				label: 'Shoutout Receive',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					displayname: 'LumiaStream',
+					userId: '1234',
+					viewer_count: 100,
+					started_at: '2022-07-26T17:00:03.17106713Z',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
 			},
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
@@ -2105,6 +2166,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -2114,6 +2176,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -2123,6 +2186,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -2165,17 +2229,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '100',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', amount: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 100 },
 			},
 			{
 				label: '200',
 				dynamic: { value: 200 },
-				extraSettings: { username: 'lumiastream', amount: 200 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 200 },
 			},
 			{
 				label: '300',
 				dynamic: { value: 300 },
-				extraSettings: { username: 'lumiastream', amount: 300 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 300 },
 			},
 		],
 		inputFields: [
@@ -2233,17 +2297,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '100',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', amount: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 100 },
 			},
 			{
 				label: '200',
 				dynamic: { value: 200 },
-				extraSettings: { username: 'lumiastream', amount: 200 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 200 },
 			},
 			{
 				label: '300',
 				dynamic: { value: 300 },
-				extraSettings: { username: 'lumiastream', amount: 300 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 300 },
 			},
 		],
 		inputFields: [
@@ -2285,17 +2349,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '100',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', amount: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 100 },
 			},
 			{
 				label: '200',
 				dynamic: { value: 200 },
-				extraSettings: { username: 'lumiastream', amount: 200 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 200 },
 			},
 			{
 				label: '300',
 				dynamic: { value: 300 },
-				extraSettings: { username: 'lumiastream', amount: 300 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 300 },
 			},
 		],
 		inputFields: [
@@ -2327,17 +2391,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '100',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', amount: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 100 },
 			},
 			{
 				label: '200',
 				dynamic: { value: 200 },
-				extraSettings: { username: 'lumiastream', amount: 200 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 200 },
 			},
 			{
 				label: '300',
 				dynamic: { value: 300 },
-				extraSettings: { username: 'lumiastream', amount: 300 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 300 },
 			},
 		],
 		inputFields: [
@@ -2369,17 +2433,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '100',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', amount: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 100 },
 			},
 			{
 				label: '200',
 				dynamic: { value: 200 },
-				extraSettings: { username: 'lumiastream', amount: 200 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 200 },
 			},
 			{
 				label: '300',
 				dynamic: { value: 300 },
-				extraSettings: { username: 'lumiastream', amount: 300 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 300 },
 			},
 		],
 		inputFields: [
@@ -2586,17 +2650,22 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '1 gift',
 				dynamic: { value: 1 },
-				extraSettings: { username: 'lumiastream', gifter: 'lumiastream', amount: 1 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					gifter: 'lumiastream',
+					amount: 1,
+				},
 			},
 			{
 				label: '5 gifts',
 				dynamic: { value: 5 },
-				extraSettings: { username: 'lumiastream', amount: 5 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 5 },
 			},
 			{
 				label: '20 gifts',
 				dynamic: { value: 20 },
-				extraSettings: { username: 'lumiastream', amount: 20 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 20 },
 			},
 		],
 		inputFields: [
@@ -2635,17 +2704,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '10 viewers',
 				dynamic: { value: 10 },
-				extraSettings: { username: 'lumiastream', viewers: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10 },
 			},
 			{
 				label: '50 viewers',
 				dynamic: { value: 50 },
-				extraSettings: { username: 'lumiastream', viewers: 50 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50 },
 			},
 			{
 				label: '100 viewers',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', viewers: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100 },
 			},
 		],
 		inputFields: [
@@ -2708,12 +2777,22 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'New Like (Total 10)',
 				dynamic: { value: 10 },
-				extraSettings: { username: 'lumiastream', userLikeCount: 1, totalLikeCount: 40 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					userLikeCount: 1,
+					totalLikeCount: 40,
+				},
 			},
 			{
 				label: 'New Like (Total 50)',
 				dynamic: { value: 50 },
-				extraSettings: { username: 'lumiastream', userLikeCount: 1, totalLikeCount: 50 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					userLikeCount: 1,
+					totalLikeCount: 50,
+				},
 			},
 		],
 		inputFields: [
@@ -2767,6 +2846,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 1, name: 'Rose' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					giftName: 'Rose',
 					giftType: 1,
 					giftId: 5655,
@@ -2780,6 +2860,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, name: 'Pumpkin' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					giftName: 'Pumpkin',
 					giftPictureUrl: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/e675252b83e97135f9ede3b5d32c2c71~tplv-obj.png',
 					giftType: 2,
@@ -2793,6 +2874,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 500, name: 'Boiling Cauldron' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					giftName: 'Boiling Cauldron',
 					giftPictureUrl: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/e675252b83e97135f9ede3b5d32c2c71~tplv-obj.png',
 					giftType: 2,
@@ -2914,6 +2996,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -2923,6 +3006,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -2932,6 +3016,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -2991,6 +3076,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3000,6 +3086,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3009,6 +3096,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3066,7 +3154,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'Shirt',
 				dynamic: { value: 'shirt' },
-				extraSettings: { username: 'lumiastream', merch: 'shirt' },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', merch: 'shirt' },
 			},
 		],
 		inputFields: [
@@ -3105,6 +3193,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 'shirt' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					redemption: 'shirt',
 					message: 'Great stream',
 				},
@@ -3184,6 +3273,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3193,6 +3283,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3202,6 +3293,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3261,6 +3353,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3270,6 +3363,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3279,6 +3373,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3331,6 +3426,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 'shirt' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					redemption: 'shirt',
 					message: 'Great stream',
 				},
@@ -3381,6 +3477,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3390,6 +3487,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3399,6 +3497,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3460,6 +3559,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3469,6 +3569,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3478,6 +3579,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3539,6 +3641,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3548,6 +3651,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3557,6 +3661,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3618,6 +3723,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3627,6 +3733,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3636,6 +3743,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3690,6 +3798,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3699,6 +3808,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3708,6 +3818,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3769,6 +3880,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3778,6 +3890,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3787,6 +3900,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3839,6 +3953,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 'Tier 1' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					tier: 'Tier 1',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
@@ -3849,6 +3964,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 'Tier 2' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					tier: 'Tier 2',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
@@ -3859,6 +3975,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 'Tier 3' },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					tier: 'Tier 3',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
@@ -3918,6 +4035,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3927,6 +4045,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3936,6 +4055,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3988,6 +4108,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -3997,6 +4118,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -4006,6 +4128,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -4073,7 +4196,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'New Follower',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream', followers: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', followers: 100 },
 			},
 		],
 		inputFields: [
@@ -4113,7 +4236,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'New Like',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream', likes: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', likes: 100 },
 			},
 		],
 		inputFields: [
@@ -4167,7 +4290,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'New Retweet',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream', retweets: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', retweets: 100 },
 			},
 		],
 		inputFields: [
@@ -4592,6 +4715,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -4601,6 +4725,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -4610,6 +4735,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
