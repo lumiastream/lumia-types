@@ -430,7 +430,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is now following!',
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
-		acceptedVariables: ['username'],
+		acceptedVariables: ['username', 'avatar'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 		quickActions: [
 			{
@@ -454,7 +454,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just subscribed!',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
-		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+		acceptedVariables: ['username', 'avatar', 'tier', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 		quickActions: [
 			{
 				label: 'Tier 1 Sub',
@@ -613,7 +613,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{gifter}} gifted {{giftAmount}} subs!',
 		eventlistMessage: 'Gifted subscription',
 		eventlistDetailedMessage: 'gifted {{recipient}} a subscription',
-		acceptedVariables: ['username', 'tier', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+		acceptedVariables: ['username', 'avatar', 'tier', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 		quickActions: [
 			{
 				label: 'Gift 1 Sub',
@@ -743,7 +743,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} cheered {{amount}} bits. They said {{message}}',
 		eventlistMessage: 'Bits',
 		eventlistDetailedMessage: 'cheered {{amount}} bits',
-		acceptedVariables: ['username', 'amount', 'message', 'rawMessage', 'full_message'],
+		acceptedVariables: ['username', 'avatar', 'amount', 'message', 'rawMessage', 'full_message'],
 		quickActions: [
 			{
 				label: '100 bits',
@@ -793,7 +793,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} hosted with {{viewers}} viewers',
 		eventlistMessage: 'Hosts',
 		eventlistDetailedMessage: 'hosted with {{viewers}} viewers',
-		acceptedVariables: ['username', 'viewers'],
+		acceptedVariables: ['username', 'avatar', 'viewers'],
 		quickActions: [
 			{
 				label: '10 viewers',
@@ -840,7 +840,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} raided with {{viewers}} viewers',
 		eventlistMessage: 'Raided',
 		eventlistDetailedMessage: 'raided with {{viewers}} viewers',
-		acceptedVariables: ['username', 'viewers'],
+		acceptedVariables: ['username', 'avatar', 'viewers'],
 		quickActions: [
 			{
 				label: '10 viewers',
@@ -1836,6 +1836,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistDetailedMessage: 'created a clip',
 		acceptedVariables: [
 			'username',
+			'avatar',
 			'displayname',
 			'userId',
 			'clip_url',
@@ -1889,7 +1890,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just joined the channel',
 		eventlistMessage: 'Join',
 		eventlistDetailedMessage: 'joined the channel',
-		acceptedVariables: ['username'],
+		acceptedVariables: ['username', 'avatar'],
 		quickActions: [
 			{
 				label: 'New Join',
@@ -1914,7 +1915,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just left the channel',
 		eventlistMessage: 'Left',
 		eventlistDetailedMessage: 'left the channel',
-		acceptedVariables: ['username'],
+		acceptedVariables: ['username', 'avatar'],
 		quickActions: [
 			{
 				label: 'New Leave',
