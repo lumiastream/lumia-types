@@ -170,7 +170,7 @@ export enum LumiaAlertValues {
 	// PAYPAL_PAYMENT_DENIED = "paypal-paymentDenied",
 	TIPEEESTREAM_DONATION = 'tipeeestream-donation',
 	TREATSTREAM_TREAT = 'treatstream-treat',
-	PATREON_PLEDGE = 'patreon-pledge',
+	PATREON_PLEDGE = 'patreon-campaignPledge',
 	OBS_SWITCH_PROFILE = 'obs-switchProfile',
 	OBS_SWITCH_SCENE = 'obs-switchScene',
 	OBS_SCENE_ITEM_VISIBILITY = 'obs-sceneItemVisibility',
