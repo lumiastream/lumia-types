@@ -148,6 +148,7 @@ type LightBrands =
 	| 'nanoleaf2'
 	| 'lifx'
 	| 'tplink'
+	| 'tapo'
 	| 'yeelight'
 	| 'cololight'
 	| 'tuya'
