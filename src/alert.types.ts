@@ -4244,14 +4244,15 @@ export const LumiaAlertConfigs: Record<
 		message: 'Someone just ordered {{item}} in the amount of {{amount}}',
 		eventlistMessage: 'Order',
 		eventlistDetailedMessage: 'ordered {{item}}',
-		acceptedVariables: ['item', 'amount'],
+		eventlistSpecialUsername: 'Woocommerce',
+		acceptedVariables: ['item', 'amount', 'username', 'currency', 'message'],
 		quickActions: [
 			{
 				label: '$100',
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
-					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					item: 'rgb light',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -4261,7 +4262,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
-					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					item: 'rgb light, smart plug',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 				},
@@ -4271,7 +4272,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
-					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					item: 'rgb light, keylight, smart plug',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 				},
