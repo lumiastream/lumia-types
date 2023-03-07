@@ -1794,7 +1794,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just donated {{amount}} to charity {{charity_name}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
-		acceptedVariables: ['username', 'currency', 'amount', 'message', 'charity_id', 'charity_campaign_id', 'charity_name', 'charity_description', 'charity_logo', 'charity_website'],
+		acceptedVariables: ['userId', 'username', 'displayname', 'amount', 'currency', 'campaign_id', 'charity_name', 'charity_description', 'charity_logo', 'charity_website'],
 		quickActions: [
 			{
 				label: '$100',
