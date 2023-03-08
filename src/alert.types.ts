@@ -135,108 +135,6 @@ export const LumiaAlertConfigs: Record<
 		}>;
 	}
 > = {
-	// Deprecated
-	[LumiaAlertValues.LUMIA_REDEMPTION]: {
-		connection: 'lumiastream',
-		message: '{{username}} redeemed {{command}} for {{amount}} {{currency}}',
-		eventlistMessage: 'Redeemed',
-		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} {{currency}}',
-		acceptedVariables: ['username', 'displayname', 'message', 'avatar', 'command', 'amount', 'currencySymbol', 'currency'],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-			},
-			{
-				type: LumiaVariationConditions.EQUAL_NUMBER,
-			},
-			{
-				type: LumiaVariationConditions.GREATER_NUMBER,
-			},
-		],
-		quickActions: [
-			{
-				label: 'Redeemed for 100 bits',
-				dynamic: { name: 'lumibeam', value: '100', currency: LumiaRedemptionCurrency.BITS },
-				extraSettings: {
-					command: 'lumibeam',
-					message: 'pew pew',
-					username: 'lumiastream',
-					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
-					displayname: 'LumiaStream',
-					amount: '100',
-					currency: LumiaRedemptionCurrency.BITS,
-					currencySymbol: LumiaRedemptionCurrencySymbol.bits,
-				},
-			},
-			{
-				label: 'Redeemed for 30 points',
-				dynamic: { name: 'lumiray', value: '30', currency: LumiaRedemptionCurrency.POINTS },
-				extraSettings: {
-					command: 'lumiray',
-					message: 'ray ray',
-					username: 'lumiastream',
-					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
-					displayname: 'LumiaStream',
-					amount: '100',
-					currency: LumiaRedemptionCurrency.POINTS,
-					currencySymbol: LumiaRedemptionCurrencySymbol.points,
-				},
-			},
-			{
-				label: 'Redeemed for 50 lumibucks',
-				dynamic: { name: 'lumiroar', value: '30', currency: LumiaRedemptionCurrency.LUMIBUCKS },
-				extraSettings: {
-					command: 'lumiroar',
-					message: 'roar roar',
-					username: 'lumiastream',
-					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
-					displayname: 'LumiaStream',
-					amount: '100',
-					currency: LumiaRedemptionCurrency.LUMIBUCKS,
-					currencySymbol: LumiaRedemptionCurrencySymbol.lumibucks,
-				},
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Username',
-				variableField: 'username',
-				required: false,
-				default: 'lumiastream',
-			},
-			{
-				type: 'text',
-				label: 'Command',
-				dynamicField: 'value',
-				variableField: 'command',
-				required: true,
-				default: 'lumibeam',
-			},
-			{
-				type: 'text',
-				label: 'Amount',
-				dynamicField: 'amount',
-				variableField: 'amount',
-				required: true,
-				default: '100',
-			},
-			{
-				type: 'selection',
-				label: 'Currency',
-				dynamicField: 'currency',
-				variableField: 'currency',
-				default: 'bits',
-				required: true,
-				selections: [
-					{ label: 'Bits', value: 'bits' },
-					{ label: 'Points', value: 'points' },
-					{ label: 'Lumia Bucks', value: 'lumibucks' },
-				],
-			},
-		],
-	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
 		connection: 'twitch',
@@ -424,6 +322,22 @@ export const LumiaAlertConfigs: Record<
 		message: 'Twitch Stream is offline',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.TWITCH_FIRST_CHATTER]: {
+		connection: 'twitch',
+		message: '{{username}} is the first chatter and has been first {{first_count}} times!',
+		eventlistMessage: 'First Chatter',
+		eventlistDetailedMessage: 'was the first chatter',
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'first_count'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
 	},
 	[LumiaAlertValues.TWITCH_FOLLOWER]: {
 		connection: 'twitch',
@@ -2445,6 +2359,22 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
+	[LumiaAlertValues.YOUTUBE_FIRST_CHATTER]: {
+		connection: 'youtube',
+		message: '{{username}} is the first chatter!',
+		eventlistMessage: 'First Chatter',
+		eventlistDetailedMessage: 'was the first chatter',
+		acceptedVariables: ['username', 'userId', 'avatar', 'first_count'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: {
 		connection: 'youtube',
 		message: '{{username}} just subscribed!',
@@ -2604,6 +2534,34 @@ export const LumiaAlertConfigs: Record<
 	},
 	// },
 	// facebook: {
+	[LumiaAlertValues.FACEBOOK_STREAM_LIVE]: {
+		connection: 'facebook',
+		message: 'Facebook Stream is now live',
+		acceptedVariables: ['eventTime'],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.FACEBOOK_STREAM_OFFLINE]: {
+		connection: 'facebook',
+		message: 'Facebook Stream is offline',
+		acceptedVariables: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.FACEBOOK_FIRST_CHATTER]: {
+		connection: 'facebook',
+		message: '{{username}} is the first chatter!',
+		eventlistMessage: 'First Chatter',
+		eventlistDetailedMessage: 'was the first chatter',
+		acceptedVariables: ['username', 'first_count'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
 	[LumiaAlertValues.FACEBOOK_FOLLOWER]: {
 		connection: 'facebook',
 		message: '{{username}} just followed',
@@ -2904,6 +2862,22 @@ export const LumiaAlertConfigs: Record<
 	},
 	// },
 	// trovo: {
+	[LumiaAlertValues.TROVO_FIRST_CHATTER]: {
+		connection: 'trovo',
+		message: '{{username}} is the first chatter!',
+		eventlistMessage: 'First Chatter',
+		eventlistDetailedMessage: 'was the first chatter',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
 	[LumiaAlertValues.TROVO_CHANNEL_JOIN]: {
 		connection: 'trovo',
 		message: '{{username}} just joined the channel',
@@ -3084,6 +3058,22 @@ export const LumiaAlertConfigs: Record<
 	},
 	// },
 	// tiktok: {
+	[LumiaAlertValues.TIKTOK_FIRST_CHATTER]: {
+		connection: 'tiktok',
+		message: '{{username}} is the first chatter!',
+		eventlistMessage: 'First Chatter',
+		eventlistDetailedMessage: 'was the first chatter',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
 	[LumiaAlertValues.TIKTOK_FOLLOWER]: {
 		connection: 'tiktok',
 		message: '{{username}} just followed',
