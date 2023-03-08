@@ -21,6 +21,7 @@ export enum LumiaEventListTypes {
 	STARS = 'stars',
 	FANS = 'fans',
 	SHARES = 'shares',
+	FIRSTCHATTER = 'firstchatter',
 	OTHERS = 'others',
 }
 
@@ -40,7 +41,6 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.KOFI_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.KOFI_SHOPORDER]: LumiaEventListTypes.PURCHASES,
 	[LumiaAlertValues.KOFI_SUBSCRIPTION]: LumiaEventListTypes.SUBSCRIBERS,
-	[LumiaAlertValues.LUMIA_REDEMPTION]: LumiaEventListTypes.REDEMPTION,
 	[LumiaAlertValues.PATREON_PLEDGE]: LumiaEventListTypes.SUBSCRIBERS,
 	[LumiaAlertValues.STREAMELEMENTS_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.STREAMELEMENTS_MERCH]: LumiaEventListTypes.PURCHASES,
@@ -82,4 +82,9 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: LumiaEventListTypes.SUPERCHATS,
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: LumiaEventListTypes.SUPERSTICKERS,
+	[LumiaAlertValues.TWITCH_FIRST_CHATTER]: LumiaEventListTypes.FIRSTCHATTER,
+	[LumiaAlertValues.YOUTUBE_FIRST_CHATTER]: LumiaEventListTypes.FIRSTCHATTER,
+	[LumiaAlertValues.FACEBOOK_FIRST_CHATTER]: LumiaEventListTypes.FIRSTCHATTER,
+	[LumiaAlertValues.TROVO_FIRST_CHATTER]: LumiaEventListTypes.FIRSTCHATTER,
+	[LumiaAlertValues.TIKTOK_FIRST_CHATTER]: LumiaEventListTypes.FIRSTCHATTER,
 };
