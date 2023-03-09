@@ -702,53 +702,6 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.TWITCH_HOST]: {
-		connection: 'twitch',
-		message: '{{username}} hosted with {{viewers}} viewers',
-		eventlistMessage: 'Hosts',
-		eventlistDetailedMessage: 'hosted with {{viewers}} viewers',
-		acceptedVariables: ['username', 'avatar', 'viewers'],
-		quickActions: [
-			{
-				label: '10 viewers',
-				dynamic: { value: 10 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10 },
-			},
-			{
-				label: '50 viewers',
-				dynamic: { value: 50 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50 },
-			},
-			{
-				label: '100 viewers',
-				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100 },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Username',
-				variableField: 'username',
-				required: false,
-				default: 'lumiastream',
-			},
-			{
-				type: 'number',
-				label: 'Amount of viewers',
-				dynamicField: 'value',
-				variableField: 'viewers',
-				required: true,
-				default: 100,
-			},
-		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.GREATER_NUMBER,
-			},
-		],
-	},
 	[LumiaAlertValues.TWITCH_RAID]: {
 		connection: 'twitch',
 		message: '{{username}} raided with {{viewers}} viewers',
@@ -1708,7 +1661,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just donated {{amount}} to charity {{charity_name}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
-		acceptedVariables: ['userId', 'username', 'displayname', 'amount', 'currency', 'campaign_id', 'charity_name', 'charity_description', 'charity_logo', 'charity_website'],
+		acceptedVariables: ['userId', 'username', 'displayname', 'amount', 'currency', 'charity_name', 'charity_description', 'charity_logo', 'charity_website'],
 		quickActions: [
 			{
 				label: '$100',
@@ -1814,7 +1767,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign start',
 		eventlistDetailedMessage: 'Charity campaign {{charity_name}} started with a target of {{charity_target_amount}}',
-		acceptedVariables: ['charity_campaign_id', 'charity_name', 'charity_description', 'charity_logo', 'charity_amount', 'charity_target_amount', 'charity_website', 'currency', 'started_at'],
+		acceptedVariables: ['charity_name', 'charity_description', 'charity_logo', 'charity_amount', 'charity_target_amount', 'charity_website', 'currency', 'started_at'],
 		quickActions: [
 			{
 				label: 'Charity Started',
@@ -2301,51 +2254,6 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
-	[LumiaAlertValues.TWITCH_DROP_ENTITLEMENT]: {
-		connection: 'twitch',
-		message: 'Entitlement dropped for {{username}}',
-		eventlistMessage: 'Entitlement Drop',
-		eventlistDetailedMessage: 'entitlement dropped',
-		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'organization_id', 'category_id', 'category_name', 'campaign_id', 'entitlement_id', 'benefit_id', 'created_at'],
-		quickActions: [
-			{
-				label: 'Entitlement Dropped',
-				dynamic: { value: 'lumiastream' },
-				extraSettings: {
-					username: 'lumiastream',
-					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
-					displayname: 'LumiaStream',
-					userId: '1234',
-					organization_id: 'lumia123',
-					category_id: 'lumia123',
-					category_name: 'Fortnite',
-					campaign_id: 'lumia123',
-					entitlement_id: 'lumia123',
-					benefit_id: 'lumia123',
-					created_at: '2022-07-26T17:00:03.17106713Z',
-				},
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Username',
-				dynamicField: 'value',
-				variableField: 'username',
-				required: true,
-				default: 'lumiastream',
-			},
-			{
-				type: 'text',
-				label: 'Category Name',
-				variableField: 'category_name',
-				required: true,
-				default: 'Fortnite',
-			},
-		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
-	},
-	// },
 	// youtube: {
 	[LumiaAlertValues.YOUTUBE_STREAM_LIVE]: {
 		connection: 'youtube',
