@@ -92,6 +92,10 @@ export enum LumiaExternalActivityCommandTypes {
 }
 
 export enum LumiaAlertValues {
+	SYSTEM_LUMIA_OPENED = 'system-lumiaOpened',
+	SYSTEM_LUMIA_CLOSED = 'system-lumiaClosed',
+	SYSTEM_STREAMMODE_ON = 'system-streammodeOn',
+	SYSTEM_STREAMMODE_OFF = 'system-streammodeOff',
 	TWITCH_EXTENSION = 'twitch-extension',
 	TWITCH_POINTS = 'twitch-points',
 	TWITCH_STREAM_LIVE = 'twitch-streamLive',
@@ -218,6 +222,10 @@ export enum LumiaAlertValues {
 }
 
 export const LumiaAlertFriendlyValues = {
+	[LumiaAlertValues.SYSTEM_LUMIA_OPENED]: 'Lumia Opened',
+	[LumiaAlertValues.SYSTEM_LUMIA_CLOSED]: 'Lumia Closed',
+	[LumiaAlertValues.SYSTEM_STREAMMODE_ON]: 'Stream Mode On',
+	[LumiaAlertValues.SYSTEM_STREAMMODE_OFF]: 'Stream Mode Off',
 	[LumiaAlertValues.TWITCH_EXTENSION]: 'Twitch Extension',
 	[LumiaAlertValues.TWITCH_POINTS]: 'Twitch Points',
 	[LumiaAlertValues.TWITCH_STREAM_LIVE]: 'Twitch Stream Live',

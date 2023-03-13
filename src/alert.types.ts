@@ -135,6 +135,31 @@ export const LumiaAlertConfigs: Record<
 		}>;
 	}
 > = {
+	// lumia: {
+	[LumiaAlertValues.SYSTEM_LUMIA_OPENED]: {
+		connection: 'lumiastream',
+		message: 'Lumia opened',
+		acceptedVariables: ['date'],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.SYSTEM_LUMIA_CLOSED]: {
+		connection: 'lumiastream',
+		message: 'Lumia closed',
+		acceptedVariables: ['date'],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.SYSTEM_STREAMMODE_ON]: {
+		connection: 'lumiastream',
+		message: 'stream mode on',
+		acceptedVariables: ['date'],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.SYSTEM_STREAMMODE_OFF]: {
+		connection: 'lumiastream',
+		message: 'stream mode off',
+		acceptedVariables: ['date'],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
 		connection: 'twitch',
