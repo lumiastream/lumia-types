@@ -136,27 +136,27 @@ export const LumiaAlertConfigs: Record<
 	}
 > = {
 	// lumia: {
-	[LumiaAlertValues.LUMIA_OPENED]: {
+	[LumiaAlertValues.SYSTEM_LUMIA_OPENED]: {
 		connection: 'lumiastream',
 		message: 'Lumia opened',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.LUMIA_CLOSED]: {
+	[LumiaAlertValues.SYSTEM_LUMIA_CLOSED]: {
 		connection: 'lumiastream',
 		message: 'Lumia closed',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.LUMIA_STREAMMODE_ON]: {
+	[LumiaAlertValues.SYSTEM_STREAMMODE_ON]: {
 		connection: 'lumiastream',
-		message: 'Lumia stream mode on',
+		message: 'stream mode on',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.LUMIA_STREAMMODE_OFF]: {
+	[LumiaAlertValues.SYSTEM_STREAMMODE_OFF]: {
 		connection: 'lumiastream',
-		message: 'Lumia stream mode off',
+		message: 'stream mode off',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
