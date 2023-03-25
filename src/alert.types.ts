@@ -376,9 +376,6 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
 			},
-			{
-				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
-			},
 		],
 	},
 	[LumiaAlertValues.TWITCH_FOLLOWER]: {
@@ -2336,9 +2333,6 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
 			},
-			{
-				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
-			},
 		],
 	},
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: {
@@ -2538,9 +2532,6 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
-			},
-			{
-				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
 			},
 		],
 	},
@@ -2871,9 +2862,6 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
 			},
-			{
-				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
-			},
 		],
 	},
 	[LumiaAlertValues.TROVO_CHANNEL_JOIN]: {
@@ -3082,9 +3070,6 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
-			},
-			{
-				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
 			},
 		],
 	},
