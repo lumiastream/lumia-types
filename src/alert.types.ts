@@ -10,6 +10,7 @@ export enum LumiaVariationConditions {
 	EQUAL_SELECTION = 'EQUAL_SELECTION',
 	EQUAL_CURRENCY_NUMBER = 'EQUAL_CURRENCY_NUMBER',
 	GREATER_CURRENCY_NUMBER = 'GREATER_CURRENCY_NUMBER',
+	USER_LEVEL = 'USER_LEVEL',
 
 	// Twitch Sub Variations
 	SUBSCRIBED_MONTHS_EQUAL = 'SUBSCRIBED_MONTHS_EQUAL',
@@ -361,6 +362,22 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.TWITCH_ENTRANCE]: {
+		connection: 'twitch',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.USER_LEVEL,
 			},
 		],
 	},
@@ -2308,6 +2325,22 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.YOUTUBE_ENTRANCE]: {
+		connection: 'youtube',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'userId', 'avatar'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.USER_LEVEL,
+			},
+		],
+	},
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: {
 		connection: 'youtube',
 		message: '{{username}} just subscribed!',
@@ -2492,6 +2525,22 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.FACEBOOK_ENTRANCE]: {
+		connection: 'facebook',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.USER_LEVEL,
 			},
 		],
 	},
@@ -2811,6 +2860,22 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.TROVO_ENTRANCE]: {
+		connection: 'trovo',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.USER_LEVEL,
+			},
+		],
+	},
 	[LumiaAlertValues.TROVO_CHANNEL_JOIN]: {
 		connection: 'trovo',
 		message: '{{username}} just joined the channel',
@@ -3004,6 +3069,22 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.TIKTOK_ENTRANCE]: {
+		connection: 'tiktok',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.USER_LEVEL,
 			},
 		],
 	},

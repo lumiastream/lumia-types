@@ -22,6 +22,7 @@ export enum LumiaEventListTypes {
 	FANS = 'fans',
 	SHARES = 'shares',
 	FIRSTCHATTER = 'firstchatter',
+	ENTRANCE = 'entrance',
 	OTHERS = 'others',
 }
 
@@ -87,4 +88,9 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.FACEBOOK_FIRST_CHATTER]: LumiaEventListTypes.FIRSTCHATTER,
 	[LumiaAlertValues.TROVO_FIRST_CHATTER]: LumiaEventListTypes.FIRSTCHATTER,
 	[LumiaAlertValues.TIKTOK_FIRST_CHATTER]: LumiaEventListTypes.FIRSTCHATTER,
+	[LumiaAlertValues.TWITCH_ENTRANCE]: LumiaEventListTypes.ENTRANCE,
+	[LumiaAlertValues.YOUTUBE_ENTRANCE]: LumiaEventListTypes.ENTRANCE,
+	[LumiaAlertValues.FACEBOOK_ENTRANCE]: LumiaEventListTypes.ENTRANCE,
+	[LumiaAlertValues.TROVO_ENTRANCE]: LumiaEventListTypes.ENTRANCE,
+	[LumiaAlertValues.TIKTOK_ENTRANCE]: LumiaEventListTypes.ENTRANCE,
 };
