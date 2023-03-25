@@ -10,7 +10,7 @@ export enum LumiaVariationConditions {
 	EQUAL_SELECTION = 'EQUAL_SELECTION',
 	EQUAL_CURRENCY_NUMBER = 'EQUAL_CURRENCY_NUMBER',
 	GREATER_CURRENCY_NUMBER = 'GREATER_CURRENCY_NUMBER',
-	USER_LEVEL = 'USER_LEVEL',
+	EQUAL_USER_LEVEL = 'EQUAL_USER_LEVEL',
 
 	// Twitch Sub Variations
 	SUBSCRIBED_MONTHS_EQUAL = 'SUBSCRIBED_MONTHS_EQUAL',
@@ -377,7 +377,7 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 			{
-				type: LumiaVariationConditions.USER_LEVEL,
+				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
 			},
 		],
 	},
@@ -2337,7 +2337,7 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 			{
-				type: LumiaVariationConditions.USER_LEVEL,
+				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
 			},
 		],
 	},
@@ -2540,7 +2540,7 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 			{
-				type: LumiaVariationConditions.USER_LEVEL,
+				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
 			},
 		],
 	},
@@ -2872,7 +2872,7 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 			{
-				type: LumiaVariationConditions.USER_LEVEL,
+				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
 			},
 		],
 	},
@@ -3084,7 +3084,7 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 			{
-				type: LumiaVariationConditions.USER_LEVEL,
+				type: LumiaVariationConditions.EQUAL_USER_LEVEL,
 			},
 		],
 	},
