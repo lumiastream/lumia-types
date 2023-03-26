@@ -370,7 +370,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
-		acceptedVariables: ['username', 'userId', 'displayname', 'avatar'],
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2327,7 +2327,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
-		acceptedVariables: ['username', 'userId', 'avatar'],
+		acceptedVariables: ['username', 'userId', 'avatar', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2527,7 +2527,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
-		acceptedVariables: ['username'],
+		acceptedVariables: ['username', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2856,7 +2856,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
-		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'displayname', 'avatar', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -3065,7 +3065,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
-		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'displayname', 'avatar', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
