@@ -190,6 +190,7 @@ export type LumiaAlertBrands =
 	| 'woocommerce'
 	| 'kofi'
 	| 'tiktok'
+	| 'kick'
 	| 'streamerbot'
 	| 'pulse';
 
