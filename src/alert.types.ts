@@ -10,6 +10,7 @@ export enum LumiaVariationConditions {
 	EQUAL_SELECTION = 'EQUAL_SELECTION',
 	EQUAL_CURRENCY_NUMBER = 'EQUAL_CURRENCY_NUMBER',
 	GREATER_CURRENCY_NUMBER = 'GREATER_CURRENCY_NUMBER',
+	EQUAL_USER_LEVEL = 'EQUAL_USER_LEVEL',
 
 	// Twitch Sub Variations
 	SUBSCRIBED_MONTHS_EQUAL = 'SUBSCRIBED_MONTHS_EQUAL',
@@ -353,7 +354,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter and has been first {{first_count}} times!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -361,6 +362,19 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.TWITCH_ENTRANCE]: {
+		connection: 'twitch',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'message'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 		],
 	},
@@ -2297,7 +2311,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'userId', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'userId', 'avatar', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2305,6 +2319,19 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.YOUTUBE_ENTRANCE]: {
+		connection: 'youtube',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'userId', 'avatar', 'message'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 		],
 	},
@@ -2484,7 +2511,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'first_count'],
+		acceptedVariables: ['username', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2492,6 +2519,19 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.FACEBOOK_ENTRANCE]: {
+		connection: 'facebook',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'message'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 		],
 	},
@@ -2800,7 +2840,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2808,6 +2848,19 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.TROVO_ENTRANCE]: {
+		connection: 'trovo',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'message'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 		],
 	},
@@ -2996,7 +3049,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -3004,6 +3057,19 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.TIKTOK_ENTRANCE]: {
+		connection: 'tiktok',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'message'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
 			},
 		],
 	},
