@@ -354,7 +354,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter and has been first {{first_count}} times!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'userId', 'displayname', 'avatar', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2311,7 +2311,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'userId', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'userId', 'avatar', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2511,7 +2511,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'first_count'],
+		acceptedVariables: ['username', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2840,7 +2840,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -3049,7 +3049,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
-		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count'],
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count', 'message'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
