@@ -3313,6 +3313,144 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	// },
+	// kick: {
+	[LumiaAlertValues.KICK_FIRST_CHATTER]: {
+		connection: 'kick',
+		message: '{{username}} is the first chatter!',
+		eventlistMessage: 'First Chatter',
+		eventlistDetailedMessage: 'was the first chatter',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count', 'message'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.KICK_ENTRANCE]: {
+		connection: 'kick',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'message'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.KICK_FOLLOWER]: {
+		connection: 'kick',
+		message: '{{username}} just followed',
+		eventlistMessage: 'Followed',
+		eventlistDetailedMessage: 'became a follower',
+		acceptedVariables: ['username'],
+		quickActions: [
+			{
+				label: 'New Follow',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.KICK_SUBSCRIBER]: {
+		connection: 'kick',
+		message: '{{username}} just subscribed',
+		eventlistMessage: 'Subscribed',
+		eventlistDetailedMessage: 'became a subscriber',
+		acceptedVariables: ['username'],
+		quickActions: [
+			{
+				label: 'New Subscriber',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.IS_GIFT,
+			},
+		],
+	},
+	[LumiaAlertValues.KICK_GIFT_SUBSCRIPTION]: {
+		connection: 'kick',
+		message: '{{gifter}} sent {{amount}} gift subscriptions',
+		eventlistMessage: 'Gift Subscriptions',
+		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
+		acceptedVariables: ['username', 'gifter', 'recipient', 'value', 'giftAmount', 'totalGifts'],
+		quickActions: [
+			{
+				label: '1 gift',
+				dynamic: { value: 1 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					gifter: 'lumiastream',
+					amount: 1,
+				},
+			},
+			{
+				label: '5 gifts',
+				dynamic: { value: 5 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 5 },
+			},
+			{
+				label: '20 gifts',
+				dynamic: { value: 20 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 20 },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Gifter',
+				variableField: 'gifter',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
+	},
+	// },
 	// streamlabs: {
 	[LumiaAlertValues.STREAMLABS_DONATION]: {
 		connection: 'streamlabs',
