@@ -236,6 +236,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TWITCH_STREAM_LIVE]: 'Twitch Stream Live',
 	[LumiaAlertValues.TWITCH_STREAM_OFFLINE]: 'Twitch Stream Offline',
 	[LumiaAlertValues.TWITCH_FIRST_CHATTER]: 'Twitch First Chatter',
+	[LumiaAlertValues.TWITCH_ENTRANCE]: 'Twitch Entrance',
 	[LumiaAlertValues.TWITCH_FOLLOWER]: 'Twitch Follower',
 	[LumiaAlertValues.TWITCH_SUBSCRIBER]: 'Twitch Subscriber',
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: 'Twitch Gift Subscription',
