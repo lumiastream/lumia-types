@@ -137,11 +137,11 @@ export const LumiaAlertConfigs: Record<
 	}
 > = {
 	// lumia: {
-	[LumiaAlertValues.LUMIASTREAM_TIP]: {
+	[LumiaAlertValues.LUMIASTREAM_DONATION]: {
 		connection: 'lumiastream',
-		message: '{{username}} just tipped {{amount}}. They said {{message}}',
-		eventlistMessage: 'Tip',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		message: '{{username}} just donated {{amount}}. They said {{message}}',
+		eventlistMessage: 'Donation',
+		eventlistDetailedMessage: 'donated {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'avatar', 'sender_social_link', 'currency', 'amount', 'message', 'anonymous', 'command'],
 		quickActions: [
 			{

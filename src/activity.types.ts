@@ -93,7 +93,7 @@ export enum LumiaExternalActivityCommandTypes {
 }
 
 export enum LumiaAlertValues {
-	LUMIASTREAM_TIP = 'lumiastream-tip',
+	LUMIASTREAM_DONATION = 'lumiastream-donation',
 	SYSTEM_LUMIA_OPENED = 'system-lumiaOpened',
 	SYSTEM_LUMIA_CLOSED = 'system-lumiaClosed',
 	SYSTEM_STREAMMODE_ON = 'system-streammodeOn',
