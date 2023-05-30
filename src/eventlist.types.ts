@@ -25,6 +25,7 @@ export enum LumiaEventListTypes {
 }
 
 export const LumiaMapAlertTypeToEventListType = {
+	[LumiaAlertValues.LUMIASTREAM_TIP]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.DONORDRIVE_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.EXTRALIFE_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.FACEBOOK_FAN]: LumiaEventListTypes.FANS,

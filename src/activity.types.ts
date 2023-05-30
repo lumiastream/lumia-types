@@ -97,6 +97,7 @@ export enum LumiaAlertValues {
 	SYSTEM_LUMIA_CLOSED = 'system-lumiaClosed',
 	SYSTEM_STREAMMODE_ON = 'system-streammodeOn',
 	SYSTEM_STREAMMODE_OFF = 'system-streammodeOff',
+	LUMIASTREAM_TIP = 'lumiastream-tip',
 	TWITCH_EXTENSION = 'twitch-extension',
 	TWITCH_POINTS = 'twitch-points',
 	TWITCH_STREAM_LIVE = 'twitch-streamLive',

@@ -112,7 +112,7 @@ export const LumiaAlertConfigs: Record<
 		quickActions?: Array<{
 			label: string;
 			dynamic: LumiaDynamicCondition;
-			extraSettings?: Record<string, string | number>;
+			extraSettings?: Record<string, string | number | boolean>;
 		}>;
 		inputFields?: Array<{
 			type: 'text' | 'number' | 'selection' | 'check' | 'currency';
@@ -137,6 +137,92 @@ export const LumiaAlertConfigs: Record<
 	}
 > = {
 	// lumia: {
+	[LumiaAlertValues.LUMIASTREAM_TIP]: {
+		connection: 'lumiastream',
+		message: '{{username}} just tipped {{amount}}. They said {{message}}',
+		eventlistMessage: 'Tip',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		acceptedVariables: ['username', 'avatar', 'sender_social_link', 'currency', 'amount', 'message', 'anonymous', 'command'],
+		quickActions: [
+			{
+				label: '$100',
+				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					sender_social_link: 'https://twitch.tv/lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+					anonymous: false,
+				},
+			},
+			{
+				label: '$200',
+				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					sender_social_link: 'https://twitch.tv/lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 200,
+					currency: LumiaVariationCurrency.USD,
+					anonymous: false,
+				},
+			},
+			{
+				label: '$300',
+				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					sender_social_link: 'https://twitch.tv/lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 300,
+					currency: LumiaVariationCurrency.USD,
+					anonymous: false,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+			{
+				type: 'text',
+				label: 'Message',
+				variableField: 'message',
+				required: false,
+				default: 'Great Stream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+		],
+	},
 	[LumiaAlertValues.SYSTEM_LUMIA_OPENED]: {
 		connection: 'lumiastream',
 		message: 'Lumia opened',
