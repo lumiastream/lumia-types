@@ -2872,54 +2872,6 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	// },
-	// glimesh: {
-	[LumiaAlertValues.GLIMESH_FOLLOWER]: {
-		connection: 'glimesh',
-		message: '{{username}} just followed',
-		acceptedVariables: ['username'],
-		quickActions: [
-			{
-				label: 'New Follow',
-				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Username',
-				variableField: 'username',
-				required: false,
-				default: 'lumiastream',
-			},
-		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
-	},
-	[LumiaAlertValues.GLIMESH_SUBSCRIBER]: {
-		connection: 'glimesh',
-		message: '{{username}} just subscribed',
-		eventlistMessage: 'Subscribed',
-		eventlistDetailedMessage: 'became a subscriber',
-		acceptedVariables: ['username'],
-		quickActions: [
-			{
-				label: 'New Subscriber',
-				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Username',
-				variableField: 'username',
-				required: false,
-				default: 'lumiastream',
-			},
-		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
-	},
-	// },
 	// trovo: {
 	[LumiaAlertValues.TROVO_FIRST_CHATTER]: {
 		connection: 'trovo',

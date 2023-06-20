@@ -141,7 +141,7 @@ export interface ILumiaLight {
 	id: string | number;
 }
 
-export type LumiaPlatforms = 'twitch' | 'youtube' | 'facebook' | 'trovo' | 'glimesh';
+export type LumiaPlatforms = 'twitch' | 'youtube' | 'facebook' | 'trovo';
 type LightBrands =
 	| 'hue'
 	| 'nanoleaf'
@@ -170,7 +170,6 @@ export type LumiaAlertBrands =
 	| 'lumiastream'
 	| 'twitch'
 	| 'facebook'
-	| 'glimesh'
 	| 'trovo'
 	| 'youtube'
 	| 'streamlabs'
@@ -213,7 +212,6 @@ type EventOrigins =
 	| 'twitch'
 	| 'youtube'
 	| 'facebook'
-	| 'glimesh'
 	| 'trovo'
 	| 'streamlabs'
 	| 'streamelements'
