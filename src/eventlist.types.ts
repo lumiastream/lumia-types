@@ -35,8 +35,6 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.FACEBOOK_SHARE]: LumiaEventListTypes.SHARES,
 	[LumiaAlertValues.FACEBOOK_STAR]: LumiaEventListTypes.STARS,
 	[LumiaAlertValues.FACEBOOK_SUPPORT]: LumiaEventListTypes.SUBSCRIBERS,
-	[LumiaAlertValues.GLIMESH_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
-	[LumiaAlertValues.GLIMESH_SUBSCRIBER]: LumiaEventListTypes.SUBSCRIBERS,
 	[LumiaAlertValues.KOFI_COMMISSION]: LumiaEventListTypes.PURCHASES,
 	[LumiaAlertValues.KOFI_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.KOFI_SHOPORDER]: LumiaEventListTypes.PURCHASES,
