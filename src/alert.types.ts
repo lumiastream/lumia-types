@@ -3353,6 +3353,14 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: ['eventTime'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
+	[LumiaAlertValues.TIKTOK_NEW_VIDEO]: {
+		connection: 'tiktok',
+		message: 'Tiktok new video',
+		eventlistMessage: 'New video',
+		eventlistDetailedMessage: 'new video',
+		acceptedVariables: ['title', 'description', 'embed', 'link', 'id', 'duration', 'likes', 'shares', 'views', 'comments'],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	// },
 	// kick: {
 	[LumiaAlertValues.KICK_FIRST_CHATTER]: {
