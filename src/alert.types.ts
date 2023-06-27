@@ -324,7 +324,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
-		acceptedVariables: ['title', 'description', 'type', 'raffle_winner', 'raffle_winners', 'raffle_entry_command', 'duration'],
+		acceptedVariables: ['title', 'description', 'type', 'raffle_winner', 'raffle_winner_avatar', 'raffle_winners', 'raffle_entry_command', 'duration'],
 		quickActions: [
 			{
 				label: 'My bright raffle',
