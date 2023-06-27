@@ -21,6 +21,7 @@ export enum LumiaEventListTypes {
 	STARS = 'stars',
 	FANS = 'fans',
 	SHARES = 'shares',
+	RAFFLE = 'raffles',
 	OTHERS = 'others',
 }
 
@@ -28,6 +29,9 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.LUMIASTREAM_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.DONORDRIVE_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.EXTRALIFE_DONATION]: LumiaEventListTypes.DONATION,
+	[LumiaAlertValues.RAFFLE_START]: LumiaEventListTypes.RAFFLE,
+	[LumiaAlertValues.RAFFLE_STOP]: LumiaEventListTypes.RAFFLE,
+	[LumiaAlertValues.RAFFLE_WINNER]: LumiaEventListTypes.RAFFLE,
 	[LumiaAlertValues.FACEBOOK_FAN]: LumiaEventListTypes.FANS,
 	[LumiaAlertValues.FACEBOOK_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.FACEBOOK_GIFT_SUBSCRIPTION]: LumiaEventListTypes.GIFTS,
