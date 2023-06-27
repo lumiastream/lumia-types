@@ -247,6 +247,128 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
+	[LumiaAlertValues.RAFFLE_START]: {
+		connection: 'lumiastream',
+		message: '{{title}} started! Type {{raffle_entry_command}} to enter',
+		eventlistMessage: 'Raffle Start',
+		eventlistDetailedMessage: '{{title}} started! Type {{raffle_entry_command}} to enter',
+		acceptedVariables: ['title', 'description', 'type', 'raffle_entry_command'],
+		quickActions: [
+			{
+				label: 'My bright raffle',
+				dynamic: { value: 'My bright raffle' },
+				extraSettings: {
+					title: 'My bright raffle',
+					description: 'Raffle only for the brightest streamers',
+					type: 'userList',
+					raffle_entry_command: '!join',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Title',
+				variableField: 'title',
+				required: false,
+				default: '',
+			},
+			{
+				type: 'text',
+				label: 'Description',
+				variableField: 'description',
+				required: false,
+				default: '',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.RAFFLE_STOP]: {
+		connection: 'lumiastream',
+		message: '{{title}} has stopped! Winners will be drawn soon',
+		eventlistMessage: 'Raffle Stop',
+		eventlistDetailedMessage: '{{title}} has stopped! Winners will be drawn soon',
+		acceptedVariables: ['title', 'description', 'type', 'raffle_entry_command', 'duration'],
+		quickActions: [
+			{
+				label: 'My bright raffle',
+				dynamic: { value: 'My bright raffle' },
+				extraSettings: {
+					title: 'My bright raffle',
+					description: 'Raffle only for the brightest streamers',
+					type: 'userList',
+					raffle_entry_command: '!join',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Title',
+				variableField: 'title',
+				required: false,
+				default: '',
+			},
+			{
+				type: 'text',
+				label: 'Description',
+				variableField: 'description',
+				required: false,
+				default: '',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.RAFFLE_WINNER]: {
+		connection: 'lumiastream',
+		message: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
+		eventlistMessage: 'Raffle Stop',
+		eventlistDetailedMessage: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
+		acceptedVariables: ['title', 'description', 'type', 'raffle_winner', 'raffle_winners', 'raffle_entry_command', 'duration'],
+		quickActions: [
+			{
+				label: 'My bright raffle',
+				dynamic: { value: 'My bright raffle' },
+				extraSettings: {
+					title: 'My bright raffle',
+					description: 'Raffle only for the brightest streamers',
+					type: 'userList',
+					raffle_entry_command: '!join',
+					raffle_winner: 'lumiastream',
+					raffle_winners: 'lumiastream,lumiacove,lumiatwitch',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Title',
+				variableField: 'title',
+				required: false,
+				default: '',
+			},
+			{
+				type: 'text',
+				label: 'Description',
+				variableField: 'description',
+				required: false,
+				default: '',
+			},
+			{
+				type: 'text',
+				label: 'Winner',
+				variableField: 'winner',
+				required: true,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
 		connection: 'twitch',
