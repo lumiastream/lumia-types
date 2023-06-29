@@ -5587,7 +5587,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.OBS_VENDOR_EVENT]: {
 		connection: 'obs',
 		message: 'OBS vendor event',
-		acceptedVariables: ['type', 'raw_output'],
+		acceptedVariables: ['eventType', 'eventData', 'vendorName'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
