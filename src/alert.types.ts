@@ -5572,6 +5572,29 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: ['output_path'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
+	[LumiaAlertValues.OBS_REPLAY_BUFFER_SAVED]: {
+		connection: 'obs',
+		message: 'OBS replay buffer saved',
+		acceptedVariables: ['saved_path'],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.OBS_VERTICAL_BACKTRACK_SAVED]: {
+		connection: 'obs',
+		message: 'OBS recording stopped',
+		acceptedVariables: ['saved_path'],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.OBS_VENDOR_EVENT]: {
+		connection: 'obs',
+		message: 'OBS vendor event',
+		acceptedVariables: ['type', 'raw_output'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
 	// },
 	// slobs: {
 	[LumiaAlertValues.SLOBS_SWITCH_SCENE]: {
