@@ -249,10 +249,10 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.RAFFLE_START]: {
 		connection: 'lumiastream',
-		message: '{{title}} started! Type {{raffle_entry_command}} to enter',
+		message: '{{raffle_title}} started! Type {{raffle_entry_command}} to enter',
 		eventlistMessage: 'Raffle Start',
-		eventlistDetailedMessage: '{{title}} started! Type {{raffle_entry_command}} to enter',
-		acceptedVariables: ['title', 'description', 'type', 'raffle_entry_command'],
+		eventlistDetailedMessage: '{{raffle_title}} started! Type {{raffle_entry_command}} to enter',
+		acceptedVariables: ['raffle_title', 'description', 'type', 'raffle_entry_command'],
 		quickActions: [
 			{
 				label: 'My bright raffle',
@@ -269,7 +269,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Title',
-				variableField: 'title',
+				variableField: 'raffle_title',
 				required: false,
 				default: '',
 			},
@@ -285,10 +285,10 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.RAFFLE_STOP]: {
 		connection: 'lumiastream',
-		message: '{{title}} has stopped! Winners will be drawn soon',
+		message: '{{raffle_title}} has stopped! Winners will be drawn soon',
 		eventlistMessage: 'Raffle Stop',
-		eventlistDetailedMessage: '{{title}} has stopped! Winners will be drawn soon',
-		acceptedVariables: ['title', 'description', 'type', 'raffle_entry_command', 'duration'],
+		eventlistDetailedMessage: '{{raffle_title}} has stopped! Winners will be drawn soon',
+		acceptedVariables: ['raffle_title', 'description', 'type', 'raffle_entry_command', 'duration'],
 		quickActions: [
 			{
 				label: 'My bright raffle',
@@ -305,7 +305,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Title',
-				variableField: 'title',
+				variableField: 'raffle_title',
 				required: false,
 				default: '',
 			},
@@ -324,7 +324,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
-		acceptedVariables: ['title', 'description', 'type', 'raffle_winner', 'raffle_winner_avatar', 'raffle_winners', 'raffle_entry_command', 'duration'],
+		acceptedVariables: ['raffle_title', 'description', 'type', 'raffle_winner', 'raffle_winner_avatar', 'raffle_winners', 'raffle_entry_command', 'duration'],
 		quickActions: [
 			{
 				label: 'My bright raffle',
@@ -343,7 +343,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Title',
-				variableField: 'title',
+				variableField: 'raffle_title',
 				required: false,
 				default: '',
 			},
