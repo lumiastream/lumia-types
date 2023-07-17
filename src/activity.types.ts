@@ -6,6 +6,7 @@ export enum LumiaStreamingSites {
 	TIKTOK = 'tiktok',
 	KICK = 'kick',
 	TWITTER = 'twitter',
+	DISCORD = 'discord',
 }
 
 // Any type of activity that can come in through the app. Anything that changes colors or accessories should be here
