@@ -191,6 +191,7 @@ export type LumiaAlertBrands =
 	| 'tiktok'
 	| 'kick'
 	| 'streamerbot'
+	| 'discord'
 	| 'pulse';
 
 export enum LumiaEventTypes {

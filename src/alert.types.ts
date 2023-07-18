@@ -3622,6 +3622,37 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
 	// },
+	// discord: {
+	[LumiaAlertValues.DISCORD_FIRST_CHATTER]: {
+		connection: 'discord',
+		message: '{{username}} is the first chatter!',
+		eventlistMessage: 'First Chatter',
+		eventlistDetailedMessage: 'was the first chatter',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'first_count', 'message'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.DISCORD_ENTRANCE]: {
+		connection: 'discord',
+		message: 'Welcome {{username}}',
+		eventlistMessage: 'Entrance',
+		eventlistDetailedMessage: '',
+		acceptedVariables: ['username', 'displayname', 'avatar', 'message'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	// },
 	// streamlabs: {
 	[LumiaAlertValues.STREAMLABS_DONATION]: {
 		connection: 'streamlabs',
