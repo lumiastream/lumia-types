@@ -192,7 +192,8 @@ export type LumiaAlertBrands =
 	| 'kick'
 	| 'streamerbot'
 	| 'discord'
-	| 'pulse';
+	| 'pulse'
+	| 'youtubemusic';
 
 export enum LumiaEventTypes {
 	STATES = 'states',
