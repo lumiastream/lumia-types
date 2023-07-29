@@ -5006,7 +5006,7 @@ export const LumiaAlertConfigs: Record<
 				extraSettings: {
 					name: 'Lumia Dream',
 					uri: 'https://open.spotify.com/track/3vBn6l5T2AWm4NlqNWE43f',
-					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 				},
 			},
 		],
@@ -5031,7 +5031,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Image URI',
 				variableField: 'image',
 				required: false,
-				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 			},
 		],
 		LumiaVariationConditions: [
@@ -5055,7 +5055,7 @@ export const LumiaAlertConfigs: Record<
 				extraSettings: {
 					name: 'Lumia Dream',
 					uri: 'https://open.spotify.com/track/3vBn6l5T2AWm4NlqNWE43f',
-					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 				},
 			},
 		],
@@ -5080,7 +5080,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Image URI',
 				variableField: 'image',
 				required: false,
-				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 			},
 		],
 		LumiaVariationConditions: [
@@ -5104,7 +5104,7 @@ export const LumiaAlertConfigs: Record<
 				extraSettings: {
 					name: 'Lumia Dream',
 					uri: 'https://open.spotify.com/track/3vBn6l5T2AWm4NlqNWE43f',
-					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 				},
 			},
 		],
@@ -5129,7 +5129,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Image URI',
 				variableField: 'image',
 				required: false,
-				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 			},
 		],
 		LumiaVariationConditions: [
@@ -5139,7 +5139,156 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	// spotify: {
+	// },
+	// youtubemusic: {
+	[LumiaAlertValues.YOUTUBEMUSIC_SWITCH_SONG]: {
+		connection: 'youtubemusic',
+		message: 'Song switched to {{name}}',
+		eventlistSpecialUsername: 'Youtubemusic',
+		eventlistMessage: 'Switch Song',
+		eventlistDetailedMessage: 'song switched to {{name}} - {{artists}}',
+		acceptedVariables: ['name', 'url', 'artists', 'image'],
+		quickActions: [
+			{
+				label: 'Song changed',
+				dynamic: { value: 'Lumia Dream' },
+				extraSettings: {
+					name: 'Lumia Dream',
+					url: 'https://music.youtube.com/watch?v=M8xO9hyYC4U',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'URL',
+				variableField: 'url',
+				required: false,
+				default: 'https://music.youtube.com/watch?v=M8xO9hyYC4U',
+			},
+			{
+				type: 'text',
+				label: 'Image URI',
+				variableField: 'image',
+				required: false,
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.YOUTUBEMUSIC_SONG_PLAYED]: {
+		connection: 'youtubemusic',
+		message: 'Song {{name}} is now playing',
+		eventlistSpecialUsername: 'Youtubemusic',
+		eventlistMessage: 'Song Played',
+		eventlistDetailedMessage: 'song {{name}} - {{artists}} playing',
+		acceptedVariables: ['name', 'url', 'artists', 'image'],
+		quickActions: [
+			{
+				label: 'Song played',
+				dynamic: { value: 'Lumia Dream' },
+				extraSettings: {
+					name: 'Lumia Dream',
+					url: 'https://music.youtube.com/watch?v=M8xO9hyYC4U',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'URL',
+				variableField: 'url',
+				required: false,
+				default: 'https://music.youtube.com/watch?v=M8xO9hyYC4U',
+			},
+			{
+				type: 'text',
+				label: 'Image URL',
+				variableField: 'image',
+				required: false,
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.YOUTUBEMUSIC_SONG_PAUSED]: {
+		connection: 'youtubemusic',
+		message: 'Song {{name}} paused',
+		eventlistSpecialUsername: 'Youtubemusic',
+		eventlistMessage: 'Song Paused',
+		eventlistDetailedMessage: 'paused',
+		acceptedVariables: ['name', 'url', 'image'],
+		quickActions: [
+			{
+				label: 'Song paused',
+				dynamic: { value: 'Lumia Dream' },
+				extraSettings: {
+					name: 'Lumia Dream',
+					url: 'https://music.youtube.com/watch?v=M8xO9hyYC4U',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'URL',
+				variableField: 'url',
+				required: false,
+				default: 'https://music.youtube.com/watch?v=M8xO9hyYC4U',
+			},
+			{
+				type: 'text',
+				label: 'Image URL',
+				variableField: 'image',
+				required: false,
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	// Nowplaying: {
 	[LumiaAlertValues.NOWPLAYING_SWITCH_SONG]: {
 		connection: 'nowplaying',
 		message: 'Song switched to {{title}}',
@@ -5155,7 +5304,7 @@ export const LumiaAlertConfigs: Record<
 					title: 'Lumia Dream',
 					artist: 'Lumia Stream',
 					url: 'https://open.spotify.com/track/3vBn6l5T2AWm4NlqNWE43f',
-					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 				},
 			},
 		],
@@ -5181,7 +5330,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Artwork',
 				variableField: 'artwork',
 				required: false,
-				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 			},
 		],
 		LumiaVariationConditions: [
@@ -5207,7 +5356,7 @@ export const LumiaAlertConfigs: Record<
 				extraSettings: {
 					name: 'Lumia Dream',
 					uri: 'https://open.spotify.com/track/3vBn6l5T2AWm4NlqNWE43f',
-					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 				},
 			},
 		],
@@ -5232,7 +5381,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Image URI',
 				variableField: 'image',
 				required: false,
-				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 			},
 		],
 		LumiaVariationConditions: [
@@ -5256,7 +5405,7 @@ export const LumiaAlertConfigs: Record<
 				extraSettings: {
 					name: 'Lumia Dream',
 					uri: 'https://open.spotify.com/track/3vBn6l5T2AWm4NlqNWE43f',
-					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 				},
 			},
 		],
@@ -5281,7 +5430,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Image URI',
 				variableField: 'image',
 				required: false,
-				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 			},
 		],
 		LumiaVariationConditions: [
@@ -5305,7 +5454,7 @@ export const LumiaAlertConfigs: Record<
 				extraSettings: {
 					name: 'Lumia Dream',
 					uri: 'https://open.spotify.com/track/3vBn6l5T2AWm4NlqNWE43f',
-					image: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+					image: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 				},
 			},
 		],
@@ -5330,7 +5479,7 @@ export const LumiaAlertConfigs: Record<
 				label: 'Image URI',
 				variableField: 'image',
 				required: false,
-				default: 'https://i.scdn.co/image/ab67616d00001e0236ebefef88d1990f6f4d62ef',
+				default: 'https://lh3.googleusercontent.com/hxcNF4a-5MZqN9HmIyPMlVm6AzQ6CI0MmisFqZTglun4VJ2Ghli4lvyQpJS2oeqjnT8a0S2EAWklTo14=w544-h544-l90-rj',
 			},
 		],
 		LumiaVariationConditions: [
