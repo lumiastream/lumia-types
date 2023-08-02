@@ -369,6 +369,212 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.SPINWHEEL_WINNER]: {
+		connection: 'lumiastream',
+		message: 'Congratulations {{spinwheel_winner}} for winning {{spinwheel_item}}!',
+		eventlistMessage: 'Raffle Stop',
+		eventlistDetailedMessage: 'Congratulations {{spinwheel_winner}} for winning {{spinwheel_item}}!',
+		acceptedVariables: ['spinwheel_winner', 'spinwheel_item', 'spinwheel_item_id', 'spinwheel_item_image', 'spinwheel_item_quantity_remaining', 'spinwheel_item_quantity_initial'],
+		quickActions: [
+			{
+				label: 'Light Bulbs',
+				dynamic: { value: 'Light Bulbs' },
+				extraSettings: {
+					spinwheel_winner: 'Lumia Stream',
+					spinwheel_item: 'Light Bulbs',
+					spinwheel_item_id: '123',
+					spinwheel_item_image: 'https://storage.lumiastream.com/overlays/2/946e20c5-35da-44f6-94cb-fe833c71d10b.gif',
+					spinwheel_item_quantity_remaining: 2,
+					spinwheel_item_quantity_initial: 4,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Item',
+				variableField: 'spinwheel_item',
+				required: true,
+				default: '',
+			},
+			{
+				type: 'text',
+				label: 'Winner',
+				variableField: 'spinwheel_winner',
+				required: true,
+				default: '',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.POLL_STARTED]: {
+		connection: 'lumiastream',
+		message: 'New poll started {{poll_title}} with choices {{poll_choices}}',
+		eventlistSpecialUsername: 'lumiastream',
+		eventlistMessage: 'Poll start',
+		eventlistDetailedMessage: 'Poll started {{poll_title}} with choices {{poll_choices}}',
+		acceptedVariables: ['poll_title', 'poll_id', 'poll_choices'],
+		quickActions: [
+			{
+				label: 'Poll Yes/No',
+				dynamic: { value: 'Is Lumia Stream the best' },
+				extraSettings: {
+					poll_title: 'Is Lumia Stream the best',
+					poll_choices: 'Yes,No',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Title',
+				dynamicField: 'value',
+				variableField: 'poll_title',
+				required: false,
+				default: 'Is Lumia Stream the best',
+			},
+			{
+				type: 'text',
+				label: 'Choices (Comma separated)',
+				variableField: 'poll_choices',
+				required: false,
+				default: 'Yes,No',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.POLL_PROGRESSED]: {
+		connection: 'lumiastream',
+		message: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
+		eventlistSpecialUsername: 'lumiastream',
+		eventlistMessage: 'Poll progressed',
+		eventlistDetailedMessage: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
+		acceptedVariables: ['poll_title', 'poll_id', 'poll_choices', 'poll_winning_title', 'poll_winning_id', 'poll_winning_votes', 'poll_total_votes'],
+		quickActions: [
+			{
+				label: 'Yes is winning',
+				dynamic: { value: 'Is Lumia Stream the best' },
+				extraSettings: {
+					poll_title: 'Is Lumia Stream the best',
+					poll_choices: 'Yes,No',
+					poll_winning_title: 'Yes',
+					poll_winning_votes: 10,
+				},
+			},
+			{
+				label: 'No is winning',
+				dynamic: { value: 'Is Lumia Stream the best' },
+				extraSettings: {
+					poll_title: 'Is Lumia Stream the best',
+					poll_choices: 'Yes,No',
+					poll_winning_title: 'No',
+					poll_winning_votes: 10,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Title',
+				variableField: 'poll_title',
+				required: false,
+				default: 'Is Lumia Stream the best',
+			},
+			{
+				type: 'text',
+				label: 'Choices (Comma separated)',
+				variableField: 'poll_choices',
+				required: false,
+				default: 'Yes,No',
+			},
+			{
+				type: 'text',
+				label: 'Winning choice',
+				dynamicField: 'value',
+				variableField: 'poll_winning_title',
+				required: true,
+				default: 'Yes',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.POLL_ENDED]: {
+		connection: 'lumiastream',
+		message: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
+		eventlistSpecialUsername: 'lumiastream',
+		eventlistMessage: 'Poll ended',
+		eventlistDetailedMessage: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
+		acceptedVariables: ['poll_title', 'poll_id', 'poll_choices', 'poll_winning_title', 'poll_winning_id', 'poll_winning_votes', 'poll_total_votes'],
+		quickActions: [
+			{
+				label: 'Yes won',
+				dynamic: { value: 'Is Lumia Stream the best' },
+				extraSettings: {
+					poll_title: 'Is Lumia Stream the best',
+					poll_choices: 'Yes,No',
+					poll_winning_title: 'Yes',
+					poll_winning_votes: 10,
+					poll_total_votes: 14,
+				},
+			},
+			{
+				label: 'No won',
+				dynamic: { value: 'Is Lumia Stream the best' },
+				extraSettings: {
+					poll_title: 'Is Lumia Stream the best',
+					poll_choices: 'Yes,No',
+					poll_winning_title: 'No',
+					poll_winning_votes: 10,
+					poll_total_votes: 15,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Title',
+				variableField: 'poll_title',
+				required: false,
+				default: 'Is Lumia Stream the best',
+			},
+			{
+				type: 'text',
+				label: 'Choices (Comma separated)',
+				variableField: 'poll_choices',
+				required: false,
+				default: 'Yes,No',
+			},
+			{
+				type: 'text',
+				label: 'Winning choice',
+				dynamicField: 'value',
+				variableField: 'poll_winning_title',
+				required: true,
+				default: 'Yes',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
 		connection: 'twitch',
