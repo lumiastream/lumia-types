@@ -101,7 +101,7 @@ export enum LumiaAlertValues {
 	RAFFLE_START = 'lumiastream-raffleStart',
 	RAFFLE_STOP = 'lumiastream-raffleStop',
 	RAFFLE_WINNER = 'lumiastream-raffleWinner',
-	SPINWHEEL_WINNER = 'lumiastream-spinWheelWinner',
+	SPINWHEEL_WINNER = 'lumiastream-spinwheelWinner',
 	POLL_STARTED = 'lumiastream-pollStarted',
 	POLL_PROGRESSED = 'lumiastream-pollProgressed',
 	POLL_ENDED = 'lumiastream-pollEnded',
