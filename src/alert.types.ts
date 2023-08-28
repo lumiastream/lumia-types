@@ -247,7 +247,7 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.RAFFLE_START]: {
+	[LumiaAlertValues.LUMIASTREAM_RAFFLE_START]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: '{{raffle_title}} started! Type {{raffle_entry_command}} to enter',
 		eventlistMessage: 'Raffle Start',
@@ -283,7 +283,7 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.RAFFLE_STOP]: {
+	[LumiaAlertValues.LUMIASTREAM_RAFFLE_STOP]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: '{{raffle_title}} has stopped! Winners will be drawn soon',
 		eventlistMessage: 'Raffle Stop',
@@ -319,7 +319,7 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.RAFFLE_WINNER]: {
+	[LumiaAlertValues.LUMIASTREAM_RAFFLE_WINNER]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
 		eventlistMessage: 'Raffle Stop',
@@ -369,7 +369,7 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.SPINWHEEL_WINNER]: {
+	[LumiaAlertValues.LUMIASTREAM_SPINWHEEL_WINNER]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Congratulations {{spinwheel_winner}} for winning {{spinwheel_item}}!',
 		eventlistMessage: 'Raffle Stop',
@@ -412,7 +412,7 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.POLL_STARTED]: {
+	[LumiaAlertValues.LUMIASTREAM_POLL_STARTED]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'New poll started {{poll_title}} with choices {{poll_choices}}',
 		eventlistSpecialUsername: 'lumiastream',
@@ -453,7 +453,7 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.POLL_PROGRESSED]: {
+	[LumiaAlertValues.LUMIASTREAM_POLL_PROGRESSED]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
 		eventlistSpecialUsername: 'lumiastream',
@@ -513,7 +513,7 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.POLL_ENDED]: {
+	[LumiaAlertValues.LUMIASTREAM_POLL_ENDED]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
 		eventlistSpecialUsername: 'lumiastream',
