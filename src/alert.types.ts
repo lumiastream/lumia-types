@@ -1,5 +1,5 @@
 import { LumiaAlertValues } from './activity.types';
-import { LumiaAlertBrands } from './event.types';
+import { LumiaIntegrations } from './event.types';
 
 export enum LumiaVariationConditions {
 	RANDOM = 'RANDOM', // Frequency: Percent Chance
@@ -103,7 +103,7 @@ export interface LumiaDynamicCondition {
 export const LumiaAlertConfigs: Record<
 	LumiaAlertValues | string,
 	{
-		connection: LumiaAlertBrands;
+		connection: LumiaIntegrations;
 		message: string;
 		eventlistSpecialUsername?: string;
 		eventlistMessage?: string;
@@ -138,7 +138,7 @@ export const LumiaAlertConfigs: Record<
 > = {
 	// lumia: {
 	[LumiaAlertValues.LUMIASTREAM_DONATION]: {
-		connection: 'lumiastream',
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -223,32 +223,32 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.SYSTEM_LUMIA_OPENED]: {
-		connection: 'lumiastream',
+	[LumiaAlertValues.LUMIASTREAM_LUMIA_OPENED]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Lumia opened',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.SYSTEM_LUMIA_CLOSED]: {
-		connection: 'lumiastream',
+	[LumiaAlertValues.LUMIASTREAM_LUMIA_CLOSED]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Lumia closed',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.SYSTEM_STREAMMODE_ON]: {
-		connection: 'lumiastream',
+	[LumiaAlertValues.LUMIASTREAM_STREAMMODE_ON]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'stream mode on',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.SYSTEM_STREAMMODE_OFF]: {
-		connection: 'lumiastream',
+	[LumiaAlertValues.LUMIASTREAM_STREAMMODE_OFF]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'stream mode off',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.RAFFLE_START]: {
-		connection: 'lumiastream',
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: '{{raffle_title}} started! Type {{raffle_entry_command}} to enter',
 		eventlistMessage: 'Raffle Start',
 		eventlistDetailedMessage: '{{raffle_title}} started! Type {{raffle_entry_command}} to enter',
@@ -284,7 +284,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.RAFFLE_STOP]: {
-		connection: 'lumiastream',
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: '{{raffle_title}} has stopped! Winners will be drawn soon',
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: '{{raffle_title}} has stopped! Winners will be drawn soon',
@@ -320,7 +320,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.RAFFLE_WINNER]: {
-		connection: 'lumiastream',
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
@@ -370,7 +370,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.SPINWHEEL_WINNER]: {
-		connection: 'lumiastream',
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Congratulations {{spinwheel_winner}} for winning {{spinwheel_item}}!',
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: 'Congratulations {{spinwheel_winner}} for winning {{spinwheel_item}}!',
@@ -413,7 +413,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.POLL_STARTED]: {
-		connection: 'lumiastream',
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'New poll started {{poll_title}} with choices {{poll_choices}}',
 		eventlistSpecialUsername: 'lumiastream',
 		eventlistMessage: 'Poll start',
@@ -454,7 +454,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.POLL_PROGRESSED]: {
-		connection: 'lumiastream',
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
 		eventlistSpecialUsername: 'lumiastream',
 		eventlistMessage: 'Poll progressed',
@@ -514,7 +514,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.POLL_ENDED]: {
-		connection: 'lumiastream',
+		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
 		eventlistSpecialUsername: 'lumiastream',
 		eventlistMessage: 'Poll ended',
@@ -577,7 +577,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} redeemed {{command}} for {{amount}} bits',
 		eventlistMessage: 'Redeemed',
 		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} bits',
@@ -665,7 +665,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_POINTS]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} redeemed {{command}} for {{amount}} points',
 		eventlistMessage: 'Redeemed',
 		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} points',
@@ -752,19 +752,19 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_STREAM_LIVE]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Twitch Stream is now live',
 		acceptedVariables: ['eventTime'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TWITCH_STREAM_OFFLINE]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Twitch Stream is offline',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TWITCH_FIRST_CHATTER]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} is the first chatter and has been first {{first_count}} times!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
@@ -780,7 +780,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_ENTRANCE]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
@@ -793,7 +793,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_FOLLOWER]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} is now following!',
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
@@ -817,7 +817,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_SUBSCRIBER]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} just subscribed!',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
@@ -976,7 +976,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{gifter}} gifted {{giftAmount}} subs!',
 		eventlistMessage: 'Gifted subscription',
 		eventlistDetailedMessage: 'gifted {{recipient}} a subscription',
@@ -1106,7 +1106,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_BITS]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} cheered {{amount}} bits. They said {{message}}',
 		eventlistMessage: 'Bits',
 		eventlistDetailedMessage: 'cheered {{amount}} bits',
@@ -1156,7 +1156,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_RAID]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} raided with {{viewers}} viewers',
 		eventlistMessage: 'Raided',
 		eventlistDetailedMessage: 'raided with {{viewers}} viewers',
@@ -1203,7 +1203,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Hype train started',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Hype train started',
@@ -1217,7 +1217,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_HYPETRAIN_PROGRESSED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Hype train progressed to {{progress}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Hype train progressed',
@@ -1261,7 +1261,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_HYPETRAIN_LEVEL_PROGRESSED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Hype train progressed to level {{level}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Hype train leveled up',
@@ -1315,7 +1315,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_HYPETRAIN_ENDED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Hype train ended on level {{level}} and reached a total of {{total}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Hype train ended',
@@ -1369,7 +1369,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_POLL_STARTED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'New poll started {{poll_title}} with choices {{poll_choices}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Poll start',
@@ -1410,7 +1410,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_POLL_PROGRESSED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Poll progressed',
@@ -1470,7 +1470,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_POLL_ENDED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Poll ended',
@@ -1530,7 +1530,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_PREDICTION_STARTED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Prediction started with the title {{prediction_title}}! Choices are {{prediction_outcome1_title}} or {{prediction_outcome2_title}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Prediction start',
@@ -1591,7 +1591,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TWITCH_PREDICTION_PROGRESSED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Prediction {{prediction_title}} progressed. The current leader is {{prediction_winning_outcome_title}} with {{prediction_winning_outcome_points}} points',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Prediction progressed',
@@ -1683,7 +1683,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.TWITCH_PREDICTION_LOCKED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Prediction {{prediction_title}} locked. The current leader is {{prediction_winning_outcome_title}} with {{prediction_winning_outcome_points}} points',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Prediction locked',
@@ -1775,7 +1775,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.TWITCH_PREDICTION_ENDED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Prediction {{prediction_title}} ended. The current leader is {{prediction_winning_outcome_title}} with {{prediction_winning_outcome_points}} points',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Prediction ended',
@@ -1867,7 +1867,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.TWITCH_GOAL_STARTED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Goal {{goal_description}} started with a target of {{goal_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Goal start',
@@ -1944,7 +1944,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TWITCH_GOAL_PROGRESSED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Goal {{goal_description}} progressed to {{goal_amount}} with a target of {{goal_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Goal progressed',
@@ -2021,7 +2021,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
 	[LumiaAlertValues.TWITCH_GOAL_ENDED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Goal {{goal_description}} ended at amount {{goal_amount}} with a target of {{goal_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Goal ended',
@@ -2110,7 +2110,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: {
-		connection: 'streamlabs',
+		connection: LumiaIntegrations.STREAMLABS,
 		message: '{{username}} just tipped {{amount}} to charity {{charity_name}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -2215,7 +2215,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_STARTED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Charity campaign {{charity_name}} started with a target of {{charity_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign start',
@@ -2278,7 +2278,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_PROGRESSED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Charity campaign {{charity_name}} progressed to {{charity_amount}} with a target of {{charity_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign progressed',
@@ -2339,7 +2339,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_STOPPED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Charity campaign {{charity_name}} ended at amount {{charity_amount}} with a target of {{charity_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign ended',
@@ -2406,7 +2406,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_CATEGORY]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Category changed to {{category_name}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Category {{category_name}}',
@@ -2446,7 +2446,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.TWITCH_CLIP]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: 'Clip taken by {{username}} with title of {{clip_title}}',
 		eventlistMessage: 'Clipped',
 		eventlistDetailedMessage: 'created a clip',
@@ -2502,7 +2502,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TWITCH_CHANNEL_JOIN]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} just joined the channel',
 		eventlistMessage: 'Join',
 		eventlistDetailedMessage: 'joined the channel',
@@ -2527,7 +2527,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.TWITCH_CHANNEL_LEAVE]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} just left the channel',
 		eventlistMessage: 'Left',
 		eventlistDetailedMessage: 'left the channel',
@@ -2552,7 +2552,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.TWITCH_BANNED]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} is banned',
 		eventlistMessage: 'Banned',
 		eventlistDetailedMessage: 'banned',
@@ -2588,7 +2588,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.TWITCH_TIMEOUT]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} is timed out',
 		eventlistMessage: 'Timeout',
 		eventlistDetailedMessage: 'timed out',
@@ -2632,7 +2632,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.TWITCH_TIMEOUT_OVER]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: "{{username}}'s timeout of {{duration}} seconds is over",
 		eventlistMessage: 'Timeout Over',
 		eventlistDetailedMessage: 'time out over',
@@ -2676,7 +2676,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.TWITCH_SHOUTOUT_RECEIVE]: {
-		connection: 'twitch',
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} sent you a shoutout',
 		eventlistMessage: 'Shoutout',
 		eventlistDetailedMessage: 'shoutout',
@@ -2709,19 +2709,19 @@ export const LumiaAlertConfigs: Record<
 	},
 	// youtube: {
 	[LumiaAlertValues.YOUTUBE_STREAM_LIVE]: {
-		connection: 'youtube',
+		connection: LumiaIntegrations.YOUTUBE,
 		message: 'YouTube Stream is now live',
 		acceptedVariables: ['eventTime'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.YOUTUBE_STREAM_OFFLINE]: {
-		connection: 'youtube',
+		connection: LumiaIntegrations.YOUTUBE,
 		message: 'YouTube Stream is offline',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.YOUTUBE_FIRST_CHATTER]: {
-		connection: 'youtube',
+		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
@@ -2737,7 +2737,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.YOUTUBE_ENTRANCE]: {
-		connection: 'youtube',
+		connection: LumiaIntegrations.YOUTUBE,
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
@@ -2750,7 +2750,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: {
-		connection: 'youtube',
+		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{username}} just subscribed!',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
@@ -2775,7 +2775,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.YOUTUBE_MEMBER]: {
-		connection: 'youtube',
+		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{username}} became a member!',
 		eventlistMessage: 'Member',
 		eventlistDetailedMessage: 'became a member',
@@ -2800,7 +2800,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: {
-		connection: 'youtube',
+		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{username}} just super chatted with {{amount}}. They said {{message}}',
 		eventlistMessage: 'Super Chat',
 		eventlistDetailedMessage: 'sent {{amount}} for a super chat',
@@ -2865,7 +2865,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER }, { type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER }],
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: {
-		connection: 'youtube',
+		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{username}} just sent a supersticker with {{amount}}',
 		eventlistMessage: 'Super Sticker',
 		eventlistDetailedMessage: 'sent a super sticker for {{amount}}',
@@ -2909,19 +2909,19 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// facebook: {
 	[LumiaAlertValues.FACEBOOK_STREAM_LIVE]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: 'Facebook Stream is now live',
 		acceptedVariables: ['eventTime'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.FACEBOOK_STREAM_OFFLINE]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: 'Facebook Stream is offline',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.FACEBOOK_FIRST_CHATTER]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
@@ -2937,7 +2937,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.FACEBOOK_ENTRANCE]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
@@ -2950,7 +2950,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.FACEBOOK_FOLLOWER]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: '{{username}} just followed',
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
@@ -2974,7 +2974,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.FACEBOOK_REACTION]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: '{{username}} reacted with a {{reaction}}',
 		eventlistMessage: '{{reaction}}',
 		eventlistDetailedMessage: 'reacted with a {{reaction}}',
@@ -3026,7 +3026,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
 	[LumiaAlertValues.FACEBOOK_STAR]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: '{{username}} sent {{amount}} stars',
 		eventlistMessage: 'Stars',
 		eventlistDetailedMessage: 'sent {{amount}} stars',
@@ -3068,7 +3068,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
 	[LumiaAlertValues.FACEBOOK_SUPPORT]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: '{{username}} just subscribed',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
@@ -3110,7 +3110,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
 	[LumiaAlertValues.FACEBOOK_GIFT_SUBSCRIPTION]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: '{{username}} sent {{amount}} gift subscriptions',
 		eventlistMessage: 'Gift Subscription',
 		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
@@ -3152,7 +3152,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
 	[LumiaAlertValues.FACEBOOK_SHARE]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: '{{username}} just shared your page',
 		eventlistMessage: 'Shared',
 		eventlistDetailedMessage: 'shared your page',
@@ -3176,7 +3176,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.FACEBOOK_FAN]: {
-		connection: 'facebook',
+		connection: LumiaIntegrations.FACEBOOK,
 		message: '{{username}} became a fan',
 		eventlistMessage: 'Fan',
 		eventlistDetailedMessage: 'became a fan',
@@ -3202,7 +3202,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// trovo: {
 	[LumiaAlertValues.TROVO_FIRST_CHATTER]: {
-		connection: 'trovo',
+		connection: LumiaIntegrations.TROVO,
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
@@ -3218,7 +3218,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TROVO_ENTRANCE]: {
-		connection: 'trovo',
+		connection: LumiaIntegrations.TROVO,
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
@@ -3231,7 +3231,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TROVO_CHANNEL_JOIN]: {
-		connection: 'trovo',
+		connection: LumiaIntegrations.TROVO,
 		message: '{{username}} just joined the channel',
 		eventlistMessage: 'Join',
 		eventlistDetailedMessage: 'joined the channel',
@@ -3255,7 +3255,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TROVO_FOLLOWER]: {
-		connection: 'trovo',
+		connection: LumiaIntegrations.TROVO,
 		message: '{{username}} just followed',
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
@@ -3279,7 +3279,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TROVO_SUBSCRIBER]: {
-		connection: 'trovo',
+		connection: LumiaIntegrations.TROVO,
 		message: '{{username}} just subscribed',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
@@ -3308,7 +3308,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TROVO_GIFT_SUBSCRIPTION]: {
-		connection: 'trovo',
+		connection: LumiaIntegrations.TROVO,
 		message: '{{gifter}} sent {{amount}} gift subscriptions',
 		eventlistMessage: 'Gift Subscriptions',
 		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
@@ -3362,7 +3362,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
 	[LumiaAlertValues.TROVO_RAID]: {
-		connection: 'trovo',
+		connection: LumiaIntegrations.TROVO,
 		message: '{{username}} raided with {{viewers}} viewers',
 		eventlistMessage: 'Raided',
 		eventlistDetailedMessage: 'raided with {{viewers}} viewers',
@@ -3411,7 +3411,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// tiktok: {
 	[LumiaAlertValues.TIKTOK_FIRST_CHATTER]: {
-		connection: 'tiktok',
+		connection: LumiaIntegrations.TIKTOK,
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
@@ -3427,7 +3427,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TIKTOK_ENTRANCE]: {
-		connection: 'tiktok',
+		connection: LumiaIntegrations.TIKTOK,
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
@@ -3440,7 +3440,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TIKTOK_FOLLOWER]: {
-		connection: 'tiktok',
+		connection: LumiaIntegrations.TIKTOK,
 		message: '{{username}} just followed',
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
@@ -3464,7 +3464,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TIKTOK_LIKE]: {
-		connection: 'tiktok',
+		connection: LumiaIntegrations.TIKTOK,
 		message: '{{username}} sent a like to make a total like count of {{totalLikeCount}}',
 		eventlistMessage: 'Liked',
 		eventlistDetailedMessage: 'sent a like',
@@ -3517,7 +3517,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
 	[LumiaAlertValues.TIKTOK_GIFT]: {
-		connection: 'tiktok',
+		connection: LumiaIntegrations.TIKTOK,
 		message: '{{username}} sent a gift {{giftName}} with count of {{coins}} coins',
 		eventlistMessage: 'Gift',
 		eventlistDetailedMessage: 'sent {{giftAmount}} gifts of {{giftName}}',
@@ -3621,7 +3621,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TIKTOK_SUBSCRIBER]: {
-		connection: 'tiktok',
+		connection: LumiaIntegrations.TIKTOK,
 		message: '{{username}} just subscribed',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
@@ -3650,7 +3650,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TIKTOK_SHARE]: {
-		connection: 'tiktok',
+		connection: LumiaIntegrations.TIKTOK,
 		message: '{{username}} shared your stream',
 		eventlistMessage: 'Shared',
 		eventlistDetailedMessage: 'shared your stream',
@@ -3674,7 +3674,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TIKTOK_STREAM_END]: {
-		connection: 'tiktok',
+		connection: LumiaIntegrations.TIKTOK,
 		message: 'Tiktok stream ended',
 		eventlistMessage: 'Stream ended',
 		eventlistDetailedMessage: 'stream ended',
@@ -3682,7 +3682,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TIKTOK_NEW_VIDEO]: {
-		connection: 'tiktok',
+		connection: LumiaIntegrations.TIKTOK,
 		message: 'Tiktok new video',
 		eventlistMessage: 'New video',
 		eventlistDetailedMessage: 'new video',
@@ -3692,7 +3692,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// kick: {
 	[LumiaAlertValues.KICK_FIRST_CHATTER]: {
-		connection: 'kick',
+		connection: LumiaIntegrations.KICK,
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
@@ -3708,7 +3708,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.KICK_ENTRANCE]: {
-		connection: 'kick',
+		connection: LumiaIntegrations.KICK,
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
@@ -3721,7 +3721,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.KICK_FOLLOWER]: {
-		connection: 'kick',
+		connection: LumiaIntegrations.KICK,
 		message: '{{username}} just followed',
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
@@ -3745,7 +3745,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.KICK_SUBSCRIBER]: {
-		connection: 'kick',
+		connection: LumiaIntegrations.KICK,
 		message: '{{username}} just subscribed',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
@@ -3774,7 +3774,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.KICK_GIFT_SUBSCRIPTION]: {
-		connection: 'kick',
+		connection: LumiaIntegrations.KICK,
 		message: '{{gifter}} sent {{amount}} gift subscriptions',
 		eventlistMessage: 'Gift Subscriptions',
 		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
@@ -3830,7 +3830,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// discord: {
 	[LumiaAlertValues.DISCORD_FIRST_CHATTER]: {
-		connection: 'discord',
+		connection: LumiaIntegrations.DISCORD,
 		message: '{{username}} is the first chatter!',
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
@@ -3846,7 +3846,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.DISCORD_ENTRANCE]: {
-		connection: 'discord',
+		connection: LumiaIntegrations.DISCORD,
 		message: 'Welcome {{username}}',
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
@@ -3861,7 +3861,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// streamlabs: {
 	[LumiaAlertValues.STREAMLABS_DONATION]: {
-		connection: 'streamlabs',
+		connection: LumiaIntegrations.STREAMLABS,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -3941,7 +3941,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.STREAMLABS_CHARITY]: {
-		connection: 'streamlabs',
+		connection: LumiaIntegrations.STREAMLABS,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -4021,7 +4021,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.STREAMLABS_MERCH]: {
-		connection: 'streamlabs',
+		connection: LumiaIntegrations.STREAMLABS,
 		message: '{{username}} just bought {{merch}}. They said {{message}}',
 		eventlistMessage: 'Merch',
 		eventlistDetailedMessage: 'bought {{merch}}',
@@ -4058,7 +4058,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.STREAMLABS_REDEMPTION]: {
-		connection: 'streamlabs',
+		connection: LumiaIntegrations.STREAMLABS,
 		message: '{{username}} just redeemed {{redemption}}. They said {{message}}',
 		eventlistMessage: 'Redeemed',
 		eventlistDetailedMessage: 'redeemed {{redemption}}',
@@ -4107,7 +4107,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.STREAMLABS_PRIMEGIFT]: {
-		connection: 'streamlabs',
+		connection: LumiaIntegrations.STREAMLABS,
 		message: '{{username}} sent a prime gift',
 		eventlistMessage: 'Prime Gift',
 		eventlistDetailedMessage: 'sent a prime gift',
@@ -4138,7 +4138,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// streamelements: {
 	[LumiaAlertValues.STREAMELEMENTS_DONATION]: {
-		connection: 'streamelements',
+		connection: LumiaIntegrations.STREAMELEMENTS,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -4218,7 +4218,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.STREAMELEMENTS_MERCH]: {
-		connection: 'streamelements',
+		connection: LumiaIntegrations.STREAMELEMENTS,
 		message: '{{username}} just bought {{merch}}. They said {{message}}',
 		eventlistMessage: 'Merch',
 		eventlistDetailedMessage: 'bought {{merch}}',
@@ -4291,7 +4291,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.STREAMELEMENTS_REDEMPTION]: {
-		connection: 'streamelements',
+		connection: LumiaIntegrations.STREAMELEMENTS,
 		message: '{{username}} just redeemed {{redemption}}. They said {{message}}',
 		eventlistMessage: 'Redemption',
 		eventlistDetailedMessage: 'redeemed {{redemption}}',
@@ -4342,9 +4342,8 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// extralife: {
 	[LumiaAlertValues.EXTRALIFE_DONATION]: {
-		connection: 'extralife',
+		connection: LumiaIntegrations.EXTRALIFE,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
-		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount', 'message'],
 		quickActions: [
@@ -4424,9 +4423,8 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// donordrive: {
 	[LumiaAlertValues.DONORDRIVE_DONATION]: {
-		connection: 'donordrive',
+		connection: LumiaIntegrations.DONORDRIVE,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
-		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
 		acceptedVariables: ['username', 'currency', 'amount', 'message'],
 		quickActions: [
@@ -4506,7 +4504,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// tiltify: {
 	[LumiaAlertValues.TILTIFY_DONATION]: {
-		connection: 'tiltify',
+		connection: LumiaIntegrations.TILTIFY,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -4588,7 +4586,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// patreon: {
 	[LumiaAlertValues.PATREON_PLEDGE]: {
-		connection: 'patreon',
+		connection: LumiaIntegrations.PATREON,
 		message: '{{username}} just pledged {{amount}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -4663,7 +4661,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// woocommerce: {
 	[LumiaAlertValues.WOOCOMMERCE_ORDER]: {
-		connection: 'woocommerce',
+		connection: LumiaIntegrations.WOOCOMMERCE,
 		message: 'Someone just ordered {{item}} in the amount of {{amount}}',
 		eventlistMessage: 'Order',
 		eventlistDetailedMessage: 'ordered {{item}}',
@@ -4746,7 +4744,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// kofi: {
 	[LumiaAlertValues.KOFI_DONATION]: {
-		connection: 'kofi',
+		connection: LumiaIntegrations.KOFI,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -4819,7 +4817,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.KOFI_SUBSCRIPTION]: {
-		connection: 'kofi',
+		connection: LumiaIntegrations.KOFI,
 		message: '{{username}} just subscribed with tier {{tier}}',
 		eventlistMessage: 'Subscription',
 		eventlistDetailedMessage: 'subscribed with tier {{tier}}',
@@ -4901,7 +4899,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.KOFI_COMMISSION]: {
-		connection: 'kofi',
+		connection: LumiaIntegrations.KOFI,
 		message: '{{username}} just commisioned with amount {{amount}}',
 		eventlistMessage: 'Commission',
 		eventlistDetailedMessage: 'commissioned with {{amount}} {{currency}}',
@@ -4974,7 +4972,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.KOFI_SHOPORDER]: {
-		connection: 'kofi',
+		connection: LumiaIntegrations.KOFI,
 		message: '{{username}} just created a shop order with amount {{amount}}',
 		eventlistMessage: 'Shop Order',
 		eventlistDetailedMessage: 'created a shop order with {{amount}} {{currency}}',
@@ -5049,7 +5047,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// twitter: {
 	[LumiaAlertValues.TWITTER_FOLLOWER]: {
-		connection: 'twitter',
+		connection: LumiaIntegrations.TWITTER,
 		message: '{{username}} just followed',
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
@@ -5103,7 +5101,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITTER_LIKE]: {
-		connection: 'twitter',
+		connection: LumiaIntegrations.TWITTER,
 		message: 'Reached a total likes of {{likes}} on Twitter',
 		eventlistSpecialUsername: 'Twitter',
 		eventlistMessage: 'Like',
@@ -5143,7 +5141,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITTER_RETWEET]: {
-		connection: 'twitter',
+		connection: LumiaIntegrations.TWITTER,
 		message: '{{username}} retweeted',
 		eventlistMessage: 'Retweet',
 		eventlistDetailedMessage: 'retweeted your tweet',
@@ -5199,7 +5197,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// spotify: {
 	[LumiaAlertValues.SPOTIFY_SWITCH_SONG]: {
-		connection: 'spotify',
+		connection: LumiaIntegrations.SPOTIFY,
 		message: 'Song switched to {{name}}',
 		eventlistSpecialUsername: 'Spotify',
 		eventlistMessage: 'Switch Song',
@@ -5248,7 +5246,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.SPOTIFY_SONG_PLAYED]: {
-		connection: 'spotify',
+		connection: LumiaIntegrations.SPOTIFY,
 		message: 'Song {{name}} is now playing',
 		eventlistSpecialUsername: 'Spotify',
 		eventlistMessage: 'Song Played',
@@ -5297,7 +5295,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.SPOTIFY_SONG_PAUSED]: {
-		connection: 'spotify',
+		connection: LumiaIntegrations.SPOTIFY,
 		message: 'Song {{name}} paused',
 		eventlistSpecialUsername: 'Spotify',
 		eventlistMessage: 'Song Paused',
@@ -5348,7 +5346,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// youtubemusic: {
 	[LumiaAlertValues.YOUTUBEMUSIC_SWITCH_SONG]: {
-		connection: 'youtubemusic',
+		connection: LumiaIntegrations.YOUTUBEMUSIC,
 		message: 'Song switched to {{name}}',
 		eventlistSpecialUsername: 'Youtubemusic',
 		eventlistMessage: 'Switch Song',
@@ -5397,7 +5395,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.YOUTUBEMUSIC_SONG_PLAYED]: {
-		connection: 'youtubemusic',
+		connection: LumiaIntegrations.YOUTUBEMUSIC,
 		message: 'Song {{name}} is now playing',
 		eventlistSpecialUsername: 'Youtubemusic',
 		eventlistMessage: 'Song Played',
@@ -5446,7 +5444,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.YOUTUBEMUSIC_SONG_PAUSED]: {
-		connection: 'youtubemusic',
+		connection: LumiaIntegrations.YOUTUBEMUSIC,
 		message: 'Song {{name}} paused',
 		eventlistSpecialUsername: 'Youtubemusic',
 		eventlistMessage: 'Song Paused',
@@ -5496,7 +5494,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	// Nowplaying: {
 	[LumiaAlertValues.NOWPLAYING_SWITCH_SONG]: {
-		connection: 'nowplaying',
+		connection: LumiaIntegrations.NOWPLAYING,
 		message: 'Song switched to {{title}}',
 		eventlistSpecialUsername: 'Now Playing',
 		eventlistMessage: 'Switch Song',
@@ -5549,7 +5547,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// vlc: {
 	[LumiaAlertValues.VLC_SWITCH_SONG]: {
-		connection: 'vlc',
+		connection: LumiaIntegrations.VLC,
 		message: 'Song switched to {{name}}',
 		eventlistSpecialUsername: 'VLC',
 		eventlistMessage: 'Song Switched',
@@ -5598,7 +5596,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.VLC_SONG_PLAYED]: {
-		connection: 'vlc',
+		connection: LumiaIntegrations.VLC,
 		message: 'Song {{name}} is now playing',
 		eventlistSpecialUsername: 'VLC',
 		eventlistMessage: 'Song Played',
@@ -5647,7 +5645,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.VLC_SONG_PAUSED]: {
-		connection: 'vlc',
+		connection: LumiaIntegrations.VLC,
 		message: 'Song {{name}} paused',
 		eventlistSpecialUsername: 'VLC',
 		eventlistMessage: 'Song Paused',
@@ -5698,7 +5696,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// treatstream: {
 	[LumiaAlertValues.TREATSTREAM_TREAT]: {
-		connection: 'treatstream',
+		connection: LumiaIntegrations.TREATSTREAM,
 		message: '{{username}} sent {{treat}}',
 		eventlistMessage: 'Treat',
 		eventlistDetailedMessage: 'sent {{treat}} treat',
@@ -5730,7 +5728,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// tipeeestream: {
 	[LumiaAlertValues.TIPEEESTREAM_DONATION]: {
-		connection: 'tipeeestream',
+		connection: LumiaIntegrations.TIPEEESTREAM,
 		message: '{{username}} just tipped {{amount}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -5805,7 +5803,7 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// obs: {
 	[LumiaAlertValues.OBS_SWITCH_SCENE]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS scene switched to {{scene}}',
 		acceptedVariables: ['scene'],
 		quickActions: [
@@ -5833,7 +5831,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.OBS_SCENE_ITEM_VISIBILITY]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS scene item {{item}} became visibile',
 		acceptedVariables: ['item'],
 		quickActions: [
@@ -5861,7 +5859,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.OBS_SCENE_ITEM_HIDDEN]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS scene item {{item}} became hidden',
 		acceptedVariables: ['item'],
 		quickActions: [
@@ -5889,7 +5887,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.OBS_SWITCH_PROFILE]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS profile switched to {{profile}}',
 		acceptedVariables: ['profile'],
 		quickActions: [
@@ -5917,61 +5915,61 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.OBS_SWITCH_TRANSITION]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS transition switched',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_TRANSITION_BEGIN]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS transition started',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_TRANSITION_END]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS transition ended',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_STREAM_STARTING]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS stream started',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_STREAM_STOPPING]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS stream stopped',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_RECORDING_STARTING]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS recording started',
 		acceptedVariables: ['output_path'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_RECORDING_STOPPING]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS recording stopped',
 		acceptedVariables: ['output_path'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_REPLAY_BUFFER_SAVED]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS replay buffer saved',
 		acceptedVariables: ['saved_path'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_VERTICAL_BACKTRACK_SAVED]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS recording stopped',
 		acceptedVariables: ['saved_path'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.OBS_VENDOR_EVENT]: {
-		connection: 'obs',
+		connection: LumiaIntegrations.OBS,
 		message: 'OBS vendor event',
 		acceptedVariables: ['eventType', 'eventData', 'vendorName'],
 		LumiaVariationConditions: [
@@ -5984,19 +5982,19 @@ export const LumiaAlertConfigs: Record<
 	// },
 	// slobs: {
 	[LumiaAlertValues.SLOBS_SWITCH_SCENE]: {
-		connection: 'slobs',
+		connection: LumiaIntegrations.SLOBS,
 		message: 'SLOBS scene switched to {{scene}}',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.SLOBS_SWITCH_SCENE_COLLECTION]: {
-		connection: 'slobs',
+		connection: LumiaIntegrations.SLOBS,
 		message: 'SLOBS scene collection switched',
 		acceptedVariables: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.SLOBS_SCENE_ITEM_VISIBILITY]: {
-		connection: 'slobs',
+		connection: LumiaIntegrations.SLOBS,
 		message: 'SLOBS scene item {{item}} became visibile',
 		acceptedVariables: ['item'],
 		quickActions: [
@@ -6024,7 +6022,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.SLOBS_SCENE_ITEM_HIDDEN]: {
-		connection: 'slobs',
+		connection: LumiaIntegrations.SLOBS,
 		message: 'SLOBS scene item {{item}} became hidden',
 		acceptedVariables: ['item'],
 		quickActions: [
@@ -6052,7 +6050,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.STREAMERBOT_ACTION]: {
-		connection: 'streamerbot',
+		connection: LumiaIntegrations.STREAMERBOT,
 		message: '{{action}} action triggered',
 		acceptedVariables: ['action', 'actionId'],
 		quickActions: [
@@ -6080,7 +6078,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.PULSE_HEARTRATE]: {
-		connection: 'pulse',
+		connection: LumiaIntegrations.PULSE,
 		message: 'Heart rate changed to {{heartrate}}',
 		acceptedVariables: ['heartrate', 'min_heartrate', 'max_heartrate'],
 		quickActions: [

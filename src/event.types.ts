@@ -13,7 +13,7 @@ export interface ILumiaSendPack {
 		hold?: boolean; // Sets this command to default or not
 		skipQueue?: boolean; // Skips the queue and instantly turns to this color
 
-		platform?: LumiaPlatforms;
+		platform?: LumiaIntegrations;
 
 		// Used for TTS
 		voice?: string;
@@ -29,8 +29,8 @@ export interface ILumiaSendPack {
 }
 
 export interface ILumiaEvent {
-	origin: EventOrigins;
-	subOrigin?: EventOrigins;
+	origin: LumiaIntegrations;
+	subOrigin?: LumiaIntegrations;
 	type: LumiaEventTypes;
 	data: ILumiaEventStateBody | ILumiaEventChatCommandBody | ILumiaEventChatBody | ILumiaEventAlertBody | ILumiaEventStateBody;
 }
@@ -141,7 +141,6 @@ export interface ILumiaLight {
 	id: string | number;
 }
 
-export type LumiaPlatforms = 'twitch' | 'youtube' | 'facebook' | 'trovo';
 type LightBrands =
 	| 'hue'
 	| 'nanoleaf'
@@ -166,34 +165,40 @@ type LightBrands =
 	| 'overlay'
 	| 'elgato';
 
-export type LumiaAlertBrands =
-	| 'lumiastream'
-	| 'twitch'
-	| 'facebook'
-	| 'trovo'
-	| 'youtube'
-	| 'streamlabs'
-	| 'streamelements'
-	| 'extralife'
-	| 'donordrive'
-	| 'tiltify'
-	| 'patreon'
-	| 'tipeeestream'
-	| 'treatstream'
-	| 'obs'
-	| 'slobs'
-	| 'spotify'
-	| 'nowplaying'
-	| 'vlc'
-	| 'twitter'
-	| 'woocommerce'
-	| 'kofi'
-	| 'tiktok'
-	| 'kick'
-	| 'streamerbot'
-	| 'discord'
-	| 'pulse'
-	| 'youtubemusic';
+export enum LumiaIntegrations {
+	LUMIASTREAM = 'lumiastream',
+	TWITCH = 'twitch',
+	YOUTUBE = 'youtube',
+	FACEBOOK = 'facebook',
+	TROVO = 'trovo',
+	TIKTOK = 'tiktok',
+	KICK = 'kick',
+	STREAMLABS = 'streamlabs',
+	STREAMELEMENTS = 'streamelements',
+	EXTRALIFE = 'extralife',
+	DONORDRIVE = 'donordrive',
+	TILTIFY = 'tiltify',
+	PATREON = 'patreon',
+	WOOCOMMERCE = 'woocommerce',
+	KOFI = 'kofi',
+	TIPEEESTREAM = 'tipeeestream',
+	TREATSTREAM = 'treatstream',
+	DISCORD = 'discord',
+	OBS = 'obs',
+	SLOBS = 'slobs',
+	PULSE = 'pulse',
+	PULSOID = 'pulsoid',
+	HYPERATE = 'hyperate',
+	ABLETON = 'ableton',
+	PAYPAL = 'paypal',
+	TWITTER = 'twitter',
+	SPOTIFY = 'spotify',
+	NOWPLAYING = 'nowplaying',
+	VLC = 'vlc',
+	STREAMERBOT = 'streamerbot',
+	YOUTUBEMUSIC = 'youtubemusic',
+	GAMESGLOW = 'gamesglow',
+}
 
 export enum LumiaEventTypes {
 	STATES = 'states',
@@ -208,27 +213,3 @@ export enum LumiaEventTypes {
 	GAMESGLOW_COMMAND = 'gamesglow_command',
 	GAMESGLOW_VIRTUALLIGHT = 'gamesglow_virtuallight',
 }
-
-type EventOrigins =
-	| 'lumia'
-	| 'twitch'
-	| 'youtube'
-	| 'facebook'
-	| 'trovo'
-	| 'streamlabs'
-	| 'streamelements'
-	| 'extralife'
-	| 'donordrive'
-	| 'tiltify'
-	| 'patreon'
-	| 'tipeeestream'
-	| 'treatstream'
-	| 'discord'
-	| 'obs'
-	| 'slobs'
-	| 'pulse'
-	| 'pulsoid'
-	| 'hyperate'
-	| 'ableton'
-	| 'streamerbot'
-	| 'paypal';

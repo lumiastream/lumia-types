@@ -18,8 +18,7 @@ export {
 	ILumiaEventAlertBody,
 	ILumiaEventStateBody,
 	ILumiaLight,
-	LumiaPlatforms,
-	LumiaAlertBrands,
+	LumiaIntegrations,
 	LumiaEventTypes,
 } from './event.types';
 export { LumiaEventListTypes, LumiaMapAlertTypeToEventListType } from './eventlist.types';
