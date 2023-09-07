@@ -185,7 +185,7 @@ export enum LumiaAlertValues {
 	KICK_ENTRANCE = 'kick-entrance',
 	KICK_FOLLOWER = 'kick-follower',
 	KICK_SUBSCRIBER = 'kick-subscriber',
-	KICK_GIFT_SUBSCRIPTION = 'kick-giftSubscription',
+	KICK_GIFT_SUBSCRIPTION = 'kick-subscriptionGift',
 	KICK_HOST = 'kick-host',
 	KICK_BANNED = 'kick-banned',
 	KICK_UNBANNED = 'kick-unbanned',
