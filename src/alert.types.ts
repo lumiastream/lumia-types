@@ -3874,6 +3874,78 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.KICK_BANNED]: {
+		connection: 'kick',
+		message: '{{username}} is banned',
+		eventlistMessage: 'Banned',
+		eventlistDetailedMessage: 'banned',
+		acceptedVariables: ['username', 'userId', 'bannedByUsername', 'bannedByUserId', 'expires'],
+		quickActions: [
+			{
+				label: 'Banned',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					bannedByUsername: 'lumiacove',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Banned By Username',
+				variableField: 'bannedByUsername',
+				required: false,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.KICK_UNBANNED]: {
+		connection: 'kick',
+		message: '{{username}} is unbanned',
+		eventlistMessage: 'Unbanned',
+		eventlistDetailedMessage: 'unbanned',
+		acceptedVariables: ['username', 'userId', 'unbannedByUsername', 'unbannedByUserId'],
+		quickActions: [
+			{
+				label: 'Unbanned',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					unbannedByUsername: 'lumiacove',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Unbanned By Username',
+				variableField: 'unbannedByUsername',
+				required: false,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	// },
 	// discord: {
 	[LumiaAlertValues.DISCORD_FIRST_CHATTER]: {
