@@ -3827,6 +3827,53 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
+	[LumiaAlertValues.KICK_HOST]: {
+		connection: 'kick',
+		message: '{{username}} hosted with {{viewers}} viewers',
+		eventlistMessage: 'Hosted',
+		eventlistDetailedMessage: 'hosted with {{viewers}} viewers',
+		acceptedVariables: ['username', 'avatar', 'viewers'],
+		quickActions: [
+			{
+				label: '10 viewers',
+				dynamic: { value: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10 },
+			},
+			{
+				label: '50 viewers',
+				dynamic: { value: 50 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50 },
+			},
+			{
+				label: '100 viewers',
+				dynamic: { value: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100 },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount of viewers',
+				dynamicField: 'value',
+				variableField: 'viewers',
+				required: true,
+				default: 100,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
 	// },
 	// discord: {
 	[LumiaAlertValues.DISCORD_FIRST_CHATTER]: {
