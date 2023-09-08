@@ -3828,7 +3828,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
 	[LumiaAlertValues.KICK_HOST]: {
-		connection: 'kick',
+		connection: LumiaIntegrations.KICK,
 		message: '{{username}} hosted with {{viewers}} viewers',
 		eventlistMessage: 'Hosted',
 		eventlistDetailedMessage: 'hosted with {{viewers}} viewers',
