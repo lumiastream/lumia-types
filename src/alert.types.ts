@@ -2707,6 +2707,64 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
 	},
+	[LumiaAlertValues.TWITCH_AD_STARTED]: {
+		connection: 'twitch',
+		message: 'ad started',
+		eventlistMessage: 'Ad Started',
+		eventlistDetailedMessage: 'ad started',
+		acceptedVariables: ['length', 'is_automatic', 'started_at'],
+		quickActions: [
+			{
+				label: 'Ad Started',
+				dynamic: { value: '60' },
+				extraSettings: {
+					length: '60',
+					is_automatic: false,
+					started_at: '2022-07-26T17:00:03.17106713Z',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Length',
+				dynamicField: 'value',
+				variableField: 'length',
+				required: true,
+				default: '60',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.TWITCH_AD_STOPPED]: {
+		connection: 'twitch',
+		message: 'ad stopped',
+		eventlistMessage: 'Ad Stopped',
+		eventlistDetailedMessage: 'ad stopped',
+		acceptedVariables: ['length', 'is_automatic', 'started_at'],
+		quickActions: [
+			{
+				label: 'Ad Stopped',
+				dynamic: { value: '60' },
+				extraSettings: {
+					length: '60',
+					is_automatic: false,
+					started_at: '2022-07-26T17:00:03.17106713Z',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Length',
+				dynamicField: 'value',
+				variableField: 'length',
+				required: true,
+				default: '60',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	// youtube: {
 	[LumiaAlertValues.YOUTUBE_STREAM_LIVE]: {
 		connection: 'youtube',
