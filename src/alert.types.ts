@@ -821,7 +821,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just subscribed!',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
-		acceptedVariables: ['username', 'avatar', 'subPlan', 'subPlanName', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message'],
+		acceptedVariables: ['username', 'avatar', 'subPlanName', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan'],
 		quickActions: [
 			{
 				label: 'Tier 1 Sub',
@@ -980,7 +980,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{gifter}} gifted {{giftAmount}} subs!',
 		eventlistMessage: 'Gifted subscription',
 		eventlistDetailedMessage: 'gifted {{recipient}} a subscription',
-		acceptedVariables: ['username', 'avatar', 'subPlan', 'subPlanName', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message'],
+		acceptedVariables: ['username', 'avatar', 'subPlanName', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan'],
 		quickActions: [
 			{
 				label: 'Gift 1 Sub',
