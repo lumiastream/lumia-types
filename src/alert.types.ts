@@ -821,7 +821,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just subscribed!',
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
-		acceptedVariables: ['username', 'avatar', 'tier', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+		acceptedVariables: ['username', 'avatar', 'subPlanName', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan'],
 		quickActions: [
 			{
 				label: 'Tier 1 Sub',
@@ -924,15 +924,15 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: 'selection',
-				label: 'Tier',
+				label: 'Sub Plan Name',
 				dynamicField: 'value',
-				variableField: 'subPlan',
-				default: 1000,
+				variableField: 'subPlanName',
+				default: 'Tier 1',
 				required: true,
 				selections: [
-					{ label: 'Tier 1', value: 1000 },
-					{ label: 'Tier 2', value: 2000 },
-					{ label: 'Tier 3', value: 3000 },
+					{ label: 'Tier 1', value: 'Tier 1' },
+					{ label: 'Tier 2', value: 'Tier 2' },
+					{ label: 'Tier 3', value: 'Tier 3' },
 					{ label: 'Prime', value: 'Prime' },
 				],
 			},
@@ -980,7 +980,7 @@ export const LumiaAlertConfigs: Record<
 		message: '{{gifter}} gifted {{giftAmount}} subs!',
 		eventlistMessage: 'Gifted subscription',
 		eventlistDetailedMessage: 'gifted {{recipient}} a subscription',
-		acceptedVariables: ['username', 'avatar', 'tier', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+		acceptedVariables: ['username', 'avatar', 'subPlanName', 'giftAmount', 'totalGifts', 'gifter', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan'],
 		quickActions: [
 			{
 				label: 'Gift 1 Sub',
