@@ -2741,7 +2741,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'ad stopped',
 		eventlistMessage: 'Ad Stopped',
 		eventlistDetailedMessage: 'ad stopped',
-		acceptedVariables: ['length', 'is_automatic', 'started_at', 'next_ad_starts', 'next_ad_starts_seconds', 'next_ad_starts_date'],
+		acceptedVariables: ['length', 'is_automatic', 'started_at', 'next_ad_starts', 'next_ad_starts_date'],
 		quickActions: [
 			{
 				label: 'Ad Stopped',
@@ -2750,8 +2750,7 @@ export const LumiaAlertConfigs: Record<
 					length: '60',
 					is_automatic: false,
 					started_at: '2022-07-26T17:00:03.17106713Z',
-					next_ad_starts: '10:20',
-					next_ad_starts_seconds: 900,
+					next_ad_starts: '1 hour, 5 minutes, 20 seconds',
 					next_ad_starts_date: '2022-07-26T17:00:05.17106713Z',
 				},
 			},
