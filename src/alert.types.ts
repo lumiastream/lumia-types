@@ -138,7 +138,7 @@ export const LumiaAlertConfigs: Record<
 > = {
 	// lumia: {
 	[LumiaAlertValues.LUMIASTREAM_DONATION]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
@@ -224,31 +224,31 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.SYSTEM_LUMIA_OPENED]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: 'Lumia opened',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.SYSTEM_LUMIA_CLOSED]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: 'Lumia closed',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.SYSTEM_STREAMMODE_ON]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: 'stream mode on',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.SYSTEM_STREAMMODE_OFF]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: 'stream mode off',
 		acceptedVariables: ['date'],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.RAFFLE_START]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: '{{raffle_title}} started! Type {{raffle_entry_command}} to enter',
 		eventlistMessage: 'Raffle Start',
 		eventlistDetailedMessage: '{{raffle_title}} started! Type {{raffle_entry_command}} to enter',
@@ -284,7 +284,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.RAFFLE_STOP]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: '{{raffle_title}} has stopped! Winners will be drawn soon',
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: '{{raffle_title}} has stopped! Winners will be drawn soon',
@@ -320,7 +320,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.RAFFLE_WINNER]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
@@ -370,7 +370,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.SPINWHEEL_WINNER]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: 'Congratulations {{spinwheel_winner}} for winning {{spinwheel_item}}!',
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: 'Congratulations {{spinwheel_winner}} for winning {{spinwheel_item}}!',
@@ -413,7 +413,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.POLL_STARTED]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: 'New poll started {{poll_title}} with choices {{poll_choices}}',
 		eventlistSpecialUsername: 'lumiastream',
 		eventlistMessage: 'Poll start',
@@ -454,7 +454,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.POLL_PROGRESSED]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
 		eventlistSpecialUsername: 'lumiastream',
 		eventlistMessage: 'Poll progressed',
@@ -514,7 +514,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.POLL_ENDED]: {
-		connection: 'lumiastream',
+		connection: 'lumia',
 		message: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
 		eventlistSpecialUsername: 'lumiastream',
 		eventlistMessage: 'Poll ended',
