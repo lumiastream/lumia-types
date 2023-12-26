@@ -253,10 +253,18 @@ export enum LumiaAlertValues {
 }
 
 export const LumiaAlertFriendlyValues = {
+	[LumiaAlertValues.LUMIASTREAM_DONATION]: 'Lumia Tip',
 	[LumiaAlertValues.SYSTEM_LUMIA_OPENED]: 'Lumia Opened',
 	[LumiaAlertValues.SYSTEM_LUMIA_CLOSED]: 'Lumia Closed',
 	[LumiaAlertValues.SYSTEM_STREAMMODE_ON]: 'Stream Mode On',
 	[LumiaAlertValues.SYSTEM_STREAMMODE_OFF]: 'Stream Mode Off',
+	[LumiaAlertValues.RAFFLE_START]: 'Raffle Start',
+	[LumiaAlertValues.RAFFLE_STOP]: 'Raffle Stop',
+	[LumiaAlertValues.RAFFLE_WINNER]: 'Raffle Winner',
+	[LumiaAlertValues.SPINWHEEL_WINNER]: 'Spinwheel Winner',
+	[LumiaAlertValues.POLL_STARTED]: 'Poll Started',
+	[LumiaAlertValues.POLL_PROGRESSED]: 'Poll Progressed',
+	[LumiaAlertValues.POLL_ENDED]: 'Poll Ended',
 	[LumiaAlertValues.TWITCH_EXTENSION]: 'Twitch Extension',
 	[LumiaAlertValues.TWITCH_POINTS]: 'Twitch Points',
 	[LumiaAlertValues.TWITCH_STREAM_LIVE]: 'Twitch Stream Live',

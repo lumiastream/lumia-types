@@ -167,7 +167,7 @@ type LightBrands =
 	| 'elgato';
 
 export type LumiaAlertBrands =
-	| 'lumiastream'
+	| 'lumia'
 	| 'twitch'
 	| 'facebook'
 	| 'trovo'
