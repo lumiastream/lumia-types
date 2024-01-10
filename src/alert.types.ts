@@ -6,6 +6,7 @@ export enum LumiaVariationConditions {
 	GREATER_NUMBER = 'GREATER_NUMBER',
 	LESS_NUMBER = 'LESS_NUMBER',
 	EQUAL_STRING = 'EQUAL_STRING',
+	EQUAL_USERNAME = 'EQUAL_USERNAME',
 	EQUAL_NUMBER = 'EQUAL_NUMBER',
 	EQUAL_SELECTION = 'EQUAL_SELECTION',
 	EQUAL_CURRENCY_NUMBER = 'EQUAL_CURRENCY_NUMBER',
@@ -215,6 +216,7 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 			{
 				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
 			},
@@ -365,7 +367,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_USERNAME,
 			},
 		],
 	},
@@ -408,7 +410,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_USERNAME,
 			},
 		],
 	},
@@ -585,7 +587,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_USERNAME,
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -1148,6 +1150,9 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
+				type: LumiaVariationConditions.EQUAL_USERNAME,
+			},
+			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
 			},
 			{
@@ -1197,6 +1202,7 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
 			},
@@ -2922,7 +2928,12 @@ export const LumiaAlertConfigs: Record<
 				default: LumiaVariationCurrency.USD,
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER }, { type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER },
+		],
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: {
 		connection: LumiaIntegrations.YOUTUBE,
