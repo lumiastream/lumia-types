@@ -99,6 +99,7 @@ export interface LumiaDynamicCondition {
 	giftAmount?: number;
 	subMonths?: number;
 	currency?: string;
+	username?: string;
 }
 
 export const LumiaAlertConfigs: Record<
