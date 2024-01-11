@@ -578,6 +578,28 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.LUMIASTREAM_VIEWERQUEUE_STARTED]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
+		message: 'Viewer Queue {{viewerqueue_title}} Started!',
+		eventlistSpecialUsername: 'lumiastream',
+		eventlistMessage: 'Viewer Queue Started',
+		eventlistDetailedMessage: 'Viewer Queue {{viewerqueue_title}} Started!',
+		acceptedVariables: ['viewerqueue_title', 'viewerqueue_entry_command', 'viewerqueue_entries', 'viewerqueue_players', 'viewerqueue_entries_count'],
+		quickActions: [],
+		inputFields: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.LUMIASTREAM_VIEWERQUEUE_ENDED]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
+		message: 'Viewer Queue {{viewerqueue_title}} Ended!',
+		eventlistSpecialUsername: 'lumiastream',
+		eventlistMessage: 'Viewer Queue Ended',
+		eventlistDetailedMessage: 'Viewer Queue {{viewerqueue_title}} Ended!',
+		acceptedVariables: ['viewerqueue_title', 'viewerqueue_entry_command', 'viewerqueue_entries', 'viewerqueue_players', 'viewerqueue_entries_count'],
+		quickActions: [],
+		inputFields: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
 		connection: LumiaIntegrations.TWITCH,
