@@ -578,17 +578,6 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.LUMIASTREAM_VIEWER_QUEUE_FULL]: {
-		connection: LumiaIntegrations.LUMIASTREAM,
-		message: 'Viewer Queue {{viewerqueue_title}} is full!',
-		eventlistSpecialUsername: 'lumiastream',
-		eventlistMessage: 'Viewer Queue is full',
-		eventlistDetailedMessage: 'Viewer Queue {{viewerqueue_title}} is full!',
-		acceptedVariables: ['viewerqueue_title', 'viewerqueue_entry_command', 'viewerqueue_entries', 'viewerqueue_players', 'viewerqueue_entries_count'],
-		quickActions: [],
-		inputFields: [],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
-	},
 	[LumiaAlertValues.LUMIASTREAM_VIEWER_QUEUE_STARTED]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Viewer Queue {{viewerqueue_title}} Started!',
