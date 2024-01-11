@@ -578,7 +578,7 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.LUMIASTREAM_VIEWER_QUEUE_STARTED]: {
+	[LumiaAlertValues.LUMIASTREAM_VIEWERQUEUE_STARTED]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Viewer Queue {{viewerqueue_title}} Started!',
 		eventlistSpecialUsername: 'lumiastream',
@@ -589,7 +589,7 @@ export const LumiaAlertConfigs: Record<
 		inputFields: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
-	[LumiaAlertValues.LUMIASTREAM_VIEWER_QUEUE_ENDED]: {
+	[LumiaAlertValues.LUMIASTREAM_VIEWERQUEUE_ENDED]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Viewer Queue {{viewerqueue_title}} Ended!',
 		eventlistSpecialUsername: 'lumiastream',
