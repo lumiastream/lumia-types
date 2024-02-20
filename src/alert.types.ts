@@ -5258,6 +5258,279 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	// },
+	// fourthwall: {
+	[LumiaAlertValues.FOURTHWALL_DONATION]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: '{{username}} just tipped {{amount}}. They said {{message}}',
+		eventlistMessage: 'Donation',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		acceptedVariables: ['username', 'currency', 'amount'],
+		quickActions: [
+			{
+				label: '$100',
+				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+			{
+				label: '$200',
+				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 200,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+			{
+				label: '$300',
+				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 300,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.FOURTHWALL_SUBSCRIPTION]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: '{{username}} just subscribed',
+		eventlistMessage: 'Subscription',
+		eventlistDetailedMessage: 'subscribed',
+		acceptedVariables: ['username', 'currency', 'amount'],
+		quickActions: [
+			{
+				label: 'Subscribed',
+				dynamic: { value: 'Subscribed' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.FOURTHWALL_GIFTPURCHASE]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: '{{username}} just bought a gift with amount {{amount}}',
+		eventlistMessage: 'Gift Purchase',
+		eventlistDetailedMessage: 'Gift purchase with {{amount}} {{currency}}',
+		acceptedVariables: ['username', 'currency', 'amount'],
+		quickActions: [
+			{
+				label: '$100',
+				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+			{
+				label: '$200',
+				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 200,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+			{
+				label: '$300',
+				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 300,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.FOURTHWALL_SHOPORDER]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: '{{username}} just created a shop order with amount {{amount}}',
+		eventlistMessage: 'Shop Order',
+		eventlistDetailedMessage: 'created a shop order with {{amount}} {{currency}}',
+		acceptedVariables: ['username', 'currency', 'amount'],
+		quickActions: [
+			{
+				label: '$100',
+				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+			{
+				label: '$200',
+				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 200,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+			{
+				label: '$300',
+				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 300,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+		],
+	},
+
+	// },
 	// twitter: {
 	[LumiaAlertValues.TWITTER_FOLLOWER]: {
 		connection: LumiaIntegrations.TWITTER,

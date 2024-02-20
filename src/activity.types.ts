@@ -254,6 +254,10 @@ export enum LumiaAlertValues {
 	KOFI_COMMISSION = 'kofi-commission',
 	KOFI_SHOPORDER = 'kofi-shopOrder',
 	STREAMERBOT_ACTION = 'streamerbot-action',
+	FOURTHWALL_SHOPORDER = 'fourthwall-shopOrder',
+	FOURTHWALL_DONATION = 'fourthwall-donation',
+	FOURTHWALL_SUBSCRIPTION = 'fourthwall-subscription',
+	FOURTHWALL_GIFTPURCHASE = 'fourthwall-giftpurchase',
 }
 
 export const LumiaAlertFriendlyValues = {
@@ -414,6 +418,10 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.KOFI_COMMISSION]: 'Kofi Commission',
 	[LumiaAlertValues.KOFI_SHOPORDER]: 'Kofi Shop Order',
 	[LumiaAlertValues.STREAMERBOT_ACTION]: 'Streamerbot Action',
+	[LumiaAlertValues.FOURTHWALL_SHOPORDER]: 'Fourthwall Shop Order',
+	[LumiaAlertValues.FOURTHWALL_DONATION]: 'Fourthwall Donation',
+	[LumiaAlertValues.FOURTHWALL_SUBSCRIPTION]: 'Fourthwall Subscription',
+	[LumiaAlertValues.FOURTHWALL_GIFTPURCHASE]: 'Fourthwall Giftpurchase',
 };
 
 // Where did the Activity Originate from: Chat, alerts, shortcut, api, etc.
