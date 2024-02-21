@@ -198,6 +198,7 @@ export enum LumiaIntegrations {
 	STREAMERBOT = 'streamerbot',
 	YOUTUBEMUSIC = 'youtubemusic',
 	FOURTHWALL = 'fourthwall',
+	CROWDCONTROL = 'crowdcontrol',
 	GAMESGLOW = 'gamesglow',
 }
 

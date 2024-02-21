@@ -6591,4 +6591,57 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	// },
+	// crowdcontrol: {
+	[LumiaAlertValues.CROWDCONTROL_EFFECT]: {
+		connection: LumiaIntegrations.CROWDCONTROL,
+		message: '{{username}} sent {{effect}}',
+		eventlistMessage: 'Effect',
+		eventlistDetailedMessage: 'sent effect {{effect}} for game {{game}}',
+		acceptedVariables: ['effect', 'avatar', 'username', 'displayname', 'platform', 'effectId', 'game', 'gameId', 'artwork', 'message', 'duration'],
+		quickActions: [
+			{
+				label: 'New Effect',
+				dynamic: { value: 'Big Light' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					effect: 'Big Light',
+					game: 'Lumia Stream',
+					artwork: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					message: 'Turn on the lights',
+					duration: 5,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Effect',
+				variableField: 'effect',
+				required: true,
+				default: 'Big Light',
+			},
+			{
+				type: 'text',
+				label: 'Game',
+				variableField: 'game',
+				required: true,
+				default: 'Lumia Stream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
 };

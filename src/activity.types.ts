@@ -258,6 +258,7 @@ export enum LumiaAlertValues {
 	FOURTHWALL_DONATION = 'fourthwall-donation',
 	FOURTHWALL_SUBSCRIPTION = 'fourthwall-subscription',
 	FOURTHWALL_GIFTPURCHASE = 'fourthwall-giftpurchase',
+	CROWDCONTROL_EFFECT = 'crowdcontrol-effect',
 }
 
 export const LumiaAlertFriendlyValues = {
@@ -422,6 +423,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.FOURTHWALL_DONATION]: 'Fourthwall Donation',
 	[LumiaAlertValues.FOURTHWALL_SUBSCRIPTION]: 'Fourthwall Subscription',
 	[LumiaAlertValues.FOURTHWALL_GIFTPURCHASE]: 'Fourthwall Giftpurchase',
+	[LumiaAlertValues.CROWDCONTROL_EFFECT]: 'Crowdcontrol Effect',
 };
 
 // Where did the Activity Originate from: Chat, alerts, shortcut, api, etc.

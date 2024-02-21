@@ -94,4 +94,5 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: LumiaEventListTypes.SUPERCHATS,
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: LumiaEventListTypes.SUPERSTICKERS,
 	[LumiaAlertValues.KICK_HOST]: LumiaEventListTypes.HOSTS,
+	[LumiaAlertValues.CROWDCONTROL_EFFECT]: LumiaEventListTypes.OTHERS,
 };
