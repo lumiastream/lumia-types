@@ -197,6 +197,7 @@ export enum LumiaIntegrations {
 	VLC = 'vlc',
 	STREAMERBOT = 'streamerbot',
 	YOUTUBEMUSIC = 'youtubemusic',
+	FOURTHWALL = 'fourthwall',
 	GAMESGLOW = 'gamesglow',
 }
 
