@@ -603,10 +603,10 @@ export const LumiaAlertConfigs: Record<
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
 		connection: LumiaIntegrations.TWITCH,
-		message: '{{username}} redeemed {{command}} for {{amount}} bits',
+		message: '{{username}} redeemed {{command}} for {{amount}} {{amount_type}}',
 		eventlistMessage: 'Redeemed',
-		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} bits',
-		acceptedVariables: ['username', 'displayname', 'message', 'avatar', 'command', 'amount', 'currencySymbol', 'currency'],
+		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} {{amount_type}}',
+		acceptedVariables: ['username', 'displayname', 'message', 'avatar', 'command', 'amount', 'amount_type', 'currencySymbol', 'currency'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -630,6 +630,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '100',
+					amount_type: 'bits',
 					currency: LumiaRedemptionCurrency.BITS,
 					currencySymbol: LumiaRedemptionCurrencySymbol.bits,
 				},
@@ -644,6 +645,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '2000',
+					amount_type: 'bits',
 					currency: LumiaRedemptionCurrency.BITS,
 					currencySymbol: LumiaRedemptionCurrencySymbol.bits,
 				},
@@ -658,6 +660,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					displayname: 'LumiaStream',
 					amount: '10000',
+					amount_type: 'bits',
 					currency: LumiaRedemptionCurrency.BITS,
 					currencySymbol: LumiaRedemptionCurrencySymbol.bits,
 				},
@@ -686,6 +689,18 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'amount',
 				required: true,
 				default: '100',
+			},
+			{
+				type: 'selection',
+				label: 'Amount Type',
+				dynamicField: 'amount_type',
+				variableField: 'amount_type',
+				default: 'bits',
+				required: true,
+				selections: [
+					{ label: 'Bits', value: 'bits' },
+					{ label: 'Loyalty Points', value: 'loyalty' },
+				],
 			},
 		],
 	},
