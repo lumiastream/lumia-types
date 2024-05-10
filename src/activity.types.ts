@@ -259,13 +259,13 @@ export enum LumiaAlertValues {
 	FOURTHWALL_SUBSCRIPTION = 'fourthwall-subscription',
 	FOURTHWALL_GIFTPURCHASE = 'fourthwall-giftpurchase',
 	CROWDCONTROL_EFFECT = 'crowdcontrol-effect',
-	VTUBESTUDIO_HOTKEY_TRIGGERED = 'vtube-hotkeyTriggered',
-	VTUBESTUDIO_MODEL_LOADED = 'vtube-modelLoaded',
-	VTUBESTUDIO_ANIMATION_START = 'vtube-animationStart',
-	VTUBESTUDIO_ANIMATION_END = 'vtube-animationEnd',
-	VTUBESTUDIO_ITEM_ADDED = 'vtube-itemAdded',
-	VTUBESTUDIO_ITEM_REMOVED = 'vtube-itemRemoved',
-	VTUBESTUDIO_BACKGROUND_CHANGED = 'vtube-backgroundChanged',
+	VTUBESTUDIO_HOTKEY_TRIGGERED = 'vtubestudio-hotkeyTriggered',
+	VTUBESTUDIO_MODEL_LOADED = 'vtubestudio-modelLoaded',
+	VTUBESTUDIO_ANIMATION_START = 'vtubestudio-animationStart',
+	VTUBESTUDIO_ANIMATION_END = 'vtubestudio-animationEnd',
+	VTUBESTUDIO_ITEM_ADDED = 'vtubestudio-itemAdded',
+	VTUBESTUDIO_ITEM_REMOVED = 'vtubestudio-itemRemoved',
+	VTUBESTUDIO_BACKGROUND_CHANGED = 'vtubestudio-backgroundChanged',
 }
 
 export const LumiaAlertFriendlyValues = {
