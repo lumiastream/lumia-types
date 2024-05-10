@@ -6659,4 +6659,202 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	// },
+	// vtube: {
+	[LumiaAlertValues.VTUBE_HOTKEY_TRIGGERED]: {
+		connection: LumiaIntegrations.VTUBE,
+		message: '{{name}} hotkey triggered',
+		acceptedVariables: ['name', 'modelName', 'modelId'],
+		quickActions: [
+			{
+				label: 'Hotkey Triggered',
+				dynamic: { value: 'tomato_splat' },
+				extraSettings: { name: 'tomato_splat', modelName: 'Light Bulb', modelId: '123' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'Hotkey',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.VTUBE_MODEL_LOADED]: {
+		connection: LumiaIntegrations.VTUBE,
+		message: '{{name}} model loaded',
+		acceptedVariables: ['name', 'modelName', 'modelId'],
+		quickActions: [
+			{
+				label: 'Model Loaded',
+				dynamic: { value: 'Light Bulb' },
+				extraSettings: { name: 'Light Bulb', modelName: 'Light Bulb', modelId: '123' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'Model',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.VTUBE_ANIMATION_START]: {
+		connection: LumiaIntegrations.VTUBE,
+		message: '{{name}} animation started',
+		acceptedVariables: ['name', 'modelName', 'modelId', 'animationName', 'animationLength'],
+		quickActions: [
+			{
+				label: 'Animation Start',
+				dynamic: { value: 'Go Bright' },
+				extraSettings: { name: 'Go Bright', modelName: 'Light Bulb', modelId: '123', animationName: 'Go Bright', animationLength: 40.3 },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'Animation',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.VTUBE_ANIMATION_END]: {
+		connection: LumiaIntegrations.VTUBE,
+		message: '{{name}} animation ended',
+		acceptedVariables: ['name', 'modelName', 'modelId', 'animationName', 'animationLength'],
+		quickActions: [
+			{
+				label: 'Animation End',
+				dynamic: { value: 'Go Bright' },
+				extraSettings: { name: 'Go Bright', modelName: 'Light Bulb', modelId: '123', animationName: 'Go Bright', animationLength: 40.3 },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'Animation',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.VTUBE_ITEM_ADDED]: {
+		connection: LumiaIntegrations.VTUBE,
+		message: '{{name}} item added',
+		acceptedVariables: ['name'],
+		quickActions: [
+			{
+				label: 'Item Add',
+				dynamic: { value: 'Bulbs' },
+				extraSettings: { name: 'Bulbs' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'Bulb',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.VTUBE_ITEM_REMOVED]: {
+		connection: LumiaIntegrations.VTUBE,
+		message: '{{name}} item removed',
+		acceptedVariables: ['name'],
+		quickActions: [
+			{
+				label: 'Item Remove',
+				dynamic: { value: 'Bulbs' },
+				extraSettings: { name: 'Bulbs' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'Bulb',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
+	[LumiaAlertValues.VTUBE_BACKGROUND_CHANGED]: {
+		connection: LumiaIntegrations.VTUBE,
+		message: '{{name}} background changed',
+		acceptedVariables: ['name'],
+		quickActions: [
+			{
+				label: 'Background Change',
+				dynamic: { value: 'night_time' },
+				extraSettings: { name: 'night_time' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Name',
+				dynamicField: 'value',
+				variableField: 'name',
+				required: true,
+				default: 'Background',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+		],
+	},
 };
