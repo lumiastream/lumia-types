@@ -6661,8 +6661,8 @@ export const LumiaAlertConfigs: Record<
 	},
 	// },
 	// vtube: {
-	[LumiaAlertValues.VTUBE_HOTKEY_TRIGGERED]: {
-		connection: LumiaIntegrations.VTUBE,
+	[LumiaAlertValues.VTUBESTUDIO_HOTKEY_TRIGGERED]: {
+		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} hotkey triggered',
 		acceptedVariables: ['name', 'modelName', 'modelId'],
 		quickActions: [
@@ -6689,8 +6689,8 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.VTUBE_MODEL_LOADED]: {
-		connection: LumiaIntegrations.VTUBE,
+	[LumiaAlertValues.VTUBESTUDIO_MODEL_LOADED]: {
+		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} model loaded',
 		acceptedVariables: ['name', 'modelName', 'modelId'],
 		quickActions: [
@@ -6717,8 +6717,8 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.VTUBE_ANIMATION_START]: {
-		connection: LumiaIntegrations.VTUBE,
+	[LumiaAlertValues.VTUBESTUDIO_ANIMATION_START]: {
+		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} animation started',
 		acceptedVariables: ['name', 'modelName', 'modelId', 'animationName', 'animationLength'],
 		quickActions: [
@@ -6745,8 +6745,8 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.VTUBE_ANIMATION_END]: {
-		connection: LumiaIntegrations.VTUBE,
+	[LumiaAlertValues.VTUBESTUDIO_ANIMATION_END]: {
+		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} animation ended',
 		acceptedVariables: ['name', 'modelName', 'modelId', 'animationName', 'animationLength'],
 		quickActions: [
@@ -6773,8 +6773,8 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.VTUBE_ITEM_ADDED]: {
-		connection: LumiaIntegrations.VTUBE,
+	[LumiaAlertValues.VTUBESTUDIO_ITEM_ADDED]: {
+		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} item added',
 		acceptedVariables: ['name'],
 		quickActions: [
@@ -6801,8 +6801,8 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.VTUBE_ITEM_REMOVED]: {
-		connection: LumiaIntegrations.VTUBE,
+	[LumiaAlertValues.VTUBESTUDIO_ITEM_REMOVED]: {
+		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} item removed',
 		acceptedVariables: ['name'],
 		quickActions: [
@@ -6829,8 +6829,8 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.VTUBE_BACKGROUND_CHANGED]: {
-		connection: LumiaIntegrations.VTUBE,
+	[LumiaAlertValues.VTUBESTUDIO_BACKGROUND_CHANGED]: {
+		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} background changed',
 		acceptedVariables: ['name'],
 		quickActions: [

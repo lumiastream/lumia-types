@@ -199,7 +199,7 @@ export enum LumiaIntegrations {
 	YOUTUBEMUSIC = 'youtubemusic',
 	FOURTHWALL = 'fourthwall',
 	CROWDCONTROL = 'crowdcontrol',
-	VTUBE = 'vtube',
+	VTUBESTUDIO = 'vtubestudio',
 	GAMESGLOW = 'gamesglow',
 }
 

@@ -259,13 +259,13 @@ export enum LumiaAlertValues {
 	FOURTHWALL_SUBSCRIPTION = 'fourthwall-subscription',
 	FOURTHWALL_GIFTPURCHASE = 'fourthwall-giftpurchase',
 	CROWDCONTROL_EFFECT = 'crowdcontrol-effect',
-	VTUBE_HOTKEY_TRIGGERED = 'vtube-hotkeyTriggered',
-	VTUBE_MODEL_LOADED = 'vtube-modelLoaded',
-	VTUBE_ANIMATION_START = 'vtube-animationStart',
-	VTUBE_ANIMATION_END = 'vtube-animationEnd',
-	VTUBE_ITEM_ADDED = 'vtube-itemAdded',
-	VTUBE_ITEM_REMOVED = 'vtube-itemRemoved',
-	VTUBE_BACKGROUND_CHANGED = 'vtube-backgroundChanged',
+	VTUBESTUDIO_HOTKEY_TRIGGERED = 'vtubestudio-hotkeyTriggered',
+	VTUBESTUDIO_MODEL_LOADED = 'vtubestudio-modelLoaded',
+	VTUBESTUDIO_ANIMATION_START = 'vtubestudio-animationStart',
+	VTUBESTUDIO_ANIMATION_END = 'vtubestudio-animationEnd',
+	VTUBESTUDIO_ITEM_ADDED = 'vtubestudio-itemAdded',
+	VTUBESTUDIO_ITEM_REMOVED = 'vtubestudio-itemRemoved',
+	VTUBESTUDIO_BACKGROUND_CHANGED = 'vtubestudio-backgroundChanged',
 }
 
 export const LumiaAlertFriendlyValues = {
@@ -431,13 +431,13 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.FOURTHWALL_SUBSCRIPTION]: 'Fourthwall Subscription',
 	[LumiaAlertValues.FOURTHWALL_GIFTPURCHASE]: 'Fourthwall Giftpurchase',
 	[LumiaAlertValues.CROWDCONTROL_EFFECT]: 'Crowdcontrol Effect',
-	[LumiaAlertValues.VTUBE_HOTKEY_TRIGGERED]: 'Vtube Hotkey Triggered',
-	[LumiaAlertValues.VTUBE_MODEL_LOADED]: 'Vtube Model Loaded',
-	[LumiaAlertValues.VTUBE_ANIMATION_START]: 'Vtube Animation Start',
-	[LumiaAlertValues.VTUBE_ANIMATION_END]: 'Vtube Animation End',
-	[LumiaAlertValues.VTUBE_ITEM_ADDED]: 'Vtube Item Added',
-	[LumiaAlertValues.VTUBE_ITEM_REMOVED]: 'Vtube Item Removed',
-	[LumiaAlertValues.VTUBE_BACKGROUND_CHANGED]: 'Vtube Background Changed',
+	[LumiaAlertValues.VTUBESTUDIO_HOTKEY_TRIGGERED]: 'Vtube Hotkey Triggered',
+	[LumiaAlertValues.VTUBESTUDIO_MODEL_LOADED]: 'Vtube Model Loaded',
+	[LumiaAlertValues.VTUBESTUDIO_ANIMATION_START]: 'Vtube Animation Start',
+	[LumiaAlertValues.VTUBESTUDIO_ANIMATION_END]: 'Vtube Animation End',
+	[LumiaAlertValues.VTUBESTUDIO_ITEM_ADDED]: 'Vtube Item Added',
+	[LumiaAlertValues.VTUBESTUDIO_ITEM_REMOVED]: 'Vtube Item Removed',
+	[LumiaAlertValues.VTUBESTUDIO_BACKGROUND_CHANGED]: 'Vtube Background Changed',
 };
 
 // Where did the Activity Originate from: Chat, alerts, shortcut, api, etc.
