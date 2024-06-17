@@ -48,6 +48,7 @@ export enum LumiaActivityCommandTypes {
 	STOP_STREAMMODE = 'stop-stream-mode',
 	RESUME_QUEUE = 'resume-queue',
 	PAUSE_QUEUE = 'pause-queue',
+	REMOVE_CURRENT_QUEUE_ITEM = 'remove-current-queue-item',
 
 	SET_COMMNAD_STATE = 'set-command-state',
 	SET_FOLDER_STATE = 'set-folder-state',
