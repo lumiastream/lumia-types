@@ -1198,6 +1198,74 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.TWITCH_POWERUPS]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: '{{username}} redeemed {{type}} and cheered {{amount}} bits. They said {{message}}',
+		eventlistMessage: 'Powerups',
+		eventlistDetailedMessage: 'redeemed {{type}} for {{amount}} bits',
+		acceptedVariables: ['username', 'avatar', 'type', 'amount', 'message', 'rawMessage', 'full_message'],
+		quickActions: [
+			{
+				label: 'Gigantify powerup',
+				dynamic: { value: 100, name: 'gigantify_an_emote' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					type: 'gigantify_an_emote',
+					amount: 100,
+				},
+			},
+			{
+				label: 'Celebration powerup',
+				dynamic: { value: 500, name: 'celebration' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					type: 'celebration',
+					amount: 500,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Type of powerup',
+				dynamicField: 'value',
+				variableField: 'type',
+				required: true,
+				default: 'celebration',
+			},
+			{
+				type: 'number',
+				label: 'Amount of bits',
+				variableField: 'amount',
+				required: true,
+				default: 100,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_USERNAME,
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
 	[LumiaAlertValues.TWITCH_RAID]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} raided with {{viewers}} viewers',
