@@ -3819,12 +3819,7 @@ export const LumiaAlertConfigs: Record<
 				default: 'lumiastream',
 			},
 		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.IS_GIFT,
-			},
-		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
 	[LumiaAlertValues.TIKTOK_SHARE]: {
 		connection: LumiaIntegrations.TIKTOK,
