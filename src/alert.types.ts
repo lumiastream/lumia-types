@@ -325,7 +325,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.LUMIASTREAM_RAFFLE_WINNER]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
-		eventlistMessage: 'Raffle Stop',
+		eventlistMessage: 'Raffle Winner',
 		eventlistDetailedMessage: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
 		acceptedVariables: ['raffle_title', 'description', 'type', 'raffle_winner', 'raffle_winner_avatar', 'raffle_winners', 'raffle_entry_command', 'duration'],
 		quickActions: [
@@ -599,6 +599,17 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [],
 		inputFields: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.LUMIASTREAM_ROULETTE_WINNER]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
+		message: 'Congratulations {{username}} for winning {{outcome_amount}} {{loyalty_currency_name}}',
+		eventlistSpecialUsername: 'lumiastream',
+		eventlistMessage: 'Roulette Winner',
+		eventlistDetailedMessage: 'Congratulations {{username}} for winning {{outcome_amount}} {{loyalty_currency_name}}',
+		acceptedVariables: ['username', 'outcome_amount', 'ball_position'],
+		quickActions: [],
+		inputFields: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }],
 	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
