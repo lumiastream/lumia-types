@@ -200,6 +200,7 @@ export enum LumiaIntegrations {
 	FOURTHWALL = 'fourthwall',
 	CROWDCONTROL = 'crowdcontrol',
 	VTUBESTUDIO = 'vtubestudio',
+	MELD = 'meld',
 	GAMESGLOW = 'gamesglow',
 }
 
