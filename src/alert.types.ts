@@ -611,6 +611,17 @@ export const LumiaAlertConfigs: Record<
 		inputFields: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }],
 	},
+	[LumiaAlertValues.LUMIASTREAM_SLOTS_WINNER]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
+		message: 'Congratulations {{username}} for winning {{outcome_amount}} {{loyalty_currency_name}}',
+		eventlistSpecialUsername: 'lumiastream',
+		eventlistMessage: 'Slots Winner',
+		eventlistDetailedMessage: 'Congratulations {{username}} for winning {{outcome_amount}} {{loyalty_currency_name}}',
+		acceptedVariables: ['username', 'outcome_amount', 'slots_combo'],
+		quickActions: [],
+		inputFields: [],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.EQUAL_STRING }],
+	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
 		connection: LumiaIntegrations.TWITCH,
@@ -839,7 +850,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_USERNAME,
 			},
 		],
 	},
@@ -2928,7 +2939,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_USERNAME,
 			},
 		],
 	},
