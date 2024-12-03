@@ -6942,4 +6942,52 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.MELD_STREAM_STARTING]: {
+		connection: LumiaIntegrations.MELD,
+		message: '{{name}} is starting',
+		acceptedVariables: ['name'],
+		quickActions: [
+			{
+				label: 'Stream Starting',
+				dynamic: { value: 'Go Bright' },
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.MELD_STREAM_STOPPING]: {
+		connection: LumiaIntegrations.MELD,
+		message: '{{name}} is stopping',
+		acceptedVariables: ['name'],
+		quickActions: [
+			{
+				label: 'Stream Stop',
+				dynamic: { value: 'Go Bright' },
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.MELD_RECORDING_STARTING]: {
+		connection: LumiaIntegrations.MELD,
+		message: '{{name}} is starting',
+		acceptedVariables: ['name'],
+		quickActions: [
+			{
+				label: 'Recording Started',
+				dynamic: { value: 'Go Bright' },
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.MELD_RECORDING_STOPPING]: {
+		connection: LumiaIntegrations.MELD,
+		message: '{{name}} is stopping',
+		acceptedVariables: ['name'],
+		quickActions: [
+			{
+				label: 'Recording Stop',
+				dynamic: { value: 'Go Bright' },
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 };

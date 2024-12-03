@@ -270,6 +270,10 @@ export enum LumiaAlertValues {
 	VTUBESTUDIO_ITEM_ADDED = 'vtubestudio-itemAdded',
 	VTUBESTUDIO_ITEM_REMOVED = 'vtubestudio-itemRemoved',
 	VTUBESTUDIO_BACKGROUND_CHANGED = 'vtubestudio-backgroundChanged',
+	MELD_STREAM_STARTING = 'meld-streamStarting',
+	MELD_STREAM_STOPPING = 'meld-streamStopping',
+	MELD_RECORDING_STARTING = 'meld-recordingStarting',
+	MELD_RECORDING_STOPPING = 'meld-recordingStopping',
 }
 
 export const LumiaAlertFriendlyValues = {
@@ -445,6 +449,10 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.VTUBESTUDIO_ITEM_ADDED]: 'Vtube Item Added',
 	[LumiaAlertValues.VTUBESTUDIO_ITEM_REMOVED]: 'Vtube Item Removed',
 	[LumiaAlertValues.VTUBESTUDIO_BACKGROUND_CHANGED]: 'Vtube Background Changed',
+	[LumiaAlertValues.MELD_STREAM_STARTING]: 'Meld Stream Starting',
+	[LumiaAlertValues.MELD_STREAM_STOPPING]: 'Meld Stream Stopping',
+	[LumiaAlertValues.MELD_RECORDING_STARTING]: 'Meld Recording Starting',
+	[LumiaAlertValues.MELD_RECORDING_STOPPING]: 'Meld Recording Stopping',
 };
 
 // Where did the Activity Originate from: Chat, alerts, shortcut, api, etc.
