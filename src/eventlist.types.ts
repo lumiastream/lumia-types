@@ -74,6 +74,7 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.TROVO_SUBSCRIBER]: LumiaEventListTypes.SUBSCRIBERS,
 	[LumiaAlertValues.TWITCH_BITS]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_POWERUPS]: LumiaEventListTypes.BITS,
+	[LumiaAlertValues.TWITCH_POWERUPS_POINTS]: LumiaEventListTypes.POINTS,
 	[LumiaAlertValues.TWITCH_CLIP]: LumiaEventListTypes.OTHERS,
 	[LumiaAlertValues.TWITCH_EXTENSION]: LumiaEventListTypes.EXTENSION,
 	[LumiaAlertValues.TWITCH_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
