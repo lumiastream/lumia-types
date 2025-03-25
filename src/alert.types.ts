@@ -1288,6 +1288,64 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.TWITCH_POWERUPS_POINTS]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: '{{username}} redeemed {{type}} for {{amount}} points. They said {{message}}',
+		eventlistMessage: 'Powerups',
+		eventlistDetailedMessage: 'redeemed {{type}} for {{amount}} points',
+		acceptedVariables: ['username', 'avatar', 'type', 'amount', 'message', 'rawMessage', 'full_message'],
+		quickActions: [
+			{
+				label: 'Unlock a Random Sub Emote',
+				dynamic: { value: 100, name: 'random_sub_emote_unlock' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					type: 'random_sub_emote_unlock',
+					amount: 100,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Type of powerup',
+				dynamicField: 'value',
+				variableField: 'type',
+				required: true,
+				default: 'random_sub_emote_unlock',
+			},
+			{
+				type: 'number',
+				label: 'Amount of points',
+				variableField: 'amount',
+				required: true,
+				default: 100,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_USERNAME,
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
 	[LumiaAlertValues.TWITCH_RAID]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} raided with {{viewers}} viewers',
