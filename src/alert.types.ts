@@ -3945,9 +3945,9 @@ export const LumiaAlertConfigs: Record<
 	// kick: {
 	[LumiaAlertValues.KICK_POINTS]: {
 		connection: LumiaIntegrations.KICK,
-		message: '{{username}} redeemed {{command}} for {{amount}} points',
+		message: '{{username}} redeemed {{command}}',
 		eventlistMessage: 'Redeemed',
-		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} points',
+		eventlistDetailedMessage: 'redeemed {{command}}',
 		acceptedVariables: ['username', 'displayname', 'message', 'avatar', 'command', 'amount', 'currencySymbol', 'currency'],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
