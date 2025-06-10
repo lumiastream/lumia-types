@@ -95,6 +95,7 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: LumiaEventListTypes.SUPERCHATS,
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: LumiaEventListTypes.SUPERSTICKERS,
+	[LumiaAlertValues.KICK_POINTS]: LumiaEventListTypes.POINTS,
 	[LumiaAlertValues.KICK_HOST]: LumiaEventListTypes.HOSTS,
 	[LumiaAlertValues.CROWDCONTROL_EFFECT]: LumiaEventListTypes.OTHERS,
 };

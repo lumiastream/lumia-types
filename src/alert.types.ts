@@ -3943,6 +3943,93 @@ export const LumiaAlertConfigs: Record<
 	},
 	// },
 	// kick: {
+	[LumiaAlertValues.KICK_POINTS]: {
+		connection: LumiaIntegrations.KICK,
+		message: '{{username}} redeemed {{command}} for {{amount}} points',
+		eventlistMessage: 'Redeemed',
+		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} points',
+		acceptedVariables: ['username', 'displayname', 'message', 'avatar', 'command', 'amount', 'currencySymbol', 'currency'],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+		quickActions: [
+			{
+				label: 'Redeemed for 100 points',
+				dynamic: { name: 'lumiray', value: '100', currency: LumiaRedemptionCurrency.POINTS },
+				extraSettings: {
+					command: 'lumiray',
+					message: 'ray ray',
+					username: 'lumiastream',
+					displayname: 'LumiaStream',
+					amount: '100',
+					currency: LumiaRedemptionCurrency.POINTS,
+					currencySymbol: LumiaRedemptionCurrencySymbol.points,
+				},
+			},
+			{
+				label: 'Redeemed for 2000 points',
+				dynamic: { name: 'lumiray', value: '2000', currency: LumiaRedemptionCurrency.POINTS },
+				extraSettings: {
+					command: 'lumiray',
+					message: 'ray ray',
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					displayname: 'LumiaStream',
+					amount: '2000',
+					currency: LumiaRedemptionCurrency.POINTS,
+					currencySymbol: LumiaRedemptionCurrencySymbol.points,
+				},
+			},
+			{
+				label: 'Redeemed for 10000 points',
+				dynamic: { name: 'lumiray', value: '10000', currency: LumiaRedemptionCurrency.POINTS },
+				extraSettings: {
+					command: 'lumiray',
+					message: 'ray ray',
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					displayname: 'LumiaStream',
+					amount: '10000',
+					currency: LumiaRedemptionCurrency.POINTS,
+					currencySymbol: LumiaRedemptionCurrencySymbol.points,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Command',
+				dynamicField: 'value',
+				variableField: 'command',
+				required: true,
+				default: 'lumibeam',
+			},
+			{
+				type: 'text',
+				label: 'Amount',
+				dynamicField: 'amount',
+				variableField: 'amount',
+				required: true,
+				default: '100',
+			},
+		],
+	},
 	[LumiaAlertValues.KICK_FIRST_CHATTER]: {
 		connection: LumiaIntegrations.KICK,
 		message: '{{username}} is the first chatter!',
