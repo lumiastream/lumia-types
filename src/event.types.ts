@@ -210,6 +210,7 @@ export enum LumiaEventTypes {
 	COMMAND = 'command',
 	TWITCH_POINTS = 'twitch_point',
 	TWITCH_EXTENSIONS = 'twitch_extension',
+	KICK_POINTS = 'kick_point',
 	TROVO_SPELL = 'trovo_spell',
 	PULSE = 'pulse',
 	ALERTS = 'alert',
