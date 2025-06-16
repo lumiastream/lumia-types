@@ -49,8 +49,6 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.FOURTHWALL_GIFTPURCHASE]: LumiaEventListTypes.PURCHASES,
 	[LumiaAlertValues.PATREON_PLEDGE]: LumiaEventListTypes.SUBSCRIBERS,
 	[LumiaAlertValues.STREAMELEMENTS_DONATION]: LumiaEventListTypes.DONATION,
-	[LumiaAlertValues.STREAMELEMENTS_MERCH]: LumiaEventListTypes.PURCHASES,
-	[LumiaAlertValues.STREAMELEMENTS_REDEMPTION]: LumiaEventListTypes.PURCHASES,
 	[LumiaAlertValues.STREAMLABS_CHARITY]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.STREAMLABS_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.STREAMLABS_MERCH]: LumiaEventListTypes.PURCHASES,
