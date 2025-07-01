@@ -65,6 +65,34 @@ export enum LumiaActivityCommandTypes {
 	VLC = 'send-vlc-command',
 	TWITTER = 'send-twitter-command',
 
+	// Stream Commands
+	CHANGE_STREAM_TITLE = 'change-stream-title',
+	CHANGE_CURRENT_CATEGORY = 'change-current-category',
+	CREATE_STREAM_MARKER = 'create-stream-marker',
+	RUN_COMMERCIAL = 'run-commercial',
+	SET_SLOW_MODE = 'set-slow-mode',
+	SET_SUBSCRIBER_MODE = 'set-subscriber-mode',
+	SET_FOLLOW_MODE = 'set-follow-mode',
+	SET_EMOTES_MODE = 'set-emotes-mode',
+	SEND_ANNOUNCEMENT = 'send-announcement',
+	CLIP = 'clip',
+	CREATE_POLL = 'create-poll',
+	END_POLL = 'end-poll',
+	CREATE_PREDICTION = 'create-prediction',
+	END_PREDICTION = 'end-prediction',
+	CLEAR_CHAT = 'clear-chat',
+
+	// Chat Box Mod Commands
+	TRANSLATE_MESSAGE = 'translate-message',
+	DELETE_MESSAGE = 'delete-message',
+	BAN_USER = 'ban-user',
+	UNBAN_USER = 'unban-user',
+	TIMEOUT_USER = 'timeout-user',
+	ADD_LOYALTY_POINTS = 'add-loyalty-points',
+	SHOUTOUT = 'shoutout',
+	ADD_VIP = 'add-vip',
+	REMOVE_VIP = 'remove-vip',
+
 	// Overlay Commands
 	OVERLAY_SET_OVERLAY_VISIBILITY = 'overlay-set-visibility',
 	OVERLAY_SET_LAYER_VISIBILITY = 'overlay-set-layer-visibility',
