@@ -131,6 +131,7 @@ export const LumiaAlertConfigs: Record<
 		}>;
 		LumiaVariationConditions: Array<{
 			type: LumiaVariationConditions;
+			description?: string;
 			selections?: Array<{
 				label: string;
 				message?: string;
@@ -1245,7 +1246,22 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_USERNAME,
 			},
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Powerup Type',
+				selections: [
+					{
+						label: 'celebration',
+						value: 'celebration',
+					},
+					{
+						label: 'message_effect',
+						value: 'message_effect',
+					},
+					{
+						label: 'gigantify_an_emote',
+						value: 'gigantify_an_emote',
+					},
+				],
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -1303,7 +1319,30 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_USERNAME,
 			},
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Powerups Type',
+				selections: [
+					{
+						label: 'Single message bypass sub mode',
+						value: 'single_message_bypass_sub_mode',
+					},
+					{
+						label: 'Send highlighted message',
+						value: 'send_highlighted_message',
+					},
+					{
+						label: 'Random sub emote unlock',
+						value: 'random_sub_emote_unlock',
+					},
+					{
+						label: 'Chosen sub emote unlock',
+						value: 'chosen_sub_emote_unlock',
+					},
+					{
+						label: 'Chosen modified sub emote unlock',
+						value: 'chosen_modified_sub_emote_unlock',
+					},
+				],
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -3384,6 +3423,18 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.TROVO_STREAM_LIVE]: {
+		connection: LumiaIntegrations.TROVO,
+		message: 'Trovo Stream is now live',
+		acceptedVariables: AllVariables.trovo.alerts.streamLive,
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.TROVO_STREAM_OFFLINE]: {
+		connection: LumiaIntegrations.TROVO,
+		message: 'Trovo Stream is now offline',
+		acceptedVariables: AllVariables.trovo.alerts.streamOffline,
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	[LumiaAlertValues.TROVO_CHANNEL_JOIN]: {
 		connection: LumiaIntegrations.TROVO,
 		message: '{{username}} just joined the channel',
@@ -3798,15 +3849,18 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.RANDOM, description: 'alerts.random' },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Gift Name',
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Coins Equal',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Coins Greater Than',
 			},
 		],
 	},
@@ -6842,6 +6896,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name of hotkey',
 			},
 		],
 	},
