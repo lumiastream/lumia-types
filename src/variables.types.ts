@@ -1526,11 +1526,12 @@ export const AllVariables = {
 		alerts: {
 			streamLive: ['eventTime'],
 			streamOffline: [],
-			firstChatter: ['username', 'userId', 'avatar', 'first_count', 'message'],
-			entrance: ['username', 'userId', 'displayname', 'avatar', 'message'],
-			member: ['username', 'avatar', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
-			superchat: ['username', 'currency', 'amount', 'message'],
-			supersticker: ['username', 'amount'],
+			firstChatter: ['username', 'displayname', 'userId', 'avatar', 'first_count', 'message'],
+			entrance: ['username', 'displayname', 'userId', 'avatar', 'message'],
+			subscriber: ['username', 'displayname', 'avatar', 'userId'],
+			member: ['username', 'displayname', 'avatar', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+			superchat: ['username', 'displayname', 'currency', 'amount', 'message'],
+			supersticker: ['username', 'displayname', 'amount'],
 		},
 	},
 	youtubemusic: {
