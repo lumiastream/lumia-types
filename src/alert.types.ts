@@ -2947,7 +2947,12 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: 'Lumia subscribed',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					displayname: 'LumiaStream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					userId: '1234',
+				},
 			},
 		],
 		inputFields: [
@@ -2964,28 +2969,104 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_MEMBER]: {
 		connection: LumiaIntegrations.YOUTUBE,
-		message: '{{username}} became a member!',
-		eventlistMessage: 'Member',
-		eventlistDetailedMessage: 'became a member',
+		message: '{{username}} just became a member with {{subPlanName}}!',
+		eventlistMessage: '{{subPlanName}} Member',
+		eventlistDetailedMessage: 'just became a member with a {{subPlanName}} plan',
 		acceptedVariables: AllVariables.youtube.alerts.member,
 		quickActions: [
 			{
-				label: 'Lumia became a member',
+				label: 'Lumia became a Bronze member',
 				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					message: 'Great Stream',
+					tier: 'Bronze',
+					subMonths: 1,
+					subPlan: 'CC-1234567890',
+					subPlanName: 'Bronze',
+					streakMonths: 1,
+				},
+			},
+			{
+				label: 'Lumia became a Silver member',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					message: 'Great Stream',
+					tier: 'Silver',
+					subMonths: 1,
+					subPlan: 'CC-234567890',
+					subPlanName: 'Silver',
+					streakMonths: 1,
+				},
+			},
+			{
+				label: 'Lumia became a Gold member',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					message: 'Great Stream',
+					tier: 'Gold',
+					subMonths: 1,
+					subPlan: 'CC-34567890',
+					subPlanName: 'Gold',
+					streakMonths: 1,
+				},
 			},
 		],
 		inputFields: [
 			{
 				type: 'text',
 				label: 'Username',
-				dynamicField: 'value',
 				variableField: 'username',
 				required: false,
 				default: 'lumiastream',
 			},
+			{
+				type: 'number',
+				label: 'Months subscribed',
+				dynamicField: 'subMonths',
+				variableField: 'subMonths',
+				required: false,
+				default: 1,
+			},
+			{
+				type: 'selection',
+				label: 'Sub Plan Name',
+				dynamicField: 'value',
+				variableField: 'subPlanName',
+				default: 'Bronze',
+				required: true,
+				selections: [
+					{ label: 'Bronze', value: 'Bronze' },
+					{ label: 'Silver', value: 'Silver' },
+					{ label: 'Gold', value: 'Gold' },
+				],
+			},
+			{
+				type: 'text',
+				label: 'Message',
+				variableField: 'message',
+				required: false,
+				default: 'Great stream',
+			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Plan Name',
+			},
+			{
+				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_EQUAL,
+			},
+			{
+				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_GREATER,
+			},
+		],
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: {
 		connection: LumiaIntegrations.YOUTUBE,
@@ -2999,6 +3080,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					displayname: 'LumiaStream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
@@ -3009,6 +3091,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 200, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					displayname: 'LumiaStream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
@@ -3019,6 +3102,7 @@ export const LumiaAlertConfigs: Record<
 				dynamic: { value: 300, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					username: 'lumiastream',
+					displayname: 'LumiaStream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
@@ -3067,17 +3151,32 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '100',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 100 },
+				extraSettings: {
+					username: 'lumiastream',
+					displayname: 'LumiaStream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 100,
+				},
 			},
 			{
 				label: '200',
 				dynamic: { value: 200 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 200 },
+				extraSettings: {
+					username: 'lumiastream',
+					displayname: 'LumiaStream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 200,
+				},
 			},
 			{
 				label: '300',
 				dynamic: { value: 300 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 300 },
+				extraSettings: {
+					username: 'lumiastream',
+					displayname: 'LumiaStream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 300,
+				},
 			},
 		],
 		inputFields: [
