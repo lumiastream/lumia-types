@@ -1006,7 +1006,7 @@ export const AllVariables = {
 			firstChatter: ['username', 'userId', 'displayname', 'avatar', 'first_count', 'message'],
 			entrance: ['username', 'userId', 'displayname', 'avatar', 'message'],
 			follower: ['username'],
-			subscriber: ['username'],
+			subscriber: ['username', 'avatar', 'tier', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			subscriptionGift: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', 'recipientsRaw', 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			host: ['username', 'avatar', 'viewers'],
 			banned: ['username', 'userId', 'bannedByUsername', 'bannedByUserId', 'expires'],

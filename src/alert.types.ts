@@ -131,6 +131,7 @@ export const LumiaAlertConfigs: Record<
 		}>;
 		LumiaVariationConditions: Array<{
 			type: LumiaVariationConditions;
+			description?: string;
 			selections?: Array<{
 				label: string;
 				message?: string;
@@ -1245,7 +1246,22 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_USERNAME,
 			},
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Powerup Type',
+				selections: [
+					{
+						label: 'celebration',
+						value: 'celebration',
+					},
+					{
+						label: 'message_effect',
+						value: 'message_effect',
+					},
+					{
+						label: 'gigantify_an_emote',
+						value: 'gigantify_an_emote',
+					},
+				],
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -1303,7 +1319,30 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_USERNAME,
 			},
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Powerups Type',
+				selections: [
+					{
+						label: 'Single message bypass sub mode',
+						value: 'single_message_bypass_sub_mode',
+					},
+					{
+						label: 'Send highlighted message',
+						value: 'send_highlighted_message',
+					},
+					{
+						label: 'Random sub emote unlock',
+						value: 'random_sub_emote_unlock',
+					},
+					{
+						label: 'Chosen sub emote unlock',
+						value: 'chosen_sub_emote_unlock',
+					},
+					{
+						label: 'Chosen modified sub emote unlock',
+						value: 'chosen_modified_sub_emote_unlock',
+					},
+				],
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -3384,6 +3423,18 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.TROVO_STREAM_LIVE]: {
+		connection: LumiaIntegrations.TROVO,
+		message: 'Trovo Stream is now live',
+		acceptedVariables: AllVariables.trovo.alerts.streamLive,
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.TROVO_STREAM_OFFLINE]: {
+		connection: LumiaIntegrations.TROVO,
+		message: 'Trovo Stream is now offline',
+		acceptedVariables: AllVariables.trovo.alerts.streamOffline,
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	[LumiaAlertValues.TROVO_CHANNEL_JOIN]: {
 		connection: LumiaIntegrations.TROVO,
 		message: '{{username}} just joined the channel',
@@ -3798,15 +3849,18 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.RANDOM, description: 'alerts.random' },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Gift Name',
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Coins Equal',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Coins Greater Than',
 			},
 		],
 	},
@@ -4018,15 +4072,63 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.KICK_SUBSCRIBER]: {
 		connection: LumiaIntegrations.KICK,
-		message: '{{username}} just subscribed',
-		eventlistMessage: 'Subscribed',
-		eventlistDetailedMessage: 'became a subscriber',
+		message: '{{username}} just subscribed with {{subPlanName}}!',
+		eventlistMessage: '{{subPlanName}} Subscription',
+		eventlistDetailedMessage: 'just subscribed with a {{subPlanName}} sub',
 		acceptedVariables: AllVariables.kick.alerts.subscriber,
 		quickActions: [
 			{
-				label: 'New Subscriber',
-				dynamic: { value: 'lumiastream' },
-				extraSettings: { username: 'lumiastream' },
+				label: 'Tier 1 Sub',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					message: 'Great Stream',
+					tier: 1000,
+					subMonths: 1,
+					subPlan: 1000,
+					subPlanName: 'Tier 1',
+				},
+			},
+			{
+				label: 'Tier 2 Sub',
+				dynamic: { value: 2000 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					message: 'Great Stream',
+					tier: 2000,
+					subMonths: 2,
+					subPlan: 2000,
+					subPlanName: 'Tier 2',
+				},
+			},
+			{
+				label: 'Tier 3 Sub',
+				dynamic: { value: 3000 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					message: 'Great Stream',
+					tier: 3000,
+					subMonths: 3,
+					subPlan: 3000,
+					subPlanName: 'Tier 3',
+				},
+			},
+			{
+				label: 'Resubscribed 3 months',
+				dynamic: { value: 1000, subMonths: 3 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					message: 'Great Stream',
+					tier: 1000,
+					subMonths: 3,
+					streakMonths: 3,
+					subPlan: 1000,
+					subPlanName: 'Tier 1',
+				},
 			},
 		],
 		inputFields: [
@@ -4037,11 +4139,50 @@ export const LumiaAlertConfigs: Record<
 				required: false,
 				default: 'lumiastream',
 			},
+			{
+				type: 'number',
+				label: 'Months subscribed',
+				dynamicField: 'subMonths',
+				variableField: 'subMonths',
+				required: false,
+				default: 1,
+			},
+			{
+				type: 'selection',
+				label: 'Sub Plan Name',
+				dynamicField: 'value',
+				variableField: 'subPlanName',
+				default: 'Tier 1',
+				required: true,
+				selections: [
+					{ label: 'Tier 1', value: 'Tier 1' },
+					{ label: 'Tier 2', value: 'Tier 2' },
+					{ label: 'Tier 3', value: 'Tier 3' },
+				],
+			},
+			{
+				type: 'text',
+				label: 'Message',
+				variableField: 'message',
+				required: false,
+				default: 'Great stream',
+			},
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
-				type: LumiaVariationConditions.IS_GIFT,
+				type: LumiaVariationConditions.EQUAL_SELECTION,
+				selections: [
+					{ label: 'Tier 1', value: 1000 },
+					{ label: 'Tier 2', value: 2000 },
+					{ label: 'Tier 3', value: 3000 },
+				],
+			},
+			{
+				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_EQUAL,
+			},
+			{
+				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_GREATER,
 			},
 		],
 	},
@@ -6755,6 +6896,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name of hotkey',
 			},
 		],
 	},
