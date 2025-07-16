@@ -115,7 +115,7 @@ export const LumiaAlertConfigs: Record<
 		quickActions?: Array<{
 			label: string;
 			dynamic: LumiaDynamicCondition;
-			extraSettings?: Record<string, string | number | boolean>;
+			extraSettings?: Record<string, string | number | boolean | Array<any>>;
 		}>;
 		inputFields?: Array<{
 			type: 'text' | 'number' | 'selection' | 'check' | 'currency';
@@ -900,19 +900,29 @@ export const LumiaAlertConfigs: Record<
 				},
 			},
 			{
-				label: 'Gift 5 Subs',
-				dynamic: { value: 1000, giftAmount: 5, isGift: true },
+				label: 'Tier 2 Sub',
+				dynamic: { value: 2000 },
 				extraSettings: {
-					gifter: 'lumiastream',
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					message: 'Great Stream',
-					username: 'worldlights',
-					recipient: 'worldlights',
-					giftAmount: 5,
-					totalGifts: 5,
-					tier: 1000,
-					subMonths: 1,
-					subPlan: 1000,
-					subPlanName: 'Tier 1',
+					tier: 2000,
+					subMonths: 2,
+					subPlan: 2000,
+					subPlanName: 'Tier 2',
+				},
+			},
+			{
+				label: 'Tier 3 Sub',
+				dynamic: { value: 3000 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					message: 'Great Stream',
+					tier: 3000,
+					subMonths: 3,
+					subPlan: 3000,
+					subPlanName: 'Tier 3',
 				},
 			},
 			{
@@ -952,38 +962,12 @@ export const LumiaAlertConfigs: Record<
 				default: 'lumiastream',
 			},
 			{
-				type: 'check',
-				label: 'Is Gift',
-				dynamicField: 'isGift',
-				variableField: 'isGift',
-				default: false,
-				required: false,
-			},
-			{
-				type: 'text',
-				label: 'Gift Recipient',
-				variableField: 'recipient',
-				required: false,
-				default: 'worldlights',
-				showWhen: 'isGift',
-			},
-			{
 				type: 'number',
 				label: 'Months subscribed',
 				dynamicField: 'subMonths',
 				variableField: 'subMonths',
 				required: false,
 				default: 1,
-				hideWhen: 'isGift',
-			},
-			{
-				type: 'number',
-				label: 'Gift amount',
-				dynamicField: 'giftAmount',
-				variableField: 'giftAmount',
-				required: false,
-				default: 1,
-				showWhen: 'isGift',
 			},
 			{
 				type: 'selection',
@@ -1027,15 +1011,6 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: LumiaVariationConditions.IS_PRIME,
 			},
-			{
-				type: LumiaVariationConditions.IS_GIFT,
-			},
-			{
-				type: LumiaVariationConditions.GIFT_SUB_EQUAL,
-			},
-			{
-				type: LumiaVariationConditions.GIFT_SUB_GREATER,
-			},
 		],
 	},
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: {
@@ -1053,7 +1028,8 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					gifter: 'lumiastream',
 					message: 'Great Stream',
-					recipient: 'worldlights',
+					recipients: 'worldlights',
+					recipientsRaw: [{ username: 'worldlights', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } }],
 					giftAmount: 1,
 					totalGifts: 1,
 					tier: 1000,
@@ -1070,26 +1046,16 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					gifter: 'lumiastream',
 					message: 'Great Stream',
-					recipient: 'worldlights',
+					recipients: 'worldlights,lumiastream,lumiatwitch,lumiakick,rgblumia',
+					recipientsRaw: [
+						{ username: 'worldlights', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+						{ username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+						{ username: 'lumiatwitch', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+						{ username: 'worldlights', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+						{ username: 'rgblumia', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+					],
 					giftAmount: 5,
 					totalGifts: 5,
-					tier: 1000,
-					subMonths: 1,
-					subPlan: 1000,
-					subPlanName: 'Tier 1',
-				},
-			},
-			{
-				label: 'Gift 10 Subs',
-				dynamic: { value: 1000, giftAmount: 10, isGift: true },
-				extraSettings: {
-					username: 'lumiastream',
-					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
-					gifter: 'lumiastream',
-					message: 'Great Stream',
-					recipient: 'worldlights',
-					giftAmount: 10,
-					totalGifts: 10,
 					tier: 1000,
 					subMonths: 1,
 					subPlan: 1000,
@@ -1114,8 +1080,8 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: 'text',
-				label: 'Gift Recipient',
-				variableField: 'recipient',
+				label: 'Gift Recipients',
+				variableField: 'recipients',
 				required: true,
 				default: 'worldlights',
 			},
@@ -3516,12 +3482,22 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '5 gifts',
 				dynamic: { value: 5, giftAmount: 5 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 5, giftAmount: 5 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 5,
+					giftAmount: 5,
+				},
 			},
 			{
 				label: '20 gifts',
 				dynamic: { value: 20, giftAmount: 20 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 20, giftAmount: 20 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 20,
+					giftAmount: 20,
+				},
 			},
 		],
 		inputFields: [
@@ -4051,12 +4027,22 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '5 gifts',
 				dynamic: { value: 5, giftAmount: 5 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 5, giftAmount: 5 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 5,
+					giftAmount: 5,
+				},
 			},
 			{
 				label: '20 gifts',
 				dynamic: { value: 20, giftAmount: 20 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 20, giftAmount: 20 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 20,
+					giftAmount: 20,
+				},
 			},
 		],
 		inputFields: [
