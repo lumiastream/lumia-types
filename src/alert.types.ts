@@ -1015,9 +1015,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: {
 		connection: LumiaIntegrations.TWITCH,
-		message: '{{gifter}} gifted {{giftAmount}} {{subPlaneName}} subsciptions to {{recipients}}',
+		message: '{{gifter}} gifted {{giftAmount}} {{subPlanName}} subsciptions to {{recipients}}',
 		eventlistMessage: 'Gifted {{giftAmount}} subs',
-		eventlistDetailedMessage: 'gifted {{giftAmount}} {{subPlaneName}} subsciptions to {{recipients}}',
+		eventlistDetailedMessage: 'gifted {{giftAmount}} {{subPlanName}} subsciptions to {{recipients}}',
 		acceptedVariables: AllVariables.twitch.alerts.subscriptionGift,
 		quickActions: [
 			{
