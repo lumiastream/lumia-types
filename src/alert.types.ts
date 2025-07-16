@@ -881,9 +881,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_SUBSCRIBER]: {
 		connection: LumiaIntegrations.TWITCH,
-		message: '{{username}} just subscribed!',
-		eventlistMessage: 'Subscribed',
-		eventlistDetailedMessage: 'became a subscriber',
+		message: '{{username}} just subscribed with {{subPlanName}}!',
+		eventlistMessage: '{{subPlanName}} Subscription',
+		eventlistDetailedMessage: 'just subscribed with a {{subPlanName}} sub',
 		acceptedVariables: AllVariables.twitch.alerts.subscriber,
 		quickActions: [
 			{
@@ -1015,9 +1015,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: {
 		connection: LumiaIntegrations.TWITCH,
-		message: '{{gifter}} gifted {{giftAmount}} subs!',
-		eventlistMessage: 'Gifted subscription',
-		eventlistDetailedMessage: 'gifted {{recipients}} a subscription',
+		message: '{{gifter}} gifted {{giftAmount}} {{subPlaneName}} subsciptions to {{recipients}}',
+		eventlistMessage: 'Gifted {{giftAmount}} subs',
+		eventlistDetailedMessage: 'gifted {{giftAmount}} {{subPlaneName}} subsciptions to {{recipients}}',
 		acceptedVariables: AllVariables.twitch.alerts.subscriptionGift,
 		quickActions: [
 			{
