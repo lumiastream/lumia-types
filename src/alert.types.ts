@@ -1016,9 +1016,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: {
 		connection: LumiaIntegrations.TWITCH,
-		message: '{{gifter}} gifted {{giftAmount}} {{subPlanName}} subsciptions to {{recipients}}',
+		message: '{{gifter}} gifted {{giftAmount}} {{subPlanName}} subscriptions to {{recipients}}',
 		eventlistMessage: 'Gifted {{giftAmount}} subs',
-		eventlistDetailedMessage: 'gifted {{giftAmount}} {{subPlanName}} subsciptions to {{recipients}}',
+		eventlistDetailedMessage: 'gifted {{giftAmount}} {{subPlanName}} subscriptions to {{recipients}}',
 		acceptedVariables: AllVariables.twitch.alerts.giftSubscription,
 		quickActions: [
 			{
@@ -3613,9 +3613,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TROVO_GIFT_SUBSCRIPTION]: {
 		connection: LumiaIntegrations.TROVO,
-		message: '{{gifter}} gifted {{giftAmount}} {{subPlanName}} subsciptions to {{recipients}}',
+		message: '{{gifter}} gifted {{giftAmount}} {{subPlanName}} subscriptions to {{recipients}}',
 		eventlistMessage: 'Gifted {{giftAmount}} subs',
-		eventlistDetailedMessage: 'gifted {{giftAmount}} {{subPlanName}} subsciptions to {{recipients}}',
+		eventlistDetailedMessage: 'gifted {{giftAmount}} {{subPlanName}} subscriptions to {{recipients}}',
 		acceptedVariables: AllVariables.trovo.alerts.subscriptionGift,
 		quickActions: [
 			{
@@ -4287,9 +4287,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.KICK_GIFT_SUBSCRIPTION]: {
 		connection: LumiaIntegrations.KICK,
-		message: '{{gifter}} gifted {{giftAmount}} {{subPlanName}} subsciptions to {{recipients}}',
+		message: '{{gifter}} gifted {{giftAmount}} {{subPlanName}} subscriptions to {{recipients}}',
 		eventlistMessage: 'Gifted {{giftAmount}} subs',
-		eventlistDetailedMessage: 'gifted {{giftAmount}} {{subPlanName}} subsciptions to {{recipients}}',
+		eventlistDetailedMessage: 'gifted {{giftAmount}} {{subPlanName}} subscriptions to {{recipients}}',
 		acceptedVariables: AllVariables.kick.alerts.subscriptionGift,
 		quickActions: [
 			{
