@@ -1529,7 +1529,7 @@ export const AllVariables = {
 			firstChatter: ['username', 'displayname', 'userId', 'avatar', 'first_count', 'message'],
 			entrance: ['username', 'displayname', 'userId', 'avatar', 'message'],
 			subscriber: ['username', 'displayname', 'avatar', 'userId'],
-			member: ['username', 'displayname', 'avatar', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+			member: ['username', 'displayname', 'avatar', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName', 'subPlanId'],
 			superchat: ['username', 'displayname', 'currency', 'amount', 'message'],
 			supersticker: ['username', 'displayname', 'amount'],
 		},
