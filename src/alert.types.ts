@@ -3878,7 +3878,11 @@ export const LumiaAlertConfigs: Record<
 				default: 40,
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Total Like Count Equal' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Like Count Greater Than' },
+		],
 	},
 	[LumiaAlertValues.TIKTOK_GIFT]: {
 		connection: LumiaIntegrations.TIKTOK,
@@ -6881,6 +6885,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'BPM Greater Than',
 			},
 		],
 	},
