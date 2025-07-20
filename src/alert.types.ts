@@ -3829,9 +3829,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TIKTOK_LIKE]: {
 		connection: LumiaIntegrations.TIKTOK,
-		message: '{{username}} sent a like to make a total like count of {{totalLikeCount}}',
+		message: '{{username}} sent {{userLikeCount}} likes to make a total like count of {{totalLikeCount}}',
 		eventlistMessage: 'Liked',
-		eventlistDetailedMessage: 'sent a like',
+		eventlistDetailedMessage: 'sent {{userLikeCount}} likes to make a total like count of {{totalLikeCount}}',
 		acceptedVariables: AllVariables.tiktok.alerts.like,
 		quickActions: [
 			{
