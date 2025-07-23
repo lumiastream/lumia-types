@@ -3879,18 +3879,15 @@ export const LumiaAlertConfigs: Record<
 				default: 1000,
 			},
 		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'User Like Count Greater Than (Only Triggers once per session)' },
-		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'User Like Count Greater Than' }],
 	},
-	[LumiaAlertValues.TIKTOK_LIKE_MILESTONE]: {
+	[LumiaAlertValues.TIKTOK_TOTAL_LIKES]: {
 		connection: LumiaIntegrations.TIKTOK,
 		message: 'Reached {{totalLikeCount}} likes',
-		eventlistMessage: 'Like Milestone {{totalLikeCount}}',
+		eventlistMessage: 'Total Likes {{totalLikeCount}}',
 		eventlistDetailedMessage: 'reached {{totalLikeCount}} likes',
 		acceptedVariables: AllVariables.tiktok.alerts.like,
-		eventlistSpecialUsername: 'Milestone',
+		eventlistSpecialUsername: 'Total Likes',
 		quickActions: [
 			{
 				label: '1000 Total Likes',
@@ -3933,10 +3930,7 @@ export const LumiaAlertConfigs: Record<
 				default: 1000,
 			},
 		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Like Count Greater Than (Only Triggers once per session)' },
-		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Like Count Greater Than' }],
 	},
 	[LumiaAlertValues.TIKTOK_GIFT]: {
 		connection: LumiaIntegrations.TIKTOK,

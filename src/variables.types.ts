@@ -1182,7 +1182,7 @@ export const AllVariables = {
 			subscriber: ['username', 'displayname', 'subMonths', 'avatar'],
 			gift: ['username', 'userId', 'profilePictureUrl', 'describe', 'coins', 'giftId', 'giftName', 'giftPictureUrl', 'giftType', 'isNewGifter', 'receiverUserId', 'repeatCount', 'repeatEnd'],
 			like: ['username', 'userId', 'displayname', 'avatar', 'userLikeCount', 'totalLikeCount'],
-			likeMilestone: ['username', 'userId', 'displayname', 'avatar', 'userLikeCount', 'totalLikeCount'],
+			totalLikes: ['username', 'userId', 'displayname', 'avatar', 'userLikeCount', 'totalLikeCount'],
 			share: ['username', 'userId', 'displayname', 'avatar'],
 			streamEnd: ['eventTime'],
 			newVideo: ['title', 'description', 'embed', 'link', 'id', 'duration', 'likes', 'shares', 'views', 'comments'],
