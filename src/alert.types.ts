@@ -3702,20 +3702,6 @@ export const LumiaAlertConfigs: Record<
 				default: 1,
 			},
 			{
-				type: 'selection',
-				label: 'Tier',
-				dynamicField: 'value',
-				variableField: 'subPlan',
-				default: 1000,
-				required: true,
-				selections: [
-					{ label: 'Tier 1', value: 1000 },
-					{ label: 'Tier 2', value: 2000 },
-					{ label: 'Tier 3', value: 3000 },
-					{ label: 'Prime', value: 'Prime' },
-				],
-			},
-			{
 				type: 'text',
 				label: 'Message',
 				variableField: 'message',
@@ -4269,19 +4255,6 @@ export const LumiaAlertConfigs: Record<
 				default: 1,
 			},
 			{
-				type: 'selection',
-				label: 'Sub Plan',
-				dynamicField: 'value',
-				variableField: 'subPlan',
-				default: '1',
-				required: true,
-				selections: [
-					{ label: 'Tier 1', value: '1' },
-					{ label: 'Tier 2', value: '2' },
-					{ label: 'Tier 3', value: '3' },
-				],
-			},
-			{
 				type: 'text',
 				label: 'Message',
 				variableField: 'message',
@@ -4291,14 +4264,6 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_SELECTION,
-				selections: [
-					{ label: 'Tier 1', value: '1' },
-					{ label: 'Tier 2', value: '2' },
-					{ label: 'Tier 3', value: '3' },
-				],
-			},
 			{
 				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_EQUAL,
 			},
@@ -4386,19 +4351,6 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'giftAmount',
 				required: true,
 				default: 1,
-			},
-			{
-				type: 'selection',
-				label: 'Sub Plan',
-				dynamicField: 'value',
-				variableField: 'subPlan',
-				default: '1',
-				required: true,
-				selections: [
-					{ label: 'Tier 1', value: '1' },
-					{ label: 'Tier 2', value: '2' },
-					{ label: 'Tier 3', value: '3' },
-				],
 			},
 			{
 				type: 'text',
