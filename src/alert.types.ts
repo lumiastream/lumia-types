@@ -94,7 +94,6 @@ export const LumiaRedemptionCurrencySymbol = {
 
 export interface LumiaDynamicCondition {
 	value: number | string;
-	secondaryValue?: number | string;
 	name?: string;
 	isPrime?: boolean;
 	isGift?: boolean;
@@ -3928,7 +3927,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'number',
 				label: 'Total Like Count',
-				dynamicField: 'secondaryValue',
+				dynamicField: 'value',
 				variableField: 'totalLikeCount',
 				required: true,
 				default: 1000,
