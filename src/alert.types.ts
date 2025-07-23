@@ -5,6 +5,7 @@ import { AllVariables } from './variables.types';
 export enum LumiaVariationConditions {
 	RANDOM = 'RANDOM', // Frequency: Percent Chance
 	GREATER_NUMBER = 'GREATER_NUMBER',
+	SECONDARY_GREATER_NUMBER = 'SECONDARY_GREATER_NUMBER', // Used to compare a secondary check against another variable (e.g. total like count)
 	LESS_NUMBER = 'LESS_NUMBER',
 	EQUAL_STRING = 'EQUAL_STRING',
 	EQUAL_USERNAME = 'EQUAL_USERNAME',
@@ -94,6 +95,7 @@ export const LumiaRedemptionCurrencySymbol = {
 
 export interface LumiaDynamicCondition {
 	value: number | string;
+	secondaryValue?: number | string;
 	name?: string;
 	isPrime?: boolean;
 	isGift?: boolean;
@@ -3829,29 +3831,29 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TIKTOK_LIKE]: {
 		connection: LumiaIntegrations.TIKTOK,
-		message: '{{username}} sent {{userLikeCount}} likes to make a total like count of {{totalLikeCount}}',
+		message: '{{username}} liked the stream {{userLikeCount}} times to make a total of {{totalLikeCount}} likes',
 		eventlistMessage: 'Liked',
-		eventlistDetailedMessage: 'sent {{userLikeCount}} likes to make a total like count of {{totalLikeCount}}',
+		eventlistDetailedMessage: 'liked the stream {{userLikeCount}} times',
 		acceptedVariables: AllVariables.tiktok.alerts.like,
 		quickActions: [
 			{
-				label: 'Total Likes (Total 200)',
+				label: '200 User Likes',
 				dynamic: { value: 200 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
-					userLikeCount: 10,
-					totalLikeCount: 200,
+					userLikeCount: 200,
+					totalLikeCount: 1000,
 				},
 			},
 			{
-				label: 'Total Likes (Total 10000)',
-				dynamic: { value: 10000 },
+				label: '1000 User Likes',
+				dynamic: { value: 1000 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
-					userLikeCount: 100,
-					totalLikeCount: 10000,
+					userLikeCount: 1000,
+					totalLikeCount: 5000,
 				},
 			},
 		],
@@ -3865,24 +3867,77 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: 'number',
-				label: 'Total Like Count',
+				label: 'User Like Count',
 				dynamicField: 'value',
-				variableField: 'totalLikeCount',
+				variableField: 'userLikeCount',
 				required: true,
-				default: 40000,
+				default: 100,
 			},
 			{
 				type: 'number',
-				label: 'User Like Count',
-				variableField: 'userLikeCount',
+				label: 'Total Like Count',
+				variableField: 'totalLikeCount',
 				required: false,
-				default: 100,
+				default: 1000,
 			},
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Total Like Count Equal' },
-			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Like Count Greater Than' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'User Like Count Greater Than (Only Triggers once per session)' },
+		],
+	},
+	[LumiaAlertValues.TIKTOK_LIKE_MILESTONE]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: 'Reached {{totalLikeCount}} likes',
+		eventlistMessage: 'Like Milestone {{totalLikeCount}}',
+		eventlistDetailedMessage: 'reached {{totalLikeCount}} likes',
+		acceptedVariables: AllVariables.tiktok.alerts.like,
+		eventlistSpecialUsername: 'Milestone',
+		quickActions: [
+			{
+				label: '1000 Total Likes',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					userLikeCount: 200,
+					totalLikeCount: 1000,
+				},
+			},
+			{
+				label: '5000 Total Likes',
+				dynamic: { value: 5000 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					userLikeCount: 200,
+					totalLikeCount: 5000,
+				},
+			},
+			{
+				label: '25000 Total Likes',
+				dynamic: { value: 25000 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					userLikeCount: 200,
+					totalLikeCount: 25000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Like Count',
+				dynamicField: 'secondaryValue',
+				variableField: 'totalLikeCount',
+				required: true,
+				default: 1000,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Like Count Greater Than (Only Triggers once per session)' },
 		],
 	},
 	[LumiaAlertValues.TIKTOK_GIFT]: {

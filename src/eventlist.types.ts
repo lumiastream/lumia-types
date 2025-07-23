@@ -57,6 +57,7 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.TIKTOK_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.TIKTOK_GIFT]: LumiaEventListTypes.GIFTS,
 	[LumiaAlertValues.TIKTOK_LIKE]: LumiaEventListTypes.LIKES,
+	[LumiaAlertValues.TIKTOK_LIKE_MILESTONE]: LumiaEventListTypes.LIKES,
 	[LumiaAlertValues.TIKTOK_SHARE]: LumiaEventListTypes.SHARES,
 	[LumiaAlertValues.TIKTOK_SUBSCRIBER]: LumiaEventListTypes.SUBSCRIBERS,
 	[LumiaAlertValues.KICK_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
