@@ -5,7 +5,6 @@ import { AllVariables } from './variables.types';
 export enum LumiaVariationConditions {
 	RANDOM = 'RANDOM', // Frequency: Percent Chance
 	GREATER_NUMBER = 'GREATER_NUMBER',
-	SECONDARY_GREATER_NUMBER = 'SECONDARY_GREATER_NUMBER', // Used to compare a secondary check against another variable (e.g. total like count)
 	LESS_NUMBER = 'LESS_NUMBER',
 	EQUAL_STRING = 'EQUAL_STRING',
 	EQUAL_USERNAME = 'EQUAL_USERNAME',
