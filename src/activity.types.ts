@@ -92,6 +92,8 @@ export enum LumiaActivityCommandTypes {
 	SHOUTOUT = 'shoutout',
 	ADD_VIP = 'add-vip',
 	REMOVE_VIP = 'remove-vip',
+	ADD_MODERATOR = 'add-moderator',
+	REMOVE_MODERATOR = 'remove-moderator',
 
 	// Overlay Commands
 	OVERLAY_SET_OVERLAY_VISIBILITY = 'overlay-set-visibility',
