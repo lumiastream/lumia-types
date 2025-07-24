@@ -89,6 +89,7 @@ export enum LumiaActivityCommandTypes {
 	UNBAN_USER = 'unban-user',
 	TIMEOUT_USER = 'timeout-user',
 	ADD_LOYALTY_POINTS = 'add-loyalty-points',
+	GET_LOYALTY_POINTS = 'get-loyalty-points',
 	SHOUTOUT = 'shoutout',
 	ADD_VIP = 'add-vip',
 	REMOVE_VIP = 'remove-vip',
