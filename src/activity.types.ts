@@ -102,6 +102,12 @@ export enum LumiaActivityCommandTypes {
 	OVERLAY_SET_LAYER_POSITION = 'overlay-set-layer-position',
 	OVERLAY_SET_CONTENT = 'overlay-set-content',
 
+	// HUD Commands
+	HUD_OVERLAY_CHANGE = 'hud-overlay-change',
+	HUD_TOGGLE = 'hud-toggle',
+	HUD_VOLUME_SET = 'hud-volume-set',
+	HUD_OPACITY_SET = 'hud-opacity-set',
+
 	// Games Glow Command Types
 	GAMESGLOW_ALERT = 'gamesglow-alert',
 	GAMESGLOW_COMMAND = 'gamesglow-command',
