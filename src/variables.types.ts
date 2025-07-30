@@ -86,7 +86,7 @@ export enum SystemVariables {
 	VIEWERQUEUE_ENTRIES_COUNT = 'viewerqueue_entries_count',
 	VIEWERQUEUE_QUEUE_LIMIT = 'viewerqueue_queue_limit',
 	API_ACTION_GLOBAL_RESPONSE = 'api_action_global_response',
-	WEBSOCKET_ACTION_LAST_RESPONSE = 'websocket_action_last_response',
+	WEBSOCKET_ACTION_GLOBAL_RESPONSE = 'websocket_action_global_response',
 	LAST_RANDOM_INPUT = 'last_random_input',
 	LOYALTY_CURRENCY_NAME = 'loyalty_currency_name',
 
