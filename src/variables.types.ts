@@ -135,6 +135,18 @@ export enum SystemVariables {
 	TWITCH_CURRENT_POLL_ID = 'twitch_current_poll_id',
 	TWITCH_CURRENT_PREDICTION_ID = 'twitch_current_prediction_id',
 
+	YOUTUBE_CURRENT_VIEWER_COUNT = 'youtube_current_viewer_count',
+	YOUTUBE_TOTAL_VIEWER_COUNT = 'youtube_total_viewer_count',
+	YOUTUBE_STREAM_LIKES = 'youtube_stream_likes',
+	YOUTUBE_STREAM_DISLIKES = 'youtube_stream_dislikes',
+	YOUTUBE_STREAM_CHAT_COUNT = 'youtube_stream_chat_count',
+
+	YOUTUBE_SECOND_CURRENT_VIEWER_COUNT = 'youtube_second_current_viewer_count',
+	YOUTUBE_SECOND_TOTAL_VIEWER_COUNT = 'youtube_second_total_viewer_count',
+	YOUTUBE_SECOND_STREAM_LIKES = 'youtube_second_stream_likes',
+	YOUTUBE_SECOND_STREAM_DISLIKES = 'youtube_second_stream_dislikes',
+	YOUTUBE_SECOND_STREAM_CHAT_COUNT = 'youtube_second_stream_chat_count',
+
 	YOUTUBE_SESSION_CHAT_COUNT = 'youtube_session_chat_count',
 	YOUTUBE_CURRENT_FIRST_CHATTER = 'youtube_current_first_chatter',
 	YOUTUBE_CURRENT_FIRST_CHATTER_COUNT = 'youtube_current_first_chatter_count',
@@ -1535,6 +1547,8 @@ export const AllVariables = {
 			member: ['username', 'displayname', 'avatar', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName', 'subPlanId'],
 			superchat: ['username', 'displayname', 'currency', 'amount', 'message'],
 			supersticker: ['username', 'displayname', 'amount'],
+			like: ['likes', 'dislikes'],
+			viewers: ['viewers'],
 		},
 	},
 	youtubemusic: {
