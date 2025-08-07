@@ -202,6 +202,8 @@ export enum LumiaAlertValues {
 	YOUTUBE_SUBSCRIBER = 'youtube-subscriber',
 	YOUTUBE_SUPERCHAT = 'youtube-superchat',
 	YOUTUBE_SUPERSTICKER = 'youtube-supersticker',
+	YOUTUBE_LIKE = 'youtube-like',
+	YOUTUBE_VIEWERS = 'youtube-viewers',
 	FACEBOOK_STREAM_LIVE = 'facebook-streamLive',
 	FACEBOOK_STREAM_OFFLINE = 'facebook-streamOffline',
 	FACEBOOK_FIRST_CHATTER = 'facebook-firstChatter',

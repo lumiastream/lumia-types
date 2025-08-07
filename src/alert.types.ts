@@ -3208,6 +3208,56 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
 	},
+	[LumiaAlertValues.YOUTUBE_LIKE]: {
+		connection: LumiaIntegrations.YOUTUBE,
+		message: '{{likes}} likes on the stream',
+		eventlistMessage: 'Likes',
+		eventlistDetailedMessage: 'likes on the stream',
+		acceptedVariables: AllVariables.youtube.alerts.like,
+		quickActions: [
+			{
+				label: '10 likes',
+				dynamic: { value: 10 },
+				extraSettings: { likes: 10, dislikes: 2 },
+			},
+			{
+				label: '20 likes',
+				dynamic: { value: 20 },
+				extraSettings: { likes: 20, dislikes: 2 },
+			},
+			{
+				label: '100 likes',
+				dynamic: { value: 100 },
+				extraSettings: { likes: 100, dislikes: 2 },
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }],
+	},
+	[LumiaAlertValues.YOUTUBE_VIEWERS]: {
+		connection: LumiaIntegrations.YOUTUBE,
+		message: '{{viewers}} viewers are watching the stream',
+		eventlistMessage: 'Viewers',
+		eventlistDetailedMessage: 'are watching the stream',
+		acceptedVariables: AllVariables.youtube.alerts.viewers,
+		quickActions: [
+			{
+				label: '100 viewers',
+				dynamic: { value: 100 },
+				extraSettings: { viewers: 100 },
+			},
+			{
+				label: '200 viewers',
+				dynamic: { value: 200 },
+				extraSettings: { viewers: 200 },
+			},
+			{
+				label: '300 viewers',
+				dynamic: { value: 300 },
+				extraSettings: { viewers: 300 },
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Viewers Greater Than' }],
+	},
 	// },
 	// facebook: {
 	[LumiaAlertValues.FACEBOOK_STREAM_LIVE]: {
