@@ -3212,7 +3212,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{likes}} likes on the stream',
 		eventlistMessage: 'Likes',
-		eventlistDetailedMessage: 'likes on the stream',
+		eventlistDetailedMessage: '{{likes}} likes on the stream',
 		acceptedVariables: AllVariables.youtube.alerts.like,
 		quickActions: [
 			{
@@ -3237,7 +3237,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{viewers}} viewers are watching the stream',
 		eventlistMessage: 'Viewers',
-		eventlistDetailedMessage: 'are watching the stream',
+		eventlistDetailedMessage: '{{viewers}} viewers are watching the stream',
 		acceptedVariables: AllVariables.youtube.alerts.viewers,
 		quickActions: [
 			{
