@@ -131,6 +131,7 @@ export const LumiaAlertConfigs: Record<
 		}>;
 		LumiaVariationConditions: Array<{
 			type: LumiaVariationConditions;
+			description?: string;
 			selections?: Array<{
 				label: string;
 				message?: string;
@@ -1011,6 +1012,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Tier Level',
 				selections: [
 					{ label: 'Tier 1', value: 1000 },
 					{ label: 'Tier 2', value: 2000 },
@@ -1153,6 +1155,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Tier Level',
 				selections: [
 					{ label: 'Tier 1', value: 1000 },
 					{ label: 'Tier 2', value: 2000 },
@@ -3516,12 +3519,22 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '5 gifts',
 				dynamic: { value: 5, giftAmount: 5 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 5, giftAmount: 5 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 5,
+					giftAmount: 5,
+				},
 			},
 			{
 				label: '20 gifts',
 				dynamic: { value: 20, giftAmount: 20 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 20, giftAmount: 20 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 20,
+					giftAmount: 20,
+				},
 			},
 		],
 		inputFields: [
@@ -4051,12 +4064,22 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '5 gifts',
 				dynamic: { value: 5, giftAmount: 5 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 5, giftAmount: 5 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 5,
+					giftAmount: 5,
+				},
 			},
 			{
 				label: '20 gifts',
 				dynamic: { value: 20, giftAmount: 20 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 20, giftAmount: 20 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 20,
+					giftAmount: 20,
+				},
 			},
 		],
 		inputFields: [
