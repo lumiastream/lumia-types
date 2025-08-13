@@ -89,15 +89,24 @@ export enum LumiaActivityCommandTypes {
 	UNBAN_USER = 'unban-user',
 	TIMEOUT_USER = 'timeout-user',
 	ADD_LOYALTY_POINTS = 'add-loyalty-points',
+	GET_LOYALTY_POINTS = 'get-loyalty-points',
 	SHOUTOUT = 'shoutout',
 	ADD_VIP = 'add-vip',
 	REMOVE_VIP = 'remove-vip',
+	ADD_MODERATOR = 'add-moderator',
+	REMOVE_MODERATOR = 'remove-moderator',
 
 	// Overlay Commands
 	OVERLAY_SET_OVERLAY_VISIBILITY = 'overlay-set-visibility',
 	OVERLAY_SET_LAYER_VISIBILITY = 'overlay-set-layer-visibility',
 	OVERLAY_SET_LAYER_POSITION = 'overlay-set-layer-position',
 	OVERLAY_SET_CONTENT = 'overlay-set-content',
+
+	// HUD Commands
+	HUD_OVERLAY_CHANGE = 'hud-overlay-change',
+	HUD_TOGGLE = 'hud-toggle',
+	HUD_VOLUME_SET = 'hud-volume-set',
+	HUD_OPACITY_SET = 'hud-opacity-set',
 
 	// Games Glow Command Types
 	GAMESGLOW_ALERT = 'gamesglow-alert',
@@ -193,6 +202,8 @@ export enum LumiaAlertValues {
 	YOUTUBE_SUBSCRIBER = 'youtube-subscriber',
 	YOUTUBE_SUPERCHAT = 'youtube-superchat',
 	YOUTUBE_SUPERSTICKER = 'youtube-supersticker',
+	YOUTUBE_LIKE = 'youtube-like',
+	YOUTUBE_VIEWERS = 'youtube-viewers',
 	FACEBOOK_STREAM_LIVE = 'facebook-streamLive',
 	FACEBOOK_STREAM_OFFLINE = 'facebook-streamOffline',
 	FACEBOOK_FIRST_CHATTER = 'facebook-firstChatter',
@@ -218,6 +229,7 @@ export enum LumiaAlertValues {
 	TIKTOK_ENTRANCE = 'tiktok-entrance',
 	TIKTOK_FOLLOWER = 'tiktok-follower',
 	TIKTOK_LIKE = 'tiktok-like',
+	TIKTOK_TOTAL_LIKES = 'tiktok-totalLikes',
 	TIKTOK_GIFT = 'tiktok-gift',
 	TIKTOK_SUBSCRIBER = 'tiktok-subscriber',
 	TIKTOK_SHARE = 'tiktok-share',
@@ -396,6 +408,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TIKTOK_FIRST_CHATTER]: 'Tiktok First Chatter',
 	[LumiaAlertValues.TIKTOK_FOLLOWER]: 'Tiktok Follower',
 	[LumiaAlertValues.TIKTOK_LIKE]: 'Tiktok Like',
+	[LumiaAlertValues.TIKTOK_TOTAL_LIKES]: 'Tiktok Total Likes',
 	[LumiaAlertValues.TIKTOK_GIFT]: 'Tiktok Gift',
 	[LumiaAlertValues.TIKTOK_SUBSCRIBER]: 'Tiktok Subscriber',
 	[LumiaAlertValues.TIKTOK_SHARE]: 'Tiktok Share',
