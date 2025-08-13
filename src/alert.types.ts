@@ -996,6 +996,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Tier Level',
 				selections: [
 					{ label: 'Tier 1', value: 1000 },
 					{ label: 'Tier 2', value: 2000 },
@@ -1120,6 +1121,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Tier Level',
 				selections: [
 					{ label: 'Tier 1', value: 1000 },
 					{ label: 'Tier 2', value: 2000 },
