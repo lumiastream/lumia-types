@@ -1405,8 +1405,8 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.TWITCH_RAID_OUT]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: 'You raided {{username}} with {{viewers}} viewers',
-		eventlistMessage: 'Raided',
-		eventlistDetailedMessage: 'raided {{username}} with {{viewers}} viewers',
+		eventlistMessage: 'Raid Out',
+		eventlistDetailedMessage: 'raided out {{username}} with {{viewers}} viewers',
 		acceptedVariables: AllVariables.twitch.alerts.raid,
 		quickActions: [
 			{
