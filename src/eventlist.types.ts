@@ -81,6 +81,7 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: LumiaEventListTypes.HYPETRAIN,
 	[LumiaAlertValues.TWITCH_POINTS]: LumiaEventListTypes.POINTS,
 	[LumiaAlertValues.TWITCH_RAID]: LumiaEventListTypes.RAIDS,
+	[LumiaAlertValues.TWITCH_RAID_OUT]: LumiaEventListTypes.RAIDS,
 	[LumiaAlertValues.TWITCH_SHOUTOUT_RECEIVE]: LumiaEventListTypes.OTHERS,
 	[LumiaAlertValues.TWITCH_SUBSCRIBER]: LumiaEventListTypes.SUBSCRIBERS,
 	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: LumiaEventListTypes.DONATION,
