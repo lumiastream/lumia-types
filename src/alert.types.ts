@@ -5956,6 +5956,163 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.FOURTHWALL_GIVEAWAY_STARTED]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: '{{username}} just started a giveaway for {{giveawayName}}',
+		eventlistMessage: 'Giveaway Started',
+		eventlistDetailedMessage: 'started giveaway for {{giveawayName}}',
+		acceptedVariables: AllVariables.fourthwall.alerts.giveawayStarted,
+		quickActions: [
+			{
+				label: 'Test',
+				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					giveawayName: 'Test Item',
+					giveawayId: 'TEST123',
+					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Giveaway Name',
+				variableField: 'giveawayName',
+				required: false,
+				default: 'Test Item',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.FOURTHWALL_GIVEAWAY_ENDED]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: 'Giveaway {{giveawayName}} ended with {{winnerCount}} winners',
+		eventlistMessage: 'Giveaway Ended',
+		eventlistDetailedMessage: 'giveaway ended with {{winnerCount}} winners',
+		acceptedVariables: AllVariables.fourthwall.alerts.giveawayEnded,
+		quickActions: [
+			{
+				label: 'Test',
+				dynamic: { value: 3, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					giveawayName: 'Test Item',
+					giveawayId: 'TEST123',
+					winners: ['winner1', 'winner2', 'winner3'],
+					winnerCount: 3,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Giveaway Name',
+				variableField: 'giveawayName',
+				required: false,
+				default: 'Test Item',
+			},
+			{
+				type: 'number',
+				label: 'Winner Count',
+				dynamicField: 'winnerCount',
+				variableField: 'winnerCount',
+				required: false,
+				default: 1,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.FOURTHWALL_THANKYOU_SENT]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: 'Thank you sent to {{username}} for {{contributionType}}',
+		eventlistMessage: 'Thank You Sent',
+		eventlistDetailedMessage: 'thank you for {{contributionType}}',
+		acceptedVariables: AllVariables.fourthwall.alerts.thankyouSent,
+		quickActions: [
+			{
+				label: 'Order',
+				dynamic: { value: 1 },
+				extraSettings: {
+					username: 'lumiastream',
+					contributionType: 'ORDER',
+					message: 'Thank you for your support!',
+				},
+			},
+			{
+				label: 'Donation',
+				dynamic: { value: 1 },
+				extraSettings: {
+					username: 'lumiastream',
+					contributionType: 'DONATION',
+					message: 'Thank you for your support!',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Contribution Type',
+				variableField: 'contributionType',
+				required: false,
+				default: 'ORDER',
+			},
+			{
+				type: 'text',
+				label: 'Message',
+				variableField: 'message',
+				required: false,
+				default: 'Thank you!',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 
 	// },
 	// twitter: {
