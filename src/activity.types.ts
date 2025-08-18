@@ -504,7 +504,6 @@ export const LumiaAlertFriendlyValues = {
 // Where did the Activity Originate from: Chat, alerts, shortcut, api, etc.
 export enum LumiaActivityOriginTypes {
 	SYSTEM = 'system', // Settings, Shortcut, or API
-	ALEXA = 'alexa',
 	ALERT = 'alert',
 	CHAT = 'chat',
 	CHATBOT = 'chatbot',

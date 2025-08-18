@@ -333,7 +333,6 @@ export enum SystemVariables {
 	VTUBESTUDIO_CURRENT_BACKGROUND = 'vtubestudio_current_background',
 	VTUBESTUDIO_LAST_HOTKEY_TRIGGERED = 'vtubestudio_last_hotkey_triggered',
 
-	ABLETON_BPM = 'ableton_bpm',
 	HEARTRATE_BPM = 'heartrate_bpm',
 }
 
@@ -920,9 +919,6 @@ export const AllVariables = {
 			rouletteWinner: ['username', 'outcome_amount', 'ball_position'],
 			slotsWinner: ['username', 'outcome_amount', 'slots_combo'],
 		},
-	},
-	ableton: {
-		variables: ['ableton_bpm'],
 	},
 	crowdcontrol: {
 		alerts: {
