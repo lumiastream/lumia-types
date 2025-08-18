@@ -189,7 +189,6 @@ export enum LumiaIntegrations {
 	PULSE = 'pulse',
 	PULSOID = 'pulsoid',
 	HYPERATE = 'hyperate',
-	ABLETON = 'ableton',
 	PAYPAL = 'paypal',
 	TWITTER = 'twitter',
 	SPOTIFY = 'spotify',
