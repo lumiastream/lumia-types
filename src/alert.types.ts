@@ -4020,13 +4020,13 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TIKTOK_GIFT]: {
 		connection: LumiaIntegrations.TIKTOK,
-		message: '{{username}} sent a gift {{giftName}} with count of {{coins}} coins',
+		message: '{{username}} sent {{giftAmount}} {{giftName}} gifts with a count of {{diamonds}} diamonds',
 		eventlistMessage: 'Gift',
 		eventlistDetailedMessage: 'sent {{giftAmount}} gifts of {{giftName}}',
 		acceptedVariables: AllVariables.tiktok.alerts.gift,
 		quickActions: [
 			{
-				label: 'Rose worth 1 Coin',
+				label: 'Rose worth 1 Diamond',
 				dynamic: { value: 1, name: 'Rose' },
 				extraSettings: {
 					username: 'lumiastream',
@@ -4036,12 +4036,12 @@ export const LumiaAlertConfigs: Record<
 					giftId: 5655,
 					giftAmount: 1,
 					value: 1,
-					coins: 1,
+					diamonds: 1,
 					giftPictureUrl: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/eba3a9bb85c33e017f3648eaf88d7189~tplv-obj.png',
 				},
 			},
 			{
-				label: 'Pumpkin worth 100 Coins',
+				label: 'Pumpkin worth 100 Diamonds',
 				dynamic: { value: 100, name: 'Pumpkin' },
 				extraSettings: {
 					username: 'lumiastream',
@@ -4052,11 +4052,11 @@ export const LumiaAlertConfigs: Record<
 					giftId: 7095,
 					giftAmount: 1,
 					value: 100,
-					coins: 100,
+					diamonds: 100,
 				},
 			},
 			{
-				label: 'Boiling Cauldron worth 500 coins',
+				label: 'Boiling Cauldron worth 500 Diamonds',
 				dynamic: { value: 500, name: 'Boiling Cauldron' },
 				extraSettings: {
 					username: 'lumiastream',
@@ -4067,7 +4067,7 @@ export const LumiaAlertConfigs: Record<
 					giftId: 7158,
 					giftAmount: 1,
 					value: 500,
-					coins: 500,
+					diamonds: 500,
 				},
 			},
 		],
@@ -4089,7 +4089,7 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: 'number',
-				label: 'Coins',
+				label: 'Diamonds',
 				variableField: 'value',
 				required: false,
 				default: 1,
@@ -4103,11 +4103,11 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
-				description: 'Coins Equal',
+				description: 'Diamonds Equal',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
-				description: 'Coins Greater Than',
+				description: 'Diamonds Greater Than',
 			},
 		],
 	},

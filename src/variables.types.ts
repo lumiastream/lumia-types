@@ -1193,7 +1193,7 @@ export const AllVariables = {
 			entrance: ['username', 'userId', 'displayname', 'avatar', 'message'],
 			follower: ['username', 'userId', 'displayname', 'avatar'],
 			subscriber: ['username', 'displayname', 'subMonths', 'avatar'],
-			gift: ['username', 'userId', 'profilePictureUrl', 'describe', 'coins', 'giftId', 'giftName', 'giftPictureUrl', 'giftType', 'isNewGifter', 'receiverUserId', 'repeatCount', 'repeatEnd'],
+			gift: ['username', 'userId', 'avatar', 'diamonds', 'giftId', 'giftName', 'giftPictureUrl', 'giftType', 'giftAmount'],
 			like: ['username', 'userId', 'displayname', 'avatar', 'userLikeCount', 'totalLikeCount'],
 			totalLikes: ['username', 'userId', 'displayname', 'avatar', 'userLikeCount', 'totalLikeCount'],
 			share: ['username', 'userId', 'displayname', 'avatar'],
