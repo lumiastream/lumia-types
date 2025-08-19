@@ -4020,9 +4020,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TIKTOK_GIFT]: {
 		connection: LumiaIntegrations.TIKTOK,
-		message: '{{username}} sent a gift {{giftName}} with count of {{coins}} coins',
+		message: '{{username}} sent x{{giftAmount}} {{giftName}}',
 		eventlistMessage: 'Gift',
-		eventlistDetailedMessage: 'sent {{giftAmount}} gifts of {{giftName}}',
+		eventlistDetailedMessage: 'sent x{{giftAmount}} {{giftName}}',
 		acceptedVariables: AllVariables.tiktok.alerts.gift,
 		quickActions: [
 			{
@@ -4037,6 +4037,7 @@ export const LumiaAlertConfigs: Record<
 					giftAmount: 1,
 					value: 1,
 					coins: 1,
+					diamonds: 1,
 					giftPictureUrl: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/eba3a9bb85c33e017f3648eaf88d7189~tplv-obj.png',
 				},
 			},
@@ -4053,10 +4054,11 @@ export const LumiaAlertConfigs: Record<
 					giftAmount: 1,
 					value: 100,
 					coins: 100,
+					diamonds: 50,
 				},
 			},
 			{
-				label: 'Boiling Cauldron worth 500 coins',
+				label: 'Boiling Cauldron worth 500 Coins',
 				dynamic: { value: 500, name: 'Boiling Cauldron' },
 				extraSettings: {
 					username: 'lumiastream',
@@ -4068,6 +4070,7 @@ export const LumiaAlertConfigs: Record<
 					giftAmount: 1,
 					value: 500,
 					coins: 500,
+					diamonds: 250,
 				},
 			},
 		],
