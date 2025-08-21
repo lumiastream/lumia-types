@@ -265,7 +265,7 @@ export enum LumiaAlertValues {
 	OBS_SWITCH_SCENE = 'obs-switchScene',
 	OBS_SCENE_ITEM_VISIBILITY = 'obs-sceneItemVisibility',
 	OBS_SCENE_ITEM_HIDDEN = 'obs-sceneItemHidden',
-	OBS_SWITCH_TRANSITION = 'obs-switch-transition',
+	OBS_SWITCH_TRANSITION = 'obs-switchTransition',
 	OBS_TRANSITION_BEGIN = 'obs-transitionBegin',
 	OBS_TRANSITION_END = 'obs-transitionEnd',
 	OBS_STREAM_STARTING = 'obs-streamStarting',
