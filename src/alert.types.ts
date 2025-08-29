@@ -104,6 +104,8 @@ export interface LumiaDynamicCondition {
 	subMonths?: number;
 	currency?: string;
 	username?: string;
+	total?: number;
+	previousTotal?: number;
 }
 
 export const LumiaAlertConfigs: Record<
@@ -899,24 +901,27 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername: 'Total Followers',
 		quickActions: [
 			{
-				label: '1000 Total Followers',
-				dynamic: { value: 1000 },
+				label: '10 Total Followers',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
 				extraSettings: {
-					total: 1000,
+					total: 10,
+					previousTotal: 5,
 				},
 			},
 			{
-				label: '5000 Total Followers',
-				dynamic: { value: 5000 },
+				label: '50 Total Followers',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
 				extraSettings: {
-					total: 5000,
+					total: 50,
+					previousTotal: 2,
 				},
 			},
 			{
-				label: '25000 Total Followers',
-				dynamic: { value: 25000 },
+				label: '100 Total Followers',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
 				extraSettings: {
-					total: 25000,
+					total: 100,
+					previousTotal: 50,
 				},
 			},
 		],
@@ -1080,24 +1085,27 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername: 'Total Subscribers',
 		quickActions: [
 			{
-				label: '1000 Total Subscribers',
-				dynamic: { value: 1000 },
+				label: '10 Total Subscribers',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
 				extraSettings: {
-					total: 1000,
+					total: 10,
+					previousTotal: 5,
 				},
 			},
 			{
-				label: '5000 Total Subscribers',
-				dynamic: { value: 5000 },
+				label: '50 Total Subscribers',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
 				extraSettings: {
-					total: 5000,
+					total: 50,
+					previousTotal: 2,
 				},
 			},
 			{
-				label: '25000 Total Subscribers',
-				dynamic: { value: 25000 },
+				label: '100 Total Subscribers',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
 				extraSettings: {
-					total: 25000,
+					total: 100,
+					previousTotal: 50,
 				},
 			},
 		],
@@ -1248,24 +1256,27 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername: 'Total Gifts',
 		quickActions: [
 			{
-				label: '1000 Total Gifts',
-				dynamic: { value: 1000 },
+				label: '10 Total Gifts',
+				dynamic: { value: 100, total: 10, previousTotal: 5 },
 				extraSettings: {
-					total: 1000,
+					total: 10,
+					previousTotal: 5,
 				},
 			},
 			{
-				label: '5000 Total Gifts',
-				dynamic: { value: 5000 },
+				label: '50 Total Gifts',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
 				extraSettings: {
-					total: 5000,
+					total: 50,
+					previousTotal: 2,
 				},
 			},
 			{
-				label: '25000 Total Gifts',
-				dynamic: { value: 25000 },
+				label: '100 Total Gifts',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
 				extraSettings: {
-					total: 25000,
+					total: 100,
+					previousTotal: 50,
 				},
 			},
 		],
@@ -1347,23 +1358,26 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: '1000 Total Bits',
-				dynamic: { value: 1000 },
+				dynamic: { value: 1000, total: 1000, previousTotal: 500 },
 				extraSettings: {
 					total: 1000,
+					previousTotal: 500,
 				},
 			},
 			{
-				label: '5000 Total Bits',
-				dynamic: { value: 5000 },
+				label: '20000 Total Bits',
+				dynamic: { value: 20000, total: 20000, previousTotal: 10000 },
 				extraSettings: {
-					total: 5000,
+					total: 20000,
+					previousTotal: 10000,
 				},
 			},
 			{
-				label: '25000 Total Bits',
-				dynamic: { value: 25000 },
+				label: '100000 Total Bits',
+				dynamic: { value: 100000, total: 100000, previousTotal: 50000 },
 				extraSettings: {
-					total: 25000,
+					total: 100000,
+					previousTotal: 50000,
 				},
 			},
 		],
@@ -4558,24 +4572,27 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername: 'Total Followers',
 		quickActions: [
 			{
-				label: '1000 Total Followers',
-				dynamic: { value: 1000 },
+				label: '10 Total Followers',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
 				extraSettings: {
-					total: 1000,
+					total: 10,
+					previousTotal: 5,
 				},
 			},
 			{
-				label: '5000 Total Followers',
-				dynamic: { value: 5000 },
+				label: '50 Total Followers',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
 				extraSettings: {
-					total: 5000,
+					total: 50,
+					previousTotal: 2,
 				},
 			},
 			{
-				label: '25000 Total Followers',
-				dynamic: { value: 25000 },
+				label: '100 Total Followers',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
 				extraSettings: {
-					total: 25000,
+					total: 100,
+					previousTotal: 50,
 				},
 			},
 		],
@@ -4658,24 +4675,27 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername: 'Total Subscribers',
 		quickActions: [
 			{
-				label: '1000 Total Subscribers',
-				dynamic: { value: 1000 },
+				label: '10 Total Subscribers',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
 				extraSettings: {
-					total: 1000,
+					total: 10,
+					previousTotal: 5,
 				},
 			},
 			{
-				label: '5000 Total Subscribers',
-				dynamic: { value: 5000 },
+				label: '50 Total Subscribers',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
 				extraSettings: {
-					total: 5000,
+					total: 50,
+					previousTotal: 2,
 				},
 			},
 			{
-				label: '25000 Total Subscribers',
-				dynamic: { value: 25000 },
+				label: '100 Total Subscribers',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
 				extraSettings: {
-					total: 25000,
+					total: 100,
+					previousTotal: 50,
 				},
 			},
 		],
@@ -4801,24 +4821,27 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername: 'Total Gifts',
 		quickActions: [
 			{
-				label: '1000 Total Gifts',
-				dynamic: { value: 1000 },
+				label: '10 Total Gifts',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
 				extraSettings: {
-					total: 1000,
+					total: 10,
+					previousTotal: 5,
 				},
 			},
 			{
-				label: '5000 Total Gifts',
-				dynamic: { value: 5000 },
+				label: '50 Total Gifts',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
 				extraSettings: {
-					total: 5000,
+					total: 50,
+					previousTotal: 2,
 				},
 			},
 			{
-				label: '25000 Total Gifts',
-				dynamic: { value: 25000 },
+				label: '100 Total Gifts',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
 				extraSettings: {
-					total: 25000,
+					total: 100,
+					previousTotal: 50,
 				},
 			},
 		],
