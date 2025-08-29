@@ -20,6 +20,7 @@ export const formatCondition = (conditionType: string | undefined, condition: st
 		[LumiaVariationConditions.IS_PRIME]: () => 'Is a Prime subscription',
 		[LumiaVariationConditions.TARGET_ACHIEVED]: () => 'Target achieved',
 		[LumiaVariationConditions.IS_ON]: () => 'Is on',
+		[LumiaVariationConditions.COUNT_IS_MULTIPLE_OF]: (val, extra) => `Count is multiple of ${val}${extra ? ` ${extra}` : ''}`,
 		[LumiaVariationConditions.RANDOM]: (val) => `${val}% random chance`,
 	};
 
