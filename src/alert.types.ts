@@ -22,6 +22,9 @@ export enum LumiaVariationConditions {
 	GIFT_SUB_GREATER = 'GIFT_SUB_GREATER',
 	IS_PRIME = 'IS_PRIME',
 
+	// Every x amount
+	COUNT_IS_MULTIPLE_OF = 'COUNT_IS_MULTIPLE_OF',
+
 	// Twitch Goal
 	TARGET_ACHIEVED = 'TARGET_ACHIEVED',
 
@@ -622,7 +625,12 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.lumiastream.alerts.slotsWinner,
 		quickActions: [],
 		inputFields: [],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.EQUAL_STRING }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_STRING },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+		],
 	},
 	// twitch: {
 	[LumiaAlertValues.TWITCH_EXTENSION]: {
@@ -882,6 +890,51 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.TWITCH_SESSION_FOLLOWERS]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: 'Reached {{total}} followers',
+		eventlistMessage: 'Total Followers {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} followers',
+		acceptedVariables: AllVariables.twitch.alerts.sessionFollowers,
+		eventlistSpecialUsername: 'Total Followers',
+		quickActions: [
+			{
+				label: '1000 Total Followers',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					total: 1000,
+				},
+			},
+			{
+				label: '5000 Total Followers',
+				dynamic: { value: 5000 },
+				extraSettings: {
+					total: 5000,
+				},
+			},
+			{
+				label: '25000 Total Followers',
+				dynamic: { value: 25000 },
+				extraSettings: {
+					total: 25000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Followers',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 1000,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Follower Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Follower Count is a multiple of' },
+		],
+	},
 	[LumiaAlertValues.TWITCH_SUBSCRIBER]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} just subscribed with a {{tier}} sub!',
@@ -1018,6 +1071,51 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
 	},
+	[LumiaAlertValues.TWITCH_SESSION_SUBS]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: 'Reached {{total}} subscribers',
+		eventlistMessage: 'Total Subscribers {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} subscribers',
+		acceptedVariables: AllVariables.twitch.alerts.sessionSubs,
+		eventlistSpecialUsername: 'Total Subscribers',
+		quickActions: [
+			{
+				label: '1000 Total Subscribers',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					total: 1000,
+				},
+			},
+			{
+				label: '5000 Total Subscribers',
+				dynamic: { value: 5000 },
+				extraSettings: {
+					total: 5000,
+				},
+			},
+			{
+				label: '25000 Total Subscribers',
+				dynamic: { value: 25000 },
+				extraSettings: {
+					total: 25000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Subscribers',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 1000,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Subscriber Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Subscriber Count is a multiple of' },
+		],
+	},
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: '{{gifter}} gifted {{giftAmount}} {{tier}} subs to {{recipients}}',
@@ -1141,6 +1239,51 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
 	},
+	[LumiaAlertValues.TWITCH_SESSION_GIFTS]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: 'Reached {{total}} gifts',
+		eventlistMessage: 'Total Gifts {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} gifts',
+		acceptedVariables: AllVariables.twitch.alerts.sessionGifts,
+		eventlistSpecialUsername: 'Total Gifts',
+		quickActions: [
+			{
+				label: '1000 Total Gifts',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					total: 1000,
+				},
+			},
+			{
+				label: '5000 Total Gifts',
+				dynamic: { value: 5000 },
+				extraSettings: {
+					total: 5000,
+				},
+			},
+			{
+				label: '25000 Total Gifts',
+				dynamic: { value: 25000 },
+				extraSettings: {
+					total: 25000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Gifts',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 1000,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Gift Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Gift Count is a multiple of' },
+		],
+	},
 	[LumiaAlertValues.TWITCH_BITS]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} cheered {{amount}} bits. They said {{message}}',
@@ -1192,6 +1335,51 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
 			},
+		],
+	},
+	[LumiaAlertValues.TWITCH_SESSION_BITS]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: 'Reached {{total}} bits',
+		eventlistMessage: 'Total Bits {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} bits',
+		acceptedVariables: AllVariables.twitch.alerts.sessionBits,
+		eventlistSpecialUsername: 'Total Bits',
+		quickActions: [
+			{
+				label: '1000 Total Bits',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					total: 1000,
+				},
+			},
+			{
+				label: '5000 Total Bits',
+				dynamic: { value: 5000 },
+				extraSettings: {
+					total: 5000,
+				},
+			},
+			{
+				label: '25000 Total Bits',
+				dynamic: { value: 25000 },
+				extraSettings: {
+					total: 25000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Bits',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 1000,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Bit Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Bit Count is a multiple of' },
 		],
 	},
 	[LumiaAlertValues.TWITCH_POWERUPS]: {
@@ -1411,7 +1599,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'You raided {{username}} with {{viewers}} viewers',
 		eventlistMessage: 'Raid Out',
 		eventlistDetailedMessage: 'raided out {{username}} with {{viewers}} viewers',
-		acceptedVariables: AllVariables.twitch.alerts.raid,
+		acceptedVariables: AllVariables.twitch.alerts.raidOut,
 		quickActions: [
 			{
 				label: '10 viewers',
@@ -3263,7 +3451,12 @@ export const LumiaAlertConfigs: Record<
 				default: 100,
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+		],
 	},
 	[LumiaAlertValues.YOUTUBE_LIKE]: {
 		connection: LumiaIntegrations.YOUTUBE,
@@ -3475,7 +3668,12 @@ export const LumiaAlertConfigs: Record<
 				default: 100,
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+		],
 	},
 	[LumiaAlertValues.FACEBOOK_SUPPORT]: {
 		connection: LumiaIntegrations.FACEBOOK,
@@ -3517,7 +3715,12 @@ export const LumiaAlertConfigs: Record<
 				default: 100,
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+		],
 	},
 	[LumiaAlertValues.FACEBOOK_GIFT_SUBSCRIPTION]: {
 		connection: LumiaIntegrations.FACEBOOK,
@@ -3559,7 +3762,12 @@ export const LumiaAlertConfigs: Record<
 				default: 100,
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+		],
 	},
 	[LumiaAlertValues.FACEBOOK_SHARE]: {
 		connection: LumiaIntegrations.FACEBOOK,
@@ -3819,7 +4027,12 @@ export const LumiaAlertConfigs: Record<
 				default: 'Great stream',
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_NUMBER }, { type: LumiaVariationConditions.GREATER_NUMBER }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+		],
 	},
 	[LumiaAlertValues.TROVO_RAID]: {
 		connection: LumiaIntegrations.TROVO,
@@ -4336,6 +4549,51 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
 	},
+	[LumiaAlertValues.KICK_SESSION_FOLLOWERS]: {
+		connection: LumiaIntegrations.KICK,
+		message: 'Reached {{total}} followers',
+		eventlistMessage: 'Total Followers {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} followers',
+		acceptedVariables: AllVariables.kick.alerts.sessionFollowers,
+		eventlistSpecialUsername: 'Total Followers',
+		quickActions: [
+			{
+				label: '1000 Total Followers',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					total: 1000,
+				},
+			},
+			{
+				label: '5000 Total Followers',
+				dynamic: { value: 5000 },
+				extraSettings: {
+					total: 5000,
+				},
+			},
+			{
+				label: '25000 Total Followers',
+				dynamic: { value: 25000 },
+				extraSettings: {
+					total: 25000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Followers',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 1000,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Follower Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Follower Count is a multiple of' },
+		],
+	},
 	[LumiaAlertValues.KICK_SUBSCRIBER]: {
 		connection: LumiaIntegrations.KICK,
 		message: '{{username}} just subscribed with a {{tier}} sub!',
@@ -4389,6 +4647,51 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_GREATER,
 			},
+		],
+	},
+	[LumiaAlertValues.KICK_SESSION_SUBS]: {
+		connection: LumiaIntegrations.KICK,
+		message: 'Reached {{total}} subscribers',
+		eventlistMessage: 'Total Subscribers {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} subscribers',
+		acceptedVariables: AllVariables.kick.alerts.sessionSubs,
+		eventlistSpecialUsername: 'Total Subscribers',
+		quickActions: [
+			{
+				label: '1000 Total Subscribers',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					total: 1000,
+				},
+			},
+			{
+				label: '5000 Total Subscribers',
+				dynamic: { value: 5000 },
+				extraSettings: {
+					total: 5000,
+				},
+			},
+			{
+				label: '25000 Total Subscribers',
+				dynamic: { value: 25000 },
+				extraSettings: {
+					total: 25000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Subscribers',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 1000,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Subscriber Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Subscriber Count is a multiple of' },
 		],
 	},
 	[LumiaAlertValues.KICK_GIFT_SUBSCRIPTION]: {
@@ -4487,6 +4790,51 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: LumiaVariationConditions.GIFT_SUB_GREATER,
 			},
+		],
+	},
+	[LumiaAlertValues.KICK_SESSION_GIFTS]: {
+		connection: LumiaIntegrations.KICK,
+		message: 'Reached {{total}} gifts',
+		eventlistMessage: 'Total Gifts {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} gifts',
+		acceptedVariables: AllVariables.kick.alerts.sessionGifts,
+		eventlistSpecialUsername: 'Total Gifts',
+		quickActions: [
+			{
+				label: '1000 Total Gifts',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					total: 1000,
+				},
+			},
+			{
+				label: '5000 Total Gifts',
+				dynamic: { value: 5000 },
+				extraSettings: {
+					total: 5000,
+				},
+			},
+			{
+				label: '25000 Total Gifts',
+				dynamic: { value: 25000 },
+				extraSettings: {
+					total: 25000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Gifts',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 1000,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Gift Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Gift Count is a multiple of' },
 		],
 	},
 	[LumiaAlertValues.KICK_HOST]: {
