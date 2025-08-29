@@ -206,6 +206,8 @@ export enum SystemVariables {
 	TWITCH_TOTAL_SUBSCRIBER_COUNT = 'twitch_total_subscriber_count',
 	/** Session subs count. Use as {{twitch_session_subscribers_count}}. */
 	TWITCH_SESSION_SUBSCRIBERS_COUNT = 'twitch_session_subscribers_count',
+	/** Session gifts count. Use as {{twitch_session_gifts_count}}. */
+	TWITCH_SESSION_GIFTS_COUNT = 'twitch_session_gifts_count',
 	/** Current moderators (comma-separated). Use as {{twitch_current_mods}}. */
 	TWITCH_CURRENT_MODS = 'twitch_current_mods',
 	/** Last follower. Use as {{twitch_last_follower}}. */
@@ -459,6 +461,8 @@ export enum SystemVariables {
 	KICK_TOTAL_SUBSCRIBER_COUNT = 'kick_total_subscriber_count',
 	/** Session subs count. Use as {{kick_session_subscriber_count}}. */
 	KICK_SESSION_SUBSCRIBER_COUNT = 'kick_session_subscriber_count',
+	/** Session gifts count. Use as {{kick_session_gifts_count}}. */
+	KICK_SESSION_GIFTS_COUNT = 'kick_session_gifts_count',
 	/** Session subscribers list. Use as {{kick_session_subscribers}}. */
 	KICK_SESSION_SUBSCRIBERS = 'kick_session_subscribers',
 	/** Last follower. Use as {{kick_last_follower}}. */
@@ -1358,6 +1362,7 @@ export const AllVariables = {
 			'kick_session_follower_count',
 			'kick_total_subscriber_count',
 			'kick_session_subscriber_count',
+			'kick_session_gifts_count',
 			'kick_session_subscribers',
 			'kick_last_follower',
 			'kick_last_subscriber',
@@ -1634,6 +1639,7 @@ export const AllVariables = {
 			'twitch_current_subscribers',
 			'twitch_total_subscriber_count',
 			'twitch_session_subscribers_count',
+			'twitch_session_gifts_count',
 			'twitch_current_mods',
 			'twitch_last_follower',
 			'twitch_session_follower',
@@ -1672,7 +1678,7 @@ export const AllVariables = {
 			firstChatter: ['username', 'userId', 'displayname', 'avatar', 'first_count', 'message'],
 			entrance: ['username', 'userId', 'displayname', 'avatar', 'message'],
 			follower: ['username', 'avatar'],
-			sessionFollowers: ['totalFollowers'],
+			sessionFollowers: ['total'],
 			subscriber: ['username', 'avatar', 'tier', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionSubs: ['total'],
 			giftSubscription: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', 'recipientsRaw', 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
@@ -1680,6 +1686,7 @@ export const AllVariables = {
 			bits: ['username', 'avatar', 'amount', 'message', 'rawMessage', 'full_message'],
 			sessionBits: ['total'],
 			raid: ['username', 'avatar', 'viewers'],
+			raidOut: ['username', 'avatar', 'viewers'],
 			hypetrainStarted: ['total', 'progress', 'goal'],
 			hypetrainProgressed: ['level', 'total', 'progress', 'goal'],
 			hypetrainLevelProgressed: ['level', 'total', 'progress', 'goal'],

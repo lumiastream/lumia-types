@@ -1599,7 +1599,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'You raided {{username}} with {{viewers}} viewers',
 		eventlistMessage: 'Raid Out',
 		eventlistDetailedMessage: 'raided out {{username}} with {{viewers}} viewers',
-		acceptedVariables: AllVariables.twitch.alerts.raid,
+		acceptedVariables: AllVariables.twitch.alerts.raidOut,
 		quickActions: [
 			{
 				label: '10 viewers',
