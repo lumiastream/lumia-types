@@ -198,7 +198,7 @@ export enum LumiaAlertValues {
 	/** Gift subscription given */
 	TWITCH_GIFT_SUBSCRIPTION = 'twitch-giftSubscription',
 	/** Total Session gifts count */
-	TWITCH_SESSION_GIFTS = 'twitch-sessionGifts',
+	TWITCH_SESSION_GIFT_SUBSCRIPTIONS = 'twitch-sessionGiftSubscriptions',
 	/** Incoming raid */
 	TWITCH_RAID = 'twitch-raid',
 	/** Outgoing raid */
@@ -378,7 +378,7 @@ export enum LumiaAlertValues {
 	/** Kick gift subscription */
 	KICK_GIFT_SUBSCRIPTION = 'kick-subscriptionGift',
 	/** Total Session gifts count */
-	KICK_SESSION_GIFTS = 'kick-sessionGifts',
+	KICK_SESSION_GIFT_SUBSCRIPTIONS = 'kick-sessionGiftSubscriptions',
 	/** Kick host */
 	KICK_HOST = 'kick-host',
 	/** Kick user banned */
@@ -585,7 +585,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TWITCH_SUBSCRIBER]: 'Twitch Subscriber',
 	[LumiaAlertValues.TWITCH_SESSION_SUBS]: 'Twitch Session Subs',
 	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: 'Twitch Gift Subscription',
-	[LumiaAlertValues.TWITCH_SESSION_GIFTS]: 'Twitch Session Gifts',
+	[LumiaAlertValues.TWITCH_SESSION_GIFT_SUBSCRIPTIONS]: 'Twitch Session Gift Subscriptions',
 	[LumiaAlertValues.TWITCH_RAID]: 'Twitch Raid',
 	[LumiaAlertValues.TWITCH_RAID_OUT]: 'Twitch Raid Out',
 	[LumiaAlertValues.TWITCH_BITS]: 'Twitch Bits',
@@ -629,6 +629,8 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: 'Youtube Superchat',
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: 'Youtube Supersticker',
 	[LumiaAlertValues.YOUTUBE_ENTRANCE]: 'Youtube Entrance',
+	[LumiaAlertValues.YOUTUBE_LIKE]: 'Youtube Like',
+	[LumiaAlertValues.YOUTUBE_VIEWERS]: 'Youtube Viewers',
 	[LumiaAlertValues.FACEBOOK_STREAM_LIVE]: 'Facebook Stream Live',
 	[LumiaAlertValues.FACEBOOK_STREAM_OFFLINE]: 'Facebook Stream Offline',
 	[LumiaAlertValues.FACEBOOK_FIRST_CHATTER]: 'Facebook First Chatter',
@@ -665,7 +667,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.KICK_SUBSCRIBER]: 'Kick Subscriber',
 	[LumiaAlertValues.KICK_SESSION_SUBS]: 'Kick Session Subs',
 	[LumiaAlertValues.KICK_GIFT_SUBSCRIPTION]: 'Kick Gift Subscription',
-	[LumiaAlertValues.KICK_SESSION_GIFTS]: 'Kick Session Gifts',
+	[LumiaAlertValues.KICK_SESSION_GIFT_SUBSCRIPTIONS]: 'Kick Session Gift Subscriptions',
 	[LumiaAlertValues.KICK_HOST]: 'Kick Host',
 	[LumiaAlertValues.KICK_BANNED]: 'Kick User Banned',
 	[LumiaAlertValues.KICK_UNBANNED]: 'Kick User Unbanned',

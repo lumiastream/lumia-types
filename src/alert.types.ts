@@ -1263,16 +1263,16 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
 	},
-	[LumiaAlertValues.TWITCH_SESSION_GIFTS]: {
+	[LumiaAlertValues.TWITCH_SESSION_GIFT_SUBSCRIPTIONS]: {
 		connection: LumiaIntegrations.TWITCH,
-		message: 'Reached {{total}} gifts',
-		eventlistMessage: 'Total Gifts {{total}}',
-		eventlistDetailedMessage: 'reached {{total}} gifts',
-		acceptedVariables: AllVariables.twitch.alerts.sessionGifts,
-		eventlistSpecialUsername: 'Total Gifts',
+		message: 'Reached {{total}} gift subscriptions',
+		eventlistMessage: 'Total Gift Subscriptions {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} gift subscriptions',
+		acceptedVariables: AllVariables.twitch.alerts.sessionGiftSubscriptions,
+		eventlistSpecialUsername: 'Total Gift Subscriptions',
 		quickActions: [
 			{
-				label: '10 Total Gifts',
+				label: '10 Total Gift Subscriptions',
 				dynamic: { value: 100, total: 10, previousTotal: 5 },
 				extraSettings: {
 					total: 10,
@@ -1280,7 +1280,7 @@ export const LumiaAlertConfigs: Record<
 				},
 			},
 			{
-				label: '50 Total Gifts',
+				label: '50 Total Gift Subscriptions',
 				dynamic: { value: 50, total: 50, previousTotal: 2 },
 				extraSettings: {
 					total: 50,
@@ -1288,7 +1288,7 @@ export const LumiaAlertConfigs: Record<
 				},
 			},
 			{
-				label: '100 Total Gifts',
+				label: '100 Total Gift Subscriptions',
 				dynamic: { value: 100, total: 100, previousTotal: 50 },
 				extraSettings: {
 					total: 100,
@@ -1299,7 +1299,7 @@ export const LumiaAlertConfigs: Record<
 		inputFields: [
 			{
 				type: 'number',
-				label: 'Total Gifts',
+				label: 'Total Gift Subscriptions',
 				dynamicField: 'value',
 				variableField: 'total',
 				required: true,
@@ -1315,8 +1315,8 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Gift Count Greater Than' },
-			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Gift Count is a multiple of' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Gift Subscription Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Gift Subscription Count is a multiple of' },
 		],
 	},
 	[LumiaAlertValues.TWITCH_BITS]: {
@@ -4860,16 +4860,16 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
-	[LumiaAlertValues.KICK_SESSION_GIFTS]: {
+	[LumiaAlertValues.KICK_SESSION_GIFT_SUBSCRIPTIONS]: {
 		connection: LumiaIntegrations.KICK,
-		message: 'Reached {{total}} gifts',
-		eventlistMessage: 'Total Gifts {{total}}',
-		eventlistDetailedMessage: 'reached {{total}} gifts',
-		acceptedVariables: AllVariables.kick.alerts.sessionGifts,
-		eventlistSpecialUsername: 'Total Gifts',
+		message: 'Reached {{total}} gift subscriptions',
+		eventlistMessage: 'Total Gift Subscriptions {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} gift subscriptions',
+		acceptedVariables: AllVariables.kick.alerts.sessionGiftSubscriptions,
+		eventlistSpecialUsername: 'Total Gift Subscriptions',
 		quickActions: [
 			{
-				label: '10 Total Gifts',
+				label: '10 Total Gift Subscriptions',
 				dynamic: { value: 10, total: 10, previousTotal: 5 },
 				extraSettings: {
 					total: 10,
@@ -4877,7 +4877,7 @@ export const LumiaAlertConfigs: Record<
 				},
 			},
 			{
-				label: '50 Total Gifts',
+				label: '50 Total Gift Subscriptions',
 				dynamic: { value: 50, total: 50, previousTotal: 2 },
 				extraSettings: {
 					total: 50,
@@ -4885,7 +4885,7 @@ export const LumiaAlertConfigs: Record<
 				},
 			},
 			{
-				label: '100 Total Gifts',
+				label: '100 Total Gift Subscriptions',
 				dynamic: { value: 100, total: 100, previousTotal: 50 },
 				extraSettings: {
 					total: 100,
@@ -4896,7 +4896,7 @@ export const LumiaAlertConfigs: Record<
 		inputFields: [
 			{
 				type: 'number',
-				label: 'Total Gifts',
+				label: 'Total Gift Subscriptions',
 				dynamicField: 'value',
 				variableField: 'total',
 				required: true,
@@ -4912,8 +4912,8 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Gift Count Greater Than' },
-			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Gift Count is a multiple of' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Gift Subscription Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Gift Subscription Count is a multiple of' },
 		],
 	},
 	[LumiaAlertValues.KICK_HOST]: {
