@@ -268,7 +268,7 @@ export enum LumiaAlertValues {
 	/** Power-ups used */
 	TWITCH_POWERUPS = 'twitch-powerups',
 	/** Power-up points earned */
-	TWITCH_POWERUPS_POINTS = 'twitch-powerups-points',
+	TWITCH_POWERUPS_POINTS = 'twitch-powerupsPoints',
 
 	// YouTube alerts
 	/** YouTube stream went live */
