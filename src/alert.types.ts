@@ -6333,9 +6333,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.FOURTHWALL_SHOPORDER]: {
 		connection: LumiaIntegrations.FOURTHWALL,
-		message: '{{username}} just created a shop order with amount {{amount}}',
+		message: '{{username}} purchased {{items}}',
 		eventlistMessage: 'Shop Order',
-		eventlistDetailedMessage: 'created a shop order with {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'purchased {{items}}',
 		acceptedVariables: AllVariables.fourthwall.alerts.shopOrder,
 		quickActions: [
 			{
@@ -6346,6 +6346,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
+					items: 'Shirt, Keyblade, Chaos Emerald',
 				},
 			},
 			{
@@ -6356,6 +6357,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
+					items: 'Shirt, Keyblade, Chaos Emerald',
 				},
 			},
 			{
@@ -6366,6 +6368,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
+					items: 'Shirt, Keyblade, Chaos Emerald',
 				},
 			},
 		],
@@ -6376,6 +6379,13 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'username',
 				required: false,
 				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Items',
+				variableField: 'items',
+				required: true,
+				default: 'Shirt, Keyblade, Chaos Emerald',
 			},
 			{
 				type: 'number',

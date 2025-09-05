@@ -1332,7 +1332,7 @@ export const AllVariables = {
 			donation: ['username', 'email', 'message', 'currency', 'amount', 'raw'],
 			subscription: ['username', 'email', 'currency', 'amount', 'interval', 'raw'],
 			commission: ['username', 'email', 'message', 'currency', 'amount', 'raw'],
-			shopOrder: ['username', 'email', 'message', 'currency', 'amount', 'raw'],
+			shopOrder: ['username', 'email', 'message', 'items', 'currency', 'amount', 'raw'],
 			giftPurchase: ['username', 'email', 'message', 'currency', 'amount', 'raw'],
 			giveawayStarted: ['currency', 'amount', 'giveawayName', 'giveawayId', 'winners', 'winnerNames', 'winnerCount', 'duration', 'allGifts', 'totalGifts', 'offer', 'type'],
 			giveawayEnded: ['currency', 'amount', 'giveawayName', 'giveawayId', 'winners', 'winnerNames', 'winnerCount', 'duration', 'allGifts', 'totalGifts', 'offer', 'type'],
