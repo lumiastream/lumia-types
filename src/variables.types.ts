@@ -284,17 +284,6 @@ export enum SystemVariables {
 	/** Stream chat message count. Use as {{youtube_stream_chat_count}}. */
 	YOUTUBE_STREAM_CHAT_COUNT = 'youtube_stream_chat_count',
 
-	/** 2nd stream current viewer count. Use as {{youtube_second_current_viewer_count}}. */
-	YOUTUBE_SECOND_CURRENT_VIEWER_COUNT = 'youtube_second_current_viewer_count',
-	/** 2nd stream total viewer count. Use as {{youtube_second_total_viewer_count}}. */
-	YOUTUBE_SECOND_TOTAL_VIEWER_COUNT = 'youtube_second_total_viewer_count',
-	/** 2nd stream likes. Use as {{youtube_second_stream_likes}}. */
-	YOUTUBE_SECOND_STREAM_LIKES = 'youtube_second_stream_likes',
-	/** 2nd stream dislikes. Use as {{youtube_second_stream_dislikes}}. */
-	YOUTUBE_SECOND_STREAM_DISLIKES = 'youtube_second_stream_dislikes',
-	/** 2nd stream chat count. Use as {{youtube_second_stream_chat_count}}. */
-	YOUTUBE_SECOND_STREAM_CHAT_COUNT = 'youtube_second_stream_chat_count',
-
 	/** Session chat count. Use as {{youtube_session_chat_count}}. */
 	YOUTUBE_SESSION_CHAT_COUNT = 'youtube_session_chat_count',
 	/** Current first chatter. Use as {{youtube_current_first_chatter}}. */
