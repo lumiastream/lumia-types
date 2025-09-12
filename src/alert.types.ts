@@ -150,7 +150,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.lumiastream.alerts.donation,
 		quickActions: [
 			{
@@ -5074,7 +5074,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.STREAMLABS,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.streamlabs.alerts.donation,
 		quickActions: [
 			{
@@ -5154,7 +5154,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.STREAMLABS,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.streamlabs.alerts.charity,
 		quickActions: [
 			{
@@ -5351,7 +5351,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.STREAMELEMENTS,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.streamelements.alerts.donation,
 		quickActions: [
 			{
@@ -5432,7 +5432,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.EXTRALIFE_DONATION]: {
 		connection: LumiaIntegrations.EXTRALIFE,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.extralife.alerts.donation,
 		quickActions: [
 			{
@@ -5513,7 +5513,7 @@ export const LumiaAlertConfigs: Record<
 	[LumiaAlertValues.DONORDRIVE_DONATION]: {
 		connection: LumiaIntegrations.DONORDRIVE,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.donordrive.alerts.donation,
 		quickActions: [
 			{
@@ -5595,7 +5595,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.TILTIFY,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.tiltify.alerts.campaignDonation,
 		quickActions: [
 			{
@@ -5835,7 +5835,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.KOFI,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.kofi.alerts.donation,
 		quickActions: [
 			{
@@ -6138,7 +6138,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.FOURTHWALL,
 		message: '{{username}} just tipped {{amount}}. They said {{message}}',
 		eventlistMessage: 'Donation',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.fourthwall.alerts.donation,
 		quickActions: [
 			{
@@ -7231,7 +7231,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.TIPEEESTREAM,
 		message: '{{username}} just tipped {{amount}}',
 		eventlistMessage: 'Donation',
-		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'tipped {{amount}} {{currency}} "{{message}}"',
 		acceptedVariables: AllVariables.tipeeestream.alerts.donation,
 		quickActions: [
 			{
