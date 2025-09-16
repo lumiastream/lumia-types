@@ -454,6 +454,18 @@ export enum SystemVariables {
 	KICK_SESSION_GIFTS_COUNT = 'kick_session_gifts_count',
 	/** Session subscribers list. Use as {{kick_session_subscribers}}. */
 	KICK_SESSION_SUBSCRIBERS = 'kick_session_subscribers',
+	/** Last user to send a Kicks. Use as {{kick_last_kicks}}. */
+	KICK_LAST_KICKS = 'kick_last_kicks',
+	/** Last amount of a Kicks sent. Use as {{kick_last_kicks_amount}}. */
+	KICK_LAST_KICKS_AMOUNT = 'kick_last_kicks_amount',
+	/** Lifetime kicks count. Use as {{kick_total_kicks_count}}. */
+	KICK_TOTAL_KICKS_COUNT = 'kick_total_kicks_count',
+	/** Session kicks count. Use as {{kick_session_kicks_count}}. */
+	KICK_SESSION_KICKS_COUNT = 'kick_session_kicks_count',
+	/** Session kicks list. Use as {{kick_session_kicks}}. */
+	KICK_SESSION_KICKS = 'kick_session_kicks',
+	/** Session kicks with amounts list. Use as {{kick_session_kicks_with_amount}}. */
+	KICK_SESSION_KICKS_WITH_AMOUNT = 'kick_session_kicks_with_amount',
 	/** Last follower. Use as {{kick_last_follower}}. */
 	KICK_LAST_FOLLOWER = 'kick_last_follower',
 	/** Last subscriber. Use as {{kick_last_subscriber}}. */
@@ -1366,6 +1378,8 @@ export const AllVariables = {
 			sessionSubs: ['total', 'previousTotal'],
 			subscriptionGift: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', 'recipientsRaw', 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionGiftSubscriptions: ['total', 'previousTotal'],
+			kicks: ['username', 'avatar', 'amount', 'name', 'type', 'tier', 'id', 'message'],
+			sessionKicks: ['total', 'previousTotal'],
 			host: ['username', 'avatar', 'viewers'],
 			banned: ['username', 'userId', 'bannedByUsername', 'bannedByUserId', 'expires'],
 			unbanned: ['username', 'userId', 'unbannedByUsername', 'unbannedByUserId'],
