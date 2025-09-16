@@ -379,6 +379,10 @@ export enum LumiaAlertValues {
 	KICK_GIFT_SUBSCRIPTION = 'kick-subscriptionGift',
 	/** Total Session gifts count */
 	KICK_SESSION_GIFT_SUBSCRIPTIONS = 'kick-sessionGiftSubscriptions',
+	/** Kick kicks */
+	KICK_KICKS = 'kick-kicks',
+	/** Kick Session kicks */
+	KICK_SESSION_KICKS = 'kick-sessionKicks',
 	/** Kick host */
 	KICK_HOST = 'kick-host',
 	/** Kick user banned */
@@ -668,6 +672,8 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.KICK_SESSION_SUBS]: 'Kick Session Subs',
 	[LumiaAlertValues.KICK_GIFT_SUBSCRIPTION]: 'Kick Gift Subscription',
 	[LumiaAlertValues.KICK_SESSION_GIFT_SUBSCRIPTIONS]: 'Kick Session Gift Subscriptions',
+	[LumiaAlertValues.KICK_KICKS]: 'Kick Kicks',
+	[LumiaAlertValues.KICK_SESSION_KICKS]: 'Kick Session Kicks',
 	[LumiaAlertValues.KICK_HOST]: 'Kick Host',
 	[LumiaAlertValues.KICK_BANNED]: 'Kick User Banned',
 	[LumiaAlertValues.KICK_UNBANNED]: 'Kick User Unbanned',

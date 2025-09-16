@@ -92,6 +92,7 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.KICK_POINTS]: LumiaEventListTypes.POINTS,
 	[LumiaAlertValues.TWITCH_RAID]: LumiaEventListTypes.RAIDS,
 	[LumiaAlertValues.TWITCH_RAID_OUT]: LumiaEventListTypes.RAIDS,
+	[LumiaAlertValues.KICK_KICKS]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.KICK_HOST]: LumiaEventListTypes.HOSTS,
 	[LumiaAlertValues.TWITCH_SHOUTOUT_RECEIVE]: LumiaEventListTypes.OTHERS,
 	[LumiaAlertValues.TWITCH_SUBSCRIBER]: LumiaEventListTypes.SUBSCRIBERS,

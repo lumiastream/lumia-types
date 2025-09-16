@@ -4916,6 +4916,136 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Gift Subscription Count is a multiple of' },
 		],
 	},
+	[LumiaAlertValues.KICK_KICKS]: {
+		connection: LumiaIntegrations.KICK,
+		message: '{{username}} sent {{amount}} kicks. They said {{message}}',
+		eventlistMessage: 'Kicks',
+		eventlistDetailedMessage: 'sent {{amount}} kicks',
+		acceptedVariables: AllVariables.kick.alerts.kicks,
+		quickActions: [
+			{
+				label: '100 kicks Hype',
+				dynamic: { value: 100, name: 'Hype' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 100,
+					name: 'Hype',
+					type: 'BASIC',
+					tier: 'BASIC',
+					id: 'hype',
+					message: 'This is so hype',
+				},
+			},
+			{
+				label: '500 kicks Rage Quit',
+				dynamic: { value: 500, name: 'Rage Quit' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 500,
+					name: 'Rage Quit',
+					type: 'LEVEL_UP',
+					tier: 'MID',
+					id: 'rage_quit',
+					message: 'Im raging!!',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount of kicks',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: true,
+				default: 100,
+			},
+			{
+				type: 'text',
+				label: 'Name of kicks',
+				dynamicField: 'name',
+				variableField: 'name',
+				required: true,
+				default: 'Hype',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
+	[LumiaAlertValues.KICK_SESSION_KICKS]: {
+		connection: LumiaIntegrations.KICK,
+		message: 'Reached {{total}} kicks',
+		eventlistMessage: 'Total Kicks {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} kicks',
+		acceptedVariables: AllVariables.kick.alerts.sessionKicks,
+		eventlistSpecialUsername: 'Total Kicks',
+		quickActions: [
+			{
+				label: '1000 Total Kicks',
+				dynamic: { value: 1000, total: 1000, previousTotal: 500 },
+				extraSettings: {
+					total: 1000,
+					previousTotal: 500,
+				},
+			},
+			{
+				label: '20000 Total Kicks',
+				dynamic: { value: 20000, total: 20000, previousTotal: 10000 },
+				extraSettings: {
+					total: 20000,
+					previousTotal: 10000,
+				},
+			},
+			{
+				label: '100000 Total Kicks',
+				dynamic: { value: 100000, total: 100000, previousTotal: 50000 },
+				extraSettings: {
+					total: 100000,
+					previousTotal: 50000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Kicks',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 100,
+			},
+			{
+				type: 'number',
+				label: 'Previous Total',
+				dynamicField: 'previousTotal',
+				variableField: 'previousTotal',
+				required: false,
+				default: 0,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Kicks Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Kicks Count is a multiple of' },
+		],
+	},
 	[LumiaAlertValues.KICK_HOST]: {
 		connection: LumiaIntegrations.KICK,
 		message: '{{username}} hosted with {{viewers}} viewers',
