@@ -44,6 +44,8 @@ export enum SystemVariables {
 	GET_USER_LOYALTY_POINTS = 'get_user_loyalty_points',
 	/** Translate text (Google). Example: {{translate={{message}}|es}}. Use as {{translate}}. */
 	TRANSLATE = 'translate',
+	/** Get the ai response from ai integration. Example: {{ai_prompt={{message}}}}. Use as {{ai_prompt}}. */
+	AI_PROMPT = 'ai_prompt',
 
 	/** Commands URL/page. Use in overlays as {{commands_url}}. */
 	COMMANDS_URL = 'commands_url',
