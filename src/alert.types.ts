@@ -4918,9 +4918,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.KICK_KICKS]: {
 		connection: LumiaIntegrations.KICK,
-		message: '{{username}} sent {{amount}} kicks. They said {{message}}',
+		message: '{{username}} sent {{name}} for {{amount}} kicks. They said "{{message}}"',
 		eventlistMessage: 'Kicks',
-		eventlistDetailedMessage: 'sent {{amount}} kicks',
+		eventlistDetailedMessage: 'sent {{name}} for {{amount}} kicks',
 		acceptedVariables: AllVariables.kick.alerts.kicks,
 		quickActions: [
 			{
