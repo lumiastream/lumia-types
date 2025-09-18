@@ -648,9 +648,11 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Amount is equal to',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Amount is greater than',
 			},
 		],
 		quickActions: [
@@ -748,12 +750,15 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Command is equal to',
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Amount is equal to',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Amount is greater than',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -1892,6 +1897,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Title is equal to',
 			},
 		],
 	},
@@ -1952,6 +1958,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Title is equal to',
 			},
 		],
 	},
@@ -2012,6 +2019,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Title is equal to',
 			},
 		],
 	},
@@ -2139,7 +2147,7 @@ export const LumiaAlertConfigs: Record<
 				default: 50,
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING, description: 'Title is equal to' }],
 	},
 	[LumiaAlertValues.TWITCH_PREDICTION_LOCKED]: {
 		connection: LumiaIntegrations.TWITCH,
@@ -2216,7 +2224,7 @@ export const LumiaAlertConfigs: Record<
 				default: 50,
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING, description: 'Title is equal to' }],
 	},
 	[LumiaAlertValues.TWITCH_PREDICTION_ENDED]: {
 		connection: LumiaIntegrations.TWITCH,
@@ -2293,7 +2301,7 @@ export const LumiaAlertConfigs: Record<
 				default: 50,
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING, description: 'Title is equal to' }],
 	},
 	[LumiaAlertValues.TWITCH_GOAL_STARTED]: {
 		connection: LumiaIntegrations.TWITCH,
@@ -2873,7 +2881,7 @@ export const LumiaAlertConfigs: Record<
 				default: 'Retro',
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING, description: 'Title is equal to' }],
 	},
 	[LumiaAlertValues.TWITCH_CLIP]: {
 		connection: LumiaIntegrations.TWITCH,
@@ -2916,7 +2924,7 @@ export const LumiaAlertConfigs: Record<
 				default: 'Lumia Stream',
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME, description: 'Username is equal to' }],
 	},
 	[LumiaAlertValues.TWITCH_CHANNEL_JOIN]: {
 		connection: LumiaIntegrations.TWITCH,
@@ -3122,7 +3130,7 @@ export const LumiaAlertConfigs: Record<
 				default: 'lumiastream',
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' }],
 	},
 	[LumiaAlertValues.TWITCH_AD_STARTED]: {
 		connection: LumiaIntegrations.TWITCH,
@@ -3358,13 +3366,15 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
-				description: 'Plan Name',
+				description: 'Plan Name is equal to',
 			},
 			{
 				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_EQUAL,
+				description: 'Months subscribed is equal to',
 			},
 			{
 				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_GREATER,
+				description: 'Months subscribed is greater than',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -3672,7 +3682,11 @@ export const LumiaAlertConfigs: Record<
 				],
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_STRING }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME, description: 'Username is equal to' },
+		],
 	},
 	[LumiaAlertValues.FACEBOOK_STAR]: {
 		connection: LumiaIntegrations.FACEBOOK,
@@ -3716,8 +3730,8 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.EQUAL_NUMBER },
-			{ type: LumiaVariationConditions.GREATER_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Amount is equal to' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Amount is greater than' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
 	},
@@ -3763,8 +3777,8 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.EQUAL_NUMBER },
-			{ type: LumiaVariationConditions.GREATER_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Amount is equal to' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Amount is greater than' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
 	},
@@ -3810,8 +3824,8 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.EQUAL_NUMBER },
-			{ type: LumiaVariationConditions.GREATER_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Amount is equal to' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Amount is greater than' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
 	},
@@ -3892,6 +3906,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Username is equal to',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -4157,6 +4172,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Username is equal to',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -4374,15 +4390,15 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM, description: 'alerts.random' },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
-				description: 'Gift Name',
+				description: 'Gift Name is equal to',
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
-				description: 'Coins Equal',
+				description: 'Coins is equal to',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
-				description: 'Coins Greater Than',
+				description: 'Coins is greater than',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -4463,12 +4479,15 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Command name is equal to',
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Amount is equal to',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Amount is greater than',
 			},
 		],
 		quickActions: [
@@ -4567,6 +4586,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Username is equal to',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -4647,7 +4667,7 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Follower Count Greater Than' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Follower Count is greater than' },
 			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Follower Count is a multiple of' },
 		],
 	},
@@ -4700,9 +4720,11 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_EQUAL,
+				description: 'Months subscribed is equal to',
 			},
 			{
 				type: LumiaVariationConditions.SUBSCRIBED_MONTHS_GREATER,
+				description: 'Months subscribed is greater than',
 			},
 		],
 	},
@@ -4758,7 +4780,7 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Subscriber Count Greater Than' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Subscriber Count is greater than' },
 			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Subscriber Count is a multiple of' },
 		],
 	},
@@ -4854,9 +4876,11 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.GIFT_SUB_EQUAL,
+				description: 'Gift subs is equal to',
 			},
 			{
 				type: LumiaVariationConditions.GIFT_SUB_GREATER,
+				description: 'Gift subs is greater than',
 			},
 		],
 	},
@@ -4912,7 +4936,7 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Gift Subscription Count Greater Than' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Gift Subscription Count is greater than' },
 			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Gift Subscription Count is a multiple of' },
 		],
 	},
@@ -4981,12 +5005,15 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Kicks Name is equal to',
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Kicks Amount is equal to',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Kicks Amount is greater than',
 			},
 		],
 	},
@@ -5090,6 +5117,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Viewers is greater than',
 			},
 		],
 	},
@@ -5180,6 +5208,7 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Username is equal to',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -5194,6 +5223,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Username is equal to',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -5394,6 +5424,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Redemption is equal to',
 			},
 		],
 	},
@@ -5443,6 +5474,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Username is equal to',
 			},
 		],
 	},
@@ -5472,6 +5504,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Username is equal to',
 			},
 		],
 	},
@@ -5551,9 +5584,11 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+				description: 'Amount is equal to',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+				description: 'Amount is greater than',
 			},
 		],
 	},
@@ -6740,6 +6775,7 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Likes Count is greater than',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -6778,9 +6814,11 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Retweet Count is equal to',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Retweet Count is greater than',
 			},
 		],
 	},
@@ -6817,9 +6855,11 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Retweet Count is equal to',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Retweet Count is greater than',
 			},
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
@@ -6872,6 +6912,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -6921,6 +6962,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -6970,6 +7012,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -7021,6 +7064,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -7070,6 +7114,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -7119,6 +7164,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -7171,6 +7217,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Title is equal to',
 			},
 		],
 	},
@@ -7222,6 +7269,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -7271,6 +7319,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -7320,6 +7369,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -7352,6 +7402,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Treat is equal to',
 			},
 		],
 	},
@@ -7457,6 +7508,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Scene is equal to',
 			},
 		],
 	},
@@ -7485,6 +7537,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Scene item is equal to',
 			},
 		],
 	},
@@ -7513,6 +7566,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Scene item is equal to',
 			},
 		],
 	},
@@ -7541,6 +7595,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Profile is equal to',
 			},
 		],
 	},
@@ -7606,6 +7661,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Vendor event is equal to',
 			},
 		],
 	},
@@ -7648,6 +7704,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Scene is equal to',
 			},
 		],
 	},
@@ -7676,6 +7733,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Scene item is equal to',
 			},
 		],
 	},
@@ -7704,6 +7762,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Action is equal to',
 			},
 		],
 	},
@@ -7732,7 +7791,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
-				description: 'BPM Greater Than',
+				description: 'Heart Rate is greater than',
 			},
 		],
 	},
@@ -7786,6 +7845,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Effect is equal to',
 			},
 		],
 	},
@@ -7873,6 +7933,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -7901,6 +7962,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Name is equal to',
 			},
 		],
 	},
@@ -7929,6 +7991,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Item is equal to',
 			},
 		],
 	},
@@ -7957,6 +8020,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Item is equal to',
 			},
 		],
 	},
@@ -7985,6 +8049,7 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Background is equal to',
 			},
 		],
 	},
