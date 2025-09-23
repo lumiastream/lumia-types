@@ -3723,9 +3723,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_SESSION_SUPERCHATS]: {
 		connection: LumiaIntegrations.YOUTUBE,
-		message: 'Reached {{total}} superchats',
-		eventlistMessage: 'Total Superchats {{total}}',
-		eventlistDetailedMessage: 'reached {{total}} superchats',
+		message: 'Reached {{currencySymbol}}{{total}} of superchats',
+		eventlistMessage: 'Total Superchat {{currencySymbol}}{{total}}',
+		eventlistDetailedMessage: 'reached {{currencySymbol}}{{total}} of superchats',
 		acceptedVariables: AllVariables.youtube.alerts.sessionSuperchats,
 		eventlistSpecialUsername: 'Total Superchats',
 		quickActions: [
