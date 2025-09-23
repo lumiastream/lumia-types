@@ -3270,7 +3270,7 @@ export const LumiaAlertConfigs: Record<
 		message: 'Reached {{total}} subscribers',
 		eventlistMessage: 'Total Subscribers {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} subscribers',
-		acceptedVariables: AllVariables.youtube.alerts.sessionSubscribers,
+		acceptedVariables: AllVariables.youtube.alerts.sessionSubs,
 		eventlistSpecialUsername: 'Total Subscribers',
 		quickActions: [
 			{

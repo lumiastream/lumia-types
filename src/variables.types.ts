@@ -1946,7 +1946,7 @@ export const AllVariables = {
 			firstChatter: ['username', 'displayname', 'userId', 'avatar', 'first_count', 'message'],
 			entrance: ['username', 'displayname', 'userId', 'avatar', 'message'],
 			subscriber: ['username', 'displayname', 'avatar', 'userId'],
-			sessionSubscribers: ['total', 'previousTotal'],
+			sessionSubs: ['total', 'previousTotal'],
 			member: ['username', 'displayname', 'avatar', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName', 'subPlanId'],
 			sessionMembers: ['total', 'previousTotal'],
 			giftMember: [
