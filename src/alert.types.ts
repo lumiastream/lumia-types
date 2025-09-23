@@ -3265,6 +3265,62 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
 	},
+	[LumiaAlertValues.YOUTUBE_SESSION_SUBSCRIBERS]: {
+		connection: LumiaIntegrations.YOUTUBE,
+		message: 'Reached {{total}} subscribers',
+		eventlistMessage: 'Total Subscribers {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} subscribers',
+		acceptedVariables: AllVariables.youtube.alerts.sessionSubscribers,
+		eventlistSpecialUsername: 'Total Subscribers',
+		quickActions: [
+			{
+				label: '10 Total Subscribers',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
+				extraSettings: {
+					total: 10,
+					previousTotal: 5,
+				},
+			},
+			{
+				label: '50 Total Subscribers',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
+				extraSettings: {
+					total: 50,
+					previousTotal: 2,
+				},
+			},
+			{
+				label: '100 Total Subscribers',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
+				extraSettings: {
+					total: 100,
+					previousTotal: 50,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Subscribers',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 10,
+			},
+			{
+				type: 'number',
+				label: 'Previous Total',
+				dynamicField: 'previousTotal',
+				variableField: 'previousTotal',
+				required: false,
+				default: 0,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Subscriber Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Subscriber Count is a multiple of' },
+		],
+	},
 	[LumiaAlertValues.YOUTUBE_MEMBER]: {
 		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{username}} just became a member with a {{tier}} plan!',
@@ -3379,6 +3435,218 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
 	},
+	[LumiaAlertValues.YOUTUBE_SESSION_MEMBERS]: {
+		connection: LumiaIntegrations.YOUTUBE,
+		message: 'Reached {{total}} members',
+		eventlistMessage: 'Total Members {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} members',
+		acceptedVariables: AllVariables.youtube.alerts.sessionMembers,
+		eventlistSpecialUsername: 'Total Members',
+		quickActions: [
+			{
+				label: '10 Total Members',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
+				extraSettings: {
+					total: 10,
+					previousTotal: 5,
+				},
+			},
+			{
+				label: '50 Total Members',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
+				extraSettings: {
+					total: 50,
+					previousTotal: 2,
+				},
+			},
+			{
+				label: '100 Total Members',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
+				extraSettings: {
+					total: 100,
+					previousTotal: 50,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Members',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 10,
+			},
+			{
+				type: 'number',
+				label: 'Previous Total',
+				dynamicField: 'previousTotal',
+				variableField: 'previousTotal',
+				required: false,
+				default: 0,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Member Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Member Count is a multiple of' },
+		],
+	},
+	[LumiaAlertValues.YOUTUBE_GIFT_MEMBER]: {
+		connection: LumiaIntegrations.YOUTUBE,
+		message: '{{gifter}} gifted {{giftAmount}} {{tier}} members to {{recipients}}',
+		eventlistMessage: 'Gifted {{giftAmount}} members',
+		eventlistDetailedMessage: 'gifted {{giftAmount}} {{tier}} members to {{recipients}}',
+		acceptedVariables: AllVariables.youtube.alerts.giftMember,
+		quickActions: [
+			{
+				label: 'Gift 1 Member',
+				dynamic: { value: '1', giftAmount: 1 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					gifter: 'lumiastream',
+					message: 'Great Stream',
+					recipients: 'worldlights',
+					recipientsRaw: [{ username: 'worldlights', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } }],
+					giftAmount: 1,
+					totalGifts: 1,
+					subMonths: 1,
+					tier: 'Tier 1',
+					subPlan: '1',
+					subPlanName: 'My Day ones',
+				},
+			},
+			{
+				label: 'Gift 5 Members',
+				dynamic: { value: '1', giftAmount: 5 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					gifter: 'lumiastream',
+					message: 'Great Stream',
+					recipients: 'worldlights,lumiastream,lumiatwitch,lumiayoutube,rgblumia',
+					recipientsRaw: [
+						{ username: 'worldlights', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+						{ username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+						{ username: 'lumiatwitch', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+						{ username: 'worldlights', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+						{ username: 'rgblumia', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
+					],
+					giftAmount: 5,
+					totalGifts: 5,
+					subMonths: 1,
+					tier: 'Tier 1',
+					subPlan: '1',
+					subPlanName: 'My Day ones',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Gifter',
+				variableField: 'gifter',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Gift Recipients',
+				variableField: 'recipients',
+				required: true,
+				default: 'worldlights',
+			},
+			{
+				type: 'number',
+				label: 'Gift amount',
+				dynamicField: 'giftAmount',
+				variableField: 'giftAmount',
+				required: true,
+				default: 1,
+			},
+			{
+				type: 'text',
+				label: 'Message',
+				variableField: 'message',
+				required: false,
+				default: 'Great stream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.GIFT_SUB_EQUAL,
+				description: 'Gift members is equal to',
+			},
+			{
+				type: LumiaVariationConditions.GIFT_SUB_GREATER,
+				description: 'Gift members is greater than',
+			},
+		],
+	},
+	[LumiaAlertValues.YOUTUBE_SESSION_GIFT_MEMBERS]: {
+		connection: LumiaIntegrations.YOUTUBE,
+		message: 'Reached {{total}} gift members',
+		eventlistMessage: 'Total Gift Members {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} gift members',
+		acceptedVariables: AllVariables.youtube.alerts.sessionGiftMembers,
+		eventlistSpecialUsername: 'Total Gift Members',
+		quickActions: [
+			{
+				label: '10 Total Gift Members',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
+				extraSettings: {
+					total: 10,
+					previousTotal: 5,
+				},
+			},
+			{
+				label: '50 Total Gift Members',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
+				extraSettings: {
+					total: 50,
+					previousTotal: 2,
+				},
+			},
+			{
+				label: '100 Total Gift Members',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
+				extraSettings: {
+					total: 100,
+					previousTotal: 50,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Gift Members',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 10,
+			},
+			{
+				type: 'number',
+				label: 'Previous Total',
+				dynamicField: 'previousTotal',
+				variableField: 'previousTotal',
+				required: false,
+				default: 0,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Gift Member Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Gift Member Count is a multiple of' },
+		],
+	},
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: {
 		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{username}} just super chatted with {{amount}}. They said {{message}}',
@@ -3452,6 +3720,62 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER },
 		],
 	},
+	[LumiaAlertValues.YOUTUBE_SESSION_SUPERCHATS]: {
+		connection: LumiaIntegrations.YOUTUBE,
+		message: 'Reached {{total}} superchats',
+		eventlistMessage: 'Total Superchats {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} superchats',
+		acceptedVariables: AllVariables.youtube.alerts.sessionSuperchats,
+		eventlistSpecialUsername: 'Total Superchats',
+		quickActions: [
+			{
+				label: '10 Total Superchats',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
+				extraSettings: {
+					total: 10,
+					previousTotal: 5,
+				},
+			},
+			{
+				label: '50 Total Superchats',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
+				extraSettings: {
+					total: 50,
+					previousTotal: 2,
+				},
+			},
+			{
+				label: '100 Total Superchats',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
+				extraSettings: {
+					total: 100,
+					previousTotal: 50,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Superchats',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 10,
+			},
+			{
+				type: 'number',
+				label: 'Previous Total',
+				dynamicField: 'previousTotal',
+				variableField: 'previousTotal',
+				required: false,
+				default: 0,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Superchat Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Superchat Count is a multiple of' },
+		],
+	},
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: {
 		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{username}} just sent a supersticker with {{amount}}',
@@ -3512,6 +3836,62 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_NUMBER },
 			{ type: LumiaVariationConditions.GREATER_NUMBER },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+		],
+	},
+	[LumiaAlertValues.YOUTUBE_SESSION_SUPERSTICKERS]: {
+		connection: LumiaIntegrations.YOUTUBE,
+		message: 'Reached {{total}} superstickers',
+		eventlistMessage: 'Total Subscribers {{total}}',
+		eventlistDetailedMessage: 'reached {{total}} superstickers',
+		acceptedVariables: AllVariables.youtube.alerts.sessionSuperstickers,
+		eventlistSpecialUsername: 'Total Superstickers',
+		quickActions: [
+			{
+				label: '10 Total Superstickers',
+				dynamic: { value: 10, total: 10, previousTotal: 5 },
+				extraSettings: {
+					total: 10,
+					previousTotal: 5,
+				},
+			},
+			{
+				label: '50 Total Superstickers',
+				dynamic: { value: 50, total: 50, previousTotal: 2 },
+				extraSettings: {
+					total: 50,
+					previousTotal: 2,
+				},
+			},
+			{
+				label: '100 Total Superstickers',
+				dynamic: { value: 100, total: 100, previousTotal: 50 },
+				extraSettings: {
+					total: 100,
+					previousTotal: 50,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'number',
+				label: 'Total Superstickers',
+				dynamicField: 'value',
+				variableField: 'total',
+				required: true,
+				default: 10,
+			},
+			{
+				type: 'number',
+				label: 'Previous Total',
+				dynamicField: 'previousTotal',
+				variableField: 'previousTotal',
+				required: false,
+				default: 0,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Supersticker Count Greater Than' },
+			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Supersticker Count is a multiple of' },
 		],
 	},
 	[LumiaAlertValues.YOUTUBE_LIKE]: {

@@ -279,14 +279,26 @@ export enum LumiaAlertValues {
 	YOUTUBE_FIRST_CHATTER = 'youtube-firstChatter',
 	/** YouTube user entrance */
 	YOUTUBE_ENTRANCE = 'youtube-entrance',
-	/** YouTube channel membership */
-	YOUTUBE_MEMBER = 'youtube-member',
 	/** YouTube new subscriber */
 	YOUTUBE_SUBSCRIBER = 'youtube-subscriber',
+	/** YouTube session subscribers */
+	YOUTUBE_SESSION_SUBSCRIBERS = 'youtube-sessionSubscribers',
+	/** YouTube channel membership */
+	YOUTUBE_MEMBER = 'youtube-member',
+	/** YouTube session members */
+	YOUTUBE_SESSION_MEMBERS = 'youtube-sessionMembers',
+	/** YouTube gift member */
+	YOUTUBE_GIFT_MEMBER = 'youtube-giftMember',
+	/** YouTube session gift members */
+	YOUTUBE_SESSION_GIFT_MEMBERS = 'youtube-sessionGiftMembers',
 	/** YouTube Super Chat */
 	YOUTUBE_SUPERCHAT = 'youtube-superchat',
+	/** YouTube session superchats */
+	YOUTUBE_SESSION_SUPERCHATS = 'youtube-sessionSuperchats',
 	/** YouTube Super Sticker */
 	YOUTUBE_SUPERSTICKER = 'youtube-supersticker',
+	/** YouTube session superstickers */
+	YOUTUBE_SESSION_SUPERSTICKERS = 'youtube-sessionSuperstickers',
 	/** YouTube total likes */
 	YOUTUBE_LIKE = 'youtube-like',
 	/** YouTube total views */
