@@ -3650,9 +3650,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: {
 		connection: LumiaIntegrations.YOUTUBE,
-		message: '{{username}} just super chatted with {{amount}} {{currency}}. They said {{message}}',
+		message: '{{username}} just super chatted with {{currencySymbol}}{{amount}}. They said {{message}}',
 		eventlistMessage: 'Super Chat',
-		eventlistDetailedMessage: 'super chatted {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'super chatted {{currencySymbol}}{{amount}}',
 		acceptedVariables: AllVariables.youtube.alerts.superchat,
 		quickActions: [
 			{
@@ -3779,7 +3779,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: {
 		connection: LumiaIntegrations.YOUTUBE,
-		message: '{{username}} just sent a supersticker with {{currencySymbol}}{{amount}}',
+		message: '{{username}} just sent a supersticker worth {{currencySymbol}}{{amount}}',
 		eventlistMessage: 'Super Sticker',
 		eventlistDetailedMessage: 'sent a super sticker worth {{currencySymbol}}{{amount}}',
 		acceptedVariables: AllVariables.youtube.alerts.supersticker,
