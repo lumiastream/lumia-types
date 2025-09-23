@@ -287,8 +287,8 @@ export enum LumiaAlertValues {
 	YOUTUBE_MEMBER = 'youtube-member',
 	/** YouTube session members */
 	YOUTUBE_SESSION_MEMBERS = 'youtube-sessionMembers',
-	/** YouTube gift member */
-	YOUTUBE_GIFT_MEMBER = 'youtube-giftMember',
+	/** YouTube gift members */
+	YOUTUBE_GIFT_MEMBERS = 'youtube-giftMembers',
 	/** YouTube session gift members */
 	YOUTUBE_SESSION_GIFT_MEMBERS = 'youtube-sessionGiftMembers',
 	/** YouTube Super Chat */

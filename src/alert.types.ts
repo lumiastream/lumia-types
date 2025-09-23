@@ -3491,12 +3491,12 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Member Count is a multiple of' },
 		],
 	},
-	[LumiaAlertValues.YOUTUBE_GIFT_MEMBER]: {
+	[LumiaAlertValues.YOUTUBE_GIFT_MEMBERS]: {
 		connection: LumiaIntegrations.YOUTUBE,
 		message: '{{gifter}} gifted {{giftAmount}} {{tier}} members to {{recipients}}',
 		eventlistMessage: 'Gifted {{giftAmount}} members',
 		eventlistDetailedMessage: 'gifted {{giftAmount}} {{tier}} members to {{recipients}}',
-		acceptedVariables: AllVariables.youtube.alerts.giftMember,
+		acceptedVariables: AllVariables.youtube.alerts.giftMembers,
 		quickActions: [
 			{
 				label: 'Gift 1 Member',

@@ -1949,7 +1949,7 @@ export const AllVariables = {
 			sessionSubs: ['total', 'previousTotal'],
 			member: ['username', 'displayname', 'avatar', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName', 'subPlanId'],
 			sessionMembers: ['total', 'previousTotal'],
-			giftMember: [
+			giftMembers: [
 				'username',
 				'displayname',
 				'avatar',
