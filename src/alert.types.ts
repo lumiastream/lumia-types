@@ -1,6 +1,7 @@
 import { LumiaAlertValues } from './activity.types';
 import { LumiaIntegrations } from './event.types';
 import { AllVariables } from './variables.types';
+import { YoutubeSuperstickersData } from './youtube_superstickers';
 
 export enum LumiaVariationConditions {
 	RANDOM = 'RANDOM', // Frequency: Percent Chance
@@ -3715,9 +3716,9 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER, description: 'Super Chat Amount is equal to' },
+			{ type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER, description: 'Super Chat Amount is greater than' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
-			{ type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER },
-			{ type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER },
 		],
 	},
 	[LumiaAlertValues.YOUTUBE_SESSION_SUPERCHATS]: {
@@ -3778,39 +3779,51 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: {
 		connection: LumiaIntegrations.YOUTUBE,
-		message: '{{username}} just sent a supersticker with {{amount}} {{currency}}',
+		message: '{{username}} just sent a supersticker with {{currencySymbol}}{{amount}}',
 		eventlistMessage: 'Super Sticker',
-		eventlistDetailedMessage: 'sent a super sticker worth {{amount}} {{currency}}',
+		eventlistDetailedMessage: 'sent a super sticker worth {{currencySymbol}}{{amount}}',
 		acceptedVariables: AllVariables.youtube.alerts.supersticker,
 		quickActions: [
 			{
-				label: '100',
-				dynamic: { value: 100 },
+				label: 'Emoji Beaming Face ($100)',
+				dynamic: { value: 100, currency: LumiaVariationCurrency.USD, name: 'emoji_beaming_face' },
 				extraSettings: {
 					username: 'lumiastream',
 					displayname: 'LumiaStream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+					currencySymbol: '$',
+					stickerId: 'emoji_beaming_face',
+					stickerName: 'Emoji Beaming Face',
 				},
 			},
 			{
-				label: '200',
-				dynamic: { value: 200 },
+				label: 'Emoji Laughing ($200)',
+				dynamic: { value: 200, currency: LumiaVariationCurrency.USD, name: 'emoji_laughing' },
 				extraSettings: {
 					username: 'lumiastream',
 					displayname: 'LumiaStream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
+					currency: LumiaVariationCurrency.USD,
+					currencySymbol: '$',
+					stickerId: 'emoji_laughing',
+					stickerName: 'Emoji Laughing',
 				},
 			},
 			{
-				label: '300',
-				dynamic: { value: 300 },
+				label: 'Emoji Sad ($300)',
+				dynamic: { value: 300, currency: LumiaVariationCurrency.USD, name: 'emoji_sad' },
 				extraSettings: {
 					username: 'lumiastream',
 					displayname: 'LumiaStream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
+					currency: LumiaVariationCurrency.USD,
+					currencySymbol: '$',
+					stickerId: 'emoji_sad',
+					stickerName: 'Emoji Sad',
 				},
 			},
 		],
@@ -3830,44 +3843,67 @@ export const LumiaAlertConfigs: Record<
 				required: false,
 				default: 100,
 			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+			{
+				type: 'text',
+				label: 'Currency Symbol',
+				dynamicField: 'currencySymbol',
+				variableField: 'currencySymbol',
+				required: false,
+				default: '$',
+			},
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.EQUAL_NUMBER },
-			{ type: LumiaVariationConditions.GREATER_NUMBER },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Super Sticker ID is equal to', selections: YoutubeSuperstickersData },
+			{ type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER, description: 'Super Sticker Amount is equal to' },
+			{ type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER, description: 'Super Sticker Amount is greater than' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
 	},
 	[LumiaAlertValues.YOUTUBE_SESSION_SUPERSTICKERS]: {
 		connection: LumiaIntegrations.YOUTUBE,
-		message: 'Reached {{total}} superstickers',
-		eventlistMessage: 'Total Subscribers {{total}}',
-		eventlistDetailedMessage: 'reached {{total}} superstickers',
+		message: 'Reached {{currencySymbol}}{{total}} of superstickers',
+		eventlistMessage: 'Total Superstickers {{currencySymbol}}{{total}}',
+		eventlistDetailedMessage: 'reached {{currencySymbol}}{{total}} of superstickers',
 		acceptedVariables: AllVariables.youtube.alerts.sessionSuperstickers,
 		eventlistSpecialUsername: 'Total Superstickers',
 		quickActions: [
 			{
 				label: '10 Total Superstickers',
-				dynamic: { value: 10, total: 10, previousTotal: 5 },
+				dynamic: { value: 10, total: 10, previousTotal: 5, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					total: 10,
 					previousTotal: 5,
+					currency: LumiaVariationCurrency.USD,
+					currencySymbol: '$',
 				},
 			},
 			{
 				label: '50 Total Superstickers',
-				dynamic: { value: 50, total: 50, previousTotal: 2 },
+				dynamic: { value: 50, total: 50, previousTotal: 2, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					total: 50,
 					previousTotal: 2,
+					currency: LumiaVariationCurrency.USD,
+					currencySymbol: '$',
 				},
 			},
 			{
 				label: '100 Total Superstickers',
-				dynamic: { value: 100, total: 100, previousTotal: 50 },
+				dynamic: { value: 100, total: 100, previousTotal: 50, currency: LumiaVariationCurrency.USD },
 				extraSettings: {
 					total: 100,
 					previousTotal: 50,
+					currency: LumiaVariationCurrency.USD,
+					currencySymbol: '$',
 				},
 			},
 		],
@@ -3888,9 +3924,25 @@ export const LumiaAlertConfigs: Record<
 				required: false,
 				default: 0,
 			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+			{
+				type: 'text',
+				label: 'Currency Symbol',
+				dynamicField: 'currencySymbol',
+				variableField: 'currencySymbol',
+				required: false,
+				default: '$',
+			},
 		],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total Session Supersticker Count Greater Than' },
+			{ type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER, description: 'Total Session Supersticker Count Greater Than' },
 			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Supersticker Count is a multiple of' },
 		],
 	},
