@@ -3265,7 +3265,7 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
 	},
-	[LumiaAlertValues.YOUTUBE_SESSION_SUBSCRIBERS]: {
+	[LumiaAlertValues.YOUTUBE_SESSION_SUBS]: {
 		connection: LumiaIntegrations.YOUTUBE,
 		message: 'Reached {{total}} subscribers',
 		eventlistMessage: 'Total Subscribers {{total}}',

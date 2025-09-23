@@ -282,7 +282,7 @@ export enum LumiaAlertValues {
 	/** YouTube new subscriber */
 	YOUTUBE_SUBSCRIBER = 'youtube-subscriber',
 	/** YouTube session subscribers */
-	YOUTUBE_SESSION_SUBSCRIBERS = 'youtube-sessionSubscribers',
+	YOUTUBE_SESSION_SUBS = 'youtube-sessionSubs',
 	/** YouTube channel membership */
 	YOUTUBE_MEMBER = 'youtube-member',
 	/** YouTube session members */
