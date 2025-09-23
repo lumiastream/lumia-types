@@ -3779,9 +3779,9 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: {
 		connection: LumiaIntegrations.YOUTUBE,
-		message: '{{username}} just sent a supersticker worth {{currencySymbol}}{{amount}}',
+		message: '{{username}} just sent a {{stickerName}} super sticker worth {{currencySymbol}}{{amount}}',
 		eventlistMessage: 'Super Sticker',
-		eventlistDetailedMessage: 'sent a super sticker worth {{currencySymbol}}{{amount}}',
+		eventlistDetailedMessage: 'sent a {{stickerName}} super sticker worth {{currencySymbol}}{{amount}}',
 		acceptedVariables: AllVariables.youtube.alerts.supersticker,
 		quickActions: [
 			{
