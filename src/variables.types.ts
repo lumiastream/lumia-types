@@ -1968,7 +1968,7 @@ export const AllVariables = {
 			sessionGiftMembers: ['total', 'previousTotal'],
 			superchat: ['username', 'displayname', 'currency', 'currencySymbol', 'amount', 'message'],
 			sessionSuperchats: ['total', 'previousTotal', 'currency', 'currencySymbol'],
-			supersticker: ['username', 'displayname', 'amount', 'currency', 'currencySymbol'],
+			supersticker: ['username', 'displayname', 'stickerId', 'stickerName', 'amount', 'currency', 'currencySymbol'],
 			sessionSuperstickers: ['total', 'previousTotal', 'currency', 'currencySymbol'],
 			like: ['likes', 'dislikes'],
 			viewers: ['viewers'],
