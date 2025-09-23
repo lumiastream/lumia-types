@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import fs from 'node:fs';
 
-const dependents = ['../LumiaStream', '../Overlay-UI', '../Server-Lumia', '../Developer-Docs'];
+const dependents = ['../LumiaStream', '../Web-Lumia', '../Overlay-UI', '../Server-Lumia', '../Developer-Docs', '../LumiaStreamLink'];
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
