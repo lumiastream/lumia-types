@@ -212,12 +212,6 @@ export enum SystemVariables {
 	TWITCH_SESSION_GIFTS_COUNT = 'twitch_session_gifts_count',
 	/** Lifetime gift members count. Use as {{twitch_total_gift_subscription_count}}. */
 	TWITCH_TOTAL_GIFT_SUBSCRIPTION_COUNT = 'twitch_total_gift_subscription_count',
-	/** Session gift members count. Use as {{twitch_session_gift_subscription_count}}. */
-	TWITCH_SESSION_GIFT_SUBSCRIPTION_COUNT = 'twitch_session_gift_subscription_count',
-	/** Last gift member. Use as {{twitch_last_gift_subscription}}. */
-	TWITCH_LAST_GIFT_SUBSCRIPTION = 'twitch_last_gift_subscription',
-	/** Session gift members (list). Use as {{twitch_session_gift_subscriptions}}. */
-	TWITCH_SESSION_GIFT_SUBSCRIPTIONS = 'twitch_session_gift_subscriptions',
 	/** Current moderators (comma-separated). Use as {{twitch_current_mods}}. */
 	TWITCH_CURRENT_MODS = 'twitch_current_mods',
 	/** Last follower. Use as {{twitch_last_follower}}. */
@@ -490,12 +484,6 @@ export enum SystemVariables {
 	KICK_LAST_SUBSCRIBER = 'kick_last_subscriber',
 	/** Lifetime gift members count. Use as {{kick_total_gift_subscription_count}}. */
 	KICK_TOTAL_GIFT_SUBSCRIPTION_COUNT = 'kick_total_gift_subscription_count',
-	/** Session gift members count. Use as {{kick_session_gift_members_count}}. */
-	KICK_SESSION_GIFT_SUBSCRIPTION_COUNT = 'kick_session_gift_subscription_count',
-	/** Last gift member. Use as {{kick_last_gift_member}}. */
-	KICK_LAST_GIFT_SUBSCRIPTION = 'kick_last_gift_subscription',
-	/** Session gift members (list). Use as {{kick_session_gift_members}}. */
-	KICK_SESSION_GIFT_SUBSCRIPTIONS = 'kick_session_gift_subscriptions',
 	/** Get avatar by username. Use as {{kick_get_avatar}}. */
 	KICK_GET_AVATAR = 'kick_get_avatar',
 
@@ -1394,9 +1382,6 @@ export const AllVariables = {
 			'kick_last_follower',
 			'kick_last_subscriber',
 			'kick_total_gift_subscription_count',
-			'kick_session_gift_subscription_count',
-			'kick_last_gift_subscription',
-			'kick_session_gift_subscriptions',
 			'kick_get_avatar',
 		],
 		alerts: {
@@ -1674,9 +1659,6 @@ export const AllVariables = {
 			'twitch_session_subscribers_count',
 			'twitch_session_gifts_count',
 			'twitch_total_gift_subscription_count',
-			'twitch_session_gift_subscription_count',
-			'twitch_last_gift_subscription',
-			'twitch_session_gift_subscriptions',
 			'twitch_current_mods',
 			'twitch_last_follower',
 			'twitch_session_follower',
