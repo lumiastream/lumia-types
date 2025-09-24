@@ -682,6 +682,21 @@ export enum SystemVariables {
 	/** Current scene collection. Use as {{slobs_current_scene_collection}}. */
 	SLOBS_CURRENT_SCENE_COLLECTION = 'slobs_current_scene_collection',
 
+	// ───────────────────────────────────── Meld ───────────────────────────────────
+
+	/** Is streaming (true/false). Use as {{meld_is_streaming}}. */
+	MELD_IS_STREAMING = 'meld_is_streaming',
+	/** Is recording (true/false). Use as {{meld_is_recording}}. */
+	MELD_IS_RECORDING = 'meld_is_recording',
+	/** Current scene. Use as {{meld_current_scene}}. */
+	MELD_CURRENT_SCENE = 'meld_current_scene',
+	/** Previous scene. Use as {{meld_previous_scene}}. */
+	MELD_PREVIOUS_SCENE = 'meld_previous_scene',
+	/** Current vertical scene. Use as {{meld_current_vertical_scene}}. */
+	MELD_CURRENT_VERTICAL_SCENE = 'meld_current_vertical_scene',
+	/** Previous vertical scene. Use as {{meld_previous_vertical_scene}}. */
+	MELD_PREVIOUS_VERTICAL_SCENE = 'meld_previous_vertical_scene',
+
 	// ───────────────────────────────── Streamer.bot ────────────────────────────────
 
 	/** Last Streamer.bot action. Use as {{streamerbot_last_action}}. */
@@ -1415,6 +1430,8 @@ export const AllVariables = {
 			streamStopping: [],
 			recordingStarting: [],
 			recordingStopping: [],
+			switchScene: ['scene', 'previousScene'],
+			switchVerticalScene: ['scene', 'previousScene'],
 		},
 	},
 	nowplaying: {

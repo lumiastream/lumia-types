@@ -8533,4 +8533,62 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
 	},
+	[LumiaAlertValues.MELD_SWITCH_SCENE]: {
+		connection: LumiaIntegrations.MELD,
+		message: 'Meld scene switched to {{scene}}',
+		acceptedVariables: AllVariables.meld.alerts.switchScene,
+		quickActions: [
+			{
+				label: 'Scene Change',
+				dynamic: { value: 'Lumia Scene' },
+				extraSettings: { scene: 'Lumia Scene' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Scene',
+				dynamicField: 'value',
+				variableField: 'scene',
+				required: true,
+				default: 'Lumia Scene',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Scene is equal to',
+			},
+		],
+	},
+	[LumiaAlertValues.MELD_SWITCH_VERTICAL_SCENE]: {
+		connection: LumiaIntegrations.MELD,
+		message: 'Meld vertical scene switched to {{scene}}',
+		acceptedVariables: AllVariables.meld.alerts.switchVerticalScene,
+		quickActions: [
+			{
+				label: 'Vertical Scene Change',
+				dynamic: { value: 'Lumia Scene [Vertical]' },
+				extraSettings: { scene: 'Lumia Scene [Vertical]' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Vertical Scene',
+				dynamicField: 'value',
+				variableField: 'scene',
+				required: true,
+				default: 'Lumia Scene [Vertical]',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Vertical Scene is equal to',
+			},
+		],
+	},
 };
