@@ -852,13 +852,10 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.twitch.alerts.firstChatter,
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_NUMBER,
-			},
-			{
-				type: LumiaVariationConditions.GREATER_NUMBER,
-			},
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_NUMBER },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_USER_LEVEL },
 		],
 	},
 	[LumiaAlertValues.TWITCH_ENTRANCE]: {
@@ -867,12 +864,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
 		acceptedVariables: AllVariables.twitch.alerts.entrance,
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_USERNAME,
-			},
-		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }, { type: LumiaVariationConditions.EQUAL_USER_LEVEL }],
 	},
 	[LumiaAlertValues.TWITCH_FOLLOWER]: {
 		connection: LumiaIntegrations.TWITCH,
@@ -3214,13 +3206,10 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.youtube.alerts.firstChatter,
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_NUMBER,
-			},
-			{
-				type: LumiaVariationConditions.GREATER_NUMBER,
-			},
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_NUMBER },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_USER_LEVEL },
 		],
 	},
 	[LumiaAlertValues.YOUTUBE_ENTRANCE]: {
@@ -3229,12 +3218,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
 		acceptedVariables: AllVariables.youtube.alerts.entrance,
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_USERNAME,
-			},
-		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }, { type: LumiaVariationConditions.EQUAL_USER_LEVEL }],
 	},
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: {
 		connection: LumiaIntegrations.YOUTUBE,
@@ -4033,12 +4017,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
 		acceptedVariables: AllVariables.facebook.alerts.entrance,
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_USERNAME,
-			},
-		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }, { type: LumiaVariationConditions.EQUAL_USER_LEVEL }],
 	},
 	[LumiaAlertValues.FACEBOOK_FOLLOWER]: {
 		connection: LumiaIntegrations.FACEBOOK,
@@ -4062,7 +4041,7 @@ export const LumiaAlertConfigs: Record<
 				default: 'lumiastream',
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }, { type: LumiaVariationConditions.EQUAL_USER_LEVEL }],
 	},
 	[LumiaAlertValues.FACEBOOK_REACTION]: {
 		connection: LumiaIntegrations.FACEBOOK,
@@ -4336,11 +4315,9 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.trovo.alerts.entrance,
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-				description: 'Username is equal to',
-			},
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_USER_LEVEL },
 		],
 	},
 	[LumiaAlertValues.TROVO_STREAM_LIVE]: {
@@ -4585,13 +4562,10 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.tiktok.alerts.firstChatter,
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_NUMBER,
-			},
-			{
-				type: LumiaVariationConditions.GREATER_NUMBER,
-			},
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_NUMBER },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_USER_LEVEL },
 		],
 	},
 	[LumiaAlertValues.TIKTOK_ENTRANCE]: {
@@ -4602,11 +4576,9 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.tiktok.alerts.entrance,
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-				description: 'Username is equal to',
-			},
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_USER_LEVEL },
 		],
 	},
 	[LumiaAlertValues.TIKTOK_FOLLOWER]: {
@@ -4999,13 +4971,10 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.kick.alerts.firstChatter,
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_NUMBER,
-			},
-			{
-				type: LumiaVariationConditions.GREATER_NUMBER,
-			},
+			{ type: LumiaVariationConditions.EQUAL_NUMBER },
+			{ type: LumiaVariationConditions.GREATER_NUMBER },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_USER_LEVEL },
 		],
 	},
 	[LumiaAlertValues.KICK_ENTRANCE]: {
@@ -5016,11 +4985,9 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.kick.alerts.entrance,
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-				description: 'Username is equal to',
-			},
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_USER_LEVEL },
 		],
 	},
 	[LumiaAlertValues.KICK_FOLLOWER]: {
@@ -5653,10 +5620,7 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.discord.alerts.entrance,
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-				description: 'Username is equal to',
-			},
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
 		],
 	},
