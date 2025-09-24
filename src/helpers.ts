@@ -9,6 +9,7 @@ export const formatCondition = (conditionType: string | undefined, condition: st
 		[LumiaVariationConditions.GREATER_NUMBER]: (val) => `Amount is ${val} or more`,
 		[LumiaVariationConditions.EQUAL_STRING]: (val) => `Text equals "${val}"`,
 		[LumiaVariationConditions.EQUAL_USERNAME]: (val) => `User is ${val}`,
+		[LumiaVariationConditions.EQUAL_USER_LEVEL]: (val) => `User level is ${val}`,
 		[LumiaVariationConditions.EQUAL_SELECTION]: (val) => `${val}`,
 		[LumiaVariationConditions.EQUAL_CURRENCY_NUMBER]: (val, extra) => `Amount equals ${val}${extra ? ` ${extra}` : ''}`,
 		[LumiaVariationConditions.GREATER_CURRENCY_NUMBER]: (val, extra) => `Amount is ${val}${extra ? ` ${extra}` : ''} or more`,
