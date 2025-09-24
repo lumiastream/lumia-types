@@ -210,6 +210,14 @@ export enum SystemVariables {
 	TWITCH_SESSION_SUBSCRIBERS_COUNT = 'twitch_session_subscribers_count',
 	/** Session gifts count. Use as {{twitch_session_gifts_count}}. */
 	TWITCH_SESSION_GIFTS_COUNT = 'twitch_session_gifts_count',
+	/** Lifetime gift members count. Use as {{twitch_total_gift_subscription_count}}. */
+	TWITCH_TOTAL_GIFT_SUBSCRIPTION_COUNT = 'twitch_total_gift_subscription_count',
+	/** Session gift members count. Use as {{twitch_session_gift_subscription_count}}. */
+	TWITCH_SESSION_GIFT_SUBSCRIPTION_COUNT = 'twitch_session_gift_subscription_count',
+	/** Last gift member. Use as {{twitch_last_gift_subscription}}. */
+	TWITCH_LAST_GIFT_SUBSCRIPTION = 'twitch_last_gift_subscription',
+	/** Session gift members (list). Use as {{twitch_session_gift_subscriptions}}. */
+	TWITCH_SESSION_GIFT_SUBSCRIPTIONS = 'twitch_session_gift_subscriptions',
 	/** Current moderators (comma-separated). Use as {{twitch_current_mods}}. */
 	TWITCH_CURRENT_MODS = 'twitch_current_mods',
 	/** Last follower. Use as {{twitch_last_follower}}. */
@@ -322,6 +330,14 @@ export enum SystemVariables {
 	YOUTUBE_LAST_MEMBER = 'youtube_last_member',
 	/** Session members (list). Use as {{youtube_session_members}}. */
 	YOUTUBE_SESSION_MEMBERS = 'youtube_session_members',
+	/** Lifetime gift members count. Use as {{youtube_total_gift_members_count}}. */
+	YOUTUBE_TOTAL_GIFT_MEMBERS_COUNT = 'youtube_total_gift_members_count',
+	/** Session gift members count. Use as {{youtube_session_gift_members_count}}. */
+	YOUTUBE_SESSION_GIFT_MEMBERS_COUNT = 'youtube_session_gift_members_count',
+	/** Last gift member. Use as {{youtube_last_gift_member}}. */
+	YOUTUBE_LAST_GIFT_MEMBER = 'youtube_last_gift_member',
+	/** Session gift members (list). Use as {{youtube_session_gift_members}}. */
+	YOUTUBE_SESSION_GIFT_MEMBERS = 'youtube_session_gift_members',
 	/** Last subscriber. Use as {{youtube_last_subscriber}}. */
 	YOUTUBE_LAST_SUBSCRIBER = 'youtube_last_subscriber',
 	/** Total uploaded videos. Use as {{youtube_total_video_count}}. */
@@ -472,6 +488,14 @@ export enum SystemVariables {
 	KICK_LAST_FOLLOWER = 'kick_last_follower',
 	/** Last subscriber. Use as {{kick_last_subscriber}}. */
 	KICK_LAST_SUBSCRIBER = 'kick_last_subscriber',
+	/** Lifetime gift members count. Use as {{kick_total_gift_subscription_count}}. */
+	KICK_TOTAL_GIFT_SUBSCRIPTION_COUNT = 'kick_total_gift_subscription_count',
+	/** Session gift members count. Use as {{kick_session_gift_members_count}}. */
+	KICK_SESSION_GIFT_SUBSCRIPTION_COUNT = 'kick_session_gift_subscription_count',
+	/** Last gift member. Use as {{kick_last_gift_member}}. */
+	KICK_LAST_GIFT_SUBSCRIPTION = 'kick_last_gift_subscription',
+	/** Session gift members (list). Use as {{kick_session_gift_members}}. */
+	KICK_SESSION_GIFT_SUBSCRIPTIONS = 'kick_session_gift_subscriptions',
 	/** Get avatar by username. Use as {{kick_get_avatar}}. */
 	KICK_GET_AVATAR = 'kick_get_avatar',
 
@@ -1369,6 +1393,10 @@ export const AllVariables = {
 			'kick_session_subscribers',
 			'kick_last_follower',
 			'kick_last_subscriber',
+			'kick_total_gift_subscription_count',
+			'kick_session_gift_subscription_count',
+			'kick_last_gift_subscription',
+			'kick_session_gift_subscriptions',
 			'kick_get_avatar',
 		],
 		alerts: {
@@ -1645,6 +1673,10 @@ export const AllVariables = {
 			'twitch_total_subscriber_count',
 			'twitch_session_subscribers_count',
 			'twitch_session_gifts_count',
+			'twitch_total_gift_subscription_count',
+			'twitch_session_gift_subscription_count',
+			'twitch_last_gift_subscription',
+			'twitch_session_gift_subscriptions',
 			'twitch_current_mods',
 			'twitch_last_follower',
 			'twitch_session_follower',
@@ -1901,6 +1933,10 @@ export const AllVariables = {
 			'youtube_last_member',
 			'youtube_session_members',
 			'youtube_last_subscriber',
+			'youtube_total_gift_members_count',
+			'youtube_session_gift_members_count',
+			'youtube_last_gift_member',
+			'youtube_session_gift_members',
 			'youtube_total_video_count',
 			'youtube_total_view_count',
 		],
@@ -1910,9 +1946,30 @@ export const AllVariables = {
 			firstChatter: ['username', 'displayname', 'userId', 'avatar', 'first_count', 'message'],
 			entrance: ['username', 'displayname', 'userId', 'avatar', 'message'],
 			subscriber: ['username', 'displayname', 'avatar', 'userId'],
+			sessionSubs: ['total', 'previousTotal'],
 			member: ['username', 'displayname', 'avatar', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName', 'subPlanId'],
-			superchat: ['username', 'displayname', 'currency', 'amount', 'message'],
-			supersticker: ['username', 'displayname', 'amount'],
+			sessionMembers: ['total', 'previousTotal'],
+			giftMembers: [
+				'username',
+				'displayname',
+				'avatar',
+				'tier',
+				'giftAmount',
+				'recipients',
+				'recipientsRaw',
+				'gifter',
+				'totalGifts',
+				'subMonths',
+				'streakMonths',
+				'message',
+				'subPlan',
+				'subPlanName',
+			],
+			sessionGiftMembers: ['total', 'previousTotal'],
+			superchat: ['username', 'displayname', 'currency', 'currencySymbol', 'amount', 'message'],
+			sessionSuperchats: ['total', 'previousTotal', 'currency', 'currencySymbol'],
+			supersticker: ['username', 'displayname', 'stickerId', 'stickerName', 'amount', 'currency', 'currencySymbol'],
+			sessionSuperstickers: ['total', 'previousTotal', 'currency', 'currencySymbol'],
 			like: ['likes', 'dislikes'],
 			viewers: ['viewers'],
 		},
