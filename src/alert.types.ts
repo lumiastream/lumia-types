@@ -107,6 +107,7 @@ export interface LumiaDynamicCondition {
 	username?: string;
 	total?: number;
 	previousTotal?: number;
+	lumiauserlevels?: number[];
 }
 
 export const LumiaAlertConfigs: Record<
