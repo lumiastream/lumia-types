@@ -571,6 +571,10 @@ export enum LumiaAlertValues {
 	MELD_RECORDING_STARTING = 'meld-recordingStarting',
 	/** Meld recording stopping */
 	MELD_RECORDING_STOPPING = 'meld-recordingStopping',
+	/** Meld scene switched */
+	MELD_SWITCH_SCENE = 'meld-switchScene',
+	/** Meld vertical scene switched */
+	MELD_SWITCH_VERTICAL_SCENE = 'meld-switchVerticalScene',
 }
 
 export const LumiaAlertFriendlyValues = {
