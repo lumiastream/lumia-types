@@ -825,6 +825,8 @@ export declare enum SystemVariables {
     GET_RANDOM_FILE_FROM_FOLDER = "get_random_file_from_folder",
     /** Desktop screenshot (monitor selectable). Example: {{screenshot=2}}. Use as {{screenshot}}. */
     SCREENSHOT = "screenshot",
+    /** Overlay screenshot. Example: {{overlay_screenshot=Overlay 1}}. Use as {{overlay_screenshot}}. */
+    OVERLAY_SCREENSHOT = "overlay_screenshot",
     /** OBS screenshot (scene selectable). Example: {{obs_screenshot=Scene 1}}. Use as {{obs_screenshot}}. */
     OBS_SCREENSHOT = "obs_screenshot",
     /** Save OBS replay buffer (optional delay). Example: {{obs_replay=5}}. Use as {{obs_replay}}. */
@@ -845,6 +847,8 @@ export declare enum SystemVariables {
     COMMANDS_URL = "commands_url",
     /** Session start time (ISO). Use as {{session_start_date}}. */
     SESSION_START_DATE = "session_start_date",
+    /** Last overlay screenshot path. Use as {{last_overlay_screenshot_path}}. */
+    LAST_OVERLAY_SCREENSHOT_PATH = "last_overlay_screenshot_path",
     /** Last player to trigger a game. Use as {{game_last_player}}. */
     GAME_LAST_PLAYER = "game_last_player",
     /** Lumia app uptime. Use as {{lumia_uptime}}. */
