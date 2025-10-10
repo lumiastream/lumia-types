@@ -101,6 +101,8 @@ export enum LumiaActivityCommandTypes {
 	OVERLAY_SET_LAYER_VISIBILITY = 'overlay-set-layer-visibility',
 	OVERLAY_SET_LAYER_POSITION = 'overlay-set-layer-position',
 	OVERLAY_SET_CONTENT = 'overlay-set-content',
+	OVERLAY_SCREENSHOT = 'overlay-screenshot',
+	OVERLAY_SCREENSHOT_RESPONSE = 'overlay-screenshot-response', // Response to OVERLAY_SCREENSHOT, internal
 
 	// HUD Commands
 	HUD_OVERLAY_CHANGE = 'hud-overlay-change',

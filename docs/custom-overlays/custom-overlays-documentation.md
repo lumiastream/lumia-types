@@ -2,11 +2,11 @@
 
 This layer is a real-time, configurable overlay component with support for dynamic events. It includes five main tabs:
 
-- **HTML** – Defines the static layout of the UI
-- **CSS** – Custom styling rules
-- **JS** – Handles real-time logic and event listeners
-- **Configs** – Input schema used to customize the component
-- **Data** – Holds the actual values for the defined fields
+-   **HTML** – Defines the static layout of the UI
+-   **CSS** – Custom styling rules
+-   **JS** – Handles real-time logic and event listeners
+-   **Configs** – Input schema used to customize the component
+-   **Data** – Holds the actual values for the defined fields
 
 ## Chat GPT Lumia Overlay Assistant
 
@@ -163,8 +163,8 @@ console.log(variable);
 
 ### What This Does
 
-- Displays the initial data provided via `Ovelray.data`
-- Accepts incoming events in real time
+-   Displays the initial data provided via `Overlay.data`
+-   Accepts incoming events in real time
 
 ### 📡 Event Handling
 
@@ -278,33 +278,33 @@ When building custom overlays, you have several options for storing and sharing 
 
 #### 1. `localStorage`
 
-- **Scope:** Only available in the browser where the overlay is loaded (e.g., OBS, browser source, or streaming studio).
-- **Persistence:** Data persists across page reloads in the same browser, but is not shared between different browsers or devices.
-- **Use Case:** Storing user preferences or temporary data that doesn't need to sync across devices or overlays.
-- **Limitations:** Not accessible by Lumia Stream itself or other overlays running elsewhere.
+-   **Scope:** Only available in the browser where the overlay is loaded (e.g., OBS, browser source, or streaming studio).
+-   **Persistence:** Data persists across page reloads in the same browser, but is not shared between different browsers or devices.
+-   **Use Case:** Storing user preferences or temporary data that doesn't need to sync across devices or overlays.
+-   **Limitations:** Not accessible by Lumia Stream itself or other overlays running elsewhere.
 
 #### 2. **Lumia Stream Variables**
 
-- **Scope:** Global within Lumia Stream. Variables can be accessed and updated by overlays, chatbots, commands, and other Lumia features.
-- **Persistence:** Saved on the server and available across all overlays and sessions.
-- **Use Case:** Sharing data between overlays, commands, and chatbots, or persisting state across restarts.
-- **Limitations:** All variables are global—be careful with naming to avoid conflicts.
+-   **Scope:** Global within Lumia Stream. Variables can be accessed and updated by overlays, chatbots, commands, and other Lumia features.
+-   **Persistence:** Saved on the server and available across all overlays and sessions.
+-   **Use Case:** Sharing data between overlays, commands, and chatbots, or persisting state across restarts.
+-   **Limitations:** All variables are global—be careful with naming to avoid conflicts.
 
 #### 3. `Overlay.callCommand`
 
-- **Scope:** Triggers a Lumia Stream command, optionally passing custom data.
-- **Persistence:** Depends on your command logic. You can implement your own storage or logic inside the command.
-- **Use Case:** Advanced workflows where you want to process data or trigger actions in Lumia Stream, possibly updating variables or storage as part of the command.
-- **Limitations:** Requires custom command setup in Lumia Stream.
+-   **Scope:** Triggers a Lumia Stream command, optionally passing custom data.
+-   **Persistence:** Depends on your command logic. You can implement your own storage or logic inside the command.
+-   **Use Case:** Advanced workflows where you want to process data or trigger actions in Lumia Stream, possibly updating variables or storage as part of the command.
+-   **Limitations:** Requires custom command setup in Lumia Stream.
 
 #### 4. `Overlay.saveStorage` / `getStorage` / `deleteStorage`
 
-- **Scope:** Persistent storage tied to your overlay's `codeId`. Data is saved on the local Lumia Stream server and is accessible from any overlay instance (e.g., OBS, browser, Meld) running on the same server.
-- **Persistence:** Data persists across overlay reloads and is shared between all overlay clients connected to the same Lumia Stream instance.
-- **Use Case:** Storing overlay-specific state or data that needs to be shared between multiple overlay clients or sessions.
-- **Limitations:**
-    - Not accessible by Lumia Stream commands or chatbots (only overlays can read/write).
-    - Not synced to the cloud or between different Lumia Stream servers.
+-   **Scope:** Persistent storage tied to your overlay's `codeId`. Data is saved on the local Lumia Stream server and is accessible from any overlay instance (e.g., OBS, browser, Meld) running on the same server.
+-   **Persistence:** Data persists across overlay reloads and is shared between all overlay clients connected to the same Lumia Stream instance.
+-   **Use Case:** Storing overlay-specific state or data that needs to be shared between multiple overlay clients or sessions.
+-   **Limitations:**
+    -   Not accessible by Lumia Stream commands or chatbots (only overlays can read/write).
+    -   Not synced to the cloud or between different Lumia Stream servers.
 
 #### Summary Table
 
@@ -328,21 +328,21 @@ A field object can now contain these properties:
 
 | Property        | Required | Purpose                                                                                                                                                                                                                                                                                            | Example                                                           |
 | --------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| **`type`**      | ✅       | UI control to render. Must be one of the `FieldType` enum values (`input`, `number`, `checkbox`, `dropdown`, `multiselect`, `colorpicker`, `fontpicker`, `slider`).                                                                                                                             | `"type": "dropdown"`                                              |
+| **`type`**      | ✅       | UI control to render. Must be one of the `FieldType` enum values (`input`, `number`, `checkbox`, `dropdown`, `multiselect`, `colorpicker`, `fontpicker`, `slider`).                                                                                                                                | `"type": "dropdown"`                                              |
 | **`label`**     | ✅       | Human-readable name shown in the sidebar.                                                                                                                                                                                                                                                          | `"label": "Favorite Color:"`                                      |
 | **`value`**     | ❌       | Default value that appears the first time the user opens the overlay (also pre populates `Overlay.data`). Omit it to leave the field blank/unchecked on first load.                                                                                                                                | `"value": 18`                                                     |
-| **`options`**   | ☑️\*     | Key value map of selectable choices. Required **only** for `dropdown`, `multiselect` and `slider`; ignored for other types. For `slider`, `options` supports `step`, `min`, `max`, `prefix`, `suffix`.                                                                                           | `"options": { "step": 5, "min": 0, "max": 100 }`              |
+| **`options`**   | ☑️\*     | Key value map of selectable choices. Required **only** for `dropdown`, `multiselect` and `slider`; ignored for other types. For `slider`, `options` supports `step`, `min`, `max`, `prefix`, `suffix`.                                                                                             | `"options": { "step": 5, "min": 0, "max": 100 }`                  |
 | **`order`**     | ❌       | **Display order priority**. Fields with lower numbers appear first. Fields without `order` appear after ordered fields, sorted alphabetically by key.                                                                                                                                              | `"order": 1`                                                      |
 | **`visibleIf`** | ❌       | **Conditional render rule**. Field is shown **only if** `Overlay.data[visibleIf.key]` strictly equals one of the values in `visibleIf.equals`.                                                                                                                                                     | `"visibleIf": { "key": "targetKey", "equals": ["yes", "maybe"] }` |
 | **`hidden`**    | ❌       | **Hard-hide rule.** When set to `true`, the field is **never displayed** in the Configs sidebar, preventing end users from altering it. The value still flows into `Overlay.data`, so the overlay can rely on it internally.<br>Useful for locking event subscriptions or other advanced settings. | `"hidden": true`                                                  |
 
 Additional properties for text inputs (`type: "input"`):
 
-| Property               | Required | Purpose                                                                                                                                                                   | Example                                             |
-| ---------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| **`placeholder`**      | ❌       | Placeholder text inside the input.                                                                                                                                         | `"placeholder": "Enter title..."`                 |
-| **`enableVariables`**  | ❌       | When `true`, renders a variable-enabled input that lets users insert variables (e.g., `{{username}}`) from a picker.                                                       | `"enableVariables": true`                           |
-| **`allowedVariables`** | ❌       | When present with `enableVariables: true`, limits the top of the picker to this list. System/function variables are still available below.                                | `"allowedVariables": ["username", "message"]`   |
+| Property               | Required | Purpose                                                                                                                                    | Example                                       |
+| ---------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| **`placeholder`**      | ❌       | Placeholder text inside the input.                                                                                                         | `"placeholder": "Enter title..."`             |
+| **`enableVariables`**  | ❌       | When `true`, renders a variable-enabled input that lets users insert variables (e.g., `{{username}}`) from a picker.                       | `"enableVariables": true`                     |
+| **`allowedVariables`** | ❌       | When present with `enableVariables: true`, limits the top of the picker to this list. System/function variables are still available below. | `"allowedVariables": ["username", "message"]` |
 
 ### Variable-enabled Input Fields
 
@@ -352,13 +352,13 @@ Example:
 
 ```json
 {
-  "title": {
-    "type": "input",
-    "label": "Title",
-    "enableVariables": true,
-    "allowedVariables": ["username", "message"],
-    "placeholder": "Enter title or insert variables"
-  }
+	"title": {
+		"type": "input",
+		"label": "Title",
+		"enableVariables": true,
+		"allowedVariables": ["username", "message"],
+		"placeholder": "Enter title or insert variables"
+	}
 }
 ```
 
@@ -375,7 +375,7 @@ Before looking at the individual properties (type, label, value, options), remem
 	},
 	"platform": {
 		/* field object */
-	},
+	}
 }
 ```
 
@@ -440,9 +440,9 @@ The key in the json an ddata must match the variable name used in the css
 
 By default, config fields are displayed in alphabetical order by their key names. You can override this behavior using the `order` property:
 
-- Fields with an `order` property are displayed first, sorted by their order value (ascending)
-- Fields without an `order` property appear after all ordered fields, sorted alphabetically by key
-- This allows you to prioritize important settings at the top of the configuration panel
+-   Fields with an `order` property are displayed first, sorted by their order value (ascending)
+-   Fields without an `order` property appear after all ordered fields, sorted alphabetically by key
+-   This allows you to prioritize important settings at the top of the configuration panel
 
 #### Order Example
 
@@ -648,11 +648,11 @@ The codeId can only contain letters, numbers, hyphens, and underscores with a ma
 
 ## ✅ Use Cases
 
-- Custom stream overlays for Twitch, YouTube, or other platforms
-- Real-time dashboards for alerts and interactions
-- Interactive visuals triggered by chat or external events
-- Pokemon Catching Mini Game
-- Duel Overlay to show matches on stream with your viewers
+-   Custom stream overlays for Twitch, YouTube, or other platforms
+-   Real-time dashboards for alerts and interactions
+-   Interactive visuals triggered by chat or external events
+-   Pokemon Catching Mini Game
+-   Duel Overlay to show matches on stream with your viewers
 
 ## Persisting Data
 
@@ -792,16 +792,16 @@ Our Overlays will work with various Game Engines including, but not limited to P
 
 ## 🧪 Tips
 
-- Always sanitize HTML content if displaying user-generated input.
-- Leverage custom CSS to match your stream or brand style.
-- In custom code or overlay actions prefer to send data directly to the overlay without the store or variables if you do not need to persist the data
+-   Always sanitize HTML content if displaying user-generated input.
+-   Leverage custom CSS to match your stream or brand style.
+-   In custom code or overlay actions prefer to send data directly to the overlay without the store or variables if you do not need to persist the data
 
 ## 📦 Templates
 
 You can get started quickly with one of the two built-in templates:
 
-- **Custom Chatbox** – A base template for building a chatbox overlay that listens to messages.
-- **Custom Alert** – A template for creating a fully custom alert layer that responds to selected events.
+-   **Custom Chatbox** – A base template for building a chatbox overlay that listens to messages.
+-   **Custom Alert** – A template for creating a fully custom alert layer that responds to selected events.
 
 ## Using API requests with Fetch
 
