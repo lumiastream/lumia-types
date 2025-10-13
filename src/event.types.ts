@@ -54,6 +54,7 @@ export interface ILumiaEventChatBody {
 		hasEmotes: boolean;
 		emotes: string;
 		rawMessageWithoutEmotes: string;
+		messageWithoutEmotes: string;
 		emotesRaw: string;
 		channel: string;
 		message: string;
