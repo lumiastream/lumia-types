@@ -4792,7 +4792,7 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM, description: 'alerts.random' },
+			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
 				description: 'Gift Name is equal to',
