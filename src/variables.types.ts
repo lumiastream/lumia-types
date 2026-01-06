@@ -948,6 +948,7 @@ export const AllVariables = {
 				'emotesRaw',
 				'timestamp',
 				'points_cost',
+				'voice_command_full_sentence',
 			],
 			chatbotCommand: [
 				'username',
