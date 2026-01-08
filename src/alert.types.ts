@@ -2,6 +2,7 @@ import { LumiaAlertValues } from './activity.types';
 import { LumiaIntegrations } from './event.types';
 import { AllVariables } from './variables.types';
 import { YoutubeSuperstickersData } from './youtube_superstickers';
+import { VIEWER_PROFILE_ACHIEVEMENTS } from './viewer_profile_achievements';
 
 export enum LumiaVariationConditions {
 	RANDOM = 'RANDOM', // Frequency: Percent Chance
@@ -608,6 +609,24 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [],
 		inputFields: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.LUMIASTREAM_VIEWER_ACHIEVEMENT]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
+		message: '{{username}} unlocked the {{achievement_name}} achievement!',
+		eventlistSpecialUsername: 'lumiastream',
+		eventlistMessage: 'Viewer Achievement',
+		eventlistDetailedMessage: '{{username}} unlocked the {{achievement_name}} achievement!',
+		acceptedVariables: AllVariables.lumiastream.alerts.viewerAchievement,
+		quickActions: [],
+		inputFields: [],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Achievement Name',
+				selections: VIEWER_PROFILE_ACHIEVEMENTS.map((achievement) => ({ label: achievement.label, value: achievement.label })),
+			},
+		],
 	},
 	[LumiaAlertValues.LUMIASTREAM_ROULETTE_WINNER]: {
 		connection: LumiaIntegrations.LUMIASTREAM,

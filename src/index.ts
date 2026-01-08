@@ -24,3 +24,4 @@ export {
 export { LumiaEventListTypes, LumiaMapAlertTypeToEventListType } from './eventlist.types';
 export { SystemVariables, ReservedVariables, AllVariables } from './variables.types';
 export { formatCondition } from './helpers';
+export { VIEWER_PROFILE_ACHIEVEMENTS, type ViewerProfileAchievementDefinition, type ViewerProfileAchievementMetric } from './viewer_profile_achievements';
