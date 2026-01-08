@@ -416,6 +416,8 @@ export declare enum LumiaAlertValues {
     LUMIASTREAM_VIEWERQUEUE_STARTED = "lumiastream-viewerqueueStarted",
     /** Viewer queue ended */
     LUMIASTREAM_VIEWERQUEUE_ENDED = "lumiastream-viewerqueueEnded",
+    /** Viewer achievement unlocked */
+    LUMIASTREAM_VIEWER_ACHIEVEMENT = "lumiastream-viewerAchievement",
     /** Roulette winner selected */
     LUMIASTREAM_ROULETTE_WINNER = "lumiastream-rouletteWinner",
     /** Slots winner */
@@ -959,6 +961,18 @@ export declare enum SystemVariables {
     VIEWERQUEUE_ENTRIES_COUNT = "viewerqueue_entries_count",
     /** Viewer queue max entries limit. Use as {{viewerqueue_queue_limit}}. */
     VIEWERQUEUE_QUEUE_LIMIT = "viewerqueue_queue_limit",
+    /** Achievement id. Use as {{achievement_id}}. */
+    ACHIEVEMENT_ID = "achievement_id",
+    /** Achievement name. Use as {{achievement_name}}. */
+    ACHIEVEMENT_NAME = "achievement_name",
+    /** Achievement description. Use as {{achievement_description}}. */
+    ACHIEVEMENT_DESCRIPTION = "achievement_description",
+    /** Achievements completed count. Use as {{achievements_completed}}. */
+    ACHIEVEMENTS_COMPLETED = "achievements_completed",
+    /** Achievements total count. Use as {{achievements_total}}. */
+    ACHIEVEMENTS_TOTAL = "achievements_total",
+    /** Achievement completion percent. Use as {{achievements_percent}}. */
+    ACHIEVEMENTS_PERCENT = "achievements_percent",
     /** Response from most recent API Action (JSON stringified). Use as {{api_action_global_response}}. */
     API_ACTION_GLOBAL_RESPONSE = "api_action_global_response",
     /** Last RANDOM_INPUT selection. Use as {{last_random_input}}. */
