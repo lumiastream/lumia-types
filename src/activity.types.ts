@@ -171,6 +171,8 @@ export enum LumiaAlertValues {
 	LUMIASTREAM_VIEWERQUEUE_STARTED = 'lumiastream-viewerqueueStarted',
 	/** Viewer queue ended */
 	LUMIASTREAM_VIEWERQUEUE_ENDED = 'lumiastream-viewerqueueEnded',
+	/** Viewer achievement unlocked */
+	LUMIASTREAM_VIEWER_ACHIEVEMENT = 'lumiastream-viewerAchievement',
 	/** Roulette winner selected */
 	LUMIASTREAM_ROULETTE_WINNER = 'lumiastream-rouletteWinner',
 	/** Slots winner */
@@ -594,6 +596,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.LUMIASTREAM_POLL_ENDED]: 'Poll Ended',
 	[LumiaAlertValues.LUMIASTREAM_VIEWERQUEUE_STARTED]: 'Viewer Queue Started',
 	[LumiaAlertValues.LUMIASTREAM_VIEWERQUEUE_ENDED]: 'Viewer Queue Ended',
+	[LumiaAlertValues.LUMIASTREAM_VIEWER_ACHIEVEMENT]: 'Viewer Achievement',
 	[LumiaAlertValues.LUMIASTREAM_ROULETTE_WINNER]: 'Roulette Winner',
 	[LumiaAlertValues.LUMIASTREAM_SLOTS_WINNER]: 'Slots Winner',
 	[LumiaAlertValues.TWITCH_EXTENSION]: 'Twitch Extension',

@@ -179,6 +179,18 @@ export enum SystemVariables {
 	VIEWERQUEUE_ENTRIES_COUNT = 'viewerqueue_entries_count',
 	/** Viewer queue max entries limit. Use as {{viewerqueue_queue_limit}}. */
 	VIEWERQUEUE_QUEUE_LIMIT = 'viewerqueue_queue_limit',
+	/** Achievement id. Use as {{achievement_id}}. */
+	ACHIEVEMENT_ID = 'achievement_id',
+	/** Achievement name. Use as {{achievement_name}}. */
+	ACHIEVEMENT_NAME = 'achievement_name',
+	/** Achievement description. Use as {{achievement_description}}. */
+	ACHIEVEMENT_DESCRIPTION = 'achievement_description',
+	/** Achievements completed count. Use as {{achievements_completed}}. */
+	ACHIEVEMENTS_COMPLETED = 'achievements_completed',
+	/** Achievements total count. Use as {{achievements_total}}. */
+	ACHIEVEMENTS_TOTAL = 'achievements_total',
+	/** Achievement completion percent. Use as {{achievements_percent}}. */
+	ACHIEVEMENTS_PERCENT = 'achievements_percent',
 	/** Response from most recent API Action (JSON stringified). Use as {{api_action_global_response}}. */
 	API_ACTION_GLOBAL_RESPONSE = 'api_action_global_response',
 	/** Last RANDOM_INPUT selection. Use as {{last_random_input}}. */
@@ -1360,6 +1372,18 @@ export const AllVariables = {
 			pollEnded: ['poll_id', 'poll_title', 'poll_choices', 'poll_winning_title', 'poll_winning_id', 'poll_winning_votes', 'poll_total_votes'],
 			viewerqueueStarted: ['viewerqueue_title', 'viewerqueue_entry_command', 'viewerqueue_entries', 'viewerqueue_players', 'viewerqueue_entries_count'],
 			viewerqueueEnded: ['viewerqueue_title', 'viewerqueue_entry_command', 'viewerqueue_entries', 'viewerqueue_players', 'viewerqueue_entries_count'],
+			viewerAchievement: [
+				'username',
+				'displayname',
+				'avatar',
+				'platform',
+				'achievement_id',
+				'achievement_name',
+				'achievement_description',
+				'achievements_completed',
+				'achievements_total',
+				'achievements_percent',
+			],
 			rouletteWinner: ['username', 'outcome_amount', 'ball_position'],
 			slotsWinner: ['username', 'outcome_amount', 'slots_combo'],
 		},
