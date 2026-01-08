@@ -14,6 +14,8 @@ export type ViewerProfileAchievementMetric =
 	| 'daysActive'
 	| 'allRounder';
 
+export type ViewerProfileAchievementColor = 'gold' | 'amber' | 'emerald' | 'sky' | 'rose' | 'orange' | 'teal' | 'cyan' | 'violet' | 'slate';
+
 export type ViewerProfileAchievementDefinition = {
 	id: string;
 	label: string;
@@ -21,6 +23,8 @@ export type ViewerProfileAchievementDefinition = {
 	metric: ViewerProfileAchievementMetric;
 	threshold: number;
 	connectionKeys?: string[];
+	icon: string;
+	color: ViewerProfileAchievementColor;
 };
 
 export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] = [
@@ -31,6 +35,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 25 commands.',
 		metric: 'totalCommands',
 		threshold: 25,
+		icon: 'Bolt',
+		color: 'amber',
 	},
 	{
 		id: 'commands-runner',
@@ -38,6 +44,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 50 commands.',
 		metric: 'totalCommands',
 		threshold: 50,
+		icon: 'Speed',
+		color: 'amber',
 	},
 	{
 		id: 'commands-overdrive',
@@ -45,6 +53,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 100 commands.',
 		metric: 'totalCommands',
 		threshold: 100,
+		icon: 'FlashOn',
+		color: 'orange',
 	},
 	{
 		id: 'commands-speedster',
@@ -52,6 +62,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 250 commands.',
 		metric: 'totalCommands',
 		threshold: 250,
+		icon: 'RocketLaunch',
+		color: 'orange',
 	},
 	{
 		id: 'commands-blazer',
@@ -59,6 +71,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 500 commands.',
 		metric: 'totalCommands',
 		threshold: 500,
+		icon: 'Whatshot',
+		color: 'orange',
 	},
 	{
 		id: 'commands-veteran',
@@ -66,6 +80,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 1,000 commands.',
 		metric: 'totalCommands',
 		threshold: 1000,
+		icon: 'MilitaryTech',
+		color: 'amber',
 	},
 	{
 		id: 'commands-legend',
@@ -73,6 +89,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 5,000 commands.',
 		metric: 'totalCommands',
 		threshold: 5000,
+		icon: 'EmojiEvents',
+		color: 'gold',
 	},
 
 	// ───────── Unique Commands ─────────
@@ -82,6 +100,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Used 10 different commands.',
 		metric: 'uniqueCommands',
 		threshold: 10,
+		icon: 'AutoAwesome',
+		color: 'amber',
 	},
 	{
 		id: 'commands-unique-adventurer',
@@ -89,6 +109,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Used 20 different commands.',
 		metric: 'uniqueCommands',
 		threshold: 20,
+		icon: 'Stars',
+		color: 'amber',
 	},
 
 	// ───────── Channel Points ─────────
@@ -99,6 +121,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalPointsCommands',
 		threshold: 50,
 		connectionKeys: ['twitch'],
+		icon: 'LocalActivity',
+		color: 'cyan',
 	},
 	{
 		id: 'twitch-points-regular',
@@ -107,6 +131,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalPointsCommands',
 		threshold: 200,
 		connectionKeys: ['twitch'],
+		icon: 'StarRate',
+		color: 'teal',
 	},
 	{
 		id: 'twitch-points-glow',
@@ -115,6 +141,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalPointsSpent',
 		threshold: 5000,
 		connectionKeys: ['twitch'],
+		icon: 'AutoGraph',
+		color: 'emerald',
 	},
 	{
 		id: 'twitch-points-beacon',
@@ -123,6 +151,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalPointsSpent',
 		threshold: 25000,
 		connectionKeys: ['twitch'],
+		icon: 'TrendingUp',
+		color: 'emerald',
 	},
 	{
 		id: 'twitch-points-tycoon',
@@ -131,6 +161,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalPointsSpent',
 		threshold: 100000,
 		connectionKeys: ['twitch'],
+		icon: 'WorkspacePremium',
+		color: 'gold',
 	},
 
 	// ───────── Twitch Extensions ─────────
@@ -141,6 +173,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalTwitchExtensionsCommands',
 		threshold: 5,
 		connectionKeys: ['twitch'],
+		icon: 'Extension',
+		color: 'violet',
 	},
 	{
 		id: 'twitch-extension-adventurer-ii',
@@ -149,6 +183,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalTwitchExtensionsCommands',
 		threshold: 10,
 		connectionKeys: ['twitch'],
+		icon: 'Extension',
+		color: 'violet',
 	},
 	{
 		id: 'twitch-extension-adventurer',
@@ -157,6 +193,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalTwitchExtensionsCommands',
 		threshold: 25,
 		connectionKeys: ['twitch'],
+		icon: 'Extension',
+		color: 'violet',
 	},
 	{
 		id: 'twitch-extension-operator',
@@ -165,6 +203,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalTwitchExtensionsCommands',
 		threshold: 100,
 		connectionKeys: ['twitch'],
+		icon: 'Extension',
+		color: 'violet',
 	},
 
 	// ───────── Bits ─────────
@@ -175,6 +215,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalBitsSpent',
 		threshold: 100,
 		connectionKeys: ['twitch'],
+		icon: 'Diamond',
+		color: 'sky',
 	},
 	{
 		id: 'bits-beam',
@@ -183,6 +225,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalBitsSpent',
 		threshold: 500,
 		connectionKeys: ['twitch'],
+		icon: 'Diamond',
+		color: 'cyan',
 	},
 	{
 		id: 'bits-glow',
@@ -191,6 +235,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalBitsSpent',
 		threshold: 1000,
 		connectionKeys: ['twitch'],
+		icon: 'Diamond',
+		color: 'cyan',
 	},
 	{
 		id: 'bits-supernova',
@@ -199,6 +245,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalBitsSpent',
 		threshold: 5000,
 		connectionKeys: ['twitch'],
+		icon: 'Diamond',
+		color: 'gold',
 	},
 
 	// ───────── Kick ─────────
@@ -209,6 +257,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalKicksSpent',
 		threshold: 50,
 		connectionKeys: ['kick'],
+		icon: 'LocalFireDepartment',
+		color: 'emerald',
 	},
 	{
 		id: 'kick-glow',
@@ -217,6 +267,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalKicksSpent',
 		threshold: 100,
 		connectionKeys: ['kick'],
+		icon: 'LocalFireDepartment',
+		color: 'emerald',
 	},
 	{
 		id: 'kick-beam',
@@ -225,6 +277,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalKicksSpent',
 		threshold: 500,
 		connectionKeys: ['kick'],
+		icon: 'LocalFireDepartment',
+		color: 'emerald',
 	},
 	{
 		id: 'kick-supernova',
@@ -233,6 +287,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalKicksSpent',
 		threshold: 1000,
 		connectionKeys: ['kick'],
+		icon: 'LocalFireDepartment',
+		color: 'gold',
 	},
 
 	// ───────── Donations ─────────
@@ -242,6 +298,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Donated 5 in your default currency.',
 		metric: 'totalMoneySpent',
 		threshold: 5,
+		icon: 'Payments',
+		color: 'amber',
 	},
 	{
 		id: 'light-backer',
@@ -249,6 +307,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Donated 25 in your default currency.',
 		metric: 'totalMoneySpent',
 		threshold: 25,
+		icon: 'Payments',
+		color: 'amber',
 	},
 	{
 		id: 'light-advocate',
@@ -256,6 +316,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Donated 50 in your default currency.',
 		metric: 'totalMoneySpent',
 		threshold: 50,
+		icon: 'Payments',
+		color: 'amber',
 	},
 	{
 		id: 'light-hero',
@@ -263,6 +325,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Donated 100 in your default currency.',
 		metric: 'totalMoneySpent',
 		threshold: 100,
+		icon: 'MonetizationOn',
+		color: 'gold',
 	},
 	{
 		id: 'light-patron',
@@ -270,6 +334,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Donated 100 in your default currency.',
 		metric: 'totalMoneySpent',
 		threshold: 100,
+		icon: 'MonetizationOn',
+		color: 'gold',
 	},
 
 	// ───────── Alerts ─────────
@@ -279,6 +345,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 10 alerts.',
 		metric: 'totalAlerts',
 		threshold: 10,
+		icon: 'NotificationsActive',
+		color: 'orange',
 	},
 	{
 		id: 'alert-enthusiast',
@@ -286,6 +354,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 50 alerts.',
 		metric: 'totalAlerts',
 		threshold: 50,
+		icon: 'Campaign',
+		color: 'orange',
 	},
 	{
 		id: 'alert-curator',
@@ -293,6 +363,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 10 different alerts.',
 		metric: 'uniqueAlerts',
 		threshold: 10,
+		icon: 'Notifications',
+		color: 'orange',
 	},
 	{
 		id: 'alert-historian',
@@ -300,6 +372,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 25 different alerts.',
 		metric: 'uniqueAlerts',
 		threshold: 25,
+		icon: 'Notifications',
+		color: 'orange',
 	},
 	{
 		id: 'alert-archivist',
@@ -307,6 +381,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 50 different alerts.',
 		metric: 'uniqueAlerts',
 		threshold: 50,
+		icon: 'Notifications',
+		color: 'orange',
 	},
 
 	// ───────── Overall Engagement ─────────
@@ -316,6 +392,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Triggered 500 commands or alerts.',
 		metric: 'totalCommandsAndAlerts',
 		threshold: 500,
+		icon: 'Bolt',
+		color: 'violet',
 	},
 	{
 		id: 'on-air-regular',
@@ -323,6 +401,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Active for 60 days or more.',
 		metric: 'daysActive',
 		threshold: 60,
+		icon: 'AccessTime',
+		color: 'emerald',
 	},
 	{
 		id: 'yearlong-viewer',
@@ -330,6 +410,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Active for 365 days or more.',
 		metric: 'daysActive',
 		threshold: 365,
+		icon: 'CalendarMonth',
+		color: 'emerald',
 	},
 
 	// ───────── Ultimate ─────────
@@ -339,5 +421,7 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		description: 'Reached major milestones across commands, alerts, extensions, and support.',
 		metric: 'allRounder',
 		threshold: 1,
+		icon: 'EmojiObjects',
+		color: 'violet',
 	},
 ];
