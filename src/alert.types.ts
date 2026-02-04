@@ -640,7 +640,11 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
-				description: 'Value equals',
+				description: 'Value equals (text)',
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Value equals (number)',
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
