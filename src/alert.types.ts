@@ -640,7 +640,19 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
-				description: 'Variable Name',
+				description: 'Value equals',
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+				description: 'Value equals',
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+				description: 'Value is greater than or equal to',
+			},
+			{
+				type: LumiaVariationConditions.LESS_NUMBER,
+				description: 'Value is less than or equal to',
 			},
 		],
 	},
