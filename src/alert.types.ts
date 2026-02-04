@@ -638,7 +638,6 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [],
 		inputFields: [],
 		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
 			{
 				type: LumiaVariationConditions.EQUAL_STRING,
 				description: 'Variable Name',
