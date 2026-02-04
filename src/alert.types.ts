@@ -644,11 +644,11 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				type: LumiaVariationConditions.GREATER_NUMBER,
-				description: 'Variable is greater than or equal to',
+				description: 'Value is a number greater than or equal to',
 			},
 			{
 				type: LumiaVariationConditions.LESS_NUMBER,
-				description: 'Value is less than or equal to',
+				description: 'Value is a number less than or equal to',
 			},
 		],
 	},
