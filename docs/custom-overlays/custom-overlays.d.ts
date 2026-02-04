@@ -418,6 +418,8 @@ export declare enum LumiaAlertValues {
     LUMIASTREAM_VIEWERQUEUE_ENDED = "lumiastream-viewerqueueEnded",
     /** Viewer achievement unlocked */
     LUMIASTREAM_VIEWER_ACHIEVEMENT = "lumiastream-viewerAchievement",
+    /** Template variable value changed */
+    LUMIASTREAM_VARIABLE_CHANGED = "lumiastream-variableChanged",
     /** Roulette winner selected */
     LUMIASTREAM_ROULETTE_WINNER = "lumiastream-rouletteWinner",
     /** Slots winner */
