@@ -1384,6 +1384,7 @@ export const AllVariables = {
 				'achievements_total',
 				'achievements_percent',
 			],
+			variableChanged: ['variable_name', 'variable_value', 'variable_previous_value'],
 			rouletteWinner: ['username', 'outcome_amount', 'ball_position'],
 			slotsWinner: ['username', 'outcome_amount', 'slots_combo'],
 		},

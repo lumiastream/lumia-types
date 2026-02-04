@@ -628,6 +628,23 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.LUMIASTREAM_VARIABLE_CHANGED]: {
+		connection: LumiaIntegrations.LUMIASTREAM,
+		message: '{{variable_name}} changed to {{variable_value}}',
+		eventlistSpecialUsername: 'lumiastream',
+		eventlistMessage: 'Variable Changed',
+		eventlistDetailedMessage: '{{variable_name}} changed to {{variable_value}}',
+		acceptedVariables: AllVariables.lumiastream.alerts.variableChanged,
+		quickActions: [],
+		inputFields: [],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Variable Name',
+			},
+		],
+	},
 	[LumiaAlertValues.LUMIASTREAM_ROULETTE_WINNER]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Congratulations {{username}}! The ball landed on {{ball_position}}. You win {{outcome_amount}} {{loyalty_currency_name}}! Well played! 🎉',
