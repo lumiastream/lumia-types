@@ -7,6 +7,7 @@ export type ViewerProfileAchievementMetric =
 	| 'totalTwitchExtensionsCommands'
 	| 'totalBitsSpent'
 	| 'totalKicksSpent'
+	| 'totalGiftSubscriptions'
 	| 'totalMoneySpent'
 	| 'totalAlerts'
 	| 'uniqueAlerts'
@@ -335,6 +336,35 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		metric: 'totalMoneySpent',
 		threshold: 250,
 		icon: 'MonetizationOn',
+		color: 'gold',
+	},
+
+	// ───────── Gift Subscriptions ─────────
+	{
+		id: 'gift-spark',
+		label: 'Gift Spark',
+		description: 'Gifted 5 subscriptions.',
+		metric: 'totalGiftSubscriptions',
+		threshold: 5,
+		icon: 'CardGiftcard',
+		color: 'rose',
+	},
+	{
+		id: 'gift-burst',
+		label: 'Gift Burst',
+		description: 'Gifted 25 subscriptions.',
+		metric: 'totalGiftSubscriptions',
+		threshold: 25,
+		icon: 'Redeem',
+		color: 'rose',
+	},
+	{
+		id: 'gift-legend',
+		label: 'Gift Legend',
+		description: 'Gifted 100 subscriptions.',
+		metric: 'totalGiftSubscriptions',
+		threshold: 100,
+		icon: 'WorkspacePremium',
 		color: 'gold',
 	},
 
