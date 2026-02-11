@@ -5,8 +5,6 @@ import { LumiaActivityCommandTypes } from './activity.types';
 // Packets that will be sent through socket and rest apis
 export interface ILumiaSendPack {
 	type: LumiaActivityCommandTypes;
-	gamesGlowId?: string;
-	gamesGlowKey?: string;
 	params?: {
 		value: string | boolean | { r: number; g: number; b: number };
 		lights?: Array<ILumiaLight>;
@@ -171,7 +169,6 @@ export enum LumiaIntegrations {
 	TWITCH = 'twitch',
 	YOUTUBE = 'youtube',
 	FACEBOOK = 'facebook',
-	TROVO = 'trovo',
 	TIKTOK = 'tiktok',
 	KICK = 'kick',
 	STREAMLABS = 'streamlabs',
@@ -201,7 +198,6 @@ export enum LumiaIntegrations {
 	CROWDCONTROL = 'crowdcontrol',
 	VTUBESTUDIO = 'vtubestudio',
 	MELD = 'meld',
-	GAMESGLOW = 'gamesglow',
 }
 
 export enum LumiaEventTypes {
@@ -211,10 +207,6 @@ export enum LumiaEventTypes {
 	TWITCH_POINTS = 'twitch_point',
 	TWITCH_EXTENSIONS = 'twitch_extension',
 	KICK_POINTS = 'kick_point',
-	TROVO_SPELL = 'trovo_spell',
 	PULSE = 'pulse',
 	ALERTS = 'alert',
-	GAMESGLOW_ALERT = 'gamesglow_alert',
-	GAMESGLOW_COMMAND = 'gamesglow_command',
-	GAMESGLOW_VIRTUALLIGHT = 'gamesglow_virtuallight',
 }

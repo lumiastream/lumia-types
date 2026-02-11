@@ -2,7 +2,6 @@ export enum LumiaStreamingSites {
 	TWITCH = 'twitch',
 	YOUTUBE = 'youtube',
 	FACEBOOK = 'facebook',
-	TROVO = 'trovo',
 	TIKTOK = 'tiktok',
 	KICK = 'kick',
 	TWITTER = 'twitter',
@@ -31,7 +30,6 @@ export enum LumiaActivityCommandTypes {
 	TWITCH_EXTENSION = 'twitch-extension',
 	TWITCH_EXTENSION_HFX = 'twitch-extension-hfx',
 	KICK_POINTS = 'kick-points',
-	TROVO_SPELLS = 'trovo-spells',
 	STUDIO_SCENE = 'studio-scene',
 	STUDIO_ANIMATION = 'studio-animation',
 	STUDIO_THEME = 'studio-theme',
@@ -110,11 +108,6 @@ export enum LumiaActivityCommandTypes {
 	HUD_VOLUME_SET = 'hud-volume-set',
 	HUD_OPACITY_SET = 'hud-opacity-set',
 
-	// Games Glow Command Types
-	GAMESGLOW_ALERT = 'gamesglow-alert',
-	GAMESGLOW_COMMAND = 'gamesglow-command',
-	GAMESGLOW_VARIABLE = 'gamesglow-variable',
-	GAMESGLOW_VIRTUALLIGHT = 'gamesglow-virtuallight',
 }
 
 // Anything that comes through in an external way
@@ -129,7 +122,6 @@ export enum LumiaExternalActivityCommandTypes {
 	TWITCH_POINTS = 'twitch-points',
 	TWITCH_EXTENSION = 'twitch-extension',
 	KICK_POINTS = 'kick-points',
-	TROVO_SPELLS = 'trovo-spells',
 	STUDIO_SCENE = 'studio-scene',
 	STUDIO_ANIMATION = 'studio-animation',
 	STUDIO_THEME = 'studio-theme',
@@ -333,28 +325,6 @@ export enum LumiaAlertValues {
 	FACEBOOK_SHARE = 'facebook-share',
 	/** Facebook fan */
 	FACEBOOK_FAN = 'facebook-fan',
-
-	// Trovo alerts
-	/** Trovo stream went live */
-	TROVO_STREAM_LIVE = 'trovo-streamLive',
-	/** Trovo stream went offline */
-	TROVO_STREAM_OFFLINE = 'trovo-streamOffline',
-	/** First Trovo chat message */
-	TROVO_FIRST_CHATTER = 'trovo-firstChatter',
-	/** Trovo user entrance */
-	TROVO_ENTRANCE = 'trovo-entrance',
-	/** Trovo channel join */
-	TROVO_CHANNEL_JOIN = 'trovo-channelJoin',
-	/** Trovo subscriber (potential, needs testing) */
-	TROVO_SUBSCRIBER = 'trovo-subscriber',
-	/** Trovo follower (potential, needs testing) */
-	TROVO_FOLLOWER = 'trovo-follower',
-	/** Trovo spell cast (potential, needs testing) */
-	TROVO_SPELL = 'trovo-spell',
-	/** Trovo gift subscription */
-	TROVO_GIFT_SUBSCRIPTION = 'trovo-giftSubscription',
-	/** Trovo raid */
-	TROVO_RAID = 'trovo-raid',
 
 	// TikTok alerts
 	/** First TikTok chat message */
@@ -670,14 +640,6 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.FACEBOOK_SHARE]: 'Facebook Share',
 	[LumiaAlertValues.FACEBOOK_FAN]: 'Facebook Fan',
 	[LumiaAlertValues.FACEBOOK_ENTRANCE]: 'Facebook Entrance',
-	[LumiaAlertValues.TROVO_FIRST_CHATTER]: 'Trovo First Chatter',
-	[LumiaAlertValues.TROVO_FOLLOWER]: 'Trovo Follower',
-	[LumiaAlertValues.TROVO_CHANNEL_JOIN]: 'Trovo Channel Join',
-	[LumiaAlertValues.TROVO_SUBSCRIBER]: 'Trovo Subscriber',
-	[LumiaAlertValues.TROVO_GIFT_SUBSCRIPTION]: 'Trovo Gift Subscription',
-	[LumiaAlertValues.TROVO_RAID]: 'Trovo Raid',
-	[LumiaAlertValues.TROVO_SPELL]: 'Trovo Spell',
-	[LumiaAlertValues.TROVO_ENTRANCE]: 'Trovo Entrance',
 	[LumiaAlertValues.TIKTOK_FIRST_CHATTER]: 'Tiktok First Chatter',
 	[LumiaAlertValues.TIKTOK_FOLLOWER]: 'Tiktok Follower',
 	[LumiaAlertValues.TIKTOK_LIKE]: 'Tiktok Like',
@@ -789,14 +751,12 @@ export enum LumiaActivityOriginTypes {
 	TWITCH_POINTS = 'twitch-points',
 	TWITCH_EXTENSION = 'twitch-extension',
 	KICK_POINTS = 'kick-points',
-	TROVO_SPELLS = 'trovo-spells',
 	API = 'api',
 	LUMIASTREAMLINK = 'lumiastreamlink',
 	STREAMDECK = 'streamdeck',
 	TOUCHPORTAL = 'touchportal',
 	AVERMEDIA = 'avermedia',
 	LOUPEDECK = 'loupedeck',
-	GAMESGLOW = 'gamesglow',
 }
 
 export enum LumiaActivityApiValueType {
