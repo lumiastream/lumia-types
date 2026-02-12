@@ -7,7 +7,7 @@ import { LumiaAlertValues } from './custom-overlays';
 /* -------------------------------------------------------------------------- */
 
 /** Known platforms (extendable). */
-type Platform = 'twitch' | 'youtube' | 'kick' | 'tiktok' | 'facebook' | 'trovo' | string;
+type Platform = 'twitch' | 'youtube' | 'kick' | 'tiktok' | 'facebook' | string;
 
 /** ISO-8601 timestamp branding for better editor hints. */
 type ISODateString = string & { __iso8601: true };

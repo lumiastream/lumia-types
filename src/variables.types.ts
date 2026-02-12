@@ -73,8 +73,6 @@ export enum SystemVariables {
 	YOUTUBE_UPTIME = 'youtube_uptime',
 	/** Facebook stream uptime. Use as {{facebook_uptime}}. */
 	FACEBOOK_UPTIME = 'facebook_uptime',
-	/** Trovo stream uptime. Use as {{trovo_uptime}}. */
-	TROVO_UPTIME = 'trovo_uptime',
 	/** Twitch live status (true/false). Use as {{twitch_live}}. */
 	TWITCH_LIVE = 'twitch_live',
 	/** YouTube live status (true/false). Use as {{youtube_live}}. */
@@ -504,39 +502,6 @@ export enum SystemVariables {
 	KICK_TOTAL_GIFT_SUBSCRIPTION_COUNT = 'kick_total_gift_subscription_count',
 	/** Get avatar by username. Use as {{kick_get_avatar}}. */
 	KICK_GET_AVATAR = 'kick_get_avatar',
-
-	// ─────────────────────────────────── Trovo ────────────────────────────────────
-
-	/** Live status (true/false). Use as {{trovo_live}}. */
-	TROVO_LIVE = 'trovo_live',
-	/** Session chat count. Use as {{trovo_session_chat_count}}. */
-	TROVO_SESSION_CHAT_COUNT = 'trovo_session_chat_count',
-	/** Last follower. Use as {{trovo_last_follower}}. */
-	TROVO_LAST_FOLLOWER = 'trovo_last_follower',
-	/** Current first chatter. Use as {{trovo_current_first_chatter}}. */
-	TROVO_CURRENT_FIRST_CHATTER = 'trovo_current_first_chatter',
-	/** Current first chatter count. Use as {{trovo_current_first_chatter_count}}. */
-	TROVO_CURRENT_FIRST_CHATTER_COUNT = 'trovo_current_first_chatter_count',
-	/** Previous first chatter. Use as {{trovo_previous_first_chatter}}. */
-	TROVO_PREVIOUS_FIRST_CHATTER = 'trovo_previous_first_chatter',
-	/** Previous first chatter count. Use as {{trovo_previous_first_chatter_count}}. */
-	TROVO_PREVIOUS_FIRST_CHATTER_COUNT = 'trovo_previous_first_chatter_count', // keep exact value
-	/** Last chatter. Use as {{trovo_last_chatter}}. */
-	TROVO_LAST_CHATTER = 'trovo_last_chatter',
-	/** Last raid amount. Use as {{trovo_last_raid_amount}}. */
-	TROVO_LAST_RAID_AMOUNT = 'trovo_last_raid_amount',
-	/** Last raider. Use as {{trovo_last_raider}}. */
-	TROVO_LAST_RAIDER = 'trovo_last_raider',
-	/** Session follower count. Use as {{trovo_session_follower_count}}. */
-	TROVO_SESSION_FOLLOWER_COUNT = 'trovo_session_follower_count',
-	/** Session subscribers count. Use as {{trovo_session_subscribers_count}}. */
-	TROVO_SESSION_SUBSCRIBERS_COUNT = 'trovo_session_subscribers_count',
-	/** Session raiders list. Use as {{trovo_session_raiders}}. */
-	TROVO_SESSION_RAIDERS = 'trovo_session_raiders',
-	/** Last subscriber. Use as {{trovo_last_subscriber}}. */
-	TROVO_LAST_SUBSCRIBER = 'trovo_last_subscriber',
-	/** Session subscribers list. Use as {{trovo_session_subscribers}}. */
-	TROVO_SESSION_SUBSCRIBERS = 'trovo_session_subscribers',
 
 	// ─────────────────────────────────── Spotify ───────────────────────────────────
 
@@ -1017,20 +982,6 @@ export const AllVariables = {
 				'rawMessageWithoutEmotes',
 				'points',
 				'title',
-				'timestamp',
-			],
-			trovoSpells: [
-				'username',
-				'displayname',
-				'spell',
-				'spell_quantity',
-				'spell_type',
-				'spell_value',
-				'spell_combined_value',
-				'spell_mana_value',
-				'spell_mana_combined_value',
-				'spell_elixir_value',
-				'spell_elixir_combined_value',
 				'timestamp',
 			],
 			twitchExtensions: [
@@ -1692,54 +1643,6 @@ export const AllVariables = {
 	treatstream: {
 		alerts: {
 			treat: ['username', 'treat'],
-		},
-	},
-	trovo: {
-		variables: [
-			'trovo_uptime',
-			'trovo_live',
-			'trovo_session_chat_count',
-			'trovo_last_follower',
-			'trovo_current_first_chatter',
-			'trovo_current_first_chatter_count',
-			'trovo_previous_first_chatter',
-			'trovo_previous_first_chatter_count',
-			'trovo_last_chatter',
-			'trovo_last_raider',
-			'trovo_last_raid_amount',
-			'trovo_session_follower_count',
-			'trovo_session_subscribers_count',
-			'trovo_session_raiders',
-			'trovo_last_subscriber',
-			'trovo_session_subscribers',
-		],
-		alerts: {
-			streamLive: [],
-			streamOffline: [],
-			firstChatter: ['username', 'displayname', 'avatar', 'first_count', 'message'],
-			entrance: ['username', 'displayname', 'avatar', 'message'],
-			channelJoin: ['username', 'displayname', 'sub_tier', 'sub_level', 'avatar', 'roles', 'medals'],
-			follower: ['username'],
-			subscriber: ['username', 'displayname', 'sub_tier', 'sub_level', 'avatar', 'roles', 'medals'],
-			subscriptionGift: [
-				'username',
-				'displayname',
-				'avatar',
-				'tier',
-				'giftAmount',
-				'recipients',
-				'recipientsRaw',
-				'gifter',
-				'totalGifts',
-				'subMonths',
-				'streakMonths',
-				'message',
-				'subPlan',
-				'subPlanName',
-				'roles',
-				'medals',
-			],
-			raid: ['username', 'viewers', 'displayname', 'viewers', 'sub_tier', 'sub_level', 'avatar', 'roles', 'medals'],
 		},
 	},
 	twitch: {

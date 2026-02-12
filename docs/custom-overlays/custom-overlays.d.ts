@@ -126,7 +126,7 @@ export interface AlertEvent {
 		/** ISO timestamp when the alert occurred */
 		timestamp: string;
 		/** Platform where the alert originated */
-		site: 'twitch' | 'kick' | 'youtube' | 'tiktok' | 'facebook' | 'trovo' | string;
+		site: 'twitch' | 'kick' | 'youtube' | 'tiktok' | 'facebook' | string;
 		/** Whether timing type should be checked */
 		checkTimingType: boolean;
 		/** Type of timing for the alert */
@@ -572,26 +572,6 @@ export declare enum LumiaAlertValues {
     FACEBOOK_SHARE = "facebook-share",
     /** Facebook fan */
     FACEBOOK_FAN = "facebook-fan",
-    /** Trovo stream went live */
-    TROVO_STREAM_LIVE = "trovo-streamLive",
-    /** Trovo stream went offline */
-    TROVO_STREAM_OFFLINE = "trovo-streamOffline",
-    /** First Trovo chat message */
-    TROVO_FIRST_CHATTER = "trovo-firstChatter",
-    /** Trovo user entrance */
-    TROVO_ENTRANCE = "trovo-entrance",
-    /** Trovo channel join */
-    TROVO_CHANNEL_JOIN = "trovo-channelJoin",
-    /** Trovo subscriber (potential, needs testing) */
-    TROVO_SUBSCRIBER = "trovo-subscriber",
-    /** Trovo follower (potential, needs testing) */
-    TROVO_FOLLOWER = "trovo-follower",
-    /** Trovo spell cast (potential, needs testing) */
-    TROVO_SPELL = "trovo-spell",
-    /** Trovo gift subscription */
-    TROVO_GIFT_SUBSCRIPTION = "trovo-giftSubscription",
-    /** Trovo raid */
-    TROVO_RAID = "trovo-raid",
     /** First TikTok chat message */
     TIKTOK_FIRST_CHATTER = "tiktok-firstChatter",
     /** TikTok user entrance */
@@ -863,8 +843,6 @@ export declare enum SystemVariables {
     YOUTUBE_UPTIME = "youtube_uptime",
     /** Facebook stream uptime. Use as {{facebook_uptime}}. */
     FACEBOOK_UPTIME = "facebook_uptime",
-    /** Trovo stream uptime. Use as {{trovo_uptime}}. */
-    TROVO_UPTIME = "trovo_uptime",
     /** Twitch live status (true/false). Use as {{twitch_live}}. */
     TWITCH_LIVE = "twitch_live",
     /** YouTube live status (true/false). Use as {{youtube_live}}. */
@@ -1271,36 +1249,6 @@ export declare enum SystemVariables {
     KICK_TOTAL_GIFT_SUBSCRIPTION_COUNT = "kick_total_gift_subscription_count",
     /** Get avatar by username. Use as {{kick_get_avatar}}. */
     KICK_GET_AVATAR = "kick_get_avatar",
-    /** Live status (true/false). Use as {{trovo_live}}. */
-    TROVO_LIVE = "trovo_live",
-    /** Session chat count. Use as {{trovo_session_chat_count}}. */
-    TROVO_SESSION_CHAT_COUNT = "trovo_session_chat_count",
-    /** Last follower. Use as {{trovo_last_follower}}. */
-    TROVO_LAST_FOLLOWER = "trovo_last_follower",
-    /** Current first chatter. Use as {{trovo_current_first_chatter}}. */
-    TROVO_CURRENT_FIRST_CHATTER = "trovo_current_first_chatter",
-    /** Current first chatter count. Use as {{trovo_current_first_chatter_count}}. */
-    TROVO_CURRENT_FIRST_CHATTER_COUNT = "trovo_current_first_chatter_count",
-    /** Previous first chatter. Use as {{trovo_previous_first_chatter}}. */
-    TROVO_PREVIOUS_FIRST_CHATTER = "trovo_previous_first_chatter",
-    /** Previous first chatter count. Use as {{trovo_previous_first_chatter_count}}. */
-    TROVO_PREVIOUS_FIRST_CHATTER_COUNT = "trovo_previous_first_chatter_count",// keep exact value
-    /** Last chatter. Use as {{trovo_last_chatter}}. */
-    TROVO_LAST_CHATTER = "trovo_last_chatter",
-    /** Last raid amount. Use as {{trovo_last_raid_amount}}. */
-    TROVO_LAST_RAID_AMOUNT = "trovo_last_raid_amount",
-    /** Last raider. Use as {{trovo_last_raider}}. */
-    TROVO_LAST_RAIDER = "trovo_last_raider",
-    /** Session follower count. Use as {{trovo_session_follower_count}}. */
-    TROVO_SESSION_FOLLOWER_COUNT = "trovo_session_follower_count",
-    /** Session subscribers count. Use as {{trovo_session_subscribers_count}}. */
-    TROVO_SESSION_SUBSCRIBERS_COUNT = "trovo_session_subscribers_count",
-    /** Session raiders list. Use as {{trovo_session_raiders}}. */
-    TROVO_SESSION_RAIDERS = "trovo_session_raiders",
-    /** Last subscriber. Use as {{trovo_last_subscriber}}. */
-    TROVO_LAST_SUBSCRIBER = "trovo_last_subscriber",
-    /** Session subscribers list. Use as {{trovo_session_subscribers}}. */
-    TROVO_SESSION_SUBSCRIBERS = "trovo_session_subscribers",
     /** Now playing song title. Use as {{spotify_now_playing_song}}. */
     SPOTIFY_NOW_PLAYING_SONG = "spotify_now_playing_song",
     /** Now playing artwork URL. Use as {{spotify_now_playing_image}}. */
