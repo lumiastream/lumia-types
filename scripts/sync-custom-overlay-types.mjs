@@ -20,6 +20,7 @@ const extraFiles = [
   'custom-overlays-cheatsheet.md',
   'custom-overlays-examples.md',
   'custom-overlays-alerts.d.ts',
+  'gpt-instructions.md',
 ];
 
 function extractEnumBlock(fileContent, enumName) {

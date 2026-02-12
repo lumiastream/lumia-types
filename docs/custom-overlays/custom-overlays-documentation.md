@@ -18,6 +18,55 @@ Access it here: [Chat GPT Lumia Overlay Assistant](https://chatgpt.com/g/g-6760d
 
 ---
 
+## 🔌 Plugin + Overlay Integration
+
+Use overlays for visual rendering and interaction. Overlays can also call APIs and run polling logic directly.
+Use plugins when plugin capabilities clearly outshine overlay-only solutions, such as reusable cross-feature integrations, manifest-driven settings/actions/alerts, custom alert triggering with variations, runtime logic that should not depend on a specific overlay session, or Node.js runtime/library requirements.
+
+When building both together, use this contract:
+
+1. Plugin writes global variables with `this.lumia.setVariable("key", value)`.
+2. Plugin triggers alerts with `this.lumia.triggerAlert(...)`.
+3. Overlay reads:
+   - global variables via `Overlay.getVariable("key")` or `{{key}}`
+   - alert payload via `Overlay.on("alert", (data) => data.extraSettings)`
+
+`triggerAlert` payload guidance:
+
+- `dynamic` is only for variation matching.
+- `extraSettings` can contain any key/value payload and is the recommended data bridge for overlays/templates.
+- If an alert does not use variation conditions, omit `dynamic` and send only `extraSettings`.
+
+Example plugin payload:
+
+```js
+await this.lumia.triggerAlert({
+	alert: 'rumble_stream_started',
+	extraSettings: {
+		username: state.username,
+		stream_title: state.title,
+		viewer_count: state.viewerCount,
+	},
+});
+```
+
+Example overlay listener:
+
+```js
+Overlay.on('alert', (data) => {
+	if (data.alert !== 'rumble_stream_started') return;
+	const payload = data.extraSettings || {};
+	document.getElementById('title').textContent = payload.stream_title || 'Untitled';
+});
+```
+
+For plugin implementation details:
+
+- Plugin SDK docs: [Plugin SDK Overview](https://dev.lumiastream.com/docs/plugin-sdk/overview)
+- Plugin GPT: [Lumia Plugin GPT](https://chatgpt.com/g/g-6908e861c7f88191819187b9f5fbcfd7-lumia-plugin-gpt)
+
+---
+
 ## 🖼️ HTML Tab
 
 Defines the layout of the overlay visible to users:

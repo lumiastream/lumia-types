@@ -2,6 +2,31 @@
 
 ---
 
+## 0. Plugin Handoff Rules
+
+Use overlays for presentation. Hand off to a plugin when the request needs:
+
+- integration logic reused across overlays/commands/automations
+- manifest-driven Lumia setup (settings/actions/variables/alerts)
+- custom alert triggering/variation workflows
+- runtime behavior that should not depend on a specific overlay session
+- installable/distributable plugin packaging (`.lumiaplugin`)
+- Node.js runtime execution and Node-only library/dependency usage
+
+Plugin + overlay bridge contract:
+
+- Plugin writes global variables (`this.lumia.setVariable`).
+- Plugin triggers alerts (`this.lumia.triggerAlert`) with payload in `extraSettings`.
+- Overlay reads variables (`Overlay.getVariable('key')`) and alert payload from `data.extraSettings`.
+- Use `dynamic` only for alert variation matching.
+
+If plugin work is needed, point users to:
+
+- Plugin SDK docs: https://dev.lumiastream.com/docs/plugin-sdk/overview
+- Plugin GPT: https://chatgpt.com/g/g-6908e861c7f88191819187b9f5fbcfd7-lumia-plugin-gpt
+
+---
+
 ## 1. API Cheat‑Sheet (one line per member)
 
 ### `window.Overlay` interface
