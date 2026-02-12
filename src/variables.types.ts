@@ -1710,6 +1710,7 @@ export const AllVariables = {
 			giftSubscription: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', 'recipientsRaw', 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionGiftSubscriptions: ['total', 'previousTotal'],
 			bits: ['username', 'avatar', 'amount', 'message', 'rawMessage', 'full_message'],
+			bitsCombo: ['username', 'avatar', 'amount', 'bitsType', 'message', 'rawMessage', 'full_message'],
 			sessionBits: ['total', 'previousTotal'],
 			raid: ['username', 'avatar', 'viewers'],
 			raidOut: ['username', 'avatar', 'viewers'],

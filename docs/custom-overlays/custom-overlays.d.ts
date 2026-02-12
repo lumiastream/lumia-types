@@ -454,6 +454,8 @@ export declare enum LumiaAlertValues {
     TWITCH_RAID_OUT = "twitch-raidOut",
     /** Bits cheered */
     TWITCH_BITS = "twitch-bits",
+    /** Bits combo completed */
+    TWITCH_BITS_COMBO = "twitch-bitsCombo",
     /** Total Session bits count */
     TWITCH_SESSION_BITS = "twitch-sessionBits",
     /** Channel points redemption */
