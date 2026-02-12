@@ -74,6 +74,7 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.TIPEEESTREAM_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.TREATSTREAM_TREAT]: LumiaEventListTypes.PURCHASES,
 	[LumiaAlertValues.TWITCH_BITS]: LumiaEventListTypes.BITS,
+	[LumiaAlertValues.TWITCH_BITS_COMBO]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_SESSION_BITS]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_POWERUPS]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_POWERUPS_POINTS]: LumiaEventListTypes.POINTS,

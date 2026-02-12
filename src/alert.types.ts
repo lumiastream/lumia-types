@@ -1418,6 +1418,74 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.TWITCH_BITS_COMBO]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: '{{username}} finished a bits combo with {{amount}} bits. They said {{message}}',
+		eventlistMessage: 'Bits Combo',
+		eventlistDetailedMessage: 'finished a bits combo with {{amount}} bits',
+		acceptedVariables: AllVariables.twitch.alerts.bitsCombo,
+		quickActions: [
+			{
+				label: '500 bits combo',
+				dynamic: { value: 500 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 500,
+					bitsType: 'combo',
+				},
+			},
+			{
+				label: '1000 bits combo',
+				dynamic: { value: 1000 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 1000,
+					bitsType: 'combo',
+				},
+			},
+			{
+				label: '2500 bits combo',
+				dynamic: { value: 2500 },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					amount: 2500,
+					bitsType: 'combo',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Amount of combo bits',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: true,
+				default: 500,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_USERNAME,
+			},
+			{
+				type: LumiaVariationConditions.EQUAL_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_NUMBER,
+			},
+		],
+	},
 	[LumiaAlertValues.TWITCH_SESSION_BITS]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: 'Reached {{total}} bits',

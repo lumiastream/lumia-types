@@ -203,6 +203,8 @@ export enum LumiaAlertValues {
 	TWITCH_RAID_OUT = 'twitch-raidOut',
 	/** Bits cheered */
 	TWITCH_BITS = 'twitch-bits',
+	/** Bits combo completed */
+	TWITCH_BITS_COMBO = 'twitch-bitsCombo',
 	/** Total Session bits count */
 	TWITCH_SESSION_BITS = 'twitch-sessionBits',
 	/** Channel points redemption */
@@ -587,6 +589,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TWITCH_RAID]: 'Twitch Raid',
 	[LumiaAlertValues.TWITCH_RAID_OUT]: 'Twitch Raid Out',
 	[LumiaAlertValues.TWITCH_BITS]: 'Twitch Bits',
+	[LumiaAlertValues.TWITCH_BITS_COMBO]: 'Twitch Bits Combo',
 	[LumiaAlertValues.TWITCH_SESSION_BITS]: 'Twitch Session Bits',
 	[LumiaAlertValues.TWITCH_REDEMPTION]: 'Twitch Redemption',
 	[LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: 'Twitch Hypetrain Started',
