@@ -117,9 +117,6 @@ type TwitchBits = BaseAlert<
 		/** Optional message accompanying the cheer. */
 		message: string | null;
 		/** Raw message string from the platform. */
-		rawMessage: string;
-		/** Full message (Lumia-computed, if present). */
-		full_message: string;
 		/** Channel views at time of alert. */
 		channelViews: number;
 		/** Channel description text. */
@@ -207,9 +204,6 @@ type TwitchPowerup = BaseAlert<
 		/** Vendor amount (mirrors value). */
 		amount: number;
 		/** Raw chat message, if present. */
-		rawMessage: string | null;
-		/** Full message (Lumia-computed), if present. */
-		full_message: string | null;
 		/** Channel views at time of alert. */
 		channelViews: number;
 		/** Channel description text. */
@@ -251,8 +245,6 @@ type TwitchExtension = BaseAlert<
 		platform: 'twitch';
 		/** Channel views at time of alert (string|number to match vendor inconsistencies). */
 		channelViews: string | number;
-		/** Full message (Lumia-computed), if present. */
-		full_message: string;
 		/** Channel description text. */
 		channelDescription: string;
 	}
@@ -319,7 +311,6 @@ type KickPoints = BaseAlert<
 		/** Platform discriminator. */
 		platform: 'kick';
 		/** Raw message (not parsed). */
-		rawMessage: string | null;
 		/** Amount type echo. */
 		amount_type: 'points';
 		/** Currency symbol (if set). */
