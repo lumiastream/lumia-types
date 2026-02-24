@@ -1247,6 +1247,8 @@ export declare enum SystemVariables {
     KICK_LAST_FOLLOWER = "kick_last_follower",
     /** Last subscriber. Use as {{kick_last_subscriber}}. */
     KICK_LAST_SUBSCRIBER = "kick_last_subscriber",
+    /** Last host. Use as {{kick_last_host}}. */
+    KICK_LAST_HOST = "kick_last_host",
     /** Lifetime gift members count. Use as {{kick_total_gift_subscription_count}}. */
     KICK_TOTAL_GIFT_SUBSCRIPTION_COUNT = "kick_total_gift_subscription_count",
     /** Get avatar by username. Use as {{kick_get_avatar}}. */
