@@ -140,6 +140,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: Array<{
 			type: LumiaVariationConditions;
 			description?: string;
+			dynamicSelections?: boolean;
 			selections?: Array<{
 				label: string;
 				message?: string;
