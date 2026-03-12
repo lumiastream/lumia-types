@@ -14,6 +14,8 @@ export enum SystemVariables {
 	RANDOM = 'random',
 	/** Pick a random item from a comma list. Example: {{random_input=a,b,c}}. Use as {{random_input}}. */
 	RANDOM_INPUT = 'random_input',
+	/** Evaluate a math expression. Example: {{math={{var1}}+{{var2}}}}. Use as {{math}}. */
+	MATH = 'math',
 	/** Sum multiple variables. Example: {{sum_variables=twitch_total_follower_count,kick_total_follower_count}}. Use as {{sum_variables}}. */
 	SUM_VARIABLES = 'sum_variables',
 	/** Offset a variable by a number. Example: {{offset_count=twitch_total_follower_count,10}}. Use as {{offset_count}}. */
@@ -823,6 +825,7 @@ export const AllVariables = {
 			'selection',
 			'random',
 			'random_input',
+			'math',
 			'sum_variables',
 			'offset_count',
 			'get_commands',
