@@ -13,6 +13,8 @@ export const formatCondition = (conditionType: string | undefined, condition: st
 			typeof extra === 'string' && extra.length ? `Variable ${extra} is ${val} or less` : `Amount is ${val} or less`,
 		[LumiaVariationConditions.EQUAL_STRING]: (val, extra) =>
 			typeof extra === 'string' && extra.length ? `Variable ${extra} equals "${val}"` : `Text equals "${val}"`,
+		[LumiaVariationConditions.EQUAL_VARIABLE]: (val, extra) =>
+			typeof extra === 'string' && extra.length ? `Variable ${extra} equals ${val}` : `Variable equals ${val}`,
 		[LumiaVariationConditions.EQUAL_USERNAME]: (val) => `User is ${val}`,
 		[LumiaVariationConditions.EQUAL_USER_LEVEL]: (val) => `User level is ${val}`,
 		[LumiaVariationConditions.EQUAL_SELECTION]: (val) => `${val}`,
