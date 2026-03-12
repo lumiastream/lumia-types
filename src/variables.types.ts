@@ -16,6 +16,28 @@ export enum SystemVariables {
 	RANDOM_INPUT = 'random_input',
 	/** Evaluate a math expression. Example: {{math={{var1}}+{{var2}}}}. Use as {{math}}. */
 	MATH = 'math',
+	/** Compare two values. Example: {{compare={{var1}},>,{{var2}}}}. Use as {{compare}}. */
+	COMPARE = 'compare',
+	/** Round a value to decimal places. Example: {{round={{math={{var1}}/{{var2}}}},2}}. Use as {{round}}. */
+	ROUND = 'round',
+	/** Conditional output based on truthy value. Example: {{if={{compare={{var1}},>,10}},high,low}}. Use as {{if}}. */
+	IF = 'if',
+	/** Return first non-empty input. Example: {{coalesce={{display_name}},{{username}},Anonymous}}. Use as {{coalesce}}. */
+	COALESCE = 'coalesce',
+	/** Check if value is between two numbers. Example: {{between={{var1}},10,50}}. Use as {{between}}. */
+	BETWEEN = 'between',
+	/** Return minimum numeric value. Example: {{min={{v1}},{{v2}},100}}. Use as {{min}}. */
+	MIN = 'min',
+	/** Return maximum numeric value. Example: {{max={{v1}},{{v2}},100}}. Use as {{max}}. */
+	MAX = 'max',
+	/** Extract regex capture group from text. Example: {{regex_extract={{message}},\"(\\d+)\",1}}. Use as {{regex_extract}}. */
+	REGEX_EXTRACT = 'regex_extract',
+	/** Replace text or regex matches. Example: {{replace={{message}},badword,***}}. Use as {{replace}}. */
+	REPLACE = 'replace',
+	/** Format a date with a pattern. Example: {{format_date={{session_start_date}},MM/DD/YYYY hh:mm A}}. Use as {{format_date}}. */
+	FORMAT_DATE = 'format_date',
+	/** Show elapsed time since date in short format. Example: {{time_since={{follow_time}}}}. Use as {{time_since}}. */
+	TIME_SINCE = 'time_since',
 	/** Sum multiple variables. Example: {{sum_variables=twitch_total_follower_count,kick_total_follower_count}}. Use as {{sum_variables}}. */
 	SUM_VARIABLES = 'sum_variables',
 	/** Offset a variable by a number. Example: {{offset_count=twitch_total_follower_count,10}}. Use as {{offset_count}}. */
@@ -826,6 +848,17 @@ export const AllVariables = {
 			'random',
 			'random_input',
 			'math',
+			'compare',
+			'round',
+			'if',
+			'coalesce',
+			'between',
+			'min',
+			'max',
+			'regex_extract',
+			'replace',
+			'format_date',
+			'time_since',
 			'sum_variables',
 			'offset_count',
 			'get_commands',
