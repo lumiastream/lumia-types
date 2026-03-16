@@ -1,5 +1,7 @@
 # Custom Overlays Examples
 
+> Need to inspect what an alert returns? Open the [alert explorer](/docs/variables#alert-explorer) on the Platform Variables page to browse `data.alert`, `data.extraSettings.*`, and the fields available for each alert.
+
 ## Custom Alert
 
 ### JS Code

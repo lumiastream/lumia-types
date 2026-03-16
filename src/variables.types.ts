@@ -260,6 +260,10 @@ export enum SystemVariables {
 	TWITCH_SESSION_FOLLOWERS = 'twitch_session_follower',
 	/** Last subscriber. Use as {{twitch_last_subscriber}}. */
 	TWITCH_LAST_SUBSCRIBER = 'twitch_last_subscriber',
+	/** Last gifter. Use as {{twitch_last_gifter}}. */
+	TWITCH_LAST_GIFTER = 'twitch_last_gifter',
+	/** Last gifted sub amount. Use as {{twitch_last_gifter_amount}}. */
+	TWITCH_LAST_GIFTER_AMOUNT = 'twitch_last_gifter_amount',
 	/** Session subscribers list. Use as {{twitch_session_subscribers}}. */
 	TWITCH_SESSION_SUBSCRIBERS = 'twitch_session_subscribers',
 	/** Session chat count. Use as {{twitch_session_chat_count}}. */
@@ -522,8 +526,14 @@ export enum SystemVariables {
 	KICK_LAST_FOLLOWER = 'kick_last_follower',
 	/** Last subscriber. Use as {{kick_last_subscriber}}. */
 	KICK_LAST_SUBSCRIBER = 'kick_last_subscriber',
+	/** Last gifter. Use as {{kick_last_gifter}}. */
+	KICK_LAST_GIFTER = 'kick_last_gifter',
+	/** Last gifted sub amount. Use as {{kick_last_gifter_amount}}. */
+	KICK_LAST_GIFTER_AMOUNT = 'kick_last_gifter_amount',
 	/** Last host. Use as {{kick_last_host}}. */
 	KICK_LAST_HOST = 'kick_last_host',
+	/** Last host viewer amount. Use as {{kick_last_host_amount}}. */
+	KICK_LAST_HOST_AMOUNT = 'kick_last_host_amount',
 	/** Lifetime gift members count. Use as {{kick_total_gift_subscription_count}}. */
 	KICK_TOTAL_GIFT_SUBSCRIPTION_COUNT = 'kick_total_gift_subscription_count',
 	/** Get avatar by username. Use as {{kick_get_avatar}}. */
@@ -1465,7 +1475,10 @@ export const AllVariables = {
 			'kick_session_kicks_with_amount',
 			'kick_last_follower',
 			'kick_last_subscriber',
+			'kick_last_gifter',
+			'kick_last_gifter_amount',
 			'kick_last_host',
+			'kick_last_host_amount',
 			'kick_total_gift_subscription_count',
 			'kick_get_avatar',
 		],
@@ -1702,6 +1715,8 @@ export const AllVariables = {
 			'twitch_last_follower',
 			'twitch_session_follower',
 			'twitch_last_subscriber',
+			'twitch_last_gifter',
+			'twitch_last_gifter_amount',
 			'twitch_session_subscribers',
 			'twitch_session_chat_count',
 			'twitch_current_first_chatter',
