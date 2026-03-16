@@ -2,6 +2,7 @@ export type ViewerProfileAchievementMetric =
 	| 'totalCommands'
 	| 'uniqueCommands'
 	| 'totalChatbotCommands'
+	| 'totalFirstChatters'
 	| 'totalPointsCommands'
 	| 'totalPointsSpent'
 	| 'totalTwitchExtensionsCommands'
@@ -114,6 +115,44 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		color: 'orange',
 	},
 
+	// ───────── First Chatter ─────────
+	{
+		id: 'first-chatter-debut',
+		label: 'First In',
+		description: 'Claimed first chatter 1 time.',
+		metric: 'totalFirstChatters',
+		threshold: 1,
+		icon: 'WavingHand',
+		color: 'sky',
+	},
+	{
+		id: 'first-chatter-streak',
+		label: 'Early Bird',
+		description: 'Claimed first chatter 5 times.',
+		metric: 'totalFirstChatters',
+		threshold: 5,
+		icon: 'Schedule',
+		color: 'teal',
+	},
+	// {
+	// 	id: 'first-chatter-regular',
+	// 	label: 'Front Row',
+	// 	description: 'Claimed first chatter 10 times.',
+	// 	metric: 'totalFirstChatters',
+	// 	threshold: 10,
+	// 	icon: 'LooksOne',
+	// 	color: 'violet',
+	// },
+	// {
+	// 	id: 'first-chatter-legend',
+	// 	label: 'Opening Act',
+	// 	description: 'Claimed first chatter 20 times.',
+	// 	metric: 'totalFirstChatters',
+	// 	threshold: 20,
+	// 	icon: 'EmojiEvents',
+	// 	color: 'gold',
+	// },
+
 	// ───────── Channel Points ─────────
 	{
 		id: 'twitch-points-spark',
@@ -148,9 +187,9 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 	{
 		id: 'twitch-points-beacon',
 		label: 'Points Beacon',
-		description: 'Spent 40,000 channel points.',
+		description: 'Spent 10,000 channel points.',
 		metric: 'totalPointsSpent',
-		threshold: 40000,
+		threshold: 10000,
 		connectionKeys: ['twitch'],
 		icon: 'TrendingUp',
 		color: 'emerald',
@@ -158,9 +197,9 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 	{
 		id: 'twitch-points-tycoon',
 		label: 'Points Tycoon',
-		description: 'Spent 150,000 channel points.',
+		description: 'Spent 20,000 channel points.',
 		metric: 'totalPointsSpent',
-		threshold: 150000,
+		threshold: 20000,
 		connectionKeys: ['twitch'],
 		icon: 'WorkspacePremium',
 		color: 'gold',
