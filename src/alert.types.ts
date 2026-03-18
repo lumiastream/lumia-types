@@ -4080,7 +4080,7 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.EQUAL_SELECTION, description: 'Super Sticker ID is equal to', selections: YoutubeSuperstickersData },
+			{ type: LumiaVariationConditions.EQUAL_SELECTION, description: 'Super Sticker ID is equal to', dynamicOptions: true, selections: YoutubeSuperstickersData },
 			{ type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER, description: 'Super Sticker Amount is equal to' },
 			{ type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER, description: 'Super Sticker Amount is greater than' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
