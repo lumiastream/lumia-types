@@ -69,7 +69,6 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.TIKTOK_POLL]: LumiaEventListTypes.OTHERS,
 	[LumiaAlertValues.TIKTOK_SUPER_FAN_BOX]: LumiaEventListTypes.SUBSCRIBERS,
 	[LumiaAlertValues.TIKTOK_SHOP_PURCHASE]: LumiaEventListTypes.PURCHASES,
-	[LumiaAlertValues.TIKTOK_INTRO]: LumiaEventListTypes.OTHERS,
 	[LumiaAlertValues.TIKTOK_PIN_MESSAGE]: LumiaEventListTypes.OTHERS,
 	[LumiaAlertValues.TIKTOK_BATTLE_START]: LumiaEventListTypes.OTHERS,
 	[LumiaAlertValues.TIKTOK_BATTLE_PROGRESS]: LumiaEventListTypes.OTHERS,

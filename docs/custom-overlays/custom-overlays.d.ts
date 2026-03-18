@@ -598,8 +598,6 @@ export declare enum LumiaAlertValues {
     TIKTOK_POLL = "tiktok-poll",
     /** TikTok LIVE shopping / shop purchase event */
     TIKTOK_SHOP_PURCHASE = "tiktok-shopPurchase",
-    /** TikTok LIVE intro / stream intro event */
-    TIKTOK_INTRO = "tiktok-intro",
     /** TikTok pinned message */
     TIKTOK_PIN_MESSAGE = "tiktok-pinMessage",
     /** TikTok LIVE battle started */

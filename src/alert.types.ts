@@ -5049,34 +5049,6 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
 		],
 	},
-	[LumiaAlertValues.TIKTOK_INTRO]: {
-		connection: LumiaIntegrations.TIKTOK,
-		message: '{{description}}',
-		eventlistMessage: 'Intro',
-		eventlistDetailedMessage: 'showed a live intro',
-		acceptedVariables: AllVariables.tiktok.alerts.intro,
-		quickActions: [
-			{
-				label: 'Live Intro',
-				dynamic: { value: 'Welcome to the stream!' },
-				extraSettings: { description: 'Welcome to the stream!', username: 'lumiastream' },
-			},
-		],
-		inputFields: [
-			{
-				type: 'text',
-				label: 'Description',
-				variableField: 'description',
-				required: false,
-				default: 'Welcome to the stream!',
-			},
-		],
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Description is equal to' },
-			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
-		],
-	},
 	[LumiaAlertValues.TIKTOK_PIN_MESSAGE]: {
 		connection: LumiaIntegrations.TIKTOK,
 		message: 'Pinned message: {{message}}',

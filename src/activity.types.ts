@@ -352,8 +352,6 @@ export enum LumiaAlertValues {
 	TIKTOK_POLL = 'tiktok-poll',
 	/** TikTok LIVE shopping / shop purchase event */
 	TIKTOK_SHOP_PURCHASE = 'tiktok-shopPurchase',
-	/** TikTok LIVE intro / stream intro event */
-	TIKTOK_INTRO = 'tiktok-intro',
 	/** TikTok pinned message */
 	TIKTOK_PIN_MESSAGE = 'tiktok-pinMessage',
 	/** TikTok LIVE battle started */
@@ -673,7 +671,6 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TIKTOK_QUESTION]: 'Tiktok Question',
 	[LumiaAlertValues.TIKTOK_POLL]: 'Tiktok Poll',
 	[LumiaAlertValues.TIKTOK_SHOP_PURCHASE]: 'Tiktok Shop Purchase',
-	[LumiaAlertValues.TIKTOK_INTRO]: 'Tiktok Intro',
 	[LumiaAlertValues.TIKTOK_PIN_MESSAGE]: 'Tiktok Pin Message',
 	[LumiaAlertValues.TIKTOK_BATTLE_START]: 'Tiktok Battle Start',
 	[LumiaAlertValues.TIKTOK_BATTLE_PROGRESS]: 'Tiktok Battle Progress',

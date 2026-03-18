@@ -1676,7 +1676,6 @@ export const AllVariables = {
 			poll: ['pollId', 'title', 'pollKind', 'pollDuration', 'timeRemain', 'pollSponsor', 'userCount'],
 			superFanBox: ['username', 'displayname', 'avatar', 'userId'],
 			shopPurchase: ['title', 'price', 'imageUrl', 'shopUrl', 'shopName'],
-			intro: ['username', 'userId', 'displayname', 'avatar', 'description', 'language'],
 			pinMessage: ['message', 'messageId', 'pinId', 'pinTime', 'operatorUsername', 'operatorUserId'],
 			battleStart: ['battleId', 'battleLabel', 'creatorUsername', 'creatorDisplayname', 'creatorAvatar', 'opponentUsername', 'opponentDisplayname', 'opponentAvatar', 'battleType'],
 			battleProgress: [
