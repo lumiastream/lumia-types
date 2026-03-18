@@ -150,7 +150,7 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: Array<{
 			type: LumiaVariationConditions;
 			description?: string;
-			dynamicSelections?: boolean;
+			dynamicOptions?: boolean;
 			selections?: LumiaSelectionOption[];
 		}>;
 	}
@@ -4795,7 +4795,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: LumiaVariationConditions.EQUAL_SELECTION,
 				description: 'Gift Name is equal to',
-				dynamicSelections: true,
+				dynamicOptions: true,
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
