@@ -24,4 +24,6 @@ export {
 export { LumiaEventListTypes, LumiaMapAlertTypeToEventListType } from './eventlist.types';
 export { SystemVariables, ReservedVariables, AllVariables } from './variables.types';
 export { formatCondition } from './helpers';
+export { KickKicksData } from './kick_kicks';
+export { YoutubeSuperstickersData } from './youtube_superstickers';
 export { VIEWER_PROFILE_ACHIEVEMENTS, type ViewerProfileAchievementColor, type ViewerProfileAchievementDefinition, type ViewerProfileAchievementMetric } from './viewer_profile_achievements';
