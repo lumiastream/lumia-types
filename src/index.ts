@@ -9,7 +9,7 @@ export {
 	LumiaActivityNoValueTypes,
 	LumiaActivityTestType,
 } from './activity.types';
-export { LumiaVariationConditions, LumiaVariationCurrency, VariationCurrencySymbol, LumiaAlertConfigs, LumiaDynamicCondition } from './alert.types';
+export { LumiaVariationConditions, LumiaVariationCurrency, VariationCurrencySymbol, LumiaAlertConfigs, LumiaDynamicCondition, type LumiaSelectionOption } from './alert.types';
 export {
 	ILumiaSendPack,
 	ILumiaEvent,

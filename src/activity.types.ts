@@ -107,7 +107,6 @@ export enum LumiaActivityCommandTypes {
 	HUD_TOGGLE = 'hud-toggle',
 	HUD_VOLUME_SET = 'hud-volume-set',
 	HUD_OPACITY_SET = 'hud-opacity-set',
-
 }
 
 // Anything that comes through in an external way
@@ -341,8 +340,28 @@ export enum LumiaAlertValues {
 	TIKTOK_TOTAL_LIKES = 'tiktok-totalLikes',
 	/** TikTok gift received */
 	TIKTOK_GIFT = 'tiktok-gift',
-	/** TikTok new subscriber */
-	TIKTOK_SUBSCRIBER = 'tiktok-subscriber',
+	/** TikTok paid LIVE-only Super Fan membership event */
+	TIKTOK_SUPER_FAN = 'tiktok-superFan',
+	/** TikTok Super Fan Box event, separate from becoming a Super Fan */
+	TIKTOK_SUPER_FAN_BOX = 'tiktok-superFanBox',
+	/** TikTok treasure chest / envelope event */
+	TIKTOK_TREASURE_CHEST = 'tiktok-treasureChest',
+	/** TikTok question */
+	TIKTOK_QUESTION = 'tiktok-question',
+	/** TikTok LIVE poll event */
+	TIKTOK_POLL = 'tiktok-poll',
+	/** TikTok LIVE shopping / shop purchase event */
+	TIKTOK_SHOP_PURCHASE = 'tiktok-shopPurchase',
+	/** TikTok LIVE intro / stream intro event */
+	TIKTOK_INTRO = 'tiktok-intro',
+	/** TikTok pinned message */
+	TIKTOK_PIN_MESSAGE = 'tiktok-pinMessage',
+	/** TikTok LIVE battle started */
+	TIKTOK_BATTLE_START = 'tiktok-battleStart',
+	/** TikTok LIVE battle progress update */
+	TIKTOK_BATTLE_PROGRESS = 'tiktok-battleProgress',
+	/** TikTok LIVE battle finished with a final result */
+	TIKTOK_BATTLE_END = 'tiktok-battleEnd',
 	/** TikTok share */
 	TIKTOK_SHARE = 'tiktok-share',
 	/** TikTok stream ended */
@@ -648,7 +667,17 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TIKTOK_LIKE]: 'Tiktok Like',
 	[LumiaAlertValues.TIKTOK_TOTAL_LIKES]: 'Tiktok Total Likes',
 	[LumiaAlertValues.TIKTOK_GIFT]: 'Tiktok Gift',
-	[LumiaAlertValues.TIKTOK_SUBSCRIBER]: 'Tiktok Subscriber',
+	[LumiaAlertValues.TIKTOK_SUPER_FAN]: 'Tiktok Super Fan',
+	[LumiaAlertValues.TIKTOK_SUPER_FAN_BOX]: 'Tiktok Super Fan Box',
+	[LumiaAlertValues.TIKTOK_TREASURE_CHEST]: 'Tiktok Treasure Chest',
+	[LumiaAlertValues.TIKTOK_QUESTION]: 'Tiktok Question',
+	[LumiaAlertValues.TIKTOK_POLL]: 'Tiktok Poll',
+	[LumiaAlertValues.TIKTOK_SHOP_PURCHASE]: 'Tiktok Shop Purchase',
+	[LumiaAlertValues.TIKTOK_INTRO]: 'Tiktok Intro',
+	[LumiaAlertValues.TIKTOK_PIN_MESSAGE]: 'Tiktok Pin Message',
+	[LumiaAlertValues.TIKTOK_BATTLE_START]: 'Tiktok Battle Start',
+	[LumiaAlertValues.TIKTOK_BATTLE_PROGRESS]: 'Tiktok Battle Progress',
+	[LumiaAlertValues.TIKTOK_BATTLE_END]: 'Tiktok Battle End',
 	[LumiaAlertValues.TIKTOK_SHARE]: 'Tiktok Share',
 	[LumiaAlertValues.TIKTOK_STREAM_END]: 'Tiktok Stream Ended',
 	[LumiaAlertValues.TIKTOK_NEW_VIDEO]: 'Tiktok New Video',
