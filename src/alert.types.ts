@@ -1,6 +1,7 @@
 import { LumiaAlertValues } from './activity.types';
 import { LumiaIntegrations } from './event.types';
 import { AllVariables } from './variables.types';
+import { KickKicksData } from './kick_kicks';
 import { YoutubeSuperstickersData } from './youtube_superstickers';
 import { VIEWER_PROFILE_ACHIEVEMENTS } from './viewer_profile_achievements';
 
@@ -4079,7 +4080,7 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.EQUAL_SELECTION, description: 'Super Sticker ID is equal to', selections: YoutubeSuperstickersData },
+			{ type: LumiaVariationConditions.EQUAL_SELECTION, description: 'Super Sticker ID is equal to', dynamicOptions: true, selections: YoutubeSuperstickersData },
 			{ type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER, description: 'Super Sticker Amount is equal to' },
 			{ type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER, description: 'Super Sticker Amount is greater than' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
@@ -5806,19 +5807,21 @@ export const LumiaAlertConfigs: Record<
 				default: 100,
 			},
 			{
-				type: 'text',
+				type: 'selection',
 				label: 'Name of kicks',
 				dynamicField: 'name',
 				variableField: 'name',
 				required: true,
 				default: 'Hype',
+				selections: KickKicksData,
 			},
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_SELECTION,
 				description: 'Kicks Name is equal to',
+				dynamicOptions: true,
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
