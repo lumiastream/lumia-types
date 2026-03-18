@@ -112,6 +112,15 @@ export interface LumiaDynamicCondition {
 	lumiauserlevels?: number[];
 }
 
+export interface LumiaSelectionOption {
+	label: string;
+	message?: string;
+	value: string | number;
+	helperText?: string;
+	imageUrl?: string;
+	searchText?: string;
+}
+
 export const LumiaAlertConfigs: Record<
 	LumiaAlertValues | string,
 	{
@@ -142,11 +151,7 @@ export const LumiaAlertConfigs: Record<
 			type: LumiaVariationConditions;
 			description?: string;
 			dynamicSelections?: boolean;
-			selections?: Array<{
-				label: string;
-				message?: string;
-				value: string | number;
-			}>;
+			selections?: LumiaSelectionOption[];
 		}>;
 	}
 > = {
@@ -4074,7 +4079,7 @@ export const LumiaAlertConfigs: Record<
 		],
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
-			{ type: LumiaVariationConditions.EQUAL_SELECTION, description: 'Super Sticker is equal to', selections: YoutubeSuperstickersData },
+			{ type: LumiaVariationConditions.EQUAL_SELECTION, description: 'Super Sticker ID is equal to', selections: YoutubeSuperstickersData },
 			{ type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER, description: 'Super Sticker Amount is equal to' },
 			{ type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER, description: 'Super Sticker Amount is greater than' },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
@@ -4788,8 +4793,9 @@ export const LumiaAlertConfigs: Record<
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
-				type: LumiaVariationConditions.EQUAL_STRING,
+				type: LumiaVariationConditions.EQUAL_SELECTION,
 				description: 'Gift Name is equal to',
+				dynamicSelections: true,
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
@@ -4804,15 +4810,15 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
 		],
 	},
-	[LumiaAlertValues.TIKTOK_SUBSCRIBER]: {
+	[LumiaAlertValues.TIKTOK_SUPER_FAN]: {
 		connection: LumiaIntegrations.TIKTOK,
-		message: '{{username}} just subscribed',
-		eventlistMessage: 'Subscribed',
-		eventlistDetailedMessage: 'became a subscriber',
-		acceptedVariables: AllVariables.tiktok.alerts.subscriber,
+		message: '{{username}} just became a Super Fan',
+		eventlistMessage: 'Super Fan',
+		eventlistDetailedMessage: 'became a Super Fan',
+		acceptedVariables: AllVariables.tiktok.alerts.superFan,
 		quickActions: [
 			{
-				label: 'New Subscriber',
+				label: 'New Super Fan',
 				dynamic: { value: 'lumiastream' },
 				extraSettings: { username: 'lumiastream' },
 			},
@@ -4826,7 +4832,11 @@ export const LumiaAlertConfigs: Record<
 				default: 'lumiastream',
 			},
 		],
-		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
 	},
 	[LumiaAlertValues.TIKTOK_SHARE]: {
 		connection: LumiaIntegrations.TIKTOK,
@@ -4851,6 +4861,403 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
+	},
+	[LumiaAlertValues.TIKTOK_TREASURE_CHEST]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: '{{username}} sent a treasure chest',
+		eventlistMessage: 'Treasure Chest',
+		eventlistDetailedMessage: 'sent a treasure chest',
+		acceptedVariables: AllVariables.tiktok.alerts.treasureChest,
+		quickActions: [
+			{
+				label: 'Treasure Chest',
+				dynamic: { value: 50, name: 'lumiastream' },
+				extraSettings: { username: 'lumiastream', diamondCount: 50, peopleCount: 5 },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Diamond Count',
+				dynamicField: 'value',
+				variableField: 'diamondCount',
+				required: false,
+				default: 50,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Diamond count is equal to' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Diamond count is greater than' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TIKTOK_QUESTION]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: '{{username}} asked: {{question}}',
+		eventlistMessage: 'Question',
+		eventlistDetailedMessage: 'asked a question',
+		acceptedVariables: AllVariables.tiktok.alerts.question,
+		quickActions: [
+			{
+				label: 'New Question',
+				dynamic: { value: 'How does this work?' },
+				extraSettings: { username: 'lumiastream', question: 'How does this work?', answerStatus: 0 },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Question',
+				variableField: 'question',
+				required: false,
+				default: 'How does this work?',
+			},
+			{
+				type: 'number',
+				label: 'Answer Status',
+				dynamicField: 'value',
+				variableField: 'answerStatus',
+				required: false,
+				default: 0,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Question is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Answer status is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TIKTOK_POLL]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: 'Poll started: {{title}}',
+		eventlistMessage: 'Poll',
+		eventlistDetailedMessage: 'sent a poll message',
+		acceptedVariables: AllVariables.tiktok.alerts.poll,
+		quickActions: [
+			{
+				label: 'New Poll',
+				dynamic: { value: 'What should we do next?' },
+				extraSettings: { title: 'What should we do next?', pollId: '1', pollKind: 'normal' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Title',
+				variableField: 'title',
+				required: false,
+				default: 'What should we do next?',
+			},
+			{
+				type: 'selection',
+				label: 'Poll Kind',
+				dynamicField: 'name',
+				variableField: 'pollKind',
+				required: false,
+				default: 'normal',
+				selections: [
+					{ label: 'Normal', value: 'normal' },
+					{ label: 'Gift', value: 'gift' },
+					{ label: 'Customizable', value: 'customizable' },
+					{ label: 'Customizable Gift', value: 'customizableGift' },
+					{ label: 'Quick Gift', value: 'quickGift' },
+					{ label: 'Emote', value: 'emote' },
+					{ label: 'Unknown', value: 'unknown' },
+				],
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Title is equal to' },
+			{
+				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Poll kind is equal to',
+				selections: [
+					{ label: 'Normal', value: 'normal' },
+					{ label: 'Gift', value: 'gift' },
+					{ label: 'Customizable', value: 'customizable' },
+					{ label: 'Customizable Gift', value: 'customizableGift' },
+					{ label: 'Quick Gift', value: 'quickGift' },
+					{ label: 'Emote', value: 'emote' },
+					{ label: 'Unknown', value: 'unknown' },
+				],
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TIKTOK_SUPER_FAN_BOX]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: '{{username}} triggered a Super Fan box',
+		eventlistMessage: 'Super Fan Box',
+		eventlistDetailedMessage: 'triggered a Super Fan box',
+		acceptedVariables: AllVariables.tiktok.alerts.superFanBox,
+		quickActions: [
+			{
+				label: 'Super Fan Box',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: { username: 'lumiastream' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
+	},
+	[LumiaAlertValues.TIKTOK_SHOP_PURCHASE]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: 'Live Shopping: {{title}}',
+		eventlistMessage: 'Live Shopping',
+		eventlistDetailedMessage: 'triggered live shopping',
+		acceptedVariables: AllVariables.tiktok.alerts.shopPurchase,
+		quickActions: [
+			{
+				label: 'Live Shopping',
+				dynamic: { value: 'Featured Item' },
+				extraSettings: { title: 'Featured Item', price: '$55.99', shopName: 'Shopify' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Title',
+				variableField: 'title',
+				required: false,
+				default: 'Featured Item',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Title is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TIKTOK_INTRO]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: '{{description}}',
+		eventlistMessage: 'Intro',
+		eventlistDetailedMessage: 'showed a live intro',
+		acceptedVariables: AllVariables.tiktok.alerts.intro,
+		quickActions: [
+			{
+				label: 'Live Intro',
+				dynamic: { value: 'Welcome to the stream!' },
+				extraSettings: { description: 'Welcome to the stream!', username: 'lumiastream' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Description',
+				variableField: 'description',
+				required: false,
+				default: 'Welcome to the stream!',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Description is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TIKTOK_PIN_MESSAGE]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: 'Pinned message: {{message}}',
+		eventlistMessage: 'Pin Message',
+		eventlistDetailedMessage: 'pinned a message',
+		acceptedVariables: AllVariables.tiktok.alerts.pinMessage,
+		quickActions: [
+			{
+				label: 'Pinned Message',
+				dynamic: { value: 'Remember to follow!' },
+				extraSettings: { message: 'Remember to follow!', pinId: '1' },
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Message',
+				variableField: 'message',
+				required: false,
+				default: 'Remember to follow!',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Message is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TIKTOK_BATTLE_START]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: 'Battle started: {{battleLabel}}',
+		eventlistMessage: 'Battle Start',
+		eventlistDetailedMessage: 'started a battle',
+		acceptedVariables: AllVariables.tiktok.alerts.battleStart,
+		quickActions: [
+			{
+				label: 'Battle Start',
+				dynamic: { value: 'lumiastream vs rivalstream' },
+				extraSettings: {
+					battleId: '1',
+					battleLabel: 'lumiastream vs rivalstream',
+					creatorUsername: 'lumiastream',
+					opponentUsername: 'rivalstream',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Battle Label',
+				variableField: 'battleLabel',
+				required: false,
+				default: 'lumiastream vs rivalstream',
+			},
+			{
+				type: 'number',
+				label: 'Total Diamond Count',
+				dynamicField: 'value',
+				variableField: 'totalDiamondCount',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'selection',
+				label: 'Battle Status',
+				variableField: 'battleStatus',
+				required: false,
+				default: 'scoreUpdate',
+				selections: [
+					{ label: 'Score Update', value: 'scoreUpdate' },
+					{ label: 'Battle End', value: 'battleEnd' },
+					{ label: 'Opt Out Update', value: 'optOutUpdate' },
+					{ label: 'Keep Alive', value: 'keepAlive' },
+					{ label: 'Unknown', value: 'unknown' },
+				],
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Battle label is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Total diamond count is equal to' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Total diamond count is greater than' },
+			{
+				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Battle status is equal to',
+				selections: [
+					{ label: 'Score Update', value: 'scoreUpdate' },
+					{ label: 'Battle End', value: 'battleEnd' },
+					{ label: 'Opt Out Update', value: 'optOutUpdate' },
+					{ label: 'Keep Alive', value: 'keepAlive' },
+					{ label: 'Unknown', value: 'unknown' },
+				],
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TIKTOK_BATTLE_PROGRESS]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: 'Battle update: {{battleLabel}} ({{creatorScore}} - {{opponentScore}})',
+		eventlistMessage: 'Battle Progress',
+		eventlistDetailedMessage: 'updated battle progress',
+		acceptedVariables: AllVariables.tiktok.alerts.battleProgress,
+		quickActions: [
+			{
+				label: 'Battle Progress',
+				dynamic: { value: 100 },
+				extraSettings: {
+					battleId: '1',
+					battleLabel: 'lumiastream vs rivalstream',
+					creatorUsername: 'lumiastream',
+					opponentUsername: 'rivalstream',
+					creatorScore: 1200,
+					opponentScore: 900,
+					totalDiamondCount: 100,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Battle Label',
+				variableField: 'battleLabel',
+				required: false,
+				default: 'lumiastream vs rivalstream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Battle label is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TIKTOK_BATTLE_END]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: 'Battle ended: {{battleLabel}} ({{result}})',
+		eventlistMessage: 'Battle End',
+		eventlistDetailedMessage: 'ended a battle',
+		acceptedVariables: AllVariables.tiktok.alerts.battleEnd,
+		quickActions: [
+			{
+				label: 'Battle End',
+				dynamic: { value: 'win' },
+				extraSettings: {
+					battleId: '1',
+					battleLabel: 'lumiastream vs rivalstream',
+					creatorUsername: 'lumiastream',
+					opponentUsername: 'rivalstream',
+					creatorScore: 1200,
+					opponentScore: 900,
+					result: 'win',
+					winnerUsername: 'lumiastream',
+					loserUsername: 'rivalstream',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'selection',
+				label: 'Result',
+				variableField: 'result',
+				required: false,
+				default: 'win',
+				selections: [
+					{ label: 'Win', value: 'win' },
+					{ label: 'Lose', value: 'lose' },
+					{ label: 'Draw', value: 'draw' },
+				],
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_SELECTION,
+				description: 'Result is equal to',
+				selections: [
+					{ label: 'Win', value: 'win' },
+					{ label: 'Lose', value: 'lose' },
+					{ label: 'Draw', value: 'draw' },
+				],
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
 	},
 	[LumiaAlertValues.TIKTOK_STREAM_END]: {
 		connection: LumiaIntegrations.TIKTOK,

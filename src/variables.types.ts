@@ -436,14 +436,14 @@ export enum SystemVariables {
 	TIKTOK_TOTAL_FOLLOWER_COUNT = 'tiktok_total_follower_count',
 	/** Session follower count. Use as {{tiktok_session_follower_count}}. */
 	TIKTOK_SESSION_FOLLOWER_COUNT = 'tiktok_session_follower_count',
-	/** Session subscriber count. Use as {{tiktok_session_subscriber_count}}. */
-	TIKTOK_SESSION_SUBSCRIBER_COUNT = 'tiktok_session_subscriber_count',
+	/** Session super fan count. Use as {{tiktok_session_super_fan_count}}. */
+	TIKTOK_SESSION_SUPER_FAN_COUNT = 'tiktok_session_super_fan_count',
 	/** Session share count. Use as {{tiktok_session_share_count}}. */
 	TIKTOK_SESSION_SHARE_COUNT = 'tiktok_session_share_count',
 	/** Last follower. Use as {{tiktok_last_follower}}. */
 	TIKTOK_LAST_FOLLOWER = 'tiktok_last_follower',
-	/** Last subscriber. Use as {{tiktok_last_subscriber}}. */
-	TIKTOK_LAST_SUBSCRIBER = 'tiktok_last_subscriber',
+	/** Last super fan. Use as {{tiktok_last_super_fan}}. */
+	TIKTOK_LAST_SUPER_FAN = 'tiktok_last_super_fan',
 	/** Last gifter. Use as {{tiktok_last_gifter}}. */
 	TIKTOK_LAST_GIFTER = 'tiktok_last_gifter',
 	/** Session gifters (list). Use as {{tiktok_session_gifters}}. */
@@ -1647,10 +1647,10 @@ export const AllVariables = {
 			'tiktok_current_viewer_count',
 			'tiktok_total_follower_count',
 			'tiktok_session_follower_count',
-			'tiktok_session_subscriber_count',
+			'tiktok_session_super_fan_count',
 			'tiktok_session_share_count',
 			'tiktok_last_follower',
-			'tiktok_last_subscriber',
+			'tiktok_last_super_fan',
 			'tiktok_last_gifter',
 			'tiktok_session_gifters',
 			'tiktok_session_gifts',
@@ -1666,11 +1666,33 @@ export const AllVariables = {
 			firstChatter: ['username', 'userId', 'displayname', 'avatar', 'first_count', 'message'],
 			entrance: ['username', 'userId', 'displayname', 'avatar', 'message'],
 			follower: ['username', 'userId', 'displayname', 'avatar'],
-			subscriber: ['username', 'displayname', 'subMonths', 'avatar'],
+			superFan: ['username', 'displayname', 'avatar', 'userId'],
 			gift: ['username', 'userId', 'avatar', 'coins', 'diamonds', 'giftId', 'giftName', 'giftPictureUrl', 'giftType', 'giftAmount'],
 			like: ['username', 'userId', 'displayname', 'avatar', 'userLikeCount', 'totalLikeCount'],
 			totalLikes: ['username', 'userId', 'displayname', 'avatar', 'userLikeCount', 'totalLikeCount'],
 			share: ['username', 'userId', 'displayname', 'avatar'],
+			treasureChest: ['username', 'userId', 'avatar', 'envelopeId', 'diamondCount', 'peopleCount', 'unpackAt'],
+			question: ['username', 'userId', 'displayname', 'avatar', 'question', 'questionId', 'answerStatus'],
+			poll: ['pollId', 'title', 'pollKind', 'pollDuration', 'timeRemain', 'pollSponsor', 'userCount'],
+			superFanBox: ['username', 'displayname', 'avatar', 'userId'],
+			shopPurchase: ['title', 'price', 'imageUrl', 'shopUrl', 'shopName'],
+			intro: ['username', 'userId', 'displayname', 'avatar', 'description', 'language'],
+			pinMessage: ['message', 'messageId', 'pinId', 'pinTime', 'operatorUsername', 'operatorUserId'],
+			battleStart: ['battleId', 'battleLabel', 'creatorUsername', 'creatorDisplayname', 'creatorAvatar', 'opponentUsername', 'opponentDisplayname', 'opponentAvatar', 'battleType'],
+			battleProgress: [
+				'battleId',
+				'battleLabel',
+				'creatorUsername',
+				'opponentUsername',
+				'creatorScore',
+				'opponentScore',
+				'giftId',
+				'giftCount',
+				'repeatCount',
+				'totalDiamondCount',
+				'battleStatus',
+			],
+			battleEnd: ['battleId', 'battleLabel', 'creatorUsername', 'opponentUsername', 'creatorScore', 'opponentScore', 'result', 'winnerUsername', 'loserUsername'],
 			streamEnd: ['eventTime'],
 			newVideo: ['title', 'description', 'embed', 'link', 'id', 'duration', 'likes', 'shares', 'views', 'comments'],
 		},

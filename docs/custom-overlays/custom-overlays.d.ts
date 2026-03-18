@@ -586,8 +586,28 @@ export declare enum LumiaAlertValues {
     TIKTOK_TOTAL_LIKES = "tiktok-totalLikes",
     /** TikTok gift received */
     TIKTOK_GIFT = "tiktok-gift",
-    /** TikTok new subscriber */
-    TIKTOK_SUBSCRIBER = "tiktok-subscriber",
+    /** TikTok paid LIVE-only Super Fan membership event */
+    TIKTOK_SUPER_FAN = "tiktok-superFan",
+    /** TikTok Super Fan Box event, separate from becoming a Super Fan */
+    TIKTOK_SUPER_FAN_BOX = "tiktok-superFanBox",
+    /** TikTok treasure chest / envelope event */
+    TIKTOK_TREASURE_CHEST = "tiktok-treasureChest",
+    /** TikTok question */
+    TIKTOK_QUESTION = "tiktok-question",
+    /** TikTok LIVE poll event */
+    TIKTOK_POLL = "tiktok-poll",
+    /** TikTok LIVE shopping / shop purchase event */
+    TIKTOK_SHOP_PURCHASE = "tiktok-shopPurchase",
+    /** TikTok LIVE intro / stream intro event */
+    TIKTOK_INTRO = "tiktok-intro",
+    /** TikTok pinned message */
+    TIKTOK_PIN_MESSAGE = "tiktok-pinMessage",
+    /** TikTok LIVE battle started */
+    TIKTOK_BATTLE_START = "tiktok-battleStart",
+    /** TikTok LIVE battle progress update */
+    TIKTOK_BATTLE_PROGRESS = "tiktok-battleProgress",
+    /** TikTok LIVE battle finished with a final result */
+    TIKTOK_BATTLE_END = "tiktok-battleEnd",
     /** TikTok share */
     TIKTOK_SHARE = "tiktok-share",
     /** TikTok stream ended */
@@ -1189,14 +1209,14 @@ export declare enum SystemVariables {
     TIKTOK_TOTAL_FOLLOWER_COUNT = "tiktok_total_follower_count",
     /** Session follower count. Use as {{tiktok_session_follower_count}}. */
     TIKTOK_SESSION_FOLLOWER_COUNT = "tiktok_session_follower_count",
-    /** Session subscriber count. Use as {{tiktok_session_subscriber_count}}. */
-    TIKTOK_SESSION_SUBSCRIBER_COUNT = "tiktok_session_subscriber_count",
+    /** Session super fan count. Use as {{tiktok_session_super_fan_count}}. */
+    TIKTOK_SESSION_SUPER_FAN_COUNT = "tiktok_session_super_fan_count",
     /** Session share count. Use as {{tiktok_session_share_count}}. */
     TIKTOK_SESSION_SHARE_COUNT = "tiktok_session_share_count",
     /** Last follower. Use as {{tiktok_last_follower}}. */
     TIKTOK_LAST_FOLLOWER = "tiktok_last_follower",
-    /** Last subscriber. Use as {{tiktok_last_subscriber}}. */
-    TIKTOK_LAST_SUBSCRIBER = "tiktok_last_subscriber",
+    /** Last super fan. Use as {{tiktok_last_super_fan}}. */
+    TIKTOK_LAST_SUPER_FAN = "tiktok_last_super_fan",
     /** Last gifter. Use as {{tiktok_last_gifter}}. */
     TIKTOK_LAST_GIFTER = "tiktok_last_gifter",
     /** Session gifters (list). Use as {{tiktok_session_gifters}}. */
