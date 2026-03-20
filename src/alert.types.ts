@@ -8514,6 +8514,64 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.obs.alerts.recordingStopping,
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
+	[LumiaAlertValues.OBS_MEDIA_INPUT_PLAYBACK_STARTED]: {
+		connection: LumiaIntegrations.OBS,
+		message: 'OBS media input playback started',
+		acceptedVariables: AllVariables.obs.alerts.mediaInputPlaybackStarted,
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Input is equal to',
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.OBS_MEDIA_INPUT_PLAYBACK_ENDED]: {
+		connection: LumiaIntegrations.OBS,
+		message: 'OBS media input playback ended',
+		acceptedVariables: AllVariables.obs.alerts.mediaInputPlaybackEnded,
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Input is equal to',
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.OBS_VIRTUALCAM_STATE_CHANGED]: {
+		connection: LumiaIntegrations.OBS,
+		message: 'OBS virtual cam state changed',
+		acceptedVariables: AllVariables.obs.alerts.virtualcamStateChanged,
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
+	},
+	[LumiaAlertValues.OBS_RECORD_FILE_CHANGED]: {
+		connection: LumiaIntegrations.OBS,
+		message: 'OBS record file changed',
+		acceptedVariables: AllVariables.obs.alerts.recordFileChanged,
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Path is equal to',
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.OBS_SCREENSHOT_SAVED]: {
+		connection: LumiaIntegrations.OBS,
+		message: 'OBS screenshot saved',
+		acceptedVariables: AllVariables.obs.alerts.screenshotSaved,
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+				description: 'Path is equal to',
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
 	[LumiaAlertValues.OBS_REPLAY_BUFFER_SAVED]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS replay buffer saved',
