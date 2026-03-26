@@ -2,6 +2,7 @@ import { LumiaAlertValues } from './activity.types';
 import { LumiaIntegrations } from './event.types';
 import { AllVariables } from './variables.types';
 import { KickKicksData } from './kick_kicks';
+import { TiktokGiftsData } from './tiktok_gifts';
 import { YoutubeSuperstickersData } from './youtube_superstickers';
 import { VIEWER_PROFILE_ACHIEVEMENTS } from './viewer_profile_achievements';
 
@@ -4797,6 +4798,7 @@ export const LumiaAlertConfigs: Record<
 				type: LumiaVariationConditions.EQUAL_SELECTION,
 				description: 'Gift Name is equal to',
 				dynamicOptions: true,
+				selections: TiktokGiftsData,
 			},
 			{
 				type: LumiaVariationConditions.EQUAL_NUMBER,
