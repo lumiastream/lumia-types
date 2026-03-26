@@ -25,5 +25,15 @@ export { LumiaEventListTypes, LumiaMapAlertTypeToEventListType } from './eventli
 export { SystemVariables, ReservedVariables, AllVariables } from './variables.types';
 export { formatCondition } from './helpers';
 export { KickKicksData } from './kick_kicks';
+export { TiktokGiftsData } from './tiktok_gifts';
 export { YoutubeSuperstickersData } from './youtube_superstickers';
-export { VIEWER_PROFILE_ACHIEVEMENTS, type ViewerProfileAchievementColor, type ViewerProfileAchievementDefinition, type ViewerProfileAchievementMetric } from './viewer_profile_achievements';
+export {
+	VIEWER_PROFILE_ACHIEVEMENTS,
+	type ViewerProfileAchievementColor,
+	type ViewerProfileAchievementDefinition,
+	type ViewerProfileAchievementMetric,
+	type ViewerProfileCollectionMode,
+	type ViewerProfileCollectionRule,
+	type ViewerProfileCollectionSettings,
+	type ViewerProfileCollectionSource,
+} from './viewer_profile_achievements';

@@ -16,6 +16,19 @@ export type ViewerProfileAchievementMetric =
 	| 'daysActive'
 	| 'allRounder';
 
+export type ViewerProfileCollectionSource = 'commands' | 'alerts' | 'firstChatters';
+export type ViewerProfileCollectionMode = 'all' | 'none' | 'selected';
+export type ViewerProfileCollectionRule = {
+	mode?: ViewerProfileCollectionMode;
+	selectedKeys?: string[];
+};
+
+export type ViewerProfileCollectionSettings = {
+	commands?: ViewerProfileCollectionRule;
+	alerts?: ViewerProfileCollectionRule;
+	firstChatters?: ViewerProfileCollectionRule;
+};
+
 export type ViewerProfileAchievementColor = 'gold' | 'amber' | 'emerald' | 'sky' | 'rose' | 'orange' | 'teal' | 'cyan' | 'violet' | 'slate';
 
 export type ViewerProfileAchievementDefinition = {
@@ -24,12 +37,39 @@ export type ViewerProfileAchievementDefinition = {
 	description: string;
 	metric: ViewerProfileAchievementMetric;
 	threshold: number;
+	sourceKeys?: ViewerProfileCollectionSource[];
 	connectionKeys?: string[];
 	icon: string;
 	color: ViewerProfileAchievementColor;
 };
 
-export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] = [
+const getViewerProfileAchievementSourceKeys = (metric: ViewerProfileAchievementMetric): ViewerProfileCollectionSource[] | undefined => {
+	switch (metric) {
+		case 'totalCommands':
+		case 'uniqueCommands':
+		case 'totalChatbotCommands':
+		case 'totalPointsCommands':
+		case 'totalPointsSpent':
+		case 'totalTwitchExtensionsCommands':
+			return ['commands'];
+		case 'totalFirstChatters':
+			return ['firstChatters'];
+		case 'totalAlerts':
+		case 'uniqueAlerts':
+		case 'totalBitsSpent':
+		case 'totalKicksSpent':
+		case 'totalGiftSubscriptions':
+		case 'totalMoneySpent':
+			return ['alerts'];
+		case 'totalCommandsAndAlerts':
+		case 'allRounder':
+			return ['commands', 'alerts'];
+		default:
+			return undefined;
+	}
+};
+
+const VIEWER_PROFILE_ACHIEVEMENT_DEFINITIONS: ViewerProfileAchievementDefinition[] = [
 	// ───────── Command Usage ─────────
 	{
 		id: 'commands-regular',
@@ -494,3 +534,8 @@ export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] =
 		color: 'gold',
 	},
 ];
+
+export const VIEWER_PROFILE_ACHIEVEMENTS: ViewerProfileAchievementDefinition[] = VIEWER_PROFILE_ACHIEVEMENT_DEFINITIONS.map((definition) => ({
+	...definition,
+	sourceKeys: definition.sourceKeys ?? getViewerProfileAchievementSourceKeys(definition.metric),
+}));
