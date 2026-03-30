@@ -150,6 +150,12 @@ export enum LumiaAlertValues {
 	LUMIASTREAM_RAFFLE_STOP = 'lumiastream-raffleStop',
 	/** Raffle winner selected */
 	LUMIASTREAM_RAFFLE_WINNER = 'lumiastream-raffleWinner',
+	/** Tournament started */
+	LUMIASTREAM_TOURNAMENT_START = 'lumiastream-tournamentStart',
+	/** Tournament ended */
+	LUMIASTREAM_TOURNAMENT_END = 'lumiastream-tournamentEnd',
+	/** Tournament winner selected */
+	LUMIASTREAM_TOURNAMENT_WINNER = 'lumiastream-tournamentWinner',
 	/** Spin wheel winner selected */
 	LUMIASTREAM_SPINWHEEL_WINNER = 'lumiastream-spinwheelWinner',
 	/** Poll started */
@@ -591,6 +597,9 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.LUMIASTREAM_RAFFLE_START]: 'Raffle Start',
 	[LumiaAlertValues.LUMIASTREAM_RAFFLE_STOP]: 'Raffle Stop',
 	[LumiaAlertValues.LUMIASTREAM_RAFFLE_WINNER]: 'Raffle Winner',
+	[LumiaAlertValues.LUMIASTREAM_TOURNAMENT_START]: 'Tournament Start',
+	[LumiaAlertValues.LUMIASTREAM_TOURNAMENT_END]: 'Tournament End',
+	[LumiaAlertValues.LUMIASTREAM_TOURNAMENT_WINNER]: 'Tournament Winner',
 	[LumiaAlertValues.LUMIASTREAM_SPINWHEEL_WINNER]: 'Spinwheel Winner',
 	[LumiaAlertValues.LUMIASTREAM_POLL_STARTED]: 'Poll Started',
 	[LumiaAlertValues.LUMIASTREAM_POLL_PROGRESSED]: 'Poll Progressed',
