@@ -516,6 +516,8 @@ export declare enum LumiaAlertValues {
     TWITCH_AD_STARTED = "twitch-adStarted",
     /** Ad break ended */
     TWITCH_AD_STOPPED = "twitch-adStopped",
+    /** Watch streak milestone */
+    TWITCH_WATCH_STREAK = "twitch-watchStreak",
     /** Power-ups used */
     TWITCH_POWERUPS = "twitch-powerups",
     /** Power-up points earned */
