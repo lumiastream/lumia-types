@@ -189,6 +189,24 @@ export enum SystemVariables {
 	RAFFLE_WINNER_AVATAR = 'raffle_winner_avatar',
 	/** Command used to enter the raffle (e.g., !join). Use as {{raffle_entry_command}}. */
 	RAFFLE_ENTRY_COMMAND = 'raffle_entry_command',
+	/** Tournament title. Use as {{tournament_title}}. */
+	TOURNAMENT_TITLE = 'tournament_title',
+	/** Tournament description. Use as {{tournament_description}}. */
+	TOURNAMENT_DESCRIPTION = 'tournament_description',
+	/** Tournament game. Use as {{tournament_game}}. */
+	TOURNAMENT_GAME = 'tournament_game',
+	/** Tournament format. Use as {{tournament_format}}. */
+	TOURNAMENT_FORMAT = 'tournament_format',
+	/** Tournament state. Use as {{tournament_state}}. */
+	TOURNAMENT_STATE = 'tournament_state',
+	/** Tournament participants count. Use as {{tournament_participants_count}}. */
+	TOURNAMENT_PARTICIPANTS_COUNT = 'tournament_participants_count',
+	/** Tournament entry command (e.g., !tournament). Use as {{tournament_entry_command}}. */
+	TOURNAMENT_ENTRY_COMMAND = 'tournament_entry_command',
+	/** Tournament winner. Use as {{tournament_winner}}. */
+	TOURNAMENT_WINNER = 'tournament_winner',
+	/** Tournament winner avatar URL. Use as {{tournament_winner_avatar}}. */
+	TOURNAMENT_WINNER_AVATAR = 'tournament_winner_avatar',
 	/** Viewer queue title. Use as {{viewerqueue_title}}. */
 	VIEWERQUEUE_TITLE = 'viewerqueue_title',
 	/** Viewer queue entry command (e.g., !joinq). Use as {{viewerqueue_entry_command}}. */
@@ -921,6 +939,15 @@ export const AllVariables = {
 			'raffle_winner',
 			'raffle_winner_avatar',
 			'raffle_entry_command',
+			'tournament_title',
+			'tournament_description',
+			'tournament_game',
+			'tournament_format',
+			'tournament_state',
+			'tournament_participants_count',
+			'tournament_entry_command',
+			'tournament_winner',
+			'tournament_winner_avatar',
 			'viewerqueue_title',
 			'viewerqueue_entry_command',
 			'viewerqueue_entries',
@@ -1352,6 +1379,19 @@ export const AllVariables = {
 				'raffle_entry_command',
 				'duration',
 				'raffle_generated_number',
+			],
+			tournamentStart: ['tournament_title', 'tournament_description', 'tournament_game', 'tournament_format', 'tournament_state', 'tournament_participants_count', 'tournament_entry_command'],
+			tournamentEnd: ['tournament_title', 'tournament_description', 'tournament_game', 'tournament_format', 'tournament_state', 'tournament_participants_count', 'tournament_entry_command'],
+			tournamentWinner: [
+				'tournament_title',
+				'tournament_description',
+				'tournament_game',
+				'tournament_format',
+				'tournament_state',
+				'tournament_participants_count',
+				'tournament_entry_command',
+				'tournament_winner',
+				'tournament_winner_avatar',
 			],
 			pollStarted: ['poll_title', 'poll_id', 'poll_choices'],
 			pollProgressed: ['poll_title', 'poll_id', 'poll_choices', 'poll_winning_title', 'poll_winning_id', 'poll_winning_votes', 'poll_total_votes'],
