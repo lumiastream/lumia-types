@@ -1649,6 +1649,68 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.COUNT_IS_MULTIPLE_OF, description: 'Total Session Bit Count is a multiple of' },
 		],
 	},
+	[LumiaAlertValues.TWITCH_WATCH_STREAK]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: '{{username}} reached a watch streak of {{streak_count}} and earned {{amount}} points',
+		eventlistMessage: 'Watch Streak',
+		eventlistDetailedMessage: 'reached a watch streak of {{streak_count}} and earned {{amount}} points',
+		acceptedVariables: AllVariables.twitch.alerts.watchStreak,
+		quickActions: [
+			{
+				label: '3 stream streak',
+				dynamic: { value: 3, username: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					streak_count: 3,
+					channel_points_awarded: 300,
+					amount: 300,
+				},
+			},
+			{
+				label: '10 stream streak',
+				dynamic: { value: 10, username: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					streak_count: 10,
+					channel_points_awarded: 1000,
+					amount: 1000,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Streak count',
+				dynamicField: 'value',
+				variableField: 'streak_count',
+				required: true,
+				default: 3,
+			},
+			{
+				type: 'number',
+				label: 'Points awarded',
+				variableField: 'amount',
+				required: true,
+				default: 300,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Watch Streak Count' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Watch Streak Count Greater Than' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
 	[LumiaAlertValues.TWITCH_POWERUPS]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} redeemed {{type}} and cheered {{amount}} bits. They said {{message}}',

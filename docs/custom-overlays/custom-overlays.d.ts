@@ -404,6 +404,12 @@ export declare enum LumiaAlertValues {
     LUMIASTREAM_RAFFLE_STOP = "lumiastream-raffleStop",
     /** Raffle winner selected */
     LUMIASTREAM_RAFFLE_WINNER = "lumiastream-raffleWinner",
+    /** Tournament started */
+    LUMIASTREAM_TOURNAMENT_START = "lumiastream-tournamentStart",
+    /** Tournament ended */
+    LUMIASTREAM_TOURNAMENT_END = "lumiastream-tournamentEnd",
+    /** Tournament winner selected */
+    LUMIASTREAM_TOURNAMENT_WINNER = "lumiastream-tournamentWinner",
     /** Spin wheel winner selected */
     LUMIASTREAM_SPINWHEEL_WINNER = "lumiastream-spinwheelWinner",
     /** Poll started */
@@ -516,6 +522,8 @@ export declare enum LumiaAlertValues {
     TWITCH_AD_STARTED = "twitch-adStarted",
     /** Ad break ended */
     TWITCH_AD_STOPPED = "twitch-adStopped",
+    /** Watch streak milestone */
+    TWITCH_WATCH_STREAK = "twitch-watchStreak",
     /** Power-ups used */
     TWITCH_POWERUPS = "twitch-powerups",
     /** Power-up points earned */
@@ -983,6 +991,24 @@ export declare enum SystemVariables {
     RAFFLE_WINNER_AVATAR = "raffle_winner_avatar",
     /** Command used to enter the raffle (e.g., !join). Use as {{raffle_entry_command}}. */
     RAFFLE_ENTRY_COMMAND = "raffle_entry_command",
+    /** Tournament title. Use as {{tournament_title}}. */
+    TOURNAMENT_TITLE = "tournament_title",
+    /** Tournament description. Use as {{tournament_description}}. */
+    TOURNAMENT_DESCRIPTION = "tournament_description",
+    /** Tournament game. Use as {{tournament_game}}. */
+    TOURNAMENT_GAME = "tournament_game",
+    /** Tournament format. Use as {{tournament_format}}. */
+    TOURNAMENT_FORMAT = "tournament_format",
+    /** Tournament state. Use as {{tournament_state}}. */
+    TOURNAMENT_STATE = "tournament_state",
+    /** Tournament participants count. Use as {{tournament_participants_count}}. */
+    TOURNAMENT_PARTICIPANTS_COUNT = "tournament_participants_count",
+    /** Tournament entry command (e.g., !tournament). Use as {{tournament_entry_command}}. */
+    TOURNAMENT_ENTRY_COMMAND = "tournament_entry_command",
+    /** Tournament winner. Use as {{tournament_winner}}. */
+    TOURNAMENT_WINNER = "tournament_winner",
+    /** Tournament winner avatar URL. Use as {{tournament_winner_avatar}}. */
+    TOURNAMENT_WINNER_AVATAR = "tournament_winner_avatar",
     /** Viewer queue title. Use as {{viewerqueue_title}}. */
     VIEWERQUEUE_TITLE = "viewerqueue_title",
     /** Viewer queue entry command (e.g., !joinq). Use as {{viewerqueue_entry_command}}. */

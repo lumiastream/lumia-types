@@ -270,6 +270,8 @@ export enum LumiaAlertValues {
 	TWITCH_AD_STARTED = 'twitch-adStarted',
 	/** Ad break ended */
 	TWITCH_AD_STOPPED = 'twitch-adStopped',
+	/** Watch streak milestone */
+	TWITCH_WATCH_STREAK = 'twitch-watchStreak',
 	/** Power-ups used */
 	TWITCH_POWERUPS = 'twitch-powerups',
 	/** Power-up points earned */
@@ -656,6 +658,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TWITCH_SHOUTOUT_RECEIVE]: 'Twitch Shoutout Receive',
 	[LumiaAlertValues.TWITCH_AD_STARTED]: 'Twitch Ad Started',
 	[LumiaAlertValues.TWITCH_AD_STOPPED]: 'Twitch Ad Stopped',
+	[LumiaAlertValues.TWITCH_WATCH_STREAK]: 'Twitch Watch Streak',
 	[LumiaAlertValues.TWITCH_POWERUPS]: 'Twitch Powerups',
 	[LumiaAlertValues.TWITCH_POWERUPS_POINTS]: 'Twitch Powerups points',
 	[LumiaAlertValues.YOUTUBE_STREAM_LIVE]: 'Youtube Stream Live',

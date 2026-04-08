@@ -110,6 +110,7 @@ export const LumiaMapAlertTypeToEventListType = {
 	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.TWITCH_AD_STARTED]: LumiaEventListTypes.OTHERS,
 	[LumiaAlertValues.TWITCH_AD_STOPPED]: LumiaEventListTypes.OTHERS,
+	[LumiaAlertValues.TWITCH_WATCH_STREAK]: LumiaEventListTypes.OTHERS,
 	[LumiaAlertValues.TWITTER_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.TWITTER_LIKE]: LumiaEventListTypes.LIKES,
 	[LumiaAlertValues.TWITTER_RETWEET]: LumiaEventListTypes.RETWEETS,
