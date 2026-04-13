@@ -1,6 +1,6 @@
 // Used for external things like our SDK websocket and rest apis
 
-import { LumiaActivityCommandTypes } from './activity.types';
+import { LumiaActivityCommandTypes, LumiaActivityOriginTypes } from './activity.types';
 
 // Packets that will be sent through socket and rest apis
 export interface ILumiaSendPack {
@@ -22,7 +22,11 @@ export interface ILumiaSendPack {
 		transition?: number;
 		duration?: number;
 
-		extraSettings?: { username?: string; bits?: number }; // Mainly used to pass in variables for things like TTS or Chat bot
+		extraSettings?: {
+			username?: string;
+			bits?: number;
+			originType?: LumiaActivityOriginTypes;
+		}; // Mainly used to pass in variables for things like TTS or Chat bot
 	};
 }
 

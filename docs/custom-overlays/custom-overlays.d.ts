@@ -127,6 +127,8 @@ export interface AlertEvent {
 		timestamp: string;
 		/** Platform where the alert originated */
 		site: 'twitch' | 'kick' | 'youtube' | 'tiktok' | 'facebook' | string;
+		/** Lumia queue/activity origin type (e.g., "alert", "chat", "chatbot", "system") */
+		originType?: 'system' | 'alert' | 'chat' | 'chatbot' | 'twitch-points' | 'twitch-extension' | 'kick-points' | 'api' | 'lumiastreamlink' | 'streamdeck' | 'touchportal' | 'avermedia' | 'loupedeck' | string;
 		/** Whether timing type should be checked */
 		checkTimingType: boolean;
 		/** Type of timing for the alert */
