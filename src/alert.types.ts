@@ -4135,6 +4135,7 @@ export const LumiaAlertConfigs: Record<
 					currencySymbol: '$',
 					stickerId: 'emoji_beaming_face',
 					stickerName: 'Emoji Beaming Face',
+					imageUrl: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_beaming_face')?.imageUrl ?? '',
 				},
 			},
 			{
@@ -4149,6 +4150,7 @@ export const LumiaAlertConfigs: Record<
 					currencySymbol: '$',
 					stickerId: 'emoji_laughing',
 					stickerName: 'Emoji Laughing',
+					imageUrl: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_laughing')?.imageUrl ?? '',
 				},
 			},
 			{
@@ -4163,6 +4165,7 @@ export const LumiaAlertConfigs: Record<
 					currencySymbol: '$',
 					stickerId: 'emoji_sad',
 					stickerName: 'Emoji Sad',
+					imageUrl: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_sad')?.imageUrl ?? '',
 				},
 			},
 		],
@@ -4197,6 +4200,13 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'currencySymbol',
 				required: false,
 				default: '$',
+			},
+			{
+				type: 'text',
+				label: 'Image URL',
+				variableField: 'imageUrl',
+				required: false,
+				default: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_beaming_face')?.imageUrl ?? '',
 			},
 		],
 		LumiaVariationConditions: [
