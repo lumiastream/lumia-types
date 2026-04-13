@@ -8,6 +8,8 @@ import { LumiaAlertValues } from './custom-overlays';
 
 /** Known platforms (extendable). */
 type Platform = 'twitch' | 'youtube' | 'kick' | 'tiktok' | 'facebook' | string;
+/** Known Lumia activity origins (extendable). */
+type ActivityOrigin = 'system' | 'alert' | 'chat' | 'chatbot' | 'twitch-points' | 'twitch-extension' | 'kick-points' | 'api' | 'lumiastreamlink' | 'streamdeck' | 'touchportal' | 'avermedia' | 'loupedeck' | string;
 
 /** ISO-8601 timestamp branding for better editor hints. */
 type ISODateString = string & { __iso8601: true };
@@ -27,6 +29,8 @@ type Timing = { checkTimingType: false } | { checkTimingType: true; timingType: 
 interface CommonExtras {
 	/** Origin site/platform for this alert (e.g., "twitch"). */
 	site: Platform;
+	/** Lumia queue/activity origin type (e.g., "alert", "chat", "chatbot", "system"). */
+	originType?: ActivityOrigin;
 	/** ISO-8601 timestamp when the alert originated. */
 	timestamp: ISODateString;
 
