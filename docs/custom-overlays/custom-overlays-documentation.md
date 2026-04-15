@@ -18,52 +18,11 @@ Access it here: [Chat GPT Lumia Overlay Assistant](https://chatgpt.com/g/g-6760d
 
 ---
 
-## 🔌 Plugin + Overlay Integration
+## Overlay Scope
 
-Use overlays for visual rendering and interaction. Overlays can also call APIs and run polling logic directly.
-Use plugins when plugin capabilities clearly outshine overlay-only solutions, such as reusable cross-feature integrations, manifest-driven settings/actions/alerts, custom alert triggering with variations, runtime logic that should not depend on a specific overlay session, or Node.js runtime/library requirements.
+Custom Overlays should handle visual rendering, chat and alert listeners, HFX and virtual light reactions, browser API calls, polling, commands, chatbot messages, storage, variables, games, and animations directly in the five overlay tabs.
 
-When building both together, use this contract:
-
-1. Plugin writes global variables with `this.lumia.setVariable("key", value)`.
-2. Plugin triggers alerts with `this.lumia.triggerAlert(...)`.
-3. Overlay reads:
-   - global variables via `Overlay.getVariable("key")` or `{{key}}`
-   - alert payload via `Overlay.on("alert", (data) => data.extraSettings)`
-
-`triggerAlert` payload guidance:
-
-- `dynamic` is only for variation matching.
-- `extraSettings` can contain any key/value payload and is the recommended data bridge for overlays/templates.
-- If an alert does not use variation conditions, omit `dynamic` and send only `extraSettings`.
-
-Example plugin payload:
-
-```js
-await this.lumia.triggerAlert({
-	alert: 'rumble_stream_started',
-	extraSettings: {
-		username: state.username,
-		stream_title: state.title,
-		viewer_count: state.viewerCount,
-	},
-});
-```
-
-Example overlay listener:
-
-```js
-Overlay.on('alert', (data) => {
-	if (data.alert !== 'rumble_stream_started') return;
-	const payload = data.extraSettings || {};
-	document.getElementById('title').textContent = payload.stream_title || 'Untitled';
-});
-```
-
-For plugin implementation details:
-
-- Plugin SDK docs: [Plugin SDK Overview](https://dev.lumiastream.com/docs/plugin-sdk/overview)
-- Plugin GPT: [Lumia Plugin GPT](https://chatgpt.com/g/g-6908e861c7f88191819187b9f5fbcfd7-lumia-plugin-gpt)
+Use another Lumia workflow only when the user explicitly needs code that runs outside an overlay session, packaging/distribution, Node-only dependencies, or reusable integration logic across multiple Lumia features.
 
 ---
 
@@ -91,7 +50,7 @@ Customize the visual style of your overlay:
 #msg {
 	font-weight: bold;
 	/* You can use variables directly within CSS */
-	color: '{{mycolor}}';
+	color: {{mycolor}};
 }
 ```
 
@@ -102,61 +61,57 @@ Customize the visual style of your overlay:
 Javascript handles initialization and real-time event updates for your overlay:
 
 ```js
-// window.Overlay is our primary api, you can use it with window.Overlay or just Overlay
+// window.Overlay is the primary API. You can use it as window.Overlay or Overlay.
 
-// Overlay.data contains he data that's submitted from the user using your overlay that they're allowed to fill out based on the fields in the config tab
+// Overlay.data contains the current Data tab values.
 console.log(Overlay.data);
 
-// Call a command in Lumia Stream and pass variables for the command to use. In the command you can reference {{secret}} since that's what we're passing in
-Overlay.callCommand('mycommand', { secret: 'password' });
+// Call a command in Lumia Stream and pass local variables for that command run.
+// In the command, you can reference {{secret}} because it is passed here.
+await Overlay.callCommand("mycommand", { secret: "password" });
 
-// Send a chatbot message to the corresponding platform either as the streamer or the bot. Leave the platform as null to trigger on all connected platforms
-Overlay.chatbot({ message: 'This works', platform: 'twitch', chatAsSelf: false  });
+// Send a chatbot message to one platform, or omit platform for all connected platforms.
+await Overlay.chatbot({ message: "This works", platform: "twitch", chatAsSelf: false });
 
-// Add Loyalty Points for a user, also returns the new updated points value
-const points = await Overlay.addLoyaltyPoints({ value: 100, username: 'lumiastream', platform: 'twitch' });
-// Or if you don't care about the response
-Overlay.addLoyaltyPoints({ value: 100, username: 'lumiastream', platform: 'twitch' });
-// You can also subtract points
-Overlay.addLoyaltyPoints({ value: -100, username: 'lumiastream', platform: 'twitch' })
+// Add or subtract loyalty points for a user.
+const points = await Overlay.addLoyaltyPoints({ value: 100, username: "lumiastream", platform: "twitch" });
+await Overlay.addLoyaltyPoints({ value: -100, username: "lumiastream", platform: "twitch" });
 
-// Gets the amount of loyalty points that a user has
-const usersPoints = await Overlay.getLoyaltyPoints({ username: 'lumiastream', platform: 'twitch' });
+// Get the amount of loyalty points that a user has.
+const usersPoints = await Overlay.getLoyaltyPoints({ username: "lumiastream", platform: "twitch" });
 
-// If the variables isn't already created it will create one.
-await Overlay.setVariable('myvar', 'this works');
+// Create or update a global Lumia variable.
+await Overlay.setVariable("myvar", "this works");
 
-// Retrieves a variable, always use a string for getVariable, do not use a reference to a string so that the code can extract out the variables it needs to listen to
-await Overlay.getVariable('myvar');
+// Retrieve a variable. Always use a string literal key.
+const variable = await Overlay.getVariable("myvar");
 
-// If the variable was not previously created it may not automatically be replaced in your code until after the code is saved and reopened. If the overlay was previously made then it will update immediately. It may be helpful to add a check in your code to see if variable is already auto updating or not and toast the user to refresh the overlay
+// If the variable was just created, variable replacement may require saving and refreshing once.
 const usedMyVar = "{{myvar}}";
 
-// You can call await without an async function since an async function is already wrapped around all the JS code
+// You can use await at the top level because Lumia wraps the JS tab in an async function.
 
 // Save an item to storage
-await Overlay.saveStorage('mydata', 151);
+await Overlay.saveStorage("mydata", 151);
 
-// Get an item from stoage
-const pokemonCaught = await Overlay.getStorage('mydata');
+// Get an item from storage
+const pokemonCaught = await Overlay.getStorage("mydata");
 
-// Delete an item from stoage
-await Overlay.deleteStorage('mydata');
+// Delete an item from storage
+await Overlay.deleteStorage("mydata");
 
-Overlay.on('chat', (data) => {
+Overlay.on("chat", (data) => {
 	const username = data.username;
-	const avatar = data.avatar;
 	const message = data.message;
 	toast(`New chat message received from ${username}. They said ${message}`);
 });
-Overlay.on('alert', (data) => {
-	console.log('alert', data);
-	const settings = data.extraSettings;
-	const username = settings?.username || 'unknown';
-	const amount = data.dynamic.value;
-	const avatar = settings?.avatar;
 
-	if (data.alert === 'twitch-subscriber') {
+Overlay.on("alert", (data) => {
+	console.log("alert", data);
+	const settings = data.extraSettings || {};
+	const username = settings.username || "unknown";
+
+	if (data.alert === "twitch-subscriber") {
 		if (data.dynamic.isGift) {
 			console.log(`${username} sent ${data.dynamic.giftAmount} with a tier ${settings.subPlan} sub to ${settings.recipients ?? settings.recipient}`);
 		} else if (data.dynamic.isResub) {
@@ -166,38 +121,39 @@ Overlay.on('alert', (data) => {
 		}
 	}
 
-	if (data.alert === 'twitch-raid') {
+	if (data.alert === "twitch-raid") {
 		console.log(`${username} just raided with ${data.dynamic.value} viewers`);
 	}
 
-	if (data.alert === 'kick-follower') {
+	if (data.alert === "kick-follower") {
 		console.log(`${username} just followed on Kick`);
 	}
 });
-Overlay.on('hfx', (data) => {
+
+Overlay.on("hfx", (data) => {
 	const username = data.username;
 	const command = data.command;
 	const message = data.message; // If the HFX was triggered with a message
-	const avatar = data.avatar;
 
 	console.log(`${username} just triggered HFX ${command}`);
 });
-Overlay.on('virtuallight', (data) => {
-	console.log('virtuallight', data);
-	const viratlLightId = data.uuid;
+
+Overlay.on("virtuallight", (data) => {
+	console.log("virtuallight", data);
+	const virtualLightId = data.uuid;
 	const brightness = data.brightness;
 
-	// Power sometimes does not come through if the light is just changing colors
-	if (data.color && (data.power || data.power === 'undefined')) {
-		const { r, g, b} = data.color;
-		console.log(`Light is changing to the color to rgb(${r},${g},${b})`);
+	if (data.color) {
+		const { r, g, b } = data.color;
+		console.log(`Light ${virtualLightId} changed to rgb(${r}, ${g}, ${b}) at ${brightness}%`);
 	} else if (data.power === false) {
-		console.log(`Light is turning off`);
+		console.log(`Light ${virtualLightId} is turning off`);
 	}
-	const
 });
-// Only codeId that matches on both Overlays and Lumia will trigger this listener. codeId can only contain letters, numbers, hyphens, and underscores. Max 25 characters.
-Overlay.on('overlaycontent', (data) => {
+
+// Only matching codeId values trigger this listener.
+// codeId can only contain letters, numbers, hyphens, and underscores. Max 25 characters.
+Overlay.on("overlaycontent", (data) => {
 	const content = data.content;
 	console.log(`Content has been sent from Lumia Stream ${content}`);
 });
@@ -241,7 +197,7 @@ Overlay.on('overlaycontent', (data) => {
 });
 ```
 
-When using Overlay.on the data tab must have the corresponding OverlayListener types:
+Lumia auto-detects event subscriptions from literal `Overlay.on("event", ...)` calls in the JS tab. Use direct string literals so the overlay subscribes to the needed events. The Data tab only needs an `events` array for legacy/manual cases.
 
 ### OverlayListener types
 
@@ -253,9 +209,9 @@ When using Overlay.on the data tab must have the corresponding OverlayListener t
 | virtuallight   | Virtual lights         |
 | overlaycontent | Custom Overlay Content |
 
-> 💡 Performance Tip: Only the selected events will be delivered to the overlay.
-> 💡 The typescript types for each alert is within the types tab
-> 💡 `overlaycontent` is a default event that will always be on for all custom overlays that are automatically subscribed to whether it's in the data tab or not. This is a special event that allows you to send custom content to the overlay from Lumia Stream and will only send to your specific codeId.
+> 💡 Performance Tip: Only selected events are delivered to the overlay.
+> 💡 The TypeScript types for each alert are within the Types tab.
+> 💡 `overlaycontent` sends custom content only to custom overlay layers with the matching `codeId`.
 
 ### Showing Toasts
 
@@ -306,7 +262,17 @@ Overlay.setVariable('pokemon_caught', 151);
 
 ### Using Persistent Storage in Lumia Stream
 
-We expose an api that allows you to get, update, and delete storage tied to your `codeId`. This will persist across Lumia Stream and can be used to communicate with your overlays in any place: OBS, Browser, Meld, etc. It works different than localStorage where localStorage only saves for the browser / streaming studio. If you would like to persist data this is the recommended way other than using it with variables. The only issue is that actual Lumia Stream does not have access to this storage currently. Only your Overlays will have access
+We expose an api that allows you to get, update, and delete storage tied to your `codeId`. This persists across Lumia Stream and can be used to communicate with your overlays in any place: OBS, Browser, Meld, etc. If you want to persist data this is the recommended way, along with variables. Note that Lumia Stream commands and chatbots cannot read this storage currently — only your Overlays can.
+
+> **First-load note:** `Overlay.getStorage(key)` returns `null` when the key has never been saved, and Lumia will show a red error toast in that case. Always default the value and seed the key on first load:
+>
+> ```js
+> let counter = await Overlay.getStorage('counter');
+> if (counter == null) {
+>   counter = 0;
+>   await Overlay.saveStorage('counter', counter);
+> }
+> ```
 
 This can be used under `Overlay.saveStorage`, `Overlay.getStorage`, `Overlay.deleteStorage`
 
@@ -323,48 +289,46 @@ await Overlay.deleteStorage('pokemon_caught');
 
 ### Data Storage Options in Custom Overlays
 
-When building custom overlays, you have several options for storing and sharing data. Each method has its own use cases, benefits, and limitations:
+Use one of these three. Do not use browser `localStorage` or `sessionStorage` in overlays — they are not shared across OBS/browser sources and are explicitly disallowed.
 
-#### 1. `localStorage`
+#### 1. Lumia Stream Variables
 
--   **Scope:** Only available in the browser where the overlay is loaded (e.g., OBS, browser source, or streaming studio).
--   **Persistence:** Data persists across page reloads in the same browser, but is not shared between different browsers or devices.
--   **Use Case:** Storing user preferences or temporary data that doesn't need to sync across devices or overlays.
--   **Limitations:** Not accessible by Lumia Stream itself or other overlays running elsewhere.
-
-#### 2. **Lumia Stream Variables**
-
--   **Scope:** Global within Lumia Stream. Variables can be accessed and updated by overlays, chatbots, commands, and other Lumia features.
+-   **Scope:** Global within Lumia Stream. Accessible by overlays, chatbots, commands, and other Lumia features.
 -   **Persistence:** Saved on the server and available across all overlays and sessions.
--   **Use Case:** Sharing data between overlays, commands, and chatbots, or persisting state across restarts.
--   **Limitations:** All variables are global—be careful with naming to avoid conflicts.
+-   **Use Case:** Shared state that chatbots/commands/other overlays need to read or write.
+-   **Limitations:** Variables are global — pick unique names.
+-   **API:** `Overlay.setVariable(name, value)` / `Overlay.getVariable(name)`.
+
+#### 2. `Overlay.saveStorage` / `getStorage` / `deleteStorage`
+
+-   **Scope:** Persistent storage tied to your overlay's `codeId`. Shared across every overlay instance running on the same Lumia Stream server (OBS, browser, Meld, etc.).
+-   **Persistence:** Persists across overlay reloads and app restarts.
+-   **Use Case:** Overlay-specific state that other overlays with the same `codeId` need to see.
+-   **Limitations:** Overlays only — Lumia commands and chatbots cannot read it. Not synced across servers.
+-   **First-load note:** `getStorage` returns `null` when the key has never been saved and the host will display a red error toast. Always default the value and seed it on first load:
+
+    ```js
+    let counter = await Overlay.getStorage("counter");
+    if (counter == null) {
+      counter = 0;
+      await Overlay.saveStorage("counter", counter);
+    }
+    ```
 
 #### 3. `Overlay.callCommand`
 
--   **Scope:** Triggers a Lumia Stream command, optionally passing custom data.
--   **Persistence:** Depends on your command logic. You can implement your own storage or logic inside the command.
--   **Use Case:** Advanced workflows where you want to process data or trigger actions in Lumia Stream, possibly updating variables or storage as part of the command.
--   **Limitations:** Requires custom command setup in Lumia Stream.
-
-#### 4. `Overlay.saveStorage` / `getStorage` / `deleteStorage`
-
--   **Scope:** Persistent storage tied to your overlay's `codeId`. Data is saved on the local Lumia Stream server and is accessible from any overlay instance (e.g., OBS, browser, Meld) running on the same server.
--   **Persistence:** Data persists across overlay reloads and is shared between all overlay clients connected to the same Lumia Stream instance.
--   **Use Case:** Storing overlay-specific state or data that needs to be shared between multiple overlay clients or sessions.
--   **Limitations:**
-    -   Not accessible by Lumia Stream commands or chatbots (only overlays can read/write).
-    -   Not synced to the cloud or between different Lumia Stream servers.
+-   **Scope:** Triggers a Lumia command that can then update variables or run any Lumia action.
+-   **Use Case:** Let a command own the logic (e.g., loyalty-point math, chatbot replies) while the overlay just invokes it.
 
 #### Summary Table
 
-| Method                     | Scope/Access                | Persistence     | Accessible By      | Best For                                  |
-| -------------------------- | --------------------------- | --------------- | ------------------ | ----------------------------------------- |
-| `localStorage`             | Per browser/tab             | Browser reloads | Overlay only       | User preferences, local state             |
-| Lumia Stream Variables     | Global (Lumia Stream)       | Server-wide     | Overlays, commands | Shared/global state, cross-feature access |
-| `Overlay.callCommand`      | Custom (via command logic)  | Custom          | Overlay & commands | Advanced workflows, custom logic          |
-| `Overlay.saveStorage` etc. | Per overlay `codeId`/server | Server (local)  | Overlays only      | Overlay-specific persistent data          |
+| Method                     | Scope                       | Accessible By      | Best For                                  |
+| -------------------------- | --------------------------- | ------------------ | ----------------------------------------- |
+| Lumia Stream Variables     | Global (Lumia Stream)       | Overlays, commands | Shared/global state, cross-feature access |
+| `Overlay.saveStorage` etc. | Per overlay `codeId`/server | Overlays only      | Overlay-specific persistent data          |
+| `Overlay.callCommand`      | Custom (via command logic)  | Overlay & commands | Advanced workflows, custom logic          |
 
-> **Tip:** Choose the storage method that best fits your data's scope and persistence needs. For most overlay-to-overlay communication, use variables or `saveStorage`. For global state, prefer variables. For overlay-local state, use `localStorage` or `saveStorage`.
+> **Tip:** Use Variables when other Lumia features need the value; use `Overlay.saveStorage` when only the overlay needs it.
 
 ---
 
@@ -745,6 +709,8 @@ You can display the value of a variable or storage item in your overlay by direc
 
 Variables can be used in these examples
 
+In CSS, leave color/size/number variables unquoted. In JS, put replacement tokens inside quotes and parse numbers manually when needed.
+
 HTML Tab
 
 ```html
@@ -819,7 +785,10 @@ Lumia Stream allows you to send data from your application to the overlay. This 
 
 ```js
 async function() {
-  overlaySendCustomContent({ codeId: "mycode", content: '{"type": "add", "value": "{{username}} - {{message}}"' });
+  overlaySendCustomContent({
+    codeId: "mycode",
+    content: JSON.stringify({ type: "add", value: "{{username}} - {{message}}" })
+  });
 
   // Make sure you call done() to avoid memory leaks
   done();
@@ -829,9 +798,9 @@ async function() {
 Then in your Custom Overlay JS Tab you would listen to it and parse it with:
 
 ```js
-Overlay.on('overlaycontent', (data) => {
+Overlay.on("overlaycontent", (data) => {
 	const content = JSON.parse(data.content);
-	toast('This is for my code', content);
+	toast(`This is for my code: ${content.value}`);
 });
 ```
 
