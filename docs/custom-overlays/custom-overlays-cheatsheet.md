@@ -2,53 +2,46 @@
 
 ---
 
-## 0. Plugin Handoff Rules
+## 0. Overlay-First Rule
 
-Use overlays for presentation. Hand off to a plugin when the request needs:
+Build normal user requests as Custom Overlays. Chat overlays, alert popups, counters, goals, scoreboards, games, animations, API fetches, polling, command calls, chatbot messages, storage, and variable workflows belong in overlay HTML/CSS/JS/Configs/Data.
 
-- integration logic reused across overlays/commands/automations
-- manifest-driven Lumia setup (settings/actions/variables/alerts)
-- custom alert triggering/variation workflows
-- runtime behavior that should not depend on a specific overlay session
-- installable/distributable plugin packaging (`.lumiaplugin`)
-- Node.js runtime execution and Node-only library/dependency usage
-
-Plugin + overlay bridge contract:
-
-- Plugin writes global variables (`this.lumia.setVariable`).
-- Plugin triggers alerts (`this.lumia.triggerAlert`) with payload in `extraSettings`.
-- Overlay reads variables (`Overlay.getVariable('key')`) and alert payload from `data.extraSettings`.
-- Use `dynamic` only for alert variation matching.
-
-If plugin work is needed, point users to:
-
-- Plugin SDK docs: https://dev.lumiastream.com/docs/plugin-sdk/overview
-- Plugin GPT: https://chatgpt.com/g/g-6908e861c7f88191819187b9f5fbcfd7-lumia-plugin-gpt
+Only hand off when the user explicitly needs code that runs outside an overlay session, packaging/distribution, Node-only dependencies, or reusable integration logic across multiple Lumia features.
 
 ---
 
 ## 1. API Cheat‑Sheet (one line per member)
 
+Runtime reminders:
+
+- `Overlay.on(...)` handlers receive raw payload data, not a `CustomEvent`.
+- Read Config/Data values from `Overlay.data`, not from a bare top-level `data` variable.
+- JS is already wrapped by Lumia in an async function, so top-level `await` is allowed.
+- Use literal listener names like `Overlay.on('chat', ...)` so Lumia can auto-subscribe to events.
+- Use `Overlay.deleteStorage`, not `Overlay.removeStorage`.
+
 ### `window.Overlay` interface
 
 | Signature                                                                                                               | Purpose                                                               |     |
 | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | --- |
-| `on(event: 'chat'\|'alert'\|'hfx'\|'virtuallight'\|'overlaycontent', handler: (ev: CustomEvent<OverlayEvent>) => void)` | Subscribe to real‑time overlay events.                                |     |
-| `callCommand(command: string, extraSettings?: Record<string,string \| number>): void`                                   | Trigger a Lumia Stream command, optionally passing local variables.   |     |
+| `on(event: 'chat'\|'alert'\|'hfx'\|'virtuallight'\|'overlaycontent', handler: (data: OverlayEvent) => void)`            | Subscribe to real-time overlay events. Handler receives raw data.      |     |
+| `callCommand(command: string, extraSettings?: Record<string, unknown>): Promise<unknown>`                               | Trigger a Lumia Stream command, optionally passing local variables.   |     |
 | `chatbot({ message, platform?, chatAsSelf? }): Promise<void>`                                                           | Send a chat message as the bot or streamer on the chosen platform(s). |     |
 | `addLoyaltyPoints({ value, username, platform }): Promise<number>`                                                      | Add or subtract loyalty points for a user and get the new balance.    |     |
 | `getLoyaltyPoints({ username, platform }): Promise<number>`                                                             | Retrieve a user's current loyalty‑points total.                       |     |
-| `setVariable(name: string, value: unknown): void`                                                                       | Create or update a global Lumia variable.                             |     |
-| `getVariable(name: string): unknown`                                                                                    | Read a global Lumia variable (**must be a string literal key**).      |     |
-| `saveStorage(key: string, value: string): void`                                                                         | Persist data scoped to this overlay’s `codeId`.                       |     |
-| `getStorage(key: string): string`                                                                                       | Load a value previously saved with `saveStorage`.                     |     |
-| `removeStorage(key: string): void`                                                                                      | Delete a saved storage item.                                          |     |
+| `setVariable(name: string, value: unknown): Promise<unknown>`                                                           | Create or update a global Lumia variable.                             |     |
+| `getVariable(name: string): Promise<unknown>`                                                                           | Read a global Lumia variable (**must be a string literal key**).      |     |
+| `saveStorage(key: string, value: unknown): Promise<unknown>`                                                            | Persist data scoped to this overlay's `codeId`.                       |     |
+| `getStorage(key: string): Promise<unknown>`                                                                             | Load a value previously saved with `saveStorage`.                     |     |
+| `deleteStorage(key: string): Promise<unknown>`                                                                          | Delete a saved storage item.                                          |     |
 
 **Global helpers**
 
-`toast(message: string, type?: 'info'\|'success'\|'warning'\|'error')` • `log(...args)` (alias of `console.log`)
+`toast(message: string, type?: 'info'\|'success'\|'warning'\|'error')` • `console.log(...args)` • `console.error(...args)`
 
 ### Overlay events & payload helpers
+
+Reference only. Overlay JS output should still be plain JavaScript, not TypeScript.
 
 ```js
 type OverlayListener = 'chat' | 'alert' | 'hfx' | 'virtuallight' | 'overlaycontent';
@@ -180,8 +173,8 @@ Include these two helper aliases in your embeddings so the model can quickly map
 ### Positive – Chat listener
 
 ```js
-Overlay.on('chat', (ev) => {
-	const { username, message } = ev.detail;
+Overlay.on('chat', (data) => {
+	const { username, message } = data;
 	toast(`${username}: ${message}`);
 });
 ```

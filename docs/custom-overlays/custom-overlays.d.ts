@@ -216,11 +216,11 @@ export type OverlayEvent = ChatEvent | AlertEvent | HfxEvent | VirtualLightEvent
 /**
  * Type definition for overlay event handlers.
  * @example
- * const handler: OverlayEventHandler = (ev) => {
- *   console.log('Event received:', ev.detail);
+ * const handler: OverlayEventHandler = (data) => {
+ *   console.log('Event received:', data);
  * };
  */
-export type OverlayEventHandler = (ev: CustomEvent<OverlayEvent>) => void;
+export type OverlayEventHandler = (data: OverlayEvent) => void;
 
 /**
  * Main Overlay API interface.
@@ -277,9 +277,9 @@ export interface Overlay {
 	 * @param command - Name of the command to execute
 	 * @param extraSettings - Optional parameters for the command
 	 * @example
-	 * window.Overlay.callCommand('lights-on', { brightness: 75 });
+	 * await window.Overlay.callCommand('lights-on', { brightness: 75 });
 	 */
-	callCommand(command: string, extraSettings?: Record<string, string | number>): void;
+	callCommand(command: string, extraSettings?: Record<string, unknown>): Promise<unknown>;
 
 	/**
 	 * Send a message to chat through the bot
@@ -343,44 +343,44 @@ export interface Overlay {
 	 * @param variable - Variable name
 	 * @param value - Value to set
 	 * @example
-	 * window.Overlay.setVariable('alertCount', 42);
+	 * await window.Overlay.setVariable('alertCount', 42);
 	 */
-	setVariable(variable: string, value: unknown): void;
+	setVariable(variable: string, value: unknown): Promise<unknown>;
 
 	/**
 	 * Get a Lumia variable value
 	 * @param variable - Variable name
 	 * @returns The variable value or undefined if not set
 	 * @example
-	 * const count = window.Overlay.getVariable('alertCount');
+	 * const count = await window.Overlay.getVariable('alertCount');
 	 */
-	getVariable(variable: string): unknown | undefined;
+	getVariable(variable: string): Promise<unknown | undefined>;
 
 	/**
-	 * Save data to browser local storage
+	 * Save data to persistent overlay storage scoped to this overlay's codeId
 	 * @param key - Storage key
 	 * @param value - Value to store (will be stringified)
 	 * @example
-	 * window.Overlay.saveStorage('theme', 'dark');
+	 * await window.Overlay.saveStorage('theme', 'dark');
 	 */
-	saveStorage(key: string, value: string): void;
+	saveStorage(key: string, value: unknown): Promise<unknown>;
 
 	/**
-	 * Retrieve data from browser local storage
+	 * Retrieve data from persistent overlay storage scoped to this overlay's codeId
 	 * @param key - Storage key
 	 * @returns The stored value or null if not found
 	 * @example
-	 * const theme = window.Overlay.getStorage('theme');
+	 * const theme = await window.Overlay.getStorage('theme');
 	 */
-	getStorage(key: string): string | null;
+	getStorage(key: string): Promise<unknown | null>;
 
 	/**
-	 * Remove data from browser local storage
+	 * Delete data from persistent overlay storage scoped to this overlay's codeId
 	 * @param key - Storage key to remove
 	 * @example
-	 * window.Overlay.removeStorage('theme');
+	 * await window.Overlay.deleteStorage('theme');
 	 */
-	removeStorage(key: string): void;
+	deleteStorage(key: string): Promise<unknown>;
 }
 
 // -----------------------------------------------------------------------------

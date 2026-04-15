@@ -2,45 +2,153 @@
 
 > Need to inspect what an alert returns? Open the [alert explorer](/docs/variables#alert-explorer) on the Platform Variables page to browse `data.alert`, `data.extraSettings.*`, and the fields available for each alert.
 
+## Index
+
+Grouped by what the overlay does, so you can jump to the closest starting point:
+
+**Alerts & chat**
+
+- [Custom Alert](#custom-alert) — single listener branches on `data.alert` for donations, subs, follows, bits, raids.
+- [Custom Chat Box](#custom-chat-box) — renders chat messages with DOM APIs (no `innerHTML`).
+
+**Commands & games**
+
+- [Roll a Dice](#roll-a-dice) — `!roll` chat command with animation.
+- [Pokemon Catch Mini-Game Overlay](#pokemon-catch-mini-game-overlay) — full game with storage, chatbot, and SFX.
+- [Calculator with overlaySendCustomContent from Lumia Stream](#calculator-with-overlaysendcustomcontent-from-lumia-stream) — receives content from a Lumia command via `overlaycontent` listener.
+
+**External APIs (fetch)**
+
+- [Anime Facts using Fetch](#anime-facts-using-fetch)
+- [Pet Cam Random Dog/Cat Images using Fetch](#pet-cam-random-dogcat-images-using-fetch)
+
+**HFX / lights / loyalty**
+
+- [HFX Listener Banner](#hfx-listener-banner) — `Overlay.on("hfx", ...)` triggers an animated banner with the user, command, and message.
+- [Virtual Light Monitor](#virtual-light-monitor) — `Overlay.on("virtuallight", ...)` shows the current light color/brightness/power; persists across reloads with `saveStorage` + first-load null-check.
+- [Loyalty Points Leaderboard](#loyalty-points-leaderboard) — `Overlay.getLoyaltyPoints` / `addLoyaltyPoints` + `Overlay.chatbot` for `!points` and `!give` commands.
+
+**Visual**
+
+- [Art Canvas](#art-canvas) — canvas rendering.
+- [Font Picker with Quoted Variable](#font-picker-with-quoted-variable) — small reference for how Google fonts must be quoted in CSS.
+
+## Font Picker with Quoted Variable
+
+Small reference overlay. The key pattern: `fontpicker` Configs produce a font-family string, and CSS needs that value inside quotes because `font-family` expects a string. Compare to colors/sizes, which must be unquoted.
+
+### HTML
+
+```html
+<div id="label">Hello, streamer!</div>
+```
+
+### CSS
+
+```css
+#label {
+	/* quoted — font-family needs a string */
+	font-family: "{{font}}";
+	/* unquoted — color/size/number values are not strings */
+	color: {{labelColor}};
+	font-size: {{fontSize}}px;
+	padding: 16px 24px;
+}
+```
+
+### JS
+
+```js
+// Nothing needed — CSS variable replacement renders the picked font automatically.
+```
+
+### Configs
+
+```json
+{
+	"font": {
+		"type": "fontpicker",
+		"label": "Font",
+		"order": 1
+	},
+	"labelColor": {
+		"type": "colorpicker",
+		"label": "Label color",
+		"order": 2,
+		"value": "#ffffff"
+	},
+	"fontSize": {
+		"type": "slider",
+		"label": "Font size",
+		"order": 3,
+		"options": { "min": 10, "max": 120, "step": 2, "suffix": "px" },
+		"value": 48
+	}
+}
+```
+
+### Data
+
+```json
+{
+	"font": "Roboto",
+	"labelColor": "#ffffff",
+	"fontSize": 48
+}
+```
+
 ## Custom Alert
 
 ### JS Code
 
 ```js
 // Overlay.data is fetched from the sidebar input values
-const container = document.getElementById('container');
+const container = document.getElementById("container");
+const alertContainer = document.getElementById("alert-container");
 
 // Pass data to css variable to use it easily inside css
-if (Overlay.data?.primaryColor) container.style.setProperty('--primary', Overlay.data?.primaryColor);
-if (Overlay.data?.backgroundColor) container.style.setProperty('--secondary', Overlay.data?.backgroundColor);
-if (Overlay.data?.messageBgColor) container.style.setProperty('--bg', Overlay.data?.messageBgColor);
-if (Overlay.data?.textColor) container.style.setProperty('--text', Overlay.data?.textColor);
-if (Overlay.data?.rounded) container.style.setProperty('--rounded', Overlay.data?.rounded);
+if (Overlay.data?.primaryColor) container.style.setProperty("--primary", Overlay.data.primaryColor);
+if (Overlay.data?.backgroundColor) container.style.setProperty("--secondary", Overlay.data.backgroundColor);
+if (Overlay.data?.messageBgColor) container.style.setProperty("--bg", Overlay.data.messageBgColor);
+if (Overlay.data?.textColor) container.style.setProperty("--text", Overlay.data.textColor);
+if (Overlay.data?.rounded) container.style.setProperty("--rounded", Overlay.data.rounded);
 
 // Listen for alerts
-Overlay.on('alert', (data) => {
+Overlay.on("alert", (data) => {
 	const alertType = data.alert;
-	const settings = data.extraSettings;
-	let fullMessage = '';
+	const settings = data.extraSettings || {};
+	let fullMessage = "";
 
-	if (alertType.includes('donat')) {
-		fullMessage += `${settings?.username} just tipped ${settings?.amount ?? ''} ${settings?.currency ?? ''}`;
-	} else if (alertType.includes('follow')) {
-		fullMessage += `${settings?.username} is now following!`;
-	} else if (alertType.includes('firstChatter')) {
-		fullMessage += `${settings?.username} is the first chatter`;
-	} else if (alertType.includes('entrance')) {
-		fullMessage += `${settings?.username} Welcome`;
-	} else if (alertType.includes('subscriber')) {
-		fullMessage += `${settings?.username} just subscribed!`;
-	} else if (alertType.includes('bits')) {
-		fullMessage += `${settings?.username} cheered ${settings?.amount ?? ''} bits`;
+	if (alertType === "streamlabs-donation" || alertType === "streamelements-donation" || alertType === "lumiastream-donation") {
+		fullMessage = `${settings.username || "Someone"} just tipped ${settings.amount ?? data.dynamic?.value ?? ""} ${settings.currency ?? ""}`;
+	} else if (alertType === "twitch-follower" || alertType === "kick-follower") {
+		fullMessage = `${settings.username || "Someone"} is now following!`;
+	} else if (alertType === "twitch-subscriber" || alertType === "kick-subscriber") {
+		fullMessage = `${settings.username || "Someone"} just subscribed!`;
+	} else if (alertType === "twitch-bits") {
+		fullMessage = `${settings.username || "Someone"} cheered ${data.dynamic?.value ?? settings.amount ?? ""} bits`;
+	} else if (alertType === "twitch-raid") {
+		fullMessage = `${settings.username || "Someone"} raided with ${data.dynamic?.value ?? settings.viewers ?? 0} viewers`;
+	} else {
+		return;
 	}
 
 	if (settings?.message) fullMessage += ` They said ${settings?.message}`;
 
-	// Display the alert inside the HTML container
-	document.getElementById('alert-container').innerHTML = `<div class="message-container"><img src="${settings?.avatar}" id="avatar"/> ${fullMessage}</div>`;
+	alertContainer.textContent = "";
+	const messageEl = document.createElement("div");
+	messageEl.className = "message-container";
+
+	const avatarEl = document.createElement("img");
+	avatarEl.className = "avatar";
+	avatarEl.src = settings.avatar || "https://storage.lumiastream.com/placeholderUserIcon.png";
+	avatarEl.alt = "";
+
+	const textEl = document.createElement("span");
+	textEl.textContent = fullMessage;
+
+	messageEl.append(avatarEl, textEl);
+	alertContainer.appendChild(messageEl);
 });
 ```
 
@@ -96,7 +204,7 @@ Overlay.on('alert', (data) => {
 	align-items: center;
 	gap: 0.5rem;
 }
-#avatar {
+.avatar {
 	background: var(--secondary);
 	border-radius: 100px;
 	height: 32px;
@@ -123,15 +231,20 @@ Overlay.on('alert', (data) => {
 		"label": "Text color:",
 		"order": 3
 	},
+	"messageBgColor": {
+		"type": "colorpicker",
+		"label": "Message background color:",
+		"order": 4
+	},
 	"rounded": {
 		"type": "input",
 		"label": "Rounded corners:",
-		"order": 4
+		"order": 5
 	},
 	"alertImage": {
 		"type": "input",
 		"label": "Alert image URL:",
-		"order": 5
+		"order": 6
 	}
 }
 ```
@@ -155,24 +268,50 @@ Overlay.on('alert', (data) => {
 
 ```js
 // Overlay.data is fetched from the sidebar input values
-const messageContainer = document.getElementById('container');
+const messageContainer = document.getElementById("container");
+const messagesContainer = document.getElementById("messages-container");
 
 // Pass data to css variable to use it easily inside css
-if (Overlay.data?.primaryColor) messageContainer.style.setProperty('--primary', Overlay.data?.primaryColor);
-if (Overlay.data?.backgroundColor) messageContainer.style.setProperty('--secondary', Overlay.data?.backgroundColor);
-if (Overlay.data?.messageBgColor) messageContainer.style.setProperty('--bg', Overlay.data?.messageBgColor);
-if (Overlay.data?.textColor) messageContainer.style.setProperty('--text', Overlay.data?.textColor);
-if (Overlay.data?.rounded) messageContainer.style.setProperty('--rounded', Overlay.data?.rounded);
+if (Overlay.data?.primaryColor) messageContainer.style.setProperty("--primary", Overlay.data.primaryColor);
+if (Overlay.data?.backgroundColor) messageContainer.style.setProperty("--secondary", Overlay.data.backgroundColor);
+if (Overlay.data?.messageBgColor) messageContainer.style.setProperty("--bg", Overlay.data.messageBgColor);
+if (Overlay.data?.textColor) messageContainer.style.setProperty("--text", Overlay.data.textColor);
+if (Overlay.data?.rounded) messageContainer.style.setProperty("--rounded", Overlay.data.rounded);
 
 // Listen for chat messages
-Overlay.on('chat', (data) => {
-	const origin = data.origin;
+Overlay.on("chat", (data) => {
+	const messageEl = document.createElement("div");
+	messageEl.className = "message";
 
-	// Append the chat messages to the HTML container
-	document.getElementById(
-		'messages-container',
-	).innerHTML += `<div class="message" id="message"><span id="origin">From ${origin}</span><img src="${data.avatar}" id="avatar"/><label id="username">${data.username}:</label><div id="content">${data.message}</div></div>`;
+	const originEl = document.createElement("span");
+	originEl.className = "origin";
+	originEl.textContent = `From ${data.origin}`;
+
+	const avatarEl = document.createElement("img");
+	avatarEl.className = "avatar";
+	avatarEl.src = data.avatar || "https://storage.lumiastream.com/placeholderUserIcon.png";
+	avatarEl.alt = "";
+
+	const usernameEl = document.createElement("strong");
+	usernameEl.className = "username";
+	usernameEl.textContent = `${data.username}:`;
+
+	const contentEl = document.createElement("span");
+	contentEl.className = "content";
+	contentEl.textContent = data.message;
+
+	messageEl.append(originEl, avatarEl, usernameEl, contentEl);
+	messagesContainer.appendChild(messageEl);
 });
+```
+
+### HTML
+
+```html
+<div id="container">
+	<h1>Custom Chat Box</h1>
+	<div id="messages-container" class="messages-container"></div>
+</div>
 ```
 
 ### CSS Styling
@@ -212,7 +351,7 @@ Overlay.on('chat', (data) => {
 	background: var(--bg);
 	border-radius: 10px;
 }
-#avatar {
+.avatar {
 	background: var(--secondary);
 	border-radius: 100px;
 	height: 32px;
@@ -288,15 +427,16 @@ async function() {
 const calcEl = document.getElementById('calc-container');
 const exprEl = document.getElementById('expression');
 const resultEl = document.getElementById('result');
+const cfg = Overlay.data || {};
 
 // Apply colors from sidebar
-if (data.primaryColor) calcEl.style.setProperty('--primary', data.primaryColor);
-if (data.backgroundColor) calcEl.style.setProperty('--background', data.backgroundColor);
+if (cfg.primaryColor) calcEl.style.setProperty('--primary', cfg.primaryColor);
+if (cfg.backgroundColor) calcEl.style.setProperty('--background', cfg.backgroundColor);
 
 let tokens = [];
 let showingResult = false;
 
-const IDLE_MS = data.idleTimeout ?? 20000;
+const IDLE_MS = cfg.idleTimeout ?? 20000;
 let idleTimer = null;
 
 function resetIdleTimer() {
@@ -309,7 +449,7 @@ function resetIdleTimer() {
 }
 
 function speak(text, opts = {}) {
-	if (!data.tts) return;
+	if (!cfg.tts) return;
 	const u = new SpeechSynthesisUtterance(text);
 	Object.assign(u, opts); // voice, rate, pitch, lang, etc.
 	window.speechSynthesis.cancel(); // stop anything currently talking
@@ -334,7 +474,14 @@ function verbalize(token) {
 }
 
 function render() {
-	exprEl.innerHTML = tokens.map((t) => (/^[0-9.]+$/.test(t) ? `<span class="token number">${t}</span>` : `<span class="token op">${t}</span>`)).join(' ');
+	exprEl.textContent = '';
+	tokens.forEach((t, i) => {
+		if (i > 0) exprEl.appendChild(document.createTextNode(' '));
+		const span = document.createElement('span');
+		span.className = /^[0-9.]+$/.test(t) ? 'token number' : 'token op';
+		span.textContent = t;
+		exprEl.appendChild(span);
+	});
 }
 
 function evaluate() {
@@ -498,10 +645,11 @@ Overlay.on('overlaycontent', (data) => {
 
 ```json
 {
-	"tts": true,
+	"tts": false,
+	"ttsVoice": "",
 	"idleTimeout": 20000,
-	"primaryColor": "#00000000",
-	"backgroundColor": "#00000000"
+	"primaryColor": "#ffffff",
+	"backgroundColor": "#00000080"
 }
 ```
 
@@ -511,10 +659,14 @@ Overlay.on('overlaycontent', (data) => {
 
 ```js
 const die = document.getElementById('die');
-const HIDE_MS = data.hideDelay ?? 5000;
+const cfg = Overlay.data || {};
+const HIDE_MS = cfg.hideDelay ?? 5000;
 let hideT = null;
 let min = 1;
 let max = 6;
+
+if (cfg.dotColor) die.style.setProperty('--dot-color', cfg.dotColor);
+die.style.setProperty('--roll-ms', `${cfg.rollDuration ?? 900}ms`);
 
 function showDie() {
 	die.classList.remove('hidden');
@@ -537,7 +689,7 @@ Overlay.on('chat', (data) => {
 	// reveal value after spin
 	setTimeout(() => {
 		die.textContent = v;
-	}, data.rollDuration);
+	}, cfg.rollDuration ?? 900);
 
 	// make it visible & schedule hide
 	showDie();
@@ -906,13 +1058,15 @@ async function showPokedex(username = 'Someone') {
 
 	dexMsgEl.textContent = list.length ? `${username} has caught ${list.length} / ${cfg.maxDex}` : `${username} hasn’t caught anything yet.`;
 
-	dexImgsEl.innerHTML = list
-		.map((p) => {
-			const slug = p.name.toLowerCase().replace(/♀/g, 'f').replace(/♂/g, 'm').replace(/[.'’]/g, '').replace(/\s+/g, '-');
-			const src = `https://img.pokemondb.net/sprites/home/${p.shiny ? 'shiny' : 'normal'}/${slug}.png`;
-			return `<img class="poke${p.shiny ? ' shiny' : ''}" src="${src}" alt="${p.name}">`;
-		})
-		.join('');
+	dexImgsEl.textContent = '';
+	list.forEach((p) => {
+		const slug = p.name.toLowerCase().replace(/♀/g, 'f').replace(/♂/g, 'm').replace(/[.'’]/g, '').replace(/\s+/g, '-');
+		const img = document.createElement('img');
+		img.className = 'poke' + (p.shiny ? ' shiny' : '');
+		img.src = `https://img.pokemondb.net/sprites/home/${p.shiny ? 'shiny' : 'normal'}/${slug}.png`;
+		img.alt = p.name;
+		dexImgsEl.appendChild(img);
+	});
 
 	modalDex.classList.remove('hidden');
 	setTimeout(() => modalDex.classList.add('hidden'), 10000);
@@ -925,17 +1079,25 @@ async function showLeaderboard() {
 		.sort((a, b) => b[1].total - a[1].total)
 		.slice(0, 10);
 
-	boardList.innerHTML = list.length
-		? list
-				.map(([u, d]) => {
-					const tip = d.list.map((p) => (p.shiny ? `${p.name} ⭐` : p.name)).join(', ');
-					return `<li>
-            <span class="user" title="${tip}">${u}</span>
-            <span>${d.total}${d.shiny ? ` ⭐${d.shiny}` : ''}</span>
-          </li>`;
-				})
-				.join('')
-		: '<li>No catches yet</li>';
+	boardList.textContent = '';
+	if (!list.length) {
+		const li = document.createElement('li');
+		li.textContent = 'No catches yet';
+		boardList.appendChild(li);
+	} else {
+		list.forEach(([u, d]) => {
+			const tip = d.list.map((p) => (p.shiny ? `${p.name} ⭐` : p.name)).join(', ');
+			const li = document.createElement('li');
+			const userSpan = document.createElement('span');
+			userSpan.className = 'user';
+			userSpan.title = tip;
+			userSpan.textContent = u;
+			const totalSpan = document.createElement('span');
+			totalSpan.textContent = d.total + (d.shiny ? ` ⭐${d.shiny}` : '');
+			li.append(userSpan, totalSpan);
+			boardList.appendChild(li);
+		});
+	}
 
 	boardList.classList.remove('hidden');
 
@@ -1343,6 +1505,12 @@ body {
     "order": 7,
     "value": 60
   },
+  "msgMs": {
+    "type": "number",
+    "label": "Capture message duration (ms)",
+    "order": 8,
+    "value": 7000
+  },
   "idleSec": {
     "type": "number",
     "label": "Flee time (s)",
@@ -1392,8 +1560,9 @@ body {
 	"fleePct": 15,
 	"idleSec": 30,
 	"catchPct": 40,
-	"maxSpawn": 120,
-	"minSpawn": 30,
+	"maxSpawn": 60,
+	"minSpawn": 40,
+	"msgMs": 7000,
 	"shinyRate": 2,
 	"disableChat": false,
 	"catchCommand": "!catch",
@@ -2306,5 +2475,436 @@ html, body, #board {
   "showStartupMessage": true,
   "ideaIntervalMinutes": 2,
   "twitchPointsCommand": "art"
+}
+```
+
+## HFX Listener Banner
+
+Reacts to Lumia HFX triggers. Flashes a banner showing who triggered the HFX, which command, and their message. Uses `Overlay.on("hfx", ...)` — the handler receives the raw HFX payload (no `event.detail`).
+
+### HTML
+
+```html
+<div id="hfx-banner" class="hidden">
+	<img id="hfx-avatar" alt="" />
+	<div class="text">
+		<div id="hfx-user"></div>
+		<div id="hfx-command"></div>
+		<div id="hfx-message"></div>
+	</div>
+</div>
+```
+
+### CSS
+
+```css
+body {
+	background: transparent;
+	font-family: "{{font}}";
+	color: {{textColor}};
+}
+#hfx-banner {
+	position: absolute;
+	bottom: 40px;
+	left: 40px;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 16px 24px;
+	background: {{bgColor}};
+	border-radius: 16px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+	transform: translateX(-120%);
+	transition: transform 400ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+#hfx-banner.show {
+	transform: translateX(0);
+}
+#hfx-banner.hidden {
+	display: none;
+}
+#hfx-avatar {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: #222;
+	object-fit: cover;
+}
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	font-size: {{fontSize}}px;
+}
+#hfx-user {
+	font-weight: 700;
+}
+#hfx-command {
+	opacity: 0.8;
+	font-size: 0.8em;
+}
+#hfx-message {
+	opacity: 0.9;
+	font-style: italic;
+}
+```
+
+### JS
+
+```js
+const banner = document.getElementById("hfx-banner");
+const avatarEl = document.getElementById("hfx-avatar");
+const userEl = document.getElementById("hfx-user");
+const commandEl = document.getElementById("hfx-command");
+const messageEl = document.getElementById("hfx-message");
+let hideTimer = null;
+
+function show(data) {
+	avatarEl.src = data.avatar || "https://storage.lumiastream.com/placeholderUserIcon.png";
+	userEl.textContent = data.username || "Someone";
+	commandEl.textContent = data.command ? `triggered ${data.command}` : "triggered an HFX";
+	messageEl.textContent = data.message || "";
+
+	banner.classList.remove("hidden");
+	// allow the DOM to register the hidden→visible transition
+	requestAnimationFrame(() => banner.classList.add("show"));
+
+	clearTimeout(hideTimer);
+	const holdMs = Math.max(2000, Number(data.duration) || Number(Overlay.data?.holdMs) || 5000);
+	hideTimer = setTimeout(() => {
+		banner.classList.remove("show");
+		setTimeout(() => banner.classList.add("hidden"), 500);
+	}, holdMs);
+}
+
+Overlay.on("hfx", (data) => {
+	show(data);
+});
+```
+
+### Configs
+
+```json
+{
+	"bgColor": {
+		"type": "colorpicker",
+		"label": "Banner background",
+		"order": 1,
+		"value": "#1a1a2ecc"
+	},
+	"textColor": {
+		"type": "colorpicker",
+		"label": "Text color",
+		"order": 2,
+		"value": "#ffffff"
+	},
+	"font": {
+		"type": "fontpicker",
+		"label": "Font",
+		"order": 3,
+		"value": "Inter"
+	},
+	"fontSize": {
+		"type": "slider",
+		"label": "Font size",
+		"order": 4,
+		"options": { "min": 12, "max": 40, "step": 2, "suffix": "px" },
+		"value": 20
+	},
+	"holdMs": {
+		"type": "number",
+		"label": "Display time (ms) — used when HFX duration is missing",
+		"order": 5,
+		"value": 5000
+	}
+}
+```
+
+### Data
+
+```json
+{
+	"bgColor": "#1a1a2ecc",
+	"textColor": "#ffffff",
+	"font": "Inter",
+	"fontSize": 20,
+	"holdMs": 5000
+}
+```
+
+## Virtual Light Monitor
+
+Shows an on-screen representation of a Lumia virtual light: a colored dot that matches the current color, brightness, and power state. Uses `Overlay.on("virtuallight", ...)`. Also demonstrates the first-load storage pattern so the last-known color persists across overlay reloads.
+
+### HTML
+
+```html
+<div id="wrap">
+	<div id="dot"></div>
+	<div id="label"></div>
+</div>
+```
+
+### CSS
+
+```css
+body {
+	background: transparent;
+	font-family: "{{font}}";
+	color: #ffffff;
+}
+#wrap {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 14px 20px;
+	background: rgba(0, 0, 0, 0.55);
+	border-radius: 999px;
+	width: fit-content;
+}
+#dot {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: #000;
+	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
+	transition: background 200ms linear, opacity 200ms linear, transform 200ms ease;
+}
+#dot.off {
+	opacity: 0.25;
+	transform: scale(0.85);
+}
+#label {
+	font-size: 16px;
+	white-space: nowrap;
+}
+```
+
+### JS
+
+```js
+const dot = document.getElementById("dot");
+const label = document.getElementById("label");
+const STORAGE_KEY = "last_light_state";
+
+// Default state (first load)
+let state = {
+	uuid: "",
+	r: 0,
+	g: 0,
+	b: 0,
+	brightness: 100,
+	power: true,
+};
+
+// Seed storage on first load so we never see the red "no value" toast
+const saved = await Overlay.getStorage(STORAGE_KEY);
+if (saved == null) {
+	await Overlay.saveStorage(STORAGE_KEY, state);
+} else {
+	state = saved;
+}
+render();
+
+function render() {
+	const { r, g, b, brightness, power, uuid } = state;
+	dot.style.background = `rgb(${r}, ${g}, ${b})`;
+	dot.classList.toggle("off", power === false);
+	const hex = `#${[r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
+	const name = uuid || "No light yet";
+	label.textContent = power === false ? `${name} — off` : `${name} — ${hex} @ ${brightness}%`;
+}
+
+Overlay.on("virtuallight", async (data) => {
+	state = {
+		uuid: data.uuid || state.uuid,
+		r: data.color?.r ?? state.r,
+		g: data.color?.g ?? state.g,
+		b: data.color?.b ?? state.b,
+		brightness: data.brightness ?? state.brightness,
+		power: data.power !== false,
+	};
+	render();
+	await Overlay.saveStorage(STORAGE_KEY, state);
+});
+```
+
+### Configs
+
+```json
+{
+	"font": {
+		"type": "fontpicker",
+		"label": "Font",
+		"order": 1,
+		"value": "Inter"
+	}
+}
+```
+
+### Data
+
+```json
+{
+	"font": "Inter"
+}
+```
+
+## Loyalty Points Leaderboard
+
+Uses `Overlay.getLoyaltyPoints` + `Overlay.addLoyaltyPoints`. Chat commands:
+
+- `!points` — the user's current balance is posted back to chat via `Overlay.chatbot`.
+- `!give @user <n>` — transfer N points from the sender to `@user` (moderator-only).
+
+Also renders a top-10 leaderboard from a locally cached list of users who have been seen in chat (loyalty points themselves are managed by Lumia — we just display the cache). Cache is persisted with `Overlay.saveStorage`.
+
+### HTML
+
+```html
+<div id="board">
+	<h2>Top Loyalty</h2>
+	<ol id="list"></ol>
+</div>
+```
+
+### CSS
+
+```css
+body {
+	background: transparent;
+	font-family: "{{font}}";
+	color: #ffffff;
+}
+#board {
+	width: 360px;
+	padding: 20px 24px;
+	background: rgba(10, 10, 20, 0.85);
+	border-radius: 16px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+#board h2 {
+	margin: 0 0 12px;
+	font-size: 20px;
+	color: {{accentColor}};
+}
+#list {
+	margin: 0;
+	padding: 0 0 0 24px;
+	font-size: 16px;
+	line-height: 1.6;
+}
+#list li .amount {
+	float: right;
+	font-weight: 700;
+	color: {{accentColor}};
+}
+```
+
+### JS
+
+```js
+const listEl = document.getElementById("list");
+const STORAGE_KEY = "loyalty_seen_users";
+
+// first-load seed
+let seen = await Overlay.getStorage(STORAGE_KEY);
+if (seen == null) {
+	seen = [];
+	await Overlay.saveStorage(STORAGE_KEY, seen);
+}
+
+async function refresh() {
+	const rows = [];
+	for (const u of seen) {
+		const pts = Number(await Overlay.getLoyaltyPoints({ username: u.username, platform: u.platform })) || 0;
+		rows.push({ ...u, pts });
+	}
+	rows.sort((a, b) => b.pts - a.pts);
+
+	listEl.textContent = "";
+	rows.slice(0, 10).forEach((r) => {
+		const li = document.createElement("li");
+		const name = document.createElement("span");
+		name.textContent = r.username;
+		const amt = document.createElement("span");
+		amt.className = "amount";
+		amt.textContent = r.pts.toLocaleString();
+		li.append(name, amt);
+		listEl.appendChild(li);
+	});
+}
+
+async function remember(username, platform) {
+	if (!username || !platform) return;
+	const existing = seen.find((u) => u.username === username && u.platform === platform);
+	if (existing) return;
+	seen.push({ username, platform });
+	await Overlay.saveStorage(STORAGE_KEY, seen);
+}
+
+Overlay.on("chat", async (data) => {
+	const msg = (data.message || "").trim();
+	const username = data.username;
+	const platform = data.platform || "twitch";
+	const isMod = data.userLevels?.mod || data.userLevels?.isSelf;
+
+	await remember(username, platform);
+
+	// !points — look up caller's balance
+	if (msg.toLowerCase() === "!points") {
+		const pts = Number(await Overlay.getLoyaltyPoints({ username, platform })) || 0;
+		await Overlay.chatbot({ message: `${username} has ${pts} points`, platform });
+		await refresh();
+		return;
+	}
+
+	// !give @user 50 — moderator transfer
+	if (msg.toLowerCase().startsWith("!give ") && isMod) {
+		const parts = msg.split(/\s+/);
+		const target = (parts[1] || "").replace(/^@/, "");
+		const amount = Math.max(0, Math.floor(Number(parts[2]) || 0));
+		if (!target || !amount) {
+			await Overlay.chatbot({ message: "Usage: !give @user 50", platform });
+			return;
+		}
+		await Overlay.addLoyaltyPoints({ value: -amount, username, platform });
+		await Overlay.addLoyaltyPoints({ value: amount, username: target, platform });
+		await remember(target, platform);
+		await Overlay.chatbot({ message: `${username} gave ${amount} points to ${target}`, platform });
+		await refresh();
+	}
+});
+
+// Refresh on load and every 30s so balances stay current
+await refresh();
+setInterval(refresh, 30000);
+```
+
+### Configs
+
+```json
+{
+	"accentColor": {
+		"type": "colorpicker",
+		"label": "Accent color",
+		"order": 1,
+		"value": "#ffcc00"
+	},
+	"font": {
+		"type": "fontpicker",
+		"label": "Font",
+		"order": 2,
+		"value": "Inter"
+	}
+}
+```
+
+### Data
+
+```json
+{
+	"accentColor": "#ffcc00",
+	"font": "Inter"
 }
 ```
