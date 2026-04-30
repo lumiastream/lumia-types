@@ -1757,6 +1757,12 @@ export const AllVariables = {
 			campaignDonation: ['username', 'currency', 'amount'],
 		},
 	},
+	throne: {
+		variables: ['throne_last_gift'],
+		alerts: {
+			giftPurchase: ['username', 'displayname', 'message', 'itemName', 'itemThumbnailUrl', 'isSurpriseGift', 'creatorUsername', 'raw'],
+		},
+	},
 	tipeeestream: {
 		alerts: {
 			donation: ['username', 'currency', 'amount'],
