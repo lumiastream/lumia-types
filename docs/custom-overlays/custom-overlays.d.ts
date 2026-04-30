@@ -672,6 +672,8 @@ export declare enum LumiaAlertValues {
     DONORDRIVE_DONATION = "donordrive-donation",
     /** Tiltify campaign donation */
     TILTIFY_DONATION = "tiltify-campaignDonation",
+    /** Throne gift purchase */
+    THRONE_GIFT_PURCHASE = "throne-giftPurchase",
     /** TipeeeStream donation */
     TIPEEESTREAM_DONATION = "tipeeestream-donation",
     /** TreatStream treat */

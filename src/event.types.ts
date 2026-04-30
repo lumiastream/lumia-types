@@ -180,6 +180,7 @@ export enum LumiaIntegrations {
 	EXTRALIFE = 'extralife',
 	DONORDRIVE = 'donordrive',
 	TILTIFY = 'tiltify',
+	THRONE = 'throne',
 	PATREON = 'patreon',
 	WOOCOMMERCE = 'woocommerce',
 	KOFI = 'kofi',

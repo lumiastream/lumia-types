@@ -7260,6 +7260,59 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
 		],
 	},
+	[LumiaAlertValues.THRONE_GIFT_PURCHASE]: {
+		connection: LumiaIntegrations.THRONE,
+		message: '{{username}} sent {{itemName}} from Throne. {{message}}',
+		eventlistMessage: 'Gift Purchase',
+		eventlistDetailedMessage: 'sent {{itemName}}',
+		acceptedVariables: AllVariables.throne.alerts.giftPurchase,
+		quickActions: [
+			{
+				label: 'Gift',
+				dynamic: { value: 'AirPods Max', name: 'AirPods Max' },
+				extraSettings: {
+					username: 'lumiastream',
+					displayname: 'lumiastream',
+					message: "Keep doing what you're doing!",
+					itemName: 'AirPods Max',
+					itemThumbnailUrl: 'https://m.media-amazon.com/images/I/81jqUPkIVRL._AC_SX522_.jpg',
+					isSurpriseGift: false,
+					creatorUsername: 'lumiastream',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Item',
+				dynamicField: 'value',
+				variableField: 'itemName',
+				required: true,
+				default: 'AirPods Max',
+			},
+			{
+				type: 'text',
+				label: 'Message',
+				variableField: 'message',
+				required: false,
+				default: "Keep doing what you're doing!",
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
 	// },
 	// fourthwall: {
 	[LumiaAlertValues.FOURTHWALL_DONATION]: {
