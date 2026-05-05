@@ -18,6 +18,7 @@ Runtime reminders:
 - Read Config/Data values from `Overlay.data`, not from a bare top-level `data` variable.
 - JS is already wrapped by Lumia in an async function, so top-level `await` is allowed.
 - Use literal listener names like `Overlay.on('chat', ...)` so Lumia can auto-subscribe to events.
+- For full event payload shapes, use the Overlay Type Definitions page or `custom-overlays.d.ts`.
 - Use `Overlay.deleteStorage`, not `Overlay.removeStorage`.
 
 ### `window.Overlay` interface

@@ -52,6 +52,8 @@ In JS, wrap tokens in quotes: `const n = Number("{{twitch_session_bits_count}}")
 
 Valid listener names: `chat`, `alert`, `hfx`, `virtuallight`, `overlaycontent`.
 
+Full event payload shapes are in `custom-overlays.d.ts` and the Overlay Type Definitions page. Use `ChatEvent`, `AlertEvent`, `HfxEvent`, `VirtualLightEvent`, and `CustomOverlayContentEvent` there before guessing fields.
+
 Alert rules:
 
 - Branch on exact `data.alert` string equality. No `includes`, no `type`, no `platform` heuristics.
