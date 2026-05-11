@@ -307,6 +307,10 @@ export enum LumiaAlertValues {
 	YOUTUBE_SUPERSTICKER = 'youtube-supersticker',
 	/** YouTube session superstickers */
 	YOUTUBE_SESSION_SUPERSTICKERS = 'youtube-sessionSuperstickers',
+	/** YouTube gift event (jewel-based) */
+	YOUTUBE_GIFTS = 'youtube-gifts',
+	/** YouTube session gifts */
+	YOUTUBE_SESSION_GIFTS = 'youtube-sessionGifts',
 	/** YouTube total likes */
 	YOUTUBE_LIKE = 'youtube-like',
 	/** YouTube total views */
@@ -671,6 +675,8 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: 'Youtube Subscriber',
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: 'Youtube Superchat',
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: 'Youtube Supersticker',
+	[LumiaAlertValues.YOUTUBE_GIFTS]: 'Youtube Gifts',
+	[LumiaAlertValues.YOUTUBE_SESSION_GIFTS]: 'Youtube Session Gifts',
 	[LumiaAlertValues.YOUTUBE_ENTRANCE]: 'Youtube Entrance',
 	[LumiaAlertValues.YOUTUBE_LIKE]: 'Youtube Like',
 	[LumiaAlertValues.YOUTUBE_VIEWERS]: 'Youtube Viewers',
