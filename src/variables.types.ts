@@ -394,6 +394,16 @@ export enum SystemVariables {
 	YOUTUBE_LAST_GIFT_MEMBER = 'youtube_last_gift_member',
 	/** Session gift members (list). Use as {{youtube_session_gift_members}}. */
 	YOUTUBE_SESSION_GIFT_MEMBERS = 'youtube_session_gift_members',
+	/** Lifetime jewels count. Use as {{youtube_total_jewels_count}}. */
+	YOUTUBE_TOTAL_JEWELS_COUNT = 'youtube_total_jewels_count',
+	/** Session jewels count. Use as {{youtube_session_jewels_count}}. */
+	YOUTUBE_SESSION_JEWELS_COUNT = 'youtube_session_jewels_count',
+	/** Last jewel amount. Use as {{youtube_last_jewels}}. */
+	YOUTUBE_LAST_JEWELS = 'youtube_last_jewels',
+	/** Last user that sent jewels. Use as {{youtube_last_jewels_user}}. */
+	YOUTUBE_LAST_JEWELS_USER = 'youtube_last_jewels_user',
+	/** Session jewel gifters (list). Use as {{youtube_session_jewels_gifters}}. */
+	YOUTUBE_SESSION_JEWELS_GIFTERS = 'youtube_session_jewels_gifters',
 	/** Last subscriber. Use as {{youtube_last_subscriber}}. */
 	YOUTUBE_LAST_SUBSCRIBER = 'youtube_last_subscriber',
 	/** Total uploaded videos. Use as {{youtube_total_video_count}}. */
@@ -2058,6 +2068,11 @@ export const AllVariables = {
 			'youtube_session_gift_members_count',
 			'youtube_last_gift_member',
 			'youtube_session_gift_members',
+			'youtube_total_jewels_count',
+			'youtube_session_jewels_count',
+			'youtube_last_jewels',
+			'youtube_last_jewels_user',
+			'youtube_session_jewels_gifters',
 			'youtube_total_video_count',
 			'youtube_total_view_count',
 		],
@@ -2087,6 +2102,22 @@ export const AllVariables = {
 				'subPlanName',
 			],
 			sessionGiftMembers: ['total', 'previousTotal'],
+			gifts: [
+				'username',
+				'displayname',
+				'avatar',
+				'userId',
+				'jewelsAmount',
+				'totalJewels',
+				'comboCount',
+				'giftName',
+				'giftUrl',
+				'hasVisualEffect',
+				'altText',
+				'language',
+				'message',
+			],
+			sessionGifts: ['total', 'previousTotal'],
 			superchat: ['username', 'displayname', 'currency', 'currencySymbol', 'amount', 'message'],
 			sessionSuperchats: ['total', 'previousTotal', 'currency', 'currencySymbol'],
 			supersticker: ['username', 'displayname', 'stickerId', 'stickerName', 'amount', 'currency', 'currencySymbol', 'imageUrl'],
