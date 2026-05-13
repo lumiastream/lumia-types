@@ -26,6 +26,7 @@ export interface ILumiaSendPack {
 			username?: string;
 			bits?: number;
 			originType?: LumiaActivityOriginTypes;
+			queueType?: LumiaActivityCommandTypes;
 		}; // Mainly used to pass in variables for things like TTS or Chat bot
 	};
 }

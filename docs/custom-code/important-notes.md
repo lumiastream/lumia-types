@@ -13,28 +13,43 @@ title: Important notes
   The different options are: `isSelf, mod, vip, tier3, tier2, tier1, subscriber, follower`.
   In your code you should use `const levels = await getVariable('userLevelsRaw');` and then you can check a level with `if (levels.subscriber) {}` since these are all booleans
 
-- We also expose `{{originType}}` so your custom code can tell where the activity came from. Use `const originType = await getVariable('originType');` when you need to branch between alerts and command-based triggers.
-  Common values are: `alert`, `chat`, `chatbot`, `twitch-points`, `twitch-extension`, `kick-points`, `system`, and `api`.
-  Important: "commands" are not a single origin type. If you want to run only for command-style triggers you will usually want to check for a list like `chat`, `chatbot`, `twitch-points`, `twitch-extension`, and `kick-points`.
+## Origin and queue type variables
+
+We expose `{{originType}}` and `{{queueType}}` so custom code can tell where an activity came from and what kind of queued activity is running.
+
+Use `originType` when you want to branch by the source of the activity. Use `queueType` when you need the specific command category that Lumia is executing.
+
+| Variable | What it means | Common values |
+| --- | --- | --- |
+| `originType` | Where the activity came from. This controls queue priority and groups similar sources together. | `alert`, `chat`, `chatbot`, `twitch-points`, `twitch-extension`, `kick-points`, `system`, `api`, `streamdeck`, `touchportal`, `loupedeck`, `avermedia`, `lumiastreamlink` |
+| `queueType` | The specific queued command/activity type. This is the best value to check when you need to distinguish a normal chat command from a chat match. | `alert`, `chat-command`, `chatbot-command`, `chat-match`, `twitch-points`, `twitch-points-output`, `twitch-extension`, `twitch-extension-hfx`, `kick-points` |
+
+Important: "commands" are not a single `originType`. A normal chat command uses `originType: "chat"` and `queueType: "chat-command"`, while a chat match also uses `originType: "chat"` but uses `queueType: "chat-match"`.
 
 ```js
 async function() {
 	const originType = await getVariable('originType');
-	const commandOrigins = ['chat', 'chatbot', 'twitch-points', 'twitch-extension', 'kick-points'];
+	const queueType = await getVariable('queueType');
+
+	if (queueType === 'chat-match') {
+		log('This ran from a chat match.');
+		done();
+		return;
+	}
+
+	if (queueType === 'chat-command') {
+		log('This ran from a normal chat command.');
+		done();
+		return;
+	}
 
 	if (originType === 'alert') {
-		chatbot({ message: 'This custom code was triggered by an alert.' });
+		log('This ran from an alert.');
 		done();
 		return;
 	}
 
-	if (commandOrigins.includes(originType)) {
-		chatbot({ message: `Command trigger detected from ${originType}.` });
-		done();
-		return;
-	}
-
-	log(`Skipping custom code for originType: ${originType}`);
+	log(`Skipping custom code for originType=${originType}, queueType=${queueType}`);
 	done();
 }
 ```
