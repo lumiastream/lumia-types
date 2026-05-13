@@ -7459,6 +7459,116 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
 		],
 	},
+	[LumiaAlertValues.THRONE_CONTRIBUTION_PURCHASE]: {
+		connection: LumiaIntegrations.THRONE,
+		message: '{{username}} contributed {{amount}} {{currency}} toward {{itemName}} on Throne. {{message}}',
+		eventlistMessage: 'Contribution Purchase',
+		eventlistDetailedMessage: 'contributed {{amount}} {{currency}} toward {{itemName}}',
+		acceptedVariables: AllVariables.throne.alerts.contributionPurchase,
+		quickActions: [
+			{
+				label: '$10',
+				dynamic: { value: 10, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					displayname: 'lumiastream',
+					message: 'Happy to contribute!',
+					itemName: 'AirPods Max',
+					itemThumbnailUrl: 'https://m.media-amazon.com/images/I/81jqUPkIVRL._AC_SX522_.jpg',
+					amount: 10,
+					currency: LumiaVariationCurrency.USD,
+					creatorUsername: 'lumiastream',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Item',
+				variableField: 'itemName',
+				required: true,
+				default: 'AirPods Max',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 10,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+			{
+				type: 'text',
+				label: 'Message',
+				variableField: 'message',
+				required: false,
+				default: 'Happy to contribute!',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.THRONE_GIFT_CROWDFUNDED]: {
+		connection: LumiaIntegrations.THRONE,
+		message: '{{itemName}} was crowdfunded on Throne.',
+		eventlistMessage: 'Gift Crowdfunded',
+		eventlistDetailedMessage: 'crowdfunded {{itemName}}',
+		acceptedVariables: AllVariables.throne.alerts.giftCrowdfunded,
+		quickActions: [
+			{
+				label: 'Gift',
+				dynamic: { value: 'AirPods Max', name: 'AirPods Max' },
+				extraSettings: {
+					username: 'Community',
+					displayname: 'Community',
+					itemName: 'AirPods Max',
+					itemThumbnailUrl: 'https://m.media-amazon.com/images/I/81jqUPkIVRL._AC_SX522_.jpg',
+					isSurpriseGift: false,
+					creatorUsername: 'lumiastream',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Item',
+				dynamicField: 'value',
+				variableField: 'itemName',
+				required: true,
+				default: 'AirPods Max',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_STRING,
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
 	// },
 	// fourthwall: {
 	[LumiaAlertValues.FOURTHWALL_DONATION]: {

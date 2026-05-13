@@ -437,6 +437,10 @@ export enum LumiaAlertValues {
 	TILTIFY_DONATION = 'tiltify-campaignDonation',
 	/** Throne gift purchase */
 	THRONE_GIFT_PURCHASE = 'throne-giftPurchase',
+	/** Throne contribution purchase */
+	THRONE_CONTRIBUTION_PURCHASE = 'throne-contributionPurchase',
+	/** Throne gift crowdfunded */
+	THRONE_GIFT_CROWDFUNDED = 'throne-giftCrowdfunded',
 	/** TipeeeStream donation */
 	TIPEEESTREAM_DONATION = 'tipeeestream-donation',
 	/** TreatStream treat */
@@ -736,6 +740,8 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.DONORDRIVE_DONATION]: 'Donordrive Tip',
 	[LumiaAlertValues.TILTIFY_DONATION]: 'Tiltify Campaign Tip',
 	[LumiaAlertValues.THRONE_GIFT_PURCHASE]: 'Throne Gift Purchase',
+	[LumiaAlertValues.THRONE_CONTRIBUTION_PURCHASE]: 'Throne Contribution Purchase',
+	[LumiaAlertValues.THRONE_GIFT_CROWDFUNDED]: 'Throne Gift Crowdfunded',
 	// [LumiaAlertValues.PAYPAL_PAYMENT_COMPLETE]: "Paypal Payment Complete",
 	// [LumiaAlertValues.PAYPAL_PAYMENT_DENIED]: "Paypal Payment Denied",
 	[LumiaAlertValues.TIPEEESTREAM_DONATION]: 'Tipeeestream Tip',

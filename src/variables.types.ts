@@ -1778,6 +1778,8 @@ export const AllVariables = {
 		variables: ['throne_last_gift'],
 		alerts: {
 			giftPurchase: ['username', 'displayname', 'message', 'itemName', 'itemThumbnailUrl', 'isSurpriseGift', 'creatorUsername', 'raw'],
+			contributionPurchase: ['username', 'displayname', 'message', 'itemName', 'itemThumbnailUrl', 'amount', 'currency', 'creatorUsername', 'raw'],
+			giftCrowdfunded: ['username', 'displayname', 'itemName', 'itemThumbnailUrl', 'isSurpriseGift', 'creatorUsername', 'raw'],
 		},
 	},
 	tipeeestream: {
