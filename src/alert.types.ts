@@ -7699,12 +7699,138 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
 		],
 	},
+	[LumiaAlertValues.FOURTHWALL_SUBSCRIPTION_CHANGED]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: '{{username}} subscription changed to {{subscriptionType}}',
+		eventlistMessage: 'Subscription Changed',
+		eventlistDetailedMessage: 'subscription changed to {{subscriptionType}}',
+		acceptedVariables: AllVariables.fourthwall.alerts.subscriptionChanged,
+		quickActions: [
+			{
+				label: 'Changed',
+				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+					interval: 'MONTHLY',
+					subscriptionType: 'ACTIVE',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Subscription Type',
+				variableField: 'subscriptionType',
+				required: false,
+				default: 'ACTIVE',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.FOURTHWALL_SUBSCRIPTION_EXPIRED]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: '{{username}} subscription ended',
+		eventlistMessage: 'Subscription Ended',
+		eventlistDetailedMessage: 'subscription ended with {{subscriptionType}}',
+		acceptedVariables: AllVariables.fourthwall.alerts.subscriptionExpired,
+		quickActions: [
+			{
+				label: 'Ended',
+				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+					interval: 'MONTHLY',
+					subscriptionType: 'CANCELLED',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Subscription Type',
+				variableField: 'subscriptionType',
+				required: false,
+				default: 'CANCELLED',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+			},
+
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
 	[LumiaAlertValues.FOURTHWALL_GIFTPURCHASE]: {
 		connection: LumiaIntegrations.FOURTHWALL,
 		message: '{{username}} just bought a gift with amount {{amount}}',
 		eventlistMessage: 'Gift Purchase',
 		eventlistDetailedMessage: 'Gift purchase with {{amount}} {{currency}}',
-		acceptedVariables: AllVariables.fourthwall.alerts.shopOrder,
+		acceptedVariables: AllVariables.fourthwall.alerts.giftPurchase,
 		quickActions: [
 			{
 				label: '$100',
@@ -8016,6 +8142,32 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'message',
 				required: false,
 				default: 'Thank you!',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
+	},
+	[LumiaAlertValues.FOURTHWALL_NEWSLETTER_SUBSCRIBED]: {
+		connection: LumiaIntegrations.FOURTHWALL,
+		message: '{{email}} subscribed to the newsletter',
+		eventlistMessage: 'Newsletter Subscribed',
+		eventlistDetailedMessage: 'subscribed to the newsletter',
+		acceptedVariables: AllVariables.fourthwall.alerts.newsletterSubscribed,
+		quickActions: [
+			{
+				label: 'Subscribed',
+				dynamic: { value: 1 },
+				extraSettings: {
+					email: 'test@email.com',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Email',
+				variableField: 'email',
+				required: false,
+				default: 'test@email.com',
 			},
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],

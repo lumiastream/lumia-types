@@ -719,6 +719,10 @@ export declare enum LumiaAlertValues {
     FOURTHWALL_DONATION = "fourthwall-donation",
     /** Fourthwall subscription */
     FOURTHWALL_SUBSCRIPTION = "fourthwall-subscription",
+    /** Fourthwall subscription changed */
+    FOURTHWALL_SUBSCRIPTION_CHANGED = "fourthwall-subscriptionChanged",
+    /** Fourthwall subscription expired */
+    FOURTHWALL_SUBSCRIPTION_EXPIRED = "fourthwall-subscriptionExpired",
     /** Fourthwall gift purchase */
     FOURTHWALL_GIFTPURCHASE = "fourthwall-giftpurchase",
     /** Fourthwall giveaway started */
@@ -727,6 +731,8 @@ export declare enum LumiaAlertValues {
     FOURTHWALL_GIVEAWAY_ENDED = "fourthwall-giveawayEnded",
     /** Fourthwall thank you sent */
     FOURTHWALL_THANKYOU_SENT = "fourthwall-thankyouSent",
+    /** Fourthwall newsletter subscribed */
+    FOURTHWALL_NEWSLETTER_SUBSCRIBED = "fourthwall-newsletterSubscribed",
     /** OBS profile switched */
     OBS_SWITCH_PROFILE = "obs-switchProfile",
     /** OBS scene switched */
