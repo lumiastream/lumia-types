@@ -1,5 +1,20 @@
 // [AI] When SystemVariables is used, update custom-overlays.d.ts
 
+export interface LumiaAcceptedVariableDefinition {
+	name: string;
+	description?: string;
+	origin?: string;
+	example?: unknown;
+}
+
+export type LumiaAcceptedVariable = string | LumiaAcceptedVariableDefinition;
+
+export const getAcceptedVariableName = (entry: LumiaAcceptedVariable): string =>
+	typeof entry === 'string' ? entry : entry.name;
+
+export const getAcceptedVariableNames = (entries: LumiaAcceptedVariable[]): string[] =>
+	entries.map(getAcceptedVariableName);
+
 // Use the **string values** of this enum inside overlays: e.g. {{twitch_total_subscriber_count}}, not {{TWITCH_TOTAL_SUBSCRIBER_COUNT}}.
 export enum SystemVariables {
 	// ───────────────────────────── Functions / Helpers ─────────────────────────────
@@ -879,6 +894,60 @@ export const ReservedVariables = [
 	'uptime',
 ];
 
+// Shared example shapes for object/array variables that recur across alerts.
+const USER_LEVELS_RAW_EXAMPLE = {
+	isSelf: false,
+	mod: false,
+	vip: false,
+	tier3: false,
+	tier2: false,
+	tier1: false,
+	subscriber: true,
+	follower: true,
+};
+
+const TWITCH_RECIPIENTS_RAW_EXAMPLE: LumiaAcceptedVariableDefinition = {
+	name: 'recipientsRaw',
+	example: [
+		{
+			displayname: 'Ex: LumiaFan',
+			username: 'Ex: lumia_fan',
+			userId: 'Ex: 123456789',
+			avatar: 'Ex: https://static-cdn.jtvnw.net/jtv_user_pictures/lumia.png',
+		},
+	],
+};
+
+const KICK_RECIPIENTS_RAW_EXAMPLE: LumiaAcceptedVariableDefinition = {
+	name: 'recipientsRaw',
+	example: [
+		{
+			username: 'Ex: lumia_fan',
+			userId: 'Ex: 987654',
+			displayname: 'Ex: LumiaFan',
+			avatar: 'Ex: https://files.kick.com/images/user/lumia.jpg',
+		},
+	],
+};
+
+const YOUTUBE_RECIPIENTS_RAW_EXAMPLE: LumiaAcceptedVariableDefinition = {
+	name: 'recipientsRaw',
+	example: [
+		{
+			username: 'Ex: lumia_member',
+			displayname: 'Ex: LumiaMember',
+			userId: 'Ex: UCabc123',
+			avatar: 'Ex: https://yt3.ggpht.com/lumia-avatar.jpg',
+			memberLevelName: 'Ex: Level 1',
+		},
+	],
+};
+
+const USER_LEVELS_RAW_VARIABLE: LumiaAcceptedVariableDefinition = {
+	name: 'userLevelsRaw',
+	example: USER_LEVELS_RAW_EXAMPLE,
+};
+
 export const AllVariables = {
 	lumiastream: {
 		variables: [
@@ -995,7 +1064,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'originType',
@@ -1021,7 +1090,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'originType',
@@ -1104,7 +1173,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'originType',
@@ -1153,7 +1222,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1174,7 +1243,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1195,7 +1264,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1216,7 +1285,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1241,7 +1310,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1264,7 +1333,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1290,7 +1359,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1313,7 +1382,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1343,7 +1412,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1369,7 +1438,7 @@ export const AllVariables = {
 				'userId',
 				'avatar',
 				'userLevels',
-				'userLevelsRaw',
+				USER_LEVELS_RAW_VARIABLE,
 				'channelDescription',
 				'channelViews',
 				'command',
@@ -1494,7 +1563,7 @@ export const AllVariables = {
 			reaction: ['username', 'reaction'],
 			star: ['username', 'amount'],
 			support: ['username', 'amount'],
-			subscriptionGift: ['username', 'recipient', 'recipients', 'recipientsRaw', 'gifter', 'giftAmount', 'message'],
+			subscriptionGift: ['username', 'recipient', 'recipients', TWITCH_RECIPIENTS_RAW_EXAMPLE, 'gifter', 'giftAmount', 'message'],
 			share: ['username'],
 		},
 	},
@@ -1505,7 +1574,64 @@ export const AllVariables = {
 			subscriptionChanged: ['username', 'email', 'currency', 'amount', 'interval', 'id', 'subscriptionType', 'tierId', 'variantId', 'createdAt', 'raw'],
 			subscriptionExpired: ['username', 'email', 'currency', 'amount', 'interval', 'id', 'subscriptionType', 'tierId', 'variantId', 'createdAt', 'raw'],
 			commission: ['username', 'email', 'message', 'currency', 'amount', 'raw'],
-			shopOrder: ['username', 'email', 'message', 'items', 'itemsCount', 'itemsDetailed', 'orderItems', 'itemImages', 'friendlyId', 'currency', 'amount', 'firstItem', 'raw'],
+			shopOrder: [
+				'username',
+				'email',
+				'message',
+				'items',
+				'itemsCount',
+				'itemsDetailed',
+				{
+					name: 'orderItems',
+					example: [
+						{
+							id: 'Ex: lumia-shirt-001',
+							name: 'Ex: Lumia Stream Tee',
+							slug: 'Ex: lumia-stream-tee',
+							description: 'Ex: Official Lumia Stream merch',
+							imageUrl: 'Ex: https://lumiastream.com/merch/lumia-tee.png',
+							variantName: 'Ex: Lumia Logo - Black - L',
+							sku: 'Ex: LUMIA-TEE-BLK-L',
+							quantity: 1,
+							size: 'Ex: L',
+							color: 'Ex: Black',
+							colorSwatch: 'Ex: #000000',
+							attributes: 'Ex: Black, L',
+							unitPrice: 25,
+							price: 25,
+							variant: null,
+						},
+					],
+				},
+				{
+					name: 'itemImages',
+					example: ['Ex: https://lumiastream.com/merch/lumia-tee.png'],
+				},
+				'friendlyId',
+				'currency',
+				'amount',
+				{
+					name: 'firstItem',
+					example: {
+						id: 'Ex: lumia-shirt-001',
+						name: 'Ex: Lumia Stream Tee',
+						slug: 'Ex: lumia-stream-tee',
+						description: 'Ex: Official Lumia Stream merch',
+						imageUrl: 'Ex: https://lumiastream.com/merch/lumia-tee.png',
+						variantName: 'Ex: Lumia Logo - Black - L',
+						sku: 'Ex: LUMIA-TEE-BLK-L',
+						quantity: 1,
+						size: 'Ex: L',
+						color: 'Ex: Black',
+						colorSwatch: 'Ex: #000000',
+						attributes: 'Ex: Black, L',
+						unitPrice: 25,
+						price: 25,
+						variant: null,
+					},
+				},
+				'raw',
+			],
 			giftPurchase: [
 				'username',
 				'email',
@@ -1514,12 +1640,65 @@ export const AllVariables = {
 				'amount',
 				'friendlyId',
 				'quantity',
-				'offer',
+				{
+					name: 'offer',
+					example: {
+						id: 'Ex: lumia-shirt-001',
+						name: 'Ex: Lumia Stream Tee',
+						slug: 'Ex: lumia-stream-tee',
+						description: 'Ex: Official Lumia Stream merch',
+						imageUrl: 'Ex: https://lumiastream.com/merch/lumia-tee.png',
+						variantName: 'Ex: Lumia Logo - Black - L',
+						sku: 'Ex: LUMIA-TEE-BLK-L',
+						quantity: 1,
+						size: 'Ex: L',
+						color: 'Ex: Black',
+						colorSwatch: 'Ex: #000000',
+						attributes: 'Ex: Black, L',
+						unitPrice: 25,
+						price: 25,
+						variant: null,
+					},
+				},
 				'offerImageUrl',
-				'gifts',
+				{
+					name: 'gifts',
+					example: [
+						{
+							id: 'Ex: gift-001',
+							status: 'Ex: AVAILABLE',
+							winner: {
+								username: 'Ex: lumiastream',
+								email: 'Ex: viewer@lumiastream.com',
+								selectedAt: 'Ex: 2026-05-14T15:55:15Z',
+								redeemUri: 'Ex: https://shop.lumiastream.com/redeem',
+							},
+							orderId: 'Ex: ord-12345',
+							orderFriendlyId: 'Ex: LSORDER1',
+							promotionId: 'Ex: prm-001',
+						},
+					],
+				},
 				'giftCount',
-				'winners',
-				'winnerNames',
+				{
+					name: 'winners',
+					example: [
+						{
+							username: 'Ex: lumiastream',
+							email: 'Ex: viewer@lumiastream.com',
+							status: 'Ex: REDEEMED',
+							selectedAt: 'Ex: 2026-05-14T15:55:15Z',
+							redeemUri: 'Ex: https://shop.lumiastream.com/redeem',
+							orderId: 'Ex: ord-12345',
+							orderFriendlyId: 'Ex: LSORDER1',
+							promotionId: 'Ex: prm-001',
+						},
+					],
+				},
+				{
+					name: 'winnerNames',
+					example: ['Ex: lumiastream'],
+				},
 				'winnerCount',
 				'firstWinner',
 				'availableGiftCount',
@@ -1538,15 +1717,85 @@ export const AllVariables = {
 				'giveawayFriendlyId',
 				'offerName',
 				'offerImageUrl',
-				'winners',
-				'winnerNames',
+				{
+					name: 'winners',
+					example: [
+						{
+							username: 'Ex: lumiastream',
+							email: 'Ex: viewer@lumiastream.com',
+							status: 'Ex: REDEEMED',
+							selectedAt: 'Ex: 2026-05-14T15:55:15Z',
+							redeemUri: 'Ex: https://shop.lumiastream.com/redeem',
+							orderId: 'Ex: ord-12345',
+							orderFriendlyId: 'Ex: LSORDER1',
+							promotionId: 'Ex: prm-001',
+						},
+					],
+				},
+				{
+					name: 'winnerNames',
+					example: ['Ex: lumiastream'],
+				},
 				'winnerCount',
 				'firstWinner',
 				'duration',
-				'allGifts',
-				'gifts',
+				{
+					name: 'allGifts',
+					example: [
+						{
+							id: 'Ex: gift-001',
+							status: 'Ex: AVAILABLE',
+							winner: {
+								username: 'Ex: lumiastream',
+								email: 'Ex: viewer@lumiastream.com',
+								selectedAt: 'Ex: 2026-05-14T15:55:15Z',
+								redeemUri: 'Ex: https://shop.lumiastream.com/redeem',
+							},
+							orderId: 'Ex: ord-12345',
+							orderFriendlyId: 'Ex: LSORDER1',
+							promotionId: 'Ex: prm-001',
+						},
+					],
+				},
+				{
+					name: 'gifts',
+					example: [
+						{
+							id: 'Ex: gift-001',
+							status: 'Ex: AVAILABLE',
+							winner: {
+								username: 'Ex: lumiastream',
+								email: 'Ex: viewer@lumiastream.com',
+								selectedAt: 'Ex: 2026-05-14T15:55:15Z',
+								redeemUri: 'Ex: https://shop.lumiastream.com/redeem',
+							},
+							orderId: 'Ex: ord-12345',
+							orderFriendlyId: 'Ex: LSORDER1',
+							promotionId: 'Ex: prm-001',
+						},
+					],
+				},
 				'totalGifts',
-				'offer',
+				{
+					name: 'offer',
+					example: {
+						id: 'Ex: lumia-shirt-001',
+						name: 'Ex: Lumia Stream Tee',
+						slug: 'Ex: lumia-stream-tee',
+						description: 'Ex: Official Lumia Stream merch',
+						imageUrl: 'Ex: https://lumiastream.com/merch/lumia-tee.png',
+						variantName: 'Ex: Lumia Logo - Black - L',
+						sku: 'Ex: LUMIA-TEE-BLK-L',
+						quantity: 1,
+						size: 'Ex: L',
+						color: 'Ex: Black',
+						colorSwatch: 'Ex: #000000',
+						attributes: 'Ex: Black, L',
+						unitPrice: 25,
+						price: 25,
+						variant: null,
+					},
+				},
 				'type',
 			],
 			giveawayEnded: [
@@ -1560,18 +1809,107 @@ export const AllVariables = {
 				'giveawayFriendlyId',
 				'offerName',
 				'offerImageUrl',
-				'winners',
-				'winnerNames',
+				{
+					name: 'winners',
+					example: [
+						{
+							username: 'Ex: lumiastream',
+							email: 'Ex: viewer@lumiastream.com',
+							status: 'Ex: REDEEMED',
+							selectedAt: 'Ex: 2026-05-14T15:55:15Z',
+							redeemUri: 'Ex: https://shop.lumiastream.com/redeem',
+							orderId: 'Ex: ord-12345',
+							orderFriendlyId: 'Ex: LSORDER1',
+							promotionId: 'Ex: prm-001',
+						},
+					],
+				},
+				{
+					name: 'winnerNames',
+					example: ['Ex: lumiastream'],
+				},
 				'winnerCount',
 				'firstWinner',
 				'duration',
-				'allGifts',
-				'gifts',
+				{
+					name: 'allGifts',
+					example: [
+						{
+							id: 'Ex: gift-001',
+							status: 'Ex: AVAILABLE',
+							winner: {
+								username: 'Ex: lumiastream',
+								email: 'Ex: viewer@lumiastream.com',
+								selectedAt: 'Ex: 2026-05-14T15:55:15Z',
+								redeemUri: 'Ex: https://shop.lumiastream.com/redeem',
+							},
+							orderId: 'Ex: ord-12345',
+							orderFriendlyId: 'Ex: LSORDER1',
+							promotionId: 'Ex: prm-001',
+						},
+					],
+				},
+				{
+					name: 'gifts',
+					example: [
+						{
+							id: 'Ex: gift-001',
+							status: 'Ex: REDEEMED',
+							winner: {
+								username: 'Ex: lumiastream',
+								email: 'Ex: viewer@lumiastream.com',
+								selectedAt: 'Ex: 2026-05-14T15:55:15Z',
+								redeemUri: 'Ex: https://shop.lumiastream.com/redeem',
+							},
+							orderId: 'Ex: ord-12345',
+							orderFriendlyId: 'Ex: LSORDER1',
+							promotionId: 'Ex: prm-001',
+						},
+					],
+				},
 				'totalGifts',
-				'offer',
+				{
+					name: 'offer',
+					example: {
+						id: 'Ex: lumia-shirt-001',
+						name: 'Ex: Lumia Stream Tee',
+						slug: 'Ex: lumia-stream-tee',
+						description: 'Ex: Official Lumia Stream merch',
+						imageUrl: 'Ex: https://lumiastream.com/merch/lumia-tee.png',
+						variantName: 'Ex: Lumia Logo - Black - L',
+						sku: 'Ex: LUMIA-TEE-BLK-L',
+						quantity: 1,
+						size: 'Ex: L',
+						color: 'Ex: Black',
+						colorSwatch: 'Ex: #000000',
+						attributes: 'Ex: Black, L',
+						unitPrice: 25,
+						price: 25,
+						variant: null,
+					},
+				},
 				'type',
 			],
-			thankyouSent: ['username', 'email', 'message', 'mediaUrl', 'contributionType', 'contribution'],
+			thankyouSent: [
+				'username',
+				'email',
+				'message',
+				'mediaUrl',
+				'contributionType',
+				{
+					name: 'contribution',
+					example: {
+						id: 'Ex: contrib-12345',
+						type: 'Ex: ORDER',
+						shopId: 'Ex: sh_lumiastream',
+						supporter: {
+							username: 'Ex: lumiastream',
+							email: 'Ex: viewer@lumiastream.com',
+							message: 'Ex: Thanks for the stream!',
+						},
+					},
+				},
+			],
 			newsletterSubscribed: ['email', 'raw'],
 		},
 	},
@@ -1622,7 +1960,7 @@ export const AllVariables = {
 			sessionFollowers: ['total', 'previousTotal'],
 			subscriber: ['username', 'avatar', 'tier', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionSubs: ['total', 'previousTotal'],
-			subscriptionGift: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', 'recipientsRaw', 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+			subscriptionGift: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', KICK_RECIPIENTS_RAW_EXAMPLE, 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionGiftSubscriptions: ['total', 'previousTotal'],
 			kicks: ['username', 'avatar', 'amount', 'name', 'type', 'tier', 'id', 'message'],
 			sessionKicks: ['total', 'previousTotal'],
@@ -1704,7 +2042,6 @@ export const AllVariables = {
 			mediaInputPlaybackStarted: ['inputName', 'inputUuid'],
 			mediaInputPlaybackEnded: ['inputName', 'inputUuid'],
 			virtualcamStateChanged: ['outputActive', 'outputState'],
-			recordFileChanged: ['newOutputPath'],
 			screenshotSaved: ['savedScreenshotPath'],
 			replayBufferSaved: ['saved_key'],
 			verticalBacktrackSaved: ['saved_key', 'height', 'width'],
@@ -1921,7 +2258,7 @@ export const AllVariables = {
 			sessionFollowers: ['total', 'previousTotal'],
 			subscriber: ['username', 'avatar', 'tier', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionSubs: ['total', 'previousTotal'],
-			giftSubscription: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', 'recipientsRaw', 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+			giftSubscription: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', TWITCH_RECIPIENTS_RAW_EXAMPLE, 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionGiftSubscriptions: ['total', 'previousTotal'],
 			bits: ['username', 'avatar', 'amount', 'message'],
 			bitsCombo: ['username', 'avatar', 'amount', 'bitsType', 'message'],
@@ -2166,7 +2503,7 @@ export const AllVariables = {
 				'tier',
 				'giftAmount',
 				'recipients',
-				'recipientsRaw',
+				YOUTUBE_RECIPIENTS_RAW_EXAMPLE,
 				'gifter',
 				'totalGifts',
 				'subMonths',
@@ -2186,6 +2523,9 @@ export const AllVariables = {
 				'comboCount',
 				'giftName',
 				'giftUrl',
+				'giftImageUrl',
+				'giftDurationSeconds',
+				'giftDurationNanos',
 				'hasVisualEffect',
 				'altText',
 				'language',

@@ -761,8 +761,6 @@ export declare enum LumiaAlertValues {
     OBS_MEDIA_INPUT_PLAYBACK_ENDED = "obs-mediaInputPlaybackEnded",
     /** OBS virtual camera state changed */
     OBS_VIRTUALCAM_STATE_CHANGED = "obs-virtualcamStateChanged",
-    /** OBS record file changed */
-    OBS_RECORD_FILE_CHANGED = "obs-recordFileChanged",
     /** OBS screenshot saved */
     OBS_SCREENSHOT_SAVED = "obs-screenshotSaved",
     /** OBS replay buffer saved */
