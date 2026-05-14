@@ -461,6 +461,10 @@ export enum LumiaAlertValues {
 	FOURTHWALL_DONATION = 'fourthwall-donation',
 	/** Fourthwall subscription */
 	FOURTHWALL_SUBSCRIPTION = 'fourthwall-subscription',
+	/** Fourthwall subscription changed */
+	FOURTHWALL_SUBSCRIPTION_CHANGED = 'fourthwall-subscriptionChanged',
+	/** Fourthwall subscription expired */
+	FOURTHWALL_SUBSCRIPTION_EXPIRED = 'fourthwall-subscriptionExpired',
 	/** Fourthwall gift purchase */
 	FOURTHWALL_GIFTPURCHASE = 'fourthwall-giftpurchase',
 	/** Fourthwall giveaway started */
@@ -469,6 +473,8 @@ export enum LumiaAlertValues {
 	FOURTHWALL_GIVEAWAY_ENDED = 'fourthwall-giveawayEnded',
 	/** Fourthwall thank you sent */
 	FOURTHWALL_THANKYOU_SENT = 'fourthwall-thankyouSent',
+	/** Fourthwall newsletter subscribed */
+	FOURTHWALL_NEWSLETTER_SUBSCRIBED = 'fourthwall-newsletterSubscribed',
 
 	// OBS Studio events
 	/** OBS profile switched */
@@ -796,10 +802,13 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.FOURTHWALL_SHOPORDER]: 'Fourthwall Shop Order',
 	[LumiaAlertValues.FOURTHWALL_DONATION]: 'Fourthwall Donation',
 	[LumiaAlertValues.FOURTHWALL_SUBSCRIPTION]: 'Fourthwall Subscription',
+	[LumiaAlertValues.FOURTHWALL_SUBSCRIPTION_CHANGED]: 'Fourthwall Subscription Changed',
+	[LumiaAlertValues.FOURTHWALL_SUBSCRIPTION_EXPIRED]: 'Fourthwall Subscription Expired',
 	[LumiaAlertValues.FOURTHWALL_GIFTPURCHASE]: 'Fourthwall Giftpurchase',
 	[LumiaAlertValues.FOURTHWALL_GIVEAWAY_STARTED]: 'Fourthwall Giveaway Started',
 	[LumiaAlertValues.FOURTHWALL_GIVEAWAY_ENDED]: 'Fourthwall Giveaway Ended',
 	[LumiaAlertValues.FOURTHWALL_THANKYOU_SENT]: 'Fourthwall Thank You Sent',
+	[LumiaAlertValues.FOURTHWALL_NEWSLETTER_SUBSCRIBED]: 'Fourthwall Newsletter Subscribed',
 	[LumiaAlertValues.CROWDCONTROL_EFFECT]: 'Crowdcontrol Effect',
 	[LumiaAlertValues.VTUBESTUDIO_HOTKEY_TRIGGERED]: 'Vtube Hotkey Triggered',
 	[LumiaAlertValues.VTUBESTUDIO_MODEL_LOADED]: 'Vtube Model Loaded',
