@@ -1004,6 +1004,30 @@ export declare enum SystemVariables {
     SESSION_DONATOR_LIST_WITH_AMOUNT = "session_donator_list_with_amount",
     /** Raw donation total ignoring currency. Use as {{total_raw_donation_amount}}. */
     TOTAL_RAW_DONATION_AMOUNT = "total_raw_donation_amount",
+    /** Donation sum for the current calendar week. Use as {{week_donation_amount}}. */
+    WEEK_DONATION_AMOUNT = "week_donation_amount",
+    /** Donation sum for the current calendar month. Use as {{month_donation_amount}}. */
+    MONTH_DONATION_AMOUNT = "month_donation_amount",
+    /** Donation event count for the current calendar week. Use as {{week_donation_count}}. */
+    WEEK_DONATION_COUNT = "week_donation_count",
+    /** Donation event count for the current calendar month. Use as {{month_donation_count}}. */
+    MONTH_DONATION_COUNT = "month_donation_count",
+    /** Top donator for the current calendar week. Use as {{week_top_donator}}. */
+    WEEK_TOP_DONATOR = "week_top_donator",
+    /** Amount for WEEK_TOP_DONATOR. Use as {{week_top_donator_amount}}. */
+    WEEK_TOP_DONATOR_AMOUNT = "week_top_donator_amount",
+    /** Top donators this week (top 10, comma-separated usernames). Use as {{week_top_donator_list}}. */
+    WEEK_TOP_DONATOR_LIST = "week_top_donator_list",
+    /** Amounts for WEEK_TOP_DONATOR_LIST (parallel comma-separated). Use as {{week_top_donator_list_amount}}. */
+    WEEK_TOP_DONATOR_LIST_AMOUNT = "week_top_donator_list_amount",
+    /** Top donator for the current calendar month. Use as {{month_top_donator}}. */
+    MONTH_TOP_DONATOR = "month_top_donator",
+    /** Amount for MONTH_TOP_DONATOR. Use as {{month_top_donator_amount}}. */
+    MONTH_TOP_DONATOR_AMOUNT = "month_top_donator_amount",
+    /** Top donators this month. Use as {{month_top_donator_list}}. */
+    MONTH_TOP_DONATOR_LIST = "month_top_donator_list",
+    /** Amounts for MONTH_TOP_DONATOR_LIST. Use as {{month_top_donator_list_amount}}. */
+    MONTH_TOP_DONATOR_LIST_AMOUNT = "month_top_donator_list_amount",
     /** Raffle title. Use as {{raffle_title}}. */
     RAFFLE_TITLE = "raffle_title",
     /** Raffle description. Use as {{raffle_description}}. */
@@ -1092,14 +1116,32 @@ export declare enum SystemVariables {
     TWITCH_CURRENT_FOLLOWERS = "twitch_current_followers",
     /** Session followers count. Use as {{twitch_session_follower_count}}. */
     TWITCH_SESSION_FOLLOWER_COUNT = "twitch_session_follower_count",
+    /** Followers for the current calendar week. Use as {{twitch_week_follower_count}}. */
+    TWITCH_WEEK_FOLLOWER_COUNT = "twitch_week_follower_count",
+    /** Followers for the current calendar month. Use as {{twitch_month_follower_count}}. */
+    TWITCH_MONTH_FOLLOWER_COUNT = "twitch_month_follower_count",
     /** Current subscribers (comma-separated). Use as {{twitch_current_subscribers}}. */
     TWITCH_CURRENT_SUBSCRIBERS = "twitch_current_subscribers",
     /** Lifetime total subs. Use as {{twitch_total_subscriber_count}}. */
     TWITCH_TOTAL_SUBSCRIBER_COUNT = "twitch_total_subscriber_count",
     /** Session subs count. Use as {{twitch_session_subscribers_count}}. */
     TWITCH_SESSION_SUBSCRIBERS_COUNT = "twitch_session_subscribers_count",
+    /** Session NEW subscribers (excluding resubs / gifts). Use as {{twitch_session_new_subscribers_count}}. */
+    TWITCH_SESSION_NEW_SUBSCRIBERS_COUNT = "twitch_session_new_subscribers_count",
+    /** Session resubscribers (excluding new / gifts). Use as {{twitch_session_resub_subscribers_count}}. */
+    TWITCH_SESSION_RESUB_SUBSCRIBERS_COUNT = "twitch_session_resub_subscribers_count",
+    /** Session gifted subscribers. Use as {{twitch_session_gifted_subscribers_count}}. */
+    TWITCH_SESSION_GIFTED_SUBSCRIBERS_COUNT = "twitch_session_gifted_subscribers_count",
+    /** Subscribers for the current calendar week. Use as {{twitch_week_subscriber_count}}. */
+    TWITCH_WEEK_SUBSCRIBER_COUNT = "twitch_week_subscriber_count",
+    /** Subscribers for the current calendar month. Use as {{twitch_month_subscriber_count}}. */
+    TWITCH_MONTH_SUBSCRIBER_COUNT = "twitch_month_subscriber_count",
     /** Session gifts count. Use as {{twitch_session_gifts_count}}. */
     TWITCH_SESSION_GIFTS_COUNT = "twitch_session_gifts_count",
+    /** All-time top gifter. Use as {{twitch_alltime_top_gifter}}. */
+    TWITCH_ALLTIME_TOP_GIFTER = "twitch_alltime_top_gifter",
+    /** Lifetime gift count for TWITCH_ALLTIME_TOP_GIFTER. Use as {{twitch_alltime_top_gifter_amount}}. */
+    TWITCH_ALLTIME_TOP_GIFTER_AMOUNT = "twitch_alltime_top_gifter_amount",
     /** Lifetime gift members count. Use as {{twitch_total_gift_subscription_count}}. */
     TWITCH_TOTAL_GIFT_SUBSCRIPTION_COUNT = "twitch_total_gift_subscription_count",
     /** Current moderators (comma-separated). Use as {{twitch_current_mods}}. */
@@ -1138,6 +1180,10 @@ export declare enum SystemVariables {
     TWITCH_TOTAL_BITS_COUNT = "twitch_total_bits_count",
     /** Session bits count. Use as {{twitch_session_bits_count}}. */
     TWITCH_SESSION_BITS_COUNT = "twitch_session_bits_count",
+    /** Bits for the current calendar week. Use as {{twitch_week_bits_count}}. */
+    TWITCH_WEEK_BITS_COUNT = "twitch_week_bits_count",
+    /** Bits for the current calendar month. Use as {{twitch_month_bits_count}}. */
+    TWITCH_MONTH_BITS_COUNT = "twitch_month_bits_count",
     /** Last bit sender. Use as {{twitch_last_bit}}. */
     TWITCH_LAST_BIT = "twitch_last_bit",
     /** Last bit amount. Use as {{twitch_last_bit_amount}}. */
@@ -1146,6 +1192,64 @@ export declare enum SystemVariables {
     TWITCH_SESSION_BITS = "twitch_session_bits",
     /** Session bits with amounts list. Use as {{twitch_session_bits_with_amount}}. */
     TWITCH_SESSION_BITS_WITH_AMOUNT = "twitch_session_bits_with_amount",
+    /** Top single cheer this session. Use as {{twitch_session_top_cheer}}. */
+    TWITCH_SESSION_TOP_CHEER = "twitch_session_top_cheer",
+    /** Amount for TWITCH_SESSION_TOP_CHEER. Use as {{twitch_session_top_cheer_amount}}. */
+    TWITCH_SESSION_TOP_CHEER_AMOUNT = "twitch_session_top_cheer_amount",
+    /** Top cheerer this session (by total bits). Use as {{twitch_session_top_cheerer}}. */
+    TWITCH_SESSION_TOP_CHEERER = "twitch_session_top_cheerer",
+    /** Total bits for TWITCH_SESSION_TOP_CHEERER. Use as {{twitch_session_top_cheerer_amount}}. */
+    TWITCH_SESSION_TOP_CHEERER_AMOUNT = "twitch_session_top_cheerer_amount",
+    /** Top cheerer for the current calendar week. Use as {{twitch_week_top_cheerer}}. */
+    TWITCH_WEEK_TOP_CHEERER = "twitch_week_top_cheerer",
+    /** Total bits for TWITCH_WEEK_TOP_CHEERER. Use as {{twitch_week_top_cheerer_amount}}. */
+    TWITCH_WEEK_TOP_CHEERER_AMOUNT = "twitch_week_top_cheerer_amount",
+    /** Top cheerer for the current calendar month. Use as {{twitch_month_top_cheerer}}. */
+    TWITCH_MONTH_TOP_CHEERER = "twitch_month_top_cheerer",
+    /** Total bits for TWITCH_MONTH_TOP_CHEERER. Use as {{twitch_month_top_cheerer_amount}}. */
+    TWITCH_MONTH_TOP_CHEERER_AMOUNT = "twitch_month_top_cheerer_amount",
+    /** Whether a hype train is currently active (true/false). Use as {{twitch_hypetrain_active}}. */
+    TWITCH_HYPETRAIN_ACTIVE = "twitch_hypetrain_active",
+    /** Current hype train level. Use as {{twitch_hypetrain_level}}. */
+    TWITCH_HYPETRAIN_LEVEL = "twitch_hypetrain_level",
+    /** Current hype train progress toward the next level. Use as {{twitch_hypetrain_progress}}. */
+    TWITCH_HYPETRAIN_PROGRESS = "twitch_hypetrain_progress",
+    /** Target value to reach the next hype train level. Use as {{twitch_hypetrain_level_goal}}. */
+    TWITCH_HYPETRAIN_LEVEL_GOAL = "twitch_hypetrain_level_goal",
+    /** Total contributions this hype train (running sum). Use as {{twitch_hypetrain_total}}. */
+    TWITCH_HYPETRAIN_TOTAL = "twitch_hypetrain_total",
+    /** Top contributor for the current hype train. Use as {{twitch_hypetrain_top_contributor}}. */
+    TWITCH_HYPETRAIN_TOP_CONTRIBUTOR = "twitch_hypetrain_top_contributor",
+    /** Amount contributed by TWITCH_HYPETRAIN_TOP_CONTRIBUTOR. Use as {{twitch_hypetrain_top_contributor_amount}}. */
+    TWITCH_HYPETRAIN_TOP_CONTRIBUTOR_AMOUNT = "twitch_hypetrain_top_contributor_amount",
+    /** All-time top cheerer (by total bits). Use as {{twitch_alltime_top_cheerer}}. */
+    TWITCH_ALLTIME_TOP_CHEERER = "twitch_alltime_top_cheerer",
+    /** Total bits for TWITCH_ALLTIME_TOP_CHEERER. Use as {{twitch_alltime_top_cheerer_amount}}. */
+    TWITCH_ALLTIME_TOP_CHEERER_AMOUNT = "twitch_alltime_top_cheerer_amount",
+    /** Top cheerers list (top 10, comma-separated usernames, sorted by total bits). Use as {{top_cheerer_list}}. */
+    TOP_CHEERER_LIST = "top_cheerer_list",
+    /** Total bits for TOP_CHEERER_LIST (parallel comma-separated). Use as {{top_cheerer_list_amount}}. */
+    TOP_CHEERER_LIST_AMOUNT = "top_cheerer_list_amount",
+    /** Top cheerers this week (top 10, comma-separated usernames). Use as {{week_top_cheerer_list}}. */
+    WEEK_TOP_CHEERER_LIST = "week_top_cheerer_list",
+    /** Total bits for WEEK_TOP_CHEERER_LIST (parallel comma-separated). Use as {{week_top_cheerer_list_amount}}. */
+    WEEK_TOP_CHEERER_LIST_AMOUNT = "week_top_cheerer_list_amount",
+    /** Top cheerers this month. Use as {{month_top_cheerer_list}}. */
+    MONTH_TOP_CHEERER_LIST = "month_top_cheerer_list",
+    /** Total bits for MONTH_TOP_CHEERER_LIST. Use as {{month_top_cheerer_list_amount}}. */
+    MONTH_TOP_CHEERER_LIST_AMOUNT = "month_top_cheerer_list_amount",
+    /** Top gifters list (top 10, comma-separated usernames, sorted by lifetime gifted subs). Use as {{top_gifter_list}}. */
+    TOP_GIFTER_LIST = "top_gifter_list",
+    /** Total gifts for TOP_GIFTER_LIST (parallel comma-separated). Use as {{top_gifter_list_amount}}. */
+    TOP_GIFTER_LIST_AMOUNT = "top_gifter_list_amount",
+    /** Top gifters this week. Use as {{week_top_gifter_list}}. */
+    WEEK_TOP_GIFTER_LIST = "week_top_gifter_list",
+    /** Total gifts for WEEK_TOP_GIFTER_LIST. Use as {{week_top_gifter_list_amount}}. */
+    WEEK_TOP_GIFTER_LIST_AMOUNT = "week_top_gifter_list_amount",
+    /** Top gifters this month. Use as {{month_top_gifter_list}}. */
+    MONTH_TOP_GIFTER_LIST = "month_top_gifter_list",
+    /** Total gifts for MONTH_TOP_GIFTER_LIST. Use as {{month_top_gifter_list_amount}}. */
+    MONTH_TOP_GIFTER_LIST_AMOUNT = "month_top_gifter_list_amount",
     /** Last clip ID. Use as {{twitch_last_clip_id}}. */
     TWITCH_LAST_CLIP_ID = "twitch_last_clip_id",
     /** Last clip URL. Use as {{twitch_last_clip_url}}. */
@@ -1192,6 +1296,10 @@ export declare enum SystemVariables {
     YOUTUBE_LAST_CHATTER = "youtube_last_chatter",
     /** Session subscriber count. Use as {{youtube_session_subscriber_count}}. */
     YOUTUBE_SESSION_SUBSCRIBER_COUNT = "youtube_session_subscriber_count",
+    /** Subscribers for the current calendar week. Use as {{youtube_week_subscriber_count}}. */
+    YOUTUBE_WEEK_SUBSCRIBER_COUNT = "youtube_week_subscriber_count",
+    /** Subscribers for the current calendar month. Use as {{youtube_month_subscriber_count}}. */
+    YOUTUBE_MONTH_SUBSCRIBER_COUNT = "youtube_month_subscriber_count",
     /** Lifetime subscriber count. Use as {{youtube_total_subscriber_count}}. */
     YOUTUBE_TOTAL_SUBSCRIBER_COUNT = "youtube_total_subscriber_count",
     /** Session SuperChat count. Use as {{youtube_session_superchat_count}}. */
@@ -1210,6 +1318,10 @@ export declare enum SystemVariables {
     YOUTUBE_TOTAL_MEMBER_COUNT = "youtube_total_member_count",
     /** Session member count. Use as {{youtube_session_member_count}}. */
     YOUTUBE_SESSION_MEMBER_COUNT = "youtube_session_member_count",
+    /** Members for the current calendar week. Use as {{youtube_week_member_count}}. */
+    YOUTUBE_WEEK_MEMBER_COUNT = "youtube_week_member_count",
+    /** Members for the current calendar month. Use as {{youtube_month_member_count}}. */
+    YOUTUBE_MONTH_MEMBER_COUNT = "youtube_month_member_count",
     /** Last member. Use as {{youtube_last_member}}. */
     YOUTUBE_LAST_MEMBER = "youtube_last_member",
     /** Session members (list). Use as {{youtube_session_members}}. */
@@ -1254,10 +1366,18 @@ export declare enum SystemVariables {
     FACEBOOK_TOTAL_FOLLOWER_COUNT = "facebook_total_follower_count",
     /** Session follower count. Use as {{facebook_session_follower_count}}. */
     FACEBOOK_SESSION_FOLLOWER_COUNT = "facebook_session_follower_count",
+    /** Followers for the current calendar week. Use as {{facebook_week_follower_count}}. */
+    FACEBOOK_WEEK_FOLLOWER_COUNT = "facebook_week_follower_count",
+    /** Followers for the current calendar month. Use as {{facebook_month_follower_count}}. */
+    FACEBOOK_MONTH_FOLLOWER_COUNT = "facebook_month_follower_count",
     /** Lifetime fan count. Use as {{facebook_total_fan_count}}. */
     FACEBOOK_TOTAL_FAN_COUNT = "facebook_total_fan_count",
     /** Session fan count. Use as {{facebook_session_fan_count}}. */
     FACEBOOK_SESSION_FAN_COUNT = "facebook_session_fan_count",
+    /** Fans for the current calendar week. Use as {{facebook_week_fan_count}}. */
+    FACEBOOK_WEEK_FAN_COUNT = "facebook_week_fan_count",
+    /** Fans for the current calendar month. Use as {{facebook_month_fan_count}}. */
+    FACEBOOK_MONTH_FAN_COUNT = "facebook_month_fan_count",
     /** Session reaction count. Use as {{facebook_reaction_count}}. */
     FACEBOOK_REACTION_COUNT = "facebook_reaction_count",
     /** Last Stars sender. Use as {{facebook_last_star}}. */
@@ -1286,6 +1406,10 @@ export declare enum SystemVariables {
     TIKTOK_TOTAL_FOLLOWER_COUNT = "tiktok_total_follower_count",
     /** Session follower count. Use as {{tiktok_session_follower_count}}. */
     TIKTOK_SESSION_FOLLOWER_COUNT = "tiktok_session_follower_count",
+    /** Followers for the current calendar week. Use as {{tiktok_week_follower_count}}. */
+    TIKTOK_WEEK_FOLLOWER_COUNT = "tiktok_week_follower_count",
+    /** Followers for the current calendar month. Use as {{tiktok_month_follower_count}}. */
+    TIKTOK_MONTH_FOLLOWER_COUNT = "tiktok_month_follower_count",
     /** Session super fan count. Use as {{tiktok_session_super_fan_count}}. */
     TIKTOK_SESSION_SUPER_FAN_COUNT = "tiktok_session_super_fan_count",
     /** Session share count. Use as {{tiktok_session_share_count}}. */
@@ -1348,10 +1472,18 @@ export declare enum SystemVariables {
     KICK_TOTAL_FOLLOWER_COUNT = "kick_total_follower_count",
     /** Session follower count. Use as {{kick_session_follower_count}}. */
     KICK_SESSION_FOLLOWER_COUNT = "kick_session_follower_count",
+    /** Followers for the current calendar week. Use as {{kick_week_follower_count}}. */
+    KICK_WEEK_FOLLOWER_COUNT = "kick_week_follower_count",
+    /** Followers for the current calendar month. Use as {{kick_month_follower_count}}. */
+    KICK_MONTH_FOLLOWER_COUNT = "kick_month_follower_count",
     /** Lifetime total subs. Use as {{kick_total_subscriber_count}}. */
     KICK_TOTAL_SUBSCRIBER_COUNT = "kick_total_subscriber_count",
     /** Session subs count. Use as {{kick_session_subscriber_count}}. */
     KICK_SESSION_SUBSCRIBER_COUNT = "kick_session_subscriber_count",
+    /** Subscribers for the current calendar week. Use as {{kick_week_subscriber_count}}. */
+    KICK_WEEK_SUBSCRIBER_COUNT = "kick_week_subscriber_count",
+    /** Subscribers for the current calendar month. Use as {{kick_month_subscriber_count}}. */
+    KICK_MONTH_SUBSCRIBER_COUNT = "kick_month_subscriber_count",
     /** Session gifts count. Use as {{kick_session_gifts_count}}. */
     KICK_SESSION_GIFTS_COUNT = "kick_session_gifts_count",
     /** Session subscribers list. Use as {{kick_session_subscribers}}. */
