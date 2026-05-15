@@ -1,6 +1,6 @@
 import { LumiaAlertValues } from './activity.types';
 import { LumiaIntegrations } from './event.types';
-import { AllVariables } from './variables.types';
+import { AllVariables, type LumiaAcceptedVariable } from './variables.types';
 import { KickKicksData } from './kick_kicks';
 import { TiktokGiftsData } from './tiktok_gifts';
 import { YoutubeSuperstickersData } from './youtube_superstickers';
@@ -131,7 +131,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistSpecialUsername?: string;
 		eventlistMessage?: string;
 		eventlistDetailedMessage?: string;
-		acceptedVariables: string[];
+		acceptedVariables: LumiaAcceptedVariable[];
 		quickActions?: Array<{
 			label: string;
 			dynamic: LumiaDynamicCondition;
@@ -4016,6 +4016,12 @@ export const LumiaAlertConfigs: Record<
 					totalJewels: 10,
 					comboCount: 1,
 					hasVisualEffect: false,
+					giftUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
+					giftImageUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
+					giftDurationSeconds: 3,
+					giftDurationNanos: 0,
+					altText: 'Heart',
+					language: 'en_US',
 				},
 			},
 			{
@@ -4030,6 +4036,12 @@ export const LumiaAlertConfigs: Record<
 					totalJewels: 100,
 					comboCount: 1,
 					hasVisualEffect: true,
+					giftUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
+					giftImageUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
+					giftDurationSeconds: 3,
+					giftDurationNanos: 0,
+					altText: 'Rose',
+					language: 'en_US',
 				},
 			},
 			{
@@ -4044,6 +4056,12 @@ export const LumiaAlertConfigs: Record<
 					totalJewels: 500,
 					comboCount: 5,
 					hasVisualEffect: true,
+					giftUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
+					giftImageUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
+					giftDurationSeconds: 3,
+					giftDurationNanos: 0,
+					altText: 'Star',
+					language: 'en_US',
 				},
 			},
 		],
@@ -9146,19 +9164,6 @@ export const LumiaAlertConfigs: Record<
 		message: 'OBS virtual cam state changed',
 		acceptedVariables: AllVariables.obs.alerts.virtualcamStateChanged,
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
-	},
-	[LumiaAlertValues.OBS_RECORD_FILE_CHANGED]: {
-		connection: LumiaIntegrations.OBS,
-		message: 'OBS record file changed',
-		acceptedVariables: AllVariables.obs.alerts.recordFileChanged,
-		LumiaVariationConditions: [
-			{ type: LumiaVariationConditions.RANDOM },
-			{
-				type: LumiaVariationConditions.EQUAL_STRING,
-				description: 'Path is equal to',
-			},
-			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
-		],
 	},
 	[LumiaAlertValues.OBS_SCREENSHOT_SAVED]: {
 		connection: LumiaIntegrations.OBS,

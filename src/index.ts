@@ -22,7 +22,15 @@ export {
 	LumiaEventTypes,
 } from './event.types';
 export { LumiaEventListTypes, LumiaMapAlertTypeToEventListType } from './eventlist.types';
-export { SystemVariables, ReservedVariables, AllVariables } from './variables.types';
+export {
+	SystemVariables,
+	ReservedVariables,
+	AllVariables,
+	getAcceptedVariableName,
+	getAcceptedVariableNames,
+	type LumiaAcceptedVariable,
+	type LumiaAcceptedVariableDefinition,
+} from './variables.types';
 export { formatCondition } from './helpers';
 export { KickKicksData } from './kick_kicks';
 export { TiktokGiftsData } from './tiktok_gifts';
