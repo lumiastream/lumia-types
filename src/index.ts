@@ -9,7 +9,16 @@ export {
 	LumiaActivityNoValueTypes,
 	LumiaActivityTestType,
 } from './activity.types';
-export { LumiaVariationConditions, LumiaVariationCurrency, VariationCurrencySymbol, LumiaAlertConfigs, LumiaDynamicCondition, type LumiaSelectionOption } from './alert.types';
+export {
+	LumiaVariationConditions,
+	LumiaVariationCurrency,
+	VariationCurrencySymbol,
+	LumiaRedemptionCurrency,
+	LumiaRedemptionCurrencySymbol,
+	LumiaAlertConfigs,
+	LumiaDynamicCondition,
+	type LumiaSelectionOption,
+} from './alert.types';
 export {
 	ILumiaSendPack,
 	ILumiaEvent,
@@ -45,3 +54,17 @@ export {
 	type ViewerProfileCollectionSettings,
 	type ViewerProfileCollectionSource,
 } from './viewer_profile_achievements';
+export {
+	SongRequestStatus,
+	SongRequestSource,
+	SongRequestProvider,
+	SongRequestPlaybackTarget,
+	type SongRequestItem,
+	type SongRequestConfig,
+	type SongRequestState,
+	type SongRequestQueueUpdatePayload,
+	type SongRequestPendingUpdatePayload,
+	type SongRequestNowPlayingPayload,
+	type SongRequestAddParams,
+	type SongRequestModerationParams,
+} from './songrequest.types';

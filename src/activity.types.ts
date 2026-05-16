@@ -25,6 +25,10 @@ export enum LumiaActivityCommandTypes {
 	CHAT_COMMAND = 'chat-command',
 	CHATBOT_COMMAND = 'chatbot-command',
 	CHAT_MATCH = 'chat-match',
+	// Marker for song-request items mirrored into ModQueue. When QueueEngine
+	// sees this type on an approve/deny path, it routes to SongRequestManager
+	// instead of the default chat-command execution.
+	SONG_REQUEST = 'song-request',
 	TWITCH_POINTS = 'twitch-points',
 	TWITCH_POINTS_OUTPUT = 'twitch-points-output',
 	TWITCH_EXTENSION = 'twitch-extension',
