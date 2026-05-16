@@ -1272,6 +1272,10 @@ export declare enum SystemVariables {
     TWITCH_CURRENT_POLL_ID = "twitch_current_poll_id",
     /** Current prediction ID. Use as {{twitch_current_prediction_id}}. */
     TWITCH_CURRENT_PREDICTION_ID = "twitch_current_prediction_id",
+    /** Channel id. Use as {{youtube_channel_id}}. */
+    YOUTUBE_CHANNEL_ID = "youtube_channel_id",
+    /** Channel username (custom URL slug, falls back to channel title). Use as {{youtube_username}}. */
+    YOUTUBE_USERNAME = "youtube_username",
     /** Current viewer count. Use as {{youtube_current_viewer_count}}. */
     YOUTUBE_CURRENT_VIEWER_COUNT = "youtube_current_viewer_count",
     /** Total viewer count (stream). Use as {{youtube_total_viewer_count}}. */
@@ -1350,6 +1354,10 @@ export declare enum SystemVariables {
     YOUTUBE_TOTAL_VIDEO_COUNT = "youtube_total_video_count",
     /** Total channel views. Use as {{youtube_total_view_count}}. */
     YOUTUBE_TOTAL_VIEW_COUNT = "youtube_total_view_count",
+    /** Page / user id. Use as {{facebook_user_id}}. */
+    FACEBOOK_USER_ID = "facebook_user_id",
+    /** Page / user username. Use as {{facebook_username}}. */
+    FACEBOOK_USERNAME = "facebook_username",
     /** Session chat count. Use as {{facebook_session_chat_count}}. */
     FACEBOOK_SESSION_CHAT_COUNT = "facebook_session_chat_count",
     /** Current first chatter. Use as {{facebook_current_first_chatter}}. */
@@ -1388,6 +1396,10 @@ export declare enum SystemVariables {
     FACEBOOK_SESSION_STARS = "facebook_session_stars",
     /** Session Stars with amounts list. Use as {{facebook_session_stars_with_amount}}. */
     FACEBOOK_SESSION_STARS_WITH_AMOUNT = "facebook_session_stars_with_amount",
+    /** Channel user id. Use as {{tiktok_user_id}}. */
+    TIKTOK_USER_ID = "tiktok_user_id",
+    /** Channel username. Use as {{tiktok_username}}. */
+    TIKTOK_USERNAME = "tiktok_username",
     /** Session chat count. Use as {{tiktok_session_chat_count}}. */
     TIKTOK_SESSION_CHAT_COUNT = "tiktok_session_chat_count",
     /** Current first chatter. Use as {{tiktok_current_first_chatter}}. */
