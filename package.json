@@ -3,11 +3,34 @@
   "version": "3.3.7-alpha.2",
   "description": "",
   "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./dist/custom-overlays.d": {
+      "types": "./dist/custom-overlays.d.ts",
+      "import": "./dist/esm/custom-overlays.d.js",
+      "require": "./dist/custom-overlays.d.js"
+    },
+    "./dist/custom-overlays.d.ts": "./dist/custom-overlays.d.ts",
+    "./dist/custom-overlays/*": "./dist/custom-overlays/*",
+    "./dist/custom-code/*": "./dist/custom-code/*",
+    "./dist/*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/esm/*.js",
+      "require": "./dist/*.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "/dist"
   ],
   "scripts": {
-    "build": "npm run clean && tsc && npm run sync:custom-overlays && npm run sync:custom-code",
+    "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig.esm.json && npm run sync:custom-overlays && npm run sync:custom-code && node ./scripts/finalize-esm-build.mjs",
     "prepublishOnly": "npm run build",
     "lint": "tslint --project tsconfig.json \"src/**/*.ts\"",
     "lint:fix": "tslint --project tsconfig.json --fix \"src/**/*.ts\"",
