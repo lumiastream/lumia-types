@@ -917,6 +917,25 @@ export enum SystemVariables {
 	/** Last VTS hotkey triggered. Use as {{vtubestudio_last_hotkey_triggered}}. */
 	VTUBESTUDIO_LAST_HOTKEY_TRIGGERED = 'vtubestudio_last_hotkey_triggered',
 
+	// ─────────────────────────────── Charity Campaigns ────────────────────────────
+	// Campaign totals from the polled-API charity integrations (Tiltify / Extra
+	// Life / DonorDrive). Written by their respective managers on every poll;
+	// goal_amount mirrors the campaign target the streamer set on the platform
+	// and total_raised mirrors the running raised total. Reset to 0 on Stop.
+
+	/** Tiltify campaign fundraising goal (currency value). Use as {{tiltify_goal_amount}}. */
+	TILTIFY_GOAL_AMOUNT = 'tiltify_goal_amount',
+	/** Tiltify campaign amount raised so far (currency value). Use as {{tiltify_total_raised}}. */
+	TILTIFY_TOTAL_RAISED = 'tiltify_total_raised',
+	/** Extra Life campaign fundraising goal (USD). Use as {{extralife_goal_amount}}. */
+	EXTRALIFE_GOAL_AMOUNT = 'extralife_goal_amount',
+	/** Extra Life campaign amount raised so far (USD). Use as {{extralife_total_raised}}. */
+	EXTRALIFE_TOTAL_RAISED = 'extralife_total_raised',
+	/** DonorDrive campaign fundraising goal. Use as {{donordrive_goal_amount}}. */
+	DONORDRIVE_GOAL_AMOUNT = 'donordrive_goal_amount',
+	/** DonorDrive campaign amount raised so far. Use as {{donordrive_total_raised}}. */
+	DONORDRIVE_TOTAL_RAISED = 'donordrive_total_raised',
+
 	// ────────────────────────────────── Sensors ────────────────────────────────────
 
 	/** Heart rate BPM (Pulsoid/Hyperate). Use as {{heartrate_bpm}}. */
@@ -1680,11 +1699,13 @@ export const AllVariables = {
 		},
 	},
 	donordrive: {
+		variables: ['donordrive_goal_amount', 'donordrive_total_raised'],
 		alerts: {
 			donation: ['username', 'currency', 'amount'],
 		},
 	},
 	extralife: {
+		variables: ['extralife_goal_amount', 'extralife_total_raised'],
 		alerts: {
 			donation: ['username', 'currency', 'amount'],
 		},
@@ -2338,6 +2359,7 @@ export const AllVariables = {
 		},
 	},
 	tiltify: {
+		variables: ['tiltify_goal_amount', 'tiltify_total_raised'],
 		alerts: {
 			campaignDonation: ['username', 'currency', 'amount'],
 		},
