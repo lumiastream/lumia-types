@@ -35,7 +35,7 @@ Source of truth (in order): this file > `gpt-instructions-extended.md` (long-for
 - **HTML**: body content only. Stable IDs/classes. No inline `<script>` or `<style>`.
 - **CSS**: stylesheet only. Unquoted CSS variables for colors/sizes/numbers. Quoted only where CSS requires a string (`font-family: "{{font}}";`).
 - **JS**: top-level JS. Use `Overlay.data` for Data values. Use `textContent`/`createElement`/`appendChild` for any chat, alert, or user-generated text — never `innerHTML` with user input. `fetch` is allowed.
-- **Configs**: field types: `input`, `number`, `checkbox`, `dropdown`, `multiselect`, `colorpicker`, `fontpicker`, `slider`. Required: `type`, `label`. Use `value` for defaults. `dropdown`/`multiselect` need `options`. `slider` needs `options.min`/`max` (usually `step`/`prefix`/`suffix`). Use `order` to control sidebar order. Use `visibleIf` for conditional fields. Keys must be machine-friendly (no spaces).
+- **Configs**: field types: `input`, `textarea`, `number`, `checkbox`, `dropdown`, `multiselect`, `colorpicker`, `fontpicker`, `slider`, `imageupload`, `soundupload`, `videoupload`, `actionbutton`. Required: `type`, `label`. Use `value` for defaults. `dropdown`/`multiselect` need `options`. `slider` needs `options.min`/`max` (usually `step`/`prefix`/`suffix`). `imageupload`/`soundupload`/`videoupload` accept an `accept` MIME hint. `actionbutton` has no `value` — bind it via `Overlay.on('configAction', ({ key }) => …)`. Use `order` to control sidebar order. Use `visibleIf` for conditional fields. Keys must be machine-friendly (no spaces).
 - **Data**: every Configs key must have a matching Data key with a matching default. Data can hold internal values that aren't in Configs (rare).
 
 ## Variables

@@ -25,9 +25,10 @@ export enum CustomTabs {
 export enum ConfigsFieldType {
 	/** Text input field */
 	INPUT = 'input',
+	/** Multi-line text area for long-form content. */
+	TEXTAREA = 'textarea',
 	/** Numeric input field */
 	NUMBER = 'number',
-	// IMAGE = 'image',
 	/** Boolean checkbox */
 	CHECKBOX = 'checkbox',
 	/** Single-select dropdown menu */
@@ -40,6 +41,15 @@ export enum ConfigsFieldType {
 	FONTPICKER = 'fontpicker',
 	/** Number Slider widget */
 	SLIDER = 'slider',
+	/** Image upload picker. Value is the uploaded asset URL. */
+	IMAGEUPLOAD = 'imageupload',
+	/** Audio upload picker. Value is the uploaded asset URL. */
+	SOUNDUPLOAD = 'soundupload',
+	/** Video upload picker. Value is the uploaded asset URL. */
+	VIDEOUPLOAD = 'videoupload',
+	/** Action trigger button. No persisted value; renders a clickable
+	 *  control that custom JS can bind to via `Overlay.on('configAction', …)`. */
+	ACTIONBUTTON = 'actionbutton',
 }
 
 /**
@@ -169,6 +179,65 @@ export interface SliderConfigField extends BaseConfigField {
 	options: SliderOptions;
 }
 
+/** Multi-line textarea for long-form text input. Supports variables. */
+export interface TextareaConfigField extends BaseConfigField {
+	type: ConfigsFieldType.TEXTAREA | 'textarea';
+	/** Default text value. Omit to leave blank on first load. */
+	value?: string;
+	/** Placeholder text shown when the textarea is empty. */
+	placeholder?: string;
+	/** Visible row count for the textarea. Defaults to 4 in the renderer. */
+	rows?: number;
+	/**
+	 * When `true`, renders a variable-enabled textarea. Users can insert Lumia
+	 * variables (e.g. `{{username}}`) via a picker triggered by a `{}` adornment.
+	 */
+	enableVariables?: boolean;
+	/**
+	 * Curated variable list to surface at the top of the picker. Has no effect
+	 * unless `enableVariables` is also `true`.
+	 */
+	allowedVariables?: string[];
+}
+
+/** Image upload picker. Value is the uploaded asset's URL. */
+export interface ImageuploadConfigField extends BaseConfigField {
+	type: ConfigsFieldType.IMAGEUPLOAD | 'imageupload';
+	/** Default image URL. */
+	value?: string;
+	/** Optional comma-separated accept hint, e.g. `image/png,image/jpeg`. */
+	accept?: string;
+}
+
+/** Audio clip upload picker. Value is the uploaded asset's URL. */
+export interface SounduploadConfigField extends BaseConfigField {
+	type: ConfigsFieldType.SOUNDUPLOAD | 'soundupload';
+	/** Default audio URL. */
+	value?: string;
+	/** Optional comma-separated accept hint, e.g. `audio/mpeg,audio/ogg`. */
+	accept?: string;
+}
+
+/** Video upload picker. Value is the uploaded asset's URL. */
+export interface VideouploadConfigField extends BaseConfigField {
+	type: ConfigsFieldType.VIDEOUPLOAD | 'videoupload';
+	/** Default video URL. */
+	value?: string;
+	/** Optional comma-separated accept hint, e.g. `video/mp4,video/webm`. */
+	accept?: string;
+}
+
+/**
+ * Action trigger button. The control surface is a labelled button; clicking it
+ * dispatches an event the overlay's custom JS can subscribe to via
+ * `Overlay.on('configAction', ({ key }) => …)`. No persisted value.
+ */
+export interface ActionbuttonConfigField extends BaseConfigField {
+	type: ConfigsFieldType.ACTIONBUTTON | 'actionbutton';
+	/** Optional button-text override. Defaults to the field `label`. */
+	buttonLabel?: string;
+}
+
 /**
  * Discriminated union of every config-field shape the renderer accepts.
  * Use this when typing the `configs` map for a Lumia custom overlay.
@@ -186,13 +255,18 @@ export interface SliderConfigField extends BaseConfigField {
  */
 export type ConfigField =
 	| InputConfigField
+	| TextareaConfigField
 	| NumberConfigField
 	| CheckboxConfigField
 	| DropdownConfigField
 	| MultiselectConfigField
 	| ColorpickerConfigField
 	| FontpickerConfigField
-	| SliderConfigField;
+	| SliderConfigField
+	| ImageuploadConfigField
+	| SounduploadConfigField
+	| VideouploadConfigField
+	| ActionbuttonConfigField;
 
 /**
  * The configs map a custom overlay declares in its Configs tab.

@@ -87,7 +87,7 @@ Include these two helper aliases in your embeddings so the model can quickly map
 			"required": ["type", "label"],
 			"properties": {
 				"type": {
-					"enum": ["input", "number", "checkbox", "dropdown", "multiselect", "colorpicker", "fontpicker", "slider"]
+					"enum": ["input", "textarea", "number", "checkbox", "dropdown", "multiselect", "colorpicker", "fontpicker", "slider", "imageupload", "soundupload", "videoupload", "actionbutton"]
 				},
 				"label": { "type": "string" },
 				"value": {},
