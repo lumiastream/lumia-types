@@ -43,6 +43,164 @@ export enum ConfigsFieldType {
 }
 
 /**
+ * Conditional render rule for a config field.
+ * The field is shown only when `Overlay.data[key]` strictly equals one of `equals`
+ * (scalar) or intersects with `equals` (when either side is an array).
+ *
+ * @example
+ * { key: 'mode', equals: 'advanced' }
+ * { key: 'platform', equals: ['twitch', 'kick'] }
+ */
+export interface ConfigVisibleIf {
+	/** Key of another config field to read from `Overlay.data`. */
+	key: string;
+	/** Value (or list of values) that triggers visibility. */
+	equals: string | number | boolean | Array<string | number | boolean>;
+}
+
+/** Properties common to every config field, regardless of `type`. */
+export interface BaseConfigField {
+	/** Human-readable name shown next to the control in the Configs sidebar. */
+	label: string;
+	/**
+	 * Display order priority. Lower numbers appear first.
+	 * Fields without `order` render after ordered fields, sorted alphabetically by key.
+	 */
+	order?: number;
+	/**
+	 * Conditional render rule. When set, the field renders only when
+	 * `Overlay.data[visibleIf.key]` matches `visibleIf.equals`.
+	 */
+	visibleIf?: ConfigVisibleIf;
+	/**
+	 * Hard-hide rule. When `true`, the field is never displayed in the Configs
+	 * sidebar, but its `value` still flows into `Overlay.data` for internal use.
+	 * Useful for locking event subscriptions or advanced settings.
+	 */
+	hidden?: boolean;
+}
+
+/** Single-line text input. Supports Lumia variable insertion. */
+export interface InputConfigField extends BaseConfigField {
+	type: ConfigsFieldType.INPUT | 'input';
+	/** Default text value. Omit to leave blank on first load. */
+	value?: string;
+	/** Placeholder text shown when the input is empty. */
+	placeholder?: string;
+	/**
+	 * When `true`, renders a variable-enabled input. Users can insert Lumia
+	 * variables (e.g. `{{username}}`) via a picker triggered by a `{}` adornment.
+	 */
+	enableVariables?: boolean;
+	/**
+	 * Curated variable list to surface at the top of the picker.
+	 * System/function variables remain available below. Has no effect unless
+	 * `enableVariables` is also `true`.
+	 */
+	allowedVariables?: string[];
+}
+
+/** Numeric input spinner. */
+export interface NumberConfigField extends BaseConfigField {
+	type: ConfigsFieldType.NUMBER | 'number';
+	/** Default numeric value. */
+	value?: number;
+}
+
+/** Checkbox toggle. */
+export interface CheckboxConfigField extends BaseConfigField {
+	type: ConfigsFieldType.CHECKBOX | 'checkbox';
+	/** Default checked state. */
+	value?: boolean;
+}
+
+/** Single-select dropdown menu. */
+export interface DropdownConfigField extends BaseConfigField {
+	type: ConfigsFieldType.DROPDOWN | 'dropdown';
+	/** Default selected option key. */
+	value?: string;
+	/** Map of option keys to display labels. */
+	options: Record<string, string>;
+}
+
+/** Multi-select dropdown. */
+export interface MultiselectConfigField extends BaseConfigField {
+	type: ConfigsFieldType.MULTISELECT | 'multiselect';
+	/** Default selected option keys. */
+	value?: string[];
+	/** Map of option keys to display labels. */
+	options: Record<string, string>;
+}
+
+/** Color picker widget. Value is a hex/rgba string. */
+export interface ColorpickerConfigField extends BaseConfigField {
+	type: ConfigsFieldType.COLORPICKER | 'colorpicker';
+	/** Default color (hex like `#ff4076` or rgba). */
+	value?: string;
+}
+
+/** Font picker that loads Google fonts on demand. Value is the font family name. */
+export interface FontpickerConfigField extends BaseConfigField {
+	type: ConfigsFieldType.FONTPICKER | 'fontpicker';
+	/** Default font family name (e.g. `Roboto`). */
+	value?: string;
+}
+
+/** Slider numeric-range options. */
+export interface SliderOptions {
+	/** Minimum value. */
+	min?: number;
+	/** Maximum value. */
+	max?: number;
+	/** Step increment between values. */
+	step?: number;
+	/** String prefixed to the displayed value (e.g. `$`). */
+	prefix?: string;
+	/** String suffixed to the displayed value (e.g. `px`). */
+	suffix?: string;
+}
+
+/** Number slider with min/max/step and optional value adornments. */
+export interface SliderConfigField extends BaseConfigField {
+	type: ConfigsFieldType.SLIDER | 'slider';
+	/** Default numeric value. */
+	value?: number;
+	/** Range and adornment options. */
+	options: SliderOptions;
+}
+
+/**
+ * Discriminated union of every config-field shape the renderer accepts.
+ * Use this when typing the `configs` map for a Lumia custom overlay.
+ *
+ * @example
+ * const configs: ConfigsSchema = {
+ *   font: { type: 'fontpicker', label: 'Font', value: 'Roboto' },
+ *   size: {
+ *     type: 'slider',
+ *     label: 'Font size',
+ *     value: 48,
+ *     options: { min: 10, max: 120, step: 2, suffix: 'px' },
+ *   },
+ * };
+ */
+export type ConfigField =
+	| InputConfigField
+	| NumberConfigField
+	| CheckboxConfigField
+	| DropdownConfigField
+	| MultiselectConfigField
+	| ColorpickerConfigField
+	| FontpickerConfigField
+	| SliderConfigField;
+
+/**
+ * The configs map a custom overlay declares in its Configs tab.
+ * Keys become accessible at runtime as `Overlay.data[key]`.
+ */
+export type ConfigsSchema = Record<string, ConfigField>;
+
+/**
  * Core event types that overlays can listen to.
  * Used as discriminants for the overlay event system.
  */

@@ -706,6 +706,18 @@ const myUserColor = '{{userSelectedColor}}';
 
 ---
 
+## Module Flavors
+
+Custom overlay modules carry an optional `content.flavor` field that tells the runtime which compatibility layer (if any) to load before executing your HTML/CSS/JS. Most overlays you write from scratch don't set this — the field is mainly used by automated import flows.
+
+| `flavor` value          | Set by                                             | What the runtime does                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _undefined_ / missing   | Hand-authored Lumia custom overlays                | Runs your JS directly with the Lumia `Overlay.*` API available on `window.Overlay`. Use this by default.                                                                                                                                                                                                                                                                                             |
+| `'streamelements'`      | StreamElements import wizard                       | Loads the SE compatibility shim before your JS runs: jQuery, Lodash, GSAP, a `SE_API` polyfill with `store`/`counters`, the `fieldData` object, the SE event reshape (`onWidgetLoad` / `onEventReceived` listeners), and listener-name aliasing so widgets coded against `subscriber-latest` etc. still fire. Useful for "I dragged in an SE widget and I want it to keep working as I tune it over." |
+| `'ai-generated'`        | The wizard's "Generate with AI" step               | Plain Lumia runtime (same as undefined), tagged so the editor can label the layer as AI-authored in disclosures. No runtime difference from the default flavor — purely a provenance marker.                                                                                                                                                                                                         |
+
+If you're inspecting an imported overlay's JSON and see `"flavor": "streamelements"`, that's why it can call `SE_API.store.set(...)`, `jQuery`, etc. — none of those are part of the native Lumia overlay API, but the shim makes them available for that specific layer.
+
 ## Code ID
 
 The codeId is primarily meant to be used when talking to Lumia Stream. It is used to store storage data, it is used when calling send overlay content that will only send to overlays with that specific code id. It can be retrieved within the overlay using `Overlay.on('overlaycontent', (data) => {...})`
