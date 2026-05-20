@@ -1382,12 +1382,18 @@ export declare enum SystemVariables {
     TWITCH_LAST_FOLLOWER = "twitch_last_follower",
     /** Session followers list. Use as {{twitch_session_follower}}. */
     TWITCH_SESSION_FOLLOWERS = "twitch_session_follower",
-    /** Last subscriber. Use as {{twitch_last_subscriber}}. */
+    /** Last subscriber of any kind (new sub, resub, or recipient of a gift). Use as {{twitch_last_subscriber}}. */
     TWITCH_LAST_SUBSCRIBER = "twitch_last_subscriber",
-    /** Last gifter. Use as {{twitch_last_gifter}}. */
+    /** Last person to subscribe for the first time (excludes resubs and gift-recipients). Use as {{twitch_last_new_subscriber}}. */
+    TWITCH_LAST_NEW_SUBSCRIBER = "twitch_last_new_subscriber",
+    /** Last person to extend an existing subscription (any month past month 1, consecutive or not). Use as {{twitch_last_resubscriber}}. */
+    TWITCH_LAST_RESUBSCRIBER = "twitch_last_resubscriber",
+    /** Last gifter (the person who sent the gift). Use as {{twitch_last_gifter}}. */
     TWITCH_LAST_GIFTER = "twitch_last_gifter",
-    /** Last gifted sub amount. Use as {{twitch_last_gifter_amount}}. */
+    /** Last gifted sub amount (number of subs in the last gift drop). Use as {{twitch_last_gifter_amount}}. */
     TWITCH_LAST_GIFTER_AMOUNT = "twitch_last_gifter_amount",
+    /** Last gift recipient (the person who received the most recent gifted sub). Use as {{twitch_last_gifted}}. */
+    TWITCH_LAST_GIFTED = "twitch_last_gifted",
     /** Session subscribers list. Use as {{twitch_session_subscribers}}. */
     TWITCH_SESSION_SUBSCRIBERS = "twitch_session_subscribers",
     /** Session chat count. Use as {{twitch_session_chat_count}}. */
@@ -1748,10 +1754,12 @@ export declare enum SystemVariables {
     KICK_LAST_FOLLOWER = "kick_last_follower",
     /** Last subscriber. Use as {{kick_last_subscriber}}. */
     KICK_LAST_SUBSCRIBER = "kick_last_subscriber",
-    /** Last gifter. Use as {{kick_last_gifter}}. */
+    /** Last gifter (the person who sent the gift). Use as {{kick_last_gifter}}. */
     KICK_LAST_GIFTER = "kick_last_gifter",
-    /** Last gifted sub amount. Use as {{kick_last_gifter_amount}}. */
+    /** Last gifted sub amount (number of subs in the last gift drop). Use as {{kick_last_gifter_amount}}. */
     KICK_LAST_GIFTER_AMOUNT = "kick_last_gifter_amount",
+    /** Last gift recipient (the person who received the most recent gifted sub on Kick). Use as {{kick_last_gifted}}. */
+    KICK_LAST_GIFTED = "kick_last_gifted",
     /** Last host. Use as {{kick_last_host}}. */
     KICK_LAST_HOST = "kick_last_host",
     /** Last host viewer amount. Use as {{kick_last_host_amount}}. */
