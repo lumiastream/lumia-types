@@ -9,11 +9,9 @@ export interface LumiaAcceptedVariableDefinition {
 
 export type LumiaAcceptedVariable = string | LumiaAcceptedVariableDefinition;
 
-export const getAcceptedVariableName = (entry: LumiaAcceptedVariable): string =>
-	typeof entry === 'string' ? entry : entry.name;
+export const getAcceptedVariableName = (entry: LumiaAcceptedVariable): string => (typeof entry === 'string' ? entry : entry.name);
 
-export const getAcceptedVariableNames = (entries: LumiaAcceptedVariable[]): string[] =>
-	entries.map(getAcceptedVariableName);
+export const getAcceptedVariableNames = (entries: LumiaAcceptedVariable[]): string[] => entries.map(getAcceptedVariableName);
 
 // Use the **string values** of this enum inside overlays: e.g. {{twitch_total_subscriber_count}}, not {{TWITCH_TOTAL_SUBSCRIBER_COUNT}}.
 export enum SystemVariables {
@@ -87,6 +85,8 @@ export enum SystemVariables {
 	TRANSLATE = 'translate',
 	/** Get the ai response from ai integration. Example: {{ai_prompt={{message}}}}. Use as {{ai_prompt}}. */
 	AI_PROMPT = 'ai_prompt',
+	/** Current weather for a location via wttr.in. Returns a one-line summary like */
+	WEATHER = 'weather',
 
 	// ─────────────────────────────────── General Variables ───────────────────────
 
@@ -2169,7 +2169,21 @@ export const AllVariables = {
 			sessionFollowers: ['total', 'previousTotal'],
 			subscriber: ['username', 'avatar', 'tier', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionSubs: ['total', 'previousTotal'],
-			subscriptionGift: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', KICK_RECIPIENTS_RAW_EXAMPLE, 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+			subscriptionGift: [
+				'username',
+				'avatar',
+				'tier',
+				'giftAmount',
+				'recipients',
+				KICK_RECIPIENTS_RAW_EXAMPLE,
+				'gifter',
+				'totalGifts',
+				'subMonths',
+				'streakMonths',
+				'message',
+				'subPlan',
+				'subPlanName',
+			],
 			sessionGiftSubscriptions: ['total', 'previousTotal'],
 			kicks: ['username', 'avatar', 'amount', 'name', 'type', 'tier', 'id', 'message'],
 			sessionKicks: ['total', 'previousTotal'],
@@ -2513,7 +2527,21 @@ export const AllVariables = {
 			sessionFollowers: ['total', 'previousTotal'],
 			subscriber: ['username', 'avatar', 'tier', 'recipient', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionSubs: ['total', 'previousTotal'],
-			giftSubscription: ['username', 'avatar', 'tier', 'giftAmount', 'recipients', TWITCH_RECIPIENTS_RAW_EXAMPLE, 'gifter', 'totalGifts', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
+			giftSubscription: [
+				'username',
+				'avatar',
+				'tier',
+				'giftAmount',
+				'recipients',
+				TWITCH_RECIPIENTS_RAW_EXAMPLE,
+				'gifter',
+				'totalGifts',
+				'subMonths',
+				'streakMonths',
+				'message',
+				'subPlan',
+				'subPlanName',
+			],
 			sessionGiftSubscriptions: ['total', 'previousTotal'],
 			bits: ['username', 'avatar', 'amount', 'message'],
 			bitsCombo: ['username', 'avatar', 'amount', 'bitsType', 'message'],
