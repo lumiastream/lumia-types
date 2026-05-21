@@ -73,9 +73,6 @@ export enum LumiaEventListTypes {
 export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, LumiaEventListTypes>> = {
 	// --- Lumia Stream native ---
 	[LumiaAlertValues.LUMIASTREAM_DONATION]: LumiaEventListTypes.DONATION,
-	// Raffle / spinwheel / roulette / slots winners are explicitly hidden via
-	// `AlertsToFilter` below — they're stream-side games, not viewer-facing
-	// activity feed events.
 
 	// --- Twitch ---
 	[LumiaAlertValues.TWITCH_EXTENSION]: LumiaEventListTypes.EXTENSION,
@@ -91,23 +88,12 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
 	[LumiaAlertValues.TWITCH_BITS]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_BITS_COMBO]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_SESSION_BITS]: LumiaEventListTypes.BITS,
-	// TWITCH_REDEMPTION is explicitly hidden via `AlertsToFilter` — its
-	// payload is too channel-points-specific for a generic activity feed.
-	// Streamlabs Redemption (loyalty points) is in the REDEMPTION category
-	// below if that semantic is needed.
 	[LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: LumiaEventListTypes.HYPETRAIN,
-	// HYPETRAIN_PROGRESSED / LEVEL_PROGRESSED / ENDED are hidden via
-	// `AlertsToFilter` — only the STARTED event reads as a real "event" in
-	// the feed; the rest are progress ticks the streamer doesn't want
-	// cluttering things.
 	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.TWITCH_POWERUPS]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_POWERUPS_POINTS]: LumiaEventListTypes.POINTS,
 
 	// --- YouTube ---
-	// YouTube "subscribers" are free follows in YT-speak — categorize as
-	// FOLLOWER so a "Recent Followers" widget unifies Twitch follows + YT
-	// subs. Paid memberships are categorized as SUBSCRIBERS below.
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.YOUTUBE_SESSION_SUBS]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.YOUTUBE_MEMBER]: LumiaEventListTypes.SUBSCRIBERS,
@@ -120,17 +106,11 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
 	[LumiaAlertValues.YOUTUBE_SESSION_SUPERSTICKERS]: LumiaEventListTypes.SUPERSTICKERS,
 	[LumiaAlertValues.YOUTUBE_GIFTS]: LumiaEventListTypes.GIFTS,
 	[LumiaAlertValues.YOUTUBE_SESSION_GIFTS]: LumiaEventListTypes.GIFTS,
-	// YOUTUBE_LIKE / TIKTOK_LIKE / TIKTOK_TOTAL_LIKES / TWITTER_LIKE are
-	// hidden via `AlertsToFilter` — likes are too frequent / noisy for a
-	// recent-activity feed.
 
 	// --- Facebook ---
 	[LumiaAlertValues.FACEBOOK_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.FACEBOOK_REACTION]: LumiaEventListTypes.LIKES,
 	[LumiaAlertValues.FACEBOOK_STAR]: LumiaEventListTypes.STARS,
-	// FB Supporters are paid subscriptions, FB Fans are free fan-status, FB
-	// Gift Subscriptions are gifted Supporters → keep all three in their
-	// distinct categories.
 	[LumiaAlertValues.FACEBOOK_SUPPORT]: LumiaEventListTypes.SUBSCRIBERS,
 	[LumiaAlertValues.FACEBOOK_GIFT_SUBSCRIPTION]: LumiaEventListTypes.GIFTS,
 	[LumiaAlertValues.FACEBOOK_SHARE]: LumiaEventListTypes.SHARES,
@@ -139,9 +119,6 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
 	// --- TikTok ---
 	[LumiaAlertValues.TIKTOK_FOLLOWER]: LumiaEventListTypes.FOLLOWER,
 	[LumiaAlertValues.TIKTOK_GIFT]: LumiaEventListTypes.GIFTS,
-	// TikTok Super Fan = paid membership (subscriber-equivalent). Super Fan
-	// BOX is a separate gift-style event where a viewer receives a fan-only
-	// drop — categorize as GIFTS to keep the SUBSCRIBERS feed sub-only.
 	[LumiaAlertValues.TIKTOK_SUPER_FAN]: LumiaEventListTypes.SUBSCRIBERS,
 	[LumiaAlertValues.TIKTOK_SUPER_FAN_BOX]: LumiaEventListTypes.GIFTS,
 	[LumiaAlertValues.TIKTOK_TREASURE_CHEST]: LumiaEventListTypes.GIFTS,
@@ -164,18 +141,12 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
 	[LumiaAlertValues.STREAMLABS_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.STREAMLABS_CHARITY]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.STREAMLABS_MERCH]: LumiaEventListTypes.PURCHASES,
-	// Streamlabs Redemption was previously miscategorized as PURCHASES. It's
-	// a Streamlabs loyalty-points redemption — the dedicated REDEMPTION
-	// category is the correct home, mirroring TWITCH_REDEMPTION.
 	[LumiaAlertValues.STREAMLABS_REDEMPTION]: LumiaEventListTypes.REDEMPTION,
 	[LumiaAlertValues.STREAMLABS_PRIMEGIFT]: LumiaEventListTypes.GIFTS,
 	[LumiaAlertValues.STREAMELEMENTS_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.EXTRALIFE_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.DONORDRIVE_DONATION]: LumiaEventListTypes.DONATION,
 	[LumiaAlertValues.TILTIFY_DONATION]: LumiaEventListTypes.DONATION,
-	// Throne is a viewer wishlist platform — a "gift purchase" is a viewer
-	// buying an item off the streamer's wishlist. Treat all three Throne
-	// events as PURCHASES so they don't leak into the SUBSCRIBERS feed.
 	[LumiaAlertValues.THRONE_GIFT_PURCHASE]: LumiaEventListTypes.PURCHASES,
 	[LumiaAlertValues.THRONE_CONTRIBUTION_PURCHASE]: LumiaEventListTypes.PURCHASES,
 	[LumiaAlertValues.THRONE_GIFT_CROWDFUNDED]: LumiaEventListTypes.PURCHASES,
@@ -397,17 +368,4 @@ export const AlertsToFilter: LumiaAlertValues[] = [
  * before the event lands in the eventlist DB at all. Was duplicated in
  * LumiaStream `Integrations.types.ts` before being consolidated here.
  */
-export const PlatformsToFilter: string[] = [
-	'obs',
-	'slobs',
-	'meld',
-	'paypal',
-	'pulsoid',
-	'hyperate',
-	'spotify',
-	'youtubemusic',
-	'nowplaying',
-	'vlc',
-	'streamerbot',
-	'vtubestudio',
-];
+export const PlatformsToFilter: string[] = ['obs', 'slobs', 'meld', 'paypal', 'pulsoid', 'hyperate', 'spotify', 'youtubemusic', 'nowplaying', 'vlc', 'streamerbot', 'vtubestudio'];
