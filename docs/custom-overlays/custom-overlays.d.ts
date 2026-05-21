@@ -1160,6 +1160,21 @@ export declare enum SystemVariables {
     SESSION_START_DATE = "session_start_date",
     /** Last overlay screenshot path. Use as {{last_overlay_screenshot_path}}. */
     LAST_OVERLAY_SCREENSHOT_PATH = "last_overlay_screenshot_path",
+    /**
+     * Streamer's display name. Platform-agnostic — resolves to the streamer's
+     * username on whichever platform is currently connected, preferring the
+     * primary platform when multiple are connected. Use as {{streamer}}.
+     *
+     * Resolution order in the renderer: twitch_username → kick_username →
+     * youtube_username → facebook_username → tiktok_username, falling back to
+     * '' when no platform is connected. Re-evaluated whenever any of those
+     * underlying username variables changes.
+     *
+     * Useful for templates that want to say "{{streamer}}'s overlay" without
+     * knowing which platform the streamer is on — and for SE imports which
+     * use the same `{streamer}` token as a platform-agnostic placeholder.
+     */
+    STREAMER = "streamer",
     /** Last player to trigger a game. Use as {{game_last_player}}. */
     GAME_LAST_PLAYER = "game_last_player",
     /** Lumia app uptime. Use as {{lumia_uptime}}. */
