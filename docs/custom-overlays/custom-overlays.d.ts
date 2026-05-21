@@ -1154,6 +1154,8 @@ export declare enum SystemVariables {
     TRANSLATE = "translate",
     /** Get the ai response from ai integration. Example: {{ai_prompt={{message}}}}. Use as {{ai_prompt}}. */
     AI_PROMPT = "ai_prompt",
+    /** Current weather for a location via wttr.in. Returns a one-line summary like */
+    WEATHER = "weather",
     /** Commands URL/page. Use in overlays as {{commands_url}}. */
     COMMANDS_URL = "commands_url",
     /** Session start time (ISO). Use as {{session_start_date}}. */
