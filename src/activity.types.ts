@@ -87,6 +87,8 @@ export enum LumiaActivityCommandTypes {
 	// Chat Box Mod Commands
 	TRANSLATE_MESSAGE = 'translate-message',
 	DELETE_MESSAGE = 'delete-message',
+	PIN_MESSAGE = 'pin-message',
+	UNPIN_MESSAGE = 'unpin-message',
 	BAN_USER = 'ban-user',
 	UNBAN_USER = 'unban-user',
 	TIMEOUT_USER = 'timeout-user',
