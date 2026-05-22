@@ -2878,7 +2878,7 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: {
-		connection: LumiaIntegrations.STREAMLABS,
+		connection: LumiaIntegrations.TWITCH,
 		message: '{{username}} just tipped {{amount}} to charity {{charity_name}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{amount}} {{currency}}',

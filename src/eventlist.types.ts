@@ -43,6 +43,7 @@ export enum LumiaEventListTypes {
 	FANS = 'fans',
 	SHARES = 'shares',
 	RAFFLE = 'raffles',
+	CHARITY = 'charity',
 }
 
 /**
@@ -89,7 +90,7 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
 	[LumiaAlertValues.TWITCH_BITS_COMBO]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_SESSION_BITS]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: LumiaEventListTypes.HYPETRAIN,
-	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: LumiaEventListTypes.DONATION,
+	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: LumiaEventListTypes.CHARITY,
 	[LumiaAlertValues.TWITCH_POWERUPS]: LumiaEventListTypes.BITS,
 	[LumiaAlertValues.TWITCH_POWERUPS_POINTS]: LumiaEventListTypes.POINTS,
 
@@ -139,7 +140,7 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
 
 	// --- Third-party donation / commerce platforms ---
 	[LumiaAlertValues.STREAMLABS_DONATION]: LumiaEventListTypes.DONATION,
-	[LumiaAlertValues.STREAMLABS_CHARITY]: LumiaEventListTypes.DONATION,
+	[LumiaAlertValues.STREAMLABS_CHARITY]: LumiaEventListTypes.CHARITY,
 	[LumiaAlertValues.STREAMLABS_MERCH]: LumiaEventListTypes.PURCHASES,
 	[LumiaAlertValues.STREAMLABS_REDEMPTION]: LumiaEventListTypes.REDEMPTION,
 	[LumiaAlertValues.STREAMLABS_PRIMEGIFT]: LumiaEventListTypes.GIFTS,
