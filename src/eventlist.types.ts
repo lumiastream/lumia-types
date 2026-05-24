@@ -370,3 +370,36 @@ export const AlertsToFilter: LumiaAlertValues[] = [
  * LumiaStream `Integrations.types.ts` before being consolidated here.
  */
 export const PlatformsToFilter: string[] = ['obs', 'slobs', 'meld', 'paypal', 'pulsoid', 'hyperate', 'spotify', 'youtubemusic', 'nowplaying', 'vlc', 'streamerbot', 'vtubestudio'];
+
+export const LumiaEventListTypeColors: Record<LumiaEventListTypes, string> = {
+	[LumiaEventListTypes.FOLLOWER]: '#22c55e',
+	[LumiaEventListTypes.SUBSCRIBERS]: '#a855f7',
+	[LumiaEventListTypes.GIFTS]: '#ec4899',
+	[LumiaEventListTypes.DONATION]: '#10b981',
+	[LumiaEventListTypes.CHARITY]: '#f97316',
+	[LumiaEventListTypes.BITS]: '#facc15',
+	[LumiaEventListTypes.KICKS]: '#84cc16',
+	[LumiaEventListTypes.POINTS]: '#3b82f6',
+	[LumiaEventListTypes.REDEMPTION]: '#06b6d4',
+	[LumiaEventListTypes.EXTENSION]: '#8b5cf6',
+	[LumiaEventListTypes.RAIDS]: '#ef4444',
+	[LumiaEventListTypes.HOSTS]: '#f43f5e',
+	[LumiaEventListTypes.HYPETRAIN]: '#fb7185',
+	[LumiaEventListTypes.SPELLS]: '#7c3aed',
+	[LumiaEventListTypes.RETWEETS]: '#0ea5e9',
+	[LumiaEventListTypes.LIKES]: '#f472b6',
+	[LumiaEventListTypes.SHARES]: '#14b8a6',
+	[LumiaEventListTypes.PURCHASES]: '#eab308',
+	[LumiaEventListTypes.SUPERSTICKERS]: '#fb923c',
+	[LumiaEventListTypes.SUPERCHATS]: '#f59e0b',
+	[LumiaEventListTypes.STARS]: '#fde047',
+	[LumiaEventListTypes.FANS]: '#d946ef',
+	[LumiaEventListTypes.RAFFLE]: '#34d399',
+};
+
+const DEFAULT_EVENTLIST_COLOR = '#9ca3af';
+
+export const getEventListCategoryColor = (category: LumiaEventListTypes | undefined | null): string => {
+	if (!category) return DEFAULT_EVENTLIST_COLOR;
+	return LumiaEventListTypeColors[category] ?? DEFAULT_EVENTLIST_COLOR;
+};
