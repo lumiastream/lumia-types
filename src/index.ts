@@ -30,7 +30,7 @@ export {
 	LumiaIntegrations,
 	LumiaEventTypes,
 } from './event.types';
-export { LumiaEventListTypes, LumiaMapAlertTypeToEventListType, AlertsToFilter, PlatformsToFilter } from './eventlist.types';
+export { LumiaEventListTypes, LumiaMapAlertTypeToEventListType, AlertsToFilter, PlatformsToFilter, LumiaEventListTypeColors, getEventListCategoryColor } from './eventlist.types';
 export {
 	SystemVariables,
 	ReservedVariables,

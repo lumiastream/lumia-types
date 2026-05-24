@@ -106,6 +106,7 @@ export interface LumiaDynamicCondition {
 	isPrime?: boolean;
 	isGift?: boolean;
 	giftAmount?: number;
+	amount?: number;
 	subMonths?: number;
 	currency?: string;
 	username?: string;
@@ -1308,7 +1309,7 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Gift 1 Sub',
-				dynamic: { value: 1000, giftAmount: 1 },
+				dynamic: { value: 1000, giftAmount: 1, amount: 1 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
@@ -1317,6 +1318,7 @@ export const LumiaAlertConfigs: Record<
 					recipients: 'worldlights',
 					recipientsRaw: [{ username: 'worldlights', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } }],
 					giftAmount: 1,
+					amount: 1,
 					totalGifts: 1,
 					subMonths: 1,
 					tier: 'Tier 1',
@@ -1326,7 +1328,7 @@ export const LumiaAlertConfigs: Record<
 			},
 			{
 				label: 'Gift 5 Subs',
-				dynamic: { value: 1000, giftAmount: 5 },
+				dynamic: { value: 1000, giftAmount: 5, amount: 5 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
@@ -1341,6 +1343,7 @@ export const LumiaAlertConfigs: Record<
 						{ username: 'rgblumia', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures', userId: '123', userLevels: { subscriber: true } },
 					],
 					giftAmount: 5,
+					amount: 5,
 					totalGifts: 5,
 					subMonths: 1,
 					tier: 'Tier 1',
@@ -1377,6 +1380,13 @@ export const LumiaAlertConfigs: Record<
 				dynamicField: 'giftAmount',
 				variableField: 'giftAmount',
 				required: true,
+				default: 1,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
 				default: 1,
 			},
 			{
@@ -1900,18 +1910,18 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: '10 viewers',
-				dynamic: { value: 10 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10 },
+				dynamic: { value: 10, amount: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10, amount: 10 },
 			},
 			{
 				label: '50 viewers',
-				dynamic: { value: 50 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50 },
+				dynamic: { value: 50, amount: 50 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50, amount: 50 },
 			},
 			{
 				label: '100 viewers',
-				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100 },
+				dynamic: { value: 100, amount: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100, amount: 100 },
 			},
 		],
 		inputFields: [
@@ -1928,6 +1938,13 @@ export const LumiaAlertConfigs: Record<
 				dynamicField: 'value',
 				variableField: 'viewers',
 				required: true,
+				default: 100,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
 				default: 100,
 			},
 		],
@@ -1950,18 +1967,18 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: '10 viewers',
-				dynamic: { value: 10 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10 },
+				dynamic: { value: 10, amount: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10, amount: 10 },
 			},
 			{
 				label: '50 viewers',
-				dynamic: { value: 50 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50 },
+				dynamic: { value: 50, amount: 50 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50, amount: 50 },
 			},
 			{
 				label: '100 viewers',
-				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100 },
+				dynamic: { value: 100, amount: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100, amount: 100 },
 			},
 		],
 		inputFields: [
@@ -1978,6 +1995,13 @@ export const LumiaAlertConfigs: Record<
 				dynamicField: 'value',
 				variableField: 'viewers',
 				required: true,
+				default: 100,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
 				default: 100,
 			},
 		],
@@ -2017,18 +2041,18 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Progress 100',
-				dynamic: { value: 100 },
-				extraSettings: { level: 1, total: 100, progress: 100, goal: 4 },
+				dynamic: { value: 100, amount: 100 },
+				extraSettings: { level: 1, total: 100, progress: 100, goal: 4, amount: 100 },
 			},
 			{
 				label: 'Progress 200',
-				dynamic: { value: 200 },
-				extraSettings: { level: 1, total: 200, progress: 200, goal: 4 },
+				dynamic: { value: 200, amount: 200 },
+				extraSettings: { level: 1, total: 200, progress: 200, goal: 4, amount: 200 },
 			},
 			{
 				label: 'Progress 300',
-				dynamic: { value: 300 },
-				extraSettings: { level: 1, total: 300, progress: 300, goal: 4 },
+				dynamic: { value: 300, amount: 300 },
+				extraSettings: { level: 1, total: 300, progress: 300, goal: 4, amount: 300 },
 			},
 		],
 		inputFields: [
@@ -2037,6 +2061,13 @@ export const LumiaAlertConfigs: Record<
 				label: 'Progress',
 				dynamicField: 'value',
 				variableField: 'progress',
+				required: false,
+				default: 100,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
 				required: false,
 				default: 100,
 			},
@@ -2063,28 +2094,28 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Level 1',
-				dynamic: { value: 1 },
-				extraSettings: { level: 1, total: 0, progress: 0, goal: 5 },
+				dynamic: { value: 1, amount: 1 },
+				extraSettings: { level: 1, total: 0, progress: 0, goal: 5, amount: 1 },
 			},
 			{
 				label: 'Level 2',
-				dynamic: { value: 2 },
-				extraSettings: { level: 2, total: 100, progress: 100, goal: 5 },
+				dynamic: { value: 2, amount: 2 },
+				extraSettings: { level: 2, total: 100, progress: 100, goal: 5, amount: 2 },
 			},
 			{
 				label: 'Level 3',
-				dynamic: { value: 3 },
-				extraSettings: { level: 3, total: 100, progress: 100, goal: 5 },
+				dynamic: { value: 3, amount: 3 },
+				extraSettings: { level: 3, total: 100, progress: 100, goal: 5, amount: 3 },
 			},
 			{
 				label: 'Level 4',
-				dynamic: { value: 4 },
-				extraSettings: { level: 4, total: 100, progress: 100, goal: 5 },
+				dynamic: { value: 4, amount: 4 },
+				extraSettings: { level: 4, total: 100, progress: 100, goal: 5, amount: 4 },
 			},
 			{
 				label: 'Level 5',
-				dynamic: { value: 5 },
-				extraSettings: { level: 5, total: 100, progress: 100, goal: 5 },
+				dynamic: { value: 5, amount: 5 },
+				extraSettings: { level: 5, total: 100, progress: 100, goal: 5, amount: 5 },
 			},
 		],
 		inputFields: [
@@ -2093,6 +2124,13 @@ export const LumiaAlertConfigs: Record<
 				label: 'Level',
 				dynamicField: 'value',
 				variableField: 'level',
+				required: false,
+				default: 2,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
 				required: false,
 				default: 2,
 			},
@@ -2119,28 +2157,28 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Level 1',
-				dynamic: { value: 1 },
-				extraSettings: { level: 1, total: 0, progress: 0, goal: 5 },
+				dynamic: { value: 1, amount: 1 },
+				extraSettings: { level: 1, total: 0, progress: 0, goal: 5, amount: 1 },
 			},
 			{
 				label: 'Level 2',
-				dynamic: { value: 2 },
-				extraSettings: { level: 2, total: 100, progress: 100, goal: 5 },
+				dynamic: { value: 2, amount: 2 },
+				extraSettings: { level: 2, total: 100, progress: 100, goal: 5, amount: 2 },
 			},
 			{
 				label: 'Level 3',
-				dynamic: { value: 3 },
-				extraSettings: { level: 3, total: 100, progress: 100, goal: 5 },
+				dynamic: { value: 3, amount: 3 },
+				extraSettings: { level: 3, total: 100, progress: 100, goal: 5, amount: 3 },
 			},
 			{
 				label: 'Level 4',
-				dynamic: { value: 4 },
-				extraSettings: { level: 4, total: 100, progress: 100, goal: 5 },
+				dynamic: { value: 4, amount: 4 },
+				extraSettings: { level: 4, total: 100, progress: 100, goal: 5, amount: 4 },
 			},
 			{
 				label: 'Level 5',
-				dynamic: { value: 5 },
-				extraSettings: { level: 5, total: 100, progress: 100, goal: 5 },
+				dynamic: { value: 5, amount: 5 },
+				extraSettings: { level: 5, total: 100, progress: 100, goal: 5, amount: 5 },
 			},
 		],
 		inputFields: [
@@ -2149,6 +2187,13 @@ export const LumiaAlertConfigs: Record<
 				label: 'Level',
 				variableField: 'level',
 				dynamicField: 'value',
+				required: false,
+				default: 2,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
 				required: false,
 				default: 2,
 			},
@@ -3488,9 +3533,10 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Ad Started',
-				dynamic: { value: '60' },
+				dynamic: { value: '60', amount: 60 },
 				extraSettings: {
 					length: '60',
+					amount: 60,
 					is_automatic: false,
 					started_at: '2022-07-26T17:00:03.17106713Z',
 				},
@@ -3505,6 +3551,13 @@ export const LumiaAlertConfigs: Record<
 				required: true,
 				default: '60',
 			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
+				default: 60,
+			},
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
@@ -3517,9 +3570,10 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Ad Stopped',
-				dynamic: { value: '60' },
+				dynamic: { value: '60', amount: 60 },
 				extraSettings: {
 					length: '60',
+					amount: 60,
 					is_automatic: false,
 					started_at: '2022-07-26T17:00:03.17106713Z',
 					next_ad_starts: '1 hour, 5 minutes, 20 seconds',
@@ -3535,6 +3589,13 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'length',
 				required: true,
 				default: '60',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
+				default: 60,
 			},
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
@@ -4482,18 +4543,18 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: '10 likes',
-				dynamic: { value: 10 },
-				extraSettings: { likes: 10, dislikes: 2 },
+				dynamic: { value: 10, amount: 10 },
+				extraSettings: { likes: 10, dislikes: 2, amount: 10 },
 			},
 			{
 				label: '20 likes',
-				dynamic: { value: 20 },
-				extraSettings: { likes: 20, dislikes: 2 },
+				dynamic: { value: 20, amount: 20 },
+				extraSettings: { likes: 20, dislikes: 2, amount: 20 },
 			},
 			{
 				label: '100 likes',
-				dynamic: { value: 100 },
-				extraSettings: { likes: 100, dislikes: 2 },
+				dynamic: { value: 100, amount: 100 },
+				extraSettings: { likes: 100, dislikes: 2, amount: 100 },
 			},
 		],
 		LumiaVariationConditions: [
@@ -4512,18 +4573,18 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: '100 viewers',
-				dynamic: { value: 100 },
-				extraSettings: { viewers: 100 },
+				dynamic: { value: 100, amount: 100 },
+				extraSettings: { viewers: 100, amount: 100 },
 			},
 			{
 				label: '200 viewers',
-				dynamic: { value: 200 },
-				extraSettings: { viewers: 200 },
+				dynamic: { value: 200, amount: 200 },
+				extraSettings: { viewers: 200, amount: 200 },
 			},
 			{
 				label: '300 viewers',
-				dynamic: { value: 300 },
-				extraSettings: { viewers: 300 },
+				dynamic: { value: 300, amount: 300 },
+				extraSettings: { viewers: 300, amount: 300 },
 			},
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Viewers Greater Than' }],
@@ -4922,22 +4983,24 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: '200 User Likes',
-				dynamic: { value: 200 },
+				dynamic: { value: 200, amount: 200 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					userLikeCount: 200,
 					totalLikeCount: 1000,
+					amount: 200,
 				},
 			},
 			{
 				label: '1000 User Likes',
-				dynamic: { value: 1000 },
+				dynamic: { value: 1000, amount: 1000 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					userLikeCount: 1000,
 					totalLikeCount: 5000,
+					amount: 1000,
 				},
 			},
 		],
@@ -4964,6 +5027,13 @@ export const LumiaAlertConfigs: Record<
 				required: false,
 				default: 1000,
 			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
+				default: 100,
+			},
 		],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'User Like Count Greater Than' }],
 	},
@@ -4977,32 +5047,35 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: '1000 Total Likes',
-				dynamic: { value: 1000 },
+				dynamic: { value: 1000, amount: 1000 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					userLikeCount: 200,
 					totalLikeCount: 1000,
+					amount: 1000,
 				},
 			},
 			{
 				label: '5000 Total Likes',
-				dynamic: { value: 5000 },
+				dynamic: { value: 5000, amount: 5000 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					userLikeCount: 200,
 					totalLikeCount: 5000,
+					amount: 5000,
 				},
 			},
 			{
 				label: '25000 Total Likes',
-				dynamic: { value: 25000 },
+				dynamic: { value: 25000, amount: 25000 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					userLikeCount: 200,
 					totalLikeCount: 25000,
+					amount: 25000,
 				},
 			},
 		],
@@ -5013,6 +5086,13 @@ export const LumiaAlertConfigs: Record<
 				dynamicField: 'value',
 				variableField: 'totalLikeCount',
 				required: true,
+				default: 1000,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
 				default: 1000,
 			},
 		],
@@ -5027,7 +5107,7 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Rose worth 1 Coin',
-				dynamic: { value: 1, name: 'Rose' },
+				dynamic: { value: 1, name: 'Rose', amount: 1 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
@@ -5038,12 +5118,13 @@ export const LumiaAlertConfigs: Record<
 					value: 1,
 					coins: 1,
 					diamonds: 1,
+					amount: 1,
 					giftPictureUrl: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/eba3a9bb85c33e017f3648eaf88d7189~tplv-obj.png',
 				},
 			},
 			{
 				label: 'Pumpkin worth 100 Coins',
-				dynamic: { value: 100, name: 'Pumpkin' },
+				dynamic: { value: 100, name: 'Pumpkin', amount: 100 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
@@ -5055,11 +5136,12 @@ export const LumiaAlertConfigs: Record<
 					value: 100,
 					coins: 100,
 					diamonds: 50,
+					amount: 100,
 				},
 			},
 			{
 				label: 'Boiling Cauldron worth 500 Coins',
-				dynamic: { value: 500, name: 'Boiling Cauldron' },
+				dynamic: { value: 500, name: 'Boiling Cauldron', amount: 500 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
@@ -5071,6 +5153,7 @@ export const LumiaAlertConfigs: Record<
 					value: 500,
 					coins: 500,
 					diamonds: 250,
+					amount: 500,
 				},
 			},
 		],
@@ -5094,6 +5177,13 @@ export const LumiaAlertConfigs: Record<
 				type: 'number',
 				label: 'Coins',
 				variableField: 'value',
+				required: false,
+				default: 1,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
 				required: false,
 				default: 1,
 			},
@@ -5176,8 +5266,8 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Treasure Chest',
-				dynamic: { value: 50, name: 'lumiastream' },
-				extraSettings: { username: 'lumiastream', diamondCount: 50, peopleCount: 5 },
+				dynamic: { value: 50, name: 'lumiastream', amount: 50 },
+				extraSettings: { username: 'lumiastream', diamondCount: 50, peopleCount: 5, amount: 50 },
 			},
 		],
 		inputFields: [
@@ -5193,6 +5283,13 @@ export const LumiaAlertConfigs: Record<
 				label: 'Diamond Count',
 				dynamicField: 'value',
 				variableField: 'diamondCount',
+				required: false,
+				default: 50,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
 				required: false,
 				default: 50,
 			},
@@ -5458,7 +5555,7 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Battle Progress',
-				dynamic: { value: 100 },
+				dynamic: { value: 100, amount: 100 },
 				extraSettings: {
 					battleId: '1',
 					battleLabel: 'lumiastream vs rivalstream',
@@ -5475,6 +5572,7 @@ export const LumiaAlertConfigs: Record<
 					repeatCount: 1,
 					totalDiamondCount: 100,
 					battleStatus: 'scoreUpdate',
+					amount: 100,
 				},
 			},
 		],
@@ -5485,6 +5583,13 @@ export const LumiaAlertConfigs: Record<
 				variableField: 'battleLabel',
 				required: false,
 				default: 'lumiastream vs rivalstream',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
+				default: 100,
 			},
 		],
 		LumiaVariationConditions: [
@@ -5774,12 +5879,13 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Tier 1 Sub',
-				dynamic: { value: '1' },
+				dynamic: { value: '1', amount: 1 },
 				extraSettings: {
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					message: 'Great Stream',
 					subMonths: 1,
+					amount: 1,
 					tier: 'Tier 1',
 					subPlan: '1',
 					subPlanName: 'My Day ones',
@@ -5799,6 +5905,13 @@ export const LumiaAlertConfigs: Record<
 				label: 'Months subscribed',
 				dynamicField: 'subMonths',
 				variableField: 'subMonths',
+				required: false,
+				default: 1,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
 				required: false,
 				default: 1,
 			},
@@ -6184,18 +6297,18 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: '10 viewers',
-				dynamic: { value: 10 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10 },
+				dynamic: { value: 10, amount: 10 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 10, amount: 10 },
 			},
 			{
 				label: '50 viewers',
-				dynamic: { value: 50 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50 },
+				dynamic: { value: 50, amount: 50 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 50, amount: 50 },
 			},
 			{
 				label: '100 viewers',
-				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100 },
+				dynamic: { value: 100, amount: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', viewers: 100, amount: 100 },
 			},
 		],
 		inputFields: [
@@ -6212,6 +6325,13 @@ export const LumiaAlertConfigs: Record<
 				dynamicField: 'value',
 				variableField: 'viewers',
 				required: true,
+				default: 100,
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				variableField: 'amount',
+				required: false,
 				default: 100,
 			},
 		],
