@@ -1656,7 +1656,7 @@ export const AllVariables = {
 			lumiaClosed: ['date'],
 			streammodeOn: ['date'],
 			streammodeOff: ['date'],
-			donation: ['username', 'avatar', 'sender_social_link', 'currency', 'amount', 'message', 'anonymous', 'command'],
+			donation: ['username', 'avatar', 'sender_social_link', 'currency', 'currencySymbol', 'amount', 'message', 'anonymous', 'command'],
 			spinwheelWinner: ['spinwheel_winner', 'spinwheel_item', 'spinwheel_item_id', 'spinwheel_item_image', 'spinwheel_item_quantity_remaining', 'spinwheel_item_quantity_initial'],
 			raffleStart: ['raffle_title', 'raffle_description', 'raffle_type', 'raffle_entry_command', 'raffle_generated_number'],
 			raffleStop: ['raffle_title', 'raffle_description', 'raffle_type', 'raffle_entry_command', 'duration', 'raffle_generated_number'],
@@ -1724,13 +1724,13 @@ export const AllVariables = {
 	donordrive: {
 		variables: ['donordrive_goal_amount', 'donordrive_total_raised'],
 		alerts: {
-			donation: ['username', 'currency', 'amount'],
+			donation: ['username', 'currency', 'currencySymbol', 'amount'],
 		},
 	},
 	extralife: {
 		variables: ['extralife_goal_amount', 'extralife_total_raised'],
 		alerts: {
-			donation: ['username', 'currency', 'amount'],
+			donation: ['username', 'currency', 'currencySymbol', 'amount'],
 		},
 	},
 	facebook: {
@@ -1773,7 +1773,7 @@ export const AllVariables = {
 	},
 	fourthwall: {
 		alerts: {
-			donation: ['username', 'email', 'message', 'currency', 'amount', 'id', 'status', 'createdAt', 'updatedAt', 'raw'],
+			donation: ['username', 'email', 'message', 'currency', 'currencySymbol', 'amount', 'id', 'status', 'createdAt', 'updatedAt', 'raw'],
 			subscription: ['username', 'email', 'currency', 'amount', 'interval', 'id', 'subscriptionType', 'tierId', 'variantId', 'createdAt', 'raw'],
 			subscriptionChanged: ['username', 'email', 'currency', 'amount', 'interval', 'id', 'subscriptionType', 'tierId', 'variantId', 'createdAt', 'raw'],
 			subscriptionExpired: ['username', 'email', 'currency', 'amount', 'interval', 'id', 'subscriptionType', 'tierId', 'variantId', 'createdAt', 'raw'],
@@ -2195,7 +2195,7 @@ export const AllVariables = {
 	kofi: {
 		variables: ['kofi_last_order_name', 'kofi_last_order_amount', 'kofi_last_order_amount_currency'],
 		alerts: {
-			donation: ['username', 'email', 'currency', 'amount'],
+			donation: ['username', 'email', 'currency', 'currencySymbol', 'amount'],
 			subscription: ['username', 'email', 'currency', 'amount', 'tier'],
 			commission: ['username', 'email', 'currency', 'amount'],
 			shopOrder: ['username', 'email', 'currency', 'amount'],
@@ -2273,7 +2273,7 @@ export const AllVariables = {
 	},
 	patreon: {
 		alerts: {
-			campaignPledge: ['username', 'currency', 'amount'],
+			campaignPledge: ['username', 'currency', 'currencySymbol', 'amount'],
 		},
 	},
 	pulse: {
@@ -2315,7 +2315,7 @@ export const AllVariables = {
 	},
 	streamelements: {
 		alerts: {
-			donation: ['username', 'currency', 'amount', 'message'],
+			donation: ['username', 'currency', 'currencySymbol', 'amount', 'message'],
 		},
 	},
 	streamerbot: {
@@ -2326,8 +2326,8 @@ export const AllVariables = {
 	},
 	streamlabs: {
 		alerts: {
-			donation: ['username', 'currency', 'amount', 'message'],
-			charity: ['username', 'currency', 'amount', 'message'],
+			donation: ['username', 'currency', 'currencySymbol', 'amount', 'message'],
+			charity: ['username', 'currency', 'currencySymbol', 'amount', 'message'],
 			merch: ['username', 'merch', 'message'],
 			redemption: ['username', 'redemption', 'message'],
 			primeGift: ['username'],
@@ -2404,7 +2404,7 @@ export const AllVariables = {
 	tiltify: {
 		variables: ['tiltify_goal_amount', 'tiltify_total_raised'],
 		alerts: {
-			campaignDonation: ['username', 'currency', 'amount'],
+			campaignDonation: ['username', 'currency', 'currencySymbol', 'amount'],
 		},
 	},
 	throne: {
@@ -2417,7 +2417,7 @@ export const AllVariables = {
 	},
 	tipeeestream: {
 		alerts: {
-			donation: ['username', 'currency', 'amount'],
+			donation: ['username', 'currency', 'currencySymbol', 'amount'],
 		},
 	},
 	treatstream: {
@@ -2625,10 +2625,10 @@ export const AllVariables = {
 			goalStarted: ['goal_type', 'goal_id', 'goal_description', 'goal_amount', 'goal_target_amount'],
 			goalProgressed: ['goal_type', 'goal_id', 'goal_description', 'goal_amount', 'goal_target_amount'],
 			goalEnded: ['goal_type', 'goal_id', 'goal_description', 'goal_amount', 'goal_target_amount', 'goal_achieved', 'goal_status'],
-			charityDonation: ['userId', 'username', 'displayname', 'amount', 'currency', 'campaign_id', 'charity_name', 'charity_description', 'charity_logo', 'charity_website'],
-			charityCampaignStarted: ['charity_name', 'charity_description', 'charity_logo', 'charity_amount', 'charity_target_amount', 'charity_website', 'currency', 'started_at'],
-			charityCampaignProgressed: ['charity_name', 'charity_description', 'charity_logo', 'charity_amount', 'charity_target_amount', 'charity_website', 'currency'],
-			charityCampaignStopped: ['charity_name', 'charity_description', 'charity_logo', 'charity_amount', 'charity_target_amount', 'charity_website', 'currency', 'ended_at'],
+			charityDonation: ['userId', 'username', 'displayname', 'amount', 'currency', 'currencySymbol', 'campaign_id', 'charity_name', 'charity_description', 'charity_logo', 'charity_website'],
+			charityCampaignStarted: ['charity_name', 'charity_description', 'charity_logo', 'charity_amount', 'charity_target_amount', 'charity_website', 'currency', 'currencySymbol', 'started_at'],
+			charityCampaignProgressed: ['charity_name', 'charity_description', 'charity_logo', 'charity_amount', 'charity_target_amount', 'charity_website', 'currency', 'currencySymbol'],
+			charityCampaignStopped: ['charity_name', 'charity_description', 'charity_logo', 'charity_amount', 'charity_target_amount', 'charity_website', 'currency', 'currencySymbol', 'ended_at'],
 			categoryChanged: ['category_name', 'category_id', 'channel_title'],
 			clip: [
 				'username',
