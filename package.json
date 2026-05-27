@@ -1,6 +1,6 @@
 {
   "name": "@lumiastream/lumia-types",
-  "version": "3.5.3",
+  "version": "3.5.5",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/esm/index.js",
@@ -31,6 +31,7 @@
   ],
   "scripts": {
     "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig.esm.json && npm run sync:custom-overlays && npm run sync:custom-code && node ./scripts/finalize-esm-build.mjs",
+    "watch": "node ./scripts/watch.mjs",
     "test": "node ./scripts/check-eventlist-alert-invariant.mjs",
     "prepublishOnly": "npm run build && npm test",
     "lint": "tslint --project tsconfig.json \"src/**/*.ts\"",

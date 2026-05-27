@@ -8,8 +8,12 @@ export type ViewerProfileAchievementMetric =
 	| 'totalTwitchExtensionsCommands'
 	| 'totalBitsSpent'
 	| 'totalKicksSpent'
+	| 'totalJewelsSpent'
+	| 'totalDiamondsSpent'
+	| 'totalStarsSpent'
 	| 'totalGiftSubscriptions'
 	| 'totalMoneySpent'
+	| 'totalCharitySpent'
 	| 'totalAlerts'
 	| 'uniqueAlerts'
 	| 'totalCommandsAndAlerts'
@@ -58,8 +62,12 @@ const getViewerProfileAchievementSourceKeys = (metric: ViewerProfileAchievementM
 		case 'uniqueAlerts':
 		case 'totalBitsSpent':
 		case 'totalKicksSpent':
+		case 'totalJewelsSpent':
+		case 'totalDiamondsSpent':
+		case 'totalStarsSpent':
 		case 'totalGiftSubscriptions':
 		case 'totalMoneySpent':
+		case 'totalCharitySpent':
 			return ['alerts'];
 		case 'totalCommandsAndAlerts':
 		case 'allRounder':
@@ -371,6 +379,132 @@ const VIEWER_PROFILE_ACHIEVEMENT_DEFINITIONS: ViewerProfileAchievementDefinition
 		color: 'gold',
 	},
 
+	// ───────── YouTube Jewels ─────────
+	{
+		id: 'jewels-spark',
+		label: 'Jewels Spark',
+		description: 'Sent 100 jewels.',
+		metric: 'totalJewelsSpent',
+		threshold: 100,
+		connectionKeys: ['youtube'],
+		icon: 'Diamond',
+		color: 'rose',
+	},
+	{
+		id: 'jewels-glow',
+		label: 'Jewels Glow',
+		description: 'Sent 500 jewels.',
+		metric: 'totalJewelsSpent',
+		threshold: 500,
+		connectionKeys: ['youtube'],
+		icon: 'Diamond',
+		color: 'violet',
+	},
+	{
+		id: 'jewels-beam',
+		label: 'Jewels Beam',
+		description: 'Sent 2,500 jewels.',
+		metric: 'totalJewelsSpent',
+		threshold: 2500,
+		connectionKeys: ['youtube'],
+		icon: 'Diamond',
+		color: 'cyan',
+	},
+	{
+		id: 'jewels-supernova',
+		label: 'Jewels Supernova',
+		description: 'Sent 10,000 jewels.',
+		metric: 'totalJewelsSpent',
+		threshold: 10000,
+		connectionKeys: ['youtube'],
+		icon: 'Diamond',
+		color: 'gold',
+	},
+
+	// ───────── TikTok Diamonds ─────────
+	{
+		id: 'diamonds-spark',
+		label: 'Diamonds Spark',
+		description: 'Sent 100 diamonds.',
+		metric: 'totalDiamondsSpent',
+		threshold: 100,
+		connectionKeys: ['tiktok'],
+		icon: 'Diamond',
+		color: 'cyan',
+	},
+	{
+		id: 'diamonds-glow',
+		label: 'Diamonds Glow',
+		description: 'Sent 1,000 diamonds.',
+		metric: 'totalDiamondsSpent',
+		threshold: 1000,
+		connectionKeys: ['tiktok'],
+		icon: 'Diamond',
+		color: 'sky',
+	},
+	{
+		id: 'diamonds-beam',
+		label: 'Diamonds Beam',
+		description: 'Sent 5,000 diamonds.',
+		metric: 'totalDiamondsSpent',
+		threshold: 5000,
+		connectionKeys: ['tiktok'],
+		icon: 'Diamond',
+		color: 'violet',
+	},
+	{
+		id: 'diamonds-supernova',
+		label: 'Diamonds Supernova',
+		description: 'Sent 25,000 diamonds.',
+		metric: 'totalDiamondsSpent',
+		threshold: 25000,
+		connectionKeys: ['tiktok'],
+		icon: 'Diamond',
+		color: 'gold',
+	},
+
+	// ───────── Facebook Stars ─────────
+	{
+		id: 'stars-spark',
+		label: 'Stars Spark',
+		description: 'Sent 100 stars.',
+		metric: 'totalStarsSpent',
+		threshold: 100,
+		connectionKeys: ['facebook'],
+		icon: 'Star',
+		color: 'sky',
+	},
+	{
+		id: 'stars-glow',
+		label: 'Stars Glow',
+		description: 'Sent 500 stars.',
+		metric: 'totalStarsSpent',
+		threshold: 500,
+		connectionKeys: ['facebook'],
+		icon: 'Star',
+		color: 'teal',
+	},
+	{
+		id: 'stars-beam',
+		label: 'Stars Beam',
+		description: 'Sent 2,500 stars.',
+		metric: 'totalStarsSpent',
+		threshold: 2500,
+		connectionKeys: ['facebook'],
+		icon: 'Star',
+		color: 'amber',
+	},
+	{
+		id: 'stars-supernova',
+		label: 'Stars Supernova',
+		description: 'Sent 10,000 stars.',
+		metric: 'totalStarsSpent',
+		threshold: 10000,
+		connectionKeys: ['facebook'],
+		icon: 'Star',
+		color: 'gold',
+	},
+
 	// ───────── Donations ─────────
 	{
 		id: 'light-supporter',
@@ -415,6 +549,44 @@ const VIEWER_PROFILE_ACHIEVEMENT_DEFINITIONS: ViewerProfileAchievementDefinition
 		metric: 'totalMoneySpent',
 		threshold: 250,
 		icon: 'MonetizationOn',
+		color: 'gold',
+	},
+
+	// ───────── Charity ─────────
+	{
+		id: 'charity-helper',
+		label: 'Charity Helper',
+		description: 'Gave 10 to charity in your default currency.',
+		metric: 'totalCharitySpent',
+		threshold: 10,
+		icon: 'Favorite',
+		color: 'rose',
+	},
+	{
+		id: 'charity-advocate',
+		label: 'Charity Advocate',
+		description: 'Gave 50 to charity in your default currency.',
+		metric: 'totalCharitySpent',
+		threshold: 50,
+		icon: 'Favorite',
+		color: 'rose',
+	},
+	{
+		id: 'charity-champion',
+		label: 'Charity Champion',
+		description: 'Gave 250 to charity in your default currency.',
+		metric: 'totalCharitySpent',
+		threshold: 250,
+		icon: 'VolunteerActivism',
+		color: 'amber',
+	},
+	{
+		id: 'charity-hero',
+		label: 'Charity Hero',
+		description: 'Gave 1,000 to charity in your default currency.',
+		metric: 'totalCharitySpent',
+		threshold: 1000,
+		icon: 'VolunteerActivism',
 		color: 'gold',
 	},
 

@@ -41,6 +41,14 @@ export {
 	type LumiaAcceptedVariableDefinition,
 } from './variables.types';
 export { formatCondition } from './helpers';
+export {
+	EMULATE_EXAMPLE_AVATAR_URL,
+	getExampleAlertVariableValue,
+	buildExampleAlertVariables,
+	isRedundantInputField,
+	syncLinkedVariableFields,
+	type InputFieldLike,
+} from './emulate.helpers';
 export { KickKicksData } from './kick_kicks';
 export { BLANK_OVERLAY_TEMPLATE_ID, type OverlayTemplate, type OverlayTemplateLayerDescriptor, type OverlayTemplateAnchor, type OverlayTemplateLayerOverrides } from './overlay_template.types';
 export { TiktokGiftsData } from './tiktok_gifts';
@@ -174,7 +182,6 @@ export type {
 	TwitchWatchStreakExtraSettings,
 	TwitchPowerupsDynamic,
 	TwitchPowerupsExtraSettings,
-	TwitchPowerupsPointsExtraSettings,
 	TwitchRedemptionDynamic,
 	TwitchRedemptionExtraSettings,
 	TwitchSessionFollowersDynamic,
