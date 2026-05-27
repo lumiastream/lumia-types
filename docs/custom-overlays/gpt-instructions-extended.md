@@ -72,7 +72,7 @@ Always match with exact string equality — never `includes`, never substring ma
 - `twitch-goalStarted`, `twitch-goalProgressed`, `twitch-goalEnded`
 - `twitch-charityDonation`, `twitch-charityCampaignStarted`, `twitch-charityCampaignProgressed`, `twitch-charityCampaignStopped`
 - `twitch-banned`, `twitch-timeout`, `twitch-timeoutOver`, `twitch-shoutoutReceive`
-- `twitch-adStarted`, `twitch-adStopped`, `twitch-watchStreak`, `twitch-powerups`, `twitch-powerupsPoints`
+- `twitch-adStarted`, `twitch-adStopped`, `twitch-watchStreak`, `twitch-powerups`
 
 ### Kick
 

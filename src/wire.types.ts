@@ -484,18 +484,6 @@ export interface TwitchPowerupsExtraSettings {
 	type: string;
 	platform: 'twitch';
 }
-export interface TwitchPowerupsPointsExtraSettings {
-	username: string;
-	displayname: string;
-	avatar?: string;
-	userId: string | number;
-	amount: number;
-	value: number;
-	points: number;
-	type: string;
-	platform: 'twitch';
-}
-
 // Channel point reward (NO EMITTER in current LumiaStream source — placeholder for
 // when EventSub channel.channel_points_custom_reward_redemption.add gets wired up).
 export interface TwitchRedemptionDynamic {
@@ -729,7 +717,6 @@ export type AlertEventInputMap = {
 	[LumiaAlertValues.TWITCH_STREAM_OFFLINE]: { dynamic: TwitchStreamOfflineDynamic; extraSettings: TwitchStreamOfflineExtraSettings };
 	[LumiaAlertValues.TWITCH_WATCH_STREAK]: { dynamic: TwitchWatchStreakDynamic; extraSettings: TwitchWatchStreakExtraSettings };
 	[LumiaAlertValues.TWITCH_POWERUPS]: { dynamic: TwitchPowerupsDynamic; extraSettings: TwitchPowerupsExtraSettings };
-	[LumiaAlertValues.TWITCH_POWERUPS_POINTS]: { dynamic: TwitchPowerupsDynamic; extraSettings: TwitchPowerupsPointsExtraSettings };
 	[LumiaAlertValues.TWITCH_REDEMPTION]: { dynamic: TwitchRedemptionDynamic; extraSettings: TwitchRedemptionExtraSettings };
 	[LumiaAlertValues.TWITCH_SESSION_FOLLOWERS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
 	[LumiaAlertValues.TWITCH_SESSION_SUBS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
@@ -783,7 +770,6 @@ export type AlertEventUnion =
 	| IAlertEvent<TwitchStreamOfflineDynamic, TwitchStreamOfflineExtraSettings>
 	| IAlertEvent<TwitchWatchStreakDynamic, TwitchWatchStreakExtraSettings>
 	| IAlertEvent<TwitchPowerupsDynamic, TwitchPowerupsExtraSettings>
-	| IAlertEvent<TwitchPowerupsDynamic, TwitchPowerupsPointsExtraSettings>
 	| IAlertEvent<TwitchRedemptionDynamic, TwitchRedemptionExtraSettings>
 	| IAlertEvent<SessionAggregateDynamic, SessionAggregateExtraSettings>
 	| IAlertEvent<KickFollowerDynamic, KickFollowerExtraSettings>

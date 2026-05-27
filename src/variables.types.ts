@@ -763,6 +763,10 @@ export enum SystemVariables {
 	SPOTIFY_NOW_PLAYING_URL = 'spotify_now_playing_url',
 	/** Now playing Spotify URI. Use as {{spotify_now_playing_uri}}. */
 	SPOTIFY_NOW_PLAYING_URI = 'spotify_now_playing_uri',
+	/** Now playing track duration in seconds. Use as {{spotify_now_playing_duration}}. */
+	SPOTIFY_NOW_PLAYING_DURATION = 'spotify_now_playing_duration',
+	/** Now playing track progress (current position) in seconds. Use as {{spotify_now_playing_progress}}. */
+	SPOTIFY_NOW_PLAYING_PROGRESS = 'spotify_now_playing_progress',
 	/** Next song title. Use as {{spotify_next_song}}. */
 	SPOTIFY_NEXT_SONG = 'spotify_next_song',
 	/** Next song artwork URL. Use as {{spotify_next_image}}. */
@@ -790,6 +794,10 @@ export enum SystemVariables {
 	YOUTUBEMUSIC_NOW_PLAYING_ID = 'youtubemusic_now_playing_id',
 	/** Now playing URL. Use as {{youtubemusic_now_playing_url}}. */
 	YOUTUBEMUSIC_NOW_PLAYING_URL = 'youtubemusic_now_playing_url',
+	/** Now playing track duration in seconds. Use as {{youtubemusic_now_playing_duration}}. */
+	YOUTUBEMUSIC_NOW_PLAYING_DURATION = 'youtubemusic_now_playing_duration',
+	/** Now playing track progress (current position) in seconds. Use as {{youtubemusic_now_playing_progress}}. */
+	YOUTUBEMUSIC_NOW_PLAYING_PROGRESS = 'youtubemusic_now_playing_progress',
 	/** Next song title. Use as {{youtubemusic_next_song}}. */
 	YOUTUBEMUSIC_NEXT_SONG = 'youtubemusic_next_song',
 	/** Next song artwork URL. Use as {{youtubemusic_next_image}}. */
@@ -850,6 +858,10 @@ export enum SystemVariables {
 	VLC_NOW_PLAYING_ID = 'vlc_now_playing_id',
 	/** Media URL. Use as {{vlc_now_playing_url}}. */
 	VLC_NOW_PLAYING_URL = 'vlc_now_playing_url',
+	/** Now playing media duration in seconds. Use as {{vlc_now_playing_duration}}. */
+	VLC_NOW_PLAYING_DURATION = 'vlc_now_playing_duration',
+	/** Now playing media progress (current position) in seconds. Use as {{vlc_now_playing_progress}}. */
+	VLC_NOW_PLAYING_PROGRESS = 'vlc_now_playing_progress',
 	/** Media URI. Use as {{vlc_now_playing_uri}}. */
 	VLC_NOW_PLAYING_URI = 'vlc_now_playing_uri',
 
@@ -2299,6 +2311,8 @@ export const AllVariables = {
 			'spotify_now_playing_artist',
 			'spotify_now_playing_uri',
 			'spotify_now_playing_url',
+			'spotify_now_playing_duration',
+			'spotify_now_playing_progress',
 			'spotify_next_song',
 			'spotify_next_image',
 			'spotify_next_artist',
@@ -2654,7 +2668,6 @@ export const AllVariables = {
 			adStopped: ['length', 'is_automatic', 'started_at', 'twitch_next_ad', 'amount'],
 			watchStreak: ['username', 'userId', 'displayname', 'avatar', 'streak_count', 'channel_points_awarded', 'amount', 'message', 'system_message'],
 			powerups: ['username', 'avatar', 'type', 'amount', 'message', 'reward_id', 'powerup_source'],
-			powerupsPoints: ['username', 'avatar', 'type', 'amount', 'message'],
 		},
 	},
 	twitter: {
@@ -2705,7 +2718,7 @@ export const AllVariables = {
 		},
 	},
 	vlc: {
-		variables: ['vlc_now_playing_media', 'vlc_now_playing_image', 'vlc_now_playing_id', 'vlc_now_playing_artist', 'vlc_now_playing_uri', 'vlc_now_playing_url'],
+		variables: ['vlc_now_playing_media', 'vlc_now_playing_image', 'vlc_now_playing_id', 'vlc_now_playing_artist', 'vlc_now_playing_uri', 'vlc_now_playing_url', 'vlc_now_playing_duration', 'vlc_now_playing_progress'],
 		alerts: {
 			switchSong: ['name', 'uri', 'image'],
 			songPlayed: ['name', 'uri', 'image'],
@@ -2840,6 +2853,8 @@ export const AllVariables = {
 			'youtubemusic_now_playing_id',
 			'youtubemusic_now_playing_artist',
 			'youtubemusic_now_playing_url',
+			'youtubemusic_now_playing_duration',
+			'youtubemusic_now_playing_progress',
 			'youtubemusic_next_song',
 			'youtubemusic_next_image',
 			'youtubemusic_next_artist',

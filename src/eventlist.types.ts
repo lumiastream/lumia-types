@@ -92,7 +92,6 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
 	[LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: LumiaEventListTypes.HYPETRAIN,
 	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: LumiaEventListTypes.CHARITY,
 	[LumiaAlertValues.TWITCH_POWERUPS]: LumiaEventListTypes.BITS,
-	[LumiaAlertValues.TWITCH_POWERUPS_POINTS]: LumiaEventListTypes.POINTS,
 
 	// --- YouTube ---
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: LumiaEventListTypes.FOLLOWER,
