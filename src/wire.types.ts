@@ -1,4 +1,4 @@
-import type { LumiaAlertValues } from './activity.types';
+import { LumiaAlertValues } from './activity.types';
 
 export type AlertPlatform = 'twitch' | 'kick' | 'youtube' | 'facebook' | 'tiktok' | 'lumiastream' | string;
 
@@ -679,6 +679,76 @@ export type KickSessionGiftSubscriptionsDynamic = SessionAggregateDynamic;
 export type KickSessionGiftSubscriptionsExtraSettings = SessionAggregateExtraSettings;
 export type KickSessionKicksDynamic = SessionAggregateDynamic;
 export type KickSessionKicksExtraSettings = SessionAggregateExtraSettings;
+
+// ============================================================================
+// AlertEventInputMap — the canonical shape lookup keyed by alert string.
+// Consumers can write a generic emit helper as:
+//   function emitAlert<K extends keyof AlertEventInputMap>(alert: K, dynamic: AlertEventInputMap[K]['dynamic'], extraSettings: AlertEventInputMap[K]['extraSettings'])
+// and TS will narrow dynamic + extraSettings against the literal alert kind.
+// ============================================================================
+
+export type AlertEventInputMap = {
+	[LumiaAlertValues.TWITCH_FOLLOWER]: { dynamic: TwitchFollowerDynamic; extraSettings: TwitchFollowerExtraSettings };
+	[LumiaAlertValues.TWITCH_SUBSCRIBER]: { dynamic: TwitchSubscriberDynamic; extraSettings: TwitchSubscriberExtraSettings };
+	[LumiaAlertValues.TWITCH_GIFT_SUBSCRIPTION]: { dynamic: TwitchGiftSubscriptionDynamic; extraSettings: TwitchGiftSubscriptionExtraSettings };
+	[LumiaAlertValues.TWITCH_BITS]: { dynamic: TwitchBitsDynamic; extraSettings: TwitchBitsExtraSettings };
+	[LumiaAlertValues.TWITCH_BITS_COMBO]: { dynamic: TwitchBitsComboDynamic; extraSettings: TwitchBitsComboExtraSettings };
+	[LumiaAlertValues.TWITCH_RAID]: { dynamic: TwitchRaidDynamic; extraSettings: TwitchRaidExtraSettings };
+	[LumiaAlertValues.TWITCH_RAID_OUT]: { dynamic: TwitchRaidOutDynamic; extraSettings: TwitchRaidOutExtraSettings };
+	[LumiaAlertValues.TWITCH_CHANNEL_JOIN]: { dynamic: TwitchChannelJoinDynamic; extraSettings: TwitchChannelJoinExtraSettings };
+	[LumiaAlertValues.TWITCH_CHANNEL_LEAVE]: { dynamic: TwitchChannelLeaveDynamic; extraSettings: TwitchChannelLeaveExtraSettings };
+	[LumiaAlertValues.TWITCH_FIRST_CHATTER]: { dynamic: TwitchFirstChatterDynamic; extraSettings: TwitchFirstChatterExtraSettings };
+	[LumiaAlertValues.TWITCH_ENTRANCE]: { dynamic: TwitchEntranceDynamic; extraSettings: TwitchEntranceExtraSettings };
+	[LumiaAlertValues.TWITCH_TIMEOUT]: { dynamic: TwitchTimeoutDynamic; extraSettings: TwitchTimeoutExtraSettings };
+	[LumiaAlertValues.TWITCH_TIMEOUT_OVER]: { dynamic: TwitchTimeoutOverDynamic; extraSettings: TwitchTimeoutOverExtraSettings };
+	[LumiaAlertValues.TWITCH_BANNED]: { dynamic: TwitchBannedDynamic; extraSettings: TwitchBannedExtraSettings };
+	[LumiaAlertValues.TWITCH_CLIP]: { dynamic: TwitchClipDynamic; extraSettings: TwitchClipExtraSettings };
+	[LumiaAlertValues.TWITCH_CATEGORY]: { dynamic: TwitchCategoryDynamic; extraSettings: TwitchCategoryExtraSettings };
+	[LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: { dynamic: TwitchHypeTrainStartedDynamic; extraSettings: TwitchHypeTrainStartedExtraSettings };
+	[LumiaAlertValues.TWITCH_HYPETRAIN_PROGRESSED]: { dynamic: TwitchHypeTrainProgressedDynamic; extraSettings: TwitchHypeTrainProgressedExtraSettings };
+	[LumiaAlertValues.TWITCH_HYPETRAIN_LEVEL_PROGRESSED]: { dynamic: TwitchHypeTrainLevelProgressedDynamic; extraSettings: TwitchHypeTrainLevelProgressedExtraSettings };
+	[LumiaAlertValues.TWITCH_HYPETRAIN_ENDED]: { dynamic: TwitchHypeTrainEndedDynamic; extraSettings: TwitchHypeTrainEndedExtraSettings };
+	[LumiaAlertValues.TWITCH_POLL_STARTED]: { dynamic: TwitchPollStartedDynamic; extraSettings: TwitchPollStartedExtraSettings };
+	[LumiaAlertValues.TWITCH_POLL_PROGRESSED]: { dynamic: TwitchPollProgressedDynamic; extraSettings: TwitchPollProgressedExtraSettings };
+	[LumiaAlertValues.TWITCH_POLL_ENDED]: { dynamic: TwitchPollEndedDynamic; extraSettings: TwitchPollEndedExtraSettings };
+	[LumiaAlertValues.TWITCH_PREDICTION_STARTED]: { dynamic: TwitchPredictionStartedDynamic; extraSettings: TwitchPredictionStartedExtraSettings };
+	[LumiaAlertValues.TWITCH_PREDICTION_PROGRESSED]: { dynamic: TwitchPredictionProgressedDynamic; extraSettings: TwitchPredictionProgressedExtraSettings };
+	[LumiaAlertValues.TWITCH_PREDICTION_LOCKED]: { dynamic: TwitchPredictionLockedDynamic; extraSettings: TwitchPredictionLockedExtraSettings };
+	[LumiaAlertValues.TWITCH_PREDICTION_ENDED]: { dynamic: TwitchPredictionEndedDynamic; extraSettings: TwitchPredictionEndedExtraSettings };
+	[LumiaAlertValues.TWITCH_GOAL_STARTED]: { dynamic: TwitchGoalStartedDynamic; extraSettings: TwitchGoalStartedExtraSettings };
+	[LumiaAlertValues.TWITCH_GOAL_PROGRESSED]: { dynamic: TwitchGoalProgressedDynamic; extraSettings: TwitchGoalProgressedExtraSettings };
+	[LumiaAlertValues.TWITCH_GOAL_ENDED]: { dynamic: TwitchGoalEndedDynamic; extraSettings: TwitchGoalEndedExtraSettings };
+	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: { dynamic: TwitchCharityDonationDynamic; extraSettings: TwitchCharityDonationExtraSettings };
+	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_STARTED]: { dynamic: TwitchCharityCampaignStartedDynamic; extraSettings: TwitchCharityCampaignStartedExtraSettings };
+	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_PROGRESSED]: { dynamic: TwitchCharityCampaignProgressedDynamic; extraSettings: TwitchCharityCampaignProgressedExtraSettings };
+	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_STOPPED]: { dynamic: TwitchCharityCampaignStoppedDynamic; extraSettings: TwitchCharityCampaignStoppedExtraSettings };
+	[LumiaAlertValues.TWITCH_SHOUTOUT_RECEIVE]: { dynamic: TwitchShoutoutReceiveDynamic; extraSettings: TwitchShoutoutReceiveExtraSettings };
+	[LumiaAlertValues.TWITCH_AD_STARTED]: { dynamic: TwitchAdDynamic; extraSettings: TwitchAdStartedExtraSettings };
+	[LumiaAlertValues.TWITCH_AD_STOPPED]: { dynamic: TwitchAdDynamic; extraSettings: TwitchAdStoppedExtraSettings };
+	[LumiaAlertValues.TWITCH_STREAM_LIVE]: { dynamic: TwitchStreamLiveDynamic; extraSettings: TwitchStreamLiveExtraSettings };
+	[LumiaAlertValues.TWITCH_STREAM_OFFLINE]: { dynamic: TwitchStreamOfflineDynamic; extraSettings: TwitchStreamOfflineExtraSettings };
+	[LumiaAlertValues.TWITCH_WATCH_STREAK]: { dynamic: TwitchWatchStreakDynamic; extraSettings: TwitchWatchStreakExtraSettings };
+	[LumiaAlertValues.TWITCH_POWERUPS]: { dynamic: TwitchPowerupsDynamic; extraSettings: TwitchPowerupsExtraSettings };
+	[LumiaAlertValues.TWITCH_POWERUPS_POINTS]: { dynamic: TwitchPowerupsDynamic; extraSettings: TwitchPowerupsPointsExtraSettings };
+	[LumiaAlertValues.TWITCH_REDEMPTION]: { dynamic: TwitchRedemptionDynamic; extraSettings: TwitchRedemptionExtraSettings };
+	[LumiaAlertValues.TWITCH_SESSION_FOLLOWERS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
+	[LumiaAlertValues.TWITCH_SESSION_SUBS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
+	[LumiaAlertValues.TWITCH_SESSION_GIFT_SUBSCRIPTIONS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
+	[LumiaAlertValues.TWITCH_SESSION_BITS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
+	[LumiaAlertValues.KICK_FOLLOWER]: { dynamic: KickFollowerDynamic; extraSettings: KickFollowerExtraSettings };
+	[LumiaAlertValues.KICK_SUBSCRIBER]: { dynamic: KickSubscriberDynamic; extraSettings: KickSubscriberExtraSettings };
+	[LumiaAlertValues.KICK_GIFT_SUBSCRIPTION]: { dynamic: KickGiftSubscriptionDynamic; extraSettings: KickGiftSubscriptionExtraSettings };
+	[LumiaAlertValues.KICK_KICKS]: { dynamic: KickKicksDynamic; extraSettings: KickKicksExtraSettings };
+	[LumiaAlertValues.KICK_HOST]: { dynamic: KickHostDynamic; extraSettings: KickHostExtraSettings };
+	[LumiaAlertValues.KICK_BANNED]: { dynamic: KickBannedDynamic; extraSettings: KickBannedExtraSettings };
+	[LumiaAlertValues.KICK_UNBANNED]: { dynamic: KickUnbannedDynamic; extraSettings: KickUnbannedExtraSettings };
+	[LumiaAlertValues.KICK_FIRST_CHATTER]: { dynamic: KickFirstChatterDynamic; extraSettings: KickFirstChatterExtraSettings };
+	[LumiaAlertValues.KICK_ENTRANCE]: { dynamic: KickEntranceDynamic; extraSettings: KickEntranceExtraSettings };
+	[LumiaAlertValues.KICK_SESSION_FOLLOWERS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
+	[LumiaAlertValues.KICK_SESSION_SUBS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
+	[LumiaAlertValues.KICK_SESSION_GIFT_SUBSCRIPTIONS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
+	[LumiaAlertValues.KICK_SESSION_KICKS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
+};
 
 // ============================================================================
 // Discriminated union of every concrete IAlertEvent shape
