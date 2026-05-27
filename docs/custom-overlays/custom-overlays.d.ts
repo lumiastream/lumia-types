@@ -1797,8 +1797,6 @@ export declare enum SystemVariables {
     SPOTIFY_NOW_PLAYING_URI = "spotify_now_playing_uri",
     /** Now playing track duration in seconds. Use as {{spotify_now_playing_duration}}. */
     SPOTIFY_NOW_PLAYING_DURATION = "spotify_now_playing_duration",
-    /** Now playing track progress (current position) in seconds. Use as {{spotify_now_playing_progress}}. */
-    SPOTIFY_NOW_PLAYING_PROGRESS = "spotify_now_playing_progress",
     /** Next song title. Use as {{spotify_next_song}}. */
     SPOTIFY_NEXT_SONG = "spotify_next_song",
     /** Next song artwork URL. Use as {{spotify_next_image}}. */
@@ -1825,8 +1823,6 @@ export declare enum SystemVariables {
     YOUTUBEMUSIC_NOW_PLAYING_URL = "youtubemusic_now_playing_url",
     /** Now playing track duration in seconds. Use as {{youtubemusic_now_playing_duration}}. */
     YOUTUBEMUSIC_NOW_PLAYING_DURATION = "youtubemusic_now_playing_duration",
-    /** Now playing track progress (current position) in seconds. Use as {{youtubemusic_now_playing_progress}}. */
-    YOUTUBEMUSIC_NOW_PLAYING_PROGRESS = "youtubemusic_now_playing_progress",
     /** Next song title. Use as {{youtubemusic_next_song}}. */
     YOUTUBEMUSIC_NEXT_SONG = "youtubemusic_next_song",
     /** Next song artwork URL. Use as {{youtubemusic_next_image}}. */
@@ -1883,8 +1879,6 @@ export declare enum SystemVariables {
     VLC_NOW_PLAYING_URL = "vlc_now_playing_url",
     /** Now playing media duration in seconds. Use as {{vlc_now_playing_duration}}. */
     VLC_NOW_PLAYING_DURATION = "vlc_now_playing_duration",
-    /** Now playing media progress (current position) in seconds. Use as {{vlc_now_playing_progress}}. */
-    VLC_NOW_PLAYING_PROGRESS = "vlc_now_playing_progress",
     /** Media URI. Use as {{vlc_now_playing_uri}}. */
     VLC_NOW_PLAYING_URI = "vlc_now_playing_uri",
     /** Voice changer on (true/false). Use as {{voicemod_voice_changer_on}}. */
