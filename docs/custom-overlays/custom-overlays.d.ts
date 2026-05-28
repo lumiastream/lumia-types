@@ -1275,6 +1275,64 @@ export declare enum SystemVariables {
     MONTH_TOP_DONATOR_LIST = "month_top_donator_list",
     /** Amounts for MONTH_TOP_DONATOR_LIST. Use as {{month_top_donator_list_amount}}. */
     MONTH_TOP_DONATOR_LIST_AMOUNT = "month_top_donator_list_amount",
+    /** Followers this session across all platforms. Use as {{session_follower_count}}. */
+    SESSION_FOLLOWER_COUNT = "session_follower_count",
+    /** Followers this week across all platforms. Use as {{week_follower_count}}. */
+    WEEK_FOLLOWER_COUNT = "week_follower_count",
+    /** Followers this month across all platforms. Use as {{month_follower_count}}. */
+    MONTH_FOLLOWER_COUNT = "month_follower_count",
+    /** Lifetime followers across all platforms. Use as {{total_follower_count}}. */
+    TOTAL_FOLLOWER_COUNT = "total_follower_count",
+    /** Most recent follower (any platform). Use as {{last_follower}}. */
+    LAST_FOLLOWER = "last_follower",
+    /** Subscribers this session across all platforms (new + resub + gifted). Use as {{session_subscriber_count}}. */
+    SESSION_SUBSCRIBER_COUNT = "session_subscriber_count",
+    /** New (first-time) subscribers this session. Use as {{session_new_subscribers_count}}. */
+    SESSION_NEW_SUBSCRIBERS_COUNT = "session_new_subscribers_count",
+    /** Resubscribers this session. Use as {{session_resub_subscribers_count}}. */
+    SESSION_RESUB_SUBSCRIBERS_COUNT = "session_resub_subscribers_count",
+    /** Gifted subs this session. Use as {{session_gifted_subscribers_count}}. */
+    SESSION_GIFTED_SUBSCRIBERS_COUNT = "session_gifted_subscribers_count",
+    /** Subscribers this week across all platforms. Use as {{week_subscriber_count}}. */
+    WEEK_SUBSCRIBER_COUNT = "week_subscriber_count",
+    /** Subscribers this month across all platforms. Use as {{month_subscriber_count}}. */
+    MONTH_SUBSCRIBER_COUNT = "month_subscriber_count",
+    /** Lifetime subscribers across all platforms. Use as {{total_subscriber_count}}. */
+    TOTAL_SUBSCRIBER_COUNT = "total_subscriber_count",
+    /** Most recent subscriber (any platform). Use as {{last_subscriber}}. */
+    LAST_SUBSCRIBER = "last_subscriber",
+    /** All-time top gifter (any platform). Use as {{alltime_top_gifter}}. */
+    ALLTIME_TOP_GIFTER = "alltime_top_gifter",
+    /** Bits/cheers count this session. Use as {{session_bits_count}}. */
+    SESSION_BITS_COUNT = "session_bits_count",
+    /** Bits/cheers count this week. Use as {{week_bits_count}}. */
+    WEEK_BITS_COUNT = "week_bits_count",
+    /** Bits/cheers count this month. Use as {{month_bits_count}}. */
+    MONTH_BITS_COUNT = "month_bits_count",
+    /** Top cheerer (by total bits) this session. Use as {{session_top_cheerer}}. */
+    SESSION_TOP_CHEERER = "session_top_cheerer",
+    /** Amount for SESSION_TOP_CHEERER. Use as {{session_top_cheerer_amount}}. */
+    SESSION_TOP_CHEERER_AMOUNT = "session_top_cheerer_amount",
+    /** Top cheerer this week. Use as {{week_top_cheerer}}. */
+    WEEK_TOP_CHEERER = "week_top_cheerer",
+    /** Amount for WEEK_TOP_CHEERER. Use as {{week_top_cheerer_amount}}. */
+    WEEK_TOP_CHEERER_AMOUNT = "week_top_cheerer_amount",
+    /** Top cheerer this month. Use as {{month_top_cheerer}}. */
+    MONTH_TOP_CHEERER = "month_top_cheerer",
+    /** Amount for MONTH_TOP_CHEERER. Use as {{month_top_cheerer_amount}}. */
+    MONTH_TOP_CHEERER_AMOUNT = "month_top_cheerer_amount",
+    /** All-time top cheerer. Use as {{alltime_top_cheerer}}. */
+    ALLTIME_TOP_CHEERER = "alltime_top_cheerer",
+    /** Amount for ALLTIME_TOP_CHEERER. Use as {{alltime_top_cheerer_amount}}. */
+    ALLTIME_TOP_CHEERER_AMOUNT = "alltime_top_cheerer_amount",
+    /** Largest single cheer this session. Use as {{session_top_cheer}}. */
+    SESSION_TOP_CHEER = "session_top_cheer",
+    /** Amount for SESSION_TOP_CHEER. Use as {{session_top_cheer_amount}}. */
+    SESSION_TOP_CHEER_AMOUNT = "session_top_cheer_amount",
+    /** Most recent raider/host (any platform). Use as {{last_raider}}. */
+    LAST_RAIDER = "last_raider",
+    /** Viewer count for LAST_RAIDER. Use as {{last_raid_amount}}. */
+    LAST_RAID_AMOUNT = "last_raid_amount",
     /** Raffle title. Use as {{raffle_title}}. */
     RAFFLE_TITLE = "raffle_title",
     /** Raffle description. Use as {{raffle_description}}. */
