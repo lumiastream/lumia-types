@@ -45,6 +45,7 @@ export {
 	EMULATE_EXAMPLE_AVATAR_URL,
 	getExampleAlertVariableValue,
 	buildExampleAlertVariables,
+	coerceNumericAlertFields,
 	isRedundantInputField,
 	syncLinkedVariableFields,
 	type InputFieldLike,
