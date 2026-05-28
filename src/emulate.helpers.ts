@@ -129,3 +129,56 @@ export function syncLinkedVariableFields(values: Record<string, any>): void {
 		}
 	}
 }
+
+// Canonical wire-type-aligned numeric field set. Each name corresponds to a
+// dynamic/extraSettings field that real platform managers (twitch, kick,
+// streamlabs, …) emit as a Number — see wire.types.ts. Emulation form inputs
+// hand back numeric strings ("1"), which silently break downstream consumers
+// that do arithmetic (SE compat shim's resolvedAmount, goal/cheer widgets,
+// plugin SDK reducers). Run this before dispatch to match the live shape.
+//
+// `value` is intentionally NOT in this set — wire.types.ts uses `value: string`
+// for most alerts (templated display string) and `value: number` only for a
+// handful (bits, raid, kicks, hypetrain, ads). Coerce `value` at the form
+// binding using inputField.type === 'number' instead, so the per-alert
+// contract isn't violated.
+const NUMERIC_ALERT_FIELDS: ReadonlySet<string> = new Set([
+	'amount',
+	'giftAmount',
+	'totalGifts',
+	'subMonths',
+	'streakMonths',
+	'cumulativeMonths',
+	'streak',
+	'months',
+	'bits',
+	'kicks',
+	'viewers',
+	'total',
+	'previousTotal',
+	'current_amount',
+	'target_amount',
+	'length',
+	'streak_count',
+	'channel_points_awarded',
+	'reward_cost',
+	'view_count',
+	'clip_duration',
+	'timeout_duration',
+	'expiration_ms',
+	'poll_duration',
+	'level',
+	'progress',
+	'goal',
+]);
+
+export function coerceNumericAlertFields(values: Record<string, any>): void {
+	if (!values) return;
+	for (const key of Object.keys(values)) {
+		if (!NUMERIC_ALERT_FIELDS.has(key)) continue;
+		const v = values[key];
+		if (typeof v === 'string' && v !== '' && !isNaN(Number(v))) {
+			values[key] = Number(v);
+		}
+	}
+}
