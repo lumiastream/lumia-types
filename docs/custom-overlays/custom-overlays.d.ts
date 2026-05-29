@@ -1154,6 +1154,10 @@ export declare enum SystemVariables {
     AI_PROMPT = "ai_prompt",
     /** Current weather for a location via wttr.in. Returns a one-line summary like */
     WEATHER = "weather",
+    /** Save a value to local storage (persists across restarts, kept out of the variables list) and return it. Example: {{save_local=highscore,100}}. Use as {{save_local}}. */
+    SAVE_LOCAL = "save_local",
+    /** Load a value saved with save_local; optional fallback when the key is unset. Example: {{load_local=highscore}} or {{load_local=highscore,0}}. Use as {{load_local}}. */
+    LOAD_LOCAL = "load_local",
     /** Commands URL/page. Use in overlays as {{commands_url}}. */
     COMMANDS_URL = "commands_url",
     /** Session start time (ISO). Use as {{session_start_date}}. */
