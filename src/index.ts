@@ -39,6 +39,8 @@ export {
 	getAcceptedVariableNames,
 	type LumiaAcceptedVariable,
 	type LumiaAcceptedVariableDefinition,
+	type CountableVariableValue,
+	type DonatorVariableValue,
 } from './variables.types';
 export { formatCondition } from './helpers';
 export {
