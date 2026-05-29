@@ -244,6 +244,7 @@ export interface TwitchClipExtraSettings {
 	clip_user_is_sub?: boolean;
 	clip_user_is_broadcaster?: boolean;
 	clip_created_at: string;
+	contentImage?: string;
 	platform: 'twitch';
 }
 // LumiaStream emits TWITCH_CLIP without a dynamic block.
@@ -387,6 +388,7 @@ export interface TwitchCharityCampaignExtraSettings {
 	currency: string;
 	currencySymbol: string;
 	charity_logo?: string;
+	contentImage?: string;
 	platform: 'twitch';
 }
 export type TwitchCharityCampaignStartedDynamic = TwitchCharityCampaignDynamic;
@@ -482,6 +484,7 @@ export interface TwitchPowerupsExtraSettings {
 	value: number;
 	bits: number;
 	type: string;
+	contentImage?: string;
 	platform: 'twitch';
 }
 // Channel point reward (NO EMITTER in current LumiaStream source — placeholder for
@@ -501,6 +504,7 @@ export interface TwitchRedemptionExtraSettings {
 	reward_prompt?: string;
 	user_input?: string;
 	redeemed_at?: string;
+	contentImage?: string;
 	platform: 'twitch';
 }
 

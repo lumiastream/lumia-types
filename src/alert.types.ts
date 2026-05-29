@@ -133,6 +133,12 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage?: string;
 		eventlistDetailedMessage?: string;
 		acceptedVariables: LumiaAcceptedVariable[];
+		// Alerts that carry a subject image (gift sticker, clip thumbnail, merch
+		// product, etc.) populate `extraSettings.contentImage` at emit time. The
+		// flag lets the Alerts editor decide whether to render "override alert
+		// image" UI without inspecting every live payload. Avatars / charity
+		// logos are NOT the subject image; they keep their existing field names.
+		hasAlertImage?: boolean;
 		quickActions?: Array<{
 			label: string;
 			dynamic: LumiaDynamicCondition;
@@ -1730,6 +1736,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_POWERUPS]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: '{{username}} redeemed {{type}} and cheered {{amount}} bits. They said {{message}}',
 		eventlistMessage: 'Powerups',
 		eventlistDetailedMessage: 'redeemed {{type}} for {{amount}} bits',
@@ -2942,6 +2949,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_STARTED]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: 'Charity campaign {{charity_name}} started with a target of {{currencySymbol}}{{charity_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign start',
@@ -3005,6 +3013,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_PROGRESSED]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: 'Charity campaign {{charity_name}} progressed to {{currencySymbol}}{{charity_amount}} with a target of {{currencySymbol}}{{charity_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign progressed',
@@ -3066,6 +3075,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_STOPPED]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: 'Charity campaign {{charity_name}} ended at amount {{currencySymbol}}{{charity_amount}} with a target of {{currencySymbol}}{{charity_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign ended',
@@ -3178,6 +3188,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_CLIP]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: 'Clip taken by {{username}} with title of {{clip_title}}',
 		eventlistMessage: 'Clipped',
 		eventlistDetailedMessage: 'created a clip',
@@ -3966,6 +3977,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_GIFTS]: {
 		connection: LumiaIntegrations.YOUTUBE,
+		hasAlertImage: true,
 		message: '{{username}} sent x{{comboCount}} {{giftName}} ({{jewelsAmount}} jewels)',
 		eventlistMessage: 'Gift',
 		eventlistDetailedMessage: 'sent x{{comboCount}} {{giftName}} worth {{jewelsAmount}} jewels',
@@ -4260,6 +4272,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: {
 		connection: LumiaIntegrations.YOUTUBE,
+		hasAlertImage: true,
 		message: '{{username}} just sent a {{stickerName}} super sticker worth {{currencySymbol}}{{amount}}',
 		eventlistMessage: 'Super Sticker',
 		eventlistDetailedMessage: 'sent a {{stickerName}} super sticker worth {{currencySymbol}}{{amount}}',
@@ -4999,6 +5012,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TIKTOK_GIFT]: {
 		connection: LumiaIntegrations.TIKTOK,
+		hasAlertImage: true,
 		message: '{{username}} sent x{{giftAmount}} {{giftName}}',
 		eventlistMessage: 'Gift',
 		eventlistDetailedMessage: 'sent x{{giftAmount}} {{giftName}}',
@@ -7901,6 +7915,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.FOURTHWALL_GIFTPURCHASE]: {
 		connection: LumiaIntegrations.FOURTHWALL,
+		hasAlertImage: true,
 		message: '{{username}} just bought a gift with amount {{amount}}',
 		eventlistMessage: 'Gift Purchase',
 		eventlistDetailedMessage: 'Gift purchase with {{amount}} {{currency}}',
@@ -7978,6 +7993,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.FOURTHWALL_SHOPORDER]: {
 		connection: LumiaIntegrations.FOURTHWALL,
+		hasAlertImage: true,
 		message: '{{username}} purchased {{items}}',
 		eventlistMessage: 'Shop Order',
 		eventlistDetailedMessage: 'purchased {{items}}',
@@ -8065,6 +8081,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.FOURTHWALL_GIVEAWAY_STARTED]: {
 		connection: LumiaIntegrations.FOURTHWALL,
+		hasAlertImage: true,
 		message: '{{username}} just started a giveaway for {{giveawayName}}',
 		eventlistMessage: 'Giveaway Started',
 		eventlistDetailedMessage: 'started giveaway for {{giveawayName}}',
@@ -8130,6 +8147,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.FOURTHWALL_GIVEAWAY_ENDED]: {
 		connection: LumiaIntegrations.FOURTHWALL,
+		hasAlertImage: true,
 		message: 'Giveaway {{giveawayName}} ended with {{winnerCount}} winners',
 		eventlistMessage: 'Giveaway Ended',
 		eventlistDetailedMessage: 'giveaway ended with {{winnerCount}} winners',
