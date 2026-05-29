@@ -1154,6 +1154,10 @@ export declare enum SystemVariables {
     AI_PROMPT = "ai_prompt",
     /** Current weather for a location via wttr.in. Returns a one-line summary like */
     WEATHER = "weather",
+    /** Save a value to local storage (persists across restarts, kept out of the variables list) and return it. Example: {{save_local=highscore,100}}. Use as {{save_local}}. */
+    SAVE_LOCAL = "save_local",
+    /** Load a value saved with save_local; optional fallback when the key is unset. Example: {{load_local=highscore}} or {{load_local=highscore,0}}. Use as {{load_local}}. */
+    LOAD_LOCAL = "load_local",
     /** Commands URL/page. Use in overlays as {{commands_url}}. */
     COMMANDS_URL = "commands_url",
     /** Session start time (ISO). Use as {{session_start_date}}. */
@@ -1303,12 +1307,16 @@ export declare enum SystemVariables {
     LAST_SUBSCRIBER = "last_subscriber",
     /** All-time top gifter (any platform). Use as {{alltime_top_gifter}}. */
     ALLTIME_TOP_GIFTER = "alltime_top_gifter",
-    /** Bits/cheers count this session. Use as {{session_bits_count}}. */
-    SESSION_BITS_COUNT = "session_bits_count",
-    /** Bits/cheers count this week. Use as {{week_bits_count}}. */
-    WEEK_BITS_COUNT = "week_bits_count",
-    /** Bits/cheers count this month. Use as {{month_bits_count}}. */
-    MONTH_BITS_COUNT = "month_bits_count",
+    /** Most recent gifter (any platform), { name, amount }. Use as {{last_gifter}} / {{last_gifter.amount}}. */
+    LAST_GIFTER = "last_gifter",
+    /** Most recent gift recipient (any platform). Use as {{last_gifted}}. */
+    LAST_GIFTED = "last_gifted",
+    /** Cheers (bits/kicks) this session across all platforms. Use as {{session_cheers_count}}. */
+    SESSION_CHEERS_COUNT = "session_cheers_count",
+    /** Cheers this week across all platforms. Use as {{week_cheers_count}}. */
+    WEEK_CHEERS_COUNT = "week_cheers_count",
+    /** Cheers this month across all platforms. Use as {{month_cheers_count}}. */
+    MONTH_CHEERS_COUNT = "month_cheers_count",
     /** Top cheerer (by total bits) this session. Use as {{session_top_cheerer}}. */
     SESSION_TOP_CHEERER = "session_top_cheerer",
     /** Amount for SESSION_TOP_CHEERER. Use as {{session_top_cheerer_amount}}. */
@@ -1329,6 +1337,8 @@ export declare enum SystemVariables {
     SESSION_TOP_CHEER = "session_top_cheer",
     /** Amount for SESSION_TOP_CHEER. Use as {{session_top_cheer_amount}}. */
     SESSION_TOP_CHEER_AMOUNT = "session_top_cheer_amount",
+    /** Most recent cheer (bits/kicks, any platform), { name, amount }. Use as {{last_cheer}} / {{last_cheer.amount}}. */
+    LAST_CHEER = "last_cheer",
     /** Most recent raider/host (any platform). Use as {{last_raider}}. */
     LAST_RAIDER = "last_raider",
     /** Viewer count for LAST_RAIDER. Use as {{last_raid_amount}}. */
