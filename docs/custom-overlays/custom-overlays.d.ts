@@ -2177,10 +2177,6 @@ export declare enum SystemVariables {
     RECENT_CHEERS = "recent_cheers",
     /** Parallel comma-separated bit amounts for RECENT_CHEERS. Use as {{recent_cheers_amount}}. */
     RECENT_CHEERS_AMOUNT = "recent_cheers_amount",
-    /** Comma-separated list of recent cheer-purchasers. Use as {{recent_cheer_purchases}}. */
-    RECENT_CHEER_PURCHASES = "recent_cheer_purchases",
-    /** Parallel comma-separated bit amounts for RECENT_CHEER_PURCHASES. Use as {{recent_cheer_purchases_amount}}. */
-    RECENT_CHEER_PURCHASES_AMOUNT = "recent_cheer_purchases_amount",
     /** Comma-separated list of recent tippers. Use as {{recent_tips}}. */
     RECENT_TIPS = "recent_tips",
     /** Parallel comma-separated tip amounts for RECENT_TIPS. Use as {{recent_tips_amount}}. */

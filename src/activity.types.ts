@@ -63,6 +63,7 @@ export enum LumiaActivityCommandTypes {
 	COMMUNITY_TEST = 'community-test',
 	UPDATE_VARIABLE_VALUE = 'update-variable-value',
 	GET_VARIABLE_VALUE = 'get-variable-value',
+	SET_COUNTER_VALUE = 'set-counter-value',
 	SPOTIFY = 'send-spotify-command',
 	VLC = 'send-vlc-command',
 	TWITTER = 'send-twitter-command',
