@@ -2027,6 +2027,172 @@ export declare enum SystemVariables {
     DONORDRIVE_GOAL_AMOUNT = "donordrive_goal_amount",
     /** DonorDrive campaign amount raised so far. Use as {{donordrive_total_raised}}. */
     DONORDRIVE_TOTAL_RAISED = "donordrive_total_raised",
+    /** (Twitch) Most recent channel-points redeemer name. Use as {{twitch_last_channel_points_redeemer}}. */
+    TWITCH_LAST_CHANNEL_POINTS_REDEEMER = "twitch_last_channel_points_redeemer",
+    /** Cost for TWITCH_LAST_CHANNEL_POINTS_REDEEMER. Use as {{twitch_last_channel_points_amount}}. */
+    TWITCH_LAST_CHANNEL_POINTS_AMOUNT = "twitch_last_channel_points_amount",
+    /** Follower goal target. Use as {{follower_goal}}. */
+    FOLLOWER_GOAL = "follower_goal",
+    /** Subscriber goal target. Use as {{subscriber_goal}}. */
+    SUBSCRIBER_GOAL = "subscriber_goal",
+    /** Cheer/bits goal target. Use as {{cheer_goal}}. */
+    CHEER_GOAL = "cheer_goal",
+    /** Tip/donation goal target. Use as {{tip_goal}}. */
+    TIP_GOAL = "tip_goal",
+    /** Superchat goal target. Use as {{superchat_goal}}. */
+    SUPERCHAT_GOAL = "superchat_goal",
+    /** Merch order count goal. Use as {{merch_goal_orders}}. */
+    MERCH_GOAL_ORDERS = "merch_goal_orders",
+    /** Merch item count goal. Use as {{merch_goal_items}}. */
+    MERCH_GOAL_ITEMS = "merch_goal_items",
+    /** Merch revenue goal. Use as {{merch_goal_total}}. */
+    MERCH_GOAL_TOTAL = "merch_goal_total",
+    /** Top tipper this session (cumulative giver). Use as {{session_top_tipper}}. */
+    SESSION_TOP_TIPPER = "session_top_tipper",
+    /** Amount for SESSION_TOP_TIPPER. Use as {{session_top_tipper_amount}}. */
+    SESSION_TOP_TIPPER_AMOUNT = "session_top_tipper_amount",
+    /** Top tipper this week (cumulative giver). Use as {{week_top_tipper}}. */
+    WEEK_TOP_TIPPER = "week_top_tipper",
+    /** Amount for WEEK_TOP_TIPPER. Use as {{week_top_tipper_amount}}. */
+    WEEK_TOP_TIPPER_AMOUNT = "week_top_tipper_amount",
+    /** Top tipper this month (cumulative giver). Use as {{month_top_tipper}}. */
+    MONTH_TOP_TIPPER = "month_top_tipper",
+    /** Amount for MONTH_TOP_TIPPER. Use as {{month_top_tipper_amount}}. */
+    MONTH_TOP_TIPPER_AMOUNT = "month_top_tipper_amount",
+    /** All-time top tipper (cumulative giver). Use as {{alltime_top_tipper}}. */
+    ALLTIME_TOP_TIPPER = "alltime_top_tipper",
+    /** Amount for ALLTIME_TOP_TIPPER. Use as {{alltime_top_tipper_amount}}. */
+    ALLTIME_TOP_TIPPER_AMOUNT = "alltime_top_tipper_amount",
+    /** Latest charity-campaign donor name. Use as {{last_charity_donator}}. */
+    LAST_CHARITY_DONATOR = "last_charity_donator",
+    /** Amount for LAST_CHARITY_DONATOR. Use as {{last_charity_donation_amount}}. */
+    LAST_CHARITY_DONATION_AMOUNT = "last_charity_donation_amount",
+    /** Largest single charity donation this session. Use as {{session_top_charity_donation}}. */
+    SESSION_TOP_CHARITY_DONATION = "session_top_charity_donation",
+    /** Amount for SESSION_TOP_CHARITY_DONATION. Use as {{session_top_charity_donation_amount}}. */
+    SESSION_TOP_CHARITY_DONATION_AMOUNT = "session_top_charity_donation_amount",
+    /** Largest single charity donation this week. Use as {{week_top_charity_donation}}. */
+    WEEK_TOP_CHARITY_DONATION = "week_top_charity_donation",
+    /** Amount for WEEK_TOP_CHARITY_DONATION. Use as {{week_top_charity_donation_amount}}. */
+    WEEK_TOP_CHARITY_DONATION_AMOUNT = "week_top_charity_donation_amount",
+    /** Largest single charity donation this month. Use as {{month_top_charity_donation}}. */
+    MONTH_TOP_CHARITY_DONATION = "month_top_charity_donation",
+    /** Amount for MONTH_TOP_CHARITY_DONATION. Use as {{month_top_charity_donation_amount}}. */
+    MONTH_TOP_CHARITY_DONATION_AMOUNT = "month_top_charity_donation_amount",
+    /** Largest single charity donation all-time. Use as {{alltime_top_charity_donation}}. */
+    ALLTIME_TOP_CHARITY_DONATION = "alltime_top_charity_donation",
+    /** Amount for ALLTIME_TOP_CHARITY_DONATION. Use as {{alltime_top_charity_donation_amount}}. */
+    ALLTIME_TOP_CHARITY_DONATION_AMOUNT = "alltime_top_charity_donation_amount",
+    /** Top charity donor this session (cumulative giver). Use as {{session_top_charity_donator}}. */
+    SESSION_TOP_CHARITY_DONATOR = "session_top_charity_donator",
+    /** Amount for SESSION_TOP_CHARITY_DONATOR. Use as {{session_top_charity_donator_amount}}. */
+    SESSION_TOP_CHARITY_DONATOR_AMOUNT = "session_top_charity_donator_amount",
+    /** Top charity donor this week (cumulative giver). Use as {{week_top_charity_donator}}. */
+    WEEK_TOP_CHARITY_DONATOR = "week_top_charity_donator",
+    /** Amount for WEEK_TOP_CHARITY_DONATOR. Use as {{week_top_charity_donator_amount}}. */
+    WEEK_TOP_CHARITY_DONATOR_AMOUNT = "week_top_charity_donator_amount",
+    /** Top charity donor this month (cumulative giver). Use as {{month_top_charity_donator}}. */
+    MONTH_TOP_CHARITY_DONATOR = "month_top_charity_donator",
+    /** Amount for MONTH_TOP_CHARITY_DONATOR. Use as {{month_top_charity_donator_amount}}. */
+    MONTH_TOP_CHARITY_DONATOR_AMOUNT = "month_top_charity_donator_amount",
+    /** All-time top charity donor (cumulative giver). Use as {{alltime_top_charity_donator}}. */
+    ALLTIME_TOP_CHARITY_DONATOR = "alltime_top_charity_donator",
+    /** Amount for ALLTIME_TOP_CHARITY_DONATOR. Use as {{alltime_top_charity_donator_amount}}. */
+    ALLTIME_TOP_CHARITY_DONATOR_AMOUNT = "alltime_top_charity_donator_amount",
+    /** Largest single cheer this week. Use as {{week_top_cheer}}. */
+    WEEK_TOP_CHEER = "week_top_cheer",
+    /** Amount for WEEK_TOP_CHEER. Use as {{week_top_cheer_amount}}. */
+    WEEK_TOP_CHEER_AMOUNT = "week_top_cheer_amount",
+    /** Largest single cheer this month. Use as {{month_top_cheer}}. */
+    MONTH_TOP_CHEER = "month_top_cheer",
+    /** Amount for MONTH_TOP_CHEER. Use as {{month_top_cheer_amount}}. */
+    MONTH_TOP_CHEER_AMOUNT = "month_top_cheer_amount",
+    /** Largest single cheer all-time. Use as {{alltime_top_cheer}}. */
+    ALLTIME_TOP_CHEER = "alltime_top_cheer",
+    /** Amount for ALLTIME_TOP_CHEER. Use as {{alltime_top_cheer_amount}}. */
+    ALLTIME_TOP_CHEER_AMOUNT = "alltime_top_cheer_amount",
+    /** (Twitch) Largest single cheer this week. Use as {{twitch_week_top_cheer}}. */
+    TWITCH_WEEK_TOP_CHEER = "twitch_week_top_cheer",
+    /** Amount for TWITCH_WEEK_TOP_CHEER. Use as {{twitch_week_top_cheer_amount}}. */
+    TWITCH_WEEK_TOP_CHEER_AMOUNT = "twitch_week_top_cheer_amount",
+    /** (Twitch) Largest single cheer this month. Use as {{twitch_month_top_cheer}}. */
+    TWITCH_MONTH_TOP_CHEER = "twitch_month_top_cheer",
+    /** Amount for TWITCH_MONTH_TOP_CHEER. Use as {{twitch_month_top_cheer_amount}}. */
+    TWITCH_MONTH_TOP_CHEER_AMOUNT = "twitch_month_top_cheer_amount",
+    /** (Twitch) Largest single cheer all-time. Use as {{twitch_alltime_top_cheer}}. */
+    TWITCH_ALLTIME_TOP_CHEER = "twitch_alltime_top_cheer",
+    /** Amount for TWITCH_ALLTIME_TOP_CHEER. Use as {{twitch_alltime_top_cheer_amount}}. */
+    TWITCH_ALLTIME_TOP_CHEER_AMOUNT = "twitch_alltime_top_cheer_amount",
+    /** (YouTube) Running superchat amount this session. Use as {{youtube_session_superchat_amount}}. */
+    YOUTUBE_SESSION_SUPERCHAT_AMOUNT = "youtube_session_superchat_amount",
+    /** (YouTube) Running superchat amount this week. Use as {{youtube_week_superchat_amount}}. */
+    YOUTUBE_WEEK_SUPERCHAT_AMOUNT = "youtube_week_superchat_amount",
+    /** (YouTube) Running superchat amount this month. Use as {{youtube_month_superchat_amount}}. */
+    YOUTUBE_MONTH_SUPERCHAT_AMOUNT = "youtube_month_superchat_amount",
+    /** (YouTube) Running superchat amount all-time. Use as {{youtube_total_superchat_amount}}. */
+    YOUTUBE_TOTAL_SUPERCHAT_AMOUNT = "youtube_total_superchat_amount",
+    /** (YouTube) Largest single superchat this session. Use as {{youtube_session_top_superchat}}. */
+    YOUTUBE_SESSION_TOP_SUPERCHAT = "youtube_session_top_superchat",
+    /** Amount for YOUTUBE_SESSION_TOP_SUPERCHAT. Use as {{youtube_session_top_superchat_amount}}. */
+    YOUTUBE_SESSION_TOP_SUPERCHAT_AMOUNT = "youtube_session_top_superchat_amount",
+    /** (YouTube) Largest single superchat this week. Use as {{youtube_week_top_superchat}}. */
+    YOUTUBE_WEEK_TOP_SUPERCHAT = "youtube_week_top_superchat",
+    /** Amount for YOUTUBE_WEEK_TOP_SUPERCHAT. Use as {{youtube_week_top_superchat_amount}}. */
+    YOUTUBE_WEEK_TOP_SUPERCHAT_AMOUNT = "youtube_week_top_superchat_amount",
+    /** (YouTube) Largest single superchat this month. Use as {{youtube_month_top_superchat}}. */
+    YOUTUBE_MONTH_TOP_SUPERCHAT = "youtube_month_top_superchat",
+    /** Amount for YOUTUBE_MONTH_TOP_SUPERCHAT. Use as {{youtube_month_top_superchat_amount}}. */
+    YOUTUBE_MONTH_TOP_SUPERCHAT_AMOUNT = "youtube_month_top_superchat_amount",
+    /** (YouTube) Largest single superchat all-time. Use as {{youtube_alltime_top_superchat}}. */
+    YOUTUBE_ALLTIME_TOP_SUPERCHAT = "youtube_alltime_top_superchat",
+    /** Amount for YOUTUBE_ALLTIME_TOP_SUPERCHAT. Use as {{youtube_alltime_top_superchat_amount}}. */
+    YOUTUBE_ALLTIME_TOP_SUPERCHAT_AMOUNT = "youtube_alltime_top_superchat_amount",
+    /** (YouTube) Top superchatter this session (cumulative giver). Use as {{youtube_session_top_superchatter}}. */
+    YOUTUBE_SESSION_TOP_SUPERCHATTER = "youtube_session_top_superchatter",
+    /** Amount for YOUTUBE_SESSION_TOP_SUPERCHATTER. Use as {{youtube_session_top_superchatter_amount}}. */
+    YOUTUBE_SESSION_TOP_SUPERCHATTER_AMOUNT = "youtube_session_top_superchatter_amount",
+    /** (YouTube) Top superchatter this week (cumulative giver). Use as {{youtube_week_top_superchatter}}. */
+    YOUTUBE_WEEK_TOP_SUPERCHATTER = "youtube_week_top_superchatter",
+    /** Amount for YOUTUBE_WEEK_TOP_SUPERCHATTER. Use as {{youtube_week_top_superchatter_amount}}. */
+    YOUTUBE_WEEK_TOP_SUPERCHATTER_AMOUNT = "youtube_week_top_superchatter_amount",
+    /** (YouTube) Top superchatter this month (cumulative giver). Use as {{youtube_month_top_superchatter}}. */
+    YOUTUBE_MONTH_TOP_SUPERCHATTER = "youtube_month_top_superchatter",
+    /** Amount for YOUTUBE_MONTH_TOP_SUPERCHATTER. Use as {{youtube_month_top_superchatter_amount}}. */
+    YOUTUBE_MONTH_TOP_SUPERCHATTER_AMOUNT = "youtube_month_top_superchatter_amount",
+    /** (YouTube) All-time top superchatter (cumulative giver). Use as {{youtube_alltime_top_superchatter}}. */
+    YOUTUBE_ALLTIME_TOP_SUPERCHATTER = "youtube_alltime_top_superchatter",
+    /** Amount for YOUTUBE_ALLTIME_TOP_SUPERCHATTER. Use as {{youtube_alltime_top_superchatter_amount}}. */
+    YOUTUBE_ALLTIME_TOP_SUPERCHATTER_AMOUNT = "youtube_alltime_top_superchatter_amount",
+    /** Comma-separated list of recent followers. Use as {{recent_followers}}. */
+    RECENT_FOLLOWERS = "recent_followers",
+    /** Comma-separated list of recent subscribers. Use as {{recent_subscribers}}. */
+    RECENT_SUBSCRIBERS = "recent_subscribers",
+    /** Comma-separated list of recent hosts. Use as {{recent_hosts}}. */
+    RECENT_HOSTS = "recent_hosts",
+    /** Comma-separated list of recent raiders. Use as {{recent_raiders}}. */
+    RECENT_RAIDERS = "recent_raiders",
+    /** Parallel comma-separated viewer counts for RECENT_RAIDERS. Use as {{recent_raiders_amount}}. */
+    RECENT_RAIDERS_AMOUNT = "recent_raiders_amount",
+    /** Comma-separated list of recent cheerers. Use as {{recent_cheers}}. */
+    RECENT_CHEERS = "recent_cheers",
+    /** Parallel comma-separated bit amounts for RECENT_CHEERS. Use as {{recent_cheers_amount}}. */
+    RECENT_CHEERS_AMOUNT = "recent_cheers_amount",
+    /** Comma-separated list of recent cheer-purchasers. Use as {{recent_cheer_purchases}}. */
+    RECENT_CHEER_PURCHASES = "recent_cheer_purchases",
+    /** Parallel comma-separated bit amounts for RECENT_CHEER_PURCHASES. Use as {{recent_cheer_purchases_amount}}. */
+    RECENT_CHEER_PURCHASES_AMOUNT = "recent_cheer_purchases_amount",
+    /** Comma-separated list of recent tippers. Use as {{recent_tips}}. */
+    RECENT_TIPS = "recent_tips",
+    /** Parallel comma-separated tip amounts for RECENT_TIPS. Use as {{recent_tips_amount}}. */
+    RECENT_TIPS_AMOUNT = "recent_tips_amount",
+    /** Comma-separated list of recent superchatters. Use as {{recent_superchats}}. */
+    RECENT_SUPERCHATS = "recent_superchats",
+    /** Parallel comma-separated superchat amounts for RECENT_SUPERCHATS. Use as {{recent_superchats_amount}}. */
+    RECENT_SUPERCHATS_AMOUNT = "recent_superchats_amount",
+    /** Comma-separated list of recent charity donors. Use as {{recent_charity_donations}}. */
+    RECENT_CHARITY_DONATIONS = "recent_charity_donations",
+    /** Parallel comma-separated donation amounts for RECENT_CHARITY_DONATIONS. Use as {{recent_charity_donations_amount}}. */
+    RECENT_CHARITY_DONATIONS_AMOUNT = "recent_charity_donations_amount",
     /** Heart rate BPM (Pulsoid/Hyperate). Use as {{heartrate_bpm}}. */
     HEARTRATE_BPM = "heartrate_bpm"
 }
