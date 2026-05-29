@@ -46,6 +46,7 @@ export {
 	getExampleAlertVariableValue,
 	buildExampleAlertVariables,
 	coerceNumericAlertFields,
+	aliasContentImageFromLegacy,
 	isRedundantInputField,
 	syncLinkedVariableFields,
 	type InputFieldLike,

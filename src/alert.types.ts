@@ -133,6 +133,12 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage?: string;
 		eventlistDetailedMessage?: string;
 		acceptedVariables: LumiaAcceptedVariable[];
+		// Alerts that carry a subject image (gift sticker, clip thumbnail, merch
+		// product, etc.) populate `extraSettings.contentImage` at emit time. The
+		// flag lets the Alerts editor decide whether to render "override alert
+		// image" UI without inspecting every live payload. Avatars / charity
+		// logos are NOT the subject image; they keep their existing field names.
+		hasAlertImage?: boolean;
 		quickActions?: Array<{
 			label: string;
 			dynamic: LumiaDynamicCondition;
@@ -1730,6 +1736,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_POWERUPS]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: '{{username}} redeemed {{type}} and cheered {{amount}} bits. They said {{message}}',
 		eventlistMessage: 'Powerups',
 		eventlistDetailedMessage: 'redeemed {{type}} for {{amount}} bits',
@@ -1743,6 +1750,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					type: 'gigantify_an_emote',
 					amount: 100,
+					contentImage: 'https://static-cdn.jtvnw.net/twitch-power-ups/gigantify_an_emote/black/v1/default_2x.png',
 				},
 			},
 			{
@@ -1753,6 +1761,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					type: 'celebration',
 					amount: 500,
+					contentImage: 'https://static-cdn.jtvnw.net/twitch-power-ups/celebration/black/v1/default_2x.png',
 				},
 			},
 		],
@@ -2849,7 +2858,7 @@ export const LumiaAlertConfigs: Record<
 					charity_id: 'lumia123',
 					charity_name: 'Lumia Charity',
 					charity_description: 'Give me more lights',
-					charity_logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					contentImage: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					charity_website: 'https://lumiastream.com',
 					started_at: '2022-07-26T17:00:03.17106713Z',
 				},
@@ -2865,7 +2874,7 @@ export const LumiaAlertConfigs: Record<
 					charity_id: 'lumia123',
 					charity_name: 'Lumia Charity',
 					charity_description: 'Give me more lights',
-					charity_logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					contentImage: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					charity_website: 'https://lumiastream.com',
 					started_at: '2022-07-26T17:00:03.17106713Z',
 				},
@@ -2881,7 +2890,7 @@ export const LumiaAlertConfigs: Record<
 					charity_id: 'lumia123',
 					charity_name: 'Lumia Charity',
 					charity_description: 'Give me more lights',
-					charity_logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					contentImage: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					charity_website: 'https://lumiastream.com',
 					started_at: '2022-07-26T17:00:03.17106713Z',
 				},
@@ -2942,6 +2951,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_STARTED]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: 'Charity campaign {{charity_name}} started with a target of {{currencySymbol}}{{charity_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign start',
@@ -2955,7 +2965,7 @@ export const LumiaAlertConfigs: Record<
 					charity_id: 'lumia123',
 					charity_name: 'Lumia Charity',
 					charity_description: 'Give me more lights',
-					charity_logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					contentImage: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					charity_amount: 0,
 					charity_target_amount: 100,
 					charity_website: 'https://lumiastream.com',
@@ -3005,6 +3015,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_PROGRESSED]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: 'Charity campaign {{charity_name}} progressed to {{currencySymbol}}{{charity_amount}} with a target of {{currencySymbol}}{{charity_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign progressed',
@@ -3017,7 +3028,7 @@ export const LumiaAlertConfigs: Record<
 				extraSettings: {
 					charity_name: 'Lumia Charity',
 					charity_description: 'Give me more lights',
-					charity_logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					contentImage: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					charity_amount: 20,
 					charity_target_amount: 100,
 					charity_website: 'https://lumiastream.com',
@@ -3066,6 +3077,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_CAMPAIGN_STOPPED]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: 'Charity campaign {{charity_name}} ended at amount {{currencySymbol}}{{charity_amount}} with a target of {{currencySymbol}}{{charity_target_amount}}',
 		eventlistSpecialUsername: 'Twitch',
 		eventlistMessage: 'Charity campaign ended',
@@ -3078,7 +3090,7 @@ export const LumiaAlertConfigs: Record<
 				extraSettings: {
 					charity_name: 'Lumia Charity',
 					charity_description: 'Give me more lights',
-					charity_logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					contentImage: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					charity_amount: 100,
 					charity_target_amount: 100,
 					charity_website: 'https://lumiastream.com',
@@ -3178,6 +3190,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_CLIP]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: 'Clip taken by {{username}} with title of {{clip_title}}',
 		eventlistMessage: 'Clipped',
 		eventlistDetailedMessage: 'created a clip',
@@ -3191,6 +3204,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					clip_title: 'Lumia Stream',
 					clip_url: 'https://www.twitch.tv/lumiastream/clip/EnchantingSuccessfulMoonBlargNaut-ev_c6MJ_Qb0o7gEx',
+					contentImage: 'https://clips-media-assets2.twitch.tv/AT-cm%7CEnchantingSuccessfulMoonBlargNaut-preview-480x272.jpg',
 				},
 			},
 		],
@@ -3966,6 +3980,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_GIFTS]: {
 		connection: LumiaIntegrations.YOUTUBE,
+		hasAlertImage: true,
 		message: '{{username}} sent x{{comboCount}} {{giftName}} ({{jewelsAmount}} jewels)',
 		eventlistMessage: 'Gift',
 		eventlistDetailedMessage: 'sent x{{comboCount}} {{giftName}} worth {{jewelsAmount}} jewels',
@@ -3984,7 +3999,7 @@ export const LumiaAlertConfigs: Record<
 					comboCount: 1,
 					hasVisualEffect: false,
 					giftUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
-					giftImageUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
+					contentImage: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
 					giftDurationSeconds: 3,
 					giftDurationNanos: 0,
 					altText: 'Heart',
@@ -4004,7 +4019,7 @@ export const LumiaAlertConfigs: Record<
 					comboCount: 1,
 					hasVisualEffect: true,
 					giftUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
-					giftImageUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
+					contentImage: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
 					giftDurationSeconds: 3,
 					giftDurationNanos: 0,
 					altText: 'Rose',
@@ -4024,7 +4039,7 @@ export const LumiaAlertConfigs: Record<
 					comboCount: 5,
 					hasVisualEffect: true,
 					giftUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
-					giftImageUrl: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
+					contentImage: 'https://www.gstatic.com/youtube/img/pdg/gift/assets/gold_coin_v2_320x320.png',
 					giftDurationSeconds: 3,
 					giftDurationNanos: 0,
 					altText: 'Star',
@@ -4260,6 +4275,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: {
 		connection: LumiaIntegrations.YOUTUBE,
+		hasAlertImage: true,
 		message: '{{username}} just sent a {{stickerName}} super sticker worth {{currencySymbol}}{{amount}}',
 		eventlistMessage: 'Super Sticker',
 		eventlistDetailedMessage: 'sent a {{stickerName}} super sticker worth {{currencySymbol}}{{amount}}',
@@ -4277,7 +4293,7 @@ export const LumiaAlertConfigs: Record<
 					currencySymbol: '$',
 					stickerId: 'emoji_beaming_face',
 					stickerName: 'Emoji Beaming Face',
-					imageUrl: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_beaming_face')?.imageUrl ?? '',
+					contentImage: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_beaming_face')?.imageUrl ?? '',
 				},
 			},
 			{
@@ -4292,7 +4308,7 @@ export const LumiaAlertConfigs: Record<
 					currencySymbol: '$',
 					stickerId: 'emoji_laughing',
 					stickerName: 'Emoji Laughing',
-					imageUrl: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_laughing')?.imageUrl ?? '',
+					contentImage: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_laughing')?.imageUrl ?? '',
 				},
 			},
 			{
@@ -4307,7 +4323,7 @@ export const LumiaAlertConfigs: Record<
 					currencySymbol: '$',
 					stickerId: 'emoji_sad',
 					stickerName: 'Emoji Sad',
-					imageUrl: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_sad')?.imageUrl ?? '',
+					contentImage: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_sad')?.imageUrl ?? '',
 				},
 			},
 		],
@@ -4346,7 +4362,7 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Image URL',
-				variableField: 'imageUrl',
+				variableField: 'contentImage',
 				required: false,
 				default: YoutubeSuperstickersData.find((sticker) => sticker.value === 'emoji_beaming_face')?.imageUrl ?? '',
 			},
@@ -4999,6 +5015,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TIKTOK_GIFT]: {
 		connection: LumiaIntegrations.TIKTOK,
+		hasAlertImage: true,
 		message: '{{username}} sent x{{giftAmount}} {{giftName}}',
 		eventlistMessage: 'Gift',
 		eventlistDetailedMessage: 'sent x{{giftAmount}} {{giftName}}',
@@ -5018,7 +5035,7 @@ export const LumiaAlertConfigs: Record<
 					coins: 1,
 					diamonds: 1,
 					amount: 1,
-					giftPictureUrl: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/eba3a9bb85c33e017f3648eaf88d7189~tplv-obj.png',
+					contentImage: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/eba3a9bb85c33e017f3648eaf88d7189~tplv-obj.png',
 				},
 			},
 			{
@@ -5028,7 +5045,7 @@ export const LumiaAlertConfigs: Record<
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					giftName: 'Pumpkin',
-					giftPictureUrl: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/e675252b83e97135f9ede3b5d32c2c71~tplv-obj.png',
+					contentImage: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/e675252b83e97135f9ede3b5d32c2c71~tplv-obj.png',
 					giftType: 2,
 					giftId: 7095,
 					giftAmount: 1,
@@ -5045,7 +5062,7 @@ export const LumiaAlertConfigs: Record<
 					username: 'lumiastream',
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					giftName: 'Boiling Cauldron',
-					giftPictureUrl: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/e675252b83e97135f9ede3b5d32c2c71~tplv-obj.png',
+					contentImage: 'https://p19-webcast.tiktokcdn.com/img/maliva/webcast-va/e675252b83e97135f9ede3b5d32c2c71~tplv-obj.png',
 					giftType: 2,
 					giftId: 7158,
 					giftAmount: 1,
@@ -7901,6 +7918,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.FOURTHWALL_GIFTPURCHASE]: {
 		connection: LumiaIntegrations.FOURTHWALL,
+		hasAlertImage: true,
 		message: '{{username}} just bought a gift with amount {{amount}}',
 		eventlistMessage: 'Gift Purchase',
 		eventlistDetailedMessage: 'Gift purchase with {{amount}} {{currency}}',
@@ -7914,6 +7932,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
+					contentImage: 'https://cdn.fourthwall.com/storefront-en/_next/image?url=https%3A%2F%2Fcdn.fourthwall.com%2Fpublic%2Flogos%2Ffw-logo-stacked-purple.png',
 				},
 			},
 			{
@@ -7924,6 +7943,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
+					contentImage: 'https://cdn.fourthwall.com/storefront-en/_next/image?url=https%3A%2F%2Fcdn.fourthwall.com%2Fpublic%2Flogos%2Ffw-logo-stacked-purple.png',
 				},
 			},
 			{
@@ -7934,6 +7954,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
+					contentImage: 'https://cdn.fourthwall.com/storefront-en/_next/image?url=https%3A%2F%2Fcdn.fourthwall.com%2Fpublic%2Flogos%2Ffw-logo-stacked-purple.png',
 				},
 			},
 		],
@@ -7978,6 +7999,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.FOURTHWALL_SHOPORDER]: {
 		connection: LumiaIntegrations.FOURTHWALL,
+		hasAlertImage: true,
 		message: '{{username}} purchased {{items}}',
 		eventlistMessage: 'Shop Order',
 		eventlistDetailedMessage: 'purchased {{items}}',
@@ -7992,6 +8014,7 @@ export const LumiaAlertConfigs: Record<
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
 					items: 'Shirt, Keyblade, Chaos Emerald',
+					contentImage: 'https://cdn.fourthwall.com/storefront-en/_next/image?url=https%3A%2F%2Fcdn.fourthwall.com%2Fpublic%2Flogos%2Ffw-logo-stacked-purple.png',
 				},
 			},
 			{
@@ -8003,6 +8026,7 @@ export const LumiaAlertConfigs: Record<
 					amount: 200,
 					currency: LumiaVariationCurrency.USD,
 					items: 'Shirt, Keyblade, Chaos Emerald',
+					contentImage: 'https://cdn.fourthwall.com/storefront-en/_next/image?url=https%3A%2F%2Fcdn.fourthwall.com%2Fpublic%2Flogos%2Ffw-logo-stacked-purple.png',
 				},
 			},
 			{
@@ -8014,6 +8038,7 @@ export const LumiaAlertConfigs: Record<
 					amount: 300,
 					currency: LumiaVariationCurrency.USD,
 					items: 'Shirt, Keyblade, Chaos Emerald',
+					contentImage: 'https://cdn.fourthwall.com/storefront-en/_next/image?url=https%3A%2F%2Fcdn.fourthwall.com%2Fpublic%2Flogos%2Ffw-logo-stacked-purple.png',
 				},
 			},
 		],
@@ -8065,6 +8090,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.FOURTHWALL_GIVEAWAY_STARTED]: {
 		connection: LumiaIntegrations.FOURTHWALL,
+		hasAlertImage: true,
 		message: '{{username}} just started a giveaway for {{giveawayName}}',
 		eventlistMessage: 'Giveaway Started',
 		eventlistDetailedMessage: 'started giveaway for {{giveawayName}}',
@@ -8079,6 +8105,7 @@ export const LumiaAlertConfigs: Record<
 					giveawayId: 'TEST123',
 					amount: 100,
 					currency: LumiaVariationCurrency.USD,
+					contentImage: 'https://cdn.fourthwall.com/storefront-en/_next/image?url=https%3A%2F%2Fcdn.fourthwall.com%2Fpublic%2Flogos%2Ffw-logo-stacked-purple.png',
 				},
 			},
 		],
@@ -8130,6 +8157,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.FOURTHWALL_GIVEAWAY_ENDED]: {
 		connection: LumiaIntegrations.FOURTHWALL,
+		hasAlertImage: true,
 		message: 'Giveaway {{giveawayName}} ended with {{winnerCount}} winners',
 		eventlistMessage: 'Giveaway Ended',
 		eventlistDetailedMessage: 'giveaway ended with {{winnerCount}} winners',
@@ -8143,6 +8171,7 @@ export const LumiaAlertConfigs: Record<
 					giveawayId: 'TEST123',
 					winners: ['winner1', 'winner2', 'winner3'],
 					winnerCount: 3,
+					contentImage: 'https://cdn.fourthwall.com/storefront-en/_next/image?url=https%3A%2F%2Fcdn.fourthwall.com%2Fpublic%2Flogos%2Ffw-logo-stacked-purple.png',
 				},
 			},
 		],

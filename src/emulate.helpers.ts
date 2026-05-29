@@ -91,6 +91,22 @@ export function buildExampleAlertVariables(
 
 const LINKED_VARIABLE_FIELD_GROUPS: ReadonlyArray<ReadonlyArray<string>> = [['giftAmount', 'amount']];
 
+// One-way alias: any of the legacy per-platform image field names (the
+// pre-canonical names — giftPictureUrl, imageUrl, etc.) backfills
+// `contentImage` if it's empty. We don't do the reverse — populating every
+// legacy field from canonical would scatter the URL across alert types it
+// doesn't belong to. Real platform managers continue to emit their own
+// legacy field directly; this only matters for emulated payloads and any
+// older form that still binds to a legacy variableField.
+const LEGACY_CONTENT_IMAGE_FIELDS: ReadonlyArray<string> = [
+	'giftPictureUrl',
+	'imageUrl',
+	'giftImageUrl',
+	'clip_thumbnail',
+	'charity_logo',
+	'offerImageUrl',
+];
+
 export interface InputFieldLike {
 	variableField: string;
 }
@@ -171,6 +187,18 @@ const NUMERIC_ALERT_FIELDS: ReadonlySet<string> = new Set([
 	'progress',
 	'goal',
 ]);
+
+export function aliasContentImageFromLegacy(values: Record<string, any>): void {
+	if (!values) return;
+	if (typeof values.contentImage === 'string' && values.contentImage !== '') return;
+	for (const key of LEGACY_CONTENT_IMAGE_FIELDS) {
+		const v = values[key];
+		if (typeof v === 'string' && v !== '') {
+			values.contentImage = v;
+			return;
+		}
+	}
+}
 
 export function coerceNumericAlertFields(values: Record<string, any>): void {
 	if (!values) return;
