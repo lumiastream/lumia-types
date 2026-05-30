@@ -394,7 +394,7 @@ A field object can now contain these properties:
 
 | Property        | Required | Purpose                                                                                                                                                                                                                                                                                            | Example                                                           |
 | --------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| **`type`**      | ✅       | UI control to render. Must be one of the `FieldType` enum values (`input`, `textarea`, `number`, `checkbox`, `dropdown`, `multiselect`, `colorpicker`, `fontpicker`, `slider`, `imageupload`, `soundupload`, `videoupload`, `actionbutton`).                                                       | `"type": "dropdown"`                                              |
+| **`type`**      | ✅       | UI control to render. Must be one of the `ConfigsFieldType` enum values (`input`, `textarea`, `number`, `checkbox`, `dropdown`, `multiselect`, `colorpicker`, `fontpicker`, `slider`, `imageupload`, `soundupload`, `videoupload`, `actionbutton`).                                                 | `"type": "dropdown"`                                              |
 | **`label`**     | ✅       | Human-readable name shown in the sidebar.                                                                                                                                                                                                                                                          | `"label": "Favorite Color:"`                                      |
 | **`value`**     | ❌       | Default value that appears the first time the user opens the overlay (also pre populates `Overlay.data`). Omit it to leave the field blank/unchecked on first load.                                                                                                                                | `"value": 18`                                                     |
 | **`options`**   | ☑️\*     | Key value map of selectable choices. Required **only** for `dropdown`, `multiselect` and `slider`; ignored for other types. For `slider`, `options` supports `step`, `min`, `max`, `prefix`, `suffix`.                                                                                             | `"options": { "step": 5, "min": 0, "max": 100 }`                  |
@@ -402,13 +402,27 @@ A field object can now contain these properties:
 | **`visibleIf`** | ❌       | **Conditional render rule**. Field is shown **only if** `Overlay.data[visibleIf.key]` strictly equals one of the values in `visibleIf.equals`.                                                                                                                                                     | `"visibleIf": { "key": "targetKey", "equals": ["yes", "maybe"] }` |
 | **`hidden`**    | ❌       | **Hard-hide rule.** When set to `true`, the field is **never displayed** in the Configs sidebar, preventing end users from altering it. The value still flows into `Overlay.data`, so the overlay can rely on it internally.<br>Useful for locking event subscriptions or other advanced settings. | `"hidden": true`                                                  |
 
-Additional properties for text inputs (`type: "input"`):
+Additional properties for text fields (`type: "input"` and `type: "textarea"`):
 
 | Property               | Required | Purpose                                                                                                                                    | Example                                       |
 | ---------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
-| **`placeholder`**      | ❌       | Placeholder text inside the input.                                                                                                         | `"placeholder": "Enter title..."`             |
-| **`enableVariables`**  | ❌       | When `true`, renders a variable-enabled input that lets users insert variables (e.g., `{{username}}`) from a picker.                       | `"enableVariables": true`                     |
+| **`placeholder`**      | ❌       | Placeholder text inside the field.                                                                                                         | `"placeholder": "Enter title..."`             |
+| **`enableVariables`**  | ❌       | When `true`, renders a variable-enabled field that lets users insert variables (e.g., `{{username}}`) from a picker.                       | `"enableVariables": true`                     |
 | **`allowedVariables`** | ❌       | When present with `enableVariables: true`, limits the top of the picker to this list. System/function variables are still available below. | `"allowedVariables": ["username", "message"]` |
+| **`rows`**             | ❌       | **`textarea` only.** Visible row count. Defaults to `4`.                                                                                   | `"rows": 6`                                   |
+
+Additional properties for media upload fields (`type: "imageupload"`, `"soundupload"`, `"videoupload"`):
+
+| Property      | Required | Purpose                                                                                                              | Example                              |
+| ------------- | -------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| **`value`**   | ❌       | Default asset URL. The field's `Overlay.data` value is always the uploaded asset's URL string.                      | `"value": "https://.../logo.png"`    |
+| **`accept`**  | ❌       | Optional comma-separated MIME accept hint for the upload picker.                                                     | `"accept": "image/png,image/jpeg"`   |
+
+Additional properties for the action button (`type: "actionbutton"`):
+
+| Property          | Required | Purpose                                                                                                                                              | Example                       |
+| ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| **`buttonLabel`** | ❌       | Button-text override. Defaults to the field `label`. The action button has **no persisted value** — clicking it fires the `configAction` event.    | `"buttonLabel": "Reset game"` |
 
 ### Variable-enabled Input Fields
 
@@ -454,16 +468,21 @@ Before looking at the individual properties (type, label, value, options), remem
 
 ### Supported Field Types
 
-| type            | UI Control            |
-| --------------- | --------------------- |
-| `"input"`       | Single-line text box  |
-| `"number"`      | Numeric input spinner |
-| `"checkbox"`    | Checkbox selection    |
-| `"dropdown"`    | Select menu           |
-| `"multiselect"` | Multi-select box      |
-| `"colorpicker"` | Color picker widget   |
-| `"fontpicker"`  | Font picker (Google)  |
-| `"slider"`      | Number slider         |
+| type            | UI Control                  | `Overlay.data` value                          |
+| --------------- | --------------------------- | --------------------------------------------- |
+| `"input"`       | Single-line text box        | `string`                                      |
+| `"textarea"`    | Multi-line text area        | `string`                                      |
+| `"number"`      | Numeric input spinner       | `number`                                      |
+| `"checkbox"`    | Checkbox selection          | `boolean`                                     |
+| `"dropdown"`    | Select menu                 | `string` (selected option key)                |
+| `"multiselect"` | Multi-select box            | `string[]` (selected option keys)             |
+| `"colorpicker"` | Color picker widget         | `string` (hex/rgba)                           |
+| `"fontpicker"`  | Font picker (Google)        | `string` (font family name)                   |
+| `"slider"`      | Number slider               | `number`                                      |
+| `"imageupload"` | Image upload picker         | `string` (uploaded asset URL)                 |
+| `"soundupload"` | Audio upload picker         | `string` (uploaded asset URL)                 |
+| `"videoupload"` | Video upload picker         | `string` (uploaded asset URL)                 |
+| `"actionbutton"`| Clickable action button     | _none_ — fires the `configAction` event       |
 
 ### Font Picker
 
@@ -501,6 +520,95 @@ body {
 The key in the json an ddata must match the variable name used in the css
 
 > Note we're using variable replacement within the css.
+
+### Textarea
+
+The `textarea` type renders a multi-line text box for long-form content. It supports the same `placeholder`, `enableVariables`, and `allowedVariables` props as `input`, plus a `rows` prop to control the visible height (defaults to `4`).
+
+Configs Tab
+
+```json
+{
+	"welcomeMessage": {
+		"type": "textarea",
+		"label": "Welcome Message",
+		"rows": 6,
+		"placeholder": "Enter the message shown when the overlay loads",
+		"enableVariables": true,
+		"allowedVariables": ["username"]
+	}
+}
+```
+
+The value flows into `Overlay.data.welcomeMessage` as a plain string and can be used with `{{welcomeMessage}}` replacement just like any other field.
+
+### Media Upload Fields (Image / Sound / Video)
+
+The `imageupload`, `soundupload`, and `videoupload` types render an asset picker tied to Lumia's media browser. Once a user picks (or uploads) an asset, the field's value is the **uploaded asset's URL string**. Each type scopes the picker to the matching media kind: images, audio, and video respectively.
+
+Configs Tab
+
+```json
+{
+	"logo": {
+		"type": "imageupload",
+		"label": "Logo Image"
+	},
+	"chime": {
+		"type": "soundupload",
+		"label": "Alert Sound",
+		"accept": "audio/mpeg,audio/ogg"
+	},
+	"intro": {
+		"type": "videoupload",
+		"label": "Intro Clip"
+	}
+}
+```
+
+Because the value is just a URL, you can use it directly in your HTML, CSS, or JS:
+
+```html
+<img src="{{logo}}" alt="logo" />
+```
+
+```js
+const chime = new Audio(Overlay.data.chime);
+chime.play();
+```
+
+> The optional `accept` property is a comma-separated MIME hint (e.g. `image/png,image/jpeg`). The picker is already scoped by media type, so `accept` is an extra narrowing hint and can be omitted.
+
+### Action Button
+
+The `actionbutton` type renders a clickable button in the Configs sidebar. Unlike every other field, it has **no persisted value** — it is a trigger, not a setting. Clicking it dispatches a `configAction` event that your overlay JS can subscribe to. Use `buttonLabel` to override the button text (it defaults to `label`).
+
+Configs Tab
+
+```json
+{
+	"resetGame": {
+		"type": "actionbutton",
+		"label": "Reset",
+		"buttonLabel": "Reset game"
+	}
+}
+```
+
+JS Tab
+
+```js
+// Fired when the user clicks an actionbutton field in the Configs sidebar.
+// `key` is the field's JSON key; `value` is the field's optional `value`.
+Overlay.on("configAction", ({ key, value }) => {
+	if (key === "resetGame") {
+		toast("Game reset!");
+		// run your reset logic here
+	}
+});
+```
+
+> `configAction` is a Configs-driven event, not a platform event — it does not need to be declared in the Data tab's `events` array and is unaffected by the OverlayListener subscriptions.
 
 ### Field Display Order
 
@@ -628,6 +736,24 @@ In this example, the fields would appear in this order:
 			"prefix": "",
 			"suffix": "px"
 		}
+	},
+	"bio": {
+		"order": 11,
+		"type": "textarea",
+		"label": "Bio:",
+		"rows": 4,
+		"placeholder": "Tell us about yourself"
+	},
+	"logo": {
+		"order": 12,
+		"type": "imageupload",
+		"label": "Logo:"
+	},
+	"reset": {
+		"order": 13,
+		"type": "actionbutton",
+		"label": "Reset",
+		"buttonLabel": "Reset overlay"
 	}
 }
 ```
@@ -717,6 +843,10 @@ Custom overlay modules carry an optional `content.flavor` field that tells the r
 | `'ai-generated'`        | The wizard's "Generate with AI" step               | Plain Lumia runtime (same as undefined), tagged so the editor can label the layer as AI-authored in disclosures. No runtime difference from the default flavor — purely a provenance marker.                                                                                                                                                                                                         |
 
 If you're inspecting an imported overlay's JSON and see `"flavor": "streamelements"`, that's why it can call `SE_API.store.set(...)`, `jQuery`, etc. — none of those are part of the native Lumia overlay API, but the shim makes them available for that specific layer.
+
+StreamElements imports also stamp a `content.sourceProvider` field (`'twitch'`, `'youtube'`, or `'kick'`, defaulting to `'twitch'`). The SE compatibility shim reads it to pick the correct listener-name mapping when forwarding Lumia events into the iframe as `onEventReceived` payloads. Hand-authored overlays don't set it.
+
+When the import wizard translates an SE widget's fields into Lumia config fields, it maps SE control types onto the native Lumia field types — `googleFont` → `fontpicker`, `image` / `image-input` → `imageupload`, `sound-input` → `soundupload`, `video-input` → `videoupload`, `button` → `actionbutton`, and SE `hidden` fields onto a plain `input` carrying `hidden: true`. The emitted `type` is always a native `ConfigsFieldType`, so an imported overlay's Configs tab behaves identically to one you author by hand.
 
 ## Code ID
 
