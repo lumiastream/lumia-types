@@ -15,6 +15,10 @@ const installTarget = `${pkg.name}@${pkg.version}`;
 
 let hadError = false;
 
+const postInstallHooks = {
+	'../Developer-Docs': ['generate:alerts'],
+};
+
 for (const repo of dependents) {
 	if (!fs.existsSync(repo)) {
 		console.log(`Skipping missing repo: ${repo}`);
@@ -30,6 +34,17 @@ for (const repo of dependents) {
 	} catch (error) {
 		hadError = true;
 		console.error(`Failed to install in ${repo}: ${error.message}`);
+		continue;
+	}
+
+	for (const script of postInstallHooks[repo] ?? []) {
+		try {
+			console.log(`Running 'npm run ${script}' in ${repo}`);
+			execSync(`npm run ${script}`, { cwd: repo, stdio: 'inherit' });
+		} catch (error) {
+			hadError = true;
+			console.error(`Failed to run '${script}' in ${repo}: ${error.message}`);
+		}
 	}
 }
 
