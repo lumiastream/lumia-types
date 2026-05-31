@@ -3627,3 +3627,8 @@ export const TiktokGiftsData = [
 		searchText: 'Zombie Swarm sent Zombie Swarm 54730',
 	},
 ];
+
+export const TiktokGiftImageSelections = TiktokGiftsData.map((gift) => ({
+	label: `${gift.label} (${gift.helperText})`,
+	value: gift.imageUrl,
+}));

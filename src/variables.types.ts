@@ -862,6 +862,14 @@ export enum SystemVariables {
 	SPOTIFY_NOW_PLAYING_PROGRESS_TS = 'spotify_now_playing_progress_ts',
 	/** Whether playback is currently advancing (true/false). Use as {{spotify_now_playing_is_playing}}. */
 	SPOTIFY_NOW_PLAYING_IS_PLAYING = 'spotify_now_playing_is_playing',
+	/** Now playing album name. Use as {{spotify_now_playing_album}}. */
+	SPOTIFY_NOW_PLAYING_ALBUM = 'spotify_now_playing_album',
+	/** Now playing album release year. Use as {{spotify_now_playing_release_year}}. */
+	SPOTIFY_NOW_PLAYING_RELEASE_YEAR = 'spotify_now_playing_release_year',
+	/** Now playing track popularity score 0-100 from Spotify. Use as {{spotify_now_playing_popularity}}. */
+	SPOTIFY_NOW_PLAYING_POPULARITY = 'spotify_now_playing_popularity',
+	/** Upcoming queue as a JSON array of {name, artist, image, uri, url}. Use as {{spotify_now_playing_queue}}. */
+	SPOTIFY_NOW_PLAYING_QUEUE = 'spotify_now_playing_queue',
 	/** Next song title. Use as {{spotify_next_song}}. */
 	SPOTIFY_NEXT_SONG = 'spotify_next_song',
 	/** Next song artwork URL. Use as {{spotify_next_image}}. */
@@ -897,6 +905,8 @@ export enum SystemVariables {
 	YOUTUBEMUSIC_NOW_PLAYING_PROGRESS_TS = 'youtubemusic_now_playing_progress_ts',
 	/** Whether playback is currently advancing (true/false). Use as {{youtubemusic_now_playing_is_playing}}. */
 	YOUTUBEMUSIC_NOW_PLAYING_IS_PLAYING = 'youtubemusic_now_playing_is_playing',
+	/** Upcoming queue as a JSON array of {name, artist, image, uri, url}. Use as {{youtubemusic_now_playing_queue}}. */
+	YOUTUBEMUSIC_NOW_PLAYING_QUEUE = 'youtubemusic_now_playing_queue',
 	/** Next song title. Use as {{youtubemusic_next_song}}. */
 	YOUTUBEMUSIC_NEXT_SONG = 'youtubemusic_next_song',
 	/** Next song artwork URL. Use as {{youtubemusic_next_image}}. */

@@ -1764,3 +1764,8 @@ export const YoutubeSuperstickersData = [
 		searchText: "masher_super_effective Video game controller punches and kicks in between the words 'Super Effective' 50.00 USD",
 	},
 ];
+
+export const YoutubeSuperstickerImageSelections = YoutubeSuperstickersData.map((sticker) => ({
+	label: `${sticker.label} (${sticker.helperText})`,
+	value: sticker.imageUrl,
+}));
