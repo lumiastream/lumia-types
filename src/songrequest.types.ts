@@ -76,6 +76,7 @@ export enum SongRequestPlaybackTarget {
 	SPOTIFY = 'spotify',
 	/** Streamer's YouTube Music player via YT Music queue. */
 	YOUTUBE_MUSIC = 'youtubeMusic',
+	VLC = 'vlc',
 }
 
 /** A single request item — one row in the queue / pending tray / history. */
@@ -155,12 +156,7 @@ export interface SongRequestConfig {
 	/** Required for free-text → YouTube Data API v3 search. */
 	youtubeApiKey?: string;
 
-	/**
-	 * Where approved songs play. `'auto'` = use the streamer's connected music
-	 * service (Spotify Premium > YT Music) when available, otherwise the overlay
-	 * iframe. The other values force a single target regardless of connections.
-	 */
-	preferredPlaybackTarget: 'auto' | SongRequestPlaybackTarget;
+	preferredPlaybackTarget: SongRequestPlaybackTarget;
 
 	// Chat UX templates. Variables: {title} {artist} {username} {duration}.
 	announceInChat: boolean;
