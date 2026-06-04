@@ -128,6 +128,7 @@ export interface TwitchBitsExtraSettings {
 	value: number;
 	bits: number;
 	bitsType: string;
+	contentImage?: string;
 	message: string;
 	rawMessage: string;
 	full_message?: string;
@@ -148,6 +149,7 @@ export interface TwitchBitsComboExtraSettings {
 	avatar?: string;
 	userId: string | number;
 	bitsType: string;
+	contentImage?: string;
 	message: string;
 	rawMessage: string;
 	full_message?: string;
@@ -605,6 +607,7 @@ export interface KickKicksExtraSettings {
 	tier: string;
 	id: string;
 	type: string;
+	contentImage?: string;
 	message: string;
 	rawMessage: string;
 	full_message: string;

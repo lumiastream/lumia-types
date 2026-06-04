@@ -90,3 +90,8 @@ export const KickKicksData = [
 		giftId: 'booooom',
 	},
 ];
+
+export const KickKicksImageSelections = KickKicksData.map((kick) => ({
+	label: `${kick.label} (${kick.helperText})`,
+	value: kick.imageUrl,
+}));

@@ -1,7 +1,7 @@
 import { LumiaAlertValues } from './activity.types';
 import { LumiaIntegrations } from './event.types';
 import { AllVariables, type LumiaAcceptedVariable } from './variables.types';
-import { KickKicksData } from './kick_kicks';
+import { KickKicksData, KickKicksImageSelections } from './kick_kicks';
 import { TiktokGiftsData, TiktokGiftImageSelections } from './tiktok_gifts';
 import { YoutubeSuperstickersData, YoutubeSuperstickerImageSelections } from './youtube_superstickers';
 import { VIEWER_PROFILE_ACHIEVEMENTS } from './viewer_profile_achievements';
@@ -127,6 +127,13 @@ export interface LumiaSelectionOption {
 const superstickerImageUrl = (stickerValue: string): string => YoutubeSuperstickersData.find((sticker) => sticker.value === stickerValue)?.imageUrl ?? '';
 
 const tiktokGiftImageUrl = (giftName: string): string => TiktokGiftsData.find((gift) => gift.value === giftName)?.imageUrl ?? '';
+
+const kickKicksImageUrl = (kicksName: string): string => KickKicksData.find((kick) => kick.value === kicksName)?.imageUrl ?? '';
+
+const bitsImageUrl = (amount: number): string => {
+	const tier = [10000, 5000, 1000, 100, 1].find((threshold) => amount >= threshold) ?? 1;
+	return `https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/${tier}/4.gif`;
+};
 
 export const LumiaAlertConfigs: Record<
 	LumiaAlertValues | string,
@@ -921,6 +928,7 @@ export const LumiaAlertConfigs: Record<
 					amount: '100',
 					currency: LumiaRedemptionCurrency.POINTS,
 					currencySymbol: LumiaRedemptionCurrencySymbol.points,
+					contentImage: 'https://static-cdn.jtvnw.net/custom-reward-images/default-4.png',
 				},
 			},
 			{
@@ -935,6 +943,7 @@ export const LumiaAlertConfigs: Record<
 					amount: '2000',
 					currency: LumiaRedemptionCurrency.POINTS,
 					currencySymbol: LumiaRedemptionCurrencySymbol.points,
+					contentImage: 'https://static-cdn.jtvnw.net/custom-reward-images/default-4.png',
 				},
 			},
 			{
@@ -949,6 +958,7 @@ export const LumiaAlertConfigs: Record<
 					amount: '10000',
 					currency: LumiaRedemptionCurrency.POINTS,
 					currencySymbol: LumiaRedemptionCurrencySymbol.points,
+					contentImage: 'https://static-cdn.jtvnw.net/custom-reward-images/default-4.png',
 				},
 			},
 		],
@@ -1507,17 +1517,17 @@ export const LumiaAlertConfigs: Record<
 			{
 				label: '100 bits',
 				dynamic: { value: 100 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 100 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 100, contentImage: bitsImageUrl(100) },
 			},
 			{
 				label: '500 bits',
 				dynamic: { value: 500 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 500 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 500, contentImage: bitsImageUrl(500) },
 			},
 			{
 				label: '1000 bits',
 				dynamic: { value: 1000 },
-				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 1000 },
+				extraSettings: { username: 'lumiastream', avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png', amount: 1000, contentImage: bitsImageUrl(1000) },
 			},
 		],
 		inputFields: [
@@ -1566,6 +1576,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 500,
 					bitsType: 'combo',
+					contentImage: bitsImageUrl(500),
 				},
 			},
 			{
@@ -1576,6 +1587,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 1000,
 					bitsType: 'combo',
+					contentImage: bitsImageUrl(1000),
 				},
 			},
 			{
@@ -1586,6 +1598,7 @@ export const LumiaAlertConfigs: Record<
 					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
 					amount: 2500,
 					bitsType: 'combo',
+					contentImage: bitsImageUrl(2500),
 				},
 			},
 		],
@@ -6383,6 +6396,7 @@ export const LumiaAlertConfigs: Record<
 					tier: 'BASIC',
 					id: 'hype',
 					message: 'This is so hype',
+					contentImage: kickKicksImageUrl('Hype'),
 				},
 			},
 			{
@@ -6397,6 +6411,7 @@ export const LumiaAlertConfigs: Record<
 					tier: 'MID',
 					id: 'rage_quit',
 					message: 'Im raging!!',
+					contentImage: kickKicksImageUrl('Rage Quit'),
 				},
 			},
 		],
@@ -6424,6 +6439,14 @@ export const LumiaAlertConfigs: Record<
 				required: true,
 				default: 'Hype',
 				selections: KickKicksData,
+			},
+			{
+				type: 'selection',
+				label: 'Kicks Image',
+				variableField: 'contentImage',
+				required: false,
+				default: kickKicksImageUrl('Hype'),
+				selections: KickKicksImageSelections,
 			},
 		],
 		LumiaVariationConditions: [
