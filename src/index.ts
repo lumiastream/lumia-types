@@ -53,7 +53,7 @@ export {
 	syncLinkedVariableFields,
 	type InputFieldLike,
 } from './emulate.helpers';
-export { KickKicksData } from './kick_kicks';
+export { KickKicksData, KickKicksImageSelections } from './kick_kicks';
 export { BLANK_OVERLAY_TEMPLATE_ID, type OverlayTemplate, type OverlayTemplateLayerDescriptor, type OverlayTemplateAnchor, type OverlayTemplateLayerOverrides } from './overlay_template.types';
 export { TiktokGiftsData, TiktokGiftImageSelections } from './tiktok_gifts';
 export { YoutubeSuperstickersData, YoutubeSuperstickerImageSelections } from './youtube_superstickers';
