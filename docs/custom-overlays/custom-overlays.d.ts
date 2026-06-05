@@ -1259,6 +1259,14 @@ export declare enum SystemVariables {
     WEEK_DONATION_AMOUNT = "week_donation_amount",
     /** Donation sum for the current calendar month. Use as {{month_donation_amount}}. */
     MONTH_DONATION_AMOUNT = "month_donation_amount",
+    /** Session-wide gross money across every income source (tips, bits, subs, gift subs, super chats, super stickers, TikTok gifts, kicks, stars…), normalized to your default currency. Use as {{session_money_amount}}. */
+    SESSION_MONEY_AMOUNT = "session_money_amount",
+    /** Gross money across every income source for the current calendar week. Use as {{week_money_amount}}. */
+    WEEK_MONEY_AMOUNT = "week_money_amount",
+    /** Gross money across every income source for the current calendar month. Use as {{month_money_amount}}. */
+    MONTH_MONEY_AMOUNT = "month_money_amount",
+    /** All-time gross money across every income source. Use as {{total_money_amount}}. */
+    TOTAL_MONEY_AMOUNT = "total_money_amount",
     /** Donation event count for the current calendar week. Use as {{week_donation_count}}. */
     WEEK_DONATION_COUNT = "week_donation_count",
     /** Donation event count for the current calendar month. Use as {{month_donation_count}}. */
@@ -1891,8 +1899,6 @@ export declare enum SystemVariables {
     SPOTIFY_NEXT_URL = "spotify_next_url",
     /** Next song Spotify URI. Use as {{spotify_next_uri}}. */
     SPOTIFY_NEXT_URI = "spotify_next_uri",
-    /** Current queue (comma-separated). Use as {{spotify_queue}}. */
-    SPOTIFY_QUEUE = "spotify_queue",
     /** Now playing song title. Use as {{youtubemusic_now_playing_song}}. */
     YOUTUBEMUSIC_NOW_PLAYING_SONG = "youtubemusic_now_playing_song",
     /** Now playing artwork URL. Use as {{youtubemusic_now_playing_image}}. */
