@@ -132,18 +132,7 @@ export interface SongRequestItem {
  * duplicate it here.
  */
 export interface SongRequestConfig {
-	enabled: boolean;
-	/** Trigger word for the system chatbot command. Default: `!sr`. */
-	triggerCommand: string;
-
-	// Throttling.
-	cooldownPerUserSeconds: number;
-	cooldownGlobalSeconds: number;
 	maxRequestsPerUserInSession: number;
-
-	// Moderation.
-	/** When true, requests land in `pending` until a mod / streamer approves. */
-	approvalRequired: boolean;
 
 	// Queue limits.
 	maxQueueSize: number;
@@ -159,10 +148,7 @@ export interface SongRequestConfig {
 	preferredPlaybackTarget: SongRequestPlaybackTarget;
 
 	// Chat UX templates. Variables: {title} {artist} {username} {duration}.
-	announceInChat: boolean;
-	chatTemplateAdded: string;
 	chatTemplateNowPlaying: string;
-	chatTemplateDenied: string;
 	/** Used for dedup / cooldown / queue-full / disallowed-source rejections. */
 	chatTemplateRejected: string;
 }
@@ -170,8 +156,6 @@ export interface SongRequestConfig {
 /** Runtime queue state. Lives in the LumiaStream Redux slice; the dashboard
  *  widgets and the overlay module consume slices of this shape. */
 export interface SongRequestState {
-	/** Awaiting moderator approval (empty when `approvalRequired: false`). */
-	pending: SongRequestItem[];
 	/** Approved, waiting to play. Index 0 plays next. */
 	queue: SongRequestItem[];
 	/** Currently playing item, if any. */
@@ -192,11 +176,6 @@ export interface SongRequestQueueUpdatePayload {
 	nowPlaying: SongRequestItem | null;
 }
 
-/** Fired whenever the pending tray changes (drives the moderation widget). */
-export interface SongRequestPendingUpdatePayload {
-	pending: SongRequestItem[];
-}
-
 /** Lighter-weight ping when only nowPlaying changed (e.g., natural advance). */
 export interface SongRequestNowPlayingPayload {
 	nowPlaying: SongRequestItem | null;
@@ -215,15 +194,4 @@ export interface SongRequestAddParams {
 	requesterPlatform?: LumiaStreamingSites;
 	/** Defaults to `LUMIA_ACTION` when omitted (matches the action call site). */
 	source?: SongRequestSource;
-	/**
-	 * Streamer / mod additions can skip the pending state. Chat-command
-	 * additions ignore this flag — chat is always subject to `approvalRequired`.
-	 */
-	forceApprove?: boolean;
-}
-
-export interface SongRequestModerationParams {
-	id: string;
-	/** Optional reason for deny actions (surfaced in chat / mod log). */
-	reason?: string;
 }

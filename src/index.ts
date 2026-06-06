@@ -76,10 +76,8 @@ export {
 	type SongRequestConfig,
 	type SongRequestState,
 	type SongRequestQueueUpdatePayload,
-	type SongRequestPendingUpdatePayload,
 	type SongRequestNowPlayingPayload,
 	type SongRequestAddParams,
-	type SongRequestModerationParams,
 } from './songrequest.types';
 export type {
 	IAlertEvent,
