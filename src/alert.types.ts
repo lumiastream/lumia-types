@@ -3512,6 +3512,174 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
 		],
 	},
+	[LumiaAlertValues.TWITCH_WARNED]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: '{{username}} was warned',
+		eventlistMessage: 'Warning',
+		eventlistDetailedMessage: '{{username}} was warned for {{reason}}',
+		acceptedVariables: AllVariables.twitch.alerts.warned,
+		quickActions: [
+			{
+				label: 'User Warned',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					userId: '1234',
+					displayname: 'LumiaStream',
+					moderator: 'modname',
+					reason: 'Breaking chat rules',
+					chat_rules_cited: 'Be respectful',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TWITCH_SUSPICIOUS_USER_MESSAGE]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: '{{username}} (suspicious user) sent a message',
+		eventlistMessage: 'Suspicious User Message',
+		eventlistDetailedMessage: '{{username}} ({{low_trust_status}}) sent a message',
+		acceptedVariables: AllVariables.twitch.alerts.suspiciousUserMessage,
+		quickActions: [
+			{
+				label: 'Suspicious User Message',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					userId: '1234',
+					displayname: 'LumiaStream',
+					message: 'hello there',
+					low_trust_status: 'active_monitoring',
+					ban_evasion_evaluation: 'possible',
+					types: 'manually_added',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TWITCH_SUSPICIOUS_USER_UPDATED]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: '{{username}} suspicious status updated to {{low_trust_status}}',
+		eventlistMessage: 'Suspicious User Updated',
+		eventlistDetailedMessage: '{{username}} updated to {{low_trust_status}} by {{moderator}}',
+		acceptedVariables: AllVariables.twitch.alerts.suspiciousUserUpdated,
+		quickActions: [
+			{
+				label: 'Suspicious User Updated',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					userId: '1234',
+					displayname: 'LumiaStream',
+					moderator: 'modname',
+					low_trust_status: 'restricted',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: true,
+				default: 'lumiastream',
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	[LumiaAlertValues.TWITCH_SHIELD_MODE_STARTED]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: 'Shield mode started by {{username}}',
+		eventlistMessage: 'Shield Mode Started',
+		eventlistDetailedMessage: 'Shield mode started by {{username}}',
+		acceptedVariables: AllVariables.twitch.alerts.shieldModeStarted,
+		quickActions: [
+			{
+				label: 'Shield Mode Started',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'modname',
+					userId: '1234',
+					displayname: 'ModName',
+					started_at: '2022-07-26T17:00:03.17106713Z',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Moderator',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: false,
+				default: 'modname',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
+	[LumiaAlertValues.TWITCH_SHIELD_MODE_ENDED]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: 'Shield mode ended by {{username}}',
+		eventlistMessage: 'Shield Mode Ended',
+		eventlistDetailedMessage: 'Shield mode ended by {{username}}',
+		acceptedVariables: AllVariables.twitch.alerts.shieldModeEnded,
+		quickActions: [
+			{
+				label: 'Shield Mode Ended',
+				dynamic: { value: 'lumiastream' },
+				extraSettings: {
+					username: 'modname',
+					userId: '1234',
+					displayname: 'ModName',
+					ended_at: '2022-07-26T17:00:03.17106713Z',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Moderator',
+				dynamicField: 'value',
+				variableField: 'username',
+				required: false,
+				default: 'modname',
+			},
+		],
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }],
+	},
 	[LumiaAlertValues.TWITCH_AD_STARTED]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: 'ad started',

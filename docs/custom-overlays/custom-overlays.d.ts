@@ -769,6 +769,16 @@ export declare enum LumiaAlertValues {
     TWITCH_TIMEOUT_OVER = "twitch-timeoutOver",
     /** Shoutout received */
     TWITCH_SHOUTOUT_RECEIVE = "twitch-shoutoutReceive",
+    /** User warned */
+    TWITCH_WARNED = "twitch-warned",
+    /** Suspicious user sent a message */
+    TWITCH_SUSPICIOUS_USER_MESSAGE = "twitch-suspiciousUserMessage",
+    /** Suspicious user treatment updated */
+    TWITCH_SUSPICIOUS_USER_UPDATED = "twitch-suspiciousUserUpdated",
+    /** Shield mode started */
+    TWITCH_SHIELD_MODE_STARTED = "twitch-shieldModeStarted",
+    /** Shield mode ended */
+    TWITCH_SHIELD_MODE_ENDED = "twitch-shieldModeEnded",
     /** Ad break started */
     TWITCH_AD_STARTED = "twitch-adStarted",
     /** Ad break ended */
