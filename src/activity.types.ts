@@ -274,6 +274,16 @@ export enum LumiaAlertValues {
 	TWITCH_TIMEOUT_OVER = 'twitch-timeoutOver',
 	/** Shoutout received */
 	TWITCH_SHOUTOUT_RECEIVE = 'twitch-shoutoutReceive',
+	/** User warned */
+	TWITCH_WARNED = 'twitch-warned',
+	/** Suspicious user sent a message */
+	TWITCH_SUSPICIOUS_USER_MESSAGE = 'twitch-suspiciousUserMessage',
+	/** Suspicious user treatment updated */
+	TWITCH_SUSPICIOUS_USER_UPDATED = 'twitch-suspiciousUserUpdated',
+	/** Shield mode started */
+	TWITCH_SHIELD_MODE_STARTED = 'twitch-shieldModeStarted',
+	/** Shield mode ended */
+	TWITCH_SHIELD_MODE_ENDED = 'twitch-shieldModeEnded',
 	/** Ad break started */
 	TWITCH_AD_STARTED = 'twitch-adStarted',
 	/** Ad break ended */
@@ -676,6 +686,11 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TWITCH_TIMEOUT]: 'Twitch Timeout',
 	[LumiaAlertValues.TWITCH_TIMEOUT_OVER]: 'Twitch Timeout Over',
 	[LumiaAlertValues.TWITCH_SHOUTOUT_RECEIVE]: 'Twitch Shoutout Receive',
+	[LumiaAlertValues.TWITCH_WARNED]: 'Twitch User Warned',
+	[LumiaAlertValues.TWITCH_SUSPICIOUS_USER_MESSAGE]: 'Twitch Suspicious User Message',
+	[LumiaAlertValues.TWITCH_SUSPICIOUS_USER_UPDATED]: 'Twitch Suspicious User Updated',
+	[LumiaAlertValues.TWITCH_SHIELD_MODE_STARTED]: 'Twitch Shield Mode Started',
+	[LumiaAlertValues.TWITCH_SHIELD_MODE_ENDED]: 'Twitch Shield Mode Ended',
 	[LumiaAlertValues.TWITCH_AD_STARTED]: 'Twitch Ad Started',
 	[LumiaAlertValues.TWITCH_AD_STOPPED]: 'Twitch Ad Stopped',
 	[LumiaAlertValues.TWITCH_WATCH_STREAK]: 'Twitch Watch Streak',
