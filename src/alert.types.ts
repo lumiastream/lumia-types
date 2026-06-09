@@ -144,6 +144,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage?: string;
 		eventlistDetailedMessage?: string;
 		acceptedVariables: LumiaAcceptedVariable[];
+		firstMessageTemplate?: string;
+		secondMessageTemplate?: string;
+		thirdMessageTemplate?: string;
 		// Alerts that carry a subject image (gift sticker, clip thumbnail, merch
 		// product, etc.) populate `extraSettings.contentImage` at emit time. The
 		// flag lets the Alerts editor decide whether to render "override alert
@@ -182,6 +185,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.lumiastream.alerts.donation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -270,24 +276,28 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Lumia opened',
 		acceptedVariables: AllVariables.lumiastream.alerts.lumiaOpened,
+		secondMessageTemplate: 'Lumia opened',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.LUMIASTREAM_LUMIA_CLOSED]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'Lumia closed',
 		acceptedVariables: AllVariables.lumiastream.alerts.lumiaClosed,
+		secondMessageTemplate: 'Lumia closed',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.LUMIASTREAM_STREAMMODE_ON]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'stream mode on',
 		acceptedVariables: AllVariables.lumiastream.alerts.streammodeOn,
+		secondMessageTemplate: 'stream mode on',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.LUMIASTREAM_STREAMMODE_OFF]: {
 		connection: LumiaIntegrations.LUMIASTREAM,
 		message: 'stream mode off',
 		acceptedVariables: AllVariables.lumiastream.alerts.streammodeOff,
+		secondMessageTemplate: 'stream mode off',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.LUMIASTREAM_RAFFLE_START]: {
@@ -296,6 +306,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Raffle Start',
 		eventlistDetailedMessage: '{{raffle_title}} started! Type {{raffle_entry_command}} to enter',
 		acceptedVariables: AllVariables.lumiastream.alerts.raffleStart,
+		firstMessageTemplate: '{{raffle_title}}',
+		secondMessageTemplate: 'started! Type {{raffle_entry_command}} to enter',
 		quickActions: [
 			{
 				label: 'My bright raffle',
@@ -332,6 +344,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: '{{raffle_title}} has stopped! Winners will be drawn soon',
 		acceptedVariables: AllVariables.lumiastream.alerts.raffleStop,
+		firstMessageTemplate: '{{raffle_title}}',
+		secondMessageTemplate: 'has stopped! Winners will be drawn soon',
 		quickActions: [
 			{
 				label: 'My bright raffle',
@@ -368,6 +382,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Raffle Winner',
 		eventlistDetailedMessage: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
 		acceptedVariables: AllVariables.lumiastream.alerts.raffleWinner,
+		secondMessageTemplate: 'Congratulations {{raffle_winner}} for being selected in this raffle!',
 		quickActions: [
 			{
 				label: 'My bright raffle',
@@ -420,6 +435,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Tournament Start',
 		eventlistDetailedMessage: '{{tournament_title}} started! Type {{tournament_entry_command}} to join the tournament',
 		acceptedVariables: AllVariables.lumiastream.alerts.tournamentStart,
+		firstMessageTemplate: '{{tournament_title}}',
+		secondMessageTemplate: 'started! Type {{tournament_entry_command}} to join the tournament',
 		inputFields: [
 			{
 				type: 'text',
@@ -437,6 +454,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Tournament End',
 		eventlistDetailedMessage: '{{tournament_title}} has ended!',
 		acceptedVariables: AllVariables.lumiastream.alerts.tournamentEnd,
+		firstMessageTemplate: '{{tournament_title}}',
+		secondMessageTemplate: 'has ended!',
 		inputFields: [
 			{
 				type: 'text',
@@ -454,6 +473,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Tournament Winner',
 		eventlistDetailedMessage: 'Congratulations {{tournament_winner}} for winning {{tournament_title}}!',
 		acceptedVariables: AllVariables.lumiastream.alerts.tournamentWinner,
+		secondMessageTemplate: 'Congratulations {{tournament_winner}} for winning {{tournament_title}}!',
 		inputFields: [
 			{
 				type: 'text',
@@ -478,6 +498,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Raffle Stop',
 		eventlistDetailedMessage: 'Congratulations {{spinwheel_winner}} for winning {{spinwheel_item}}!',
 		acceptedVariables: AllVariables.lumiastream.alerts.spinwheelWinner,
+		secondMessageTemplate: 'Congratulations {{spinwheel_winner}} for winning {{spinwheel_item}}!',
 		quickActions: [
 			{
 				label: 'Light Bulbs',
@@ -527,6 +548,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Poll start',
 		eventlistDetailedMessage: 'Poll started {{poll_title}} with choices {{poll_choices}}',
 		acceptedVariables: AllVariables.lumiastream.alerts.pollStarted,
+		secondMessageTemplate: 'New poll started {{poll_title}} with choices {{poll_choices}}',
 		quickActions: [
 			{
 				label: 'Poll Yes/No',
@@ -570,6 +592,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Poll progressed',
 		eventlistDetailedMessage: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
 		acceptedVariables: AllVariables.lumiastream.alerts.pollProgressed,
+		secondMessageTemplate: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
 		quickActions: [
 			{
 				label: 'Yes is winning',
@@ -632,6 +655,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Poll ended',
 		eventlistDetailedMessage: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
 		acceptedVariables: AllVariables.lumiastream.alerts.pollEnded,
+		secondMessageTemplate: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
 		quickActions: [
 			{
 				label: 'Yes won',
@@ -696,6 +720,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Viewer Queue Started',
 		eventlistDetailedMessage: 'Viewer Queue {{viewerqueue_title}} Started!',
 		acceptedVariables: AllVariables.lumiastream.alerts.viewerqueueStarted,
+		secondMessageTemplate: 'Viewer Queue {{viewerqueue_title}} Started!',
 		quickActions: [],
 		inputFields: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
@@ -707,6 +732,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Viewer Queue Ended',
 		eventlistDetailedMessage: 'Viewer Queue {{viewerqueue_title}} Ended!',
 		acceptedVariables: AllVariables.lumiastream.alerts.viewerqueueEnded,
+		secondMessageTemplate: 'Viewer Queue {{viewerqueue_title}} Ended!',
 		quickActions: [],
 		inputFields: [],
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
@@ -718,6 +744,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Viewer Achievement',
 		eventlistDetailedMessage: '{{username}} unlocked the {{achievement_name}} achievement!',
 		acceptedVariables: AllVariables.lumiastream.alerts.viewerAchievement,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'unlocked the {{achievement_name}} achievement!',
 		quickActions: [],
 		inputFields: [],
 		LumiaVariationConditions: [
@@ -738,6 +766,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Variable Changed',
 		eventlistDetailedMessage: '{{variable_name}} changed to {{variable_value}}',
 		acceptedVariables: AllVariables.lumiastream.alerts.variableChanged,
+		firstMessageTemplate: '{{variable_name}}',
+		secondMessageTemplate: 'changed to {{variable_value}}',
 		quickActions: [],
 		inputFields: [],
 		LumiaVariationConditions: [
@@ -766,6 +796,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Roulette Winner',
 		eventlistDetailedMessage: 'Congratulations {{username}}! The ball landed on {{ball_position}}. You win {{outcome_amount}} {{loyalty_currency_name}}! Well played! 🎉',
 		acceptedVariables: AllVariables.lumiastream.alerts.rouletteWinner,
+		secondMessageTemplate: 'Congratulations {{username}}! The ball landed on {{ball_position}}. You win {{outcome_amount}} {{loyalty_currency_name}}! Well played! 🎉',
 		quickActions: [],
 		inputFields: [],
 		LumiaVariationConditions: [
@@ -782,6 +813,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Slots Winner',
 		eventlistDetailedMessage: 'Congratulations {{username}}! you rolled {{slots_combo}} and won {{outcome_amount}} {{loyalty_currency_name}}. 🎉',
 		acceptedVariables: AllVariables.lumiastream.alerts.slotsWinner,
+		secondMessageTemplate: 'Congratulations {{username}}! you rolled {{slots_combo}} and won {{outcome_amount}} {{loyalty_currency_name}}. 🎉',
 		quickActions: [],
 		inputFields: [],
 		LumiaVariationConditions: [
@@ -798,6 +830,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Redeemed',
 		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} {{amount_type}}',
 		acceptedVariables: AllVariables.lumiastream.chat.twitchExtensions,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'redeemed {{command}} for {{amount}} {{amount_type}}',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
@@ -902,6 +936,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Redeemed',
 		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} points',
 		acceptedVariables: AllVariables.lumiastream.chat.twitchPoints,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'redeemed {{command}} for {{amount}} points',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -995,12 +1031,14 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.TWITCH,
 		message: 'Twitch Stream is now live',
 		acceptedVariables: AllVariables.twitch.alerts.streamLive,
+		secondMessageTemplate: 'Twitch Stream is now live',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.TWITCH_STREAM_OFFLINE]: {
 		connection: LumiaIntegrations.TWITCH,
 		message: 'Twitch Stream is offline',
 		acceptedVariables: AllVariables.twitch.alerts.streamOffline,
+		secondMessageTemplate: 'Twitch Stream is offline',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.TWITCH_FIRST_CHATTER]: {
@@ -1009,6 +1047,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
 		acceptedVariables: AllVariables.twitch.alerts.firstChatter,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is the first chatter and has been first {{first_count}} times!',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'First Chatter Count is equal to' },
@@ -1024,6 +1064,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
 		acceptedVariables: AllVariables.twitch.alerts.entrance,
+		secondMessageTemplate: 'Welcome {{username}}',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
@@ -1037,6 +1078,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
 		acceptedVariables: AllVariables.twitch.alerts.follower,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is now following!',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_USERNAME }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 		quickActions: [
 			{
@@ -1061,6 +1104,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Followers {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} followers',
 		acceptedVariables: AllVariables.twitch.alerts.sessionFollowers,
+		secondMessageTemplate: 'Reached {{total}} followers',
 		eventlistSpecialUsername: 'Total Followers',
 		quickActions: [
 			{
@@ -1117,6 +1161,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: '{{tier}} Sub',
 		eventlistDetailedMessage: 'subscribed with a {{tier}} sub',
 		acceptedVariables: AllVariables.twitch.alerts.subscriber,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just subscribed with a {{tier}} sub!',
 		quickActions: [
 			{
 				label: 'Tier 1 Sub',
@@ -1269,6 +1315,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Subscribers {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} subscribers',
 		acceptedVariables: AllVariables.twitch.alerts.sessionSubs,
+		secondMessageTemplate: 'Reached {{total}} subscribers',
 		eventlistSpecialUsername: 'Total Subscribers',
 		quickActions: [
 			{
@@ -1325,6 +1372,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Gifted {{giftAmount}} subs',
 		eventlistDetailedMessage: 'gifted {{giftAmount}} {{tier}} subs to {{recipients}}',
 		acceptedVariables: AllVariables.twitch.alerts.giftSubscription,
+		firstMessageTemplate: '{{gifter}}',
+		secondMessageTemplate: 'gifted {{giftAmount}} {{tier}} subs to {{recipients}}',
 		quickActions: [
 			{
 				label: 'Gift 1 Sub',
@@ -1460,6 +1509,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Gift Subscriptions {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} gift subscriptions',
 		acceptedVariables: AllVariables.twitch.alerts.sessionGiftSubscriptions,
+		secondMessageTemplate: 'Reached {{total}} gift subscriptions',
 		eventlistSpecialUsername: 'Total Gift Subscriptions',
 		quickActions: [
 			{
@@ -1516,6 +1566,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Bits',
 		eventlistDetailedMessage: 'cheered {{amount}} bits',
 		acceptedVariables: AllVariables.twitch.alerts.bits,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'cheered {{amount}} bits',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '100 bits',
@@ -1585,6 +1638,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Bits Combo',
 		eventlistDetailedMessage: 'finished a bits combo with {{amount}} bits',
 		acceptedVariables: AllVariables.twitch.alerts.bitsCombo,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'finished a bits combo with {{amount}} bits',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '500 bits combo',
@@ -1657,6 +1713,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Bits {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} bits',
 		acceptedVariables: AllVariables.twitch.alerts.sessionBits,
+		secondMessageTemplate: 'Reached {{total}} bits',
 		eventlistSpecialUsername: 'Total Bits',
 		quickActions: [
 			{
@@ -1713,6 +1770,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Watch Streak',
 		eventlistDetailedMessage: 'reached a watch streak of {{streak_count}} and earned {{amount}} points',
 		acceptedVariables: AllVariables.twitch.alerts.watchStreak,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'reached a watch streak of {{streak_count}} and earned {{amount}} points',
 		quickActions: [
 			{
 				label: '3 stream streak',
@@ -1776,6 +1835,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Powerups',
 		eventlistDetailedMessage: 'redeemed {{type}} for {{amount}} bits',
 		acceptedVariables: AllVariables.twitch.alerts.powerups,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'redeemed {{type}} and cheered {{amount}} bits',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: 'Gigantify powerup',
@@ -1858,6 +1920,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Raided',
 		eventlistDetailedMessage: 'raided with {{viewers}} viewers',
 		acceptedVariables: AllVariables.twitch.alerts.raid,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'raided with {{viewers}} viewers',
 		quickActions: [
 			{
 				label: '10 viewers',
@@ -1930,6 +1994,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Raid Out',
 		eventlistDetailedMessage: 'raided out {{username}} with {{viewers}} viewers',
 		acceptedVariables: AllVariables.twitch.alerts.raidOut,
+		secondMessageTemplate: 'You raided {{username}} with {{viewers}} viewers',
 		quickActions: [
 			{
 				label: '10 viewers',
@@ -2003,6 +2068,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Hype train started',
 		eventlistDetailedMessage: 'Hype train started',
 		acceptedVariables: AllVariables.twitch.alerts.hypetrainStarted,
+		secondMessageTemplate: 'Hype train started',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -2019,6 +2085,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Hype train progressed',
 		eventlistDetailedMessage: 'Hype train progressed to {{progress}}',
 		acceptedVariables: AllVariables.twitch.alerts.hypetrainProgressed,
+		secondMessageTemplate: 'Hype train progressed to {{progress}}',
 		quickActions: [
 			{
 				label: 'Progress 100',
@@ -2073,6 +2140,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Hype train leveled up',
 		eventlistDetailedMessage: 'Hype train progressed to level {{level}}',
 		acceptedVariables: AllVariables.twitch.alerts.hypetrainLevelProgressed,
+		secondMessageTemplate: 'Hype train progressed to level {{level}}',
 		quickActions: [
 			{
 				label: 'Level 1',
@@ -2137,6 +2205,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Hype train ended',
 		eventlistDetailedMessage: 'Hype train ended on level {{level}} and reached a total of {{total}}',
 		acceptedVariables: AllVariables.twitch.alerts.hypetrainEnded,
+		secondMessageTemplate: 'Hype train ended on level {{level}} and reached a total of {{total}}',
 		quickActions: [
 			{
 				label: 'Level 1',
@@ -2201,6 +2270,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Poll start',
 		eventlistDetailedMessage: 'Poll started {{poll_title}} with choices {{poll_choices}}',
 		acceptedVariables: AllVariables.twitch.alerts.pollStarted,
+		secondMessageTemplate: 'New poll started {{poll_title}} with choices {{poll_choices}}',
 		quickActions: [
 			{
 				label: 'Poll Yes/No',
@@ -2245,6 +2315,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Poll progressed',
 		eventlistDetailedMessage: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
 		acceptedVariables: AllVariables.twitch.alerts.pollProgressed,
+		secondMessageTemplate: 'Poll {{poll_title}} updated and the current leader is {{poll_winning_title}}',
 		quickActions: [
 			{
 				label: 'Yes is winning',
@@ -2308,6 +2379,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Poll ended',
 		eventlistDetailedMessage: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
 		acceptedVariables: AllVariables.twitch.alerts.pollEnded,
+		secondMessageTemplate: 'Poll {{poll_title}} ended! The winning choice is: {{poll_winning_title}} with a total of {{poll_winning_votes}} votes',
 		quickActions: [
 			{
 				label: 'Yes won',
@@ -2371,6 +2443,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Prediction start',
 		eventlistDetailedMessage: 'Prediction started with the title {{prediction_title}}! Choices are {{prediction_outcome1_title}} or {{prediction_outcome2_title}}',
 		acceptedVariables: AllVariables.twitch.alerts.predictionStarted,
+		secondMessageTemplate: 'Prediction started with the title {{prediction_title}}! Choices are {{prediction_outcome1_title}} or {{prediction_outcome2_title}}',
 		quickActions: [
 			{
 				label: 'Prediction Yes/No',
@@ -2420,6 +2493,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Prediction progressed',
 		eventlistDetailedMessage: 'Prediction {{prediction_title}} progressed. The current leader is {{prediction_winning_outcome_title}} with {{prediction_winning_outcome_points}} points',
 		acceptedVariables: AllVariables.twitch.alerts.predictionProgressed,
+		secondMessageTemplate: 'Prediction {{prediction_title}} progressed. The current leader is {{prediction_winning_outcome_title}} with {{prediction_winning_outcome_points}} points',
 		quickActions: [
 			{
 				label: 'Prediction Yes/No',
@@ -2501,6 +2575,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Prediction locked',
 		eventlistDetailedMessage: 'Prediction {{prediction_title}} locked. The current leader is {{prediction_winning_outcome_title}} with {{prediction_winning_outcome_points}} points',
 		acceptedVariables: AllVariables.twitch.alerts.predictionLocked,
+		secondMessageTemplate: 'Prediction {{prediction_title}} locked. The current leader is {{prediction_winning_outcome_title}} with {{prediction_winning_outcome_points}} points',
 		quickActions: [
 			{
 				label: 'Prediction Yes/No',
@@ -2582,6 +2657,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Prediction ended',
 		eventlistDetailedMessage: 'Prediction {{prediction_title}} ended. The current leader is {{prediction_winning_outcome_title}} with {{prediction_winning_outcome_points}} points',
 		acceptedVariables: AllVariables.twitch.alerts.predictionEnded,
+		secondMessageTemplate: 'Prediction {{prediction_title}} ended. The current leader is {{prediction_winning_outcome_title}} with {{prediction_winning_outcome_points}} points',
 		quickActions: [
 			{
 				label: 'Prediction Yes/No',
@@ -2663,6 +2739,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Goal start',
 		eventlistDetailedMessage: 'Goal {{goal_description}} started with a target of {{goal_target_amount}}',
 		acceptedVariables: AllVariables.twitch.alerts.goalStarted,
+		secondMessageTemplate: 'Goal {{goal_description}} started with a target of {{goal_target_amount}}',
 		quickActions: [
 			{
 				label: '100 Followers',
@@ -2740,6 +2817,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Goal progressed',
 		eventlistDetailedMessage: 'Goal {{goal_description}} progressed to {{goal_amount}} with a target of {{goal_target_amount}}',
 		acceptedVariables: AllVariables.twitch.alerts.goalProgressed,
+		secondMessageTemplate: 'Goal {{goal_description}} progressed to {{goal_amount}} with a target of {{goal_target_amount}}',
 		quickActions: [
 			{
 				label: 'Gained 50 Followers',
@@ -2822,6 +2900,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Goal ended',
 		eventlistDetailedMessage: 'Goal {{goal_description}} ended at amount {{goal_amount}} with a target of {{goal_target_amount}}',
 		acceptedVariables: AllVariables.twitch.alerts.goalEnded,
+		secondMessageTemplate: 'Goal {{goal_description}} ended at amount {{goal_amount}} with a target of {{goal_target_amount}}',
 		quickActions: [
 			{
 				label: 'Reached 100 Followers',
@@ -2911,6 +2990,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}}',
 		acceptedVariables: AllVariables.twitch.alerts.charityDonation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}} to charity {{charity_name}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -3022,6 +3103,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Charity campaign start',
 		eventlistDetailedMessage: 'Charity campaign {{charity_name}} started with a target of {{currencySymbol}}{{charity_target_amount}}',
 		acceptedVariables: AllVariables.twitch.alerts.charityCampaignStarted,
+		secondMessageTemplate: 'Charity campaign {{charity_name}} started with a target of {{currencySymbol}}{{charity_target_amount}}',
 		quickActions: [
 			{
 				label: 'Charity Started',
@@ -3086,6 +3168,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Charity campaign progressed',
 		eventlistDetailedMessage: 'Charity campaign {{charity_name}} progressed to {{currencySymbol}}{{charity_amount}} with a target of {{currencySymbol}}{{charity_target_amount}}',
 		acceptedVariables: AllVariables.twitch.alerts.charityCampaignProgressed,
+		secondMessageTemplate: 'Charity campaign {{charity_name}} progressed to {{currencySymbol}}{{charity_amount}} with a target of {{currencySymbol}}{{charity_target_amount}}',
 		quickActions: [
 			{
 				label: 'Charity Started',
@@ -3148,6 +3231,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Charity campaign ended',
 		eventlistDetailedMessage: 'Charity campaign {{charity_name}} ended at amount {{currencySymbol}}{{charity_amount}} with a target of {{currencySymbol}}{{charity_target_amount}}',
 		acceptedVariables: AllVariables.twitch.alerts.charityCampaignStopped,
+		secondMessageTemplate: 'Charity campaign {{charity_name}} ended at amount {{currencySymbol}}{{charity_amount}} with a target of {{currencySymbol}}{{charity_target_amount}}',
 		quickActions: [
 			{
 				label: 'Charity Target Achieved',
@@ -3216,6 +3300,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Category {{category_name}}',
 		eventlistDetailedMessage: 'Category changed to {{category_name}}',
 		acceptedVariables: AllVariables.twitch.alerts.categoryChanged,
+		secondMessageTemplate: 'Category changed to {{category_name}}',
 		quickActions: [
 			{
 				label: 'Just Chatting',
@@ -3260,6 +3345,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Clipped',
 		eventlistDetailedMessage: 'created a clip',
 		acceptedVariables: AllVariables.twitch.alerts.clip,
+		secondMessageTemplate: 'Clip taken by {{username}} with title of {{clip_title}}',
 		quickActions: [
 			{
 				label: 'Lumia Clipped',
@@ -3308,6 +3394,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Join',
 		eventlistDetailedMessage: 'joined the channel',
 		acceptedVariables: AllVariables.twitch.alerts.channelJoin,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just joined the channel',
 		quickActions: [
 			{
 				label: 'New Join',
@@ -3333,6 +3421,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Left',
 		eventlistDetailedMessage: 'left the channel',
 		acceptedVariables: AllVariables.twitch.alerts.channelLeave,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just left the channel',
 		quickActions: [
 			{
 				label: 'New Leave',
@@ -3358,6 +3448,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Banned',
 		eventlistDetailedMessage: 'banned',
 		acceptedVariables: AllVariables.twitch.alerts.banned,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is banned',
 		quickActions: [
 			{
 				label: 'Banned',
@@ -3394,6 +3486,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Timeout',
 		eventlistDetailedMessage: 'timed out',
 		acceptedVariables: AllVariables.twitch.alerts.timeout,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is timed out',
 		quickActions: [
 			{
 				label: 'Timed Out',
@@ -3438,6 +3532,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Timeout Over',
 		eventlistDetailedMessage: 'time out over',
 		acceptedVariables: AllVariables.twitch.alerts.timeoutOver,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'Triggered {{command}}',
+		thirdMessageTemplate: '"{{message}}"',
 		quickActions: [
 			{
 				label: 'Time Out Over',
@@ -3482,6 +3579,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Shoutout',
 		eventlistDetailedMessage: 'shoutout',
 		acceptedVariables: AllVariables.twitch.alerts.shoutoutReceive,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent you a shoutout',
 		quickActions: [
 			{
 				label: 'Shoutout Receive',
@@ -3518,6 +3617,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Warning',
 		eventlistDetailedMessage: '{{username}} was warned for {{reason}}',
 		acceptedVariables: AllVariables.twitch.alerts.warned,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'was warned',
 		quickActions: [
 			{
 				label: 'User Warned',
@@ -3554,6 +3655,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Suspicious User Message',
 		eventlistDetailedMessage: '{{username}} ({{low_trust_status}}) sent a message',
 		acceptedVariables: AllVariables.twitch.alerts.suspiciousUserMessage,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: '(suspicious user) sent a message',
 		quickActions: [
 			{
 				label: 'Suspicious User Message',
@@ -3591,6 +3694,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Suspicious User Updated',
 		eventlistDetailedMessage: '{{username}} updated to {{low_trust_status}} by {{moderator}}',
 		acceptedVariables: AllVariables.twitch.alerts.suspiciousUserUpdated,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'suspicious status updated to {{low_trust_status}}',
 		quickActions: [
 			{
 				label: 'Suspicious User Updated',
@@ -3626,6 +3731,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Shield Mode Started',
 		eventlistDetailedMessage: 'Shield mode started by {{username}}',
 		acceptedVariables: AllVariables.twitch.alerts.shieldModeStarted,
+		secondMessageTemplate: 'Shield mode started by {{username}}',
 		quickActions: [
 			{
 				label: 'Shield Mode Started',
@@ -3656,6 +3762,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Shield Mode Ended',
 		eventlistDetailedMessage: 'Shield mode ended by {{username}}',
 		acceptedVariables: AllVariables.twitch.alerts.shieldModeEnded,
+		secondMessageTemplate: 'Shield mode ended by {{username}}',
 		quickActions: [
 			{
 				label: 'Shield Mode Ended',
@@ -3686,6 +3793,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Ad Started',
 		eventlistDetailedMessage: 'ad started',
 		acceptedVariables: AllVariables.twitch.alerts.adStarted,
+		secondMessageTemplate: 'ad started',
 		quickActions: [
 			{
 				label: 'Ad Started',
@@ -3723,6 +3831,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Ad Stopped',
 		eventlistDetailedMessage: 'ad stopped',
 		acceptedVariables: AllVariables.twitch.alerts.adStopped,
+		secondMessageTemplate: 'ad stopped',
 		quickActions: [
 			{
 				label: 'Ad Stopped',
@@ -3761,12 +3870,14 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.YOUTUBE,
 		message: 'YouTube Stream is now live',
 		acceptedVariables: AllVariables.youtube.alerts.streamLive,
+		secondMessageTemplate: 'YouTube Stream is now live',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.YOUTUBE_STREAM_OFFLINE]: {
 		connection: LumiaIntegrations.YOUTUBE,
 		message: 'YouTube Stream is offline',
 		acceptedVariables: AllVariables.youtube.alerts.streamOffline,
+		secondMessageTemplate: 'YouTube Stream is offline',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.YOUTUBE_FIRST_CHATTER]: {
@@ -3775,6 +3886,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
 		acceptedVariables: AllVariables.youtube.alerts.firstChatter,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is the first chatter!',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'First Chatter Count is equal to' },
@@ -3790,6 +3903,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
 		acceptedVariables: AllVariables.youtube.alerts.entrance,
+		secondMessageTemplate: 'Welcome {{username}}',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
@@ -3803,6 +3917,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
 		acceptedVariables: AllVariables.youtube.alerts.subscriber,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just subscribed!',
 		quickActions: [
 			{
 				label: 'Lumia subscribed',
@@ -3833,6 +3949,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Subscribers {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} subscribers',
 		acceptedVariables: AllVariables.youtube.alerts.sessionSubs,
+		secondMessageTemplate: 'Reached {{total}} subscribers',
 		eventlistSpecialUsername: 'Total Subscribers',
 		quickActions: [
 			{
@@ -3889,6 +4006,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: '{{tier}} Member',
 		eventlistDetailedMessage: 'just became a member with a {{tier}} plan',
 		acceptedVariables: AllVariables.youtube.alerts.member,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just became a member with a {{tier}} plan!',
 		quickActions: [
 			{
 				label: 'Lumia became a Bronze member',
@@ -4004,6 +4123,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Members {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} members',
 		acceptedVariables: AllVariables.youtube.alerts.sessionMembers,
+		secondMessageTemplate: 'Reached {{total}} members',
 		eventlistSpecialUsername: 'Total Members',
 		quickActions: [
 			{
@@ -4060,6 +4180,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Gifted {{giftAmount}} members',
 		eventlistDetailedMessage: 'gifted {{giftAmount}} {{tier}} members to {{recipients}}',
 		acceptedVariables: AllVariables.youtube.alerts.giftMembers,
+		firstMessageTemplate: '{{gifter}}',
+		secondMessageTemplate: 'gifted {{giftAmount}} {{tier}} members to {{recipients}}',
 		quickActions: [
 			{
 				label: 'Gift 1 Member',
@@ -4161,6 +4283,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Gift Members {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} gift members',
 		acceptedVariables: AllVariables.youtube.alerts.sessionGiftMembers,
+		secondMessageTemplate: 'Reached {{total}} gift members',
 		eventlistSpecialUsername: 'Total Gift Members',
 		quickActions: [
 			{
@@ -4218,6 +4341,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Gift',
 		eventlistDetailedMessage: 'sent x{{comboCount}} {{giftName}} worth {{jewelsAmount}} jewels',
 		acceptedVariables: AllVariables.youtube.alerts.gifts,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent x{{comboCount}} {{giftName}} ({{jewelsAmount}} jewels)',
 		quickActions: [
 			{
 				label: '10 Jewels',
@@ -4335,6 +4460,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Gifts {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} jewels',
 		acceptedVariables: AllVariables.youtube.alerts.sessionGifts,
+		secondMessageTemplate: 'Reached {{total}} jewels this session',
 		eventlistSpecialUsername: 'Total Gifts',
 		quickActions: [
 			{
@@ -4382,6 +4508,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Super Chat',
 		eventlistDetailedMessage: 'super chatted {{currencySymbol}}{{amount}}',
 		acceptedVariables: AllVariables.youtube.alerts.superchat,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just super chatted with {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '100',
@@ -4456,6 +4585,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Superchat {{currencySymbol}}{{total}}',
 		eventlistDetailedMessage: 'reached {{currencySymbol}}{{total}} of superchats',
 		acceptedVariables: AllVariables.youtube.alerts.sessionSuperchats,
+		secondMessageTemplate: 'Reached {{currencySymbol}}{{total}} of superchats',
 		eventlistSpecialUsername: 'Total Superchats',
 		quickActions: [
 			{
@@ -4513,6 +4643,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Super Sticker',
 		eventlistDetailedMessage: 'sent a {{stickerName}} super sticker worth {{currencySymbol}}{{amount}}',
 		acceptedVariables: AllVariables.youtube.alerts.supersticker,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just sent a {{stickerName}} super sticker worth {{currencySymbol}}{{amount}}',
 		quickActions: [
 			{
 				label: 'Beaming Face ($0.99)',
@@ -4751,6 +4883,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Superstickers {{currencySymbol}}{{total}}',
 		eventlistDetailedMessage: 'reached {{currencySymbol}}{{total}} of superstickers',
 		acceptedVariables: AllVariables.youtube.alerts.sessionSuperstickers,
+		secondMessageTemplate: 'Reached {{currencySymbol}}{{total}} of superstickers',
 		eventlistSpecialUsername: 'Total Superstickers',
 		quickActions: [
 			{
@@ -4829,6 +4962,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Likes',
 		eventlistDetailedMessage: '{{likes}} likes on the stream',
 		acceptedVariables: AllVariables.youtube.alerts.like,
+		firstMessageTemplate: '{{likes}}',
+		secondMessageTemplate: 'likes on the stream',
 		quickActions: [
 			{
 				label: '10 likes',
@@ -4859,6 +4994,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Viewers',
 		eventlistDetailedMessage: '{{viewers}} viewers are watching the stream',
 		acceptedVariables: AllVariables.youtube.alerts.viewers,
+		firstMessageTemplate: '{{viewers}}',
+		secondMessageTemplate: 'viewers are watching the stream',
 		quickActions: [
 			{
 				label: '100 viewers',
@@ -4883,12 +5020,14 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.FACEBOOK,
 		message: 'Facebook Stream is now live',
 		acceptedVariables: AllVariables.facebook.alerts.streamLive,
+		secondMessageTemplate: 'Facebook Stream is now live',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.FACEBOOK_STREAM_OFFLINE]: {
 		connection: LumiaIntegrations.FACEBOOK,
 		message: 'Facebook Stream is offline',
 		acceptedVariables: AllVariables.facebook.alerts.streamOffline,
+		secondMessageTemplate: 'Facebook Stream is offline',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.FACEBOOK_FIRST_CHATTER]: {
@@ -4897,6 +5036,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
 		acceptedVariables: AllVariables.facebook.alerts.firstChatter,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is the first chatter!',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -4917,6 +5058,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
 		acceptedVariables: AllVariables.facebook.alerts.entrance,
+		secondMessageTemplate: 'Welcome {{username}}',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_USERNAME },
@@ -4930,6 +5072,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
 		acceptedVariables: AllVariables.facebook.alerts.follower,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just followed',
 		quickActions: [
 			{
 				label: 'New Follow',
@@ -4959,6 +5103,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: '{{reaction}}',
 		eventlistDetailedMessage: 'reacted with a {{reaction}}',
 		acceptedVariables: AllVariables.facebook.alerts.reaction,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'reacted with a {{reaction}}',
 		quickActions: [
 			{
 				label: '100',
@@ -5016,6 +5162,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Stars',
 		eventlistDetailedMessage: 'sent {{amount}} stars',
 		acceptedVariables: AllVariables.facebook.alerts.star,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent {{amount}} stars',
 		quickActions: [
 			{
 				label: '100',
@@ -5064,6 +5212,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Subscribed',
 		eventlistDetailedMessage: 'became a subscriber',
 		acceptedVariables: AllVariables.facebook.alerts.support,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just subscribed',
 		quickActions: [
 			{
 				label: '100',
@@ -5112,6 +5262,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Gift Subscription',
 		eventlistDetailedMessage: 'sent {{amount}} gift subscriptions',
 		acceptedVariables: AllVariables.facebook.alerts.subscriptionGift,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent {{amount}} gift subscriptions',
 		quickActions: [
 			{
 				label: '100',
@@ -5160,6 +5312,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Shared',
 		eventlistDetailedMessage: 'shared your page',
 		acceptedVariables: AllVariables.facebook.alerts.share,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just shared your page',
 		quickActions: [
 			{
 				label: 'New Share',
@@ -5184,6 +5338,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Fan',
 		eventlistDetailedMessage: 'became a fan',
 		acceptedVariables: AllVariables.facebook.alerts.fan,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'became a fan',
 		quickActions: [
 			{
 				label: 'New Fan',
@@ -5210,6 +5366,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
 		acceptedVariables: AllVariables.tiktok.alerts.firstChatter,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is the first chatter!',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'First Chatter Count is equal to' },
@@ -5225,6 +5383,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
 		acceptedVariables: AllVariables.tiktok.alerts.entrance,
+		secondMessageTemplate: 'Welcome {{username}}',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
@@ -5240,6 +5399,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
 		acceptedVariables: AllVariables.tiktok.alerts.follower,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just followed',
 		quickActions: [
 			{
 				label: 'New Follow',
@@ -5264,6 +5425,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Liked',
 		eventlistDetailedMessage: 'liked the stream {{userLikeCount}} times',
 		acceptedVariables: AllVariables.tiktok.alerts.like,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'liked the stream {{userLikeCount}} times to make a total of {{totalLikeCount}} likes',
 		quickActions: [
 			{
 				label: '200 User Likes',
@@ -5327,6 +5490,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Likes {{totalLikeCount}}',
 		eventlistDetailedMessage: 'reached {{totalLikeCount}} likes',
 		acceptedVariables: AllVariables.tiktok.alerts.like,
+		secondMessageTemplate: 'Reached {{totalLikeCount}} likes',
 		eventlistSpecialUsername: 'Total Likes',
 		quickActions: [
 			{
@@ -5389,6 +5553,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Gift',
 		eventlistDetailedMessage: 'sent x{{giftAmount}} {{giftName}}',
 		acceptedVariables: AllVariables.tiktok.alerts.gift,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent x{{giftAmount}} {{giftName}}',
 		quickActions: [
 			{
 				label: 'Rose (1 coin)',
@@ -5660,6 +5826,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Super Fan',
 		eventlistDetailedMessage: 'became a Super Fan',
 		acceptedVariables: AllVariables.tiktok.alerts.superFan,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just became a Super Fan',
 		quickActions: [
 			{
 				label: 'New Super Fan',
@@ -5684,6 +5852,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Shared',
 		eventlistDetailedMessage: 'shared your stream',
 		acceptedVariables: AllVariables.tiktok.alerts.share,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'shared your stream',
 		quickActions: [
 			{
 				label: 'New Share',
@@ -5708,6 +5878,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Treasure Chest',
 		eventlistDetailedMessage: 'sent a treasure chest',
 		acceptedVariables: AllVariables.tiktok.alerts.treasureChest,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent a treasure chest',
 		quickActions: [
 			{
 				label: 'Treasure Chest',
@@ -5753,6 +5925,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Question',
 		eventlistDetailedMessage: 'asked a question',
 		acceptedVariables: AllVariables.tiktok.alerts.question,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'asked: {{question}}',
 		quickActions: [
 			{
 				label: 'New Question',
@@ -5791,6 +5965,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Poll',
 		eventlistDetailedMessage: 'sent a poll message',
 		acceptedVariables: AllVariables.tiktok.alerts.poll,
+		secondMessageTemplate: 'Poll started: {{title}}',
 		quickActions: [
 			{
 				label: 'New Poll',
@@ -5849,6 +6024,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Super Fan Box',
 		eventlistDetailedMessage: 'triggered a Super Fan box',
 		acceptedVariables: AllVariables.tiktok.alerts.superFanBox,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'triggered a Super Fan box',
 		quickActions: [
 			{
 				label: 'Super Fan Box',
@@ -5873,6 +6050,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Live Shopping',
 		eventlistDetailedMessage: 'triggered live shopping',
 		acceptedVariables: AllVariables.tiktok.alerts.shopPurchase,
+		secondMessageTemplate: 'Live Shopping: {{title}}',
 		quickActions: [
 			{
 				label: 'Live Shopping',
@@ -5901,6 +6079,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Pin Message',
 		eventlistDetailedMessage: 'pinned a message',
 		acceptedVariables: AllVariables.tiktok.alerts.pinMessage,
+		secondMessageTemplate: 'Pinned message: {{message}}',
 		quickActions: [
 			{
 				label: 'Pinned Message',
@@ -5929,6 +6108,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Battle Start',
 		eventlistDetailedMessage: 'started a battle',
 		acceptedVariables: AllVariables.tiktok.alerts.battleStart,
+		secondMessageTemplate: 'Battle started: {{battleLabel}}',
 		quickActions: [
 			{
 				label: 'Battle Start',
@@ -5997,6 +6177,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Battle Progress',
 		eventlistDetailedMessage: 'updated battle progress',
 		acceptedVariables: AllVariables.tiktok.alerts.battleProgress,
+		secondMessageTemplate: 'Battle update: {{battleLabel}} ({{creatorScore}} - {{opponentScore}})',
 		quickActions: [
 			{
 				label: 'Battle Progress',
@@ -6049,6 +6230,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Battle End',
 		eventlistDetailedMessage: 'ended a battle',
 		acceptedVariables: AllVariables.tiktok.alerts.battleEnd,
+		secondMessageTemplate: 'Battle ended: {{battleLabel}} ({{result}})',
 		quickActions: [
 			{
 				label: 'Battle End',
@@ -6100,6 +6282,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Stream ended',
 		eventlistDetailedMessage: 'stream ended',
 		acceptedVariables: AllVariables.tiktok.alerts.streamEnd,
+		secondMessageTemplate: 'Tiktok stream ended',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.TIKTOK_NEW_VIDEO]: {
@@ -6108,6 +6291,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'New video',
 		eventlistDetailedMessage: 'new video',
 		acceptedVariables: AllVariables.tiktok.alerts.newVideo,
+		secondMessageTemplate: 'Tiktok new video',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	// },
@@ -6118,6 +6302,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Redeemed',
 		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} points',
 		acceptedVariables: AllVariables.lumiastream.chat.kickPoints,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'redeemed {{command}} for {{amount}} points',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -6209,6 +6395,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
 		acceptedVariables: AllVariables.kick.alerts.firstChatter,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is the first chatter!',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'First Chatter Count is equal to' },
@@ -6224,6 +6412,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
 		acceptedVariables: AllVariables.kick.alerts.entrance,
+		secondMessageTemplate: 'Welcome {{username}}',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
@@ -6239,6 +6428,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
 		acceptedVariables: AllVariables.kick.alerts.follower,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just followed',
 		quickActions: [
 			{
 				label: 'New Follow',
@@ -6263,6 +6454,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Followers {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} followers',
 		acceptedVariables: AllVariables.kick.alerts.sessionFollowers,
+		secondMessageTemplate: 'Reached {{total}} followers',
 		eventlistSpecialUsername: 'Total Followers',
 		quickActions: [
 			{
@@ -6319,6 +6511,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: '{{tier}} Sub',
 		eventlistDetailedMessage: 'subscribed with a {{tier}} sub',
 		acceptedVariables: AllVariables.kick.alerts.subscriber,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just subscribed with a {{tier}} sub!',
 		quickActions: [
 			{
 				label: 'Tier 1 Sub',
@@ -6385,6 +6579,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Subscribers {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} subscribers',
 		acceptedVariables: AllVariables.kick.alerts.sessionSubs,
+		secondMessageTemplate: 'Reached {{total}} subscribers',
 		eventlistSpecialUsername: 'Total Subscribers',
 		quickActions: [
 			{
@@ -6441,6 +6636,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Gifted {{giftAmount}} subs',
 		eventlistDetailedMessage: 'gifted {{giftAmount}} {{tier}} subs to {{recipients}}',
 		acceptedVariables: AllVariables.kick.alerts.subscriptionGift,
+		firstMessageTemplate: '{{gifter}}',
+		secondMessageTemplate: 'gifted {{giftAmount}} {{tier}} subs to {{recipients}}',
 		quickActions: [
 			{
 				label: 'Gift 1 Sub',
@@ -6543,6 +6740,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Gift Subscriptions {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} gift subscriptions',
 		acceptedVariables: AllVariables.kick.alerts.sessionGiftSubscriptions,
+		secondMessageTemplate: 'Reached {{total}} gift subscriptions',
 		eventlistSpecialUsername: 'Total Gift Subscriptions',
 		quickActions: [
 			{
@@ -6600,6 +6798,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Kicks',
 		eventlistDetailedMessage: 'sent {{name}} for {{amount}} kicks',
 		acceptedVariables: AllVariables.kick.alerts.kicks,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent {{name}} for {{amount}} kicks',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '100 kicks Hype',
@@ -6691,6 +6892,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Total Kicks {{total}}',
 		eventlistDetailedMessage: 'reached {{total}} kicks',
 		acceptedVariables: AllVariables.kick.alerts.sessionKicks,
+		secondMessageTemplate: 'Reached {{total}} kicks',
 		eventlistSpecialUsername: 'Total Kicks',
 		quickActions: [
 			{
@@ -6747,6 +6949,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Hosted',
 		eventlistDetailedMessage: 'hosted with {{viewers}} viewers',
 		acceptedVariables: AllVariables.kick.alerts.host,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'hosted with {{viewers}} viewers',
 		quickActions: [
 			{
 				label: '10 viewers',
@@ -6819,6 +7023,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Banned',
 		eventlistDetailedMessage: 'banned',
 		acceptedVariables: AllVariables.kick.alerts.banned,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is banned',
 		quickActions: [
 			{
 				label: 'Banned',
@@ -6855,6 +7061,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Unbanned',
 		eventlistDetailedMessage: 'unbanned',
 		acceptedVariables: AllVariables.kick.alerts.unbanned,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is unbanned',
 		quickActions: [
 			{
 				label: 'Unbanned',
@@ -6893,6 +7101,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'First Chatter',
 		eventlistDetailedMessage: 'was the first chatter',
 		acceptedVariables: AllVariables.discord.alerts.firstChatter,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'is the first chatter!',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -6913,6 +7123,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Entrance',
 		eventlistDetailedMessage: '',
 		acceptedVariables: AllVariables.discord.alerts.entrance,
+		secondMessageTemplate: 'Welcome {{username}}',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{ type: LumiaVariationConditions.EQUAL_STRING, description: 'Username is equal to' },
@@ -6929,6 +7140,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.streamlabs.alerts.donation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7013,6 +7227,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.streamlabs.alerts.charity,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7097,6 +7314,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Merch',
 		eventlistDetailedMessage: 'bought {{merch}}',
 		acceptedVariables: AllVariables.streamlabs.alerts.merch,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just bought {{merch}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: 'Shirt',
@@ -7137,6 +7357,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Redeemed',
 		eventlistDetailedMessage: 'redeemed {{redemption}}',
 		acceptedVariables: AllVariables.streamlabs.alerts.redemption,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just redeemed {{redemption}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: 'Shirt',
@@ -7189,6 +7412,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Prime Gift',
 		eventlistDetailedMessage: 'sent a prime gift',
 		acceptedVariables: AllVariables.streamlabs.alerts.primeGift,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent a prime gift',
 		quickActions: [
 			{
 				label: 'New Prime Gift',
@@ -7223,6 +7448,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.streamelements.alerts.donation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7308,6 +7536,9 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just tipped {{currencySymbol}}{{amount}}. They said {{message}}',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.extralife.alerts.donation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7393,6 +7624,9 @@ export const LumiaAlertConfigs: Record<
 		message: '{{username}} just tipped {{currencySymbol}}{{amount}}. They said {{message}}',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.donordrive.alerts.donation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7479,6 +7713,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.tiltify.alerts.campaignDonation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7565,6 +7802,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}}',
 		acceptedVariables: AllVariables.patreon.alerts.campaignPledge,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just pledged {{currencySymbol}}{{amount}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7645,6 +7884,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistDetailedMessage: 'ordered {{item}}',
 		eventlistSpecialUsername: 'Woocommerce',
 		acceptedVariables: AllVariables.woocommerce.alerts.order,
+		secondMessageTemplate: 'Someone just ordered {{item}} in the amount of {{amount}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7731,6 +7971,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.kofi.alerts.donation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7808,6 +8051,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Subscription',
 		eventlistDetailedMessage: 'subscribed with tier {{tier}}',
 		acceptedVariables: AllVariables.kofi.alerts.subscription,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just subscribed with tier {{tier}}',
 		quickActions: [
 			{
 				label: 'Tier 1',
@@ -7894,6 +8139,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Commission',
 		eventlistDetailedMessage: 'commissioned with {{amount}} {{currency}}',
 		acceptedVariables: AllVariables.kofi.alerts.commission,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just commisioned with amount {{amount}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -7971,6 +8218,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Shop Order',
 		eventlistDetailedMessage: 'created a shop order with {{amount}} {{currency}}',
 		acceptedVariables: AllVariables.kofi.alerts.shopOrder,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just created a shop order with amount {{amount}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -8048,6 +8297,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Gift Purchase',
 		eventlistDetailedMessage: 'sent {{itemName}}',
 		acceptedVariables: AllVariables.throne.alerts.giftPurchase,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent {{itemName}} from Throne. {{message}}',
 		quickActions: [
 			{
 				label: 'Gift',
@@ -8102,6 +8353,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Contribution Purchase',
 		eventlistDetailedMessage: 'contributed {{amount}} {{currency}} toward {{itemName}}',
 		acceptedVariables: AllVariables.throne.alerts.contributionPurchase,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'contributed {{amount}} {{currency}} toward {{itemName}} on Throne. {{message}}',
 		quickActions: [
 			{
 				label: '$10',
@@ -8176,6 +8429,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Gift Crowdfunded',
 		eventlistDetailedMessage: 'crowdfunded {{itemName}}',
 		acceptedVariables: AllVariables.throne.alerts.giftCrowdfunded,
+		firstMessageTemplate: '{{itemName}}',
+		secondMessageTemplate: 'was crowdfunded on Throne.',
 		quickActions: [
 			{
 				label: 'Gift',
@@ -8216,6 +8471,9 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.fourthwall.alerts.donation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
+		thirdMessageTemplate: '{{message}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -8293,6 +8551,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Subscription',
 		eventlistDetailedMessage: 'subscribed',
 		acceptedVariables: AllVariables.fourthwall.alerts.subscription,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just subscribed',
 		quickActions: [
 			{
 				label: 'Subscribed',
@@ -8348,6 +8608,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Subscription Changed',
 		eventlistDetailedMessage: 'subscription changed to {{subscriptionType}}',
 		acceptedVariables: AllVariables.fourthwall.alerts.subscriptionChanged,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'subscription changed to {{subscriptionType}}',
 		quickActions: [
 			{
 				label: 'Changed',
@@ -8413,6 +8675,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Subscription Ended',
 		eventlistDetailedMessage: 'subscription ended with {{subscriptionType}}',
 		acceptedVariables: AllVariables.fourthwall.alerts.subscriptionExpired,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'subscription ended',
 		quickActions: [
 			{
 				label: 'Ended',
@@ -8479,6 +8743,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Gift Purchase',
 		eventlistDetailedMessage: 'Gift purchase with {{amount}} {{currency}}',
 		acceptedVariables: AllVariables.fourthwall.alerts.giftPurchase,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just bought a gift with amount {{amount}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -8560,6 +8826,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Shop Order',
 		eventlistDetailedMessage: 'purchased {{items}}',
 		acceptedVariables: AllVariables.fourthwall.alerts.shopOrder,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'purchased {{items}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -8651,6 +8919,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Giveaway Started',
 		eventlistDetailedMessage: 'started giveaway for {{giveawayName}}',
 		acceptedVariables: AllVariables.fourthwall.alerts.giveawayStarted,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just started a giveaway for {{giveawayName}}',
 		quickActions: [
 			{
 				label: 'Test',
@@ -8718,6 +8988,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Giveaway Ended',
 		eventlistDetailedMessage: 'giveaway ended with {{winnerCount}} winners',
 		acceptedVariables: AllVariables.fourthwall.alerts.giveawayEnded,
+		secondMessageTemplate: 'Giveaway {{giveawayName}} ended with {{winnerCount}} winners',
 		quickActions: [
 			{
 				label: 'Test',
@@ -8768,6 +9039,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Thank You Sent',
 		eventlistDetailedMessage: 'thank you for {{contributionType}}',
 		acceptedVariables: AllVariables.fourthwall.alerts.thankyouSent,
+		secondMessageTemplate: 'Thank you sent to {{username}} for {{contributionType}}',
 		quickActions: [
 			{
 				label: 'Order',
@@ -8819,6 +9091,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Newsletter Subscribed',
 		eventlistDetailedMessage: 'subscribed to the newsletter',
 		acceptedVariables: AllVariables.fourthwall.alerts.newsletterSubscribed,
+		firstMessageTemplate: '{{email}}',
+		secondMessageTemplate: 'subscribed to the newsletter',
 		quickActions: [
 			{
 				label: 'Subscribed',
@@ -8848,6 +9122,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Followed',
 		eventlistDetailedMessage: 'became a follower',
 		acceptedVariables: AllVariables.twitter.alerts.follower,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just followed',
 		quickActions: [
 			{
 				label: 'New Follower',
@@ -8892,6 +9168,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Like',
 		eventlistDetailedMessage: 'received a like',
 		acceptedVariables: AllVariables.twitter.alerts.like,
+		secondMessageTemplate: 'Reached a total likes of {{likes}} on Twitter',
 		quickActions: [
 			{
 				label: 'New Like',
@@ -8935,6 +9212,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Retweet',
 		eventlistDetailedMessage: 'retweeted your tweet',
 		acceptedVariables: AllVariables.twitter.alerts.retweet,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'retweeted',
 		quickActions: [
 			{
 				label: 'New Retweet',
@@ -8982,6 +9261,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Switch Song',
 		eventlistDetailedMessage: 'song switched to {{name}} - {{artists}}',
 		acceptedVariables: AllVariables.spotify.alerts.switchSong,
+		secondMessageTemplate: 'Song switched to {{name}}',
 		quickActions: [
 			{
 				label: 'Song changed',
@@ -9034,6 +9314,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Song Played',
 		eventlistDetailedMessage: 'song {{name}} - {{artists}} playing',
 		acceptedVariables: AllVariables.spotify.alerts.songPlayed,
+		secondMessageTemplate: 'Song {{name}} is now playing',
 		quickActions: [
 			{
 				label: 'Song played',
@@ -9086,6 +9367,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Song Paused',
 		eventlistDetailedMessage: 'paused',
 		acceptedVariables: AllVariables.spotify.alerts.songPaused,
+		secondMessageTemplate: 'Song {{name}} paused',
 		quickActions: [
 			{
 				label: 'Song paused',
@@ -9140,6 +9422,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Switch Song',
 		eventlistDetailedMessage: 'song switched to {{name}} - {{artists}}',
 		acceptedVariables: AllVariables.youtubemusic.alerts.switchSong,
+		secondMessageTemplate: 'Song switched to {{name}}',
 		quickActions: [
 			{
 				label: 'Song changed',
@@ -9192,6 +9475,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Song Played',
 		eventlistDetailedMessage: 'song {{name}} - {{artists}} playing',
 		acceptedVariables: AllVariables.youtubemusic.alerts.songPlayed,
+		secondMessageTemplate: 'Song {{name}} is now playing',
 		quickActions: [
 			{
 				label: 'Song played',
@@ -9244,6 +9528,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Song Paused',
 		eventlistDetailedMessage: 'paused',
 		acceptedVariables: AllVariables.youtubemusic.alerts.songPaused,
+		secondMessageTemplate: 'Song {{name}} paused',
 		quickActions: [
 			{
 				label: 'Song paused',
@@ -9297,6 +9582,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Switch Song',
 		eventlistDetailedMessage: 'song switched to {{title}} - {{artist}}',
 		acceptedVariables: AllVariables.nowplaying.alerts.switchSong,
+		secondMessageTemplate: 'Song switched to {{title}}',
 		quickActions: [
 			{
 				label: 'Song changed',
@@ -9353,6 +9639,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Song Switched',
 		eventlistDetailedMessage: 'song switched to {{name}}',
 		acceptedVariables: AllVariables.vlc.alerts.switchSong,
+		secondMessageTemplate: 'Song switched to {{name}}',
 		quickActions: [
 			{
 				label: 'Song changed',
@@ -9405,6 +9692,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Song Played',
 		eventlistDetailedMessage: 'song {{name}} playing',
 		acceptedVariables: AllVariables.vlc.alerts.songPlayed,
+		secondMessageTemplate: 'Song {{name}} is now playing',
 		quickActions: [
 			{
 				label: 'Song played',
@@ -9457,6 +9745,7 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Song Paused',
 		eventlistDetailedMessage: 'paused',
 		acceptedVariables: AllVariables.vlc.alerts.songPaused,
+		secondMessageTemplate: 'Song {{name}} paused',
 		quickActions: [
 			{
 				label: 'Song paused',
@@ -9510,6 +9799,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Treat',
 		eventlistDetailedMessage: 'sent {{treat}} treat',
 		acceptedVariables: AllVariables.treatstream.alerts.treat,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent {{treat}}',
 		quickActions: [
 			{
 				label: 'Lumia Treats',
@@ -9545,6 +9836,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}} "{{message}}"',
 		acceptedVariables: AllVariables.tipeeestream.alerts.donation,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'just tipped {{currencySymbol}}{{amount}}',
 		quickActions: [
 			{
 				label: '$100',
@@ -9622,6 +9915,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS scene switched to {{scene}}',
 		acceptedVariables: AllVariables.obs.alerts.switchScene,
+		secondMessageTemplate: 'OBS scene switched to {{scene}}',
 		quickActions: [
 			{
 				label: 'Scene Change',
@@ -9653,6 +9947,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS scene item {{item}} became visibile',
 		acceptedVariables: AllVariables.obs.alerts.sceneItemVisibility,
+		secondMessageTemplate: 'OBS scene item {{item}} became visibile',
 		quickActions: [
 			{
 				label: 'Scene Visible',
@@ -9684,6 +9979,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS scene item {{item}} became hidden',
 		acceptedVariables: AllVariables.obs.alerts.sceneItemHidden,
+		secondMessageTemplate: 'OBS scene item {{item}} became hidden',
 		quickActions: [
 			{
 				label: 'Scene Hidden',
@@ -9715,6 +10011,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS profile switched to {{profile}}',
 		acceptedVariables: AllVariables.obs.alerts.switchProfile,
+		secondMessageTemplate: 'OBS profile switched to {{profile}}',
 		quickActions: [
 			{
 				label: 'Profile Change',
@@ -9746,48 +10043,56 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS transition switched',
 		acceptedVariables: AllVariables.obs.alerts.switchTransition,
+		secondMessageTemplate: 'OBS transition switched',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_TRANSITION_BEGIN]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS transition started',
 		acceptedVariables: AllVariables.obs.alerts.transitionBegin,
+		secondMessageTemplate: 'OBS transition started',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_TRANSITION_END]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS transition ended',
 		acceptedVariables: AllVariables.obs.alerts.transitionEnd,
+		secondMessageTemplate: 'OBS transition ended',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_STREAM_STARTING]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS stream started',
 		acceptedVariables: AllVariables.obs.alerts.streamStarting,
+		secondMessageTemplate: 'OBS stream started',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_STREAM_STOPPING]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS stream stopped',
 		acceptedVariables: AllVariables.obs.alerts.streamStopping,
+		secondMessageTemplate: 'OBS stream stopped',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_RECORDING_STARTING]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS recording started',
 		acceptedVariables: AllVariables.obs.alerts.recordingStarting,
+		secondMessageTemplate: 'OBS recording started',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_RECORDING_STOPPING]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS recording stopped',
 		acceptedVariables: AllVariables.obs.alerts.recordingStopping,
+		secondMessageTemplate: 'OBS recording stopped',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_MEDIA_INPUT_PLAYBACK_STARTED]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS media input playback started',
 		acceptedVariables: AllVariables.obs.alerts.mediaInputPlaybackStarted,
+		secondMessageTemplate: 'OBS media input playback started',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -9801,6 +10106,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS media input playback ended',
 		acceptedVariables: AllVariables.obs.alerts.mediaInputPlaybackEnded,
+		secondMessageTemplate: 'OBS media input playback ended',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -9814,12 +10120,14 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS virtual cam state changed',
 		acceptedVariables: AllVariables.obs.alerts.virtualcamStateChanged,
+		secondMessageTemplate: 'OBS virtual cam state changed',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_SCREENSHOT_SAVED]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS screenshot saved',
 		acceptedVariables: AllVariables.obs.alerts.screenshotSaved,
+		secondMessageTemplate: 'OBS screenshot saved',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -9833,18 +10141,21 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS replay buffer saved',
 		acceptedVariables: AllVariables.obs.alerts.replayBufferSaved,
+		secondMessageTemplate: 'OBS replay buffer saved',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_VERTICAL_BACKTRACK_SAVED]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS recording stopped',
 		acceptedVariables: AllVariables.obs.alerts.verticalBacktrackSaved,
+		secondMessageTemplate: 'OBS recording stopped',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.OBS_VENDOR_EVENT]: {
 		connection: LumiaIntegrations.OBS,
 		message: 'OBS vendor event',
 		acceptedVariables: AllVariables.obs.alerts.vendorEvent,
+		secondMessageTemplate: 'OBS vendor event',
 		LumiaVariationConditions: [
 			{ type: LumiaVariationConditions.RANDOM },
 			{
@@ -9861,18 +10172,21 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.SLOBS,
 		message: 'SLOBS scene switched to {{scene}}',
 		acceptedVariables: AllVariables.slobs.alerts.switchScene,
+		secondMessageTemplate: 'SLOBS scene switched to {{scene}}',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.SLOBS_SWITCH_SCENE_COLLECTION]: {
 		connection: LumiaIntegrations.SLOBS,
 		message: 'SLOBS scene collection switched',
 		acceptedVariables: AllVariables.slobs.alerts.switchSceneCollection,
+		secondMessageTemplate: 'SLOBS scene collection switched',
 		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
 	},
 	[LumiaAlertValues.SLOBS_SCENE_ITEM_VISIBILITY]: {
 		connection: LumiaIntegrations.SLOBS,
 		message: 'SLOBS scene item {{item}} became visibile',
 		acceptedVariables: AllVariables.slobs.alerts.sceneItemVisibility,
+		secondMessageTemplate: 'SLOBS scene item {{item}} became visibile',
 		quickActions: [
 			{
 				label: 'Scene Visible',
@@ -9904,6 +10218,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.SLOBS,
 		message: 'SLOBS scene item {{item}} became hidden',
 		acceptedVariables: AllVariables.slobs.alerts.sceneItemHidden,
+		secondMessageTemplate: 'SLOBS scene item {{item}} became hidden',
 		quickActions: [
 			{
 				label: 'Scene Hidden',
@@ -9935,6 +10250,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.STREAMERBOT,
 		message: '{{action}} action triggered',
 		acceptedVariables: AllVariables.streamerbot.alerts.action,
+		firstMessageTemplate: '{{action}}',
+		secondMessageTemplate: 'action triggered',
 		quickActions: [
 			{
 				label: 'Lumia Action',
@@ -9966,6 +10283,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.PULSE,
 		message: 'Heart rate changed to {{heartrate}}',
 		acceptedVariables: AllVariables.pulse.alerts.heartrate,
+		secondMessageTemplate: 'Heart rate changed to {{heartrate}}',
 		quickActions: [
 			{
 				label: 'Heart Rate 100',
@@ -10001,6 +10319,8 @@ export const LumiaAlertConfigs: Record<
 		eventlistMessage: 'Effect',
 		eventlistDetailedMessage: 'sent effect {{effect}} for game {{game}}',
 		acceptedVariables: AllVariables.crowdcontrol.alerts.effect,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'sent {{effect}}',
 		quickActions: [
 			{
 				label: 'New Effect',
@@ -10055,6 +10375,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} hotkey triggered',
 		acceptedVariables: AllVariables.vtubestudio.alerts.hotkeyTriggered,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'hotkey triggered',
 		quickActions: [
 			{
 				label: 'Hotkey Triggered',
@@ -10085,6 +10407,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} model loaded',
 		acceptedVariables: AllVariables.vtubestudio.alerts.modelLoaded,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'model loaded',
 		quickActions: [
 			{
 				label: 'Model Loaded',
@@ -10115,6 +10439,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} animation started',
 		acceptedVariables: AllVariables.vtubestudio.alerts.animationStart,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'animation started',
 		quickActions: [
 			{
 				label: 'Animation Start',
@@ -10146,6 +10472,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} animation ended',
 		acceptedVariables: AllVariables.vtubestudio.alerts.animationEnd,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'animation ended',
 		quickActions: [
 			{
 				label: 'Animation End',
@@ -10177,6 +10505,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} item added',
 		acceptedVariables: AllVariables.vtubestudio.alerts.itemAdded,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'item added',
 		quickActions: [
 			{
 				label: 'Item Add',
@@ -10208,6 +10538,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} item removed',
 		acceptedVariables: AllVariables.vtubestudio.alerts.itemRemoved,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'item removed',
 		quickActions: [
 			{
 				label: 'Item Remove',
@@ -10239,6 +10571,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.VTUBESTUDIO,
 		message: '{{name}} background changed',
 		acceptedVariables: AllVariables.vtubestudio.alerts.backgroundChanged,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'background changed',
 		quickActions: [
 			{
 				label: 'Background Change',
@@ -10270,6 +10604,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.MELD,
 		message: '{{name}} is starting',
 		acceptedVariables: AllVariables.meld.alerts.streamStarting,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'is starting',
 		quickActions: [
 			{
 				label: 'Stream Starting',
@@ -10282,6 +10618,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.MELD,
 		message: '{{name}} is stopping',
 		acceptedVariables: AllVariables.meld.alerts.streamStopping,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'is stopping',
 		quickActions: [
 			{
 				label: 'Stream Stop',
@@ -10294,6 +10632,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.MELD,
 		message: '{{name}} is starting',
 		acceptedVariables: AllVariables.meld.alerts.recordingStarting,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'is starting',
 		quickActions: [
 			{
 				label: 'Recording Started',
@@ -10306,6 +10646,8 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.MELD,
 		message: '{{name}} is stopping',
 		acceptedVariables: AllVariables.meld.alerts.recordingStopping,
+		firstMessageTemplate: '{{name}}',
+		secondMessageTemplate: 'is stopping',
 		quickActions: [
 			{
 				label: 'Recording Stop',
@@ -10318,6 +10660,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.MELD,
 		message: 'Meld scene switched to {{scene}}',
 		acceptedVariables: AllVariables.meld.alerts.switchScene,
+		secondMessageTemplate: 'Meld scene switched to {{scene}}',
 		quickActions: [
 			{
 				label: 'Scene Change',
@@ -10349,6 +10692,7 @@ export const LumiaAlertConfigs: Record<
 		connection: LumiaIntegrations.MELD,
 		message: 'Meld vertical scene switched to {{scene}}',
 		acceptedVariables: AllVariables.meld.alerts.switchVerticalScene,
+		secondMessageTemplate: 'Meld vertical scene switched to {{scene}}',
 		quickActions: [
 			{
 				label: 'Vertical Scene Change',
