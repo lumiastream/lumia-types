@@ -1128,6 +1128,10 @@ export declare enum SystemVariables {
     FORMAT_DATE = "format_date",
     /** Show elapsed time since date in short format. Example: {{time_since={{follow_time}}}}. Use as {{time_since}}. */
     TIME_SINCE = "time_since",
+    /** Show time remaining until a future date. Example: {{time_until=2026-12-25T00:00:00Z}}. Use as {{time_until}}. */
+    TIME_UNTIL = "time_until",
+    /** Current date (no time). Optional IANA timezone: {{today=America/New_York}}. Use as {{today}}. */
+    TODAY = "today",
     /** Sum multiple variables. Example: {{sum_variables=twitch_total_follower_count,kick_total_follower_count}}. Use as {{sum_variables}}. */
     SUM_VARIABLES = "sum_variables",
     /** Offset a variable by a number. Example: {{offset_count=twitch_total_follower_count,10}}. Use as {{offset_count}}. */
@@ -1193,12 +1197,28 @@ export declare enum SystemVariables {
     GAME_LAST_PLAYER = "game_last_player",
     /** Lumia app uptime. Use as {{lumia_uptime}}. */
     LUMIA_UPTIME = "lumia_uptime",
+    /** ISO timestamp of when the Lumia app started. Use as {{lumia_uptime_timestamp}}. */
+    LUMIA_UPTIME_TIMESTAMP = "lumia_uptime_timestamp",
     /** Twitch stream uptime. Use as {{twitch_uptime}}. */
     TWITCH_UPTIME = "twitch_uptime",
+    /** ISO timestamp of when the Twitch stream started. Use as {{twitch_uptime_timestamp}}. */
+    TWITCH_UPTIME_TIMESTAMP = "twitch_uptime_timestamp",
     /** YouTube stream uptime. Use as {{youtube_uptime}}. */
     YOUTUBE_UPTIME = "youtube_uptime",
+    /** ISO timestamp of when the YouTube stream started. Use as {{youtube_uptime_timestamp}}. */
+    YOUTUBE_UPTIME_TIMESTAMP = "youtube_uptime_timestamp",
     /** Facebook stream uptime. Use as {{facebook_uptime}}. */
     FACEBOOK_UPTIME = "facebook_uptime",
+    /** ISO timestamp of when the Facebook stream started. Use as {{facebook_uptime_timestamp}}. */
+    FACEBOOK_UPTIME_TIMESTAMP = "facebook_uptime_timestamp",
+    /** Kick stream uptime. Use as {{kick_uptime}}. */
+    KICK_UPTIME = "kick_uptime",
+    /** ISO timestamp of when the Kick stream started. Use as {{kick_uptime_timestamp}}. */
+    KICK_UPTIME_TIMESTAMP = "kick_uptime_timestamp",
+    /** TikTok stream uptime. Use as {{tiktok_uptime}}. */
+    TIKTOK_UPTIME = "tiktok_uptime",
+    /** ISO timestamp of when the TikTok stream started. Use as {{tiktok_uptime_timestamp}}. */
+    TIKTOK_UPTIME_TIMESTAMP = "tiktok_uptime_timestamp",
     /** Twitch live status (true/false). Use as {{twitch_live}}. */
     TWITCH_LIVE = "twitch_live",
     /** YouTube live status (true/false). Use as {{youtube_live}}. */
