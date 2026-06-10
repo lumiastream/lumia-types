@@ -932,6 +932,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_POINTS]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: '{{username}} redeemed {{command}} for {{amount}} points',
 		eventlistMessage: 'Redeemed',
 		eventlistDetailedMessage: 'redeemed {{command}} for {{amount}} points',
@@ -1562,6 +1563,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_BITS]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: '{{username}} cheered {{amount}} bits. They said {{message}}',
 		eventlistMessage: 'Bits',
 		eventlistDetailedMessage: 'cheered {{amount}} bits',
@@ -1634,6 +1636,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_BITS_COMBO]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: '{{username}} finished a bits combo with {{amount}} bits. They said {{message}}',
 		eventlistMessage: 'Bits Combo',
 		eventlistDetailedMessage: 'finished a bits combo with {{amount}} bits',
@@ -2986,6 +2989,7 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: {
 		connection: LumiaIntegrations.TWITCH,
+		hasAlertImage: true,
 		message: '{{username}} just tipped {{currencySymbol}}{{amount}} to charity {{charity_name}}',
 		eventlistMessage: 'Donation',
 		eventlistDetailedMessage: 'tipped {{currencySymbol}}{{amount}}',
