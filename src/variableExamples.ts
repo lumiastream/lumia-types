@@ -311,14 +311,6 @@ export const VARIABLE_EXAMPLES: Record<string, VariableExample[]> = {
 		{ label: 'Post each line of a URL', snippet: 'filesay=https://example.com/list.txt' },
 		{ label: 'Post each line of a local file', snippet: 'filesay=C:/path/list.txt' },
 	],
-	set_alerts_paused: [
-		{ label: 'Pause alerts', snippet: 'set_alerts_paused=true' },
-		{ label: 'Resume alerts', snippet: 'set_alerts_paused=false' },
-	],
-	set_sfx_muted: [
-		{ label: 'Mute sound effects', snippet: 'set_sfx_muted=true' },
-		{ label: 'Unmute sound effects', snippet: 'set_sfx_muted=false' },
-	],
 	loyalty_top: [
 		{ label: 'Top 3 users', snippet: 'loyalty_top=3' },
 		{ label: 'Top 5 users', snippet: 'loyalty_top=5' },
