@@ -1106,6 +1106,8 @@ export declare enum SystemVariables {
     RANDOM_INPUT = "random_input",
     /** Evaluate a math expression. Example: {{math={{var1}}+{{var2}}}}. Use as {{math}}. */
     MATH = "math",
+    /** Evaluate a JavaScript expression in a sandbox. Example: {{js=10 * {{var1}}}}. Use as {{js}}. */
+    JS = "js",
     /** Compare two values. Example: {{compare={{var1}},>,{{var2}}}}. Use as {{compare}}. */
     COMPARE = "compare",
     /** Round a value to decimal places. Example: {{round={{math={{var1}}/{{var2}}}},2}}. Use as {{round}}. */

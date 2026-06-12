@@ -1,6 +1,6 @@
 {
   "name": "@lumiastream/lumia-types",
-  "version": "3.8.0",
+  "version": "3.8.2",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/esm/index.js",
@@ -19,6 +19,7 @@
     "./dist/custom-overlays.d.ts": "./dist/custom-overlays.d.ts",
     "./dist/custom-overlays/*": "./dist/custom-overlays/*",
     "./dist/custom-code/*": "./dist/custom-code/*",
+    "./dist/chatbot/*": "./dist/chatbot/*",
     "./dist/*": {
       "types": "./dist/*.d.ts",
       "import": "./dist/esm/*.js",
@@ -30,7 +31,7 @@
     "/dist"
   ],
   "scripts": {
-    "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig.esm.json && npm run sync:custom-overlays && npm run sync:custom-code && node ./scripts/finalize-esm-build.mjs",
+    "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig.esm.json && npm run sync:custom-overlays && npm run sync:custom-code && npm run sync:chatbot && node ./scripts/finalize-esm-build.mjs",
     "watch": "node ./scripts/watch.mjs",
     "test": "node ./scripts/check-eventlist-alert-invariant.mjs",
     "prepublishOnly": "npm run build && npm test",
@@ -39,6 +40,7 @@
     "clean": "rm -rf dist",
     "sync:custom-overlays": "node ./scripts/sync-custom-overlay-types.mjs",
     "sync:custom-code": "node ./scripts/sync-custom-code-docs.mjs",
+    "sync:chatbot": "node ./scripts/sync-chatbot-docs.mjs",
     "postpublish": "npm cache clean --force && node ./scripts/postpublish-install.mjs"
   },
   "keywords": [],

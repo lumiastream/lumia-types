@@ -42,6 +42,7 @@ export {
 	type CountableVariableValue,
 	type DonatorVariableValue,
 } from './variables.types';
+export { VARIABLE_EXAMPLES, getVariableExamples, type VariableExample } from './variableExamples';
 export { formatCondition } from './helpers';
 export {
 	EMULATE_EXAMPLE_AVATAR_URL,
