@@ -21,6 +21,7 @@ const extraFiles = [
   'custom-overlays-examples.md',
   'custom-overlays-alerts.d.ts',
   'gpt-instructions.md',
+  'gpt-instructions-extended.md',
 ];
 
 function extractEnumBlock(fileContent, enumName) {

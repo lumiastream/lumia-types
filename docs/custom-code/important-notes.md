@@ -13,6 +13,15 @@ title: Important notes
   The different options are: `isSelf, mod, vip, tier3, tier2, tier1, subscriber, follower`.
   In your code you should use `const levels = await getVariable('userLevelsRaw');` and then you can check a level with `if (levels.subscriber) {}` since these are all booleans
 
+## Runtime environment
+
+Your code runs inside a sandboxed browser Web Worker, not Node.js. That means:
+
+- **`fetch` is available** — you can call any HTTP/REST API directly (see the Random Twitch Clip example). `Promise`, `async/await`, `JSON`, `Math`, `Date`, `setTimeout`, etc. all work.
+- **Node.js APIs are NOT available** — there is no `require`, `import`, `fs`, `process`, `Buffer`, or `__dirname`. To read/write local files use the `readFile` / `writeFile` helpers, and to run a shell command use `execShellCommand`.
+- **You must call `done()`.** Lumia will refuse to run any code that does not contain a `done(` call, and the worker stays alive (leaking memory) until `done()` is reached, so always call it exactly once as the last thing your code does.
+- All the helper functions in `helper-functions.md` are injected as globals — you do not import them. Most return a Promise, so `await` them.
+
 ## Origin and queue type variables
 
 We expose `{{originType}}` and `{{queueType}}` so custom code can tell where an activity came from and what kind of queued activity is running.

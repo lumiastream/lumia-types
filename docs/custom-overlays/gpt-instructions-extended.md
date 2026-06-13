@@ -184,59 +184,14 @@ Already hosted on Lumia's CDN — safe to use as fallbacks when the user hasn't 
 
 ---
 
-## Proposed Lumia-Hosted Asset Library (to curate)
+## Lumia-Hosted Asset Library — NOT YET AVAILABLE (do not suggest)
 
-Reliable third-party audio hotlinking is rough — most "free SFX" sites have unstable URLs. The best long-term answer is an expanded Lumia-hosted library of pre-licensed (CC0) assets. Below is a proposed set; host these under `https://storage.lumiastream.com/overlays/lumia/assets/...` and update this section once URLs exist.
+⚠️ There is **no** general `https://storage.lumiastream.com/overlays/lumia/assets/...` asset library yet — those URLs do **not** resolve. Never invent, guess, or hand a user any `.../overlays/lumia/assets/...` path. An expanded CC0 SFX/image library is planned for that location, but until it ships, only point users at the two safe sources:
 
-### Proposed SFX set (~40 CC0 clips)
+- The confirmed Lumia-hosted placeholders in the **Lumia-Hosted Asset Library (existing placeholders)** section above.
+- The keyless free-CDN patterns in the **Free CDN Assets** section above.
 
-Alerts / stings (short, ≤2s):
-
-- `alert-bell.mp3`, `alert-chime.mp3`, `alert-ding.mp3`, `alert-fanfare.mp3`, `alert-whoosh.mp3`, `alert-pop.mp3`, `alert-coin.mp3`, `alert-level-up.mp3`
-
-UI / game (short, ≤1s):
-
-- `ui-click.mp3`, `ui-hover.mp3`, `ui-confirm.mp3`, `ui-error.mp3`, `ui-notification.mp3`, `ui-tick.mp3`
-
-Win / lose / milestone:
-
-- `win-big.mp3`, `win-small.mp3`, `lose-trombone.mp3`, `lose-buzzer.mp3`, `fail.mp3`, `milestone-cheer.mp3`, `milestone-applause.mp3`
-
-Ambience loops (≤30s, designed to loop):
-
-- `loop-lofi.mp3`, `loop-arcade.mp3`, `loop-forest.mp3`, `loop-synth.mp3`, `loop-cafe.mp3`
-
-Voice stingers:
-
-- `voice-congratulations.mp3`, `voice-ohno.mp3`, `voice-wow.mp3`, `voice-nice.mp3`
-
-### Proposed image / sprite set
-
-Pick 1–2 per category, CC0, 512x512 PNG with transparent background:
-
-- Trophy, medal, star, crown, heart, fire, bolt, gift, confetti, sparkles
-- Coin (gold/silver/bronze), gem, chest
-- Thumbs-up, thumbs-down, smile, frown, eyes
-- Generic mascot silhouettes (streamer, chatter, mod, viewer)
-
-Sources to curate from (all CC0 / permissive):
-
-- Kenney.nl (game assets)
-- game-icons.net (CC BY 3.0 — requires attribution)
-- OpenGameArt CC0 tag
-- Wikimedia Commons public-domain assets
-- freesvg.org
-
-### Suggested URL scheme
-
-`https://storage.lumiastream.com/overlays/lumia/assets/{category}/{slug}.{ext}`
-
-Examples:
-
-- `https://storage.lumiastream.com/overlays/lumia/assets/sfx/alert-coin.mp3`
-- `https://storage.lumiastream.com/overlays/lumia/assets/images/trophy.png`
-
-Once Lumia bulk-uploads this library, replace this section with the concrete list and update `gpt-instructions.md` to reference the new URLs directly.
+If a user needs a sound or image you can't source from those, have them upload their own through a Config `soundupload` / `imageupload` / `videoupload` field instead of pointing at a URL that may not exist.
 
 ---
 

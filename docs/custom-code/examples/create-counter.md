@@ -10,15 +10,12 @@ e.g. the code below will trigger a command named **'money-12'** when the **count
 ```js
 async function() {
 
-    // You can get your variable's value that you just set here
-    let redeemCount = await getVariable('redeemCount');
-
-    if (!redeemCount) {
-        // If variable does not exist it will create it
-        redeemCount = await setVariable({ name: 'redeemCount', value: 10 });
-    }
+    // Variables come back as strings, so wrap with Number(). Defaults to 0 the first time the variable doesn't exist yet
+    let redeemCount = Number(await getVariable('redeemCount')) || 0;
 
     redeemCount++;
+
+    // setVariable creates the variable if it doesn't exist, or updates it
     await setVariable({ name: 'redeemCount', value: redeemCount });
 
     if (redeemCount === 12) {

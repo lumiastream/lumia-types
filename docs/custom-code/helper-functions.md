@@ -13,7 +13,7 @@ If you would like to modify/add variables that other actions could use, you can 
 
 You can also choose to only stop some actions rather than stopping the whole command by using actionsToStop.
 The different actionsToStop keys relate to the action. The keys are:
-`devices, tts, chatbot, hfx, lumia, overlay, voicemod, streamerbot, obs, slobs, midi, osc, mqtt, serial, broadlink, websocket, twitter, twitch, spotify, vlc, artnet, api, commandRunner, inputEvent`
+`devices, tts, chatbot, hfx, lumia, overlay, api, commandRunner, inputEvent, actions, voicemod, streamerbot, obs, slobs, midi, osc, mqtt, serial, broadlink, websocket, twitter, twitch, spotify, vlc, artnet`
 
 ```js
 // Basic done
@@ -161,6 +161,17 @@ async function() {
 }
 ```
 
+### Remove Persisted Store Item
+
+`removeStoreItem(name: string)`: Removes a single item from the custom code store by its name. The rest of the store is left untouched
+
+```js
+async function() {
+    await removeStoreItem('users');
+    done();
+}
+```
+
 ### Set Persisted Store Item
 
 `setStore({ name: string; value: any })`: Sets an item in the store. You can use any data type as your value
@@ -219,6 +230,18 @@ async function() {
 }
 ```
 
+### Hex To RGB
+
+`hexToRgb(value: string)`: Helper that converts a hex color string into an `{ r, g, b }` object. Useful when an integration expects an rgb object instead of a hex string
+
+```js
+async function() {
+    const rgb = await hexToRgb('#FF4076');
+    // rgb is { r: 255, g: 64, b: 118 }
+    done();
+}
+```
+
 ### Get API Options
 
 `getApiOptions()`: Contains information like commands, types, connections, and more
@@ -229,14 +252,81 @@ async function() {
 }
 ```
 
+### Get Commands
+
+`getCommands({ formatted?: boolean; onlyOn?: boolean; onlyUser?: boolean })`: Returns the list of chat command names. Pass `onlyOn: true` to only include commands that are enabled and shown in the commands list, `onlyUser: true` to only include commands the current user has access to (based on their user levels), and `formatted: true` to get a single comma separated string instead of an array
+
+```js
+async function() {
+    // Array of command names the chatter is allowed to use, only the ones that are turned on
+    const commands = await getCommands({ onlyOn: true, onlyUser: true });
+    // Or get a ready to print string for a !commands message
+    const list = await getCommands({ formatted: true, onlyOn: true });
+    chatbot({ message: `Commands: ${list}` });
+    done();
+}
+```
+
+### Get All Commands
+
+`getAllCommands({ onlyOn?: boolean })`: Returns an object containing the names of every command type: `commands`, `chatbotCommands`, `twitchPointsCommands`, `twitchExtensionsCommands`, `kickPointsCommands`, `chatMatch`, and `folders`. Pass `onlyOn: true` to only include enabled entries
+
+```js
+async function() {
+    const all = await getAllCommands({ onlyOn: true });
+    log(all.chatbotCommands);
+    done();
+}
+```
+
 ### Call Alert
 
 `callAlert({ name: string; variation?: string; variableValues?: {[key: string]: string|number } })`: Call an alert based on your conditions. You can also call a variation given it's name. When calling an alert/command from custom code the variableValues will be inherited from the parent, but you can also override variable values by passing it in to the call function.
 
-The valid alert keys are:
+The `name` must be one of the valid alert keys (the `LumiaAlertValues` list). This is the full current list, grouped by platform:
 
 ```
-lumia-redemption, twitch-streamLive, twitch-streamOffline, twitch-follower, twitch-subscriber, twitch-giftSubscription, twitch-host, twitch-raid, twitch-bits, twitch-redemption, twitch-hypetrainStarted, twitch-hypetrainProgressed, twitch-hypetrainLevelProgressed, twitch-hypetrainEnded, twitch-pollStarted, twitch-pollProgressed, twitch-pollEnded, twitch-predictionStarted, twitch-predictionProgressed, twitch-predictionLocked, twitch-predictionEnded, twitch-goalStarted, twitch-goalProgressed, twitch-goalEnded, twitch-categoryChanged, twitch-clip, youtube-member, youtube-subscriber, youtube-superchat, youtube-supersticker, facebook-follower, facebook-reaction, facebook-star, facebook-support, facebook-subscriptionGift, facebook-share, facebook-fan, tiktok-follower, tiktok-like, tiktok-gift, tiktok-share, tiktok-streamEnd, streamlabs-donation, streamlabs-charity, streamlabs-merch, streamlabs-redemption, streamlabs-primegift, streamelements-donation,  extralife-donation, donordrive-donation, tiltify-campaignDonation, tipeeestream-donation, treatstream-treat, patreon-pledge, obs-switchProfile, obs-switchScene, obs-sceneItemVisibility, obs-sceneItemHidden, obs-switchTransition, obs-transitionBegin, obs-transitionEnd, obs-streamStarting, obs-streamStopping, obs-recordingStarting, obs-recordingStopping, slobs-switchSceneCollection, slobs-switchScene, slobs-sceneItemVisibility, slobs-sceneItemHidden, spotify-switchSong, spotify-songPlayed, spotify-songPaused, vlc-switchSong, vlc-songPlayed, vlc-songPaused, pulse-heartrate, pulse-calories, twitter-follower, twitter-like, twitter-retweet, woocommerce-order, kofi-donation, kofi-subscription, kofi-commission, kofi-shopOrder, streamerbot-action
+// Lumia Stream
+lumiastream-donation, lumiastream-lumiaOpened, lumiastream-lumiaClosed, lumiastream-streammodeOn, lumiastream-streammodeOff, lumiastream-raffleStart, lumiastream-raffleStop, lumiastream-raffleWinner, lumiastream-tournamentStart, lumiastream-tournamentEnd, lumiastream-tournamentWinner, lumiastream-spinwheelWinner, lumiastream-pollStarted, lumiastream-pollProgressed, lumiastream-pollEnded, lumiastream-viewerqueueStarted, lumiastream-viewerqueueEnded, lumiastream-viewerAchievement, lumiastream-variableChanged, lumiastream-rouletteWinner, lumiastream-slotsWinner
+
+// Twitch
+twitch-extension, twitch-points, twitch-streamLive, twitch-streamOffline, twitch-firstChatter, twitch-entrance, twitch-follower, twitch-sessionFollowers, twitch-subscriber, twitch-sessionSubs, twitch-giftSubscription, twitch-sessionGiftSubscriptions, twitch-raid, twitch-raidOut, twitch-bits, twitch-bitsCombo, twitch-sessionBits, twitch-redemption, twitch-hypetrainStarted, twitch-hypetrainProgressed, twitch-hypetrainLevelProgressed, twitch-hypetrainEnded, twitch-pollStarted, twitch-pollProgressed, twitch-pollEnded, twitch-predictionStarted, twitch-predictionProgressed, twitch-predictionLocked, twitch-predictionEnded, twitch-goalStarted, twitch-goalProgressed, twitch-goalEnded, twitch-charityDonation, twitch-charityCampaignStarted, twitch-charityCampaignProgressed, twitch-charityCampaignStopped, twitch-categoryChanged, twitch-clip, twitch-channelJoin, twitch-channelLeave, twitch-banned, twitch-timeout, twitch-timeoutOver, twitch-shoutoutReceive, twitch-warned, twitch-suspiciousUserMessage, twitch-suspiciousUserUpdated, twitch-shieldModeStarted, twitch-shieldModeEnded, twitch-adStarted, twitch-adStopped, twitch-watchStreak, twitch-powerups
+
+// YouTube
+youtube-streamLive, youtube-streamOffline, youtube-firstChatter, youtube-entrance, youtube-subscriber, youtube-sessionSubs, youtube-member, youtube-sessionMembers, youtube-giftMembers, youtube-sessionGiftMembers, youtube-superchat, youtube-sessionSuperchats, youtube-supersticker, youtube-sessionSuperstickers, youtube-gifts, youtube-sessionGifts, youtube-like, youtube-viewers
+
+// Facebook
+facebook-streamLive, facebook-streamOffline, facebook-firstChatter, facebook-entrance, facebook-follower, facebook-reaction, facebook-star, facebook-support, facebook-subscriptionGift, facebook-share, facebook-fan
+
+// TikTok
+tiktok-firstChatter, tiktok-entrance, tiktok-follower, tiktok-like, tiktok-totalLikes, tiktok-gift, tiktok-superFan, tiktok-superFanBox, tiktok-treasureChest, tiktok-question, tiktok-poll, tiktok-shopPurchase, tiktok-pinMessage, tiktok-battleStart, tiktok-battleProgress, tiktok-battleEnd, tiktok-share, tiktok-streamEnd, tiktok-newVideo
+
+// Kick
+kick-points, kick-firstChatter, kick-entrance, kick-follower, kick-sessionFollowers, kick-subscriber, kick-sessionSubs, kick-subscriptionGift, kick-sessionGiftSubscriptions, kick-kicks, kick-sessionKicks, kick-host, kick-banned, kick-unbanned
+
+// Discord
+discord-firstChatter, discord-entrance
+
+// Donations & monetization
+streamlabs-donation, streamlabs-charity, streamlabs-merch, streamlabs-redemption, streamlabs-primegift, streamelements-donation, extralife-donation, donordrive-donation, tiltify-campaignDonation, throne-giftPurchase, throne-contributionPurchase, throne-giftCrowdfunded, tipeeestream-donation, treatstream-treat, patreon-campaignPledge, kofi-donation, kofi-subscription, kofi-commission, kofi-shopOrder, fourthwall-shopOrder, fourthwall-donation, fourthwall-subscription, fourthwall-subscriptionChanged, fourthwall-subscriptionExpired, fourthwall-giftpurchase, fourthwall-giveawayStarted, fourthwall-giveawayEnded, fourthwall-thankyouSent, fourthwall-newsletterSubscribed, woocommerce-order
+
+// OBS Studio
+obs-switchProfile, obs-switchScene, obs-sceneItemVisibility, obs-sceneItemHidden, obs-switchTransition, obs-transitionBegin, obs-transitionEnd, obs-streamStarting, obs-streamStopping, obs-recordingStarting, obs-recordingStopping, obs-mediaInputPlaybackStarted, obs-mediaInputPlaybackEnded, obs-virtualcamStateChanged, obs-screenshotSaved, obs-replayBufferSaved, obs-verticalBacktrackSaved, obs-vendorEvent
+
+// Streamlabs Desktop (SLOBS)
+slobs-switchSceneCollection, slobs-switchScene, slobs-sceneItemVisibility, slobs-sceneItemHidden
+
+// Meld Studio
+meld-streamStarting, meld-streamStopping, meld-recordingStarting, meld-recordingStopping, meld-switchScene, meld-switchVerticalScene
+
+// Music players
+spotify-switchSong, spotify-songPlayed, spotify-songPaused, youtubemusic-switchSong, youtubemusic-songPlayed, youtubemusic-songPaused, nowplaying-switchSong, nowplaying-songPlayed, nowplaying-songPaused, vlc-switchSong, vlc-songPlayed, vlc-songPaused
+
+// VTube Studio
+vtubestudio-hotkeyTriggered, vtubestudio-modelLoaded, vtubestudio-animationStart, vtubestudio-animationEnd, vtubestudio-itemAdded, vtubestudio-itemRemoved, vtubestudio-backgroundChanged
+
+// Other
+pulse-heartrate, pulse-calories, twitter-follower, twitter-like, twitter-retweet, streamerbot-action, crowdcontrol-effect
 ```
 
 ```js
@@ -254,6 +344,17 @@ async function() {
 async function() {
 	// This will call command called 'cheers' and change the variable named "message" to the value "you are awesome"
     callCommand({ name: 'cheers', variableValues: {'message': 'you are awesome' } })
+}
+```
+
+### Call Chatbot Command
+
+`callChatbotCommand({ name: string; variableValues?: {[key: string]: string|number } })`: Call a chatbot command based on your conditions. When calling an alert/command from custom code the variableValues will be inherited from the parent, but you can also override variable values by passing it in to the call function.
+
+```js
+async function() {
+	// This will call chatbot command called 'welcome' and change the variable named "message" to the value "you are awesome"
+    callChatbotCommand({ name: 'welcome', variableValues: {'message': 'you are awesome' } })
 }
 ```
 
@@ -279,6 +380,17 @@ async function() {
 }
 ```
 
+### Call Kick Point Command
+
+`callKickPoint({ name: string; variableValues?: {[key: string]: string|number } })`: Call a kick point command based on your conditions. When calling an alert/command from custom code the variableValues will be inherited from the parent, but you can also override variable values by passing it in to the call function.
+
+```js
+async function() {
+	// This will call Kick Point called 'point' and change the variable named "message" to the value "you are awesome"
+    callKickPoint({ name: 'point', variableValues: {'message': "you are awesome" } });
+}
+```
+
 ### Read File
 
 `readFile(path: string)`: Read from a file on your local computer to get the contents of it to be displayed in your code. This is useful for other Apps that write and read to files so you can combine the usage of them in Lumia. To keep things consistent, try to use an absolute file path
@@ -297,7 +409,7 @@ async function() {
 ```js
 async function() {
 	// This will create a new file in the 'C:\Documents\Lumiastream\' named helper.txt and add the text "text inside this file" inside that file
-	await writeFile({ path: 'C:\\Documents\\Lumiastream\\helper.txt', value: 'text inside this file', append: true });
+	await writeFile({ path: 'C:\\Documents\\Lumiastream\\helper.txt', message: 'text inside this file', append: true });
 }
 ```
 
@@ -328,7 +440,7 @@ async function() {
 
 ### Play Audio
 
-`playAudio({ path: string | string[]; volume?: number; waitForAudioToStop?: boolean })`: You can play an audio file from either a URL or from a local path on your computer inside of your code. You can even wait for the audio to stop playing before the code continues by setting an await before while also setting waitForAudioToStop to true. You can also allow Lumia Stream to randomly play an audio file from a selection by passing an array of strings to path
+`playAudio({ path: string | string[]; volume?: number; waitForAudioToStop?: boolean })`: You can play an audio file from either a URL or from a local path on your computer inside of your code. You can even wait for the audio to stop playing before the code continues by setting an await before while also setting waitForAudioToStop to true. You can also allow Lumia Stream to randomly play an audio file from a selection by passing an array of strings to path. `playSound` is an alias of `playAudio` and takes the exact same parameters
 
 ```js
 async function() {
@@ -434,6 +546,16 @@ async function() {
 }
 ```
 
+### Overlay Set Layer Size (Width and Height)
+
+`overlaySetLayerSize({ layer: string, content: string })`: You can set the width and height of an overlay layer using this function. `content` is a string with the width and height separated by a comma. Like position, the overlay can interpolate so the resize can animate smoothly.
+
+```js
+async function() {
+    overlaySetLayerSize({ layer: "My layer", content: "640,360" });
+}
+```
+
 ### Overlay Set Text Content
 
 `overlaySetTextContent({ layer: string, content: string })`: You can set the text content of a text layer using this function. `content` is just a string that will correspond to the text that you want to set it to.
@@ -446,7 +568,7 @@ async function() {
 
 ### Overlay Set Image Content
 
-`overlaySetImageContent({ layer: string, content: string })`: You can set the image content of an image layer using this function. `content` is just a string that will correspond to the image name or url that you want to set it to. If you use a name it will try to find the name of an asset that you have in your overlay library. So if you have an asset named `lumia_logo.gif` you can set the content to the exact name with or without the file extension. This can be useful to allow chat to change the media using a \{\{message\}\} variable. After the content is changed it will automatically make the layer visibile and start playing
+`overlaySetImageContent({ layer: string, content: string })`: You can set the image content of an image layer using this function. `content` is just a string that will correspond to the image name or url that you want to set it to. If you use a name it will try to find the name of an asset that you have in your overlay library. So if you have an asset named `lumia_logo.gif` you can set the content to the exact name with or without the file extension. This can be useful to allow chat to change the media using a `{{message}}` variable. After the content is changed it will automatically make the layer visibile and start playing
 
 ```js
 async function() {
@@ -460,7 +582,7 @@ async function() {
 
 ### Overlay Set Video Content
 
-`overlaySetVideoContent({ layer: string, content: string })`: You can set the video content of an video layer using this function. `content` is just a string that will correspond to the video name or url that you want to set it to. If you use a name it will try to find the name of an asset that you have in your overlay library. So if you have an asset named `lumia_video.webm` you can set the content to the exact name with or without the file extension. This can be useful to allow chat to change the media using a \{\{message\}\} variable. After the content is changed it will automatically make the layer visibile and start playing
+`overlaySetVideoContent({ layer: string, content: string })`: You can set the video content of an video layer using this function. `content` is just a string that will correspond to the video name or url that you want to set it to. If you use a name it will try to find the name of an asset that you have in your overlay library. So if you have an asset named `lumia_video.webm` you can set the content to the exact name with or without the file extension. This can be useful to allow chat to change the media using a `{{message}}` variable. After the content is changed it will automatically make the layer visibile and start playing
 
 ```js
 async function() {
@@ -474,7 +596,7 @@ async function() {
 
 ### Overlay Set Audio Content
 
-`overlaySetAudioContent({ layer: string, content: string })`: You can set the audio content of an audio layer using this function. `content` is just a string that will correspond to the audio name or url that you want to set it to. If you use a name it will try to find the name of an asset that you have in your overlay library. So if you have an asset named `lumia_land.mp3` you can set the content to the exact name with or without the file extension. This can be useful to allow chat to change the media using a \{\{message\}\} variable. After the content is changed it will automatically make the layer visibile and start playing
+`overlaySetAudioContent({ layer: string, content: string })`: You can set the audio content of an audio layer using this function. `content` is just a string that will correspond to the audio name or url that you want to set it to. If you use a name it will try to find the name of an asset that you have in your overlay library. So if you have an asset named `lumia_land.mp3` you can set the content to the exact name with or without the file extension. This can be useful to allow chat to change the media using a `{{message}}` variable. After the content is changed it will automatically make the layer visibile and start playing
 
 ```js
 async function() {
@@ -529,7 +651,7 @@ async function() {
 
 ### Overlay Shoutout
 
-`overlayShoutout({ layer: string, clipType: "clipFromTarget" | "clipFromSender" | "clipFromStreamer", clipRandom: boolean, clipLimit: number, clipMaxTime: string })`: You can send a shoutout directly to a shoutout layer using this function. `clipType` has three types. `clipFromTarget` will take a clip from the user who was tagged in the \{\{message\}\} variable. So you can use @lumiastream in the message and it will take a clip from that channel. `clipFromSender` will take a clip from the person who triggered the command. This normally corresponds to the \{\{user\}\} variable. `clipFromStreamer` will take a clip from your channel and send it over. You can decide to take a random clip by setting `clipRandom` to true. Or if you would like to take the first clip that matched the `clipMaxTime` given in milliseconds then you can set `clipRandom` to false. `clipLimit` will determing how many of the newest clips should be brought in to determine which clip should be selected. After a clip is selected it will start running immediately
+`overlayShoutout({ layer: string, clipType: "clipFromTarget" | "clipFromSender" | "clipFromStreamer", clipRandom: boolean, clipLimit: number, clipMaxTime: string })`: You can send a shoutout directly to a shoutout layer using this function. `clipType` has three types. `clipFromTarget` will take a clip from the user who was tagged in the `{{message}}` variable. So you can use @lumiastream in the message and it will take a clip from that channel. `clipFromSender` will take a clip from the person who triggered the command. This normally corresponds to the `{{user}}` variable. `clipFromStreamer` will take a clip from your channel and send it over. You can decide to take a random clip by setting `clipRandom` to true. Or if you would like to take the first clip that matched the `clipMaxTime` given in milliseconds then you can set `clipRandom` to false. `clipLimit` will determing how many of the newest clips should be brought in to determine which clip should be selected. After a clip is selected it will start running immediately
 
 ```js
 async function() {

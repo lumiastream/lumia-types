@@ -9,6 +9,9 @@ You can call requests from integrations that we support that have an access toke
 
 ```js
 async function() {
+	// Declared outside the try so it's still in scope when we call done()
+	let randomClip;
+
 	try {
 		const twitchToken = await getToken('twitch');
 		const twitchClientId = await getClientId('twitch');
@@ -20,14 +23,20 @@ async function() {
 				'Client-ID': twitchClientId
 			}
 		});
-		const clips = (await clipsRes.json())?.data;
-		const randomClip = clips[Math.floor(Math.random() * clips.length)];
-		chatbot({ message: `${randomClip.title}: ${randomClip.url}` });
+		const clips = (await clipsRes.json())?.data ?? [];
+		if (clips.length) {
+			randomClip = clips[Math.floor(Math.random() * clips.length)];
+			chatbot({ message: `${randomClip.title}: ${randomClip.url}` });
+		}
 	} catch (err) {
 		showToast({ message: 'error: ' + err.message });
 	}
 
-	done({ variables: { user_clip_title: randomClip.title, user_clip: randomClip.url } });
+	if (randomClip) {
+		done({ variables: { user_clip_title: randomClip.title, user_clip: randomClip.url } });
+	} else {
+		done();
+	}
 }
 ```
 

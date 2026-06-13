@@ -1,5 +1,12 @@
 /// <reference path="./custom-overlays.d.ts" />
 
+/*
+ * Only the most common alerts are modeled here as concrete types (a curated
+ * subset of the ~220 `LumiaAlertValues`). Any alert not in `LumiaAlert` below
+ * still arrives — just as the generic `AlertEvent` from `custom-overlays.d.ts`.
+ * Read `data.alert`, `data.dynamic`, and `data.extraSettings` directly for those.
+ */
+
 import { LumiaAlertValues } from './custom-overlays';
 
 /* -------------------------------------------------------------------------- */
