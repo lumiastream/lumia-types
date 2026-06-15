@@ -252,6 +252,7 @@ export const AlertsToFilter: LumiaAlertValues[] = [
 	LumiaAlertValues.TWITCH_AD_STARTED,
 	LumiaAlertValues.TWITCH_AD_STOPPED,
 	LumiaAlertValues.TWITCH_WATCH_STREAK,
+	LumiaAlertValues.TWITCH_MODIVERSARY,
 
 	// --- YouTube ---
 	LumiaAlertValues.YOUTUBE_STREAM_LIVE,

@@ -824,6 +824,7 @@ export declare enum LumiaAlertValues {
     TWITCH_WATCH_STREAK = "twitch-watchStreak",
     /** Power-ups used */
     TWITCH_POWERUPS = "twitch-powerups",
+    TWITCH_MODIVERSARY = "twitch-modiversary",
     /** YouTube stream went live */
     YOUTUBE_STREAM_LIVE = "youtube-streamLive",
     /** YouTube stream went offline */

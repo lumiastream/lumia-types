@@ -1831,6 +1831,59 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
 		],
 	},
+	[LumiaAlertValues.TWITCH_MODIVERSARY]: {
+		connection: LumiaIntegrations.TWITCH,
+		message: '{{username}} celebrated their {{months}} month modiversary',
+		eventlistMessage: 'Modiversary',
+		eventlistDetailedMessage: 'celebrated their {{months}} month modiversary',
+		acceptedVariables: AllVariables.twitch.alerts.modiversary,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'celebrated their {{months}} month modiversary',
+		quickActions: [
+			{
+				label: '1 year modiversary',
+				dynamic: { value: 12, username: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					months: 12,
+				},
+			},
+			{
+				label: '2 year modiversary',
+				dynamic: { value: 24, username: 'lumiastream' },
+				extraSettings: {
+					username: 'lumiastream',
+					avatar: 'https://static-cdn.jtvnw.net/jtv_user_pictures/2b1fa336-f9b2-42cf-bd2c-98675da74982-profile_image-70x70.png',
+					months: 24,
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'number',
+				label: 'Months',
+				dynamicField: 'value',
+				variableField: 'months',
+				required: true,
+				default: 12,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{ type: LumiaVariationConditions.EQUAL_USERNAME },
+			{ type: LumiaVariationConditions.EQUAL_NUMBER, description: 'Modiversary Months is equal to' },
+			{ type: LumiaVariationConditions.GREATER_NUMBER, description: 'Modiversary Months is greater than or equal to' },
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
 	[LumiaAlertValues.TWITCH_POWERUPS]: {
 		connection: LumiaIntegrations.TWITCH,
 		hasAlertImage: true,

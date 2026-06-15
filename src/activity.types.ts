@@ -292,6 +292,7 @@ export enum LumiaAlertValues {
 	TWITCH_WATCH_STREAK = 'twitch-watchStreak',
 	/** Power-ups used */
 	TWITCH_POWERUPS = 'twitch-powerups',
+	TWITCH_MODIVERSARY = 'twitch-modiversary',
 
 	// YouTube alerts
 	/** YouTube stream went live */
@@ -695,6 +696,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TWITCH_AD_STOPPED]: 'Twitch Ad Stopped',
 	[LumiaAlertValues.TWITCH_WATCH_STREAK]: 'Twitch Watch Streak',
 	[LumiaAlertValues.TWITCH_POWERUPS]: 'Twitch Powerups',
+	[LumiaAlertValues.TWITCH_MODIVERSARY]: 'Twitch Modiversary',
 	[LumiaAlertValues.YOUTUBE_STREAM_LIVE]: 'Youtube Stream Live',
 	[LumiaAlertValues.YOUTUBE_STREAM_OFFLINE]: 'Youtube Stream Offline',
 	[LumiaAlertValues.YOUTUBE_FIRST_CHATTER]: 'Youtube First Chatter',

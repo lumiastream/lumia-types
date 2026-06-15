@@ -3068,6 +3068,7 @@ export const AllVariables = {
 			adStopped: ['length', 'is_automatic', 'started_at', 'twitch_next_ad', 'amount'],
 			watchStreak: ['username', 'userId', 'displayname', 'avatar', 'streak_count', 'channel_points_awarded', 'amount', 'message', 'system_message'],
 			powerups: ['username', 'avatar', 'type', 'amount', 'message', 'reward_id', 'powerup_source'],
+			modiversary: ['username', 'userId', 'displayname', 'avatar', 'months', 'message', 'system_message'],
 		},
 	},
 	twitter: {
