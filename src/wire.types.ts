@@ -471,6 +471,21 @@ export interface TwitchWatchStreakExtraSettings {
 	platform: 'twitch';
 }
 
+// Modiversary --------------------------------------------------------------
+export interface TwitchModiversaryDynamic {
+	value: number;
+	username: string;
+}
+export interface TwitchModiversaryExtraSettings {
+	username: string;
+	displayname: string;
+	avatar?: string;
+	userId: string | number;
+	months: number;
+	message?: string;
+	platform: 'twitch';
+}
+
 // Powerups -----------------------------------------------------------------
 export interface TwitchPowerupsDynamic {
 	value: number;
@@ -723,6 +738,7 @@ export type AlertEventInputMap = {
 	[LumiaAlertValues.TWITCH_STREAM_LIVE]: { dynamic: TwitchStreamLiveDynamic; extraSettings: TwitchStreamLiveExtraSettings };
 	[LumiaAlertValues.TWITCH_STREAM_OFFLINE]: { dynamic: TwitchStreamOfflineDynamic; extraSettings: TwitchStreamOfflineExtraSettings };
 	[LumiaAlertValues.TWITCH_WATCH_STREAK]: { dynamic: TwitchWatchStreakDynamic; extraSettings: TwitchWatchStreakExtraSettings };
+	[LumiaAlertValues.TWITCH_MODIVERSARY]: { dynamic: TwitchModiversaryDynamic; extraSettings: TwitchModiversaryExtraSettings };
 	[LumiaAlertValues.TWITCH_POWERUPS]: { dynamic: TwitchPowerupsDynamic; extraSettings: TwitchPowerupsExtraSettings };
 	[LumiaAlertValues.TWITCH_REDEMPTION]: { dynamic: TwitchRedemptionDynamic; extraSettings: TwitchRedemptionExtraSettings };
 	[LumiaAlertValues.TWITCH_SESSION_FOLLOWERS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
@@ -776,6 +792,7 @@ export type AlertEventUnion =
 	| IAlertEvent<TwitchStreamLiveDynamic, TwitchStreamLiveExtraSettings>
 	| IAlertEvent<TwitchStreamOfflineDynamic, TwitchStreamOfflineExtraSettings>
 	| IAlertEvent<TwitchWatchStreakDynamic, TwitchWatchStreakExtraSettings>
+	| IAlertEvent<TwitchModiversaryDynamic, TwitchModiversaryExtraSettings>
 	| IAlertEvent<TwitchPowerupsDynamic, TwitchPowerupsExtraSettings>
 	| IAlertEvent<TwitchRedemptionDynamic, TwitchRedemptionExtraSettings>
 	| IAlertEvent<SessionAggregateDynamic, SessionAggregateExtraSettings>

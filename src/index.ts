@@ -183,6 +183,8 @@ export type {
 	TwitchStreamOfflineExtraSettings,
 	TwitchWatchStreakDynamic,
 	TwitchWatchStreakExtraSettings,
+	TwitchModiversaryDynamic,
+	TwitchModiversaryExtraSettings,
 	TwitchPowerupsDynamic,
 	TwitchPowerupsExtraSettings,
 	TwitchRedemptionDynamic,
