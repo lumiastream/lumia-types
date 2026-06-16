@@ -80,6 +80,7 @@ Variable functions perform logic. They are written `{{name=arguments}}`. Argumen
 - `{{min={{var1}},{{var2}},100}}` / `{{max=...}}` — smallest / largest of the values.
 - `{{sum_variables=twitch_total_follower_count,kick_total_follower_count}}` — add a list of numeric variables.
 - `{{offset_count=twitch_total_follower_count,10}}` — add (or subtract) a fixed offset to a numeric variable.
+- `{{convert_color_to_hex=green}}` — convert a color name or value to its hex code.
 
 ### Conditionals
 
@@ -94,6 +95,9 @@ Variable functions perform logic. They are written `{{name=arguments}}`. Argumen
 - `{{arg=1,word}}` — like `arg` but only accepts a plain word. Use `emote` to require an emote.
 - `{{replace={{message}},badword,***}}` — replace text. The search term may be a `/pattern/flags` regex.
 - `{{regex_extract={{message}},(\w+),1}}` — extract regex capture group N from the text.
+- `{{selection=yes,no,maybe}}` — output the viewer's message only if it exactly matches one of the options, otherwise empty.
+- `{{get_var_from_msg=name}}` — read a `key=value` the viewer typed, e.g. after `!set name=Lumi`, `{{get_var_from_msg=name}}` is `Lumi`.
+- `{{translate={{message}}}}` — translate text to the app language; add a target like `{{translate={{message}}|es}}`.
 
 ### Counters and saved values
 
@@ -109,6 +113,9 @@ Variable functions perform logic. They are written `{{name=arguments}}`. Argumen
 - `{{time_until="2026-12-25T00:00:00Z"}}` — countdown to a future date.
 - `{{twitch_followage}}` — how long the viewer has followed.
 - `{{account_age}}` — how long ago the viewer's account was created.
+- `{{twitch_accountage}}` / `{{twitch_accountage=someuser}}` — how long ago a Twitch account was created.
+- `{{youtube_uptime}}`, `{{kick_uptime}}`, `{{facebook_uptime}}`, `{{tiktok_uptime}}` — stream uptime for each platform, like `{{twitch_uptime}}`. Append `_timestamp` for an ISO start time instead of a duration: `{{twitch_uptime_timestamp}}`, `{{youtube_uptime_timestamp}}`, `{{kick_uptime_timestamp}}`, `{{facebook_uptime_timestamp}}`, `{{tiktok_uptime_timestamp}}`, `{{lumia_uptime_timestamp}}`.
+- `{{twitch_next_ad}}` — when the next Twitch ad break is scheduled.
 
 ### Roles and user lookups
 
@@ -116,14 +123,56 @@ Variable functions perform logic. They are written `{{name=arguments}}`. Argumen
 - `{{user_has_role=subscriber,yesno}}` — outputs `Yes` or `No`.
 - `{{user_top_role}}` — the viewer's highest role.
 - `{{lookup_user=someuser,twitch,displayname}}` — look up another user's field. Fields: `displayname`, `avatar`, `channelDescription`, `channelViews`.
-- `{{get_user_loyalty_points={{username}}}}` — the viewer's loyalty point balance.
 - `{{user_watchtime={{username}}}}` — the viewer's total watch time.
+- `{{user_rank}}` / `{{user_rank=someuser}}` — the viewer's position on the loyalty leaderboard.
+- `{{is_first_chatter}}` — the viewer's name if they were the first to chat this session, otherwise empty.
+- `{{lookup_user_game=someuser}}` / `{{lookup_user_title=someuser}}` — another channel's current category / stream title.
+- `{{get_avatar}}` / `{{get_avatar=someuser}}` — a viewer's avatar image URL (`{{twitch_get_avatar=someuser}}` for Twitch specifically).
+- `{{channel_emotes}}` / `{{twitch_channel_emotes}}` — your channel's emote names.
+- `{{viewer_profile_summary=someuser}}` — a one-line summary of a viewer's saved profile notes.
+
+### Loyalty points
+
+- `{{get_user_loyalty_points={{username}}}}` — the running viewer's point balance. Use `{{get_user_loyalty_points={{arg=1}}}}` to look up another user.
+- `{{add_points={{username}},100}}` — add points to a user (a negative amount subtracts).
+- `{{set_points={{username}},100}}` — set a user's points to an exact total.
+- `{{give_points={{arg=1}},{{arg=2}}}}` — transfer points from the running viewer to another user; it reports automatically when the sender cannot afford it.
+- `{{loyalty_top=5}}` — the top N point holders. `{{loyalty_leaderboard_url}}` — the public leaderboard link.
+
+To change a balance, always use these functions — they persist the change. `{{math}}` only outputs a number for display; it never moves points.
+
+### Commands, bot & moderation
+
+- `{{get_commands}}` — list the commands the viewer is allowed to use. `{{get_all_commands}}` lists every public command.
+- `{{bot_status}}` — which platforms the chat bot is currently connected to.
+- `{{get_queue_count}}` — how many actions are waiting in the Lumia queue.
+- `{{add_chatbot_command=hi,Hello there!}}` — create a command. `{{edit_chatbot_command=hi,New reply}}` edits one and `{{delete_chatbot_command=hi}}` removes one. Mod/broadcaster use.
+- `{{toggle_automation=My Timer,on}}` — turn an automation/timer on or off (`on`/`off`). Mod/broadcaster use.
+- `{{vanish}}` / `{{vanish=10}}` — briefly time the viewer out (default 1 second) so they can clear their own messages; outputs nothing.
+
+### Songs & queues
+
+- `{{song_queue}}` — the current song-request queue. `{{song_voteskip_start}}` starts a vote to skip the current song.
+- `{{viewer_queue_list}}` — the next viewers waiting in the viewer queue.
 
 ### External / advanced
 
 - `{{read_url="https://api.example.com/user",data.name}}` — fetch JSON from a URL and read a field (quote URLs with commas/query strings).
 - `{{weather=Seattle}}` — current weather for a location.
 - `{{js=Math.floor(Math.random()*6)+1}}` — run a small sandboxed JavaScript expression (1 second limit). Wrap string variables in quotes, e.g. `{{js='{{username}}'.toUpperCase()}}`.
+- `{{ai_prompt=Write a short hype message}}` — generate a reply with your connected AI (ChatGPT/DeepSeek/Lumia AI).
+- `{{read_file=C:/path/to/quotes.txt}}` — read the contents of a local text file. `{{filesay=https://example.com/lines.txt}}` posts a remote text file to chat line by line (mod use).
+
+### Screenshots & files
+
+These capture or locate media and resolve to the saved **file path** — most useful piped into an action or overlay (e.g. to display the image) rather than sent as plain chat text.
+
+- `{{screenshot}}` / `{{screenshot=2}}` — capture the desktop (optional screen number) and return the saved image path.
+- `{{overlay_screenshot=overlay 1}}` / `{{overlay_screenshot=overlay 1,original}}` — capture a Lumia overlay as a PNG and return its path.
+- `{{obs_screenshot}}` / `{{obs_screenshot=Scene Name}}` — capture the current (or named) OBS scene and return the image path.
+- `{{obs_replay}}` / `{{obs_replay=5}}` — save the OBS replay buffer (optional seconds to wait) and return the video path.
+- `{{obs_vertical_replay}}` / `{{obs_vertical_replay=5}}` — save the OBS vertical replay buffer and return the video path.
+- `{{get_latest_file_from_folder=C:/path/to/folder}}` / `{{get_random_file_from_folder=C:/path/to/folder}}` — return the newest / a random file's path from a local folder.
 
 ## StreamElements compatibility
 
@@ -138,3 +187,4 @@ Lumia accepts StreamElements `$(...)` syntax and converts it automatically. Pref
 - Followage: `{{username}}, you have been following for {{twitch_followage}}.`
 - Subs goal: `Sub count: {{twitch_total_subscriber_count}} / 100 — {{if={{compare={{twitch_total_subscriber_count}},>=,100}},goal hit!,keep going!}}`
 - Points: `{{username}}, you have {{get_user_loyalty_points={{username}}}} {{loyalty_currency_name}}.`
+- Give points: `{{give_points={{arg=1}},{{arg=2}}}}` — a `!give <user> <amount>` command; the transfer and the reply are handled for you.
