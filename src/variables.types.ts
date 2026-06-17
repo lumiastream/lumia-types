@@ -2830,7 +2830,7 @@ export const AllVariables = {
 		variables: [
 			'twitch_uptime',
 			'twitch_live',
-			'twitch_followage={{username}}',
+			'twitch_followage={{message}}',
 			'twitch_next_ad',
 			'twitch_get_avatar={{message}}',
 			'twitch_followage',

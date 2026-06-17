@@ -218,11 +218,11 @@ export const VARIABLE_EXAMPLES: Record<string, VariableExample[]> = {
 	],
 	twitch_followage: [
 		{ label: 'Your own followage', snippet: 'twitch_followage' },
-		{ label: "Another user's followage", snippet: 'twitch_followage={{username}}' },
+		{ label: "Another user's followage", snippet: 'twitch_followage={{message}}' },
 	],
 	twitch_accountage: [
 		{ label: 'Your account age', snippet: 'twitch_accountage' },
-		{ label: "Another user's account age", snippet: 'twitch_accountage={{username}}' },
+		{ label: "Another user's account age", snippet: 'twitch_accountage={{message}}' },
 	],
 	account_age: [
 		{ label: "Caller's account age", snippet: 'account_age={{username}}' },
