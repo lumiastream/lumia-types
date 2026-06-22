@@ -217,11 +217,11 @@ export const VARIABLE_EXAMPLES: Record<string, VariableExample[]> = {
 		{ label: 'Wait 5s before saving', snippet: 'obs_vertical_replay=5' },
 	],
 	twitch_followage: [
-		{ label: 'Your own followage', snippet: 'twitch_followage' },
+		{ label: "Followage of whoever ran the command", snippet: 'twitch_followage' },
 		{ label: "Another user's followage", snippet: 'twitch_followage={{message}}' },
 	],
 	twitch_accountage: [
-		{ label: 'Your account age', snippet: 'twitch_accountage' },
+		{ label: "Account age of whoever ran the command", snippet: 'twitch_accountage' },
 		{ label: "Another user's account age", snippet: 'twitch_accountage={{message}}' },
 	],
 	account_age: [
