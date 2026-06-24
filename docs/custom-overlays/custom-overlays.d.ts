@@ -1673,6 +1673,10 @@ export declare enum SystemVariables {
     TWITCH_CURRENT_PREDICTION_ID = "twitch_current_prediction_id",
     /** Channel id. Use as {{youtube_channel_id}}. */
     YOUTUBE_CHANNEL_ID = "youtube_channel_id",
+    /** Current live broadcast video id, for embedding the active stream. Use as {{youtube_live_video_id}}. */
+    YOUTUBE_LIVE_VIDEO_ID = "youtube_live_video_id",
+    /** Second live broadcast video id, for a simultaneous (e.g. vertical) stream. Use as {{youtube_second_live_video_id}}. */
+    YOUTUBE_SECOND_LIVE_VIDEO_ID = "youtube_second_live_video_id",
     /** Channel username (custom URL slug, falls back to channel title). Use as {{youtube_username}}. */
     YOUTUBE_USERNAME = "youtube_username",
     /** Current viewer count. Use as {{youtube_current_viewer_count}}. */
