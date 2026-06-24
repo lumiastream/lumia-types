@@ -775,6 +775,8 @@ export enum SystemVariables {
 	TIKTOK_TOTAL_GIFTS = 'tiktok_total_gifts',
 	/** Total likes. Use as {{tiktok_total_likes}}. */
 	TIKTOK_TOTAL_LIKES = 'tiktok_total_likes',
+	/** Session likes (running total this session). Use as {{tiktok_session_likes}}. */
+	TIKTOK_SESSION_LIKES = 'tiktok_session_likes',
 	/** Uploaded videos count. Use as {{tiktok_video_count}}. */
 	TIKTOK_VIDEO_COUNT = 'tiktok_video_count',
 
@@ -2757,6 +2759,7 @@ export const AllVariables = {
 			'tiktok_session_gifts',
 			'tiktok_total_gifts',
 			'tiktok_total_likes',
+			'tiktok_session_likes',
 			'tiktok_video_count',
 			'tiktok_last_video_title',
 			'tiktok_last_video_id',

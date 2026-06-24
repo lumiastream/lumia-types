@@ -1839,6 +1839,8 @@ export declare enum SystemVariables {
     TIKTOK_TOTAL_GIFTS = "tiktok_total_gifts",
     /** Total likes. Use as {{tiktok_total_likes}}. */
     TIKTOK_TOTAL_LIKES = "tiktok_total_likes",
+    /** Session likes (running total this session). Use as {{tiktok_session_likes}}. */
+    TIKTOK_SESSION_LIKES = "tiktok_session_likes",
     /** Uploaded videos count. Use as {{tiktok_video_count}}. */
     TIKTOK_VIDEO_COUNT = "tiktok_video_count",
     /** Last video title. Use as {{tiktok_last_video_title}}. */
