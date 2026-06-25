@@ -93,7 +93,7 @@ async function() {
 
 ### Get Variable
 
-`getVariable(name: string)`: Retrieve a variables value based on it's name
+`getVariable(name: string)`: Retrieve a variables value based on it's name. Returns the raw stored value (string / number / …), or `undefined` if it isn't set. A command's runtime variable takes priority over the saved one of the same name.
 
 ```js
 async function() {
@@ -127,7 +127,7 @@ async function() {
 
 ### Get All Variables
 
-`getAllVariables()`: Ability to get all local and global variables with one easy call
+`getAllVariables()`: Ability to get all local and global variables with one easy call. Returns a flat `{ name: value }` map of every saved variable merged with the command's runtime variables (runtime values win on a name clash).
 
 ```js
 async function() {
@@ -197,6 +197,8 @@ async function() {
 
 `getLights()`: Get the list of lights the streamer has along with it's type and id. The type and id is required to send color or power to specific lights
 
+Returns an array of `{ id, name, alias, type }`. `type` is the integration key (e.g. `hue`, `govee`, `wled`, `elgato`, `virtuallights`), `alias` is your custom label, and `name` is the device's original name. Pass `{ id, type }` objects to `sendColor`'s `lights` array to target specific lights. Disconnected or disabled integrations are omitted, so an empty array means nothing is connected.
+
 ```js
 async function() {
     const lights = await getLights()
@@ -246,6 +248,8 @@ async function() {
 
 `getApiOptions()`: Contains information like commands, types, connections, and more
 
+Returns `{ types, options }`. `types` is the list of every API command type (e.g. `setColor`, `setBrightness`, `alert`, `tts`, `chatCommand`, `chatbotCommand`, `twitchPoints`, `kickPoints`, studio scene/theme/animation, plus value-less system ops). `options` is keyed by those same types: value-less ops are `null`, while the command/alert/tts/studio types carry a `{ values: [...] }` list of the names you can use.
+
 ```js
 async function() {
     const lights = await getApiOptions()
@@ -254,7 +258,7 @@ async function() {
 
 ### Get Commands
 
-`getCommands({ formatted?: boolean; onlyOn?: boolean; onlyUser?: boolean })`: Returns the list of chat command names. Pass `onlyOn: true` to only include commands that are enabled and shown in the commands list, `onlyUser: true` to only include commands the current user has access to (based on their user levels), and `formatted: true` to get a single comma separated string instead of an array
+`getCommands({ formatted?: boolean; onlyOn?: boolean; onlyUser?: boolean })`: Returns the list of chat and chatbot command names. Pass `onlyOn: true` to only include commands that are enabled and shown in the commands list, `onlyUser: true` to only include commands the current user has access to (based on their user levels), and `formatted: true` to get a single comma separated string instead of an array
 
 ```js
 async function() {
@@ -486,7 +490,7 @@ async function() {
 
 ### Get Token
 
-`getToken(connection: "twitch" | "twitchChatbot" | "youtube" | "facebook" | "streamlabs" | "streamelements" | "treatstream" | "tipeeestream" | "tiltify" | "patreon" | "woocommerce" | "discord" | "twitter" | "spotify" | "pulsoid" | "wyze" | "homeassistant" | "govee" | "wled" )`: When you need to call a request that we don't directly support you can get the access token from Lumia before making the call. This is helpful for things where you need to call for instance the Twitch API, but you don't want to handle tokens and refreshing inside of your scripts. More examples of this below
+`getToken(connection: "twitch" | "twitchChatbot" | "youtube" | "facebook" | "streamlabs" | "streamelements" | "treatstream" | "tipeeestream" | "tiltify" | "patreon" | "woocommerce" | "discord" | "twitter" | "spotify" | "pulsoid" | "wyze" | "homeassistant" | "govee" | "wled" )`: When you need to call a request that we don't directly support you can get the access token from Lumia before making the call. This is helpful for things where you need to call for instance the Twitch API, but you don't want to handle tokens and refreshing inside of your scripts. More examples of this below. Returns the access-token string, or `null` / `undefined` if that connection isn't authorized.
 
 ```js
 async function() {
@@ -497,7 +501,7 @@ async function() {
 
 ### Get Client ID For Twitch
 
-`getClientId(connection: "twitch")`: When calling requests with Twitch's API you will need to pass in a Client-ID to the headers. We provide a Client ID that you can use to call the different api's with the permissions the user has selected. Check out [Twitch's developers docs](https://dev.twitch.tv/docs/api/reference) to learn what you can do
+`getClientId(connection: "twitch")`: When calling requests with Twitch's API you will need to pass in a Client-ID to the headers. We provide a Client ID that you can use to call the different api's with the permissions the user has selected. Check out [Twitch's developers docs](https://dev.twitch.tv/docs/api/reference) to learn what you can do. Returns the Twitch Client-ID string; only `"twitch"` is supported and any other value returns `null`.
 
 ```js
 async function() {
