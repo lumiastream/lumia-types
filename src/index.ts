@@ -20,6 +20,15 @@ export {
 	type LumiaSelectionOption,
 } from './alert.types';
 export {
+	checkAlertVariation,
+	resetVariationCumulativeTracking,
+	sanitizeVariationVariableReference,
+	type LumiaVariationCheckerOptions,
+	type LumiaVariationConfigLike,
+	type LumiaVariationLike,
+	type LumiaVariationLogger,
+} from './variation.helpers';
+export {
 	ILumiaSendPack,
 	ILumiaEvent,
 	ILumiaEventChatCommandBody,
