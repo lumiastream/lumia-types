@@ -456,16 +456,21 @@ async function() {
 
 ### Send Raw OBS JSON
 
-`sendRawObsJson(value: { request-type: string; sceneName?: string; sceneItemId?: number; [key: string]: any })`: You can send raw JSON to OBS that will automatically handle the context id. Just send end the request type and your other parameters and Lumia Stream will take care of the rest
+`sendRawObsJson(value: { request-type: string; sceneName?: string; inputName?: string; sceneItemId?: number; [key: string]: any })`: You can send raw JSON to OBS that will automatically handle the context id. Just send the request type and your other parameters and Lumia Stream will take care of the rest. This is the simplest way to drive OBS from custom code — you do not need to build a separate OBS command or alert and call it by id.
 
 ```js
 async function() {
-    sendRawObsJson({
-        "request-type": "SetSceneItemEnabled",
-        "sceneItemEnabled": true,
-        "sceneItemId": 1,
-        "sceneName": "Scene 1"
-    });
+    // Change the active scene
+    sendRawObsJson({ "request-type": "SetCurrentProgramScene", "sceneName": "My Scene" });
+
+    // Show a source by its name. Lumia resolves the scene item id from the name for you, so no numeric id is needed
+    sendRawObsJson({ "request-type": "SetSceneItemEnabled", "sceneName": "My Scene", "inputName": "My Source", "sceneItemEnabled": true });
+
+    // Hide that same source again by passing false
+    sendRawObsJson({ "request-type": "SetSceneItemEnabled", "sceneName": "My Scene", "inputName": "My Source", "sceneItemEnabled": false });
+
+    // You can still target a source by its numeric sceneItemId if you already know it
+    sendRawObsJson({ "request-type": "SetSceneItemEnabled", "sceneName": "Scene 1", "sceneItemId": 1, "sceneItemEnabled": true });
 }
 ```
 

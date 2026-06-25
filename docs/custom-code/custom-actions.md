@@ -69,4 +69,67 @@ These are the built-in `type` values for each system base.
 
 > Tip: most of the `lumia` and `overlay` actions already have dedicated helper functions (`tts`, `chatbot`, `overlaySetTextContent`, etc.) in `helper-functions.md`. Reach for `actions()` mainly when you need an integration action that does not have a helper yet.
 
+### Common `lumia` action examples
+
+Most `lumia` actions have a dedicated helper already (`chatbot`, `tts`, `playAudio`, `setVariable`, etc.) — prefer those. Reach for `actions()` for the engagement / system features that have no helper. The `value` fields are not uniform across types, so if you need a type not shown here, set that action up once in the normal action editor to read off its fields. Verified examples:
+
+```js
+async function() {
+    // Song requests
+    await actions([{ base: "lumia", type: "addSongRequest", value: { value: "never gonna give you up" } }]); // a search term or url
+    await actions([{ base: "lumia", type: "skipSongRequest" }]);
+
+    // Raffle (ends_after is in seconds; raffleStop / raffleEnd take no value)
+    await actions([{ base: "lumia", type: "raffleStart", value: { title: "My Raffle", auto_end: true, ends_after: 120 } }]);
+
+    // Viewer queue
+    await actions([{ base: "lumia", type: "viewerQueueEntry", value: { value: "{{username}}" } }]);
+
+    // Stream mode and connections
+    await actions([{ base: "lumia", type: "setStreamMode", value: { on: true } }]);
+    await actions([{ base: "lumia", type: "setConnection", value: { value: "obs", on: true } }]); // on:true enables, false disables
+
+    // Counter (operator is one of + - * /)
+    await actions([{ base: "lumia", type: "updateCounter", value: { value: "deaths", message: "1", operator: "+" } }]);
+    done();
+}
+```
+
+### OBS (v5) actions
+
+OBS has a dedicated helper, so you do **not** need `actions()` for it: pass any OBS websocket v5 request to `sendRawObsJson({ "request-type": "...", ...params })` (see `helper-functions.md`). The `request-type` and fields are exactly the same ones Lumia's OBS action editor uses. Common ones:
+
+```js
+async function() {
+    // Scenes
+    sendRawObsJson({ "request-type": "SetCurrentProgramScene", "sceneName": "My Scene" });
+    sendRawObsJson({ "request-type": "SetCurrentPreviewScene", "sceneName": "My Scene" });
+
+    // Source visibility (by name — Lumia resolves the scene item id for you)
+    sendRawObsJson({ "request-type": "SetSceneItemEnabled", "sceneName": "My Scene", "inputName": "My Source", "sceneItemEnabled": true });
+    sendRawObsJson({ "request-type": "SetSourceFilterEnabled", "sourceName": "My Source", "filterName": "My Filter", "filterEnabled": true });
+
+    // Audio
+    sendRawObsJson({ "request-type": "SetInputMute", "inputName": "Mic/Aux", "inputMuted": true });
+    sendRawObsJson({ "request-type": "ToggleInputMute", "inputName": "Mic/Aux" });
+    sendRawObsJson({ "request-type": "SetInputVolume", "inputName": "Mic/Aux", "inputVolumeMul": 1 });
+
+    // Source settings (url / text / file / image / media)
+    sendRawObsJson({ "request-type": "SetInputSettings", "inputName": "Browser", "inputSettings": { "url": "https://lumiastream.com" } });
+
+    // Media, transitions, screenshot
+    sendRawObsJson({ "request-type": "TriggerMediaInputAction", "inputName": "My Video", "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART" });
+    sendRawObsJson({ "request-type": "SetCurrentSceneTransition", "transitionName": "Fade" });
+
+    // Recording / streaming / replay buffer / virtual cam (no params)
+    sendRawObsJson({ "request-type": "StartRecord" });
+    sendRawObsJson({ "request-type": "ToggleStream" });
+    sendRawObsJson({ "request-type": "SaveReplayBuffer" });
+    sendRawObsJson({ "request-type": "StartVirtualCam" });
+    done();
+}
+```
+
+Other available request-types include `SetCurrentProfile`, `SetCurrentSceneCollection`, `CreateInput`, `RemoveInput`, `SetSceneItemTransform`, `SetSceneItemBlendMode`, `SetInputAudioMonitorType`, `TriggerHotkeyByName`, `SetStudioModeEnabled`, `SendStreamCaption`, and the `Start/Stop/Toggle` variants for recording, streaming, replay buffer and virtual cam — the same list as the OBS action editor.
+
 This documentation can get extremely broad for every integration, so if you get stuck please visit our [**Discord**](https://discord.gg/R8rCaKb) to ask us any questions.
