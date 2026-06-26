@@ -25,7 +25,7 @@ Let's get started:
 **System bases** (built into Lumia):
 `delay, lumia, overlay, api, commandRunner, inputEvents`
 
-> Note: `lumia` and `overlay` also accept the aliases `lumiaActions` and `overlayActions`, and the input base is `inputEvents` (plural).
+> Note: the canonical system bases are `lumia` and `overlay`. The older spellings `lumiaActions` and `overlayActions` still run but are **deprecated** — prefer `lumia` / `overlay`. The input base is `inputEvents` (plural).
 
 **Integration bases** — every connected integration is also a valid base. These include (and more are added over time):
 `twitch, youtube, facebook, tiktok, kick, discord, obs, slobs, meld, spotify, youtubemusic, nowplaying, vlc, voicemod, streamerbot, vtubestudio, midi, osc, artnet, mqtt, serial, websocket, broadlink, hue, lifx, nanoleaf, govee, wled, wiz, tplink, tuya, yeelight, elgato, streamdeck, touchportal, loupedeck, homeassistant, switchbot` plus any installed plugin (use the plugin's id as the base).
@@ -36,7 +36,27 @@ Let's get started:
 
 `variables`: allows you to send in different variables for each action. But do note that the variables that are already on the command/alert will also be spread on to this variables object. Variables are not required
 
-There are more fields that are sometimes used in actions. `delay` (a number in milliseconds) can be added to any action to wait before running it.
+To pause between actions, insert a dedicated **delay step**: an entry whose `type` is `"delay"` with the milliseconds in `delay` (e.g. `{ type: "delay", delay: 1000 }`). It can carry any `base` and runs in order with the rest of the list. (An inline `delay` on a non-delay action is **not** applied by the runner — use a delay step.)
+
+#### Where actions live: the unified `actions` lane
+
+Inside a Lumia **command** or **alert**, every action — whatever its `base` (a `lumia` system action, an `overlay` action, a `twitch` action, an integration, a plugin) — lives together in one ordered list on the command:
+
+```json
+{
+  "actions": {
+    "before": [{ "base": "lumia", "type": "tts", "value": { "message": "Hi" } }],
+    "after": [{ "base": "twitch", "type": "clip", "value": { "title": "Clutch!", "duration": 30 } }],
+    "waitForActions": true
+  }
+}
+```
+
+- **`before`** runs before the command/alert's main effect (its light / overlay reaction); **`after`** runs after it.
+- **`waitForActions`** (optional): when `true`, each action is awaited so the list runs in strict order before the command continues; when omitted or `false`, the list fires without waiting.
+- Every entry is one action object of the shape `{ base, type, value?, delay?, args? }` — the same object you pass to the custom-code `actions()` helper. `delay` holds the milliseconds for a `type: "delay"` step; `args` carries the extra payload used by imported Streamer.bot actions.
+
+This unified `actions` lane is the current model, and the one the AI action creator and the Streamer.bot / Mix It Up importers target. It **replaces** the older per-source command fields (`lumiaActions`, `overlayActions`, `api`, `commandRunner`, `inputEvents`) and the per-integration lanes (`command.<integration>.before/after` — e.g. `command.wavelink`, `command.streamfog`, whose entries have no `base`), all of which are **deprecated** — within the unified lane the source is simply each entry's `base`.
 
 ### Passing an array of actions
 
@@ -63,9 +83,11 @@ These are the built-in `type` values for each system base.
 
 **`base: "commandRunner"`** — `app/file, shell command, delay`
 
-**`base: "inputEvents"`** — `keyboard, mouse, delay`
+**`base: "inputEvents"`** — `keyboard, mouse, delay`. The key/mouse data is **flat on the action**, not under `value`:
+> - `keyboard`: `{ base: "inputEvents", type: "keyboard", keyboardValue: { value: "ctrl+j", valueType: "combination" } }` — `valueType` is `combination` (a hotkey like `ctrl+shift+f5`) or `input` (type the literal `value` as text); optional `longPress`, `cpm`.
+> - `mouse`: `{ base: "inputEvents", type: "mouse", mouseValue: { x: 0, y: 100, clickEvent: "left", moveType: "set" } }` — `clickEvent` is `left` / `right` / `none`; optional `x1`, `y1`, `doubleClick`, `mouseSpeed`.
 
-**`base: "delay"`** — no `type`; pass the millisecond delay directly as the value, e.g. `{ base: "delay", value: 1000 }`.
+**delay step** — an entry with `type: "delay"` pauses the list; put the milliseconds in `delay` (e.g. `{ type: "delay", delay: 1000 }`). `duration` is accepted in place of `delay`, and the step runs under any `base`.
 
 > Tip: most of the `lumia` and `overlay` actions already have dedicated helper functions (`tts`, `chatbot`, `overlaySetTextContent`, etc.) in `helper-functions.md`. Reach for `actions()` mainly when you need an integration action that does not have a helper yet.
 
@@ -460,6 +482,8 @@ async function() {
 }
 ```
 
+> MIDI device targeting: `port` (the device's port number) is the simplest selector and is required. On a multi-device setup — where ports can shift between sessions — also pass the optional `deviceId` and/or `deviceName`; Lumia resolves the target by `deviceId`, then `deviceName`, then `port`. `type` is `note-on`, `note-off`, or `delay` (a `delay` entry just waits its `delay` ms).
+
 #### Twitch (`base: "twitch"`)
 
 Twitch actions take a `value` object. Most string inputs — usernames, message ids, comma-separated option lists — go in `value.message`. Each action needs the matching Twitch permission to be granted on your connection.
@@ -569,7 +593,23 @@ async function() {
 }
 ```
 
-Convenience source types (Lumia builds the `inputSettings` for you): `SetSourceText` (`{ inputName, text }`), `SetGenericUrlSource` / `SetSourceUrl` (`{ inputName, url }`), `SetGenericFileSource` / `SetImageFileSource` / `SetMediaFileSource` (`{ inputName, file }`). All other request-types match the OBS v5 API exactly.
+Common direct request-types (flat fields, verified against real setups):
+
+| `request-type` | fields |
+| --- | --- |
+| `SetCurrentProgramScene` | `{ sceneName }` |
+| `SetSceneItemEnabled` | `{ sceneName, inputName, sceneItemEnabled }` — Lumia resolves `inputName` → the scene-item id |
+| `SetSourceFilterEnabled` | `{ sourceName, filterName, filterEnabled }` |
+| `SaveSourceScreenshot` | `{ sourceName, imageFormat, imageFilePath }` |
+| `StartStream` / `StopStream` / `StartRecord` / `StopRecord` | no extra fields |
+
+Convenience source types let you set a source's content without hand-building `inputSettings`, but they only work if you **also** pass `lumiaOrigin: "SetInputSettings"` — Lumia rewrites the request into a real `SetInputSettings` call using it. Without `lumiaOrigin` the alias is sent verbatim and OBS rejects it. The aliases: `SetSourceText` (`{ inputName, text }`), `SetGenericUrlSource` / `SetSourceUrl` (`{ inputName, url }`), `SetGenericFileSource` / `SetImageFileSource` / `SetMediaFileSource` (`{ inputName, file }`):
+
+```js
+{ base: "obs", "request-type": "SetMediaFileSource", lumiaOrigin: "SetInputSettings", inputName: "Replay", file: "{{get_latest_file_from_folder=G:/Replays}}" }
+```
+
+For custom code it's usually simpler to skip the alias and call `sendRawObsJson({ "request-type": "SetInputSettings", inputName: "Replay", inputSettings: { local_file: "..." } })` directly. All other request-types match the OBS v5 API exactly.
 
 #### Streamlabs Desktop (`base: "slobs"`)
 
@@ -657,20 +697,20 @@ These read their fields **flat** on the action object (no `value` wrapper).
 
 ```js
 async function() {
-    // MQTT: publish to a topic on a configured broker (host = the broker's host)
-    await actions([{ base: "mqtt", type: "send", host: "192.168.1.50", topic: "home/light", value: "ON" }]);
+    // MQTT: publish to a topic. host is the broker URL — mqtt://<host>:<port>
+    await actions([{ base: "mqtt", type: "send", host: "mqtt://192.168.1.50:1883", topic: "home/light", value: "ON" }]);
 
-    // WebSocket: send to one connection by its id
+    // WebSocket: send to one configured connection by its id
     await actions([{ base: "websocket", type: "data", device: "<websocketId>", value: "hello" }]);
 
-    // Serial: write raw data to a port (9600 baud)
+    // Serial: write raw data to a port (COM3 on Windows, /dev/tty.* on macOS)
     await actions([{ base: "serial", type: "write", port: "COM3", value: "L1\n" }]);
 
-    // Art-Net: set DMX channels on a universe (values 0-255; no template tokens here)
-    await actions([{ base: "artnet", type: "artnet", universe: 0, values: [{ channel: 1, value: 255 }, { channel: 2, value: 128 }] }]);
+    // Art-Net: set DMX channels on a universe (channel 1-512, value 0-255). universe is a string
+    await actions([{ base: "artnet", type: "artnet", universe: "0", values: [{ channel: 1, value: 255 }, { channel: 2, value: 128 }] }]);
 
-    // Broadlink: send a learned IR/RF code by its library id or name to a device
-    await actions([{ base: "broadlink", type: "ir", device: "<deviceId>", value: "TV Power" }]);
+    // Broadlink: send a learned IR/RF code by its library id to a device
+    await actions([{ base: "broadlink", type: "ir", device: "<deviceId>", value: "<codeId>" }]);
     done();
 }
 ```
@@ -682,11 +722,35 @@ All take a `value` object.
 | base | type | `value` | notes |
 | --- | --- | --- | --- |
 | `switchbot` | `turnOn` / `turnOff` / `toggle` | `{ deviceId: "<id>" }` | |
+| `wavelink` | `FILTER_SET` | `{ filterId: "<uuid>", isEnabled: true, inputId: "Wave Link Mic In 1" }` | enable/disable an input's filter; `filterId: "ALL_EFFECTS"` targets every effect on that input |
 | `wavelink` | `SET_INPUT_VOLUME` | `{ inputId: "<id>", volume: 50, mixerID: "com.elgato.mix.local" }` | volume 0–100; mixer `local`/`stream`/`all` |
 | `wavelink` | `MUTE_INPUT` | `{ inputId: "<id>", muted: true, mixerID: "com.elgato.mix.local" }` | |
 | `wavelink` | `SET_OUTPUT_VOLUME` / `MUTE_OUTPUT` | `{ volume: 50, mixerID: "com.elgato.mix.local" }` | |
 | `wavelink3` | same types as `wavelink` | same shapes | Wave Link 3.0 uses base `wavelink3`; some legacy filter/mic types are unsupported on v3 |
-| `camerahub` | `SET_WEBCAM_PROPERTY` | `{ propertyID: "Brightness", propertyValue: 60 }` | also `SELECT_DEVICE`, `SET_NVIDIA_VIDEO_EFFECT`, `SET_LUT_EFFECT`, `SET_PROMPTER_PROPERTY` |
+| `camerahub` | `SET_WEBCAM_PROPERTY` | `{ propertyID: "Brightness", propertyValue: 60 }` | all camerahub types share one property-bag `value` (`deviceID, propertyID, propertyValue, intensity, isEnabled, …`) — set only the fields the type uses. Also `SELECT_DEVICE`, `SET_NVIDIA_VIDEO_EFFECT`, `SET_LUT_EFFECT` (`intensity`), `SET_PROMPTER_PROPERTY` |
 | `streamfog` | `activateLens` | `{ lensId: "<id or name>", duration: 10 }` | `lensId: "random"` picks one; also `activateOutfit` (`{ outfit, duration }`) and `disableLens` (`{}`) |
+
+#### Plugin actions (`base: "<pluginId>"`)
+
+Every installed plugin is also a valid base — use the plugin's id as the `base`, plus the plugin's own action `type` and a `value` object of that plugin's fields. The exact `type` and `value` come from the plugin's manifest, so the reliable way to discover them is to add the action once in the editor and read it back; the shape is always `{ base: "<pluginId>", type: "<action type>", value: { ...plugin fields } }`. Verified examples:
+
+```js
+async function() {
+    // Tapo smart plug — target is the device IP, or "IP|deviceId"
+    await actions([{ base: "tapo_plugin", type: "tapo_turn_on", value: { target: "192.168.50.169" } }]);
+
+    // Steam — look up a game
+    await actions([{ base: "steam", type: "fetch_game", value: { game: "Sonic" } }]);
+
+    // ClickUp — create a task (assigneeId is comma-separated)
+    await actions([{ base: "clickup", type: "create_task", value: { name: "{{message}}", assigneeId: "14928785,14928776" } }]);
+
+    // ElevenLabs TTS
+    await actions([{ base: "elevenlabs_tts", type: "speak", value: { message: "{{message}}", voiceId: "hpp4J3VqNfWAUOO0d1Us", modelId: "eleven_multilingual_v2", volume: 100 } }]);
+    done();
+}
+```
+
+A plugin action is silently skipped unless its plugin is installed, connected, and enabled.
 
 This documentation can get extremely broad for every integration, so if you get stuck please visit our [**Discord**](https://discord.gg/R8rCaKb) to ask us any questions.

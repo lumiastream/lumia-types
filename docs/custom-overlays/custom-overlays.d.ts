@@ -53,7 +53,7 @@ export enum ConfigsFieldType {
 }
 
 /**
- * Conditional render rule for a config field.
+ * A single conditional render rule for a config field.
  * The field is shown only when `Overlay.data[key]` strictly equals one of `equals`
  * (scalar) or intersects with `equals` (when either side is an array).
  *
@@ -68,6 +68,23 @@ export interface ConfigVisibleIf {
 	equals: string | number | boolean | Array<string | number | boolean>;
 }
 
+/**
+ * Conditional render rule, or a list of rules. When an array is supplied, the
+ * field is shown only when **every** rule matches (logical AND), letting you
+ * gate a field on several keys at once.
+ *
+ * @example
+ * // single key
+ * { key: 'mode', equals: 'advanced' }
+ * @example
+ * // multiple keys — all must match
+ * [
+ *   { key: 'color', equals: ['red', 'blue', 'green'] },
+ *   { key: 'alerts', equals: ['red', 'blue', 'green'] },
+ * ]
+ */
+export type ConfigVisibleIfRule = ConfigVisibleIf | ConfigVisibleIf[];
+
 /** Properties common to every config field, regardless of `type`. */
 export interface BaseConfigField {
 	/** Human-readable name shown next to the control in the Configs sidebar. */
@@ -79,9 +96,10 @@ export interface BaseConfigField {
 	order?: number;
 	/**
 	 * Conditional render rule. When set, the field renders only when
-	 * `Overlay.data[visibleIf.key]` matches `visibleIf.equals`.
+	 * `Overlay.data[visibleIf.key]` matches `visibleIf.equals`. Pass an array of
+	 * rules to require that **every** rule matches (logical AND across keys).
 	 */
-	visibleIf?: ConfigVisibleIf;
+	visibleIf?: ConfigVisibleIfRule;
 	/**
 	 * Hard-hide rule. When `true`, the field is never displayed in the Configs
 	 * sidebar, but its `value` still flows into `Overlay.data` for internal use.
