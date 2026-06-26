@@ -89,6 +89,8 @@ These are the built-in `type` values for each system base.
 
 **delay step** — an entry with `type: "delay"` pauses the list; put the milliseconds in `delay` (e.g. `{ type: "delay", delay: 1000 }`). `duration` is accepted in place of `delay`, and the step runs under any `base`.
 
+**custom code step** — `{ base: "lumia", type: "code", value: { value: "<js source>" } }` runs a JavaScript [custom-code](helper-functions.md) step **in sequence** within the list (it's a Lumia action type — "Custom Code" in the editor's Lumia actions; a bare top-level string `value` also runs, for back-compat). It shares variables with the steps around it: it reads `{{tokens}}` / `getVariable` set by earlier actions, its `done({ variables })` flow to the later actions, and `done({ shouldStop: true })` stops the rest of the list. Use it to interleave real logic (loops, conditionals, computed values) between native actions — it runs in its exact position, unlike the older separate code lane.
+
 > Tip: most of the `lumia` and `overlay` actions already have dedicated helper functions (`tts`, `chatbot`, `overlaySetTextContent`, etc.) in `helper-functions.md`. Reach for `actions()` mainly when you need an integration action that does not have a helper yet.
 
 ### Common `lumia` action examples
