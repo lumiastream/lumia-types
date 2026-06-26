@@ -399,7 +399,7 @@ A field object can now contain these properties:
 | **`value`**     | ❌       | Default value that appears the first time the user opens the overlay (also pre populates `Overlay.data`). Omit it to leave the field blank/unchecked on first load.                                                                                                                                | `"value": 18`                                                     |
 | **`options`**   | ☑️\*     | Key value map of selectable choices. Required **only** for `dropdown`, `multiselect` and `slider`; ignored for other types. For `slider`, `options` supports `step`, `min`, `max`, `prefix`, `suffix`.                                                                                             | `"options": { "step": 5, "min": 0, "max": 100 }`                  |
 | **`order`**     | ❌       | **Display order priority**. Fields with lower numbers appear first. Fields without `order` appear after ordered fields, sorted alphabetically by key.                                                                                                                                              | `"order": 1`                                                      |
-| **`visibleIf`** | ❌       | **Conditional render rule**. Field is shown **only if** `Overlay.data[visibleIf.key]` strictly equals one of the values in `visibleIf.equals`.                                                                                                                                                     | `"visibleIf": { "key": "targetKey", "equals": ["yes", "maybe"] }` |
+| **`visibleIf`** | ❌       | **Conditional render rule**. Field is shown **only if** `Overlay.data[visibleIf.key]` strictly equals one of the values in `visibleIf.equals`. Pass an **array of rules** to require that **every** rule matches (AND across keys).                                                                 | `"visibleIf": [{ "key": "targetKey", "equals": ["yes", "maybe"] }, { "key": "mode", "equals": "advanced" }]` |
 | **`hidden`**    | ❌       | **Hard-hide rule.** When set to `true`, the field is **never displayed** in the Configs sidebar, preventing end users from altering it. The value still flows into `Overlay.data`, so the overlay can rely on it internally.<br>Useful for locking event subscriptions or other advanced settings. | `"hidden": true`                                                  |
 
 Additional properties for text fields (`type: "input"` and `type: "textarea"`):
@@ -761,10 +761,13 @@ In this example, the fields would appear in this order:
 ### Visible If Conditional Fields
 
 The `visibleIf` field is a conditional statement that determines whether a field should be visible or not based on a condition.
-The `visibleIf` field is a JSON object with two keys: `key` and `equals`.
+The `visibleIf` field can be **either**:
+
+- a single rule object with two keys, `key` and `equals`, or
+- an **array of rule objects**, in which case the field is shown only when **every** rule matches (logical AND). Use the array form to gate a field on more than one key at once.
 
 The `key` key is a string that represents the name of the field whose value should be used in the conditional statement.
-The `equals` key is a string, number, boolean, or an array that represents the value of the field whose value should be used in the conditional statement.
+The `equals` key is a string, number, boolean, or an array that represents the value(s) of that field that make the condition match. When `equals` is an array, the rule matches if the field's value is one of the listed values (and for `multiselect` fields, if any selected value is in the list).
 
 #### Single Primitive Equals Example
 
@@ -800,6 +803,35 @@ The `equals` key is a string, number, boolean, or an array that represents the v
 			"key": "color",
 			"equals": ["red", "blue", "green"]
 		}
+	}
+}
+```
+
+#### Multiple Keys (Array of Rules) Example
+
+Pass an array of rule objects to require that **every** rule matches before the
+field shows. Here `subcolor` only appears when **both** `color` and `alerts`
+are set to one of `red`, `blue`, or `green`:
+
+```json
+{
+	"color": {
+		"type": "input",
+		"label": "Colors"
+	},
+	"subcolor": {
+		"type": "input",
+		"label": "Subcolors",
+		"visibleIf": [
+			{
+				"key": "color",
+				"equals": ["red", "blue", "green"]
+			},
+			{
+				"key": "alerts",
+				"equals": ["red", "blue", "green"]
+			}
+		]
 	}
 }
 ```

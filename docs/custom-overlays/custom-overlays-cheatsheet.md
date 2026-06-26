@@ -110,12 +110,27 @@ Include these two helper aliases in your embeddings so the model can quickly map
 				"min": { "type": "number" },
 				"max": { "type": "number" },
 				"visibleIf": {
-					"type": "object",
-					"required": ["key", "equals"],
-					"properties": {
-						"key": { "type": "string" },
-						"equals": {}
-					}
+					"oneOf": [
+						{
+							"type": "object",
+							"required": ["key", "equals"],
+							"properties": {
+								"key": { "type": "string" },
+								"equals": {}
+							}
+						},
+						{
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": ["key", "equals"],
+								"properties": {
+									"key": { "type": "string" },
+									"equals": {}
+								}
+							}
+						}
+					]
 				},
 				"hidden": { "type": "boolean" }
 			},
