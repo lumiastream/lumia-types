@@ -75,7 +75,7 @@ async function() {
 
 These are the built-in `type` values for each system base.
 
-**`base: "lumia"`** — `callCommand, callRandomCommand, chatbot, tts, setStreamMode, toggleStreamMode, setFuzeAudioSensitivity, playAudio, writeToFile, setConnection, updateVariable, updateCounter, appendToVariable, unappendFromVariable, saveLocal, addToUserlevel, removeFromUserlevel, addToRestrictionsList, removeFromRestrictionsList, setFolder, setAlert, setAlertVariation, setCommand, setChatbotCommand, setTwitchPointsCommand, setTwitchExtensionCommand, setKickPointsCommand, setChatMatchCommand, setTwitchPointValue, setLoyaltyPointValue, setUserLoyaltyPoint, setTwitchExtensionBitsValue, setAutomation, setVoicecommands, sendToDiscordWebhook, sendToDiscordWithMediaWebhook, sendToWebhook, sendToPrinter, raffleEntry, raffleRemoveEntry, raffleGetWinner, raffleStart, raffleStop, raffleEnd, viewerQueueEntry, viewerQueueLeave, tournamentEntry, tournamentRemoveEntry, tournamentUpdatePoints, tournamentStart, tournamentEnd, viewerQueuePlayPause, viewerQueueEndQueue, viewerQueuePickPlayer, backToDefault, replayLastEventListEvent, runLastQueueItem, resumeQueue, pauseQueue, removeCurrentQueueItem, clearQueue, clearCooldowns, resetSession, cleanAll, refreshSettings, addSongRequest, skipSongRequest, clearSongRequestQueue, delay`
+**`base: "lumia"`** — `callCommand, callRandomCommand, chatbot, tts, setStreamMode, toggleStreamMode, setFuzeAudioSensitivity, playAudio, writeToFile, setConnection, updateVariable, updateCounter, appendToVariable, unappendFromVariable, saveLocal, addToUserlevel, removeFromUserlevel, addToRestrictionsList, removeFromRestrictionsList, setFolder, setAlert, setAlertVariation, setCommand, setChatbotCommand, setTwitchPointsCommand, setTwitchExtensionCommand, setKickPointsCommand, setChatMatchCommand, setTwitchPointValue, setLoyaltyPointValue, setUserLoyaltyPoint, setTwitchExtensionBitsValue, setAutomation, setVoicecommands, sendToDiscordWebhook, sendToDiscordWithMediaWebhook, sendToWebhook, sendToPrinter, raffleEntry, raffleRemoveEntry, raffleGetWinner, raffleStart, raffleStop, raffleEnd, viewerQueueEntry, viewerQueueLeave, tournamentEntry, tournamentRemoveEntry, tournamentUpdatePoints, tournamentStart, tournamentEnd, viewerQueuePlayPause, viewerQueueEndQueue, viewerQueuePickPlayer, backToDefault, replayLastEventListEvent, runLastQueueItem, resumeQueue, pauseQueue, removeCurrentQueueItem, clearQueue, clearCooldowns, resetSession, cleanAll, refreshSettings, addSongRequest, skipSongRequest, clearSongRequestQueue, delay, setColor, accessory`
 
 **`base: "overlay"`** — `alertTrigger, alertEvent, setOverlayVisibility, setLayerVisibility, setLayerPosition, setLayerSize, setTextContent, setImageContent, setVideoContent, setAudioContent, setLayerVolume, playPauseMedia, setContent, sendShoutout, sendCustomOverlayContent, sendGameTrigger, sendGameUpdate, takeScreenshot, spinwheelReset, spinwheelAddItem, spinwheelRemoveItem, sendHfx, hudOverlayChange, hudToggle, hudVolumeSet, hudOpacitySet, timerIncrement, pollTrigger, pollStart, pollResetVotes, pollSetTimer, pollAddItem, pollRemoveItem, delay`
 
@@ -113,6 +113,12 @@ async function() {
 
     // Counter (operator is one of + - * /)
     await actions([{ base: "lumia", type: "updateCounter", value: { value: "deaths", message: "1", operator: "+" } }]);
+
+    // Lights — set every light to red (lights: {} = all lights; power: false turns them off)
+    await actions([{ base: "lumia", type: "setColor", value: { rgb: { r: 255, g: 0, b: 0 }, lights: {}, power: true } }]);
+
+    // Smart plug / key light — id/brand/brandOrigin come from your connected devices (brandOrigin 7 = key light)
+    await actions([{ base: "lumia", type: "accessory", value: { accessories: [{ id: "<device id>", brand: "<brand key>", brandOrigin: 7, state: { on: true, brightness: 100, temperature: 6000 } }] } }]);
     done();
 }
 ```
@@ -402,7 +408,7 @@ Every connected integration is also a valid `base` (`spotify`, `discord`, `vtube
 
 Every integration also supports a delay step: `{ base: "<integration>", type: "delay", delay: <ms> }`. String fields generally resolve `{{template}}` tokens (Art-Net is the exception).
 
-> **Lights** (Hue, LIFX, Govee, Nanoleaf, WLED, Elgato key lights, etc.) have **no** action `base` — control them with the `sendColor` helper (see `helper-functions.md`), not through `actions()`.
+> **Lights, smart plugs & key lights** are native `lumia` actions (not a separate `base`): use `{ base: "lumia", type: "setColor", value: { rgb, lights, power } }` to set light colors (Hue, LIFX, Govee, Nanoleaf, WLED, …) and `{ base: "lumia", type: "accessory", value: { accessories: [...] } }` for smart plugs & Elgato key lights — see the examples in the **Common `lumia` action examples** section above. The `sendColor` helper (see `helper-functions.md`) is still available for fine-grained per-light control from code.
 
 #### Spotify (`base: "spotify"`)
 

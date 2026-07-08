@@ -55,6 +55,9 @@ export enum LumiaActivityCommandTypes {
 
 	SET_COMMNAD_STATE = 'set-command-state',
 	SET_FOLDER_STATE = 'set-folder-state',
+	CREATE_CHATBOT_COMMAND = 'create-chatbot-command',
+	UPDATE_CHATBOT_COMMAND = 'update-chatbot-command',
+	DELETE_CHATBOT_COMMAND = 'delete-chatbot-command',
 
 	CLEAR_QUEUE = 'clear-queue',
 	CLEAR_COOLDOWNS = 'clear-cooldowns',
