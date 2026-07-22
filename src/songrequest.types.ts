@@ -54,6 +54,8 @@ export enum SongRequestSource {
 	STREAMER = 'streamer',
 	/** Mod added directly from the modtool window. */
 	MOD = 'mod',
+	/** Submitted by a plugin via the `addSongRequest` host bridge. */
+	PLUGIN = 'plugin',
 }
 
 /** Format of the user's submission, before resolution. */
@@ -77,6 +79,26 @@ export enum SongRequestPlaybackTarget {
 	/** Streamer's YouTube Music player via YT Music queue. */
 	YOUTUBE_MUSIC = 'youtubeMusic',
 	VLC = 'vlc',
+	/** A third-party plugin acts as the resolver + player (e.g. SoundCloud, Apple Music, a local app). */
+	PLUGIN = 'plugin',
+}
+
+/**
+ * A resolved track as understood by an external playback source (today: a
+ * plugin). Lumia stores its own `SongRequestItem`; this is the lightweight
+ * shape a plugin returns from `resolveSongRequest` and reports back through the
+ * `songRequestNowPlaying` / `updateSongRequestQueue` host bridge.
+ */
+export interface SongRequestTrack {
+	/** The source's own opaque track id — Lumia treats it as a match key, never parses it. */
+	id: string;
+	title: string;
+	artist?: string;
+	thumbnailUrl?: string;
+	url?: string;
+	durationSeconds?: number;
+	/** Echoed back so the source can attribute the currently playing track to its requester. */
+	requesterUsername?: string;
 }
 
 /** A single request item — one row in the queue / pending tray / history. */
@@ -113,6 +135,10 @@ export interface SongRequestItem {
 
 	/** Chosen at queue-entry time based on connected services + config. */
 	playbackTarget?: SongRequestPlaybackTarget;
+	/** Owning plugin id when `playbackTarget === PLUGIN`. */
+	pluginId?: string;
+	/** The external source's own track id (e.g. plugin resolver result), used to reconcile now-playing / queue against the source. */
+	sourceTrackId?: string;
 
 	// Timestamps (epoch ms).
 	createdAt: number;
@@ -146,6 +172,8 @@ export interface SongRequestConfig {
 	youtubeApiKey?: string;
 
 	preferredPlaybackTarget: SongRequestPlaybackTarget;
+	/** Active source plugin id — only meaningful when `preferredPlaybackTarget === PLUGIN`. */
+	pluginId?: string;
 
 	// Chat UX templates. Variables: {title} {artist} {username} {duration}.
 	chatTemplateNowPlaying: string;
