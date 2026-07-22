@@ -919,6 +919,27 @@ export enum SystemVariables {
 	/** Next song Spotify URI. Use as {{spotify_next_uri}}. */
 	SPOTIFY_NEXT_URI = 'spotify_next_uri',
 
+	// ─────────────────── Song Request (source-agnostic now-playing) ────────────────────
+
+	/** Now-playing song title. Use as {{songrequest_now_playing_title}}. */
+	SONGREQUEST_NOW_PLAYING_TITLE = 'songrequest_now_playing_title',
+	/** Now-playing artist(s). Use as {{songrequest_now_playing_artist}}. */
+	SONGREQUEST_NOW_PLAYING_ARTIST = 'songrequest_now_playing_artist',
+	/** Now-playing artwork URL. Use as {{songrequest_now_playing_image}}. */
+	SONGREQUEST_NOW_PLAYING_IMAGE = 'songrequest_now_playing_image',
+	/** Now-playing track URL. Use as {{songrequest_now_playing_url}}. */
+	SONGREQUEST_NOW_PLAYING_URL = 'songrequest_now_playing_url',
+	/** Now-playing duration in seconds. Use as {{songrequest_now_playing_duration}}. */
+	SONGREQUEST_NOW_PLAYING_DURATION = 'songrequest_now_playing_duration',
+	/** Username that requested the now-playing track. Use as {{songrequest_now_playing_requester}}. */
+	SONGREQUEST_NOW_PLAYING_REQUESTER = 'songrequest_now_playing_requester',
+	/** Active playback source (overlay | spotify | vlc | plugin id). Use as {{songrequest_now_playing_source}}. */
+	SONGREQUEST_NOW_PLAYING_SOURCE = 'songrequest_now_playing_source',
+	/** Upcoming queue as a JSON array of {title, artist, image, url, requester}. Use as {{songrequest_queue}}. */
+	SONGREQUEST_QUEUE = 'songrequest_queue',
+	/** Number of requests waiting in the queue. Use as {{songrequest_queue_length}}. */
+	SONGREQUEST_QUEUE_LENGTH = 'songrequest_queue_length',
+
 	// ─────────────────────────────── YouTube Music ────────────────────────────────
 
 	/** Now playing song title. Use as {{youtubemusic_now_playing_song}}. */
