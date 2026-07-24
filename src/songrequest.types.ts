@@ -99,6 +99,10 @@ export interface SongRequestTrack {
 	durationSeconds?: number;
 	/** Echoed back so the source can attribute the currently playing track to its requester. */
 	requesterUsername?: string;
+	/** Requester's platform (e.g. "twitch"), echoed alongside `requesterUsername`. */
+	requesterPlatform?: string;
+	/** When the request entered the queue (epoch ms). Set by Lumia on hand-off. */
+	requestedAt?: number;
 }
 
 /** A single request item — one row in the queue / pending tray / history. */
