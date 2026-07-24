@@ -1,6 +1,6 @@
 {
   "name": "@lumiastream/lumia-types",
-  "version": "3.9.6",
+  "version": "3.9.7",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/esm/index.js",
@@ -41,7 +41,7 @@
     "sync:custom-overlays": "node ./scripts/sync-custom-overlay-types.mjs",
     "sync:custom-code": "node ./scripts/sync-custom-code-docs.mjs",
     "sync:chatbot": "node ./scripts/sync-chatbot-docs.mjs",
-    "postpublish": "npm cache clean --force && node ./scripts/postpublish-install.mjs"
+    "postpublish": "node ./scripts/postpublish-install.mjs"
   },
   "keywords": [],
   "author": "",

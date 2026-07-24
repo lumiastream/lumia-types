@@ -27,7 +27,7 @@ for (const repo of dependents) {
 
 	try {
 		console.log(`Installing ${installTarget} in ${repo}`);
-		execSync(`npm install --save-exact ${installTarget}`, {
+		execSync(`npm install --save-exact --prefer-online --no-audit --no-fund ${installTarget}`, {
 			cwd: repo,
 			stdio: 'inherit',
 		});
