@@ -92,6 +92,8 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
 	[LumiaAlertValues.TWITCH_HYPETRAIN_STARTED]: LumiaEventListTypes.HYPETRAIN,
 	[LumiaAlertValues.TWITCH_CHARITY_DONATION]: LumiaEventListTypes.CHARITY,
 	[LumiaAlertValues.TWITCH_POWERUPS]: LumiaEventListTypes.BITS,
+	[LumiaAlertValues.TWITCH_WATCH_STREAK]: LumiaEventListTypes.SHARES,
+	[LumiaAlertValues.TWITCH_MODIVERSARY]: LumiaEventListTypes.SHARES,
 
 	// --- YouTube ---
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: LumiaEventListTypes.FOLLOWER,
@@ -251,8 +253,6 @@ export const AlertsToFilter: LumiaAlertValues[] = [
 	LumiaAlertValues.TWITCH_SHIELD_MODE_ENDED,
 	LumiaAlertValues.TWITCH_AD_STARTED,
 	LumiaAlertValues.TWITCH_AD_STOPPED,
-	LumiaAlertValues.TWITCH_WATCH_STREAK,
-	LumiaAlertValues.TWITCH_MODIVERSARY,
 
 	// --- YouTube ---
 	LumiaAlertValues.YOUTUBE_STREAM_LIVE,
