@@ -105,6 +105,17 @@ export interface SongRequestTrack {
 	requestedAt?: number;
 }
 
+/**
+ * Explicit resolve outcome for song-request sources. A resolver may also return
+ * a bare `SongRequestTrack` (shorthand for resolved) or `null` (reject).
+ * `resolved: false` accepts the request unresolved — for sources with partial
+ * or no search coverage (cloud catalogs) — with optional `track` metadata hints.
+ */
+export interface SongRequestResolveResult {
+	resolved: boolean;
+	track?: Partial<SongRequestTrack>;
+}
+
 /** A single request item — one row in the queue / pending tray / history. */
 export interface SongRequestItem {
 	id: string;
