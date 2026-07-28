@@ -85,6 +85,7 @@ export {
 	type SongRequestItem,
 	type SongRequestConfig,
 	type SongRequestTrack,
+	type SongRequestResolveResult,
 	type SongRequestState,
 	type SongRequestQueueUpdatePayload,
 	type SongRequestNowPlayingPayload,
