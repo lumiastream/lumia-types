@@ -14,7 +14,7 @@ import { LumiaAlertValues } from './activity.types';
  * excluded from every feed without needing a UI toggle.
  *
  * When adding a new value here, mirror it in:
- *   - `ALL_LUMIA_EVENTLIST_CATEGORIES` in Lumia-UI's SE importer
+ *   - `ALL_LUMIA_EVENTLIST_CATEGORIES` in the `@lumiapriv/ui` SE importer
  *   - the `ALL_EVENT_CATEGORIES` constant in Overlay-UI's `layer.actions.ts`
  *     (labelmarquee branch)
  * Otherwise category-scoped widgets (`labelmarquee`, SE `*-recent` imports)

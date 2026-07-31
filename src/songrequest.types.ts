@@ -8,7 +8,7 @@ import { LumiaStreamingSites } from './activity.types';
 //     action handler, dashboard page + widgets)
 //   - Overlay-UI `songrequest` module (now-playing card + queue list + skip/
 //     pause UI; consumes SongRequestQueueUpdatePayload via SSE)
-//   - Lumia-UI `se-import` (`mapMediaShare` translates SE's
+//   - `@lumiapriv/ui` `se-import` (`mapMediaShare` translates SE's
 //     `se-widget-media-share` widget into a Lumia `songrequest` module)
 //
 // Architecture summary (so this file's shape is legible standalone):
