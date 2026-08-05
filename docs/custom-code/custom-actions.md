@@ -506,7 +506,7 @@ Stream & engagement:
 | `changeUserColor` | `{ color: "blue" }` | named color (Prime/Turbo can use hex) |
 | `shoutout` | `{ message: "<username>" }` | runs your shoutout command |
 | `raid` | `{ message: "<channel>" }` | |
-| `sendAnnouncement` | `{ message: "<text>", color: "primary" }` | color: primary/blue/green/orange/purple |
+| `sendAnnouncement` | `{ message: "<text>", color: "primary", chatas: "self" }` | color: primary/blue/green/orange/purple; `chatas` `"self"` (default) posts as you, `"chatbot"` posts as your connected Twitch chatbot (Premium, bot must be a mod — otherwise falls back to you) |
 | `createPoll` | `{ title: "<title>", message: "opt1,opt2", duration: 60 }` | options comma-separated; `duration` seconds |
 | `endPoll` | `{ reason: "ARCHIVED" }` | `ARCHIVED` or `TERMINATED` |
 | `createPrediction` | `{ title: "<title>", message: "outcome1,outcome2", duration: 60 }` | |
@@ -528,7 +528,7 @@ Moderation:
 | --- | --- | --- |
 | `banUser` | `{ message: "<username>", reason: "" }` | |
 | `unbanUser` | `{ message: "<username>" }` | |
-| `timeoutUser` | `{ message: "<username>", duration: 600, reason: "" }` | `duration` in seconds |
+| `timeoutUser` | `{ message: "<username>", duration: 600, reason: "" }` | `duration` in **seconds** |
 | `deleteMessage` | `{ message: "<message id>" }` | |
 | `pinMessage` | `{ message: "<text>", duration: 0 }` | sends then pins; `duration` 0 = no expiry, else 30–1800s |
 | `unpinMessage` | `{}` | |
@@ -572,7 +572,7 @@ async function() {
 | `shoutout` | `{ message: "<username>" }` | |
 | `banUser` | `{ message: "<username>", reason: "" }` | |
 | `unbanUser` | `{ message: "<username>" }` | |
-| `timeoutUser` | `{ message: "<username>", duration: 600, reason: "" }` | `duration` in seconds |
+| `timeoutUser` | `{ message: "<username>", duration: 10, reason: "" }` | `duration` in **minutes** — Kick's API unit, unlike Twitch/YouTube which take seconds |
 
 #### TikTok (`base: "tiktok"`)
 

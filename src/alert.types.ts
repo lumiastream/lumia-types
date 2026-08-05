@@ -3585,13 +3585,12 @@ export const LumiaAlertConfigs: Record<
 	},
 	[LumiaAlertValues.TWITCH_TIMEOUT_OVER]: {
 		connection: LumiaIntegrations.TWITCH,
-		message: "{{username}}'s timeout of {{duration}} seconds is over",
+		message: "{{username}}'s timeout of {{timeout_duration}} seconds is over",
 		eventlistMessage: 'Timeout Over',
 		eventlistDetailedMessage: 'time out over',
 		acceptedVariables: AllVariables.twitch.alerts.timeoutOver,
 		firstMessageTemplate: '{{username}}',
-		secondMessageTemplate: 'Triggered {{command}}',
-		thirdMessageTemplate: '"{{message}}"',
+		secondMessageTemplate: 'is no longer timed out',
 		quickActions: [
 			{
 				label: 'Time Out Over',
