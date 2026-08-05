@@ -1160,7 +1160,7 @@ export const API_COMMANDS: Record<string, ApiCommandSpec> = {
 		platforms: ['twitch'],
 		responds: 'boolean',
 		documented: false,
-		notes: "Announcement color is read from the manager's value.color, which the API layer never sets — always defaults to 'primary'. Requires moderator:manage:announcements.",
+		notes: "Announcement color (value.color) and sending account (value.chatas) live on the manager's value, which the API layer never sets — the API always posts 'primary' as the streamer. Requires moderator:manage:announcements.",
 	},
 	clip: {
 		type: 'clip',
@@ -1656,7 +1656,7 @@ export const API_COMMANDS: Record<string, ApiCommandSpec> = {
 			duration: {
 				type: 'number',
 				required: false,
-				description: 'Timeout length. UNIT MISMATCH: the REST docs say minutes, but the value is passed raw — Twitch and YouTube interpret it as SECONDS; only Kick treats it as minutes.',
+				description: 'Timeout length. UNIT MISMATCH: the value is passed raw, so Twitch and YouTube interpret it as SECONDS; only Kick treats it as minutes.',
 			},
 			name: {
 				type: 'string',
@@ -1667,7 +1667,7 @@ export const API_COMMANDS: Record<string, ApiCommandSpec> = {
 		platforms: ['twitch', 'youtube', 'kick'],
 		responds: 'boolean',
 		documented: true,
-		notes: "Dead default: duration is computed as `parseInt(duration) ?? 10` — parseInt yields NaN (never null) for a missing value, so the 10 fallback is unreachable and NaN is sent to the platform. Always pass duration explicitly.",
+		notes: 'Duration is computed as `parseInt(duration, 10) || 10`, so an omitted, unparseable or zero value falls back to 10. The fallback inherits the platform unit — 10 seconds on Twitch/YouTube, 10 minutes on Kick.',
 	},
 	'overlay-screenshot': {
 		type: 'overlay-screenshot',
