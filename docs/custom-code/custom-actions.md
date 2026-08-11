@@ -28,7 +28,7 @@ Let's get started:
 > Note: the canonical system bases are `lumia` and `overlay`. The older spellings `lumiaActions` and `overlayActions` still run but are **deprecated** — prefer `lumia` / `overlay`. The input base is `inputEvents` (plural).
 
 **Integration bases** — every connected integration is also a valid base. These include (and more are added over time):
-`twitch, youtube, facebook, tiktok, kick, discord, obs, slobs, meld, spotify, youtubemusic, nowplaying, vlc, voicemod, streamerbot, vtubestudio, midi, osc, artnet, mqtt, serial, websocket, broadlink, hue, lifx, nanoleaf, govee, wled, wiz, tplink, tuya, yeelight, elgato, streamdeck, touchportal, loupedeck, homeassistant, switchbot` plus any installed plugin (use the plugin's id as the base).
+`twitch, youtube, facebook, tiktok, kick, discord, obs, slobs, meld, spotify, youtubemusic, nowplaying, vlc, voicemod, streamerbot, mixitup, vtubestudio, midi, osc, artnet, mqtt, serial, websocket, broadlink, hue, lifx, nanoleaf, govee, wled, wiz, tplink, tuya, yeelight, elgato, streamdeck, touchportal, loupedeck, homeassistant, switchbot` plus any installed plugin (use the plugin's id as the base).
 
 `type`: Every base has different action types. For instance, the base `lumia` has `chatbot, tts, setStreamMode, toggleStreamMode` and many more. The full type lists for the system bases are below; integration and plugin types vary per integration — the easiest way to discover the exact `base`, `type`, and `value` for an integration action is to configure that action once in Lumia's normal Action editor.
 
@@ -693,6 +693,34 @@ Scalar `value` is the action name; `args` is a flat top-level JSON string.
 ```js
 async function() {
     await actions([{ base: "streamerbot", type: "action", value: "My SB Action", args: '{"user":"{{username}}","amount":5}' }]);
+    done();
+}
+```
+
+#### Mix It Up (`base: "mixitup"`)
+
+Fields are **flat** on the action object (no `value` wrapper). Scalar `value` is the target — a command ID, counter name, currency ID, inventory ID, or for `chat_message` the message text itself. Command, currency and inventory IDs are Mix It Up UUIDs, so pick those actions in Lumia's Action editor once rather than inventing IDs.
+
+| `type` | fields | notes |
+| --- | --- | --- |
+| `command` | `value`, `args`, `specialIdentifiers`, `ignoreRequirements`, `platform` | `args` is a chat-style string → `$arg1` / `$allargs`. `specialIdentifiers` is a flat JSON **string** — each key becomes `$key` inside the command. `ignoreRequirements: true` bypasses cooldowns, roles and costs |
+| `command_state` | `value`, `state` | `state` is `0` disable, `1` enable, `2` toggle |
+| `chat_message` | `value`, `platform`, `sendAsStreamer` | `value` is the message text |
+| `chat_clear` | — | |
+| `counter_set` / `counter_update` / `counter_reset` | `value`, `amount` | `value` is the counter **name**. `counter_update` adds `amount` (negative subtracts, defaults to 1); `counter_reset` takes no amount |
+| `currency_set` / `currency_update` | `value`, `username`, `platform`, `amount` | `_set` writes the absolute balance, `_update` adds (negative subtracts) |
+| `inventory_set` / `inventory_update` | `value`, `item`, `username`, `platform`, `amount` | `value` is the inventory ID, `item` the item ID |
+| `user_add` | `username`, `platform` | |
+
+`platform` is one of `Twitch`, `YouTube`, `Kick`, `Trovo`, `Velora`. It is required wherever a `username` is looked up; on `command` and `chat_message` it may be left empty to let Mix It Up decide.
+
+```js
+async function() {
+    await actions([
+        { base: "mixitup", type: "command", value: "8a1f...", args: "{{username}}", specialIdentifiers: '{"amount":"{{amount}}"}', ignoreRequirements: true },
+        { base: "mixitup", type: "counter_update", value: "raids", amount: "1" },
+        { base: "mixitup", type: "currency_update", value: "3c9e...", username: "{{username}}", platform: "Twitch", amount: "500" },
+    ]);
     done();
 }
 ```
