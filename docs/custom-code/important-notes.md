@@ -13,6 +13,69 @@ title: Important notes
   The different options are: `isSelf, mod, vip, tier3, tier2, tier1, subscriber, follower`.
   In your code you should use `const levels = await getVariable('userLevelsRaw');` and then you can check a level with `if (levels.subscriber) {}` since these are all booleans
 
+## Variable functions inside custom code
+
+Before the worker starts, Lumia runs your **entire code string** through the same template engine that powers command replies. That replaces plain tokens like `{{username}}` and `{{message}}`, and it also **executes variable functions** — `{{arg=1}}`, `{{get_user_loyalty_points=…}}`, `{{ai=…}}`, `{{twitch_followage=…}}`, `{{add_points=…}}` and the rest. Each one is swapped for its result *text*.
+
+Four consequences that trip people up:
+
+**1. They run once, before any of your JavaScript.** Position in the file means nothing. A variable function inside an `if` that never runs, inside a function you never call, or even inside a `//` comment still executes.
+
+**2. Side-effecting ones fire immediately — so don't use them here.** `{{add_points=…}}`, `{{set_points=…}}`, `{{give_points=…}}` and friends change real state the moment the code loads, before a single line of your logic has had a chance to validate anything. Use the matching action instead:
+
+| Instead of | Use |
+| --- | --- |
+| `{{add_points=user,100}}` | `addLoyaltyPoints({ username: 'user', points: 100 })` |
+| `{{set_points=user,500}}` | `setLoyaltyPoints({ username: 'user', points: 500 })` |
+| `{{give_points=user,50}}` | `transferLoyaltyPoints({ from: 'sender', to: 'user', points: 50 })` |
+| `{{get_user_loyalty_points=user}}` | `getLoyaltyPoints({ username: 'user' })` |
+| `{{toggle_automation=name}}` | `actions([{ base: 'lumia', type: 'setAutomation', value: { value: 'name', on: true } }])` |
+
+**3. You cannot pass a computed value into a `{{…}}` token.** By the time your code has a `target` variable, template replacement is long finished. This does **not** work:
+
+```js
+// ✗ Broken — `target` does not exist when the token is replaced
+const points = "{{get_user_loyalty_points=" + target + "}}";
+```
+
+Call a helper instead. Helpers run when you call them, so the argument can be anything your code produced:
+
+```js
+// ✓ Runs at call time, so `target` can come from a loop, an API, anywhere
+const points = await getLoyaltyPoints({ username: target });
+```
+
+For a variable function with no helper of its own, `resolveVariables` runs the template engine at runtime:
+
+```js
+// ✓ resolveVariables is called by your code, so the argument is already known
+const followage = await resolveVariables(`{{twitch_followage=${target}}}`);
+```
+
+**4. The replacement is raw text.** It is not quoted and not escaped, so always wrap it yourself — `"{{username}}"`, not `{{username}}` — and run it through `Number(...)` before doing math. When you want the untouched value (an object, or a number without quoting games) read it with `await getVariable('name')` instead.
+
+## Reading chat arguments
+
+`{{message}}` is everything the viewer typed after the command, and `{{arg=N}}` is the Nth whitespace-separated word of it (`{{arg=1}}` is the first). `{{arg=N,word}}` blanks the result unless the token is a plain word, and `{{arg=N,emote}}` blanks it unless the token is one of the channel's emotes.
+
+Both are just text when they land in your code, so validate them like any other user input — a viewer can type the arguments in any order, add an `@`, or leave them out entirely.
+
+```js
+async function() {
+    const first = "{{arg=1}}".trim();
+    const second = "{{arg=2}}".trim();
+    done();
+}
+```
+
+:::warning `{{message}}` and `{{prompt}}` are stripped before your code sees them
+
+So a viewer can't break out of your string and run their own code, Lumia removes every `"`, `'`, `` ` `` and the accented characters `áéíóúñü` from `{{message}}` and `{{prompt}}` before substituting them. This applies to `{{arg=N}}` too (it reads from `{{message}}`) and to `await getVariable('message')`.
+
+Do not build your own quoting or escaping on top of that, and don't rely on chat text keeping its punctuation or accents.
+
+:::
+
 ## Runtime environment
 
 Your code runs inside a sandboxed browser Web Worker, not Node.js. That means:
