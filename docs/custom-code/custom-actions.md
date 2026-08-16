@@ -288,6 +288,21 @@ async function() {
 }
 ```
 
+This action is the **only** way to change loyalty points from custom code — there is no `addPoints` helper global, and you must not reach for the `{{add_points=…}}` / `{{set_points=…}}` / `{{give_points=…}}` variable functions here, because they run before your code does (see "Variable functions inside custom code" in `important-notes.md`).
+
+To **read** a balance there is no action and no helper at all: resolve `{{get_user_loyalty_points=<username>}}` (optionally `,<platform>`) into a `const` at the top of your script. It is replaced before your JavaScript runs, so it can only look up a name that already exists at template time, and it returns the balance from *before* any `setUserLoyaltyPoint` you run below. It resolves to an empty string for a viewer Lumia has never seen.
+
+```js
+async function() {
+    const before = Number("{{get_user_loyalty_points={{username}}}}" || 0);
+    await actions([{ base: "lumia", type: "setUserLoyaltyPoint", value: { value: "100", message: "{{username}}" } }]);
+
+    // The new total is the one you resolved plus what you just added — re-reading the token would still give the old value
+    chatbot({ message: `{{username}} now has ${before + 100} points` });
+    done({ shouldStop: true, actionsToStop: ['chatbot'] });
+}
+```
+
 #### `setLoyaltyPointValue` — change the loyalty-points **cost** of one of your commands
 
 | Field | Meaning |

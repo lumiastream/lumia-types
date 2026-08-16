@@ -9,9 +9,19 @@ Write the message as plain text. Insert dynamic values with double curly braces:
 - A plain variable: `Welcome {{username}}!` becomes `Welcome lumi!`.
 - A default/fallback value if the variable is empty: `{{latest_subscriber=nobody yet}}`.
 - Tokens can be nested inside a function: `{{math={{twitch_total_follower_count}}+1}}`.
+- Every `{{` needs its own matching `}}`. A function whose argument is a nested token therefore ends in **four** closing braces — `{{get_user_loyalty_points={{username}}}}` closes `{{username}}` with two and the function with two more. Count the braces before finishing the message; three or five will not resolve and the raw text is sent to chat.
 - Anything that is not inside `{{ }}` is sent literally.
 
 Keep messages to a single chat line unless the user asks for more. Do not wrap the message in quotes and do not use markdown. Only use variables and functions that appear in this reference — never invent new variable or function names.
+
+### What goes after the `=`
+
+Everything after `=` is taken **literally** unless it is itself a `{{token}}`. This is the single most common cause of a command that saves fine but does nothing:
+
+- `{{get_user_loyalty_points=username}}` looks up a viewer whose name is literally `username`. Nobody is called that, so it outputs an empty string and the message reads as if the feature is broken.
+- `{{get_user_loyalty_points={{username}}}}` looks up the viewer who ran the command. This is almost always what is wanted.
+
+Where this reference shows a sample name such as `lumiacove`, it means a real name typed by hand. To refer to a person dynamically, always use a token: `{{username}}` (the viewer who ran the command), `{{displayname}}` (their cased name), `{{arg=1}}` (the first word they typed) or `{{message}}` (everything they typed). The same rule applies to numbers: `{{add_points={{arg=1}},{{arg=2}}}}` reads the amount the viewer typed, while `{{add_points={{arg=1}},100}}` always awards exactly 100.
 
 ## Common variables
 
@@ -113,7 +123,7 @@ Variable functions perform logic. They are written `{{name=arguments}}`. Argumen
 - `{{time_until="2026-12-25T00:00:00Z"}}` — countdown to a future date.
 - `{{twitch_followage}}` — how long the viewer has followed.
 - `{{account_age}}` — how long ago the viewer's account was created.
-- `{{twitch_accountage}}` / `{{twitch_accountage=someuser}}` — how long ago a Twitch account was created.
+- `{{twitch_accountage}}` / `{{twitch_accountage=lumiacove}}` — how long ago a Twitch account was created.
 - `{{youtube_uptime}}`, `{{kick_uptime}}`, `{{facebook_uptime}}`, `{{tiktok_uptime}}` — stream uptime for each platform, like `{{twitch_uptime}}`. Append `_timestamp` for an ISO start time instead of a duration: `{{twitch_uptime_timestamp}}`, `{{youtube_uptime_timestamp}}`, `{{kick_uptime_timestamp}}`, `{{facebook_uptime_timestamp}}`, `{{tiktok_uptime_timestamp}}`, `{{lumia_uptime_timestamp}}`.
 - `{{twitch_next_ad}}` — when the next Twitch ad break is scheduled.
 
@@ -122,14 +132,15 @@ Variable functions perform logic. They are written `{{name=arguments}}`. Argumen
 - `{{user_has_role=mod}}` — outputs the username if they have the role, otherwise empty. Roles: `mod`, `vip`, `subscriber`, `tier1`/`tier2`/`tier3`, `follower`, `broadcaster`.
 - `{{user_has_role=subscriber,yesno}}` — outputs `Yes` or `No`.
 - `{{user_top_role}}` — the viewer's highest role.
-- `{{lookup_user=someuser,twitch,displayname}}` — look up another user's field. Fields: `displayname`, `avatar`, `channelDescription`, `channelViews`.
+- `{{lookup_user=lumiacove,twitch,displayname}}` — look up another user's field. Fields: `displayname`, `avatar`, `channelDescription`, `channelViews`.
 - `{{user_watchtime={{username}}}}` — the viewer's total watch time.
-- `{{user_rank}}` / `{{user_rank=someuser}}` — the viewer's position on the loyalty leaderboard.
+- Every lookup above takes a token just as happily as a typed name: `{{lookup_user={{arg=1}},twitch,displayname}}` looks up whoever the viewer named, `{{get_avatar={{username}}}}` gets the running viewer's own avatar.
+- `{{user_rank}}` / `{{user_rank=lumiacove}}` — the viewer's position on the loyalty leaderboard.
 - `{{is_first_chatter}}` — the viewer's name if they were the first to chat this session, otherwise empty.
-- `{{lookup_user_game=someuser}}` / `{{lookup_user_title=someuser}}` — another channel's current category / stream title.
-- `{{get_avatar}}` / `{{get_avatar=someuser}}` — a viewer's avatar image URL (`{{twitch_get_avatar=someuser}}` for Twitch specifically).
+- `{{lookup_user_game=lumiacove}}` / `{{lookup_user_title=lumiacove}}` — another channel's current category / stream title.
+- `{{get_avatar}}` / `{{get_avatar=lumiacove}}` — a viewer's avatar image URL (`{{twitch_get_avatar=lumiacove}}` for Twitch specifically).
 - `{{channel_emotes}}` / `{{twitch_channel_emotes}}` — your channel's emote names.
-- `{{viewer_profile_summary=someuser}}` — a one-line summary of a viewer's saved profile notes.
+- `{{viewer_profile_summary=lumiacove}}` — a one-line summary of a viewer's saved profile notes.
 
 ### Loyalty points
 
@@ -140,6 +151,8 @@ Variable functions perform logic. They are written `{{name=arguments}}`. Argumen
 - `{{loyalty_top=5}}` — the top N point holders. `{{loyalty_leaderboard_url}}` — the public leaderboard link.
 
 To change a balance, always use these functions — they persist the change. `{{math}}` only outputs a number for display; it never moves points.
+
+`add_points`, `set_points` and `give_points` are **not silent**: each one replaces its own token with a confirmation sentence (`Added 100 points to lumiacove`). Put one of them in the message on its own. Wrapping it in your own wording sends the confirmation twice — `{{add_points={{arg=1}},{{arg=2}}}} {{arg=1}} now has {{get_user_loyalty_points={{arg=1}}}} {{loyalty_currency_name}}.` posts `Added 100 points to lumiacove lumiacove now has 2383 cove points.` When you want wording of your own instead, leave the function out of the message and change the balance from the command's `setUserLoyaltyPoint` action, which writes silently.
 
 ### Commands, bot & moderation
 
@@ -178,13 +191,40 @@ These capture or locate media and resolve to the saved **file path** — most us
 
 Lumia accepts StreamElements `$(...)` syntax and converts it automatically. Prefer native `{{ }}` tokens, but these are equivalent: `$(sender)` → `{{username}}`, `$(touser)` → `{{arg=1}}`, `$(count)` → `{{counter}}`, `$(random.pick a b c)` → `{{random_input=a,b,c}}`, `$(urlfetch url)` → `{{read_url=url}}`.
 
-## Examples
+## Recipes
 
-- Greeting: `Welcome to the stream, {{username}}! 🎉`
-- Death counter: `{{streamer}} has died {{counter=deaths,+1}} times this stream.`
-- Dice roll: `🎲 {{username}} rolled a {{random=1,6}}!`
-- Shoutout: `Go check out {{arg=1}} at twitch.tv/{{arg=1}} — they were last seen playing {{lookup_user={{arg=1}},twitch,channelDescription}}!`
-- Followage: `{{username}}, you have been following for {{twitch_followage}}.`
-- Subs goal: `Sub count: {{twitch_total_subscriber_count}} / 100 — {{if={{compare={{twitch_total_subscriber_count}},>=,100}},goal hit!,keep going!}}`
-- Points: `{{username}}, you have {{get_user_loyalty_points={{username}}}} {{loyalty_currency_name}}.`
-- Give points: `{{give_points={{arg=1}},{{arg=2}}}}` — a `!give <user> <amount>` command; the transfer and the reply are handled for you.
+These are the finished messages for the most commonly requested commands. When a request matches one of these, reproduce the message exactly rather than composing a new one.
+
+| Command the streamer asks for | Message |
+| --- | --- |
+| Check loyalty points | `{{displayname}} has {{get_user_loyalty_points={{username}}}} {{loyalty_currency_name}}.` |
+| Add points (mod) | `{{add_points={{arg=1}},{{arg=2}}}}` |
+| Set points (mod) | `{{set_points={{arg=1}},{{arg=2}}}}` |
+| Give / transfer points | `{{give_points={{arg=1}},{{arg=2}}}}` |
+| Points leaderboard | `Top {{loyalty_currency_name}}: {{loyalty_top=5}}` |
+| Death counter | `{{streamer}} has died {{counter=deaths,+1}} times this stream.` |
+| Shoutout | `Go check out {{arg=1}} at twitch.tv/{{arg=1}} — give them a follow!` |
+| Dice roll | `🎲 {{username}} rolled a {{random=1,6}}!` |
+| Magic 8-ball | `🎱 {{random_input=Yes,No,Maybe,Ask again later,Definitely,Not a chance}}` |
+| Hug | `{{displayname}} gives {{message}} a big hug! 🤗` |
+| Stream uptime | `{{streamer}} has been live for {{twitch_uptime}}.` — swap in `{{youtube_uptime}}`, `{{kick_uptime}}`, `{{facebook_uptime}}` or `{{tiktok_uptime}}` to match the streamer's platform |
+| Followage | `{{displayname}}, you have been following for {{twitch_followage}}.` — Twitch only |
+| Lurk | `Thanks for the lurk, {{displayname}}! Enjoy the stream. 💜` |
+| Watch time | `{{displayname}} has watched for {{user_watchtime={{username}}}}.` |
+| Greeting | `Welcome to the stream, {{displayname}}! 🎉` |
+| Socials / hype | Plain text with no tokens is the correct answer — do not add variables the request did not call for. |
+
+The three point-changing recipes are one token and nothing else, because those functions post their own confirmation. Everything else combines freely with your own wording.
+
+Platform-prefixed tokens (`twitch_`, `youtube_`, `kick_`, `facebook_`, `tiktok_`) only resolve when that platform is connected — an unconnected one is posted to chat as raw `{{twitch_uptime}}` text. Pick the prefix that matches the streamer's available-variables list, and prefer an unprefixed token when one exists.
+
+## Common mistakes
+
+| Wrong | Right | Why |
+| --- | --- | --- |
+| `{{get_user_loyalty_points=username}}` | `{{get_user_loyalty_points={{username}}}}` | A bare word is a literal name, not the running viewer |
+| `{{get_user_loyalty_points={{username}}}` | `{{get_user_loyalty_points={{username}}}}` | A nested token needs four closing braces, not three |
+| `{{loyalty_points}}`, `{{points}}` | `{{get_user_loyalty_points={{username}}}}` | Invented token names are sent to chat as raw text |
+| `{{add_points={{arg=1}},{{arg=2}}}} {{arg=1}} now has …` | `{{add_points={{arg=1}},{{arg=2}}}}` | `add_points` already replies; the extra wording duplicates it |
+| `{{if={{compare={{x}},<,10}},Sorry, not enough,ok}}` | `{{if={{compare={{x}},<,10}},"Sorry, not enough",ok}}` | Arguments split on commas, so a branch containing one must be quoted |
+| `{{math={{get_user_loyalty_points={{username}}}}+100}}` | `{{add_points={{username}},100}}` | `math` only displays a number; it never moves points |
