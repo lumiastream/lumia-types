@@ -288,20 +288,15 @@ async function() {
 }
 ```
 
-This action is the **only** way to change loyalty points from custom code — there is no `addPoints` helper global, and you must not reach for the `{{add_points=…}}` / `{{set_points=…}}` / `{{give_points=…}}` variable functions here, because they run before your code does (see "Variable functions inside custom code" in `important-notes.md`).
+:::tip From custom code, prefer the loyalty helpers
 
-To **read** a balance there is no action and no helper at all: resolve `{{get_user_loyalty_points=<username>}}` (optionally `,<platform>`) into a `const` at the top of your script. It is replaced before your JavaScript runs, so it can only look up a name that already exists at template time, and it returns the balance from *before* any `setUserLoyaltyPoint` you run below. It resolves to an empty string for a viewer Lumia has never seen.
+`addLoyaltyPoints`, `setLoyaltyPoints`, `getLoyaltyPoints`, `getLoyaltyUser`, `getLoyaltyTop`, `getLoyaltySettings` and `transferLoyaltyPoints` (see `helper-functions.md`) do the same work and resolve to a usable value — `addLoyaltyPoints` gives you the viewer's new balance, so you can report the running total without a second lookup. This action returns nothing, and it looks the viewer up first and quietly does nothing when they are missing, whereas `addLoyaltyPoints` creates them.
 
-```js
-async function() {
-    const before = Number("{{get_user_loyalty_points={{username}}}}" || 0);
-    await actions([{ base: "lumia", type: "setUserLoyaltyPoint", value: { value: "100", message: "{{username}}" } }]);
+Use `setUserLoyaltyPoint` when you want a loyalty change as part of an ordered `actions([...])` list, or in a command's action lane where no code is running.
 
-    // The new total is the one you resolved plus what you just added — re-reading the token would still give the old value
-    chatbot({ message: `{{username}} now has ${before + 100} points` });
-    done({ shouldStop: true, actionsToStop: ['chatbot'] });
-}
-```
+Either way, don't use the `{{add_points=…}}` / `{{set_points=…}}` / `{{give_points=…}}` variable functions inside custom code — they run before your code does (see "Variable functions inside custom code" in `important-notes.md`).
+
+:::
 
 #### `setLoyaltyPointValue` — change the loyalty-points **cost** of one of your commands
 

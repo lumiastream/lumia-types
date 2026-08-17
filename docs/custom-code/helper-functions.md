@@ -8,29 +8,100 @@ These helper functions are premade code that we setup that you can use to help y
 
 ### Done
 
-`done({ shouldStop?: boolean; actionsToStop?: Array<string>; variables?: {[key: string]: string | number }}?)`: Done tell Lumia Stream that the script is complete and that the thread is safe to close now. You can also stop the command/alert in it's track by passing shouldStop true into the parameters.
-If you would like to modify/add variables that other actions could use, you can return them in the variables parameter.
+`done({ shouldStop?: boolean; actionsToStop?: Array<string>; variables?: {[key: string]: string | number }}?)`: Tells Lumia Stream that the script is complete and that the worker thread is safe to close. Lumia **refuses to run any code that does not contain a `done(` call**, and the worker stays alive leaking memory until it is reached, so call it exactly once as the last thing your code does.
 
-You can also choose to only stop some actions rather than stopping the whole command by using actionsToStop.
-The different actionsToStop keys relate to the action. The keys are:
+**`done()` on its own is the right answer almost every time.** The options below exist to change what the *rest of the command* does, so only reach for one when you actually want that.
+
+| You want to… | Call |
+| --- | --- |
+| Finish. The command carries on normally (this is the default) | `done()` |
+| Cancel the whole command — no lights, no built-in Chatbot reply, no TTS, no actions | `done({ shouldStop: true })` |
+| Let the command run, but silence specific parts of it | `done({ shouldStop: true, actionsToStop: ['chatbot'] })` |
+| Hand values to the actions that run after your code | `done({ variables: { message: 'Message changed' } })` |
+
+:::danger `actionsToStop` needs `shouldStop: true` next to it
+
+Lumia only reads `actionsToStop` when `shouldStop` is `true`, so `done({ actionsToStop: ['chatbot'] })` on its own is a **silent no-op** — the command runs completely unchanged.
+
+- `shouldStop: true` **with** a non-empty `actionsToStop` → "skip these parts, run everything else".
+- `shouldStop: true` **without** `actionsToStop` (missing or `[]`) → "stop the entire command".
+
+:::
+
+The `actionsToStop` keys name a part of the command. The keys are:
 `devices, tts, chatbot, hfx, lumia, overlay, api, commandRunner, inputEvent, actions, voicemod, streamerbot, obs, slobs, midi, osc, mqtt, serial, broadlink, websocket, twitter, twitch, spotify, vlc, artnet`
 
 ```js
-// Basic done
+// Basic done — use this unless you have a reason not to
 async function() {
     done();
 }
-// Should stop
+// Cancel the whole command
 async function() {
-    done({ shouldStop: true, actionsToStop: [] });
+    done({ shouldStop: true });
 }
-// Should stop certain actions like tts and chatbot
+// Let the command run but skip its built-in TTS and Chatbot reply
 async function() {
     done({ shouldStop: true, actionsToStop: ['tts', 'chatbot'] });
 }
-// Passing variables
+// Passing variables to the actions that run after this code
 async function() {
     done({ variables: { message: "Message changed" } });
+}
+```
+
+#### Replacing the command's built-in reply
+
+This is the most common reason to touch these options at all: your code sends its own `chatbot()` message and you don't want the command's own Chatbot reply going out as well. Silence **just that part** — don't cancel the command.
+
+```js
+async function() {
+    chatbot({ message: `Nice one {{username}}` });
+
+    // Lights, overlays and actions still run — only the built-in Chatbot reply is skipped
+    done({ shouldStop: true, actionsToStop: ['chatbot'] });
+}
+```
+
+Cancel the whole command only when the command genuinely should not have run — bad input, a viewer who isn't allowed, nothing to do:
+
+```js
+async function() {
+    chatbot({ message: 'Usage: !addpoints <username> <amount>' });
+    done({ shouldStop: true });
+}
+```
+
+#### Fixing the input instead of replacing the reply
+
+`done({ variables: ... })` overwrites variables for everything that runs after your code, and `{{arg=N}}` reads its tokens from `{{message}}`. So when a command's only problem is messy input — arguments in either order, a stray `@`, a viewer who may not exist — you can validate in code, rewrite `message`, and leave the streamer's reply template completely untouched:
+
+```js
+async function() {
+    // ...work out a clean target and amount from "{{message}}"
+
+    // The command's own reply now sees the cleaned values through {{arg=1}} and {{arg=2}}
+    done({ variables: { message: target + ' ' + amount } });
+}
+```
+
+This is usually smaller and more reliable than rebuilding the whole reply in JavaScript — see the "Smarter add points command" example.
+
+#### Exiting early
+
+`shouldStop` is **not** how you exit early. To leave your script before the end, call `done()` and then `return` — a `return` without `done()` leaves the worker hanging.
+
+```js
+async function() {
+    const levels = await getVariable('userLevelsRaw');
+    if (!levels?.mod) {
+        chatbot({ message: 'Mods only!' });
+        done({ shouldStop: true });
+        return;
+    }
+
+    // ...the rest of the script
+    done();
 }
 ```
 
@@ -283,11 +354,53 @@ async function() {
 }
 ```
 
+## Triggering things you have already built
+
+`callAlert`, `callCommand`, `callChatbotCommand`, `callTwitchPoint`, `callTwitchExtension` and `callKickPoint` re-trigger a command or alert **that already exists in Lumia**, looked up by its name.
+
+:::danger Never invent a name to call
+
+These helpers do not create behaviour, and they do not take IDs. If nothing in Lumia matches the name you pass, `callCommand` / `callChatbotCommand` / `callTwitchPoint` / `callTwitchExtension` / `callKickPoint` resolve to `false` and **do nothing at all** — no error, no toast, no log entry. `callAlert` queues the name blindly and it goes nowhere. Code like `callChatbotCommand({ name: 'addpoints_apply' })`, for a command the streamer never created, reads as correct and silently does nothing.
+
+Only pass a name the streamer has told you exists, or one you read back from `getCommands()` / `getAllCommands()`. Never invent a helper command such as `addpoints_apply`, `apply_points` or `..._handler`, never split your logic across a command you're asking the streamer to build, and never emit placeholders like `REPLACE_WITH_COMMAND_ID`. There is no `executeCommand` global.
+
+:::
+
+When you want an **effect**, perform it directly instead of calling a command that would perform it:
+
+| You want to… | Do **not** | Do |
+| --- | --- | --- |
+| Send a chat message | `callChatbotCommand({ name: 'say_something' })` | `chatbot({ message: '…' })` |
+| Speak | `callCommand({ name: 'tts_helper' })` | `tts({ message: '…' })` |
+| Add / remove a viewer's loyalty points | `callChatbotCommand({ name: 'addpoints_apply' })` | `actions([{ base: 'lumia', type: 'setUserLoyaltyPoint', value: { value: '100', message: 'someviewer' } }])` |
+| Change an OBS scene | `callCommand({ name: 'switch_scene' })` | `sendRawObsJson({ 'request-type': 'SetCurrentProgramScene', sceneName: 'My Scene' })` |
+| Play a sound | `callCommand({ name: 'play_sound' })` | `playAudio({ path: '…' })` |
+| Set a variable | `callCommand({ name: 'set_var' })` | `setVariable({ name: 'coins', value: 3 })` |
+| Show / hide an overlay layer | `callCommand({ name: 'show_layer' })` | `overlaySetLayerVisibility({ layer: 'My layer', on: true })` |
+
+Anything without a dedicated helper goes through `actions([...])` — see `custom-actions.md`.
+
+If you aren't certain a name exists, check before calling it and fall back to doing the work yourself:
+
+```js
+async function() {
+    const all = await getAllCommands({});
+
+    if (all.chatbotCommands.includes('welcome')) {
+        callChatbotCommand({ name: 'welcome' });
+    } else {
+        chatbot({ message: 'Welcome {{username}}!' });
+    }
+
+    done();
+}
+```
+
 ### Call Alert
 
 `callAlert({ name: string; variation?: string; variableValues?: {[key: string]: string|number } })`: Call an alert based on your conditions. You can also call a variation given it's name. When calling an alert/command from custom code the variableValues will be inherited from the parent, but you can also override variable values by passing it in to the call function.
 
-The `name` must be one of the valid alert keys (the `LumiaAlertValues` list). This is the full current list, grouped by platform:
+The `name` must be one of the valid alert keys (the `LumiaAlertValues` list) below — it is **not** a name you make up, and it is not the label the streamer typed in the UI. An unknown key is not rejected: the alert is queued and nothing happens.
 
 ```
 // Lumia Stream
@@ -342,18 +455,22 @@ async function() {
 
 ### Call Command
 
-`callCommand({ name: string; variableValues?: {[key: string]: string|number } })`: Call a command based on your conditions. When calling an alert/command from custom code the variableValues will be inherited from the parent, but you can also override variable values by passing it in to the call function.
+`callCommand({ name: string; variableValues?: {[key: string]: string|number } })`: Call a chat command **the streamer has already created**, by its name. When calling an alert/command from custom code the variableValues will be inherited from the parent, but you can also override variable values by passing it in to the call function. Resolves to `true` when the command was found and queued, and `false` — silently, with no error — when no command has that name.
 
 ```js
 async function() {
 	// This will call command called 'cheers' and change the variable named "message" to the value "you are awesome"
-    callCommand({ name: 'cheers', variableValues: {'message': 'you are awesome' } })
+    const ran = await callCommand({ name: 'cheers', variableValues: {'message': 'you are awesome' } });
+    if (!ran) {
+        log('No command named cheers exists');
+    }
+    done();
 }
 ```
 
 ### Call Chatbot Command
 
-`callChatbotCommand({ name: string; variableValues?: {[key: string]: string|number } })`: Call a chatbot command based on your conditions. When calling an alert/command from custom code the variableValues will be inherited from the parent, but you can also override variable values by passing it in to the call function.
+`callChatbotCommand({ name: string; variableValues?: {[key: string]: string|number } })`: Call a chatbot command **the streamer has already created**, by its name. When calling an alert/command from custom code the variableValues will be inherited from the parent, but you can also override variable values by passing it in to the call function. Resolves to `true` when the command was found and queued, and `false` — silently, with no error — when no chatbot command has that name.
 
 ```js
 async function() {
@@ -394,6 +511,69 @@ async function() {
     callKickPoint({ name: 'point', variableValues: {'message': "you are awesome" } });
 }
 ```
+
+## Loyalty points
+
+These helpers read and write loyalty balances directly. Use them instead of `{{get_user_loyalty_points=…}}`, `{{add_points=…}}`, `{{set_points=…}}` or `{{give_points=…}}`: a `{{…}}` token is replaced **before** your JavaScript runs, so it cannot take a username your code computed and it cannot see a change you made earlier in the same script. The helpers run when you call them and always reflect current state. `platform` is optional everywhere and defaults to the platform of the event that triggered the code.
+
+| Helper | Returns |
+| --- | --- |
+| `getLoyaltyPoints({ username, platform })` | the balance as a number, `0` for a viewer Lumia has never seen |
+| `getLoyaltyUser({ username, platform })` | the full viewer record (`points`, `points_all_time`, `watchtime`, `avatar`, …) or `null` |
+| `getLoyaltyTop({ limit })` | `[{ username, points }]`, highest first, default 5 |
+| `getLoyaltySettings()` | `{ on, currencyName, watchtimeLength, pointsMap, userlevelCost }` |
+| `addLoyaltyPoints({ username, points, platform })` | the **new** balance; a negative `points` subtracts |
+| `setLoyaltyPoints({ username, points, platform })` | the new balance, or `null` if the viewer could not be set |
+| `transferLoyaltyPoints({ from, to, points, platform })` | `{ ok, reason? }` — fails when the sender cannot afford it |
+
+```js
+async function() {
+    const { currencyName } = await getLoyaltySettings();
+    const balance = await getLoyaltyPoints({ username: "{{username}}" });
+
+    if (balance < 100) {
+        chatbot({ message: `You need 100 ${currencyName} and only have ${balance}.` });
+        return done({ shouldStop: true, actionsToStop: ['chatbot'] });
+    }
+
+    // The username can come from anywhere — a loop, an API response, your own logic
+    const newBalance = await addLoyaltyPoints({ username: "{{username}}", points: -100 });
+    chatbot({ message: `Spent 100 ${currencyName}. You now have ${newBalance}.` });
+    done({ shouldStop: true, actionsToStop: ['chatbot'] });
+}
+```
+
+Reward every name in a list — impossible with variable functions, because the names are not known until the code runs:
+
+```js
+async function() {
+    const winners = (await getLoyaltyTop({ limit: 3 })).map((row) => row.username);
+    for (const winner of winners) {
+        await addLoyaltyPoints({ username: winner, points: 50 });
+    }
+    chatbot({ message: `Bonus paid to ${winners.join(', ')}` });
+    done({ shouldStop: true, actionsToStop: ['chatbot'] });
+}
+```
+
+`addLoyaltyPoints` creates a viewer Lumia has not seen before. The `setUserLoyaltyPoint` action does not — it looks the viewer up first and does nothing if they are missing — so prefer the helper. The action is still available and is documented in `custom-actions.md`.
+
+## Resolving variables at runtime
+
+`resolveVariables(text)` runs a string through the same template engine that resolves command replies, but **when you call it** rather than before the worker starts. Use it for the few variable functions that have no helper, especially when the argument is something your code worked out.
+
+```js
+async function() {
+    const target = (await getVariable('raid_target')) || "{{username}}";
+
+    // A {{…}} token written literally here would have resolved before `target` existed
+    const followage = await resolveVariables(`{{twitch_followage=${target}}}`);
+    chatbot({ message: `${target} has been following for ${followage}` });
+    done({ shouldStop: true, actionsToStop: ['chatbot'] });
+}
+```
+
+It returns the resolved string. Side-effecting functions really do fire when called, so do not pass `{{add_points=…}}` to it — use `addLoyaltyPoints` instead, which returns the new balance rather than a sentence.
 
 ### Read File
 
