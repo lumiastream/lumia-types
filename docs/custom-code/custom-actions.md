@@ -97,6 +97,9 @@ Most `lumia` actions have a dedicated helper already (`chatbot`, `tts`, `playAud
 
 ```js
 async function() {
+    // Text to speech (volume and speed are percentages; speed is 20-200 where 100 is the voice's normal pace)
+    await actions([{ base: "lumia", type: "tts", value: { message: "Hello {{username}}", volume: 100, speed: 130 } }]);
+
     // Song requests
     await actions([{ base: "lumia", type: "addSongRequest", value: { value: "never gonna give you up" } }]); // a search term or url
     await actions([{ base: "lumia", type: "skipSongRequest" }]);

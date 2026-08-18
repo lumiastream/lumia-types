@@ -599,12 +599,12 @@ async function() {
 
 ### Text To Speech (TTS)
 
-`tts({ message: string; voice?: string; volume?: number })`: You can trigger Text To Speech directly inside of your code. You can even choose the voice and set the volume optionally
+`tts({ message: string; voice?: string; volume?: number; speed?: number })`: You can trigger Text To Speech directly inside of your code. You can even choose the voice, set the volume, and set the speed optionally. `speed` is a percentage of the voice's normal talking speed, from 20 to 200, and defaults to 100
 
 ```js
 async function() {
-	// This will read the message with text to speach using the voice that you added with the volume 60%
-    tts({ message: 'Lumia stream loves you',voice: 'Brian', volume: 60 });
+	// This will read the message with text to speach using the voice that you added with the volume 60% at 130% speed
+    tts({ message: 'Lumia stream loves you',voice: 'Brian', volume: 60, speed: 130 });
 }
 ```
 
