@@ -269,6 +269,7 @@ export const AlertsToFilter: LumiaAlertValues[] = [
 	LumiaAlertValues.FACEBOOK_FIRST_CHATTER,
 
 	// --- TikTok ---
+	LumiaAlertValues.TIKTOK_STREAM_LIVE,
 	LumiaAlertValues.TIKTOK_STREAM_END,
 	LumiaAlertValues.TIKTOK_ENTRANCE,
 	LumiaAlertValues.TIKTOK_FIRST_CHATTER,

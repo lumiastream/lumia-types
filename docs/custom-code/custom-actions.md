@@ -79,7 +79,7 @@ These are the built-in `type` values for each system base.
 
 **`base: "overlay"`** — `alertTrigger, alertEvent, setOverlayVisibility, setLayerVisibility, setLayerPosition, setLayerSize, setTextContent, setImageContent, setVideoContent, setAudioContent, setLayerVolume, playPauseMedia, setContent, sendShoutout, sendCustomOverlayContent, sendGameTrigger, sendGameUpdate, takeScreenshot, spinwheelReset, spinwheelAddItem, spinwheelRemoveItem, sendHfx, hudOverlayChange, hudToggle, hudVolumeSet, hudOpacitySet, timerIncrement, pollTrigger, pollStart, pollResetVotes, pollSetTimer, pollAddItem, pollRemoveItem, delay`
 
-**`base: "api"`** — `get, put, post, patch, delete, delay`
+**`base: "api"`** — `get, put, post, patch, delete, delay`. `value` is `{ url, method, rawBody?, headers?, body?, timeout?, delay? }` — `headers` and `body` are arrays of `"Key=Value"` **strings**, never objects (e.g. `headers: ["Authorization=Bearer abc"]`); `rawBody` is a JSON string and wins over `body`.
 
 **`base: "commandRunner"`** — `app/file, shell command, delay`
 

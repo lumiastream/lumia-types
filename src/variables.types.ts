@@ -2826,6 +2826,7 @@ export const AllVariables = {
 				'amount',
 			],
 			battleEnd: ['battleId', 'battleLabel', 'creatorUsername', 'opponentUsername', 'creatorScore', 'opponentScore', 'result', 'winnerUsername', 'loserUsername'],
+			streamLive: ['eventTime'],
 			streamEnd: ['eventTime'],
 			newVideo: ['title', 'description', 'embed', 'link', 'id', 'duration', 'likes', 'shares', 'views', 'comments'],
 		},
