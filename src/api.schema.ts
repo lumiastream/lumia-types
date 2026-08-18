@@ -276,6 +276,36 @@ export const API_COMMANDS: Record<string, ApiCommandSpec> = {
 		documented: true,
 		notes: 'Rebuilds the chat command matcher (SetupCommands) after dispatch. On newer Lumia, unknown names 404 (validated per kind) and twitch-points/kick-points also sync the platform reward state while twitch-extension recompiles the extension config; older versions only handled kind chat and silently no-opped unknown names.',
 	},
+	'run-actions': {
+		type: 'run-actions',
+		title: 'Run actions',
+		execution: 'direct',
+		params: {
+			actions: {
+				type: 'array',
+				required: true,
+				description: 'Actions to run in order. Each needs a "type", plus a "base" ("lumia", "overlay", "api", or an integration/plugin key) unless the type is delay/conditional/loop/randomGroup/stop.',
+			},
+			extraSettings: {
+				type: 'object',
+				required: false,
+				description: 'Template variables the actions can read, e.g. { username: "lumia" } for {{username}}.',
+			},
+		},
+		responds: 'value',
+		documented: true,
+		notes:
+			'Runs the list through the same dispatcher commands and alerts use, so integrations and plugins are included. Capped at 50 actions and 5 levels of nesting. Rejects code, writeToFile, and the commandRunner/inputEvents bases with 403 action_not_allowed, including inside conditional/loop/randomGroup branches. Errors inside an individual action are logged in Lumia rather than returned.',
+	},
+	'get-action-catalog': {
+		type: 'get-action-catalog',
+		title: 'Get the action catalog',
+		execution: 'direct',
+		params: {},
+		responds: 'value',
+		documented: true,
+		notes: 'Returns a plain-text listing of every action run-actions accepts and the value shape each one expects.',
+	},
 	'create-chatbot-command': {
 		type: 'create-chatbot-command',
 		title: 'Create a chatbot command',
