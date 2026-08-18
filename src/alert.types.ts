@@ -6332,6 +6332,15 @@ export const LumiaAlertConfigs: Record<
 			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
 		],
 	},
+	[LumiaAlertValues.TIKTOK_STREAM_LIVE]: {
+		connection: LumiaIntegrations.TIKTOK,
+		message: 'Tiktok stream is now live',
+		eventlistMessage: 'Stream live',
+		eventlistDetailedMessage: 'stream is now live',
+		acceptedVariables: AllVariables.tiktok.alerts.streamLive,
+		secondMessageTemplate: 'Tiktok stream is now live',
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
+	},
 	[LumiaAlertValues.TIKTOK_STREAM_END]: {
 		connection: LumiaIntegrations.TIKTOK,
 		message: 'Tiktok stream ended',

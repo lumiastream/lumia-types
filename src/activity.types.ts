@@ -394,6 +394,8 @@ export enum LumiaAlertValues {
 	TIKTOK_BATTLE_END = 'tiktok-battleEnd',
 	/** TikTok share */
 	TIKTOK_SHARE = 'tiktok-share',
+	/** TikTok stream went live */
+	TIKTOK_STREAM_LIVE = 'tiktok-streamLive',
 	/** TikTok stream ended */
 	TIKTOK_STREAM_END = 'tiktok-streamEnd',
 	/** New TikTok video posted */
@@ -739,6 +741,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TIKTOK_BATTLE_PROGRESS]: 'Tiktok Battle Progress',
 	[LumiaAlertValues.TIKTOK_BATTLE_END]: 'Tiktok Battle End',
 	[LumiaAlertValues.TIKTOK_SHARE]: 'Tiktok Share',
+	[LumiaAlertValues.TIKTOK_STREAM_LIVE]: 'Tiktok Stream Live',
 	[LumiaAlertValues.TIKTOK_STREAM_END]: 'Tiktok Stream Ended',
 	[LumiaAlertValues.TIKTOK_NEW_VIDEO]: 'Tiktok New Video',
 	[LumiaAlertValues.TIKTOK_ENTRANCE]: 'Tiktok Entrance',

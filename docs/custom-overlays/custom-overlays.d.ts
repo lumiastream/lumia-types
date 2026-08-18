@@ -935,6 +935,8 @@ export declare enum LumiaAlertValues {
     TIKTOK_BATTLE_END = "tiktok-battleEnd",
     /** TikTok share */
     TIKTOK_SHARE = "tiktok-share",
+    /** TikTok stream went live */
+    TIKTOK_STREAM_LIVE = "tiktok-streamLive",
     /** TikTok stream ended */
     TIKTOK_STREAM_END = "tiktok-streamEnd",
     /** New TikTok video posted */

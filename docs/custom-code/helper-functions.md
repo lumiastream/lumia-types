@@ -268,7 +268,7 @@ async function() {
 
 `getLights()`: Get the list of lights the streamer has along with it's type and id. The type and id is required to send color or power to specific lights
 
-Returns an array of `{ id, name, alias, type }`. `type` is the integration key (e.g. `hue`, `govee`, `wled`, `elgato`, `virtuallights`), `alias` is your custom label, and `name` is the device's original name. Pass `{ id, type }` objects to `sendColor`'s `lights` array to target specific lights. Disconnected or disabled integrations are omitted, so an empty array means nothing is connected.
+Returns an array of `{ id, name, alias, type }`. `type` is the integration key (e.g. `hue`, `govee`, `wled`, `elgato`, `virtuallights`), `alias` is your custom label, and `name` is the device's original name. Pass `{ id, type }` objects to `sendColor`'s `lights` array to target specific lights, or `{ type }` on its own to target every light of that type. Disconnected or disabled integrations are omitted, so an empty array means nothing is connected.
 
 ```js
 async function() {
@@ -278,7 +278,9 @@ async function() {
 
 ### Send Color To Lights
 
-`sendColor({ color?: string | { r: number; g: number; b: number }; power?: boolean; brightness?: number; transition?: number; lights?: Array<{ id: string | number; type: string }> })`: Send a color or power to either all lights or a set of lights. Do not send the `lights` array when you want to target every lights. Every parameter is optional. The type and id is required to send color or power to specific lights
+`sendColor({ color?: string | { r: number; g: number; b: number }; power?: boolean; brightness?: number; transition?: number; lights?: Array<{ type: string; id?: string | number }> })`: Send a color or power to either all lights or a set of lights. Do not send the `lights` array when you want to target every lights. Every parameter is optional.
+
+In each `lights` entry `type` is required and `id` is optional: with an `id` only that specific light reacts, without an `id` every light of that type reacts. A bare string (e.g. `"hue"`) is treated the same as `{ type: "hue" }`.
 
 ```js
 async function() {
@@ -293,6 +295,12 @@ async function() {
 
     // Send to specific lights
     sendColor({ color: "#FF4076", brightness: 100, transition: 0, lights: [{ type: "hue", id: "1" }, { type: "lifx", id: "abc" }] });
+
+    // Leave the id out to hit every light of that type
+    sendColor({ color: "#FF4076", brightness: 100, transition: 0, lights: [{ type: "hue" }, { type: "wled" }] });
+
+    // Mix whole types with individual lights
+    sendColor({ color: "#FF4076", brightness: 100, transition: 0, lights: [{ type: "hue" }, { type: "lifx", id: "abc" }] });
 
     // For Nanoleaf lights, ensure id values are integers without quotation marks (e.g., 14608). Quoted string IDs will not work for Nanoleaf.
     sendColor({ color: "#FF4076", brightness: 100, transition: 0, lights: [{ type: "nanoleaf", id: 14608 }] });
@@ -416,7 +424,7 @@ youtube-streamLive, youtube-streamOffline, youtube-firstChatter, youtube-entranc
 facebook-streamLive, facebook-streamOffline, facebook-firstChatter, facebook-entrance, facebook-follower, facebook-reaction, facebook-star, facebook-support, facebook-subscriptionGift, facebook-share, facebook-fan
 
 // TikTok
-tiktok-firstChatter, tiktok-entrance, tiktok-follower, tiktok-like, tiktok-totalLikes, tiktok-gift, tiktok-superFan, tiktok-superFanBox, tiktok-treasureChest, tiktok-question, tiktok-poll, tiktok-shopPurchase, tiktok-pinMessage, tiktok-battleStart, tiktok-battleProgress, tiktok-battleEnd, tiktok-share, tiktok-streamEnd, tiktok-newVideo
+tiktok-firstChatter, tiktok-entrance, tiktok-follower, tiktok-like, tiktok-totalLikes, tiktok-gift, tiktok-superFan, tiktok-superFanBox, tiktok-treasureChest, tiktok-question, tiktok-poll, tiktok-shopPurchase, tiktok-pinMessage, tiktok-battleStart, tiktok-battleProgress, tiktok-battleEnd, tiktok-share, tiktok-streamLive, tiktok-streamEnd, tiktok-newVideo
 
 // Kick
 kick-points, kick-firstChatter, kick-entrance, kick-follower, kick-sessionFollowers, kick-subscriber, kick-sessionSubs, kick-subscriptionGift, kick-sessionGiftSubscriptions, kick-kicks, kick-sessionKicks, kick-host, kick-banned, kick-unbanned
