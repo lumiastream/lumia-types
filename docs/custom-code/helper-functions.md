@@ -528,7 +528,7 @@ These helpers read and write loyalty balances directly. Use them instead of `{{g
 | --- | --- |
 | `getLoyaltyPoints({ username, platform })` | the balance as a number, `0` for a viewer Lumia has never seen |
 | `getLoyaltyUser({ username, platform })` | the full viewer record (`points`, `points_all_time`, `watchtime`, `avatar`, …) or `null` |
-| `getLoyaltyTop({ limit })` | `[{ username, points }]`, highest first, default 5 |
+| `getLoyaltyTop({ limit, sortBy })` | `[{ username, points, points_all_time, watchtime, avatar, platform }]`, highest first, default 5, **max 100**. `sortBy` is `current` (default), `alltime`, or `watchtime` — it picks the ranking, and every field comes back either way |
 | `getLoyaltySettings()` | `{ on, currencyName, watchtimeLength, pointsMap, userlevelCost }` |
 | `addLoyaltyPoints({ username, points, platform })` | the **new** balance; a negative `points` subtracts |
 | `setLoyaltyPoints({ username, points, platform })` | the new balance, or `null` if the viewer could not be set |

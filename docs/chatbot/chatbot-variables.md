@@ -135,7 +135,7 @@ Variable functions perform logic. They are written `{{name=arguments}}`. Argumen
 - `{{lookup_user=lumiacove,twitch,displayname}}` — look up another user's field. Fields: `displayname`, `avatar`, `channelDescription`, `channelViews`.
 - `{{user_watchtime={{username}}}}` — the viewer's total watch time.
 - Every lookup above takes a token just as happily as a typed name: `{{lookup_user={{arg=1}},twitch,displayname}}` looks up whoever the viewer named, `{{get_avatar={{username}}}}` gets the running viewer's own avatar.
-- `{{user_rank}}` / `{{user_rank=lumiacove}}` — the viewer's position on the loyalty leaderboard.
+- `{{user_rank}}` / `{{user_rank=lumiacove}}` — the viewer's position on the loyalty leaderboard, by all-time points. Blank when the viewer has no loyalty entry. Placements deeper than 10,000 render as `10001+` instead of an exact number.
 - `{{is_first_chatter}}` — the viewer's name if they were the first to chat this session, otherwise empty.
 - `{{lookup_user_game=lumiacove}}` / `{{lookup_user_title=lumiacove}}` — another channel's current category / stream title.
 - `{{get_avatar}}` / `{{get_avatar=lumiacove}}` — a viewer's avatar image URL (`{{twitch_get_avatar=lumiacove}}` for Twitch specifically).
@@ -148,7 +148,7 @@ Variable functions perform logic. They are written `{{name=arguments}}`. Argumen
 - `{{add_points={{username}},100}}` — add points to a user (a negative amount subtracts).
 - `{{set_points={{username}},100}}` — set a user's points to an exact total.
 - `{{give_points={{arg=1}},{{arg=2}}}}` — transfer points from the running viewer to another user; it reports automatically when the sender cannot afford it.
-- `{{loyalty_top=5}}` — the top N point holders. `{{loyalty_leaderboard_url}}` — the public leaderboard link.
+- `{{loyalty_top=5}}` / `{{loyalty_top=5,alltime}}` — the top N holders, capped at 10 so the reply fits in one chat message. The second argument sorts by `current` (default), `alltime`, or `watchtime`, and the printed score follows it. `{{loyalty_leaderboard_url}}` — the public leaderboard link.
 
 To change a balance, always use these functions — they persist the change. `{{math}}` only outputs a number for display; it never moves points.
 
