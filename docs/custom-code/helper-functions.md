@@ -607,7 +607,7 @@ async function() {
 
 ### Text To Speech (TTS)
 
-`tts({ message: string; voice?: string; volume?: number; speed?: number })`: You can trigger Text To Speech directly inside of your code. You can even choose the voice, set the volume, and set the speed optionally. `speed` is a percentage of the voice's normal talking speed, from 20 to 200, and defaults to 100
+`tts({ message: string; voice?: string; volume?: number; speed?: number })`: You can trigger Text To Speech directly inside of your code. You can even choose the voice, set the volume, and set the speed optionally. `speed` is a percentage of the voice's normal talking speed, from 20 to 200, and defaults to 100. `voice` accepts a voice name/id, `'random'` for a random system voice, or `'edge:random'`, `'gtranslate:random'` and `'<pluginId>:random'` to pick a random recommended voice from that provider each time
 
 ```js
 async function() {
