@@ -48,6 +48,8 @@ Only output `{{name}}` when `name` is one of:
 
 In JS, wrap tokens in quotes: `const n = Number("{{twitch_session_bits_count}}") || 0;`. Prefer `Overlay.data.key` in JS for Config/Data values.
 
+Live values come from Lumia, not from Data: counts, goals, top supporters and latest events are SystemVariables (`{{twitch_session_subscribers_count}}`, `{{twitch_session_bits_count}}`, …) or are built from alert listeners. Keep Config/Data for what the streamer sets — targets, labels, colors.
+
 ## Events
 
 Valid listener names: `chat`, `alert`, `hfx`, `virtuallight`, `overlaycontent`.
@@ -61,6 +63,8 @@ Alert rules:
 - Guard optional fields with `?.` and sensible fallbacks.
 
 Common `data.alert` values: `twitch-follower`, `twitch-subscriber`, `twitch-raid`, `twitch-bits`, `twitch-points`, `kick-follower`, `kick-subscriber`, `kick-points`, and `*-donation` (streamlabs, streamelements, kofi, fourthwall, tiltify-campaignDonation, extralife, donordrive, lumiastream). Full list and OBS events / chatbot platforms in the extended doc.
+
+Lumia already detects many moments as alerts — `twitch-firstChatter`, `twitch-entrance`, `twitch-raid`, and more in the extended doc. Listen for the built-in alert rather than rebuilding it from `chat`; the overlay may not be open when the moment happens.
 
 ## Overlay API
 
@@ -107,3 +111,4 @@ Build the request as a Custom Overlay unless the user explicitly asks for a plug
 - Every `getStorage` has a null-check + seed. Listener names are literal strings; alert branches use exact `data.alert` equality.
 - No `innerHTML` with user text, no `localStorage`/`sessionStorage`, no `event.detail` in `Overlay.on`, no `removeStorage`, no TypeScript. Chatbot platform (if set) from the allowed list.
 - Changed tabs returned in full, not diffs (Configs + Data together); new overlays have a valid `codeId`.
+- Live values stay live: counts, goals and top supporters read a SystemVariable or an alert listener rather than a Data field; running totals that must survive an overlay reload are saved with `Overlay.saveStorage`; moments Lumia already sends as alerts (`twitch-firstChatter`, `twitch-entrance`, …) use that alert instead of being rebuilt from `chat`.
