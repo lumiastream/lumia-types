@@ -27,6 +27,7 @@ Grouped by what the overlay does, so you can jump to the closest starting point:
 - [HFX Listener Banner](#hfx-listener-banner) — `Overlay.on("hfx", ...)` triggers an animated banner with the user, command, and message.
 - [Virtual Light Monitor](#virtual-light-monitor) — `Overlay.on("virtuallight", ...)` shows the current light color/brightness/power; persists across reloads with `saveStorage` + first-load null-check.
 - [Loyalty Points Leaderboard](#loyalty-points-leaderboard) — `Overlay.getLoyaltyPoints` / `addLoyaltyPoints` + `Overlay.chatbot` for `!points` and `!give` commands.
+- [Top Cheerers Leaderboard](#top-cheerers-leaderboard) — per-stream top 5 from `twitch-bits` alerts, saved with `saveStorage` and reset on `twitch-streamLive`; for just the #1, use `{{session_top_cheerer}}`.
 
 **Visual**
 
@@ -2904,6 +2905,157 @@ setInterval(refresh, 30000);
 
 ```json
 {
+	"accentColor": "#ffcc00",
+	"font": "Inter"
+}
+```
+
+## Top Cheerers Leaderboard
+
+Top 5 cheerers of the current stream, built from `twitch-bits` alerts. The running totals are saved with `Overlay.saveStorage` so a browser-source refresh or an OBS restart mid-stream does not wipe the board, and they reset when `twitch-streamLive` fires at the start of the next stream.
+
+If you only need the single top cheerer, skip all of this and put the built-in SystemVariables in the HTML: `{{session_top_cheerer}}` and `{{session_top_cheerer_amount}}` update live on their own. Build your own totals only when Lumia has no variable for what you need, like a top 5.
+
+### HTML
+
+```html
+<div id="board">
+	<h2>{{title}}</h2>
+	<ol id="list"></ol>
+	<div id="empty">No cheers yet</div>
+</div>
+```
+
+### CSS
+
+```css
+body {
+	background: transparent;
+	font-family: "{{font}}";
+	color: #ffffff;
+}
+#board {
+	width: 340px;
+	padding: 18px 22px;
+	background: rgba(10, 10, 20, 0.85);
+	border-radius: 16px;
+}
+#board h2 {
+	margin: 0 0 10px;
+	font-size: 20px;
+	color: {{accentColor}};
+}
+#list {
+	margin: 0;
+	padding: 0 0 0 22px;
+	font-size: 16px;
+	line-height: 1.7;
+}
+#list li .amount {
+	float: right;
+	font-weight: 700;
+	color: {{accentColor}};
+}
+#empty {
+	opacity: 0.7;
+}
+#empty.hidden {
+	display: none;
+}
+```
+
+### JS
+
+```js
+const listEl = document.getElementById("list");
+const emptyEl = document.getElementById("empty");
+const STORAGE_KEY = "stream_cheer_totals";
+const size = Number(Overlay.data.size) || 5;
+
+let totals = await Overlay.getStorage(STORAGE_KEY);
+if (totals == null) {
+	totals = {};
+	await Overlay.saveStorage(STORAGE_KEY, totals);
+}
+render();
+
+function render() {
+	const rows = Object.entries(totals)
+		.sort((a, b) => b[1] - a[1])
+		.slice(0, size);
+
+	listEl.textContent = "";
+	for (const [username, bits] of rows) {
+		const li = document.createElement("li");
+		const name = document.createElement("span");
+		name.textContent = username;
+		const amount = document.createElement("span");
+		amount.className = "amount";
+		amount.textContent = `${bits.toLocaleString()} bits`;
+		li.append(name, amount);
+		listEl.appendChild(li);
+	}
+	emptyEl.classList.toggle("hidden", rows.length > 0);
+}
+
+Overlay.on("alert", async (data) => {
+	if (data.alert === "twitch-streamLive") {
+		totals = {};
+		await Overlay.saveStorage(STORAGE_KEY, totals);
+		render();
+		return;
+	}
+
+	if (data.alert !== "twitch-bits") return;
+
+	const settings = data.extraSettings || {};
+	const username = settings.username || data.dynamic?.username;
+	const bits = Number(data.dynamic?.value ?? settings.bits ?? settings.amount) || 0;
+	if (!username || bits <= 0) return;
+
+	totals[username] = (totals[username] || 0) + bits;
+	await Overlay.saveStorage(STORAGE_KEY, totals);
+	render();
+});
+```
+
+### Configs
+
+```json
+{
+	"title": {
+		"type": "input",
+		"label": "Title",
+		"order": 1,
+		"value": "Top Cheerers"
+	},
+	"size": {
+		"type": "number",
+		"label": "How many to show",
+		"order": 2,
+		"value": 5
+	},
+	"accentColor": {
+		"type": "colorpicker",
+		"label": "Accent color",
+		"order": 3,
+		"value": "#ffcc00"
+	},
+	"font": {
+		"type": "fontpicker",
+		"label": "Font",
+		"order": 4,
+		"value": "Inter"
+	}
+}
+```
+
+### Data
+
+```json
+{
+	"title": "Top Cheerers",
+	"size": 5,
 	"accentColor": "#ffcc00",
 	"font": "Inter"
 }
