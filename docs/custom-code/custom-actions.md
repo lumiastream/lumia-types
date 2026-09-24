@@ -75,7 +75,7 @@ async function() {
 
 These are the built-in `type` values for each system base.
 
-**`base: "lumia"`** — `callCommand, callRandomCommand, chatbot, tts, setStreamMode, toggleStreamMode, setFuzeAudioSensitivity, playAudio, writeToFile, setConnection, updateVariable, updateCounter, appendToVariable, unappendFromVariable, saveLocal, addToUserlevel, removeFromUserlevel, addToRestrictionsList, removeFromRestrictionsList, setFolder, setAlert, setAlertVariation, setCommand, setChatbotCommand, setTwitchPointsCommand, setTwitchExtensionCommand, setKickPointsCommand, setChatMatchCommand, setTwitchPointValue, setLoyaltyPointValue, setUserLoyaltyPoint, setTwitchExtensionBitsValue, setAutomation, setVoicecommands, sendToDiscordWebhook, sendToDiscordWithMediaWebhook, sendToWebhook, sendToPrinter, raffleEntry, raffleRemoveEntry, raffleGetWinner, raffleStart, raffleStop, raffleEnd, viewerQueueEntry, viewerQueueLeave, tournamentEntry, tournamentRemoveEntry, tournamentUpdatePoints, tournamentStart, tournamentEnd, viewerQueuePlayPause, viewerQueueEndQueue, viewerQueuePickPlayer, backToDefault, replayLastEventListEvent, runLastQueueItem, resumeQueue, pauseQueue, removeCurrentQueueItem, clearQueue, clearCooldowns, resetSession, cleanAll, refreshSettings, addSongRequest, skipSongRequest, clearSongRequestQueue, delay, setColor, accessory`
+**`base: "lumia"`** — `callCommand, callRandomCommand, chatbot, tts, setStreamMode, toggleStreamMode, setFuzeAudioSensitivity, playAudio, writeToFile, setConnection, updateVariable, updateCounter, appendToVariable, unappendFromVariable, saveLocal, addToUserlevel, removeFromUserlevel, addToRestrictionsList, removeFromRestrictionsList, setFolder, setAlert, setAlertVariation, setCommand, setChatbotCommand, setTwitchPointsCommand, setTwitchExtensionCommand, setKickPointsCommand, setChatMatchCommand, setTwitchPointValue, setLoyaltyPointValue, setUserLoyaltyPoint, setTwitchExtensionBitsValue, setAutomation, setVoicecommands, sendToDiscordWebhook, sendToDiscordWithMediaWebhook, sendToWebhook, sendToPrinter, raffleEntry, raffleRemoveEntry, raffleGetWinner, raffleStart, raffleStop, raffleEnd, viewerQueueEntry, viewerQueueLeave, tournamentEntry, tournamentRemoveEntry, tournamentUpdatePoints, tournamentStart, tournamentEnd, viewerQueuePlayPause, viewerQueueEndQueue, viewerQueuePickPlayer, backToDefault, replayLastEventListEvent, runLastQueueItem, resumeQueue, pauseQueue, removeCurrentQueueItem, clearQueue, clearCooldowns, resetSession, cleanAll, refreshSettings, addSongRequest, skipSongRequest, clearSongRequestQueue, delay, setColor, accessory`, plus the control-flow types `conditional, randomGroup, loop, stop` (see [Control-flow actions](#control-flow-actions) below)
 
 **`base: "overlay"`** — `alertTrigger, alertEvent, setOverlayVisibility, setLayerVisibility, setLayerPosition, setLayerSize, setTextContent, setImageContent, setVideoContent, setAudioContent, setLayerVolume, playPauseMedia, setContent, sendShoutout, sendCustomOverlayContent, sendGameTrigger, sendGameUpdate, takeScreenshot, spinwheelReset, spinwheelAddItem, spinwheelRemoveItem, sendHfx, hudOverlayChange, hudToggle, hudVolumeSet, hudOpacitySet, timerIncrement, pollTrigger, pollStart, pollResetVotes, pollSetTimer, pollAddItem, pollRemoveItem, delay`
 
@@ -90,6 +90,114 @@ These are the built-in `type` values for each system base.
 **delay step** — an entry with `type: "delay"` pauses the list; put the milliseconds in `delay` (e.g. `{ type: "delay", delay: 1000 }`). `duration` is accepted in place of `delay`, and the step runs under any `base`.
 
 > Tip: most of the `lumia` and `overlay` actions already have dedicated helper functions (`tts`, `chatbot`, `overlaySetTextContent`, etc.) in `helper-functions.md`. Reach for `actions()` mainly when you need an integration action that does not have a helper yet.
+
+### Control-flow actions
+
+Four action types add branching and repetition **inside** an action list: `conditional` (if / else), `randomGroup` (run one random branch), `loop` (repeat) and `stop` (end the list). The runner matches them by `type` alone, so any `base` works, but write `base: "lumia"`. Nested actions are ordinary action objects of any `base` (including other control-flow actions), and they run in order against the **same** variables as the rest of the list: a variable set by an action inside a branch is visible to the actions after the block.
+
+| type | `value` | what it does |
+| --- | --- | --- |
+| `conditional` | `{ if: [<condition rows>], then: [<actions>], else: [<actions>] }` | runs `then` when the conditions pass, otherwise `else` (optional); an empty `if` counts as passing |
+| `randomGroup` | `{ groups: [{ name: "<label>", weight: 1, actions: [<actions>] }] }` | picks exactly one group per run, weighted, and runs its actions |
+| `loop` | `{ mode: "count", count: "3", actions: [<actions>] }` | runs `actions` repeatedly; see the three modes below |
+| `stop` | `{}` | ends the current action list, including everything after the enclosing blocks |
+
+#### Condition rows (`conditional` and `loop` while mode)
+
+A condition row is `{ variable: "<variable name>", operator: "<operator>", value: "<compare to>", conditionComparison: "&&" }` — the same rows a command's own conditions use.
+
+- `variable` is a bare variable **name**, without braces (`"username"`, not `"{{username}}"`). It is looked up first among the list's own variables (event/command variables like `message` or `username`, plus anything set by earlier actions), then among your global Lumia variables. Dot paths reach into objects, e.g. `"data.user.name"`.
+- `value` accepts template tokens like `{{username}}`. `"true"` / `"false"` and plain numbers are compared as booleans / numbers, and a JSON array or object is parsed.
+- `conditionComparison` joins a row to the one before it and is ignored on the first row. `"&&"` rows bind tighter than `"||"` rows, so `A && B || C` means `(A and B) or C`. A missing value counts as `"&&"`.
+- A row with no `variable` or no `operator` counts as passing. If the variable doesn't exist, every operator except `is-empty` / `not-empty` fails.
+
+| operator | passes when |
+| --- | --- |
+| `equals` | loose match: text is compared case-insensitively, `"5"` equals `5`, `"true"` equals `true` |
+| `strict-equals` | exact match, same type and case (`"5"` in the value is a number, so a text variable `"5"` does not match) |
+| `not-equals` | the opposite of `equals` |
+| `contains` | text contains the value (case-insensitive), or a list contains it as an item, or an object has it as a key or `key: value` pair. A comma-separated value requires **every** item |
+| `not-contains` | the opposite of `contains` |
+| `greater-than` / `less-than` | numeric comparison; for a list or object it compares the item / key count; two non-numeric texts compare alphabetically |
+| `is-empty` / `not-empty` | the variable is (or isn't) missing, `null`, `""`, `[]` or `{}`; `value` is ignored |
+| `regex` | the value, as a regular expression (case-sensitive, no flags), matches the variable |
+
+#### `randomGroup`
+
+Each group's chance is its `weight` divided by the total weight. `weight` must be a positive **number**; a missing, zero, negative or text weight (such as `"2"`) counts as `1`. `name` is only a label. A group with an empty `actions` list is a valid "do nothing" outcome, and a `randomGroup` with no groups does nothing.
+
+#### `loop`
+
+`value` is `{ mode, count, list, if, actions }`; only the fields for the chosen `mode` are read. Iterations run one after another, each waiting for the previous one to finish. Inside the body, `{{loop_index}}` is the current iteration number starting at `0`, and in `list` mode `{{loop_item}}` is the current item. A loop with no `actions` does nothing.
+
+| mode | reads | runs |
+| --- | --- | --- |
+| `count` | `count: "5"` | that many times; the number is rounded down and limited to 0–1000, and anything that isn't a number runs 0 times |
+| `list` | `list: "red, green, blue"` | once per item; a JSON array (`["a","b"]`) is parsed, anything else is split on commas; items are trimmed, empty items are dropped, and each item is text |
+| `while` | `if: [<condition rows>]` | while the conditions pass, checked before every iteration; with no condition rows the loop is skipped entirely instead of running forever |
+
+- Every mode stops after **1000** iterations.
+- `count` and `list` accept template tokens, including your global Lumia variables (`list: "{{my_list}}"`, `count: "{{my_count}}"`). The list's own variables (event/command variables and anything set earlier in the list) win over a global variable with the same name. A variable holding an array is used as that array, so items that contain commas stay whole, and object items arrive in `{{loop_item}}` as JSON text. A token that doesn't resolve becomes empty, which means 0 iterations.
+- A `while` loop only ends if something in its body changes the condition, for example an `updateCounter` / `updateVariable` on the global variable it checks, or a `code` step returning a new value with `done({ variables })`. Put a delay step in the body so it can't spin through all 1000 iterations instantly.
+- `loop_index` and `loop_item` are ordinary variables, not scoped to the loop: they keep their last value after the loop ends, and a nested loop overwrites the outer loop's values.
+
+#### `stop`
+
+`stop` ends the action list it runs in. Inside a `conditional`, `randomGroup` or `loop` it also ends every enclosing block and the actions after them (a `stop` inside a loop body ends the loop and the rest of the list). A `code` step that calls `done({ shouldStop: true })` does the same. It only ends that one list: in a command, a `stop` in `actions.before` does not stop `actions.after` or the command's own light / overlay effect, and in custom code `await actions([...])` simply returns early while your code keeps running.
+
+```js
+async function() {
+    await actions([
+        {
+            base: "lumia",
+            type: "conditional",
+            value: {
+                if: [{ variable: "message", operator: "is-empty", value: "", conditionComparison: "&&" }],
+                then: [
+                    { base: "lumia", type: "chatbot", value: { message: "Usage: !hype <text>" } },
+                    { base: "lumia", type: "stop", value: {} }
+                ],
+                else: []
+            }
+        },
+        {
+            base: "lumia",
+            type: "randomGroup",
+            value: {
+                groups: [
+                    { name: "Common", weight: 3, actions: [{ base: "lumia", type: "chatbot", value: { message: "Hype!" } }] },
+                    { name: "Rare", weight: 1, actions: [{ base: "lumia", type: "tts", value: { message: "{{username}} says {{message}}" } }] }
+                ]
+            }
+        },
+        {
+            base: "lumia",
+            type: "loop",
+            value: {
+                mode: "list",
+                list: "red, green, blue",
+                actions: [
+                    { base: "lumia", type: "chatbot", value: { message: "Color {{loop_index}}: {{loop_item}}" } },
+                    { base: "lumia", type: "delay", delay: 1000 }
+                ]
+            }
+        },
+        {
+            base: "lumia",
+            type: "loop",
+            value: {
+                mode: "while",
+                if: [{ variable: "hype_level", operator: "less-than", value: "5", conditionComparison: "&&" }],
+                actions: [
+                    { base: "lumia", type: "updateCounter", value: { value: "hype_level", message: "1", operator: "+" } },
+                    { base: "lumia", type: "delay", delay: 500 }
+                ]
+            }
+        }
+    ]);
+    done();
+}
+```
 
 ### Common `lumia` action examples
 
