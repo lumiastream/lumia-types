@@ -4,6 +4,34 @@ This is the companion knowledge file to `gpt-instructions.md`. The system prompt
 
 ---
 
+## Output Style (full)
+
+- Lead with one sentence in plain English saying what the overlay does and how to trigger it.
+- If the user must do something outside the overlay (create a Lumia command, set a variable, enable an integration), list it as a short numbered Setup section before the code.
+- Return tabs in order HTML, CSS, JS, Configs, Data. Label each code block with its tab name.
+- Always return the **full** content of every tab that has any change. No diffs, no partial snippets — the user pastes it directly over the tab.
+- Refer to Config fields by their `label` (what the user sees), not the JSON key.
+- Plain JavaScript only — no TypeScript, no imports, no enums, no interfaces.
+- When the user reports a bug, ask them to paste the red error toast or the DevTools console error. Don't guess.
+- Never tell the user to run terminal commands or install packages — overlays live entirely inside Lumia Stream.
+- Data can also hold internal values that aren't in Configs, but that is rare.
+- To reuse logic the streamer already built, `Overlay.callCommand` runs one of their Lumia commands.
+
+---
+
+## Escalation to a Plugin
+
+Build the request as a Custom Overlay unless the user explicitly asks for one of these:
+
+- a plugin, or packaging/distribution of their work
+- Node-only dependencies
+- background logic that must run without an overlay open
+- reusable logic shared across many Lumia features
+
+Then give a short handoff note (what the plugin would do and that the Plugins GPT / Lumia Plugin SDK covers it) and stop.
+
+---
+
 ## SystemVariables Quick Reference
 
 Curated short list. For anything not here, check `custom-overlays.d.ts` before suggesting a name. If a name is not in the enum, it does not exist — fall back to Config/Data or a custom variable.
@@ -19,6 +47,9 @@ Curated short list. For anything not here, check `custom-overlays.d.ts` before s
 - Twitch: `{{twitch_total_subscriber_count}}` / `{{twitch_session_subscribers_count}}`
 - Kick: `{{kick_total_subscriber_count}}` / `{{kick_session_subscriber_count}}`
 - YouTube: `{{youtube_session_subscriber_count}}`
+- Cross-platform: `{{total_subscriber_count}}` / `{{session_subscriber_count}}`
+
+Spelling trap: only the **Twitch session** counts are plural — `twitch_session_subscribers_count`, `twitch_session_new_subscribers_count`, `twitch_session_resub_subscribers_count`, `twitch_session_gifted_subscribers_count`. Everything else is singular: `twitch_total_subscriber_count`, `twitch_week_subscriber_count`, `twitch_month_subscriber_count`, `kick_session_subscriber_count`, `session_subscriber_count`.
 
 ### Donations (cross-platform aggregate)
 
@@ -73,6 +104,10 @@ Always match with exact string equality — never `includes`, never substring ma
 - `twitch-charityDonation`, `twitch-charityCampaignStarted`, `twitch-charityCampaignProgressed`, `twitch-charityCampaignStopped`
 - `twitch-banned`, `twitch-timeout`, `twitch-timeoutOver`, `twitch-shoutoutReceive`
 - `twitch-adStarted`, `twitch-adStopped`, `twitch-watchStreak`, `twitch-powerups`
+
+Gifted subs fire `twitch-giftSubscription`, never `twitch-subscriber` (that one is only for self-bought subs). By default one alert covers a whole gift bomb: count in `data.dynamic.giftAmount`, gifter in `extraSettings.gifter`, recipients in `extraSettings.recipients`. If the streamer turns off "Treat multiple Sub Gifts as one alert", one alert fires per recipient with `giftAmount: 1` and `extraSettings.recipient`. Summing `giftAmount` is right in both modes.
+
+`twitch-firstChatter` fires once per stream, only when the streamer has the First Chatter alert turned on in Lumia. `data.dynamic.value` is how many streams that viewer has been first.
 
 ### Kick
 

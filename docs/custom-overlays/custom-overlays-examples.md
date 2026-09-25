@@ -8,8 +8,9 @@ Grouped by what the overlay does, so you can jump to the closest starting point:
 
 **Alerts & chat**
 
-- [Custom Alert](#custom-alert) — single listener branches on `data.alert` for donations, subs, follows, bits, raids.
+- [Custom Alert](#custom-alert) — single listener branches on `data.alert` for donations, subs, gifted subs, follows, bits, raids.
 - [Custom Chat Box](#custom-chat-box) — renders chat messages with DOM APIs (no `innerHTML`).
+- [First Chatter Spotlight](#first-chatter-spotlight) — highlights the first viewer to chat this stream from Lumia's built-in `twitch-firstChatter` alert; no chat tracking of your own, saved across reloads.
 
 **Commands & games**
 
@@ -35,6 +36,8 @@ Grouped by what the overlay does, so you can jump to the closest starting point:
 - [Font Picker with Quoted Variable](#font-picker-with-quoted-variable) — small reference for how Google fonts must be quoted in CSS.
 
 ## Font Picker with Quoted Variable
+
+**Use when:** a Config lets the streamer pick a font or other string value that CSS needs quoted.
 
 Small reference overlay. The key pattern: `fontpicker` Configs produce a font-family string, and CSS needs that value inside quotes because `font-family` expects a string. Compare to colors/sizes, which must be unquoted.
 
@@ -100,6 +103,10 @@ Small reference overlay. The key pattern: `fontpicker` Configs produce a font-fa
 
 ## Custom Alert
 
+**Use when:** one overlay should show follows, subs, gifted subs, bits, raids and donations as they happen.
+
+Gifted subs arrive as `twitch-giftSubscription`, never as `twitch-subscriber` — `twitch-subscriber` is only for subs a viewer buys for themselves. By default Lumia sends one `twitch-giftSubscription` per gift bomb with the count in `data.dynamic.giftAmount` and the recipients in `data.extraSettings.recipients`; if the streamer turns off "Treat multiple Sub Gifts as one alert", it sends one alert per recipient with `giftAmount: 1` and `extraSettings.recipient`. Summing `giftAmount` works either way. The gifter is `extraSettings.gifter`.
+
 ### JS Code
 
 ```js
@@ -126,6 +133,9 @@ Overlay.on("alert", (data) => {
 		fullMessage = `${settings.username || "Someone"} is now following!`;
 	} else if (alertType === "twitch-subscriber" || alertType === "kick-subscriber") {
 		fullMessage = `${settings.username || "Someone"} just subscribed!`;
+	} else if (alertType === "twitch-giftSubscription") {
+		const gifts = Number(data.dynamic?.giftAmount) || 1;
+		fullMessage = `${settings.gifter || settings.username || "Someone"} gifted ${gifts} sub${gifts === 1 ? "" : "s"}!`;
 	} else if (alertType === "twitch-bits") {
 		fullMessage = `${settings.username || "Someone"} cheered ${data.dynamic?.value ?? settings.amount ?? ""} bits`;
 	} else if (alertType === "twitch-raid") {
@@ -263,7 +273,176 @@ Overlay.on("alert", (data) => {
 }
 ```
 
+## First Chatter Spotlight
+
+**Use when:** you want to celebrate the first viewer to chat each stream. Lumia already detects that moment and sends the `twitch-firstChatter` alert, so the overlay only listens for it instead of tracking chat itself.
+
+Setup in Lumia: turn on the **Twitch → First Chatter** alert. Lumia only sends the alert when it is on, and at most once per stream.
+
+The alert gives `data.extraSettings.username` / `displayname` / `avatar`, the chat message in `extraSettings.message`, and how many streams this viewer has been first in `data.dynamic.value`. The card is saved with `Overlay.saveStorage` so a reload mid-stream keeps it, and cleared on `twitch-streamLive`. Don't decide what to show from `{{twitch_current_first_chatter}}`: it keeps the previous stream's name until someone chats.
+
+### HTML
+
+```html
+<div id="card" class="hidden">
+	<img id="avatar" alt="" />
+	<div>
+		<div id="title">{{title}}</div>
+		<div id="name"></div>
+		<div id="count"></div>
+		<div id="message"></div>
+	</div>
+</div>
+```
+
+### CSS
+
+```css
+body {
+	background: transparent;
+	font-family: "{{font}}";
+	color: #ffffff;
+}
+#card {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	width: fit-content;
+	padding: 14px 20px;
+	background: rgba(10, 10, 20, 0.85);
+	border-left: 6px solid {{accentColor}};
+	border-radius: 14px;
+	transition: opacity 0.4s ease;
+}
+#card.hidden {
+	opacity: 0;
+}
+#avatar {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+}
+#title {
+	font-size: 14px;
+	text-transform: uppercase;
+	color: {{accentColor}};
+}
+#name {
+	font-size: 24px;
+	font-weight: 700;
+}
+#count,
+#message {
+	font-size: 14px;
+	opacity: 0.85;
+}
+```
+
+### JS
+
+```js
+const card = document.getElementById("card");
+const avatarEl = document.getElementById("avatar");
+const nameEl = document.getElementById("name");
+const countEl = document.getElementById("count");
+const messageEl = document.getElementById("message");
+const hideAfterMs = (Number(Overlay.data.hideAfter) || 0) * 1000;
+const placeholderAvatar = "https://storage.lumiastream.com/placeholderUserIcon.png";
+const STORAGE_KEY = "first_chatter";
+let hideTimer = null;
+
+function show({ name, count, avatar, message }) {
+	nameEl.textContent = name;
+	countEl.textContent = count > 1 ? `First in chat ${count} times` : "First time being first!";
+	messageEl.textContent = Overlay.data.showMessage && message ? `"${message}"` : "";
+	avatarEl.src = avatar || placeholderAvatar;
+	card.classList.remove("hidden");
+
+	clearTimeout(hideTimer);
+	if (hideAfterMs > 0) {
+		hideTimer = setTimeout(() => card.classList.add("hidden"), hideAfterMs);
+	}
+}
+
+let saved = await Overlay.getStorage(STORAGE_KEY);
+if (saved == null) {
+	saved = {};
+	await Overlay.saveStorage(STORAGE_KEY, saved);
+}
+if (saved.name) show(saved);
+
+Overlay.on("alert", async (data) => {
+	if (data.alert === "twitch-streamLive") {
+		card.classList.add("hidden");
+		await Overlay.saveStorage(STORAGE_KEY, {});
+		return;
+	}
+	if (data.alert !== "twitch-firstChatter") return;
+
+	const settings = data.extraSettings || {};
+	const entry = {
+		name: settings.displayname || settings.username || "Someone",
+		count: Number(data.dynamic?.value ?? settings.first_count) || 1,
+		avatar: settings.avatar || "",
+		message: settings.message || "",
+	};
+	await Overlay.saveStorage(STORAGE_KEY, entry);
+	show(entry);
+});
+```
+
+### Configs
+
+```json
+{
+	"title": {
+		"type": "input",
+		"label": "Title",
+		"order": 1,
+		"value": "First chatter"
+	},
+	"showMessage": {
+		"type": "checkbox",
+		"label": "Show their first message",
+		"order": 2,
+		"value": true
+	},
+	"hideAfter": {
+		"type": "number",
+		"label": "Hide after (seconds, 0 = keep showing)",
+		"order": 3,
+		"value": 0
+	},
+	"accentColor": {
+		"type": "colorpicker",
+		"label": "Accent color",
+		"order": 4,
+		"value": "#7c5cff"
+	},
+	"font": {
+		"type": "fontpicker",
+		"label": "Font",
+		"order": 5,
+		"value": "Inter"
+	}
+}
+```
+
+### Data
+
+```json
+{
+	"title": "First chatter",
+	"showMessage": true,
+	"hideAfter": 0,
+	"accentColor": "#7c5cff",
+	"font": "Inter"
+}
+```
+
 ## Custom Chat Box
+
+**Use when:** you want live chat messages on screen, rendered safely with DOM APIs.
 
 ### JS Code
 
@@ -407,6 +586,8 @@ Overlay.on("chat", (data) => {
 ---
 
 ## Calculator with overlaySendCustomContent from Lumia Stream
+
+**Use when:** a Lumia command (not the overlay) parses the input and sends the result to the overlay through the `overlaycontent` listener.
 
 To create a calculator we need to take in data from Lumia Stream, so we will need Overlay Actions or Custom Code. This calculator also has a TTS option
 
@@ -656,6 +837,8 @@ Overlay.on('overlaycontent', (data) => {
 
 ## Roll a Dice
 
+**Use when:** a single chat command (`!roll`) plays an on-screen animation.
+
 ### JS Code
 
 ```js
@@ -787,6 +970,8 @@ die.classList.add('hidden');
 ```
 
 ## Pokemon Catch Mini-Game Overlay
+
+**Use when:** you need a full chat game: saved progress with `saveStorage`, chatbot replies, a leaderboard and sound effects.
 
 ### JS Code
 
@@ -1137,7 +1322,13 @@ if (cfg.devMode) {
 	/* onscreen cheat-sheet */
 	const hint = document.getElementById('debug-hints');
 	if (hint) {
-		hint.innerHTML = 'Dev-mode: <kbd>S</kbd> Spawn • <kbd>⇧S</kbd> Shiny • <kbd>R</kbd> Rare • ' + '<kbd>C</kbd> Catch • <kbd>M</kbd> Masterball • <kbd>P</kbd> Pokédex • <kbd>L</kbd> Leaderboard';
+		const keys = [['S', 'Spawn'], ['⇧S', 'Shiny'], ['R', 'Rare'], ['C', 'Catch'], ['M', 'Masterball'], ['P', 'Pokédex'], ['L', 'Leaderboard']];
+		hint.textContent = 'Dev-mode: ';
+		keys.forEach(([key, label], i) => {
+			const kbd = document.createElement('kbd');
+			kbd.textContent = key;
+			hint.append(kbd, ` ${label}${i < keys.length - 1 ? ' • ' : ''}`);
+		});
 		hint.classList.remove('hidden');
 	}
 
@@ -1574,6 +1765,8 @@ body {
 
 ## Anime Facts using Fetch
 
+**Use when:** the overlay pulls text from a public API with `fetch`, on a timer or a chat command (`!fact`).
+
 ### JS Code
 
 ```js
@@ -1733,6 +1926,8 @@ blockquote {
 ```
 
 ## Pet Cam Random Dog/Cat Images using Fetch
+
+**Use when:** the overlay shows random images from a keyless public API on a chat command (`!pet`).
 
 ### JS Code
 
@@ -1895,6 +2090,8 @@ showOverlay();
 
 
 ## Art Canvas
+
+**Use when:** viewers draw on a shared canvas with chat commands, with mod-only controls.
 
 ### JS Code
 
@@ -2481,6 +2678,8 @@ html, body, #board {
 
 ## HFX Listener Banner
 
+**Use when:** the overlay reacts to Lumia HFX triggers.
+
 Reacts to Lumia HFX triggers. Flashes a banner showing who triggered the HFX, which command, and their message. Uses `Overlay.on("hfx", ...)` — the handler receives the raw HFX payload (no `event.detail`).
 
 ### HTML
@@ -2635,6 +2834,8 @@ Overlay.on("hfx", (data) => {
 
 ## Virtual Light Monitor
 
+**Use when:** the overlay mirrors a Lumia virtual light and remembers its last state across reloads.
+
 Shows an on-screen representation of a Lumia virtual light: a colored dot that matches the current color, brightness, and power state. Uses `Overlay.on("virtuallight", ...)`. Also demonstrates the first-load storage pattern so the last-known color persists across overlay reloads.
 
 ### HTML
@@ -2752,6 +2953,8 @@ Overlay.on("virtuallight", async (data) => {
 ```
 
 ## Loyalty Points Leaderboard
+
+**Use when:** viewers check or give loyalty points with chat commands and the overlay shows the balances.
 
 Uses `Overlay.getLoyaltyPoints` + `Overlay.addLoyaltyPoints`. Chat commands:
 
@@ -2911,6 +3114,8 @@ setInterval(refresh, 30000);
 ```
 
 ## Top Cheerers Leaderboard
+
+**Use when:** you need a per-stream ranking (top N cheerers, gifters or similar) that survives an overlay reload and resets when the stream starts. For only the #1 cheerer, use `{{session_top_cheerer}}` instead.
 
 Top 5 cheerers of the current stream, built from `twitch-bits` alerts. The running totals are saved with `Overlay.saveStorage` so a browser-source refresh or an OBS restart mid-stream does not wipe the board, and they reset when `twitch-streamLive` fires at the start of the next stream.
 
