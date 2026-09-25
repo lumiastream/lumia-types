@@ -704,8 +704,8 @@ Note: When using layers you can call them by the layers name. But if you have mu
 
 ### Overlay Alert Trigger
 
-`overlayAlertTrigger({ layer: string, firstMessage: string" })`: You can trigger a generic alert layer that you've created on your overlays. This will only trigger the generic alert though. To fire an alert that isn't the generic one you will need to use `callAlert`.
-`firstMessage` is the message that will show for the alert
+`overlayAlertTrigger({ layer: string, firstMessage: string, secondMessage?: string, thirdMessage?: string, duration?: number })`: You can trigger a generic alert layer that you've created on your overlays. This will only trigger the generic alert though. To fire an alert that isn't the generic one you will need to use `callAlert`.
+`firstMessage` is the message that will show for the alert; `secondMessage` and `thirdMessage` fill its other lines, and `duration` is how long it shows in milliseconds.
 
 ```js
 async function() {
@@ -735,7 +735,7 @@ async function() {
 
 ### Overlay Set Layer Position (X and Y)
 
-`overlaySetLayerPosition({ layer: string, content: string })`: You can set the x and y position of an overlay layer using this function. `content` is just a string that will correspond to the x and y position separated by a comma. Our overlay is also fast enough to handle interpolation in case you want to move things in a smooth way.
+`overlaySetLayerPosition({ layer: string, content: string, transitionTime?: number, transitionInterpolation?: string })`: You can set the x and y position of an overlay layer using this function. `content` is just a string that will correspond to the x and y position separated by a comma. To move smoothly, set `transitionTime` in milliseconds and `transitionInterpolation` to one of `'ease'`, `'linear'`, `'ease-in'`, `'ease-out'` or `'ease-in-out'`.
 
 ```js
 async function() {
@@ -745,11 +745,11 @@ async function() {
 
 ### Overlay Set Layer Size (Width and Height)
 
-`overlaySetLayerSize({ layer: string, content: string })`: You can set the width and height of an overlay layer using this function. `content` is a string with the width and height separated by a comma. Like position, the overlay can interpolate so the resize can animate smoothly.
+`overlaySetLayerSize({ layer: string, size: string, transitionTime?: number, transitionInterpolation?: string })`: You can set the width and height of an overlay layer using this function. `size` is a string with the width and height separated by a comma. Like position, set `transitionTime` in milliseconds and `transitionInterpolation` to animate the resize.
 
 ```js
 async function() {
-    overlaySetLayerSize({ layer: "My layer", content: "640,360" });
+    overlaySetLayerSize({ layer: "My layer", size: "640,360" });
 }
 ```
 
@@ -817,7 +817,7 @@ async function() {
 
 ### Overlay Play/Pause Media
 
-`overlayPlayPauseMedia({ layer: string, volume: number })`: You can play/pause a media layer using this function. `on` is a boolean that will correspond to the state of the media. `true` plays the media and `false` pauses the media.
+`overlayPlayPauseMedia({ layer: string, on: boolean })`: You can play/pause a media layer using this function. `on` is a boolean that will correspond to the state of the media. `true` plays the media and `false` pauses the media.
 
 ```js
 async function() {
