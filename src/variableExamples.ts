@@ -234,8 +234,8 @@ export const VARIABLE_EXAMPLES: Record<string, VariableExample[]> = {
 		{ label: 'On a specific platform', snippet: 'get_avatar=lumi,twitch' },
 	],
 	vanish: [
-		{ label: 'Clear your own messages', snippet: 'vanish={{username}}' },
-		{ label: 'Clear the target user', snippet: 'vanish={{arg=1}}' },
+		{ label: 'Clear your own messages', snippet: 'vanish' },
+		{ label: 'Time yourself out for 5 seconds', snippet: 'vanish=5' },
 	],
 	get_user_loyalty_points: [
 		{ label: 'Points for a typed user', snippet: 'get_user_loyalty_points={{message}}' },
