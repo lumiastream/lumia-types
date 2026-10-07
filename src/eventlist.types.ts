@@ -171,6 +171,7 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
 
 	// --- E-commerce ---
 	[LumiaAlertValues.WOOCOMMERCE_ORDER]: LumiaEventListTypes.PURCHASES,
+	[LumiaAlertValues.SQUARESPACE_ORDER]: LumiaEventListTypes.PURCHASES,
 };
 
 /**

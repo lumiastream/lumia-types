@@ -8029,6 +8029,92 @@ export const LumiaAlertConfigs: Record<
 		],
 	},
 	// },
+	// squarespace: {
+	[LumiaAlertValues.SQUARESPACE_ORDER]: {
+		connection: LumiaIntegrations.SQUARESPACE,
+		hasAlertImage: true,
+		message: '{{username}} purchased {{items}}',
+		eventlistMessage: 'Order',
+		eventlistDetailedMessage: 'purchased {{items}}',
+		acceptedVariables: AllVariables.squarespace.alerts.order,
+		firstMessageTemplate: '{{username}}',
+		secondMessageTemplate: 'purchased {{items}}',
+		quickActions: [
+			{
+				label: '$25',
+				dynamic: { value: 25, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					displayname: 'lumiastream',
+					items: 'Lumia Stream Tee',
+					item: 'Lumia Stream Tee',
+					itemsCount: 1,
+					amount: 25,
+					currency: LumiaVariationCurrency.USD,
+					orderNumber: '1001',
+				},
+			},
+			{
+				label: '$100',
+				dynamic: { value: 100, currency: LumiaVariationCurrency.USD },
+				extraSettings: {
+					username: 'lumiastream',
+					displayname: 'lumiastream',
+					items: 'Lumia Stream Tee, Hoodie, Sticker Pack',
+					item: 'Lumia Stream Tee',
+					itemsCount: 3,
+					amount: 100,
+					currency: LumiaVariationCurrency.USD,
+					orderNumber: '1002',
+				},
+			},
+		],
+		inputFields: [
+			{
+				type: 'text',
+				label: 'Username',
+				variableField: 'username',
+				required: false,
+				default: 'lumiastream',
+			},
+			{
+				type: 'text',
+				label: 'Items',
+				variableField: 'items',
+				required: true,
+				default: 'Lumia Stream Tee',
+			},
+			{
+				type: 'number',
+				label: 'Amount',
+				dynamicField: 'value',
+				variableField: 'amount',
+				required: false,
+				default: 25,
+			},
+			{
+				type: 'currency',
+				label: 'Currency',
+				dynamicField: 'currency',
+				variableField: 'currency',
+				required: false,
+				default: LumiaVariationCurrency.USD,
+			},
+		],
+		LumiaVariationConditions: [
+			{ type: LumiaVariationConditions.RANDOM },
+			{
+				type: LumiaVariationConditions.EQUAL_CURRENCY_NUMBER,
+				description: 'Order Amount is equal to',
+			},
+			{
+				type: LumiaVariationConditions.GREATER_CURRENCY_NUMBER,
+				description: 'Order Amount is greater than or equal to',
+			},
+			{ type: LumiaVariationConditions.EQUAL_VARIABLE },
+		],
+	},
+	// },
 	// kofi: {
 	[LumiaAlertValues.KOFI_DONATION]: {
 		connection: LumiaIntegrations.KOFI,
