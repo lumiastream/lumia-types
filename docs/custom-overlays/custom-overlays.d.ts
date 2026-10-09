@@ -1111,6 +1111,8 @@ export declare enum LumiaAlertValues {
     TWITTER_RETWEET = "twitter-retweet",
     /** WooCommerce order received */
     WOOCOMMERCE_ORDER = "woocommerce-order",
+    /** Squarespace order received */
+    SQUARESPACE_ORDER = "squarespace-order",
     /** Streamer.bot action executed */
     STREAMERBOT_ACTION = "streamerbot-action",
     /** Crowd Control effect triggered */
@@ -2117,6 +2119,14 @@ export declare enum SystemVariables {
     WOOCOMMERCE_LAST_ORDER_AMOUNT = "woocommerce_last_order_amount",
     /** Last order amount currency code. Use as {{woocommerce_last_order_amount_currency}}. */
     WOOCOMMERCE_LAST_ORDER_AMOUNT_CURRENCY = "woocommerce_last_order_amount_currency",
+    /** Last order customer name. Use as {{squarespace_last_order_name}}. */
+    SQUARESPACE_LAST_ORDER_NAME = "squarespace_last_order_name",
+    /** Last ordered items (list). Use as {{squarespace_last_order_items}}. */
+    SQUARESPACE_LAST_ORDER_ITEMS = "squarespace_last_order_items",
+    /** Last order amount. Use as {{squarespace_last_order_amount}}. */
+    SQUARESPACE_LAST_ORDER_AMOUNT = "squarespace_last_order_amount",
+    /** Last order amount currency code. Use as {{squarespace_last_order_amount_currency}}. */
+    SQUARESPACE_LAST_ORDER_AMOUNT_CURRENCY = "squarespace_last_order_amount_currency",
     /** Is streaming (true/false). Use as {{obs_is_streaming}}. */
     OBS_IS_STREAMING = "obs_is_streaming",
     /** Is recording (true/false). Use as {{obs_is_recording}}. */

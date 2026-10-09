@@ -1059,6 +1059,17 @@ export enum SystemVariables {
 	/** Last order amount currency code. Use as {{woocommerce_last_order_amount_currency}}. */
 	WOOCOMMERCE_LAST_ORDER_AMOUNT_CURRENCY = 'woocommerce_last_order_amount_currency',
 
+	// ───────────────────────────────── Squarespace ─────────────────────────────────
+
+	/** Last order customer name. Use as {{squarespace_last_order_name}}. */
+	SQUARESPACE_LAST_ORDER_NAME = 'squarespace_last_order_name',
+	/** Last ordered items (list). Use as {{squarespace_last_order_items}}. */
+	SQUARESPACE_LAST_ORDER_ITEMS = 'squarespace_last_order_items',
+	/** Last order amount. Use as {{squarespace_last_order_amount}}. */
+	SQUARESPACE_LAST_ORDER_AMOUNT = 'squarespace_last_order_amount',
+	/** Last order amount currency code. Use as {{squarespace_last_order_amount_currency}}. */
+	SQUARESPACE_LAST_ORDER_AMOUNT_CURRENCY = 'squarespace_last_order_amount_currency',
+
 	// ───────────────────────────────────── OBS ─────────────────────────────────────
 
 	/** Is streaming (true/false). Use as {{obs_is_streaming}}. */
@@ -3182,6 +3193,40 @@ export const AllVariables = {
 		],
 		alerts: {
 			order: [],
+		},
+	},
+	squarespace: {
+		variables: ['squarespace_last_order_name', 'squarespace_last_order_items', 'squarespace_last_order_amount', 'squarespace_last_order_amount_currency'],
+		alerts: {
+			order: [
+				'username',
+				'displayname',
+				'items',
+				'itemsCount',
+				'item',
+				'amount',
+				'currency',
+				'currencySymbol',
+				'orderNumber',
+				'orderId',
+				'fulfillmentStatus',
+				'channel',
+				'contentImage',
+				{
+					name: 'orderItems',
+					example: [
+						{
+							productName: 'Ex: Lumia Stream Tee',
+							sku: 'Ex: LUMIA-TEE-BLK-L',
+							quantity: 1,
+							unitPrice: 25,
+							imageUrl: 'Ex: https://images.squarespace-cdn.com/lumia-tee.png',
+							variantOptions: 'Ex: Black, L',
+						},
+					],
+				},
+				'raw',
+			],
 		},
 	},
 	youtube: {

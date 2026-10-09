@@ -184,6 +184,7 @@ export enum LumiaIntegrations {
 	THRONE = 'throne',
 	PATREON = 'patreon',
 	WOOCOMMERCE = 'woocommerce',
+	SQUARESPACE = 'squarespace',
 	KOFI = 'kofi',
 	TIPEEESTREAM = 'tipeeestream',
 	TREATSTREAM = 'treatstream',

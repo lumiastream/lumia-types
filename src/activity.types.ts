@@ -588,6 +588,8 @@ export enum LumiaAlertValues {
 	// E-commerce
 	/** WooCommerce order received */
 	WOOCOMMERCE_ORDER = 'woocommerce-order',
+	/** Squarespace order received */
+	SQUARESPACE_ORDER = 'squarespace-order',
 
 	// Other integrations
 	/** Streamer.bot action executed */
@@ -818,6 +820,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TWITTER_LIKE]: 'Twitter Like',
 	[LumiaAlertValues.TWITTER_RETWEET]: 'Twitter Retweet',
 	[LumiaAlertValues.WOOCOMMERCE_ORDER]: 'Woocommerce Order',
+	[LumiaAlertValues.SQUARESPACE_ORDER]: 'Squarespace Order',
 	[LumiaAlertValues.KOFI_DONATION]: 'Kofi Tip',
 	[LumiaAlertValues.KOFI_SUBSCRIPTION]: 'Kofi Subscription',
 	[LumiaAlertValues.KOFI_COMMISSION]: 'Kofi Commission',
