@@ -3296,6 +3296,7 @@ export const AllVariables = {
 			subscriber: ['username', 'displayname', 'avatar', 'userId'],
 			sessionSubs: ['total', 'previousTotal'],
 			member: ['username', 'displayname', 'avatar', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName', 'subPlanId'],
+			memberMilestone: ['username', 'displayname', 'avatar', 'userId', 'tier', 'subMonths', 'streakMonths', 'message', 'subPlan', 'subPlanName'],
 			sessionMembers: ['total', 'previousTotal'],
 			giftMembers: [
 				'username',

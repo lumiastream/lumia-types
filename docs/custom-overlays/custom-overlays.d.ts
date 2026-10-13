@@ -857,6 +857,8 @@ export declare enum LumiaAlertValues {
     YOUTUBE_SESSION_SUBS = "youtube-sessionSubs",
     /** YouTube channel membership */
     YOUTUBE_MEMBER = "youtube-member",
+    /** YouTube member milestone chat */
+    YOUTUBE_MEMBER_MILESTONE = "youtube-memberMilestone",
     /** YouTube session members */
     YOUTUBE_SESSION_MEMBERS = "youtube-sessionMembers",
     /** YouTube gift members */
