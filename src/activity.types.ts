@@ -312,6 +312,8 @@ export enum LumiaAlertValues {
 	YOUTUBE_SESSION_SUBS = 'youtube-sessionSubs',
 	/** YouTube channel membership */
 	YOUTUBE_MEMBER = 'youtube-member',
+	/** YouTube member milestone chat */
+	YOUTUBE_MEMBER_MILESTONE = 'youtube-memberMilestone',
 	/** YouTube session members */
 	YOUTUBE_SESSION_MEMBERS = 'youtube-sessionMembers',
 	/** YouTube gift members */
@@ -708,6 +710,7 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.YOUTUBE_STREAM_OFFLINE]: 'Youtube Stream Offline',
 	[LumiaAlertValues.YOUTUBE_FIRST_CHATTER]: 'Youtube First Chatter',
 	[LumiaAlertValues.YOUTUBE_MEMBER]: 'Youtube Member',
+	[LumiaAlertValues.YOUTUBE_MEMBER_MILESTONE]: 'Youtube Member Milestone',
 	[LumiaAlertValues.YOUTUBE_SUBSCRIBER]: 'Youtube Subscriber',
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: 'Youtube Superchat',
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: 'Youtube Supersticker',

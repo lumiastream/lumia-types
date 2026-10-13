@@ -117,7 +117,7 @@ Gifted subs fire `twitch-giftSubscription`, never `twitch-subscriber` (that one 
 
 ### YouTube
 
-- `youtube-subscriber`, `youtube-member`, `youtube-giftMembers`, `youtube-superchat`, `youtube-superstickers`
+- `youtube-subscriber`, `youtube-member`, `youtube-memberMilestone`, `youtube-giftMembers`, `youtube-superchat`, `youtube-superstickers`
 - `youtube-streamLive`, `youtube-streamOffline`, `youtube-firstChatter`, `youtube-entrance`
 
 ### Donations (all cross-platform)

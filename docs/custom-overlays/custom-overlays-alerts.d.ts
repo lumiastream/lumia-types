@@ -428,7 +428,7 @@ type YouTubeSuperChat = BaseAlert<
 	}
 >;
 
-/** YouTube channel membership (join/renew). */
+/** New YouTube channel membership. */
 type YouTubeMember = BaseAlert<
 	LumiaAlertValues.YOUTUBE_MEMBER,
 	{
@@ -436,6 +436,33 @@ type YouTubeMember = BaseAlert<
 		value: string;
 	},
 	Record<string, never>
+>;
+
+/** YouTube member milestone chat (an existing member celebrating N months, with an optional comment). */
+type YouTubeMemberMilestone = BaseAlert<
+	LumiaAlertValues.YOUTUBE_MEMBER_MILESTONE,
+	{
+		/** Months as a member. */
+		value: number;
+		/** Member username. */
+		username: string;
+		/** Months as a member (duplicate of value). */
+		subMonths: number;
+	},
+	{
+		/** Months as a member. */
+		subMonths: number;
+		/** Months as a member (duplicate of subMonths). */
+		streakMonths: number;
+		/** Membership level name defined by the channel; may be empty. */
+		tier: string;
+		/** Membership level name (duplicate of tier). */
+		subPlanName: string;
+		/** Membership level name (duplicate of tier). */
+		subPlan: string;
+		/** Comment the member attached to the milestone; empty when none. */
+		message: string;
+	}
 >;
 
 /** Crowd Control effect fired (for supported platforms). */
@@ -485,6 +512,7 @@ export type LumiaAlert =
 	| YouTubeSuperSticker
 	| YouTubeSuperChat
 	| YouTubeMember
+	| YouTubeMemberMilestone
 	| CrowdControlEffect;
 
 /**
@@ -506,6 +534,7 @@ export interface AlertMap {
 	[LumiaAlertValues.YOUTUBE_SUPERSTICKER]: YouTubeSuperSticker;
 	[LumiaAlertValues.YOUTUBE_SUPERCHAT]: YouTubeSuperChat;
 	[LumiaAlertValues.YOUTUBE_MEMBER]: YouTubeMember;
+	[LumiaAlertValues.YOUTUBE_MEMBER_MILESTONE]: YouTubeMemberMilestone;
 	[LumiaAlertValues.CROWDCONTROL_EFFECT]: CrowdControlEffect;
 }
 
