@@ -539,6 +539,27 @@ export type TwitchSessionBitsExtraSettings = SessionAggregateExtraSettings;
 // KICK
 // ============================================================================
 
+export interface KickStreamLiveDynamic {
+	value: string;
+	title: string;
+	started_at: string;
+	username: string;
+}
+export interface KickStreamLiveExtraSettings {
+	username: string;
+	displayname: string;
+	title: string;
+	started_at: string;
+	avatar?: string;
+	platform?: 'kick';
+}
+export interface KickStreamOfflineDynamic extends KickStreamLiveDynamic {
+	ended_at: string;
+}
+export interface KickStreamOfflineExtraSettings extends KickStreamLiveExtraSettings {
+	ended_at: string | null;
+}
+
 export interface KickFollowerDynamic {
 	value: string;
 	username: string;
@@ -745,6 +766,8 @@ export type AlertEventInputMap = {
 	[LumiaAlertValues.TWITCH_SESSION_SUBS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
 	[LumiaAlertValues.TWITCH_SESSION_GIFT_SUBSCRIPTIONS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
 	[LumiaAlertValues.TWITCH_SESSION_BITS]: { dynamic: SessionAggregateDynamic; extraSettings: SessionAggregateExtraSettings };
+	[LumiaAlertValues.KICK_STREAM_LIVE]: { dynamic: KickStreamLiveDynamic; extraSettings: KickStreamLiveExtraSettings };
+	[LumiaAlertValues.KICK_STREAM_OFFLINE]: { dynamic: KickStreamOfflineDynamic; extraSettings: KickStreamOfflineExtraSettings };
 	[LumiaAlertValues.KICK_FOLLOWER]: { dynamic: KickFollowerDynamic; extraSettings: KickFollowerExtraSettings };
 	[LumiaAlertValues.KICK_SUBSCRIBER]: { dynamic: KickSubscriberDynamic; extraSettings: KickSubscriberExtraSettings };
 	[LumiaAlertValues.KICK_GIFT_SUBSCRIPTION]: { dynamic: KickGiftSubscriptionDynamic; extraSettings: KickGiftSubscriptionExtraSettings };
@@ -796,6 +819,8 @@ export type AlertEventUnion =
 	| IAlertEvent<TwitchPowerupsDynamic, TwitchPowerupsExtraSettings>
 	| IAlertEvent<TwitchRedemptionDynamic, TwitchRedemptionExtraSettings>
 	| IAlertEvent<SessionAggregateDynamic, SessionAggregateExtraSettings>
+	| IAlertEvent<KickStreamLiveDynamic, KickStreamLiveExtraSettings>
+	| IAlertEvent<KickStreamOfflineDynamic, KickStreamOfflineExtraSettings>
 	| IAlertEvent<KickFollowerDynamic, KickFollowerExtraSettings>
 	| IAlertEvent<KickSubscriberDynamic, KickSubscriberExtraSettings>
 	| IAlertEvent<KickGiftSubscriptionDynamic, KickGiftSubscriptionExtraSettings>

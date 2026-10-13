@@ -6545,6 +6545,20 @@ export const LumiaAlertConfigs: Record<
 			},
 		],
 	},
+	[LumiaAlertValues.KICK_STREAM_LIVE]: {
+		connection: LumiaIntegrations.KICK,
+		message: 'Kick Stream is now live',
+		acceptedVariables: AllVariables.kick.alerts.streamLive,
+		secondMessageTemplate: 'Kick Stream is now live',
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
+	},
+	[LumiaAlertValues.KICK_STREAM_OFFLINE]: {
+		connection: LumiaIntegrations.KICK,
+		message: 'Kick Stream is offline',
+		acceptedVariables: AllVariables.kick.alerts.streamOffline,
+		secondMessageTemplate: 'Kick Stream is offline',
+		LumiaVariationConditions: [{ type: LumiaVariationConditions.RANDOM }, { type: LumiaVariationConditions.EQUAL_VARIABLE }],
+	},
 	[LumiaAlertValues.KICK_FIRST_CHATTER]: {
 		connection: LumiaIntegrations.KICK,
 		message: '{{username}} is the first chatter!',

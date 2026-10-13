@@ -404,6 +404,10 @@ export enum LumiaAlertValues {
 	TIKTOK_NEW_VIDEO = 'tiktok-newVideo',
 
 	// Kick alerts
+	/** Kick stream went live */
+	KICK_STREAM_LIVE = 'kick-streamLive',
+	/** Kick stream ended */
+	KICK_STREAM_OFFLINE = 'kick-streamOffline',
 	/** Kick points earned */
 	KICK_POINTS = 'kick-points',
 	/** First Kick chat message */
@@ -750,6 +754,8 @@ export const LumiaAlertFriendlyValues = {
 	[LumiaAlertValues.TIKTOK_STREAM_END]: 'Tiktok Stream Ended',
 	[LumiaAlertValues.TIKTOK_NEW_VIDEO]: 'Tiktok New Video',
 	[LumiaAlertValues.TIKTOK_ENTRANCE]: 'Tiktok Entrance',
+	[LumiaAlertValues.KICK_STREAM_LIVE]: 'Kick Stream Live',
+	[LumiaAlertValues.KICK_STREAM_OFFLINE]: 'Kick Stream Offline',
 	[LumiaAlertValues.KICK_POINTS]: 'Kick Points',
 	[LumiaAlertValues.KICK_FIRST_CHATTER]: 'Kick First Chatter',
 	[LumiaAlertValues.KICK_FOLLOWER]: 'Kick Follower',
