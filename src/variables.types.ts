@@ -2600,6 +2600,8 @@ export const AllVariables = {
 			'kick_get_avatar',
 		],
 		alerts: {
+			streamLive: ['value', 'title', 'started_at', 'username'],
+			streamOffline: ['value', 'title', 'started_at', 'ended_at', 'username'],
 			firstChatter: ['username', 'userId', 'displayname', 'avatar', 'first_count', 'message'],
 			entrance: ['username', 'userId', 'displayname', 'avatar', 'message'],
 			follower: ['username'],

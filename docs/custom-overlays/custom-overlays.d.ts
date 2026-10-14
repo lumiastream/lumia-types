@@ -943,6 +943,10 @@ export declare enum LumiaAlertValues {
     TIKTOK_STREAM_END = "tiktok-streamEnd",
     /** New TikTok video posted */
     TIKTOK_NEW_VIDEO = "tiktok-newVideo",
+    /** Kick stream went live */
+    KICK_STREAM_LIVE = "kick-streamLive",
+    /** Kick stream ended */
+    KICK_STREAM_OFFLINE = "kick-streamOffline",
     /** Kick points earned */
     KICK_POINTS = "kick-points",
     /** First Kick chat message */

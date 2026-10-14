@@ -286,6 +286,8 @@ export const AlertsToFilter: LumiaAlertValues[] = [
 	LumiaAlertValues.TIKTOK_BATTLE_END,
 
 	// --- Kick ---
+	LumiaAlertValues.KICK_STREAM_LIVE,
+	LumiaAlertValues.KICK_STREAM_OFFLINE,
 	LumiaAlertValues.KICK_ENTRANCE,
 	LumiaAlertValues.KICK_FIRST_CHATTER,
 	LumiaAlertValues.KICK_BANNED,
