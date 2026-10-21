@@ -1210,6 +1210,12 @@ export declare enum SystemVariables {
     GET_ALL_COMMANDS = "get_all_commands",
     /** Convert color names to hex; passes through hex. Example: {{convert_color_to_hex=green}}. Use as {{convert_color_to_hex}}. */
     CONVERT_COLOR_TO_HEX = "convert_color_to_hex",
+    /** JSON list of full file paths in filename order, excluding hidden files and subfolders. Example: {{get_files_from_folder=C:/Users/Desktop}}. */
+    GET_FILES_FROM_FOLDER = "get_files_from_folder",
+    /** Number of files in a folder, excluding hidden files and subfolders. Example: {{get_file_count_from_folder=C:/Users/Desktop}}. */
+    GET_FILE_COUNT_FROM_FOLDER = "get_file_count_from_folder",
+    /** Full file path at a zero-based index in filename order; missing, invalid or out-of-range indices fall back to 0. Example: {{get_file_from_folder=C:/Users/Desktop,0}}. */
+    GET_FILE_FROM_FOLDER = "get_file_from_folder",
     /** Latest file from a folder. Example: {{get_latest_file_from_folder=C:/Users/Desktop}}. Use as {{get_latest_file_from_folder}}. */
     GET_LATEST_FILE_FROM_FOLDER = "get_latest_file_from_folder",
     /** Random file from a folder. Example: {{get_random_file_from_folder=C:/Users/Desktop}}. Use as {{get_random_file_from_folder}}. */
