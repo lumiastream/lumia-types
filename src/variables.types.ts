@@ -2727,6 +2727,16 @@ export const AllVariables = {
 			calories: [],
 		},
 	},
+	mattersensors: {
+		alerts: {
+			buttonPressed: ['device', 'press'],
+			motionStarted: ['device'],
+			motionStopped: ['device'],
+			contactOpened: ['device'],
+			contactClosed: ['device'],
+			thresholdCrossed: ['device', 'reading', 'value', 'unit', 'direction', 'threshold'],
+		},
+	},
 	slobs: {
 		variables: ['slobs_current_scene', 'slobs_previous_scene', 'slobs_current_scene_collection'],
 		alerts: {
