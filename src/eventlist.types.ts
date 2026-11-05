@@ -196,7 +196,6 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
  * the eventlist should render.
  */
 export const AlertsToFilter: LumiaAlertValues[] = [
-	// --- Matter sensors ---
 	LumiaAlertValues.MATTERSENSORS_BUTTON_PRESSED,
 	LumiaAlertValues.MATTERSENSORS_MOTION_STARTED,
 	LumiaAlertValues.MATTERSENSORS_MOTION_STOPPED,

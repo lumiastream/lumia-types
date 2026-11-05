@@ -10541,14 +10541,13 @@ export const LumiaAlertConfigs: Record<
 		acceptedVariables: AllVariables.mattersensors.alerts.buttonPressed,
 		secondMessageTemplate: '{{device}} button: {{press}}',
 		quickActions: [
-			{ label: 'Single press', dynamic: { value: 'single', name: 'Desk Button' }, extraSettings: { device: 'Desk Button', press: 'single' } },
-			{ label: 'Long press', dynamic: { value: 'long', name: 'Desk Button' }, extraSettings: { device: 'Desk Button', press: 'long' } },
+			{ label: 'Single press', dynamic: { value: 'single' }, extraSettings: { device: 'Desk Button', press: 'single' } },
+			{ label: 'Long press', dynamic: { value: 'long' }, extraSettings: { device: 'Desk Button', press: 'long' } },
 		],
 		inputFields: [
 			{
 				type: 'text',
 				label: 'Device',
-				dynamicField: 'name',
 				variableField: 'device',
 				required: true,
 				default: 'Desk Button',
@@ -10587,7 +10586,6 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Device',
-				dynamicField: 'name',
 				variableField: 'device',
 				required: true,
 				default: 'Hall Motion',
@@ -10604,7 +10602,6 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Device',
-				dynamicField: 'name',
 				variableField: 'device',
 				required: true,
 				default: 'Hall Motion',
@@ -10621,7 +10618,6 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Device',
-				dynamicField: 'name',
 				variableField: 'device',
 				required: true,
 				default: 'Front Door',
@@ -10638,7 +10634,6 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Device',
-				dynamicField: 'name',
 				variableField: 'device',
 				required: true,
 				default: 'Front Door',
@@ -10654,7 +10649,7 @@ export const LumiaAlertConfigs: Record<
 		quickActions: [
 			{
 				label: 'Temperature above 30',
-				dynamic: { value: 31, name: 'Office Temp' },
+				dynamic: { value: 31 },
 				extraSettings: { device: 'Office Temp', reading: 'temperature', value: 31, unit: '°C', direction: 'above', threshold: 30 },
 			},
 		],
@@ -10662,7 +10657,6 @@ export const LumiaAlertConfigs: Record<
 			{
 				type: 'text',
 				label: 'Device',
-				dynamicField: 'name',
 				variableField: 'device',
 				required: true,
 				default: 'Office Temp',
