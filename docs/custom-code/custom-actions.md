@@ -255,7 +255,7 @@ These `lumia` actions drive Lumia's engagement features (raffles, tournaments, v
 | `setFolder` | `{ value: "<folder id>", on: true }` | a command/alert folder |
 | `setAutomation` | `{ value: "<automation name>", on: true }` | an automation/timer (matched by name) |
 | `setVoicecommands` | `{ on: true }` | the voice-commands input as a whole |
-| `setFuzeAudioSensitivity` | `{ value: 50 }` | Fuze audio sensitivity (number) |
+| `setFuzeAudioSensitivity` | `{ value: 50 }` | Fuze audio sensitivity (number). Applies to Color, Scene and Jam modes; Effects mode sets its levels automatically and ignores it |
 
 #### Variables, local storage & files
 
