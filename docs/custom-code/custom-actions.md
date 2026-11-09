@@ -461,6 +461,12 @@ These `base: "overlay"` actions don't have a dedicated helper yet. Their inner `
 | `pollResetVotes` | `{ layer: "<layer>" }` | |
 | `pollSetTimer` | `{ layer: "<layer>", content: "30" }` | `content` is the timer duration in seconds |
 
+#### HFX
+
+| type | `value` | notes |
+| --- | --- | --- |
+| `sendHfx` | `{ layer: "<hfx layer>", content: "<hfx url>", contents: ["<hfx url>", "<hfx url>"], playAudio: true, volume: 1 }` | `contents` is optional; when it has entries one is played at random each run, and `content` should be `contents[0]`. Without `contents`, `content` plays. The `overlaySendHfx` helper sends a single `content` |
+
 #### Game overlays, content & screenshots
 
 | type | `value` | notes |
