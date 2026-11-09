@@ -236,3 +236,7 @@ export type {
 	KickSessionKicksDynamic,
 	KickSessionKicksExtraSettings,
 } from './wire.types';
+export * from './extension.types';
+export * from './extension.constants';
+export * from './extension.helpers';
+export * from './extension-entrance.helpers';
