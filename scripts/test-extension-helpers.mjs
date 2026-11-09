@@ -24,6 +24,26 @@ import {
 const tests = [];
 const test = (name, run) => tests.push({ name, run });
 
+test('marketplace selling is off until the streamer turns it on', () => {
+	const settings = normalizeExtensionSettings({});
+	assert.equal(settings.showHfx, false);
+	assert.equal(settings.showTts, false);
+	assert.equal(isMarketplaceItemEnabled(settings, 'hfx', 'any'), false);
+	assert.equal(isMarketplaceItemEnabled(settings, 'tts', 'any'), false);
+});
+
+test('snaps per-item prices to amounts Twitch sells', () => {
+	const settings = normalizeExtensionSettings({ hfxMarketplacePriceOverrides: { a: 7, b: 100, c: Number.NaN }, ttsMarketplacePriceOverrides: { d: 1234 } });
+	assert.deepEqual(settings.hfxMarketplacePriceOverrides, { a: 6, b: 100 });
+	assert.ok(TWITCH_EXTENSION_BIT_VALUES.includes(settings.ttsMarketplacePriceOverrides.d));
+});
+
+test('never discounts a paid item to 0 Bits', () => {
+	const settings = { ...defaults, flashSaleMode: 'global', flashSalePercent: 90, flashSaleMinimumBits: 0 };
+	assert.equal(flashSalePrice(3, settings), 3);
+	assert.ok(flashSalePrice(100, settings) > 0);
+});
+
 test('entrance access defaults offer one week, one month, and unlimited access', () => {
 	assert.deepEqual(normalizeExtensionSettings({}).entranceAccessOptions, {
 		week: { enabled: true, bits: 100 },
@@ -51,6 +71,8 @@ test('hides marketplace items according to their type visibility', () => {
 
 test('uses bare ids in separate HFX and TTS override maps', () => {
 	const settings = normalizeExtensionSettings({
+		showHfx: true,
+		showTts: true,
 		hfxMarketplacePriceOverrides: { shared: 64 },
 		ttsMarketplacePriceOverrides: { shared: 102 },
 		hfxMarketplaceVolumeOverrides: { shared: 51 },

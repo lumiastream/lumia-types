@@ -33,8 +33,9 @@ export const DEFAULT_ENTRANCE_ACCESS_OPTIONS: EntranceAccessOptions = {
 
 export const DEFAULT_EXTENSION_SETTINGS: ExtensionSettings = {
 	showCommands: true,
-	showHfx: true,
-	showTts: true,
+	// Marketplace selling is opt-in, so existing channels don't start selling HFX or AI TTS after an update.
+	showHfx: false,
+	showTts: false,
 	hfxMode: 'safe',
 	marketplaceDefaultPrice: 100,
 	entranceAccessOptions: DEFAULT_ENTRANCE_ACCESS_OPTIONS,

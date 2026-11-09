@@ -60,6 +60,13 @@ const normalizeVolumeOverrides = (overrides?: Record<string, number>): Record<st
 			.map(([id, volume]): [string, number] => [id, clampVolume(volume)]),
 	);
 
+const normalizePriceOverrides = (overrides?: Record<string, number>): Record<string, number> =>
+	fromEntries(
+		Object.entries(overrides ?? {})
+			.filter(([, price]) => Number.isFinite(price))
+			.map(([id, price]): [string, number] => [id, nearestBits(price)]),
+	);
+
 // Items are visible by default, so only explicit opt-outs are persisted.
 const disabledVisibilityOverrides = (overrides?: Record<string, boolean>): Record<string, boolean> =>
 	fromEntries(Object.entries(overrides ?? {}).filter(([, enabled]) => enabled === false));
@@ -100,8 +107,8 @@ export function normalizeExtensionSettings(settings: Partial<ExtensionSettings> 
 		marketplaceDefaultVolume: clampVolume(settings.marketplaceDefaultVolume ?? defaults.marketplaceDefaultVolume),
 		hfxMarketplaceVolumeOverrides: normalizeVolumeOverrides(settings.hfxMarketplaceVolumeOverrides),
 		ttsMarketplaceVolumeOverrides: normalizeVolumeOverrides(settings.ttsMarketplaceVolumeOverrides),
-		hfxMarketplacePriceOverrides: { ...settings.hfxMarketplacePriceOverrides },
-		ttsMarketplacePriceOverrides: { ...settings.ttsMarketplacePriceOverrides },
+		hfxMarketplacePriceOverrides: normalizePriceOverrides(settings.hfxMarketplacePriceOverrides),
+		ttsMarketplacePriceOverrides: normalizePriceOverrides(settings.ttsMarketplacePriceOverrides),
 		hfxVisibilityOverrides: disabledVisibilityOverrides(settings.hfxVisibilityOverrides),
 		ttsVisibilityOverrides: disabledVisibilityOverrides(settings.ttsVisibilityOverrides),
 	};
@@ -135,7 +142,9 @@ export function flashSalePrice(bits: number, settings: ExtensionSettings, tier?:
 	const percent = flashSaleDiscount(settings, tier, itemId);
 	if (percent === null || bits <= 0 || bits <= settings.flashSaleMinimumBits) return bits;
 	const target = (bits * (100 - percent)) / 100;
-	return nearestBits(target, settings.flashSaleMinimumBits, bits);
+	const price = nearestBits(target, settings.flashSaleMinimumBits, bits);
+	// A paid item is never discounted to free; with no sellable amount in range it keeps its price.
+	return price > 0 ? price : bits;
 }
 
 // Loyalty points have no product list, so the discount is rounded and held at a fixed floor instead.
