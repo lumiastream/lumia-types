@@ -705,17 +705,6 @@ async function() {
 
 Note: When using layers you can call them by the layers name. But if you have multiple layers named the same thing in different overlays it may not trigger on the correct overlay. Make sure you give your layers a unique name so that you do not have any issues triggering the correct layer. We do not check for unique Overlay names and unique Layer names at this time since under the hood we use ID's
 
-### Overlay Alert Trigger
-
-`overlayAlertTrigger({ layer: string, firstMessage: string, secondMessage?: string, thirdMessage?: string, duration?: number })`: You can trigger a generic alert layer that you've created on your overlays. This will only trigger the generic alert though. To fire an alert that isn't the generic one you will need to use `callAlert`.
-`firstMessage` is the message that will show for the alert; `secondMessage` and `thirdMessage` fill its other lines, and `duration` is how long it shows in milliseconds.
-
-```js
-async function() {
-    overlayAlertTrigger({ layer: "my unique layer name", firstMessage: "{{message}}" });
-}
-```
-
 ### Overlay Set Visibility
 
 `overlaySetVisibility({ overlay: string, on: boolean })`: You can set the visibility of the full overlay using this function. You should make sure all of your overlays have unique names. We do not check for unique names since under the hood we use ID's
