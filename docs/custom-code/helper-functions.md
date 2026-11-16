@@ -450,6 +450,9 @@ spotify-switchSong, spotify-songPlayed, spotify-songPaused, youtubemusic-switchS
 // VTube Studio
 vtubestudio-hotkeyTriggered, vtubestudio-modelLoaded, vtubestudio-animationStart, vtubestudio-animationEnd, vtubestudio-itemAdded, vtubestudio-itemRemoved, vtubestudio-backgroundChanged
 
+// Matter sensors
+mattersensors-buttonPressed, mattersensors-motionStarted, mattersensors-motionStopped, mattersensors-contactOpened, mattersensors-contactClosed, mattersensors-thresholdCrossed
+
 // Other
 pulse-heartrate, pulse-calories, twitter-follower, twitter-like, twitter-retweet, streamerbot-action, crowdcontrol-effect
 ```

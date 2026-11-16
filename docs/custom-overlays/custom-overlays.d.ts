@@ -1109,6 +1109,12 @@ export declare enum LumiaAlertValues {
     PULSE_HEARTRATE = "pulse-heartrate",
     /** Calories burned update from Pulse */
     PULSE_CALORIES = "pulse-calories",
+    MATTERSENSORS_BUTTON_PRESSED = "mattersensors-buttonPressed",
+    MATTERSENSORS_MOTION_STARTED = "mattersensors-motionStarted",
+    MATTERSENSORS_MOTION_STOPPED = "mattersensors-motionStopped",
+    MATTERSENSORS_CONTACT_OPENED = "mattersensors-contactOpened",
+    MATTERSENSORS_CONTACT_CLOSED = "mattersensors-contactClosed",
+    MATTERSENSORS_THRESHOLD_CROSSED = "mattersensors-thresholdCrossed",
     /** New Twitter/X follower */
     TWITTER_FOLLOWER = "twitter-follower",
     /** Twitter/X like received */

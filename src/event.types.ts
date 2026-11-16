@@ -193,6 +193,7 @@ export enum LumiaIntegrations {
 	SLOBS = 'slobs',
 	PULSE = 'pulse',
 	PULSOID = 'pulsoid',
+	MATTER_SENSORS = 'mattersensors',
 	HYPERATE = 'hyperate',
 	PAYPAL = 'paypal',
 	TWITTER = 'twitter',
