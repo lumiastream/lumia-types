@@ -77,7 +77,7 @@ These are the built-in `type` values for each system base.
 
 **`base: "lumia"`** — `callCommand, callRandomCommand, chatbot, tts, setStreamMode, toggleStreamMode, setFuzeAudioSensitivity, playAudio, writeToFile, setConnection, updateVariable, updateCounter, appendToVariable, unappendFromVariable, saveLocal, addToUserlevel, removeFromUserlevel, addToRestrictionsList, removeFromRestrictionsList, setFolder, setAlert, setAlertVariation, setCommand, setChatbotCommand, setTwitchPointsCommand, setTwitchExtensionCommand, setKickPointsCommand, setChatMatchCommand, setTwitchPointValue, setLoyaltyPointValue, setUserLoyaltyPoint, setTwitchExtensionBitsValue, setAutomation, setVoicecommands, sendToDiscordWebhook, sendToDiscordWithMediaWebhook, sendToWebhook, sendToPrinter, raffleEntry, raffleRemoveEntry, raffleGetWinner, raffleStart, raffleStop, raffleEnd, viewerQueueEntry, viewerQueueLeave, tournamentEntry, tournamentRemoveEntry, tournamentUpdatePoints, tournamentStart, tournamentEnd, viewerQueuePlayPause, viewerQueueEndQueue, viewerQueuePickPlayer, backToDefault, replayLastEventListEvent, runLastQueueItem, resumeQueue, pauseQueue, removeCurrentQueueItem, clearQueue, clearCooldowns, resetSession, cleanAll, refreshSettings, addSongRequest, skipSongRequest, clearSongRequestQueue, delay, setColor, accessory`, plus the control-flow types `conditional, randomGroup, loop, stop` (see [Control-flow actions](#control-flow-actions) below)
 
-**`base: "overlay"`** — `alertTrigger, alertEvent, setOverlayVisibility, setLayerVisibility, setLayerPosition, setLayerSize, setTextContent, setImageContent, setVideoContent, setAudioContent, setLayerVolume, playPauseMedia, setContent, sendShoutout, sendCustomOverlayContent, sendGameTrigger, sendGameUpdate, takeScreenshot, spinwheelReset, spinwheelAddItem, spinwheelRemoveItem, sendHfx, hudOverlayChange, hudToggle, hudVolumeSet, hudOpacitySet, timerIncrement, pollTrigger, pollStart, pollResetVotes, pollSetTimer, pollAddItem, pollRemoveItem, delay`
+**`base: "overlay"`** — `alertEvent, setOverlayVisibility, setLayerVisibility, setLayerPosition, setLayerSize, setTextContent, setImageContent, setVideoContent, setAudioContent, setLayerVolume, playPauseMedia, setContent, sendShoutout, sendCustomOverlayContent, sendGameTrigger, sendGameUpdate, takeScreenshot, spinwheelReset, spinwheelAddItem, spinwheelRemoveItem, sendHfx, hudOverlayChange, hudToggle, hudVolumeSet, hudOpacitySet, timerIncrement, pollTrigger, pollStart, pollResetVotes, pollSetTimer, pollAddItem, pollRemoveItem, delay`
 
 **`base: "api"`** — `get, put, post, patch, delete, delay`. `value` is `{ url, method, rawBody?, headers?, body?, timeout?, delay? }` — `headers` and `body` are arrays of `"Key=Value"` **strings**, never objects (e.g. `headers: ["Authorization=Bearer abc"]`); `rawBody` is a JSON string and wins over `body`.
 
@@ -255,7 +255,7 @@ These `lumia` actions drive Lumia's engagement features (raffles, tournaments, v
 | `setFolder` | `{ value: "<folder id>", on: true }` | a command/alert folder |
 | `setAutomation` | `{ value: "<automation name>", on: true }` | an automation/timer (matched by name) |
 | `setVoicecommands` | `{ on: true }` | the voice-commands input as a whole |
-| `setFuzeAudioSensitivity` | `{ value: 50 }` | Fuze audio sensitivity (number) |
+| `setFuzeAudioSensitivity` | `{ value: 50 }` | Fuze audio sensitivity (number). Applies to Color, Scene and Jam modes; Effects mode sets its levels automatically and ignores it |
 
 #### Variables, local storage & files
 
@@ -460,6 +460,12 @@ These `base: "overlay"` actions don't have a dedicated helper yet. Their inner `
 | `pollRemoveItem` | `{ layer: "<layer>", content: "<option title>" }` | |
 | `pollResetVotes` | `{ layer: "<layer>" }` | |
 | `pollSetTimer` | `{ layer: "<layer>", content: "30" }` | `content` is the timer duration in seconds |
+
+#### HFX
+
+| type | `value` | notes |
+| --- | --- | --- |
+| `sendHfx` | `{ layer: "<hfx layer>", content: "<hfx url>", contents: ["<hfx url>", "<hfx url>"], playAudio: true, volume: 1 }` | `contents` is optional; when it has entries one is played at random each run, and `content` should be `contents[0]`. Without `contents`, `content` plays. The `overlaySendHfx` helper sends a single `content` |
 
 #### Game overlays, content & screenshots
 

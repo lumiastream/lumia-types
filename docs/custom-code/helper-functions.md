@@ -450,6 +450,9 @@ spotify-switchSong, spotify-songPlayed, spotify-songPaused, youtubemusic-switchS
 // VTube Studio
 vtubestudio-hotkeyTriggered, vtubestudio-modelLoaded, vtubestudio-animationStart, vtubestudio-animationEnd, vtubestudio-itemAdded, vtubestudio-itemRemoved, vtubestudio-backgroundChanged
 
+// Matter sensors
+mattersensors-buttonPressed, mattersensors-motionStarted, mattersensors-motionStopped, mattersensors-contactOpened, mattersensors-contactClosed, mattersensors-thresholdCrossed
+
 // Other
 pulse-heartrate, pulse-calories, twitter-follower, twitter-like, twitter-retweet, streamerbot-action, crowdcontrol-effect
 ```
@@ -701,17 +704,6 @@ async function() {
 ## Overlay Actions
 
 Note: When using layers you can call them by the layers name. But if you have multiple layers named the same thing in different overlays it may not trigger on the correct overlay. Make sure you give your layers a unique name so that you do not have any issues triggering the correct layer. We do not check for unique Overlay names and unique Layer names at this time since under the hood we use ID's
-
-### Overlay Alert Trigger
-
-`overlayAlertTrigger({ layer: string, firstMessage: string, secondMessage?: string, thirdMessage?: string, duration?: number })`: You can trigger a generic alert layer that you've created on your overlays. This will only trigger the generic alert though. To fire an alert that isn't the generic one you will need to use `callAlert`.
-`firstMessage` is the message that will show for the alert; `secondMessage` and `thirdMessage` fill its other lines, and `duration` is how long it shows in milliseconds.
-
-```js
-async function() {
-    overlayAlertTrigger({ layer: "my unique layer name", firstMessage: "{{message}}" });
-}
-```
 
 ### Overlay Set Visibility
 

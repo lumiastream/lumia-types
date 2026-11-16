@@ -196,6 +196,13 @@ export const LumiaMapAlertTypeToEventListType: Partial<Record<LumiaAlertValues, 
  * the eventlist should render.
  */
 export const AlertsToFilter: LumiaAlertValues[] = [
+	LumiaAlertValues.MATTERSENSORS_BUTTON_PRESSED,
+	LumiaAlertValues.MATTERSENSORS_MOTION_STARTED,
+	LumiaAlertValues.MATTERSENSORS_MOTION_STOPPED,
+	LumiaAlertValues.MATTERSENSORS_CONTACT_OPENED,
+	LumiaAlertValues.MATTERSENSORS_CONTACT_CLOSED,
+	LumiaAlertValues.MATTERSENSORS_THRESHOLD_CROSSED,
+
 	// --- Lumia Stream native ---
 	LumiaAlertValues.LUMIASTREAM_LUMIA_OPENED,
 	LumiaAlertValues.LUMIASTREAM_LUMIA_CLOSED,
