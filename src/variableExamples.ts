@@ -217,11 +217,11 @@ export const VARIABLE_EXAMPLES: Record<string, VariableExample[]> = {
 		{ label: 'Wait 5s before saving', snippet: 'obs_vertical_replay=5' },
 	],
 	twitch_followage: [
-		{ label: "Followage of whoever ran the command", snippet: 'twitch_followage' },
+		{ label: 'Followage of whoever ran the command', snippet: 'twitch_followage' },
 		{ label: "Another user's followage", snippet: 'twitch_followage={{message}}' },
 	],
 	twitch_accountage: [
-		{ label: "Account age of whoever ran the command", snippet: 'twitch_accountage' },
+		{ label: 'Account age of whoever ran the command', snippet: 'twitch_accountage' },
 		{ label: "Another user's account age", snippet: 'twitch_accountage={{message}}' },
 	],
 	account_age: [
@@ -288,7 +288,7 @@ export const VARIABLE_EXAMPLES: Record<string, VariableExample[]> = {
 		{ label: 'Weather-aware greeting (nested function)', snippet: 'ai=It is {{weather=London}} here, write a cozy one-line greeting referencing it|max=160' },
 		{ label: 'Time-aware greeting (nested function)', snippet: 'ai=It is {{time=America/New_York}} for me, greet chat fitting the time of day|max=120' },
 		{ label: 'Remember each viewer (thread)', snippet: 'ai={{message}}|thread={{username}}' },
-		{ label: 'Pick a model and cap length', snippet: 'ai=Suggest a catchy {{game}} stream title|model=gpt-5-mini|max=80' },
+		{ label: 'Pick a model and cap length', snippet: 'ai=Suggest a catchy {{game}} stream title|model=gpt-6-luna|max=80' },
 		{ label: 'Crank up the creativity', snippet: 'ai=Invent a wild hype phrase for {{game}}|temp=1.6|max=80' },
 	],
 	ai_prompt: [
@@ -300,7 +300,7 @@ export const VARIABLE_EXAMPLES: Record<string, VariableExample[]> = {
 		{ label: 'Keep context with a thread', snippet: 'ai_prompt={{message}}|thread={{username}}' },
 		{ label: 'Mix in other variables', snippet: 'ai_prompt=Make a Twitch title for {{twitch_category}}, reply with only the title|max=100' },
 		{ label: 'Suggest stream hashtags', snippet: 'ai_prompt=Suggest 3 hashtags for a {{twitch_category}} stream, comma-separated|max=80' },
-		{ label: 'Pick a specific model', snippet: 'ai_prompt=Explain {{message}} like I am five|model=gpt-5-mini|max=200' },
+		{ label: 'Pick a specific model', snippet: 'ai_prompt=Explain {{message}} like I am five|model=gpt-6-luna|max=200' },
 		{ label: 'Same function as the shorter {{ai=...}}', snippet: 'ai_prompt=Summarize this in one sentence: {{message}}' },
 	],
 	weather: [
