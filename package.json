@@ -1,6 +1,6 @@
 {
   "name": "@lumiastream/lumia-types",
-  "version": "4.3.3",
+  "version": "4.4.0",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/esm/index.js",
@@ -33,7 +33,7 @@
   "scripts": {
     "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig.esm.json && npm run sync:custom-overlays && npm run sync:custom-code && npm run sync:chatbot && node ./scripts/finalize-esm-build.mjs",
     "watch": "node ./scripts/watch.mjs",
-    "test": "npm run build && node ./scripts/check-eventlist-alert-invariant.mjs && node ./scripts/test-variation-helpers.mjs",
+    "test": "npm run build && node ./scripts/check-eventlist-alert-invariant.mjs && node ./scripts/test-variation-helpers.mjs && node ./scripts/test-extension-helpers.mjs",
     "prepublishOnly": "npm test",
     "lint": "tslint --project tsconfig.json \"src/**/*.ts\"",
     "lint:fix": "tslint --project tsconfig.json --fix \"src/**/*.ts\"",
