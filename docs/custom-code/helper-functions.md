@@ -214,7 +214,7 @@ async function() {
 
 `getStore()`: Retrieves the complete custom code store. This store is a persisted storage throughout all of your custom code and can assign any data type like string, numbers, arrays, and objects
 
-The store is saved with your settings, so it has limits: each item can be up to 1 MB and the whole store up to 8 MB (measured as JSON). Store the current state rather than a new key per event or per backup, and remove items you no longer need.
+The store is saved on this computer only. It is not synced to your Lumia account, so a new computer or a reinstall starts with an empty store unless you restore a local backup (local backups include the store). Each item can be up to 1 MB and the whole store up to 8 MB (measured as JSON). Store the current state rather than a new key per event or per backup, and remove items you no longer need.
 
 ```js
 async function() {
