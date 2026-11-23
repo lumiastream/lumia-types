@@ -214,6 +214,8 @@ async function() {
 
 `getStore()`: Retrieves the complete custom code store. This store is a persisted storage throughout all of your custom code and can assign any data type like string, numbers, arrays, and objects
 
+The store is saved on this computer only. It is not synced to your Lumia account, so a new computer or a reinstall starts with an empty store unless you restore a local backup (local backups include the store). Each item can be up to 1 MB and the whole store up to 8 MB (measured as JSON). Store the current state rather than a new key per event or per backup, and remove items you no longer need.
+
 ```js
 async function() {
 	//Notice that you need to await the result since getStore returns a promise
@@ -234,18 +236,21 @@ async function() {
 
 ### Remove Persisted Store Item
 
-`removeStoreItem(name: string)`: Removes a single item from the custom code store by its name. The rest of the store is left untouched
+`removeStoreItem(name: string | string[])`: Removes one item, or several when you pass an array of names, from the custom code store. The rest of the store is left untouched
 
 ```js
 async function() {
     await removeStoreItem('users');
+
+    const store = await getStore();
+    await removeStoreItem(Object.keys(store).filter((name) => name.startsWith('event_')));
     done();
 }
 ```
 
 ### Set Persisted Store Item
 
-`setStore({ name: string; value: any })`: Sets an item in the store. You can use any data type as your value
+`setStore({ name: string; value: any })`: Sets an item in the store. You can use any data type as your value. It rejects, without saving, when the item is over 1 MB or the store would grow past 8 MB, so catch the error if your code should keep running
 
 ```js
 async function() {
